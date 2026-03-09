@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-14T15:40:16.6818566	Tags for minecraft:item mod id regions_unexplored
+// 1.21.1	2026-03-07T23:17:06.8692355	Tags for minecraft:item mod id regions_unexplored
 47322f6e871d59e5581ad5e9b47c6737a5af3480 data/c/tags/item/fences/wooden.json
 543d30a38bbd7deef12bbc96a461b70e01314374 data/c/tags/item/fence_gates/wooden.json
 e76db328747695a5123be2071120c7457aea0d6e data/c/tags/item/foods/fruit.json
@@ -42,6 +42,7 @@ f270912f31f6045ab37db5880dead59ab2bd2a8c data/minecraft/tags/item/wooden_doors.j
 63ac8447229c757c3c4a71058c3ae47a33cc2964 data/minecraft/tags/item/wooden_slabs.json
 5be05ca87ae16266717810db19078eb565f309ed data/minecraft/tags/item/wooden_stairs.json
 78d610a0e980585799870d39663c73122e3b98e6 data/minecraft/tags/item/wooden_trapdoors.json
+66370ed2ea085b66c6f757e54d3e7c86b58b4f7a data/regions_unexplored/tags/item/alpha_logs.json
 7a4dec34e932546179edd4bac8a97db6f52f9b07 data/regions_unexplored/tags/item/ash.json
 90f09119f93ff3ce271235f78d540f91522828a5 data/regions_unexplored/tags/item/bamboo_logs.json
 c693fa708394f8561ff1109d81f834e9cdde37ca data/regions_unexplored/tags/item/baobab_logs.json

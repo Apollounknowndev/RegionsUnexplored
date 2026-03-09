@@ -523,6 +523,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
         ;
         this.tag(BlockTags.LOGS_THAT_BURN)
             .addTag(RUBlockTags.BRANCHES)
+            .addTag(RUBlockTags.ALPHA_LOGS)
             .addTag(RUBlockTags.BAMBOO_LOGS)
             .addTag(RUBlockTags.BAOBAB_LOGS)
             .addTag(RUBlockTags.BLACKWOOD_LOGS)
@@ -542,7 +543,6 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .addTag(RUBlockTags.REDWOOD_LOGS)
             .addTag(RUBlockTags.SOCOTRA_LOGS)
             .addTag(RUBlockTags.WILLOW_LOGS)
-            .add(RUBlocks.ALPHA_WOOD_SET.getLog())
         ;
         this.tag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
             .add(RUBlocks.PEAT_MUD.get())
@@ -879,6 +879,9 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.SOCOTRA_NATURAL_SET.getShrub())
             .add(RUBlocks.SPRUCE_NATURAL_SET.getShrub())
             .add(RUBlocks.WILLOW_NATURAL_SET.getShrub())
+        ;
+        this.tag(RUBlockTags.ALPHA_LOGS)
+            .add(RUBlocks.ALPHA_WOOD_SET.getLog())
         ;
         this.tag(RUBlockTags.BAMBOO_LOGS)
             .add(RUBlocks.BAMBOO_LOG.get())

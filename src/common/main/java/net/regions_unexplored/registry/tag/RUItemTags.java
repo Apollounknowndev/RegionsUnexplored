@@ -15,6 +15,7 @@ public interface RUItemTags {
    TagKey<Item> ASH = key("ash");
    TagKey<Item> BRANCHES = key("branches");
    TagKey<Item> HYACINTH_BLOOMS = key("hyacinth_blooms");
+   TagKey<Item> ALPHA_LOGS = key("alpha_logs");
    TagKey<Item> BAMBOO_LOGS = key("bamboo_logs");
    TagKey<Item> BAOBAB_LOGS = key("baobab_logs");
    TagKey<Item> BLACKWOOD_LOGS = key("blackwood_logs");

@@ -20,6 +20,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.registry.RUBlocks;
@@ -51,7 +52,7 @@ public class RuRecipeProvider extends RecipeProvider implements IConditionBuilde
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, RUBlocks.DEEPSLATE_PRISMOSS.get(), 1).define('#', Blocks.DEEPSLATE).define('X', RUBlocks.PRISMOSS_SPROUT.get()).pattern("X").pattern("#").group("prismoss").unlockedBy("has_deepslate", has(Blocks.DEEPSLATE)).save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RUBlocks.HANGING_PRISMARITE.get(), 1).define('#', RUBlocks.PRISMARITE_CLUSTER.get()).pattern("#").pattern("#").pattern("#").group("prismarite").unlockedBy("has_prismarite", has(RUBlocks.PRISMARITE_CLUSTER.get())).save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RUBlocks.LARGE_PRISMARITE_CLUSTER.get(), 1).define('#', RUBlocks.PRISMARITE_CLUSTER.get()).pattern("#").pattern("#").group("prismarite").unlockedBy("has_prismarite", has(RUBlocks.PRISMARITE_CLUSTER.get())).save(consumer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, RUBlocks.PRISMAGLASS.get(), 2).define('#', TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", "glass"))).define('X', RUItemTags.PRISMARITE_CRYSTALS).pattern(" X ").pattern("X#X").pattern(" X ").group("stained_glass").unlockedBy("has_glass", has(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", "glass")))).save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, RUBlocks.PRISMAGLASS.get(), 2).define('#', Tags.Items.GLASS_BLOCKS).define('X', RUItemTags.PRISMARITE_CRYSTALS).pattern(" X ").pattern("X#X").pattern(" X ").group("stained_glass").unlockedBy("has_glass", has(Tags.Items.GLASS_BLOCKS)).save(consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, RUBlocks.RAW_REDSTONE_BLOCK.get(), 1).define('#', Items.REDSTONE).pattern("##").pattern("##").group("redstone").unlockedBy("has_redstone", has(Items.REDSTONE)).save(consumer);
         oreSmelting(consumer, REDSTONE_SMELTABLES.get(), RecipeCategory.REDSTONE, Items.REDSTONE, 0.7F, 200, "redstone");
@@ -375,7 +376,9 @@ public class RuRecipeProvider extends RecipeProvider implements IConditionBuilde
         for (WoodSet set : RUBlocks.WOOD_SETS) {
             if (set.getWood() != null && set.getLog() != null) woodFromLogs(consumer, set.getWood(), set.getLog());
             if (set.getStrippedWood() != null && set.getStrippedLog() != null) woodFromLogs(consumer, set.getStrippedWood(), set.getStrippedLog());
-            if (set.getPlanks() != null) planksFromLogs(consumer, set.getPlanks(), RUItemTags.key(set.getPlanks().builtInRegistryHolder().key().identifier().getPath().replace("_planks", "_logs")), 4);
+            if (set.getPlanks() != null) planksFromLogs(consumer, set.getPlanks(), RUItemTags.key(
+                set.getPlanks().builtInRegistryHolder().key().identifier().getPath().replace("_planks", "_logs")
+            ), 4);
             woodenStairs(consumer, set.getStairs(), set.getPlanks());
             woodenSlab(consumer, set.getSlab(), set.getPlanks());
             woodenFence(consumer, set.getFence(), set.getPlanks());

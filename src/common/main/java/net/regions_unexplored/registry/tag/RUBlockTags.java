@@ -30,6 +30,7 @@ public interface RUBlockTags {
    TagKey<Block> ASH = key("ash");
    TagKey<Block> BRANCHES = key("branches");
    TagKey<Block> HYACINTH_BLOOMS = key("hyacinth_blooms");
+   TagKey<Block> ALPHA_LOGS = key("alpha_logs");
    TagKey<Block> BAMBOO_LOGS = key("bamboo_logs");
    TagKey<Block> BAOBAB_LOGS = key("baobab_logs");
    TagKey<Block> BLACKWOOD_LOGS = key("blackwood_logs");

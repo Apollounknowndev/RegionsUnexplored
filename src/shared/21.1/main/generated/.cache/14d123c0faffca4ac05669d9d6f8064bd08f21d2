@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-06T23:58:28.1676161	Tags for minecraft:block mod id regions_unexplored
+// 1.21.1	2026-03-07T23:13:50.4114494	Tags for minecraft:block mod id regions_unexplored
 47322f6e871d59e5581ad5e9b47c6737a5af3480 data/c/tags/block/fences/wooden.json
 543d30a38bbd7deef12bbc96a461b70e01314374 data/c/tags/block/fence_gates/wooden.json
 fbd3b5574bd57030107ab08e4b239ea1520ad7e1 data/c/tags/block/glass_blocks.json
@@ -41,7 +41,7 @@ c4bf46aa5158748c8dac7d9bb1a478951e35bc19 data/minecraft/tags/block/infiniburn_ov
 3d6edb89019e02f0ea60442e142c457a0179fd2b data/minecraft/tags/block/inside_step_sound_blocks.json
 a3d69c7cf1ea154863599c0fd66c191d1ee159fc data/minecraft/tags/block/leaves.json
 c95c48f7f02e110d75aa593f55ddd2ccac780c1b data/minecraft/tags/block/logs.json
-b79905b511be83d5a08ddd2bd6c8a358785015c7 data/minecraft/tags/block/logs_that_burn.json
+55a0894bc126d841a7e0db8f5846a3c0311cc83d data/minecraft/tags/block/logs_that_burn.json
 4df567e2c152a3325acd0907b34a48ac2afaa26b data/minecraft/tags/block/mangrove_logs_can_grow_through.json
 4df567e2c152a3325acd0907b34a48ac2afaa26b data/minecraft/tags/block/mangrove_roots_can_grow_through.json
 d9653f34b5be7b09f4247bc832d5f8eaaeb41259 data/minecraft/tags/block/mineable/axe.json
@@ -85,6 +85,7 @@ f270912f31f6045ab37db5880dead59ab2bd2a8c data/minecraft/tags/block/wooden_doors.
 63ac8447229c757c3c4a71058c3ae47a33cc2964 data/minecraft/tags/block/wooden_slabs.json
 5be05ca87ae16266717810db19078eb565f309ed data/minecraft/tags/block/wooden_stairs.json
 78d610a0e980585799870d39663c73122e3b98e6 data/minecraft/tags/block/wooden_trapdoors.json
+66370ed2ea085b66c6f757e54d3e7c86b58b4f7a data/regions_unexplored/tags/block/alpha_logs.json
 7a4dec34e932546179edd4bac8a97db6f52f9b07 data/regions_unexplored/tags/block/ash.json
 90f09119f93ff3ce271235f78d540f91522828a5 data/regions_unexplored/tags/block/bamboo_logs.json
 c693fa708394f8561ff1109d81f834e9cdde37ca data/regions_unexplored/tags/block/baobab_logs.json

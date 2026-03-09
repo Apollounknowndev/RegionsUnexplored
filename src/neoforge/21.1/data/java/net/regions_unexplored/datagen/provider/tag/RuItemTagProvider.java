@@ -271,6 +271,9 @@ public class RuItemTagProvider extends ItemTagsProvider {
                 .add(RUBlocks.SPRUCE_NATURAL_SET.getShrub().asItem())
                 .add(RUBlocks.WILLOW_NATURAL_SET.getShrub().asItem())
         ;
+        this.tag(RUItemTags.ALPHA_LOGS)
+            .add(RUBlocks.ALPHA_WOOD_SET.getLog().asItem())
+        ;
         this.tag(RUItemTags.BAMBOO_LOGS)
                 .add(RUBlocks.BAMBOO_LOG.get().asItem())
                 .add(RUBlocks.STRIPPED_BAMBOO_LOG.get().asItem())
