@@ -16,6 +16,15 @@ public class RuCommonConfig extends Config {
     @ConfigOption(category = "features")
     public static final ConfigValue<Boolean> USE_LOGS_FOR_BRANCHES = bool(false);
 
+    /*@ConfigOption(category = "regions", comment = "Vanilla region weight is 100 for reference")
+    public static final ConfigValue<Integer> OVERWORLD_PRIMARY_WEIGHT = integer(65);
+
+    @ConfigOption(category = "regions", comment = "Vanilla region weight is 100 for reference")
+    public static final ConfigValue<Integer> OVERWORLD_SECONDARY_WEIGHT = integer(35);
+
+    @ConfigOption(category = "regions", comment = "Vanilla region weight is 100 for reference")
+    public static final ConfigValue<Integer> NETHER_WEIGHT = integer(70);*/
+
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_ALPHA_GROVE = biome(RUBiomes.ALPHA_GROVE);
     @ConfigOption(category = "overworld_biome_toggles")

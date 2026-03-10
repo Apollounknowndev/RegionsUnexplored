@@ -802,6 +802,7 @@
   "config.regions_unexplored.category.overworld_biome_toggles": "Biome Toggles (Overworld)",
   "config.regions_unexplored.category.overworld_cave_biome_toggles": "Biome Toggles (Caves)",
   "config.regions_unexplored.category.particles": "Particles",
+  "config.regions_unexplored.category.regions": "Regions",
   "config.regions_unexplored.category.worldgen_surface_rules": "Worldgen Surface Rules",
   "death.attack.dorcel": "%s was dragged underground by Dorcel",
   "death.attack.dorcel.player": "%s was dragged underground by Dorcel",

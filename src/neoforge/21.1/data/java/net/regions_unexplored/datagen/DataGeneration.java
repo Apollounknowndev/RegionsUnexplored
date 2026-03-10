@@ -1,5 +1,6 @@
 package net.regions_unexplored.datagen;
 
+import dev.worldgen.lithostitched.api.registry.LithostitchedRegistries;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -16,17 +17,12 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.regions_unexplored.RegionsUnexplored;
-import net.regions_unexplored.datagen.provider.registry.RUDamageTypeBootstrap;
-import net.regions_unexplored.datagen.provider.registry.RUNoiseBootstrap;
+import net.regions_unexplored.datagen.provider.registry.*;
 import net.regions_unexplored.datagen.provider.*;
 import net.regions_unexplored.datagen.provider.tag.RuBiomeTagProvider;
 import net.regions_unexplored.datagen.provider.tag.RuBlockTagProvider;
 import net.regions_unexplored.datagen.provider.tag.RuItemTagProvider;
 import net.regions_unexplored.datagen.provider.tag.RuProcessorListTagProvider;
-import net.regions_unexplored.datagen.provider.registry.RUProcessorListBootstrap;
-import net.regions_unexplored.datagen.provider.registry.RUBiomeBootstrap;
-import net.regions_unexplored.datagen.provider.registry.RUConfiguredFeatureBootstrap;
-import net.regions_unexplored.datagen.provider.registry.RUPlacedFeatureBootstrap;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -41,6 +37,7 @@ public class DataGeneration {
         .add(Registries.NOISE, RUNoiseBootstrap::bootstrap)
         .add(Registries.DAMAGE_TYPE, RUDamageTypeBootstrap::bootstrap)
         .add(Registries.PROCESSOR_LIST, RUProcessorListBootstrap::bootstrap)
+        .add(LithostitchedRegistries.BIOME_INJECTOR, RUBiomeInjectorBootstrap::bootstrap)
     ;
 
     @SubscribeEvent

@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "2.1.21"
-    id("earth.terrarium.cloche") version "0.18.1"
+    id("earth.terrarium.cloche") version "0.18.2"
 }
 
 repositories {
@@ -22,6 +22,7 @@ repositories {
 
 group = "net.regions_unexplored"
 version = "0.6+indev"
+val lithostitchedVersion = "1.6.1"
 
 cloche {
     targets.all {
@@ -58,7 +59,7 @@ cloche {
             implementation("com.electronwill.night-config:core:3.8.3")
             implementation("com.electronwill.night-config:toml:3.8.3")
             modImplementation("com.terraformersmc:biolith-neoforge:3.0.10")
-            compileOnly("maven.modrinth:lithostitched:1.6.0-neoforge-1.21.11")
+            compileOnly("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-1.21.11")
         }
 
         data()
@@ -88,9 +89,13 @@ cloche {
 
         dependencies {
             fabricApi("0.116.8")
+
+            include("com.electronwill.night-config:core:3.8.3")
+            include("com.electronwill.night-config:toml:3.8.3")
+
             modApi("com.terraformersmc:biolith-fabric:3.0.10")
             modRuntimeOnly("maven.modrinth:world-preview:qc0AtV3T")
-            modImplementation("maven.modrinth:lithostitched:1.6.0-fabric-1.21.1")
+            modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-fabric-1.21.1")
 
             modImplementation("com.terraformersmc:modmenu:11.0.3")
         }
@@ -127,7 +132,7 @@ cloche {
 
         dependencies {
             modApi("com.terraformersmc:biolith-neoforge:3.0.10")
-            modImplementation("maven.modrinth:lithostitched:1.6.0-neoforge-1.21.1")
+            modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-1.21.1")
         }
 
         data()
@@ -139,4 +144,8 @@ cloche {
             data()
         }
     }
+}
+
+tasks.named("runFabric211Data") {
+    enabled = false
 }

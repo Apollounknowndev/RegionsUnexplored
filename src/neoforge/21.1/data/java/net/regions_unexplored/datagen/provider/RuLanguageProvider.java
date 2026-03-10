@@ -26,6 +26,7 @@ public class RuLanguageProvider extends LanguageProvider {
         category("particles");
         category("block_color_options");
         category("features");
+        category("regions", "Regions");
         category("overworld_biome_toggles", "Biome Toggles (Overworld)");
         category("overworld_cave_biome_toggles", "Biome Toggles (Caves)");
         category("nether_biome_toggles", "Biome Toggles (Nether)");

@@ -3,6 +3,7 @@ package net.regions_unexplored;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
+import net.regions_unexplored.lithostitched.RULithostitched;
 import net.regions_unexplored.registry.*;
 import net.regions_unexplored.block.compat.BlockToolCompat;
 import net.regions_unexplored.block.compat.FlammableBlocks;
@@ -39,6 +40,8 @@ public class RegionsUnexplored {
 		RUSoundEvents.init();
 		RUTreeDecoratorTypes.init();
 		RUTrunkPlacerTypes.init();
+
+		RULithostitched.init();
 	}
 
 	public static void afterRegistriesFreeze(){
