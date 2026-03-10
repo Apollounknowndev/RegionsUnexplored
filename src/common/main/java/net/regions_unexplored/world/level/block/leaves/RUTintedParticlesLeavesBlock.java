@@ -1,7 +1,6 @@
 package net.regions_unexplored.world.level.block.leaves;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ColorParticleOption;
@@ -65,20 +64,20 @@ public class RUTintedParticlesLeavesBlock extends LeavesBlock {
         BlockPos below = pos.below();
         BlockState belowState = level.getBlockState(below);
 
-        if (!(level instanceof ClientLevel clientLevel)) return;
+        if (!level.isClientSide) return;
         if (random.nextFloat() >= this.particleChance) return;
         if (isFaceFull(belowState.getCollisionShape(level, below), Direction.UP)) return;
         if (!RuClientConfig.LEAVES_PARTICLES.get()) return;
 
-        spawnLeavesParticle(clientLevel, pos, random);
+        spawnLeavesParticle(level, pos, random);
     }
 
-    protected void spawnLeavesParticle(ClientLevel level, BlockPos pos, RandomSource random) {
+    protected void spawnLeavesParticle(Level level, BlockPos pos, RandomSource random) {
         ColorParticleOption particle = ColorParticleOption.create(this.particle.get(), this.tintGetter.apply(level, pos));
         ParticleUtils.spawnParticleBelow(level, pos, random, particle);
     }
 
-    public interface TintGetter extends BiFunction<ClientLevel, BlockPos, Integer> {
+    public interface TintGetter extends BiFunction<Level, BlockPos, Integer> {
         TintGetter DEFAULT = (level, pos) -> Minecraft.getInstance().getBlockColors().getColor(level.getBlockState(pos), level, pos, 0);
 
         static TintGetter defaultDarken(float amount) {

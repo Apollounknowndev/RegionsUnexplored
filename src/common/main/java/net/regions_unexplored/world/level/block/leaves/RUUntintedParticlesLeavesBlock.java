@@ -1,6 +1,5 @@
 package net.regions_unexplored.world.level.block.leaves;
 
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -33,15 +32,15 @@ public class RUUntintedParticlesLeavesBlock extends LeavesBlock {
         BlockPos below = pos.below();
         BlockState belowState = level.getBlockState(below);
 
-        if (!(level instanceof ClientLevel clientLevel)) return;
+        if (!level.isClientSide) return;
         if (random.nextFloat() >= PARTICLE_CHANCE) return;
         if (isFaceFull(belowState.getCollisionShape(level, below), Direction.UP)) return;
         if (!RuClientConfig.LEAVES_PARTICLES.get()) return;
 
-        spawnLeavesParticle(clientLevel, pos, random);
+        spawnLeavesParticle(level, pos, random);
     }
 
-    protected void spawnLeavesParticle(ClientLevel level, BlockPos pos, RandomSource random) {
+    protected void spawnLeavesParticle(Level level, BlockPos pos, RandomSource random) {
         ParticleUtils.spawnParticleBelow(level, pos, random, this.particle.get());
     }
 }

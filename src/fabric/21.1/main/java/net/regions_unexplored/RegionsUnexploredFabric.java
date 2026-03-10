@@ -1,8 +1,10 @@
 package net.regions_unexplored;
 
+import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.registry.FabricRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.regions_unexplored.block.RuBlockEntitiesFabric;
@@ -15,7 +17,7 @@ import net.regions_unexplored.registry.RUItems;
 public class RegionsUnexploredFabric implements ModInitializer {
     @Override
     public void onInitialize() {
-        RegionsUnexplored.init();
+        RegionsUnexplored.init(FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT);
         RuBlockEntitiesFabric.addBlockEntities();
         RegionsUnexploredFabric.afterRegistriesFreeze();
 

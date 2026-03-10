@@ -24,9 +24,9 @@ public class RegionsUnexplored {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	// We do this because terrablender might load before us or after us, so this catches both cases.
-	public static void init() {
-		registerConfig("regions_unexplored/client", "Client", RuClientConfig.class);
-		registerConfig("regions_unexplored/common", "Common", RuCommonConfig.class);
+	public static void init(boolean isClient) {
+		registerConfig("regions_unexplored/client", "Client", RuClientConfig.class, isClient);
+		registerConfig("regions_unexplored/common", "Common", RuCommonConfig.class, isClient);
 
 		RUBiomes.init();
 		RUBlocks.init();
@@ -64,9 +64,11 @@ public class RegionsUnexplored {
 		return ResourceKey.create(key, id(name));
 	}
 
-	private static void registerConfig(String filePath, String displayName, Class<? extends Config> configClass) {
+	private static void registerConfig(String filePath, String displayName, Class<? extends Config> configClass, boolean isClient) {
 		ConfigManager manager = ConfigManager.of(filePath, configClass);
-		ConfigScreenRegistry.register(filePath, manager, displayName);
+		if (isClient) {
+			ConfigScreenRegistry.register(filePath, manager, displayName);
+		}
 		LOGGER.debug("Registered config '{}' with GUI system as '{}'", filePath, displayName);
 	}
 }

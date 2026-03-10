@@ -1,6 +1,5 @@
 package net.regions_unexplored;
 
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -10,16 +9,13 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.regions_unexplored.client.RegionsUnexploredClient;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.set.WoodSet;
-import net.regions_unexplored.internal.config.gui.ConfigSelectionScreen;
 import net.regions_unexplored.registry.RUItems;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,20 +31,14 @@ public class RegionsUnexploredNeo {
         bus.addListener(this::clientSetup);
         bus.addListener(this::setupBlockEntities);
 
-        RegionsUnexplored.init();
+        RegionsUnexplored.init(FMLEnvironment.dist.isClient());
 
         REGISTER_CACHE.values().forEach(deferredRegister -> deferredRegister.register(bus));
-        RegionsUnexploredNeoClient.regionsUnexploredNeoClient(bus);
 
         var blockRegistry = DeferredRegister.create(Registries.BLOCK, RegionsUnexplored.MOD_ID);
         var itemRegistry = DeferredRegister.create(Registries.ITEM, RegionsUnexplored.MOD_ID);
         RUBlocks.applyAliases(blockRegistry::addAlias);
         RUItems.applyAliases(itemRegistry::addAlias);
-
-        container.registerExtensionPoint(
-            IConfigScreenFactory.class,
-            (minecraft, parent) -> new ConfigSelectionScreen(parent)
-        );
     }
 
     private void setupBlockEntities(BlockEntityTypeAddBlocksEvent event) {

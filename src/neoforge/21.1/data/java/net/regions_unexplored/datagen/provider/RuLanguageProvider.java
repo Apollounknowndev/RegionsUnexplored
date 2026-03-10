@@ -8,7 +8,6 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.regions_unexplored.RegionsUnexplored;
-import net.regions_unexplored.internal.config.gui.ConfigScreen;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.data.RUBiomes;
 import net.regions_unexplored.registry.RUEntityTypes;

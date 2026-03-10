@@ -180,10 +180,9 @@ def upload_curseforge(loader: str, version: str, file_path: str):
 for modloader, game_version in UPLOAD_VERSIONS:
     mod_path = os.path.join(
         BASE_FOLDER,
-        modloader,
         'build',
         'libs',
-        f'regions_unexplored-{MOD_VERSION}-{modloader}-21.1.jar'
+        f'regions-unexplored-{MOD_VERSION}-{modloader}-21.1.jar'
     )
 
     if not os.path.exists(mod_path):
