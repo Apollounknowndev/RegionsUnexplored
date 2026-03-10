@@ -39,18 +39,18 @@ public class RuBiolith {
 
         // Oceans
         if (RuCommonConfig.TOGGLE_HYACINTH_DEEPS.get()) {
-            BiomePlacement.replaceOverworld(Biomes.DEEP_FROZEN_OCEAN, RUBiomes.HYACINTH_DEEPS, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.DEEP_FROZEN_OCEAN, RUBiomes.HYACINTH_DEEPS, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_ROCKY_REEF.get()) {
-            BiomePlacement.replaceOverworld(Biomes.WARM_OCEAN, RUBiomes.ROCKY_REEF, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.WARM_OCEAN, RUBiomes.ROCKY_REEF, 0.45f);
         }
 
         // Beaches
         if (RuCommonConfig.TOGGLE_GRAVEL_BEACH.get()) {
-            BiomePlacement.replaceOverworld(Biomes.BEACH, RUBiomes.GRAVEL_BEACH, 0.2f);
+            BiomePlacement.replaceOverworld(Biomes.BEACH, RUBiomes.GRAVEL_BEACH, 0.3f);
         }
         if (RuCommonConfig.TOGGLE_GRASSY_BEACH.get()) {
-            BiomePlacement.replaceOverworld(Biomes.BEACH, RUBiomes.GRASSY_BEACH, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.BEACH, RUBiomes.GRASSY_BEACH, 0.45f);
         }
 
         // Cliffs
@@ -149,7 +149,7 @@ public class RuBiolith {
             ));
         }
         if (RuCommonConfig.TOGGLE_FEN.get()) {
-            BiomePlacement.replaceOverworld(Biomes.SWAMP, RUBiomes.FEN, 0.25f);
+            BiomePlacement.replaceOverworld(Biomes.SWAMP, RUBiomes.FEN, 0.5f);
         }
         if (RuCommonConfig.TOGGLE_FUNGAL_FEN.get()) {
             BiomePlacement.addSubOverworld(RUBiomes.FEN, RUBiomes.FUNGAL_FEN, CriterionBuilder.valueMin(
@@ -165,66 +165,66 @@ public class RuBiolith {
             ));
         }
         if (RuCommonConfig.TOGGLE_MARSH.get()) {
-            BiomePlacement.replaceOverworld(Biomes.MANGROVE_SWAMP, RUBiomes.MARSH, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.MANGROVE_SWAMP, RUBiomes.MARSH, 0.45f);
         }
 
         // Plains/Meadows
         if (RuCommonConfig.TOGGLE_FLOWER_FIELDS.get()) {
-            BiomePlacement.replaceOverworld(Biomes.SUNFLOWER_PLAINS, RUBiomes.FLOWER_FIELDS, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.SUNFLOWER_PLAINS, RUBiomes.FLOWER_FIELDS, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_CLOVER_PLAINS.get()) {
             BiomePlacement.replaceOverworld(Biomes.SUNFLOWER_PLAINS, RUBiomes.CLOVER_PLAINS, 0.7f);
         }
         if (RuCommonConfig.TOGGLE_SHRUBLAND.get()) {
-            BiomePlacement.replaceOverworld(Biomes.PLAINS, RUBiomes.SHRUBLAND, 0.2f);
+            BiomePlacement.replaceOverworld(Biomes.PLAINS, RUBiomes.SHRUBLAND, 0.3f);
         }
         if (RuCommonConfig.TOGGLE_GRASSLAND.get()) {
-            BiomePlacement.replaceOverworld(Biomes.PLAINS, RUBiomes.GRASSLAND, 0.2f);
+            BiomePlacement.replaceOverworld(Biomes.PLAINS, RUBiomes.GRASSLAND, 0.3f);
         }
         if (RuCommonConfig.TOGGLE_POPPY_FIELDS.get()) {
-            BiomePlacement.replaceOverworld(Biomes.PLAINS, RUBiomes.POPPY_FIELDS, 0.1f);
+            BiomePlacement.replaceOverworld(Biomes.PLAINS, RUBiomes.POPPY_FIELDS, 0.2f);
         }
         if (RuCommonConfig.TOGGLE_PUMPKIN_FIELDS.get()) {
-            BiomePlacement.replaceOverworld(Biomes.PLAINS, RUBiomes.PUMPKIN_FIELDS, 0.1f);
+            BiomePlacement.replaceOverworld(Biomes.PLAINS, RUBiomes.PUMPKIN_FIELDS, 0.2f);
         }
         if (RuCommonConfig.TOGGLE_HIGHLAND_FIELDS.get()) {
-            BiomePlacement.replaceOverworld(Biomes.MEADOW, RUBiomes.HIGHLAND_FIELDS, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.MEADOW, RUBiomes.HIGHLAND_FIELDS, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_ROCKY_MEADOW.get()) {
-            BiomePlacement.replaceOverworld(Biomes.MEADOW, RUBiomes.ROCKY_MEADOW, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.MEADOW, RUBiomes.ROCKY_MEADOW, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_FROZEN_TUNDRA.get()) {
-            BiomePlacement.replaceOverworld(Biomes.SNOWY_PLAINS, RUBiomes.FROZEN_TUNDRA, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.SNOWY_PLAINS, RUBiomes.FROZEN_TUNDRA, 0.45f);
         }
 
         // Forests
         if (RuCommonConfig.TOGGLE_ORCHARD.get()) {
-            BiomePlacement.replaceOverworld(Biomes.FLOWER_FOREST, RUBiomes.ORCHARD, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.FLOWER_FOREST, RUBiomes.ORCHARD, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_MAUVE_HILLS.get()) {
-            BiomePlacement.replaceOverworld(Biomes.FLOWER_FOREST, RUBiomes.MAUVE_HILLS, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.FLOWER_FOREST, RUBiomes.MAUVE_HILLS, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_WILLOW_FOREST.get()) {
-            BiomePlacement.replaceOverworld(Biomes.BIRCH_FOREST, RUBiomes.WILLOW_FOREST, 0.2f);
+            BiomePlacement.replaceOverworld(Biomes.BIRCH_FOREST, RUBiomes.WILLOW_FOREST, 0.3f);
             BiomePlacement.addSubOverworld(Biomes.OLD_GROWTH_BIRCH_FOREST, RUBiomes.WILLOW_FOREST, CriterionBuilder.alternate(RUBiomes.WILLOW_FOREST, Biomes.BIRCH_FOREST));
         }
         if (RuCommonConfig.TOGGLE_AUTUMNAL_MAPLE_FOREST.get()) {
-            BiomePlacement.replaceOverworld(Biomes.BIRCH_FOREST, RUBiomes.AUTUMNAL_MAPLE_FOREST, 0.2f);
+            BiomePlacement.replaceOverworld(Biomes.BIRCH_FOREST, RUBiomes.AUTUMNAL_MAPLE_FOREST, 0.3f);
         }
         if (RuCommonConfig.TOGGLE_SILVER_BIRCH_FOREST.get()) {
             BiomePlacement.addSubOverworld(Biomes.OLD_GROWTH_BIRCH_FOREST, RUBiomes.SILVER_BIRCH_FOREST, CriterionBuilder.alternate(RUBiomes.AUTUMNAL_MAPLE_FOREST, Biomes.BIRCH_FOREST));
         }
         if (RuCommonConfig.TOGGLE_BLACKWOOD_TAIGA.get()) {
-            BiomePlacement.replaceOverworld(Biomes.DARK_FOREST, RUBiomes.BLACKWOOD_TAIGA, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.DARK_FOREST, RUBiomes.BLACKWOOD_TAIGA, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_MAPLE_FOREST.get()) {
-            BiomePlacement.replaceOverworld(Biomes.FOREST, RUBiomes.MAPLE_FOREST, 0.2f);
+            BiomePlacement.replaceOverworld(Biomes.FOREST, RUBiomes.MAPLE_FOREST, 0.3f);
         }
         if (RuCommonConfig.TOGGLE_TEMPERATE_GROVE.get()) {
-            BiomePlacement.replaceOverworld(Biomes.FOREST, RUBiomes.TEMPERATE_GROVE, 0.2f);
+            BiomePlacement.replaceOverworld(Biomes.FOREST, RUBiomes.TEMPERATE_GROVE, 0.3f);
         }
         if (RuCommonConfig.TOGGLE_DECIDUOUS_FOREST.get()) {
-            BiomePlacement.replaceOverworld(Biomes.FOREST, RUBiomes.DECIDUOUS_FOREST, 0.2f);
+            BiomePlacement.replaceOverworld(Biomes.FOREST, RUBiomes.DECIDUOUS_FOREST, 0.3f);
             BiomePlacement.addSubOverworld(RUBiomes.DECIDUOUS_FOREST, Biomes.FOREST, CriterionBuilder.valueMin(BiomeParameterTargets.TEMPERATURE, -0.1f));
         }
         if (RuCommonConfig.TOGGLE_COLD_DECIDUOUS_FOREST.get()) {
@@ -241,13 +241,13 @@ public class RuBiolith {
 
         // Taigas
         if (RuCommonConfig.TOGGLE_REDWOODS.get()) {
-            BiomePlacement.replaceOverworld(Biomes.OLD_GROWTH_PINE_TAIGA, RUBiomes.REDWOODS, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.OLD_GROWTH_PINE_TAIGA, RUBiomes.REDWOODS, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_SPARSE_REDWOODS.get()) {
             BiomePlacement.addSubOverworld(Biomes.OLD_GROWTH_SPRUCE_TAIGA, RUBiomes.SPARSE_REDWOODS, CriterionBuilder.alternate(RUBiomes.REDWOODS, Biomes.OLD_GROWTH_PINE_TAIGA));
         }
         if (RuCommonConfig.TOGGLE_BOREAL_TAIGA.get()) {
-            BiomePlacement.replaceOverworld(Biomes.TAIGA, RUBiomes.BOREAL_TAIGA, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.TAIGA, RUBiomes.BOREAL_TAIGA, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_GOLDEN_BOREAL_TAIGA.get()) {
             BiomePlacement.addSubOverworld(RUBiomes.BOREAL_TAIGA, RUBiomes.GOLDEN_BOREAL_TAIGA, CriterionBuilder.valueMin(BiomeParameterTargets.WEIRDNESS, 0));
@@ -257,13 +257,13 @@ public class RuBiolith {
             BiomePlacement.addSubOverworld(RUBiomes.BOREAL_TAIGA, RUBiomes.COLD_BOREAL_TAIGA, CriterionBuilder.valueMax(BiomeParameterTargets.TEMPERATURE, -0.45f));
         }
         if (RuCommonConfig.TOGGLE_PINE_TAIGA.get()) {
-            BiomePlacement.replaceOverworld(Biomes.TAIGA, RUBiomes.PINE_TAIGA, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.TAIGA, RUBiomes.PINE_TAIGA, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_FROZEN_PINE_TAIGA.get()) {
             BiomePlacement.addSubOverworld(Biomes.SNOWY_TAIGA, RUBiomes.FROZEN_PINE_TAIGA, CriterionBuilder.alternate(RUBiomes.PINE_TAIGA, Biomes.TAIGA));
         }
         if (RuCommonConfig.TOGGLE_MOUNTAINS.get()) {
-            BiomePlacement.replaceOverworld(Biomes.JAGGED_PEAKS, RUBiomes.MOUNTAINS, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.JAGGED_PEAKS, RUBiomes.MOUNTAINS, 0.45f);
             BiomePlacement.addSubOverworld(RUBiomes.MOUNTAINS, Biomes.JAGGED_PEAKS, CriterionBuilder.valueMin(BiomeParameterTargets.TEMPERATURE, -0.45f));
             BiomePlacement.addSubOverworld(Biomes.FROZEN_PEAKS, RUBiomes.MOUNTAINS, CriterionBuilder.allOf(
                 CriterionBuilder.valueMin(BiomeParameterTargets.TEMPERATURE, -0.45f),
@@ -283,39 +283,39 @@ public class RuBiolith {
 
         // Savannas
         if (RuCommonConfig.TOGGLE_PRAIRIE.get()) {
-            BiomePlacement.replaceOverworld(Biomes.SAVANNA, RUBiomes.PRAIRIE, 0.2f);
-            BiomePlacement.replaceOverworld(Biomes.SAVANNA_PLATEAU, RUBiomes.PRAIRIE, 0.2f);
+            BiomePlacement.replaceOverworld(Biomes.SAVANNA, RUBiomes.PRAIRIE, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.SAVANNA_PLATEAU, RUBiomes.PRAIRIE, 0.3f);
         }
         if (RuCommonConfig.TOGGLE_BARLEY_FIELDS.get()) {
-            BiomePlacement.replaceOverworld(Biomes.SAVANNA, RUBiomes.BARLEY_FIELDS, 0.2f);
-            BiomePlacement.replaceOverworld(Biomes.SAVANNA_PLATEAU, RUBiomes.BARLEY_FIELDS, 0.2f);
+            BiomePlacement.replaceOverworld(Biomes.SAVANNA, RUBiomes.BARLEY_FIELDS, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.SAVANNA_PLATEAU, RUBiomes.BARLEY_FIELDS, 0.3f);
         }
         if (RuCommonConfig.TOGGLE_DRY_BUSHLAND.get()) {
-            BiomePlacement.replaceOverworld(Biomes.SAVANNA, RUBiomes.DRY_BUSHLAND, 0.3f);
-            BiomePlacement.replaceOverworld(Biomes.SAVANNA_PLATEAU, RUBiomes.DRY_BUSHLAND, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.SAVANNA, RUBiomes.DRY_BUSHLAND, 0.45f);
+            BiomePlacement.replaceOverworld(Biomes.SAVANNA_PLATEAU, RUBiomes.DRY_BUSHLAND, 0.45f);
         }
 
         // Jungles
         if (RuCommonConfig.TOGGLE_BAMBOO_FOREST.get()) {
-            BiomePlacement.replaceOverworld(Biomes.BAMBOO_JUNGLE, RUBiomes.BAMBOO_FOREST, 0.3f);
+            BiomePlacement.replaceOverworld(Biomes.BAMBOO_JUNGLE, RUBiomes.BAMBOO_FOREST, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_RAINFOREST.get()) {
-            BiomePlacement.replaceOverworld(Biomes.JUNGLE, RUBiomes.RAINFOREST, 0.35f);
+            BiomePlacement.replaceOverworld(Biomes.JUNGLE, RUBiomes.RAINFOREST, 0.4f);
         }
         if (RuCommonConfig.TOGGLE_SPARSE_RAINFOREST.get()) {
-            BiomePlacement.replaceOverworld(Biomes.SPARSE_JUNGLE, RUBiomes.SPARSE_RAINFOREST, 0.35f);
+            BiomePlacement.replaceOverworld(Biomes.SPARSE_JUNGLE, RUBiomes.SPARSE_RAINFOREST, 0.4f);
         }
 
         // Deserts/Badlands
         if (RuCommonConfig.TOGGLE_OUTBACK.get()) {
-            BiomePlacement.replaceOverworld(Biomes.BADLANDS, RUBiomes.OUTBACK, 0.5f);
+            BiomePlacement.replaceOverworld(Biomes.BADLANDS, RUBiomes.OUTBACK, 0.7f);
             BiomePlacement.addSubOverworld(RUBiomes.OUTBACK, Biomes.BADLANDS, CriterionBuilder.not(CriterionBuilder.allOf(
                 CriterionBuilder.value(BiomeParameterTargets.WEIRDNESS, -0.35f, 0.35f),
                 CriterionBuilder.valueMin(BiomeParameterTargets.EROSION, -0.2225f)
             )));
         }
         if (RuCommonConfig.TOGGLE_BAOBAB_SAVANNA.get()) {
-            BiomePlacement.replaceOverworld(Biomes.ERODED_BADLANDS, RUBiomes.BAOBAB_SAVANNA, 0.4f);
+            BiomePlacement.replaceOverworld(Biomes.ERODED_BADLANDS, RUBiomes.BAOBAB_SAVANNA, 0.6f);
             BiomePlacement.addSubOverworld(RUBiomes.BAOBAB_SAVANNA, Biomes.ERODED_BADLANDS, CriterionBuilder.valueMax(BiomeParameterTargets.EROSION, -0.375f));
         }
         if (RuCommonConfig.TOGGLE_STEPPE.get()) {
@@ -325,13 +325,13 @@ public class RuBiolith {
             )));
         }
         if (RuCommonConfig.TOGGLE_EUCALYPTUS_FOREST.get()) {
-            BiomePlacement.replaceOverworld(Biomes.WOODED_BADLANDS, RUBiomes.EUCALYPTUS_FOREST, 0.4f);
+            BiomePlacement.replaceOverworld(Biomes.WOODED_BADLANDS, RUBiomes.EUCALYPTUS_FOREST, 0.5f);
         }
         if (RuCommonConfig.TOGGLE_JOSHUA_DESERT.get()) {
-            BiomePlacement.replaceOverworld(Biomes.DESERT, RUBiomes.JOSHUA_DESERT, 0.2f);
+            BiomePlacement.replaceOverworld(Biomes.DESERT, RUBiomes.JOSHUA_DESERT, 0.3f);
         }
         if (RuCommonConfig.TOGGLE_SAGUARO_DESERT.get()) {
-            BiomePlacement.replaceOverworld(Biomes.DESERT, RUBiomes.SAGUARO_DESERT, 0.2f);
+            BiomePlacement.replaceOverworld(Biomes.DESERT, RUBiomes.SAGUARO_DESERT, 0.3f);
         }
         if (RuCommonConfig.TOGGLE_ARID_MOUNTAINS.get()) {
             var noiseCriterion = CriterionBuilder.allOf(
@@ -356,7 +356,7 @@ public class RuBiolith {
 
         // Misc.
         if (RuCommonConfig.TOGGLE_TOWERING_CLIFFS.get()) {
-            BiomePlacement.replaceOverworld(Biomes.WINDSWEPT_SAVANNA, RUBiomes.TOWERING_CLIFFS, 0.4f);
+            BiomePlacement.replaceOverworld(Biomes.WINDSWEPT_SAVANNA, RUBiomes.TOWERING_CLIFFS, 0.5f);
         }
         if (RuCommonConfig.TOGGLE_ICY_HEIGHTS.get()) {
             var noiseCriterion = CriterionBuilder.allOf(

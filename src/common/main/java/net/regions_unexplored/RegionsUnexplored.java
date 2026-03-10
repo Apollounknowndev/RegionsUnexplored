@@ -25,8 +25,8 @@ public class RegionsUnexplored {
 
 	// We do this because terrablender might load before us or after us, so this catches both cases.
 	public static void init() {
-		registerConfig("regions unexplored/regions_unexplored-client", "Client", RuClientConfig.class);
-		registerConfig("regions unexplored/regions_unexplored-common", "Common", RuCommonConfig.class);
+		registerConfig("regions_unexplored/client", "Client", RuClientConfig.class);
+		registerConfig("regions_unexplored/common", "Common", RuCommonConfig.class);
 
 		RUBiomes.init();
 		RUBlocks.init();
