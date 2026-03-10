@@ -1,16 +1,19 @@
 # Regions Unexplored
 
-Regions Unexplored is a mod that adds upon new biomes in the Overworld and the Nether. Which counts for around 70 and more are underway!
+Regions Unexplored is a biome mod that overhauls the overworld in many ways. With 70+ new biomes and a plethora of new blocks and items, there's plenty of unique regions out there waiting for you to explore them!
 
-## Version policy
+## Supported Versions/Loaders
 
-We generally have a LTS version (aka a stable modded version where a lot of modders are at with releasing mods) and a latest version so people who play on those versions can also play with regions unexplored!
+The current supported versions are **Fabric/Neoforge 1.21.1**. At this time, **no other versions are supported**.
 
-## Contributors
+In the near-ish future, Fabric/Neoforge 26.1 will also become supported versions in conjunction with Fabric/Neoforge 1.21.1.
 
-- UHQ_Games
-- KirboSoftware
+## Developers
+
+- Apollo (Current Owner/Developer)
+- UHQ_Games (Former Owner/Developer)
+- KirboSoftware (Contributor)
 
 ## License
 
-This project is under the All Rights Reserved license. 
+The mod is currently under the All Rights Reserved (ARR) license. 
