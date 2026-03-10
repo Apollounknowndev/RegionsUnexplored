@@ -7,7 +7,9 @@
   "mixins": [
     "FabricCropPlacerMixin"
   ],
-  "client": [],
+  "client": [
+    "client.TerrainParticleMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1
