@@ -21,7 +21,7 @@ repositories {
 }
 
 group = "net.regions_unexplored"
-version = "0.6+beta1"
+version = "0.6+beta3"
 val lithostitchedVersion = "1.6.1"
 
 cloche {

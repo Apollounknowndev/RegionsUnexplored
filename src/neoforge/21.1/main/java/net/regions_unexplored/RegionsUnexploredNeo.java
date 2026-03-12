@@ -1,5 +1,6 @@
 package net.regions_unexplored;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -35,10 +36,8 @@ public class RegionsUnexploredNeo {
 
         REGISTER_CACHE.values().forEach(deferredRegister -> deferredRegister.register(bus));
 
-        var blockRegistry = DeferredRegister.create(Registries.BLOCK, RegionsUnexplored.MOD_ID);
-        var itemRegistry = DeferredRegister.create(Registries.ITEM, RegionsUnexplored.MOD_ID);
-        RUBlocks.applyAliases(blockRegistry::addAlias);
-        RUItems.applyAliases(itemRegistry::addAlias);
+        RUBlocks.applyAliases(BuiltInRegistries.BLOCK::addAlias);
+        RUItems.applyAliases(BuiltInRegistries.ITEM::addAlias);
     }
 
     private void setupBlockEntities(BlockEntityTypeAddBlocksEvent event) {
@@ -51,10 +50,10 @@ public class RegionsUnexploredNeo {
             }
 
             if (set.getHangingSign() != null) {
-                event.modify(BlockEntityType.SIGN, set.getHangingSign());
+                event.modify(BlockEntityType.HANGING_SIGN, set.getHangingSign());
             }
             if (set.getWallHangingSign() != null) {
-                event.modify(BlockEntityType.SIGN, set.getWallHangingSign());
+                event.modify(BlockEntityType.HANGING_SIGN, set.getWallHangingSign());
             }
         }
     }

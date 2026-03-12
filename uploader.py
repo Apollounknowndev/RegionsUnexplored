@@ -5,60 +5,13 @@ import json
 # Per-mod: Update this for each mod!!!
 
 MOD_ID = "regions-unexplored"
-MOD_VERSION = "0.6+beta1"
+MOD_VERSION = "0.6+beta2"
 CHANGELOG = """
-## Regions Unexplored 0.6: The Next Chapter
-This is the first beta for RU 0.6, the next major update for the mod.
-0.6 is the first major update pioneered by me (Apollo) as I've taken over from the original dev UHQ.
-
-**Biomes**
-- Made significant changes / improvements to the following biomes:
-  - Ashen Woodlands (less clutter, more variation, better water color)
-  - Autumnal Maple Forest (better leaf litter placement)
-  - Bamboo Forest (varying tree density, can get pretty dark in some places)
-  - Chalk Cliffs (no chalk grass blocks on steep cliffs, less dirt/stone breaking through)
-  - Highland Fields (less flower/rock noise)
-  - Joshua Desert (better surface blocks, less cluttered grass)
-  - Outback (better surface blocks)
-  - Pumpkin Fields (less pumpkin clutter)
-  - Redwoods (varying tree density, more foliage, more tree height variation)
-  - Scorched Caves (less basalt leaking into structures like Ancient Cities and Trial Chambers)
-- Rewrote the biome placement system, replacing the Terrablender dependency with Blueprint.
-  - Blueprint is **temporary** and will be replaced with Lithostitched in the full 0.6 release!
-- Added Lithostitched as a dependency for some extra worldgen features, and eventually will be the only non-Fabric API library RU uses.
-- Trial Chambers now spawn in RU biomes.
-- Shipwrecks now have a chance of generating with RU wood blocks.
-
-**Blocks & Items**
-- Most RU blocks and items can now be found in vanilla item tabs in addition to the RU-dedicated tab.
-- Merged Medium Grass and Stone Bud into a single block, Grass Sprouts.
-- Renamed several blocks in preparation for support of future versions.
-  - Cactus Flower -> Saguaro Cactus Flower
-  - [Prefix] Leaf Pile -> [Prefix] Leaf Litter
-- Fixed Peat Grass Block and Silt Grass Block breaking particle textures being tinted weirdly.
-
-**Particles & Sounds**
-- Added leaf particles to most custom leaves. Some such as Joshua and Brimwood are excluded.
-  - By default leaves use the new vanilla leaf physics where they swirl around in place rather than float away.
-  - Blackwood, Pine and Larch leaves use a needle particle that falls a bit more directly.
-- Added custom improved textures for the Magnolia leaf particles.
-- Removed the individual leaf particle config options in favor of a singular Leaves Particles option.
-- Added ground particles to Viridescent Nylium, similar to the particles on Mycelium.
-- Added falling particles to Glowing Bioshroom Blocks, similar to the falling particles on Spore Blossoms.
-- Added floating particles to Bioshrooms and their Tall variants, similar to the floating particles on Spore Blossoms (but a lot more tame.)
-- Sparkle particles spawn around prismarite blocks, and are tinted based on the same color system as the blocks.
-- Reduced/removed generic ambient particles in most biomes, as other particles now do their job.
-- Redwood and Baobab wood sets now have unique wood sound sets.
-- Windswept Grass now has a custom sound set.
-
-**Other**
-- Overhauled the config system. The files are now in new locations, and the custom region configs were removed due to being obsolete.
-  - This removes Forge Config API Port as a dependency.
-- Fixed errors related to the Prismaglass and Alpha Planks recipes.
+Fixed Fabric version crashing on the server. Please read the beta 1 changelog for info on the 0.6 beta.
 """
 UPLOAD_VERSIONS = [
     ("fabric", "1.21.1"),
-    ("neoforge", "1.21.1"),
+    #("neoforge", "1.21.1"),
 ]
 
 MODRINTH_ID = "Tkikq67H"
