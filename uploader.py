@@ -5,13 +5,15 @@ import json
 # Per-mod: Update this for each mod!!!
 
 MOD_ID = "regions-unexplored"
-MOD_VERSION = "0.6+beta2"
+MOD_VERSION = "0.6+beta3"
 CHANGELOG = """
-Fixed Fabric version crashing on the server. Please read the beta 1 changelog for info on the 0.6 beta.
+- Fixed Stone Bud not becoming Grass Sprouts upon updating on either loader.
+- Fixed Medium Grass not becoming Grass Sprouts upon updating on Neoforge.
+- Fixed crashing when placing a hanging sign on Neoforge.
 """
 UPLOAD_VERSIONS = [
     ("fabric", "1.21.1"),
-    #("neoforge", "1.21.1"),
+    ("neoforge", "1.21.1"),
 ]
 
 MODRINTH_ID = "Tkikq67H"
