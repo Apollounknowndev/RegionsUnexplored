@@ -17,6 +17,7 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.regions_unexplored.RegionsUnexplored;
+import net.regions_unexplored.datagen.provider.client.RUBlockModelProvider;
 import net.regions_unexplored.datagen.provider.registry.*;
 import net.regions_unexplored.datagen.provider.*;
 import net.regions_unexplored.datagen.provider.tag.RuBiomeTagProvider;
@@ -29,7 +30,6 @@ import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = RegionsUnexplored.MOD_ID)
 public class DataGeneration {
-
     private static final RegistrySetBuilder BOOTSTRAPS = new RegistrySetBuilder()
         .add(Registries.CONFIGURED_FEATURE, RUConfiguredFeatureBootstrap::bootstrap)
         .add(Registries.PLACED_FEATURE, RUPlacedFeatureBootstrap::bootstrap)
@@ -53,16 +53,16 @@ public class DataGeneration {
 
         generator.addProvider(true, new RuAdvancementProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
 
-        generator.addProvider(event.includeServer(), new RuBlockModelProvider(packOutput, RegionsUnexplored.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new RUBlockModelProvider(packOutput, existingFileHelper));
 
         generator.addProvider(true, new RuRecipeProvider(packOutput, holder));
         generator.addProvider(true, RuLootTableProvider.create(packOutput, holder));
         generator.addProvider(true, new RuLanguageProvider(packOutput));
 
         //tags
-        TagsProvider<Block> blockTagsProvider = generator.addProvider(event.includeServer(), new RuBlockTagProvider(packOutput, datapackRegistries.getRegistryProvider(), RegionsUnexplored.MOD_ID, existingFileHelper));
-        TagsProvider<Item> itemTagsProvider = generator.addProvider(event.includeServer(), new RuItemTagProvider(packOutput, datapackRegistries.getRegistryProvider(), blockTagsProvider.contentsGetter(),  RegionsUnexplored.MOD_ID, existingFileHelper));
-        TagsProvider<Biome> biomeTagsProvider = generator.addProvider(event.includeServer(), new RuBiomeTagProvider(packOutput, datapackRegistries.getRegistryProvider(), RegionsUnexplored.MOD_ID, existingFileHelper));
+        TagsProvider<Block> blockTagsProvider = generator.addProvider(event.includeServer(), new RuBlockTagProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
+        TagsProvider<Item> itemTagsProvider = generator.addProvider(event.includeServer(), new RuItemTagProvider(packOutput, datapackRegistries.getRegistryProvider(), blockTagsProvider.contentsGetter(), existingFileHelper));
+        TagsProvider<Biome> biomeTagsProvider = generator.addProvider(event.includeServer(), new RuBiomeTagProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
         TagsProvider<StructureProcessorList> processorListTagsProvider = generator.addProvider(event.includeServer(), new RuProcessorListTagProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
 
         generator.addProvider(event.includeServer(), new RuDataMapGenerator(packOutput, holder));

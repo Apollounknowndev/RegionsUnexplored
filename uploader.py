@@ -5,11 +5,9 @@ import json
 # Per-mod: Update this for each mod!!!
 
 MOD_ID = "regions-unexplored"
-MOD_VERSION = "0.6+beta3"
+MOD_VERSION = "0.6+beta4"
 CHANGELOG = """
-- Fixed Stone Bud not becoming Grass Sprouts upon updating on either loader.
-- Fixed Medium Grass not becoming Grass Sprouts upon updating on Neoforge.
-- Fixed crashing when placing a hanging sign on Neoforge.
+- Fixed incompatibility with Lithostitched 1.6.3.
 """
 UPLOAD_VERSIONS = [
     ("fabric", "1.21.1"),

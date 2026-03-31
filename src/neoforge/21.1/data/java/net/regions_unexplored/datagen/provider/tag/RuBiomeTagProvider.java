@@ -14,6 +14,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.registry.tag.RUBiomeTags;
 import net.regions_unexplored.registry.data.RUBiomes;
 import org.jetbrains.annotations.NotNull;
@@ -23,8 +24,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class RuBiomeTagProvider extends BiomeTagsProvider {
 
-    public RuBiomeTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture, String modId, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, completableFuture, modId, existingFileHelper);
+    public RuBiomeTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, completableFuture, RegionsUnexplored.MOD_ID, existingFileHelper);
     }
 
     public void addTags(HolderLookup.@NotNull Provider provider) {
