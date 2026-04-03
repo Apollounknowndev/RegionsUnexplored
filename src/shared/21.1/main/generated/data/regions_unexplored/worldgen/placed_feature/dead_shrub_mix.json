@@ -17,9 +17,9 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "minecraft:oak_sapling",
+          "Name": "regions_unexplored:oak_shrub",
           "Properties": {
-            "stage": "0"
+            "half": "lower"
           }
         }
       }

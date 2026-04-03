@@ -19,7 +19,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.registry.RUParticleTypes;
-import net.regions_unexplored.registry.tag.RUBlockTags;
+import net.regions_unexplored.registry.tag.*;
 
 public class BioshroomBlock extends SaplingBlock {
     protected static final float AABB_OFFSET = 3.0F;

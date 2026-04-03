@@ -21,14 +21,14 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.*;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
+import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
+import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.datagen.provider.registry.RUDatagenFeatureUtils;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUFeatureTypes;
@@ -38,7 +38,6 @@ import net.regions_unexplored.world.level.block.plant.flower.GroundCoverBlock;
 import net.regions_unexplored.world.level.block.plant.food.DuskmelonBlock;
 import net.regions_unexplored.world.level.block.plant.food.SalmonBerryBushBlock;
 import net.regions_unexplored.world.level.block.plant.grass.AshenGrassBlock;
-import net.regions_unexplored.world.level.feature.configuration.ShrubConfiguration;
 
 import java.util.List;
 
@@ -141,40 +140,7 @@ public class RuVegetationFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ELEPHANT_EAR = key("elephant_ear");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DROPLEAF = key("dropleaf");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DUCKWEED = key("duckweed");
-    //SHRUBS
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ASHEN_SHRUB = key("ashen_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ACACIA_SHRUB = key("acacia_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> BAOBAB_SHRUB = key("baobab_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> BIRCH_SHRUB = key("birch_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> BLACKWOOD_SHRUB = key("blackwood_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CHERRY_SHRUB = key("cherry_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MAGNOLIA_SHRUB = key("magnolia_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PINK_MAGNOLIA_SHRUB = key("pink_magnolia_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> WHITE_MAGNOLIA_SHRUB = key("white_magnolia_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CYPRESS_SHRUB = key("cypress_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DARK_OAK_SHRUB = key("dark_oak_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DEAD_SHRUB = key("dead_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DEAD_PINE_SHRUB = key("dead_pine_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> EUCALYPTUS_SHRUB = key("eucalyptus_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FLOWERING_SHRUB = key("flowering_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> JOSHUA_SHRUB = key("joshua_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> JUNGLE_SHRUB = key("jungle_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARCH_SHRUB = key("larch_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GOLDEN_LARCH_SHRUB = key("golden_larch_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MANGROVE_SHRUB = key("mangrove_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MAPLE_SHRUB = key("maple_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_MAPLE_SHRUB = key("red_maple_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORANGE_MAPLE_SHRUB = key("orange_maple_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MAUVE_SHRUB = key("mauve_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OAK_SHRUB = key("oak_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_SHRUB = key("palm_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PINE_SHRUB = key("pine_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> REDWOOD_SHRUB = key("redwood_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SILVER_BIRCH_SHRUB = key("silver_birch_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SOCOTRA_SHRUB = key("socotra_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SPRUCE_SHRUB = key("spruce_shrub");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> WILLOW_SHRUB = key("willow_shrub");
-    //mixes
+    // Shrubs
     public static final ResourceKey<ConfiguredFeature<?, ?>> BAOBAB_ACACIA_SHRUB_MIX = key("baobab_acacia_shrub_mix");
     public static final ResourceKey<ConfiguredFeature<?, ?>> AUTUMNAL_SHRUB_MIX = key("autumnal_shrub_mix");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BIRCH_SHRUB_MIX = key("birch_shrub_mix");
@@ -391,54 +357,27 @@ public class RuVegetationFeatures {
         register(context, DUCKWEED, Feature.RANDOM_PATCH, new RandomPatchConfiguration(10, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(RUBlocks.DUCKWEED.get())))));
 
         //SHRUBS
-        register(context, ASHEN_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.ASHEN_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, ACACIA_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.ACACIA_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, BAOBAB_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.BAOBAB_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, BIRCH_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.BIRCH_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, BLACKWOOD_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.BLACKWOOD_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, CHERRY_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.CHERRY_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, MAGNOLIA_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, PINK_MAGNOLIA_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.PINK_MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, WHITE_MAGNOLIA_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.WHITE_MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, CYPRESS_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.CYPRESS_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, DARK_OAK_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.DARK_OAK_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, DEAD_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.DEAD_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, DEAD_PINE_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.DEAD_PINE_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, EUCALYPTUS_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.EUCALYPTUS_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, FLOWERING_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.FLOWERING_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, JOSHUA_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.JOSHUA_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, JUNGLE_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.JUNGLE_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, LARCH_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.LARCH_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, GOLDEN_LARCH_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.GOLDEN_LARCH_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, MANGROVE_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.MANGROVE_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, MAPLE_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.MAPLE_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, RED_MAPLE_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.RED_MAPLE_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, ORANGE_MAPLE_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.ORANGE_MAPLE_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, MAUVE_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.MAUVE_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, OAK_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.OAK_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, PALM_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.PALM_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, PINE_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.PINE_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, REDWOOD_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.REDWOOD_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, SILVER_BIRCH_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.SILVER_BIRCH_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, SOCOTRA_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.SOCOTRA_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, SPRUCE_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.SPRUCE_NATURAL_SET.getShrub().defaultBlockState())));
-        register(context, WILLOW_SHRUB, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(BlockStateProvider.simple(RUBlocks.WILLOW_NATURAL_SET.getShrub().defaultBlockState())));
+        for (NaturalSet set : RUBlocks.NATURAL_SETS) {
+            Block shrub = set.getShrub();
+            if (shrub == null) continue;
+            register(context, RUConfiguredFeatures.key("shrub/" + set.name), Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(shrub)));
+        }
         //mixes
-        register(context, BAOBAB_ACACIA_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.BAOBAB_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.ACACIA_NATURAL_SET.getShrub().defaultBlockState(), 1))));
-        register(context, AUTUMNAL_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.MAPLE_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.SILVER_BIRCH_NATURAL_SET.getShrub().defaultBlockState(), 4).add(RUBlocks.RED_MAPLE_NATURAL_SET.getShrub().defaultBlockState(), 4).add(RUBlocks.ORANGE_MAPLE_NATURAL_SET.getShrub().defaultBlockState(), 4))));
-        register(context, BIRCH_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.SILVER_BIRCH_NATURAL_SET.getShrub().defaultBlockState(), 3).add(RUBlocks.BIRCH_NATURAL_SET.getShrub().defaultBlockState(), 1))));
-        register(context, BLACKWOOD_DARK_OAK_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.BLACKWOOD_NATURAL_SET.getShrub().defaultBlockState(), 3).add(RUBlocks.DARK_OAK_NATURAL_SET.getShrub().defaultBlockState(), 1))));
-        register(context, MAGNOLIA_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState(), 1).add(RUBlocks.PINK_MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState(), 1).add(RUBlocks.WHITE_MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState(), 1))));
-        register(context, DEAD_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.DEAD_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.DEAD_PINE_NATURAL_SET.getShrub().defaultBlockState(), 1))));
-        register(context, LARCH_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.LARCH_NATURAL_SET.getShrub().defaultBlockState(), 3).add(RUBlocks.GOLDEN_LARCH_NATURAL_SET.getShrub().defaultBlockState(), 1))));
-        register(context, GOLDEN_LARCH_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.LARCH_NATURAL_SET.getShrub().defaultBlockState(), 1).add(RUBlocks.GOLDEN_LARCH_NATURAL_SET.getShrub().defaultBlockState(), 3))));
-        register(context, MAPLE_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.MAPLE_NATURAL_SET.getShrub().defaultBlockState(), 4).add(RUBlocks.RED_MAPLE_NATURAL_SET.getShrub().defaultBlockState(), 1))));
-        register(context, MAUVE_ENCHANTED_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.MAUVE_NATURAL_SET.getShrub().defaultBlockState(), 3).add(RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getShrub().defaultBlockState(), 1))));
-        register(context, PINE_SPRUCE_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.PINE_NATURAL_SET.getShrub().defaultBlockState(), 1).add(RUBlocks.SPRUCE_NATURAL_SET.getShrub().defaultBlockState(), 1))));
-        register(context, PINE_DEAD_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.PINE_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.DEAD_PINE_NATURAL_SET.getShrub().defaultBlockState(), 1))));
-        register(context, PALM_JUNGLE_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.PALM_NATURAL_SET.getShrub().defaultBlockState(), 5).add(RUBlocks.JUNGLE_NATURAL_SET.getShrub().defaultBlockState(), 1))));
-        register(context, WILLOW_CYPRESS_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.WILLOW_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.CYPRESS_NATURAL_SET.getShrub().defaultBlockState(), 1))));
-        register(context, WILLOW_MAGNOLIA_SHRUB_MIX, RUFeatureTypes.SHRUB.get(), new ShrubConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.WILLOW_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.BLUE_MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState(), 1))));
+        register(context, BAOBAB_ACACIA_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.BAOBAB_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.ACACIA_NATURAL_SET.getShrub().defaultBlockState(), 1))));
+        register(context, AUTUMNAL_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.MAPLE_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.SILVER_BIRCH_NATURAL_SET.getShrub().defaultBlockState(), 4).add(RUBlocks.RED_MAPLE_NATURAL_SET.getShrub().defaultBlockState(), 4).add(RUBlocks.ORANGE_MAPLE_NATURAL_SET.getShrub().defaultBlockState(), 4))));
+        register(context, BIRCH_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.SILVER_BIRCH_NATURAL_SET.getShrub().defaultBlockState(), 3).add(RUBlocks.BIRCH_NATURAL_SET.getShrub().defaultBlockState(), 1))));
+        register(context, BLACKWOOD_DARK_OAK_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.BLACKWOOD_NATURAL_SET.getShrub().defaultBlockState(), 3).add(RUBlocks.DARK_OAK_NATURAL_SET.getShrub().defaultBlockState(), 1))));
+        register(context, MAGNOLIA_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState(), 1).add(RUBlocks.PINK_MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState(), 1).add(RUBlocks.WHITE_MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState(), 1))));
+        register(context, DEAD_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.DEAD_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.DEAD_PINE_NATURAL_SET.getShrub().defaultBlockState(), 1))));
+        register(context, LARCH_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.LARCH_NATURAL_SET.getShrub().defaultBlockState(), 3).add(RUBlocks.GOLDEN_LARCH_NATURAL_SET.getShrub().defaultBlockState(), 1))));
+        register(context, GOLDEN_LARCH_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.LARCH_NATURAL_SET.getShrub().defaultBlockState(), 1).add(RUBlocks.GOLDEN_LARCH_NATURAL_SET.getShrub().defaultBlockState(), 3))));
+        register(context, MAPLE_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.MAPLE_NATURAL_SET.getShrub().defaultBlockState(), 4).add(RUBlocks.RED_MAPLE_NATURAL_SET.getShrub().defaultBlockState(), 1))));
+        register(context, MAUVE_ENCHANTED_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.MAUVE_NATURAL_SET.getShrub().defaultBlockState(), 3).add(RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getShrub().defaultBlockState(), 1))));
+        register(context, PINE_SPRUCE_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.PINE_NATURAL_SET.getShrub().defaultBlockState(), 1).add(RUBlocks.SPRUCE_NATURAL_SET.getShrub().defaultBlockState(), 1))));
+        register(context, PINE_DEAD_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.PINE_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.DEAD_PINE_NATURAL_SET.getShrub().defaultBlockState(), 1))));
+        register(context, PALM_JUNGLE_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.PALM_NATURAL_SET.getShrub().defaultBlockState(), 5).add(RUBlocks.JUNGLE_NATURAL_SET.getShrub().defaultBlockState(), 1))));
+        register(context, WILLOW_CYPRESS_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.WILLOW_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.CYPRESS_NATURAL_SET.getShrub().defaultBlockState(), 1))));
+        register(context, WILLOW_MAGNOLIA_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.WILLOW_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.BLUE_MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState(), 1))));
 
         register(context, PRAIRIE_MIX, Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(PlacementUtils.inlinePlaced(BIG_OAK_TREE), 0.33333334F)), PlacementUtils.inlinePlaced(OAK_TREE)));
 

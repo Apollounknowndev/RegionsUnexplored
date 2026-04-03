@@ -1,0 +1,21 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/pine_bees",
+          "placement": []
+        },
+        "weight": 4
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/pine",
+          "placement": []
+        },
+        "weight": 1
+      }
+    ]
+  }
+}

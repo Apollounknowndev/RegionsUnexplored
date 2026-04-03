@@ -56,7 +56,6 @@ public interface RUFeatureTypes {
     Supplier<Feature<VegetationPatchConfiguration>> OVERWORLD_LAVA_DELTA = register("overworld_lava_delta", new LavaDeltaFeature(VegetationPatchConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> BRIM_WILLOW = register("brim_willow", new BrimWillowFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> TALL_BRIM_WILLOW = register("tall_brim_willow", new TallBrimWillowFeature(NoneFeatureConfiguration.CODEC));
-    Supplier<Feature<ShrubConfiguration>> SHRUB = register("shrub", new ShrubFeature(ShrubConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> TREE_SHRUB = register("tree_shrub", new TreeShrubFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> GIANT_LILY = register("giant_lily", new GiantLilyPadFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> ICICLE_UP = register("icicle_up", new FloorIcicleFeature(NoneFeatureConfiguration.CODEC));

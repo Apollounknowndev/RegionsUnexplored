@@ -212,7 +212,15 @@ public class RuTreeFeatures {
            leaves(RUBlocks.PINE_NATURAL_SET),
            new PineFoliagePlacer(ConstantInt.of(0), UniformInt.of(0, 1), 0),
            new TwoLayersFeatureSize(3, 0, 1)
-       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3))).build());
+       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3), new BeehiveDecorator(0.001f))).build());
+       
+       var pineBees = register(context, TREE_PINE_BEES, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           log(RUBlocks.PINE_WOOD_SET),
+           new StraightTrunkPlacer(9, 3, 0),
+           leaves(RUBlocks.PINE_NATURAL_SET),
+           new PineFoliagePlacer(ConstantInt.of(0), UniformInt.of(1, 2), 0),
+           new TwoLayersFeatureSize(3, 0, 1)
+       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3), new BeehiveDecorator(1f))).build());
 
        var pineSkinny = register(context, TREE_PINE_SKINNY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
             log(RUBlocks.PINE_WOOD_SET),
@@ -220,7 +228,7 @@ public class RuTreeFeatures {
             leaves(RUBlocks.PINE_NATURAL_SET),
             new SkinnyPineFoliagePlacer(ConstantInt.of(0), UniformInt.of(0, 1), 5),
             new TwoLayersFeatureSize(3, 0, 1)
-       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3))).build());
+       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3), new BeehiveDecorator(0.001f))).build());
 
        var pineTall = register(context, TREE_PINE_TALL, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
            log(RUBlocks.PINE_WOOD_SET),
@@ -228,7 +236,7 @@ public class RuTreeFeatures {
            leaves(RUBlocks.PINE_NATURAL_SET),
            new PineFoliagePlacer(ConstantInt.of(0), UniformInt.of(0, 1), 0),
            new TwoLayersFeatureSize(3, 0, 1)
-       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3))).build());
+       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3), new BeehiveDecorator(0.001f))).build());
 
        var pineSkinnyTall = register(context, TREE_PINE_SKINNY_TALL, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
            log(RUBlocks.PINE_WOOD_SET),
@@ -236,13 +244,18 @@ public class RuTreeFeatures {
            leaves(RUBlocks.PINE_NATURAL_SET),
            new SkinnyPineFoliagePlacer(ConstantInt.of(0), UniformInt.of(0, 1), 5),
            new TwoLayersFeatureSize(3, 0, 1)
-       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3))).build());
+       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3), new BeehiveDecorator(0.001f))).build());
 
        registerPlaced(context, TREE_GROUP_PINE_TAIGA, LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(WeightedList.<Holder<PlacedFeature>>builder()
            .add(direct(pine), 12)
            .add(direct(pineSkinny), 3)
            .add(direct(pineTall), 4)
            .add(direct(pineSkinnyTall), 1)
+        .build()));
+       
+       registerPlaced(context, TREE_GROUP_HIGHLAND_FIELDS, LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(WeightedList.<Holder<PlacedFeature>>builder()
+           .add(direct(pineBees), 4)
+           .add(direct(pine), 1)
         .build()));
 
        register(context, TREE_STRIPPED_PINE, RUFeatureTypes.STRIPPED_PINE_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.PINE_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.PINE_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.PINE_NATURAL_SET.getBranch().defaultBlockState()), 10, 4));

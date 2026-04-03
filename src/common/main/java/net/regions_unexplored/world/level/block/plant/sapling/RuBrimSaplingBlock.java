@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockState;
-import net.regions_unexplored.registry.tag.RUBlockTags;
+import net.regions_unexplored.registry.tag.*;
 
 public class RuBrimSaplingBlock extends SaplingBlock implements BonemealableBlock {
 

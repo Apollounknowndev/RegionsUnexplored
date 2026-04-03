@@ -11,6 +11,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.datagen.provider.registry.configured_feature.RuAquaticFeatures;
 import net.regions_unexplored.datagen.provider.registry.configured_feature.RuVegetationFeatures;
+import net.regions_unexplored.registry.data.RUConfiguredFeatures;
 
 import static net.regions_unexplored.registry.data.RUPlacedFeatures.key;
 
@@ -52,7 +53,6 @@ public class RuAquaticPlacements {
         final Holder<ConfiguredFeature<?, ?>> JUNGLE_AQUATIC = featureGetter.getOrThrow(RuAquaticFeatures.JUNGLE_AQUATIC.get());
         final Holder<ConfiguredFeature<?, ?>> PALM_AQUATIC = featureGetter.getOrThrow(RuAquaticFeatures.PALM_AQUATIC.get());
         final Holder<ConfiguredFeature<?, ?>> ELEPHANT_EAR_AQUATIC = featureGetter.getOrThrow(RuAquaticFeatures.ELEPHANT_EAR_AQUATIC.get());
-        final Holder<ConfiguredFeature<?, ?>> PALM_SAPLING_AQUATIC = featureGetter.getOrThrow(RuVegetationFeatures.PALM_SHRUB);
 
 
         register(context, RuAquaticPlacements.CATTAIL_FEN, FEN_CATTAIL, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 24), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(3), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome()));
@@ -69,7 +69,7 @@ public class RuAquaticPlacements {
         register(context, RuAquaticPlacements.WHITE_MAGNOLIA_FLOWERS_AQUATIC, WHITE_MAGNOLIA_FLOWERS_AQUATIC, CountPlacement.of(35), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
         register(context, RuAquaticPlacements.JUNGLE_AQUATIC, JUNGLE_AQUATIC, List.of(CountPlacement.of(24), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuAquaticPlacements.PALM_AQUATIC, PALM_AQUATIC, List.of(CountPlacement.of(15), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
-        register(context, RuAquaticPlacements.PALM_SAPLING_AQUATIC, PALM_SAPLING_AQUATIC, List.of(CountPlacement.of(5), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
+        register(context, RuAquaticPlacements.PALM_SAPLING_AQUATIC, featureGetter.getOrThrow(RUConfiguredFeatures.shrub("palm")), List.of(CountPlacement.of(5), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuAquaticPlacements.ELEPHANT_EAR_AQUATIC, ELEPHANT_EAR_AQUATIC, List.of(CountPlacement.of(8), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
 
     }

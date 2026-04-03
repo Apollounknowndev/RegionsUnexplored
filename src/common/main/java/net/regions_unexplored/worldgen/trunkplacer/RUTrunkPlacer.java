@@ -14,7 +14,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer.FoliageAttachment;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 import net.regions_unexplored.registry.RUBlocks;
-import net.regions_unexplored.registry.tag.RUBlockTags;
+import net.regions_unexplored.registry.tag.*;
 
 import java.util.function.BiConsumer;
 

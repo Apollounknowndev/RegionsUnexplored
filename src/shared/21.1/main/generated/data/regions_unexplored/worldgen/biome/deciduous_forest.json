@@ -92,7 +92,7 @@
       "regions_unexplored:tree/oak_bush_sparse",
       "regions_unexplored:fallen_oak_tree_dense",
       "regions_unexplored:deciduous_vegetation",
-      "regions_unexplored:oak_shrub"
+      "regions_unexplored:shrub/oak"
     ],
     [
       "minecraft:freeze_top_layer"

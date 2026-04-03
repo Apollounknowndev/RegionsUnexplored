@@ -98,7 +98,7 @@
       "regions_unexplored:pink_bioshroom_dense",
       "regions_unexplored:grass",
       "regions_unexplored:ferns",
-      "regions_unexplored:pine_shrub"
+      "regions_unexplored:shrub/pine"
     ],
     [
       "minecraft:freeze_top_layer"

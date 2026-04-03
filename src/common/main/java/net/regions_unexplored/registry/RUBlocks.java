@@ -113,7 +113,7 @@ public interface RUBlocks {
     Supplier<Block> YELLOW_LUPINE = register("yellow_lupine", p -> new RuFlowerBlock(MobEffects.SATURATION, 4, p), Blocks.DANDELION);
 
     Supplier<Block> ORANGE_CONEFLOWER = register("orange_coneflower", p -> new GroundCoverBlock(p.pushReaction(PushReaction.DESTROY).ignitedByLava().noCollission().sound(SoundType.PINK_PETALS)));
-    Supplier<Block> PURPLE_CONEFLOWER = register("purple_coneflower", p -> new GroundCoverBlock(p.pushReaction(PushReaction.DESTROY).ignitedByLava().noCollission().sound(SoundType.PINK_PETALS)));
+    Supplier<Block> PURPLE_CONEFLOWER = register("purple_coneflower", p -> new PinkPetalsBlock(p.pushReaction(PushReaction.DESTROY).ignitedByLava().noCollission().sound(SoundType.PINK_PETALS)));
     Supplier<Block> CLOVER = register("clover", p -> new GroundCoverBlock(p.pushReaction(PushReaction.DESTROY).replaceable().ignitedByLava().noCollission().sound(SoundType.PINK_PETALS)));
 
     Supplier<Block> BLUE_MAGNOLIA_FLOWERS = register("blue_magnolia_flowers", p -> new GlowLichenBlock(p.pushReaction(PushReaction.DESTROY).ignitedByLava().replaceable().noCollission().strength(0.1F).sound(SoundType.GLOW_LICHEN)));

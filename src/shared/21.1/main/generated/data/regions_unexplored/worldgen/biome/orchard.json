@@ -91,7 +91,7 @@
       "regions_unexplored:tree/big_oak_sparse",
       "regions_unexplored:tassel_sparse",
       "regions_unexplored:grass",
-      "regions_unexplored:oak_shrub"
+      "regions_unexplored:shrub/oak"
     ],
     [
       "minecraft:freeze_top_layer"

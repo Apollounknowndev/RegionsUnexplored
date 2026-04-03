@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "2.1.21"
-    id("earth.terrarium.cloche") version "0.18.2"
+    id("earth.terrarium.cloche") version "0.18.10"
 }
 
 repositories {
@@ -25,15 +25,6 @@ version = "0.6+beta4"
 val lithostitchedVersion = "1.6.3"
 
 cloche {
-    targets.all {
-        mappings {
-            official()
-            custom(minecraftVersion.map {
-                project.dependencies.create(files("mappings/$it.tiny"))
-            })
-        }
-    }
-
     metadata {
         modId = "regions_unexplored"
         name = "Regions Unexplored"
@@ -59,7 +50,7 @@ cloche {
             implementation("com.electronwill.night-config:core:3.8.3")
             implementation("com.electronwill.night-config:toml:3.8.3")
             modImplementation("com.terraformersmc:biolith-neoforge:3.0.10")
-            compileOnly("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-21.1")
+            modCompileOnlyApi("maven.modrinth:lithostitched:1.6.5-neoforge-21.1")
         }
 
         data()
@@ -88,6 +79,11 @@ cloche {
         loaderVersion = "0.18.4"
         minecraftVersion = "1.21.1"
 
+        mappings {
+            official()
+            custom(project.dependencies.create(files("mappings/1.21.1.tiny")))
+        }
+
         dependencies {
             fabricApi("0.116.8")
 
@@ -96,7 +92,7 @@ cloche {
 
             modApi("com.terraformersmc:biolith-fabric:3.0.10")
             modRuntimeOnly("maven.modrinth:world-preview:qc0AtV3T")
-            modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-fabric-21.1")
+            modImplementation("maven.modrinth:lithostitched:1.6.3-fabric-21.1")
 
             modImplementation("com.terraformersmc:modmenu:11.0.3")
         }
@@ -131,9 +127,14 @@ cloche {
         loaderVersion = "21.1.218"
         minecraftVersion = "1.21.1"
 
+        mappings {
+            official()
+            custom(project.dependencies.create(files("mappings/1.21.1.tiny")))
+        }
+
         dependencies {
             modApi("com.terraformersmc:biolith-neoforge:3.0.10")
-            modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-21.1")
+            modImplementation("maven.modrinth:lithostitched:1.6.5-neoforge-21.1")
         }
 
         data()

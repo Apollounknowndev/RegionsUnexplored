@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.material.FluidState;
-import net.regions_unexplored.registry.tag.RUBlockTags;
+import net.regions_unexplored.registry.tag.*;
 import net.regions_unexplored.world.level.block.state.properties.RuBlockStateProperties;
 import org.jetbrains.annotations.Nullable;
 

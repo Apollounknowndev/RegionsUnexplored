@@ -15,13 +15,11 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.RegionsUnexplored;
-import net.regions_unexplored.datagen.provider.registry.RUDatagenFeatureUtils;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.datagen.provider.registry.RUPlacedFeatureBootstrap;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
 import net.regions_unexplored.registry.data.RUNoises;
-import net.regions_unexplored.registry.tag.RUBlockTags;
 
 import java.util.List;
 
@@ -131,6 +129,7 @@ public class RuTreePlacements {
     public static final ResourceKey<PlacedFeature> PALM_SHRUB = key("palm_shrub");
 
     public static final ResourceKey<PlacedFeature> TREE_GROUP_PINE_TAIGA = group("pine_taiga");
+    public static final ResourceKey<PlacedFeature> TREE_GROUP_HIGHLAND_FIELDS = group("highland_fields");
     public static final ResourceKey<PlacedFeature> PINE = key("pine");
     public static final ResourceKey<PlacedFeature> PINE_ON_DIRT = key("pine_on_dirt");
     public static final ResourceKey<PlacedFeature> PINE_SHRUB_ON_GRASS = key("pine_shrub_on_grass");
@@ -468,13 +467,21 @@ public class RuTreePlacements {
 
         register(context, getter, RuTreePlacements.TREE_GROUP_PINE_TAIGA,
             count(16),
-            InSquarePlacement.spread(),
-            SurfaceWaterDepthFilter.forMaxDepth(0),
+            inSquare(),
+            notSubmerged(),
             PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
             BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
                 saplingWouldSurvive(RUBlocks.PINE_NATURAL_SET),
                 DIRT_OR_PODZOL_BELOW
             )),
+            BiomeFilter.biome()
+        );
+        register(context, getter, RuTreePlacements.TREE_GROUP_HIGHLAND_FIELDS,
+            rarityFilter(64),
+            inSquare(),
+            notSubmerged(),
+            PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+            BlockPredicateFilter.forPredicate(saplingWouldSurvive(RUBlocks.PINE_NATURAL_SET)),
             BiomeFilter.biome()
         );
         register(context, RuTreePlacements.PINE, PINE, List.of(CountPlacement.of(6), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));

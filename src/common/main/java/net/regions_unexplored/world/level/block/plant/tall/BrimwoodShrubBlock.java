@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.regions_unexplored.registry.tag.RUBlockTags;
+import net.regions_unexplored.registry.tag.*;
 
 public class BrimwoodShrubBlock extends ShrubBlock {
 

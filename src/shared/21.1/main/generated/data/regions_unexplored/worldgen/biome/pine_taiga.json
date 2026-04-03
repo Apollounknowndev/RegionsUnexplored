@@ -91,7 +91,7 @@
       "regions_unexplored:azure_daisy",
       "regions_unexplored:dirt_vegetation",
       "regions_unexplored:grass_vegetation",
-      "regions_unexplored:pine_shrub"
+      "regions_unexplored:shrub/pine"
     ],
     [
       "minecraft:freeze_top_layer"

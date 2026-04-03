@@ -129,6 +129,7 @@ public class MountainBiomes {
         BiomeGenerationSettings.Builder builder = baseSlopeGeneration(featureGetter, carverGetter);
 
         //add RU features
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_HIGHLAND_FIELDS);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.ROCK_GROUP_HIGHLAND_FIELDS);
         //builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.ROCK);
         //builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.NOISE_ROCKS);

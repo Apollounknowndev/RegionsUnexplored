@@ -19,6 +19,10 @@
         "log_block": "regions_unexplored:pine_log",
         "probability": 0.1,
         "required_empty_blocks": 3
+      },
+      {
+        "type": "minecraft:beehive",
+        "probability": 0.001
       }
     ],
     "dirt_provider": {

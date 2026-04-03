@@ -19,7 +19,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
-import net.regions_unexplored.registry.tag.RUBlockTags;
+import net.regions_unexplored.registry.tag.*;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -47,19 +47,34 @@ public class RUDatagenFeatureUtils {
     public static Holder<PlacedFeature> direct(Holder.Reference<ConfiguredFeature<?, ?>> feature) {
         return Holder.direct(new PlacedFeature(feature, List.of()));
     }
+    
+    // Placement modifiers
+    
+    public static PlacementModifier count(int count) {
+        return CountPlacement.of(count);
+    }
+    
+    public static PlacementModifier rarityFilter(int chance) {
+        return RarityFilter.onAverageOnceEvery(chance);
+    }
+    
+    public static PlacementModifier inSquare() {
+        return InSquarePlacement.spread();
+    }
+    
+    public static PlacementModifier notSubmerged() {
+        return SurfaceWaterDepthFilter.forMaxDepth(0);
+    }
 
     public static PlacementModifier airAndBlocksBelow(Block... blocks) {
         return BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Vec3i.ZERO.below(), blocks)));
-    }
-
-    public static PlacementModifier count(int count) {
-        return CountPlacement.of(count);
     }
 
     public static PlacementModifier[] simpleSpread(int count, Heightmap.Types heightmap) {
         return new PlacementModifier[] {
             count(count),
             InSquarePlacement.spread(),
+            SurfaceWaterDepthFilter.forMaxDepth(0),
             HeightmapPlacement.onHeightmap(heightmap),
             BiomeFilter.biome()
         };

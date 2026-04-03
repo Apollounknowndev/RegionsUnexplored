@@ -96,7 +96,7 @@
       "regions_unexplored:patch/grass_sparse",
       "regions_unexplored:patch/desert_shrub_sparse",
       "regions_unexplored:patch/sandy_grass_sparse",
-      "regions_unexplored:joshua_shrub"
+      "regions_unexplored:shrub/joshua"
     ],
     [
       "minecraft:freeze_top_layer"

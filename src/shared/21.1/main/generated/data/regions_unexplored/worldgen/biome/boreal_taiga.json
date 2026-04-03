@@ -92,7 +92,7 @@
       "regions_unexplored:fallen_larch",
       "regions_unexplored:azure_daisy",
       "regions_unexplored:grass",
-      "regions_unexplored:larch_shrub"
+      "regions_unexplored:shrub/larch"
     ],
     [
       "minecraft:freeze_top_layer"

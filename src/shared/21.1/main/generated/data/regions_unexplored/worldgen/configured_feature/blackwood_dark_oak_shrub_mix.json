@@ -1,7 +1,7 @@
 {
-  "type": "regions_unexplored:shrub",
+  "type": "minecraft:simple_block",
   "config": {
-    "sapling_provider": {
+    "to_place": {
       "type": "minecraft:weighted_state_provider",
       "entries": [
         {

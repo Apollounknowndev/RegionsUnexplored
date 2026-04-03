@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.registry.RUBlocks;
-import net.regions_unexplored.registry.tag.RUBlockTags;
+import net.regions_unexplored.registry.tag.*;
 import net.regions_unexplored.world.level.block.plant.tall.RuSandyDoublePlantBlock;
 import net.regions_unexplored.world.level.block.state.properties.RuBlockStateProperties;
 

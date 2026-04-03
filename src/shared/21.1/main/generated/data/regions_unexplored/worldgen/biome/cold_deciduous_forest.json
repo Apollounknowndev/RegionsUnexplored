@@ -93,7 +93,7 @@
       "regions_unexplored:frozen_flowers",
       "regions_unexplored:snowbelle",
       "regions_unexplored:ferns",
-      "regions_unexplored:spruce_shrub"
+      "regions_unexplored:shrub/spruce"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -86,7 +86,7 @@
       "regions_unexplored:tree/scotts_pine_on_dirt",
       "regions_unexplored:fallen_pine_tree_on_dirt",
       "regions_unexplored:mountain_vegetation",
-      "regions_unexplored:pine_shrub"
+      "regions_unexplored:shrub/pine"
     ],
     [
       "minecraft:freeze_top_layer"

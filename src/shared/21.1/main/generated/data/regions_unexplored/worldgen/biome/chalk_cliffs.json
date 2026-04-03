@@ -89,7 +89,7 @@
       "regions_unexplored:daisy",
       "regions_unexplored:tassel_sparse",
       "regions_unexplored:grass",
-      "regions_unexplored:flowering_shrub"
+      "regions_unexplored:shrub/flowering"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.regions_unexplored.registry.tag.RUBlockTags;
+import net.regions_unexplored.registry.tag.*;
 
 public class BrimPlantBlock extends BushBlock {
     public static final MapCodec<? extends BrimPlantBlock> CODEC = simpleCodec(BrimPlantBlock::new);

@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.regions_unexplored.registry.tag.RUBlockTags;
+import net.regions_unexplored.registry.tag.*;
 
 public class GrassSproutsBlock extends BushBlock implements BonemealableBlock {
     public static final MapCodec<? extends GrassSproutsBlock> CODEC = simpleCodec(GrassSproutsBlock::new);

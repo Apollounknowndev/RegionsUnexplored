@@ -17,7 +17,7 @@ import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.registry.tag.BackportedBlockTags;
-import net.regions_unexplored.registry.tag.RUBlockTags;
+import net.regions_unexplored.registry.tag.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -37,8 +37,6 @@ public class RuBlockTagProvider extends BlockTagsProvider {
     }
 
     public void addVanillaTags(HolderLookup.Provider provider) {
-
-
         var planks = this.tag(BlockTags.PLANKS);
         var stairs = this.tag(BlockTags.WOODEN_STAIRS);
         var slabs = this.tag(BlockTags.WOODEN_SLABS);
@@ -1045,7 +1043,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .addOptionalTag(TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("c", "red_sandstone")))
             .addOptionalTag(TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("c", "sandstone/red")))
         ;
-        this.tag(RUBlockTags.SHRUB_CAN_SURVIVE_ON)
+        this.tag(RUBlockTags.SUPPORTS_SHRUBS)
             .addTag(BlockTags.DIRT)
         ;
         this.tag(RUBlockTags.SNOW_PLANT_CAN_SURVIVE_ON)

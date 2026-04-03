@@ -90,7 +90,7 @@
       "regions_unexplored:tree/oak_shrub_sparse",
       "regions_unexplored:mallow",
       "regions_unexplored:socotra_vegetation",
-      "regions_unexplored:socotra_shrub"
+      "regions_unexplored:shrub/socotra"
     ],
     [
       "minecraft:freeze_top_layer"

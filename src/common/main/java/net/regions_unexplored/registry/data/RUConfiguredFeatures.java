@@ -1,5 +1,6 @@
 package net.regions_unexplored.registry.data;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -86,6 +87,7 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_TALL_PALM = tree("tall_palm");
     ResourceKey<ConfiguredFeature<?,?>> TREE_PALM_SHRUB = tree("palm_shrub");
     ResourceKey<ConfiguredFeature<?,?>> TREE_PINE = tree("pine");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_PINE_BEES = tree("pine_bees");
     ResourceKey<ConfiguredFeature<?,?>> TREE_PINE_SKINNY = tree("pine_skinny");
     ResourceKey<ConfiguredFeature<?,?>> TREE_PINE_SKINNY_TALL = tree("pine_skinny_tall");
     ResourceKey<ConfiguredFeature<?,?>> TREE_PINE_TALL = tree("pine_tall");
@@ -118,6 +120,14 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> BONEMEAL_GLISTERING_NYLIUM = key("bonemeal/nylium/glistering");
     ResourceKey<ConfiguredFeature<?,?>> BONEMEAL_COBALT_NYLIUM = key("bonemeal/nylium/cobalt");
     ResourceKey<ConfiguredFeature<?,?>> BONEMEAL_BRIMSPROUT_NYLIUM = key("bonemeal/nylium/brimsprout");
+
+    static ResourceKey<ConfiguredFeature<?,?>> shrubGroup(String name) {
+        return shrub("group/" + name);
+    }
+
+    static ResourceKey<ConfiguredFeature<?,?>> shrub(String name) {
+        return key("shrub/" + name);
+    }
 
     static ResourceKey<ConfiguredFeature<?,?>> treeGroup(String name) {
         return tree("group/" + name);
