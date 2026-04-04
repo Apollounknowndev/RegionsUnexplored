@@ -119,7 +119,7 @@ public class RUBiomeFeatures {
     }
 
     public static void addPurpleCornflower(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PURPLE_CONEFLOWER);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_PURPLE_CONEFLOWERS);
     }
     public static void addTsubaki(BiomeGenerationSettings.Builder biomeBuilder) {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TSUBAKI);

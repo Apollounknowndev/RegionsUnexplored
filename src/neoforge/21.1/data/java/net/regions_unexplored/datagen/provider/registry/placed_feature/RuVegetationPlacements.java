@@ -13,13 +13,11 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ClampedInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap.Types;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
-import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.datagen.provider.registry.RUDatagenFeatureUtils;
 import net.regions_unexplored.datagen.provider.registry.configured_feature.RuVegetationFeatures;
 import net.regions_unexplored.datagen.provider.registry.RUPlacedFeatureBootstrap;
@@ -116,7 +114,7 @@ public class RuVegetationPlacements {
 
     public static final ResourceKey<PlacedFeature> ORANGE_CONEFLOWER = key("orange_coneflower");
     public static final ResourceKey<PlacedFeature> SPARSE_ORANGE_CONEFLOWER = key("sparse_orange_coneflower");
-    public static final ResourceKey<PlacedFeature> PURPLE_CONEFLOWER = key("purple_coneflower");
+    public static final ResourceKey<PlacedFeature> PATCH_PURPLE_CONEFLOWERS = key("patch/purple_coneflowers");
     public static final ResourceKey<PlacedFeature> MAGNOLIA_FLOWERS = key("magnolia_flowers");
     public static final ResourceKey<PlacedFeature> CLOVER_SPARSE = key("clover_sparse");
     //MULTIFACE FLOWERS
@@ -258,7 +256,6 @@ public class RuVegetationPlacements {
         final Holder<ConfiguredFeature<?, ?>> REDSTONE_BULB = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_REDSTONE_BULB);
 
         final Holder<ConfiguredFeature<?, ?>> ORANGE_CONEFLOWER = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_ORANGE_CONEFLOWER);
-        final Holder<ConfiguredFeature<?, ?>> PURPLE_CONEFLOWER = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_PURPLE_CONEFLOWER);
         final Holder<ConfiguredFeature<?, ?>> MAGNOLIA_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_MAGNOLIA_FLOWERS);
         final Holder<ConfiguredFeature<?, ?>> CLOVER = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_CLOVER);
         //MULTIFACE FLOWERS
@@ -388,7 +385,12 @@ public class RuVegetationPlacements {
 
         register(context, RuVegetationPlacements.ORANGE_CONEFLOWER, ORANGE_CONEFLOWER, NoiseThresholdCountPlacement.of(-0.8D, 5, 10), RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         register(context, RuVegetationPlacements.SPARSE_ORANGE_CONEFLOWER, ORANGE_CONEFLOWER, NoiseThresholdCountPlacement.of(-0.8D, 5, 10), RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-        register(context, RuVegetationPlacements.PURPLE_CONEFLOWER, PURPLE_CONEFLOWER, NoiseThresholdCountPlacement.of(-0.8D, 5, 10), RarityFilter.onAverageOnceEvery(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+        register(context, RuVegetationPlacements.PATCH_PURPLE_CONEFLOWERS, List.of(
+            LithostitchedPlacementModifiers.noiseSlope(RUNoises.FLOWER_DENSITY, 28, -10, 2, 0),
+            InSquarePlacement.spread(),
+            PlacementUtils.HEIGHTMAP,
+            BiomeFilter.biome()
+        ));
         register(context, RuVegetationPlacements.MAGNOLIA_FLOWERS, MAGNOLIA_FLOWERS, NoiseThresholdCountPlacement.of(-0.8D, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         register(context, RuVegetationPlacements.PATCH_CLOVERS_DENSE, CLOVER,
             count(3),
