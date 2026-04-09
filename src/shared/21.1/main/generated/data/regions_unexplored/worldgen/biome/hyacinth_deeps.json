@@ -35,7 +35,7 @@
     ],
     [
       "minecraft:amethyst_geode",
-      "regions_unexplored:hyacinth_rocks"
+      "regions_unexplored:special/hyacinth_rocks"
     ],
     [
       "minecraft:monster_room",
@@ -70,9 +70,9 @@
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "minecraft:underwater_magma",
-      "regions_unexplored:disk_sand",
-      "regions_unexplored:disk_clay",
-      "regions_unexplored:disk_gravel"
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
     ],
     [],
     [
@@ -89,9 +89,9 @@
       "minecraft:patch_pumpkin",
       "minecraft:seagrass_normal",
       "minecraft:kelp_warm",
-      "regions_unexplored:tall_hyacinth_stock",
-      "regions_unexplored:hyacinth_plants",
-      "regions_unexplored:hyacinth_flowers"
+      "regions_unexplored:special/tall_hyacinth_stock",
+      "regions_unexplored:special/hyacinth_plants",
+      "regions_unexplored:special/hyacinth_flowers"
     ],
     [
       "minecraft:freeze_top_layer"

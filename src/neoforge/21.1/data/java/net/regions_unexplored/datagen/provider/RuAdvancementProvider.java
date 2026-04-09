@@ -82,7 +82,6 @@ public class RuAdvancementProvider extends AdvancementProvider {
                     .addCriterion("fen", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.FEN))))
                     .addCriterion("flower_fields", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.FLOWER_FIELDS))))
                     .addCriterion("frozen_pine_taiga", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.FROZEN_PINE_TAIGA))))
-                    .addCriterion("frozen_tundra", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.DEPRECATED_FROZEN_TUNDRA))))
                     .addCriterion("fungal_fen", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.FUNGAL_FEN))))
                     .addCriterion("golden_boreal_taiga", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.GOLDEN_BOREAL_TAIGA))))
                     .addCriterion("grassland", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.GRASSLAND))))
@@ -122,6 +121,7 @@ public class RuAdvancementProvider extends AdvancementProvider {
                     .addCriterion("towering_cliffs", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.TOWERING_CLIFFS))))
                     .addCriterion("tropical_river", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.TROPICAL_RIVER))))
                     .addCriterion("tropics", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.TROPICS))))
+                    .addCriterion("tundra", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.TUNDRA))))
                     .addCriterion("willow_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.WILLOW_FOREST))))
                     .save(saver, getAdvancementName(RegionsUnexplored.MOD_ID, "pioneer"));
 
@@ -160,7 +160,6 @@ public class RuAdvancementProvider extends AdvancementProvider {
                     .addCriterion("fen", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.FEN))))
                     .addCriterion("flower_fields", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.FLOWER_FIELDS))))
                     .addCriterion("frozen_pine_taiga", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.FROZEN_PINE_TAIGA))))
-                    .addCriterion("frozen_tundra", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.DEPRECATED_FROZEN_TUNDRA))))
                     .addCriterion("fungal_fen", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.FUNGAL_FEN))))
                     .addCriterion("glistering_meadow", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.GLISTERING_MEADOW))))
                     .addCriterion("golden_boreal_taiga", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.GOLDEN_BOREAL_TAIGA))))
@@ -207,6 +206,7 @@ public class RuAdvancementProvider extends AdvancementProvider {
                     .addCriterion("towering_cliffs", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.TOWERING_CLIFFS))))
                     .addCriterion("tropical_river", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.TROPICAL_RIVER))))
                     .addCriterion("tropics", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.TROPICS))))
+                    .addCriterion("tundra", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.TUNDRA))))
                     .addCriterion("willow_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.WILLOW_FOREST))))
                     .save(saver, getAdvancementName(RegionsUnexplored.MOD_ID, "regions_explored"));
 

@@ -1,8 +1,7 @@
 package net.regions_unexplored.datagen.provider.registry.configured_feature;
 
-import net.minecraft.core.HolderGetter;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -10,28 +9,24 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.MultifaceBlock;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.regions_unexplored.registry.RUBlocks;
-import net.regions_unexplored.datagen.provider.registry.RUConfiguredFeatureBootstrap;
 import net.regions_unexplored.registry.RUFeatureTypes;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
 import net.regions_unexplored.world.level.feature.configuration.HyacinthStockConfiguration;
 import net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration;
 import net.regions_unexplored.world.level.feature.configuration.SeaRockConfiguration;
 
-import java.util.function.Supplier;
+import static net.regions_unexplored.datagen.provider.registry.placed_feature.RuAquaticPlacements.*;
+import static net.regions_unexplored.datagen.provider.registry.RUDatagenFeatureUtils.*;
 
 public class RuAquaticFeatures {
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FEN_CATTAIL = RUConfiguredFeatures.key("fen_cattail");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> WATER_CATTAIL = RUConfiguredFeatures.key("water_cattail");
-
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_HYACINTH_STOCK = RUConfiguredFeatures.key("tall_hyacinth_stock");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> HYACINTH_PLANTS = RUConfiguredFeatures.key("hyacinth_plants");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> HYACINTH_FLOWERS = RUConfiguredFeatures.key("hyacinth_flowers");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> HYACINTH_ROCKS = RUConfiguredFeatures.key("hyacinth_rocks");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_CATTAIL = RUConfiguredFeatures.key("patch/cattail");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> MOSSY_SEA_ROCKS = RUConfiguredFeatures.key("mossy_sea_rocks");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLUE_MAGNOLIA_FLOWERS_AQUATIC = RUConfiguredFeatures.key("red_magnolia_flowers_aquatic");
@@ -42,14 +37,14 @@ public class RuAquaticFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ELEPHANT_EAR_AQUATIC = RUConfiguredFeatures.key("elephant_ear_aquatic");
     
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
-        HolderGetter<ConfiguredFeature<?, ?>> holderGetter = context.lookup(Registries.CONFIGURED_FEATURE);
-        register(context, FEN_CATTAIL, RUFeatureTypes.FEN_CATTAIL.get(), FeatureConfiguration.NONE);
-        register(context, WATER_CATTAIL, RUFeatureTypes.WATER_CATTAIL.get(), FeatureConfiguration.NONE);
+        register(context, PATCH_CATTAIL, Feature.RANDOM_PATCH, new RandomPatchConfiguration(24, 6, 0, PlacementUtils.inlinePlaced(Holder.direct(block(RUBlocks.CATTAIL.get())), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE))));
         
-        register(context, TALL_HYACINTH_STOCK, RUFeatureTypes.TALL_HYACINTH_STOCK.get(), new HyacinthStockConfiguration(BlockStateProvider.simple(RUBlocks.TALL_HYACINTH_STOCK.get().defaultBlockState()), 1, 14));
-        register(context, HYACINTH_PLANTS, RUFeatureTypes.HYACINTH_PLANTS.get(), new ProbabilityFeatureConfiguration(0.1F));
-        register(context, HYACINTH_FLOWERS, Feature.MULTIFACE_GROWTH, new MultifaceGrowthConfiguration((MultifaceBlock) RUBlocks.HYACINTH_FLOWERS.get(), 20, true, true, true, 1.0F, HolderSet.direct(Block::builtInRegistryHolder, Blocks.STONE, Blocks.PRISMARINE, Blocks.PRISMARINE_BRICKS)));
-        register(context, HYACINTH_ROCKS, RUFeatureTypes.OCEAN_ROCK.get(), new SeaRockConfiguration(Blocks.STONE.defaultBlockState(), RUBlocks.MOSSY_STONE.get().defaultBlockState()));
+        registerPlaced(context, SPECIAL_TALL_HYACINTH_STOCK, RUFeatureTypes.TALL_HYACINTH_STOCK.get(), new HyacinthStockConfiguration(BlockStateProvider.simple(RUBlocks.TALL_HYACINTH_STOCK.get().defaultBlockState()), 1, 14));
+        registerPlaced(context, SPECIAL_HYACINTH_PLANTS, RUFeatureTypes.HYACINTH_PLANTS.get(), new ProbabilityFeatureConfiguration(0.1F));
+        registerPlaced(context, SPECIAL_HYACINTH_FLOWERS, Feature.MULTIFACE_GROWTH,
+            new MultifaceGrowthConfiguration((MultifaceBlock) RUBlocks.HYACINTH_FLOWERS.get(), 20, true, true, true, 1.0F, HolderSet.direct(Block::builtInRegistryHolder, Blocks.STONE, Blocks.PRISMARINE, Blocks.PRISMARINE_BRICKS))
+        );
+        registerPlaced(context, SPECIAL_HYACINTH_ROCKS, RUFeatureTypes.OCEAN_ROCK.get(), new SeaRockConfiguration(Blocks.STONE.defaultBlockState(), RUBlocks.MOSSY_STONE.get().defaultBlockState()));
         //ROCKY_REEF
         register(context, MOSSY_SEA_ROCKS, RUFeatureTypes.ROCK_PILLAR.get(), FeatureConfiguration.NONE);
         register(context, BLUE_MAGNOLIA_FLOWERS_AQUATIC, RUFeatureTypes.AIR_MULTIFACE_GROWTH.get(), new MultifaceGrowthConfiguration((MultifaceBlock) RUBlocks.BLUE_MAGNOLIA_FLOWERS.get(), 20, true, true, true, 1.0F, HolderSet.direct(Block::builtInRegistryHolder, Blocks.STONE, RUBlocks.STONE_GRASS_BLOCK.get())));
@@ -63,9 +58,5 @@ public class RuAquaticFeatures {
 
     private static RandomPatchConfiguration grassPatch(BlockStateProvider stateProvider, int i) {
         return FeatureUtils.simpleRandomPatchConfiguration(i, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(stateProvider)));
-    }
-
-    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC config) {
-        context.register(key, new ConfiguredFeature<>(feature, config));
     }
 }

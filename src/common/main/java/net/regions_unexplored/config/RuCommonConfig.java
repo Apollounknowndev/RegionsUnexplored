@@ -68,7 +68,7 @@ public class RuCommonConfig extends Config {
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_FROZEN_PINE_TAIGA = biome(RUBiomes.FROZEN_PINE_TAIGA);
     @ConfigOption(category = "overworld_biome_toggles")
-    public static final ConfigValue<Boolean> TOGGLE_FROZEN_TUNDRA = deprecatedBiome(RUBiomes.DEPRECATED_FROZEN_TUNDRA);
+    public static final ConfigValue<Boolean> TOGGLE_FROZEN_TUNDRA = deprecatedBiome(RUBiomes.REMOVED_FROZEN_TUNDRA);
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_FUNGAL_FEN = biome(RUBiomes.FUNGAL_FEN);
     @ConfigOption(category = "overworld_biome_toggles")

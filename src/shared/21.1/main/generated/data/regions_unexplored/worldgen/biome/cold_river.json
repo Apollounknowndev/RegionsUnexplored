@@ -81,8 +81,7 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "minecraft:seagrass_river",
-      "regions_unexplored:rock_on_gravel"
+      "minecraft:seagrass_river"
     ],
     [
       "minecraft:freeze_top_layer"

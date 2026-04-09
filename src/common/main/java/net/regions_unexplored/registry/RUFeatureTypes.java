@@ -11,7 +11,9 @@ import net.regions_unexplored.world.level.feature.bioshroom.*;
 import net.regions_unexplored.world.level.feature.configuration.*;
 import net.regions_unexplored.world.level.feature.tree.*;
 import net.regions_unexplored.world.level.feature.tree.nether.*;
-import net.regions_unexplored.worldgen.feature.NewRockFeature;
+import net.regions_unexplored.worldgen.feature.RUFallenTreeFeature;
+import net.regions_unexplored.worldgen.feature.RURockFeature;
+import net.regions_unexplored.worldgen.feature.config.FallenTreeConfig;
 import net.regions_unexplored.worldgen.feature.config.RockFeatureConfig;
 
 public interface RUFeatureTypes {
@@ -47,7 +49,6 @@ public interface RUFeatureTypes {
     Supplier<Feature<RUTreeConfiguration>> LARGE_SOCOTRA_TREE = register("large_socotra_tree", new LargeSocotraTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> SMALL_SOCOTRA_TREE = register("small_socotra_tree", new SmallSocotraTreeFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<PointedRedstoneConfiguration>> POINTED_REDSTONE = register("pointed_redstone", new PointedRedstoneFeature(PointedRedstoneConfiguration.CODEC));
-    Supplier<Feature<LargePointedRedstoneConfiguration>> LARGE_POINTED_REDSTONE = register("large_pointed_redstone", new LargePointedRedstoneFeature(LargePointedRedstoneConfiguration.CODEC));
     Supplier<Feature<PointedRedstoneClusterConfiguration>> POINTED_REDSTONE_CLUSTER = register("pointed_redstone_cluster", new PointedRedstoneClusterFeature(PointedRedstoneClusterConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> HANGING_PRISMARITE = register("hanging_prismarite", new HangingPrismariteFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<ColumnFeatureConfiguration>> BASALT_BLOB = register("basalt_blob", new BasaltBlobFeature(ColumnFeatureConfiguration.CODEC));
@@ -60,15 +61,9 @@ public interface RUFeatureTypes {
     Supplier<Feature<NoneFeatureConfiguration>> GIANT_LILY = register("giant_lily", new GiantLilyPadFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> ICICLE_UP = register("icicle_up", new FloorIcicleFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<MultifaceGrowthConfiguration>> AIR_MULTIFACE_GROWTH = register("air_multiface_growth", new AirMultifaceGrowthFeature(MultifaceGrowthConfiguration.CODEC));
-    Supplier<Feature<FallenTreeConfiguration>> FALLEN_BLOB_TREE = register("fallen_blob_tree", new FallenBlobTreeFeature(FallenTreeConfiguration.CODEC));
-    Supplier<Feature<FallenTreeConfiguration>> FALLEN_SNOW_TREE = register("fallen_snow_tree", new FallenSnowTreeFeature(FallenTreeConfiguration.CODEC));
-    Supplier<Feature<NoneFeatureConfiguration>> MEADOW_ROCK = register("meadow_rock", new MeadowRockFeature(NoneFeatureConfiguration.CODEC));
-    Supplier<Feature<NoneFeatureConfiguration>> ROCK = register("rock", new RockFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> SPIRE = register("spire", new IceSpireFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> MARSH = register("marsh", new MarshFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> WATER_EDGE = register("water_edge", new WaterEdgeFeature(NoneFeatureConfiguration.CODEC));
-    Supplier<Feature<NoneFeatureConfiguration>> FEN_CATTAIL = register("fen_cattail", new FenCattailFeature(NoneFeatureConfiguration.CODEC));
-    Supplier<Feature<NoneFeatureConfiguration>> WATER_CATTAIL = register("water_cattail", new WaterCattailFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> ROCK_PILLAR = register("rock_pillar", new RockPillarFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<HyacinthStockConfiguration>> TALL_HYACINTH_STOCK = register("tall_hyacinth_stock", new HyacinthStockFeature(HyacinthStockConfiguration.CODEC));
     Supplier<Feature<ProbabilityFeatureConfiguration>> HYACINTH_PLANTS = register("hyacinth_plants", new HyacinthPlantsFeature(ProbabilityFeatureConfiguration.CODEC));
@@ -78,7 +73,8 @@ public interface RUFeatureTypes {
     Supplier<Feature<NoneFeatureConfiguration>> HANGING_EARLIGHT = register("hanging_earlight", new HangingEarlightFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> OBSIDIAN_SPIRE = register("obsidian_spire", new ObsidianSpireFeature(NoneFeatureConfiguration.CODEC));
 
-    Supplier<Feature<RockFeatureConfig>> NEW_ROCK = register("new_rock", new NewRockFeature());
+    Supplier<Feature<RockFeatureConfig>> ROCK = register("rock", new RURockFeature());
+    Supplier<Feature<FallenTreeConfig>> FALLEN_TREE = register("fallen_tree", new RUFallenTreeFeature());
 
     private static <FC extends FeatureConfiguration> Supplier<Feature<FC>> register(String name, Feature<FC> feature) {
         Registrar.register(BuiltInRegistries.FEATURE, name, () -> feature);

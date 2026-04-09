@@ -1,5 +1,5 @@
 {
-  "feature": "regions_unexplored:patch_noise_pumpkins",
+  "feature": "regions_unexplored:noise_pumpkins",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

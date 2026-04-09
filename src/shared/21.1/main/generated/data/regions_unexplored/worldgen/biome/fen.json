@@ -93,11 +93,11 @@
       "minecraft:patch_pumpkin",
       "minecraft:seagrass_swamp",
       "regions_unexplored:duckweed",
-      "regions_unexplored:cattail_fen",
+      "regions_unexplored:patch/cattail_dense",
       "regions_unexplored:tree/pine",
       "regions_unexplored:tree/dead_scotts_pine",
       "regions_unexplored:tree/dead_bog",
-      "regions_unexplored:fallen_oak_tree_dense",
+      "regions_unexplored:tree/fallen_oak_tree_dense",
       "regions_unexplored:fen_vegetation",
       "regions_unexplored:pine_dead_shrub_mix"
     ],

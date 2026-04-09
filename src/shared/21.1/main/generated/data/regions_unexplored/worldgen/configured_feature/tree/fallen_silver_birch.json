@@ -1,0 +1,55 @@
+{
+  "type": "regions_unexplored:fallen_tree",
+  "config": {
+    "log_decorators": [
+      {
+        "type": "regions_unexplored:attached_to_logs",
+        "block_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:moss_carpet"
+          }
+        },
+        "check_all_directions": true,
+        "directions": [
+          "up",
+          "north",
+          "south",
+          "east",
+          "west"
+        ],
+        "probability": 0.2
+      },
+      {
+        "type": "regions_unexplored:attached_to_logs",
+        "block_provider": {
+          "type": "lithostitched:random_block",
+          "blocks": [
+            "minecraft:brown_mushroom",
+            "minecraft:red_mushroom"
+          ]
+        },
+        "directions": [
+          "up"
+        ],
+        "probability": 0.05
+      }
+    ],
+    "log_length": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 10,
+      "min_inclusive": 6
+    },
+    "stump_decorators": [],
+    "trunk_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "regions_unexplored:silver_birch_log",
+        "Properties": {
+          "axis": "y",
+          "is_base": "true"
+        }
+      }
+    }
+  }
+}

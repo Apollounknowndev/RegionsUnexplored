@@ -41,7 +41,7 @@ public class CoastalBiomes {
         RUBiomeFeatures.globalOverworldGeneration(biomeBuilder);
         RUBiomeFeatures.grassSprouts(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        RUBiomeFeatures.addDefaultSoftDisks(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         return biomeBuilder;

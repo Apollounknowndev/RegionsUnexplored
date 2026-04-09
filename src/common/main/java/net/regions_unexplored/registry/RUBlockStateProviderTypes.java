@@ -1,0 +1,27 @@
+package net.regions_unexplored.registry;
+
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
+import net.regions_unexplored.platform.Registrar;
+import net.regions_unexplored.worldgen.stateprovider.RandomizedGroundCoverStateProvider;
+import net.regions_unexplored.worldgen.treedecorator.BlackwoodBioshroomDecorator;
+import net.regions_unexplored.worldgen.treedecorator.BranchDecorator;
+import net.regions_unexplored.worldgen.treedecorator.PlaceOnGroundDecorator;
+import net.regions_unexplored.worldgen.treedecorator.WillowTrunkDecorator;
+
+import java.util.function.Supplier;
+
+public interface RUBlockStateProviderTypes {
+    Supplier<BlockStateProviderType<RandomizedGroundCoverStateProvider>> RANDOMIZED_GROUND_COVER = register("randomized_ground_cover", RandomizedGroundCoverStateProvider.TYPE);
+
+    static <T extends BlockStateProvider> Supplier<BlockStateProviderType<T>> register(String name, BlockStateProviderType<T> type) {
+        Registrar.register(BuiltInRegistries.BLOCKSTATE_PROVIDER_TYPE, name, () -> type);
+        return () -> type;
+    }
+
+    static void init() {
+    }
+}

@@ -83,16 +83,15 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> REDSTONE_BUD = key("redstone_bud");
     public static final ResourceKey<PlacedFeature> PRISMOSS_SPROUT = key("prismoss_sprout");
     public static final ResourceKey<PlacedFeature> BLADED_GRASS = key("bladed_grass");
-    public static final ResourceKey<PlacedFeature> BLADED_GRASS_BONEMEAL = key("bladed_grass_bonemeal");
     //FLOWERS
     public static final ResourceKey<PlacedFeature> CAVE_HYSSOP = key("cave_hyssop");
     public static final ResourceKey<PlacedFeature> ASTER = key("aster");
     public static final ResourceKey<PlacedFeature> TULIPS = key("tulips");
     public static final ResourceKey<PlacedFeature> SMALL_FLOWERS = key("small_flowers");
     public static final ResourceKey<PlacedFeature> TALL_FLOWERS = key("tall_flowers");
-    public static final ResourceKey<PlacedFeature> ALPHA_DANDELION = key("alpha_dandelion");
-    public static final ResourceKey<PlacedFeature> ALPHA_ROSE = key("alpha_rose");
-    public static final ResourceKey<PlacedFeature> WILTING_TRILLIUM = key("wilting_trillium");
+    public static final ResourceKey<PlacedFeature> PATCH_ALPHA_DANDELION = key("patch/alpha_dandelion");
+    public static final ResourceKey<PlacedFeature> PATCH_ALPHA_ROSE = key("patch/alpha_rose");
+    public static final ResourceKey<PlacedFeature> PATCH_WILTING_TRILLIUM = key("patch_wilting_trillium");
     public static final ResourceKey<PlacedFeature> WHITE_TRILLIUM = key("white_trillium");
     public static final ResourceKey<PlacedFeature> AZURE_DAISY = key("azure_daisy");
     public static final ResourceKey<PlacedFeature> DAISY = key("daisy");
@@ -120,14 +119,8 @@ public class RuVegetationPlacements {
 
     public static final ResourceKey<PlacedFeature> PATCH_ORANGE_CONEFLOWERS = key("patch/orange_coneflowers");
     public static final ResourceKey<PlacedFeature> PATCH_PURPLE_CONEFLOWERS = key("patch/purple_coneflowers");
-    public static final ResourceKey<PlacedFeature> MAGNOLIA_FLOWERS = key("magnolia_flowers");
-    public static final ResourceKey<PlacedFeature> CLOVER_SPARSE = key("clover_sparse");
-    //MULTIFACE FLOWERS
-    public static final ResourceKey<PlacedFeature> PINK_MAGNOLIA_FLOWERS = key("pink_magnolia_flowers");
-    public static final ResourceKey<PlacedFeature> WHITE_MAGNOLIA_FLOWERS = key("white_magnolia_flowers");
     //FOOD_PLANTS
     public static final ResourceKey<PlacedFeature> RARE_SALMONBERRY_BUSH = key("rare_salmonberry_bush");
-    public static final ResourceKey<PlacedFeature> COMMON_SALMONBERRY_BUSH = key("common_salmonberry_bush");
     public static final ResourceKey<PlacedFeature> DUSKMELON = key("duskmelon");
     //BIOSHROOM
     public static final ResourceKey<PlacedFeature> BLUE_BIOSHROOM = key("blue_bioshroom");
@@ -147,49 +140,25 @@ public class RuVegetationPlacements {
     //SHRUBS
     public static final ResourceKey<PlacedFeature> ASHEN_SHRUB = key("shrub/ashen");
     public static final ResourceKey<PlacedFeature> ACACIA_SHRUB = key("shrub/acacia");
-    public static final ResourceKey<PlacedFeature> BAOBAB_SHRUB = key("shrub/baobab");
-    public static final ResourceKey<PlacedFeature> BIRCH_SHRUB = key("shrub/birch");
-    public static final ResourceKey<PlacedFeature> BLACKWOOD_SHRUB = key("shrub/blackwood");
     public static final ResourceKey<PlacedFeature> CHERRY_SHRUB = key("shrub/cherry");
-    public static final ResourceKey<PlacedFeature> MAGNOLIA_SHRUB = key("shrub/magnolia");
-    public static final ResourceKey<PlacedFeature> PINK_MAGNOLIA_SHRUB = key("shrub/pink_magnolia");
-    public static final ResourceKey<PlacedFeature> WHITE_MAGNOLIA_SHRUB = key("shrub/white_magnolia");
-    public static final ResourceKey<PlacedFeature> CYPRESS_SHRUB = key("shrub/cypress");
-    public static final ResourceKey<PlacedFeature> DARK_OAK_SHRUB = key("shrub/dark_oak");
-    public static final ResourceKey<PlacedFeature> DEAD_SHRUB = key("shrub/dead");
-    public static final ResourceKey<PlacedFeature> DEAD_PINE_SHRUB = key("shrub/dead_pine");
     public static final ResourceKey<PlacedFeature> EUCALYPTUS_SHRUB = key("shrub/eucalyptus");
     public static final ResourceKey<PlacedFeature> FLOWERING_SHRUB = key("shrub/flowering");
     public static final ResourceKey<PlacedFeature> JOSHUA_SHRUB = key("shrub/joshua");
-    public static final ResourceKey<PlacedFeature> JUNGLE_SHRUB = key("shrub/jungle");
     public static final ResourceKey<PlacedFeature> LARCH_SHRUB = key("shrub/larch");
-    public static final ResourceKey<PlacedFeature> GOLDEN_LARCH_SHRUB = key("shrub/golden_larch");
-    public static final ResourceKey<PlacedFeature> MANGROVE_SHRUB = key("shrub/mangrove");
-    public static final ResourceKey<PlacedFeature> MAPLE_SHRUB = key("shrub/maple");
-    public static final ResourceKey<PlacedFeature> RED_MAPLE_SHRUB = key("shrub/red_maple");
-    public static final ResourceKey<PlacedFeature> ORANGE_MAPLE_SHRUB = key("shrub/orange_maple");
-    public static final ResourceKey<PlacedFeature> MAUVE_SHRUB = key("shrub/mauve");
     public static final ResourceKey<PlacedFeature> OAK_SHRUB = key("shrub/oak");
-    public static final ResourceKey<PlacedFeature> PALM_SHRUB = key("shrub/palm");
     public static final ResourceKey<PlacedFeature> PINE_SHRUB = key("shrub/pine");
     public static final ResourceKey<PlacedFeature> REDWOOD_SHRUB = key("shrub/redwood");
-    public static final ResourceKey<PlacedFeature> SILVER_BIRCH_SHRUB = key("shrub/silver_birch");
     public static final ResourceKey<PlacedFeature> SOCOTRA_SHRUB = key("shrub/socotra");
     public static final ResourceKey<PlacedFeature> SPRUCE_SHRUB = key("shrub/spruce");
-    public static final ResourceKey<PlacedFeature> WILLOW_SHRUB = key("shrub/willow");
     //mixes
     public static final ResourceKey<PlacedFeature> BAOBAB_ACACIA_SHRUB_MIX = key("baobab_acacia_shrub_mix");
     public static final ResourceKey<PlacedFeature> AUTUMNAL_SHRUB_MIX = key("autumnal_shrub_mix");
-    public static final ResourceKey<PlacedFeature> BIRCH_SHRUB_MIX = key("birch_shrub_mix");
     public static final ResourceKey<PlacedFeature> BLACKWOOD_DARK_OAK_SHRUB_MIX = key("blackwood_dark_oak_shrub_mix");
     public static final ResourceKey<PlacedFeature> MAGNOLIA_SHRUB_MIX = key("magnolia_shrub_mix");
-    public static final ResourceKey<PlacedFeature> DEAD_SHRUB_MIX = key("dead_shrub_mix");
-    public static final ResourceKey<PlacedFeature> LARCH_SHRUB_MIX = key("larch_shrub_mix");
     public static final ResourceKey<PlacedFeature> GOLDEN_LARCH_SHRUB_MIX = key("golden_larch_shrub_mix");
     public static final ResourceKey<PlacedFeature> MAPLE_SHRUB_MIX = key("maple_shrub_mix");
     public static final ResourceKey<PlacedFeature> MAUVE_ENCHANTED_SHRUB_MIX = key("mauve_enchanted_shrub_mix");
     public static final ResourceKey<PlacedFeature> PALM_JUNGLE_SHRUB_MIX = key("palm_jungle_shrub_mix");
-    public static final ResourceKey<PlacedFeature> PINE_SPRUCE_SHRUB_MIX = key("pine_spruce_shrub_mix");
     public static final ResourceKey<PlacedFeature> PINE_DEAD_SHRUB_MIX = key("pine_dead_shrub_mix");
     public static final ResourceKey<PlacedFeature> WILLOW_CYPRESS_SHRUB_MIX = key("willow_cypress_shrub_mix");
     public static final ResourceKey<PlacedFeature> WILLOW_MAGNOLIA_SHRUB_MIX = key("willow_magnolia_shrub_mix");
@@ -227,16 +196,12 @@ public class RuVegetationPlacements {
         final Holder<ConfiguredFeature<?, ?>> REDSTONE_BUD = getter.getOrThrow(RuVegetationFeatures.PATCH_REDSTONE_BUD);
         final Holder<ConfiguredFeature<?, ?>> PRISMOSS_SPROUT = getter.getOrThrow(RuVegetationFeatures.PATCH_PRISMOSS_SPROUT);
         final Holder<ConfiguredFeature<?, ?>> BLADED_GRASS = getter.getOrThrow(RuVegetationFeatures.PATCH_BLADED_GRASS);
-        final Holder<ConfiguredFeature<?, ?>> BLADED_GRASS_BONEMEAL = getter.getOrThrow(RuVegetationFeatures.BLADED_GRASS_SINGLE);
        //FLOWERS
         final Holder<ConfiguredFeature<?, ?>> ASTER = getter.getOrThrow(RuVegetationFeatures.ASTER);
         final Holder<ConfiguredFeature<?, ?>> TULIPS = getter.getOrThrow(RuVegetationFeatures.PATCH_TULIPS);
         final Holder<ConfiguredFeature<?, ?>> CAVE_HYSSOP = getter.getOrThrow(RuVegetationFeatures.PATCH_CAVE_HYSSOP);
         final Holder<ConfiguredFeature<?, ?>> SMALL_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_SMALL_FLOWERS);
         final Holder<ConfiguredFeature<?, ?>> TALL_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_TALL_FLOWERS);
-        final Holder<ConfiguredFeature<?, ?>> ALPHA_DANDELION = getter.getOrThrow(RuVegetationFeatures.PATCH_ALPHA_DANDELION);
-        final Holder<ConfiguredFeature<?, ?>> PATCH_ALPHA_ROSE = getter.getOrThrow(RuVegetationFeatures.PATCH_ALPHA_ROSE);
-        final Holder<ConfiguredFeature<?, ?>> WILTING_TRILLIUM = getter.getOrThrow(RuVegetationFeatures.PATCH_WILTING_TRILLIUM);
         final Holder<ConfiguredFeature<?, ?>> WHITE_TRILLIUM = getter.getOrThrow(RuVegetationFeatures.PATCH_WHITE_TRILLIUM);
         final Holder<ConfiguredFeature<?, ?>> AZURE_DAISY = getter.getOrThrow(RuVegetationFeatures.PATCH_AZURE_DAISY);
         final Holder<ConfiguredFeature<?, ?>> WARATAH = getter.getOrThrow(RuVegetationFeatures.PATCH_WARATAH);
@@ -260,11 +225,7 @@ public class RuVegetationPlacements {
         final Holder<ConfiguredFeature<?, ?>> MEADOW_SAGE = getter.getOrThrow(RuVegetationFeatures.MEADOW_SAGE);
         final Holder<ConfiguredFeature<?, ?>> REDSTONE_BULB = getter.getOrThrow(RuVegetationFeatures.PATCH_REDSTONE_BULB);
 
-        final Holder<ConfiguredFeature<?, ?>> MAGNOLIA_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_MAGNOLIA_FLOWERS);
         final Holder<ConfiguredFeature<?, ?>> CLOVER = getter.getOrThrow(RuVegetationFeatures.PATCH_CLOVER);
-        //MULTIFACE FLOWERS
-        final Holder<ConfiguredFeature<?, ?>> PINK_MAGNOLIA_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PINK_MAGNOLIA_FLOWERS);
-        final Holder<ConfiguredFeature<?, ?>> WHITE_MAGNOLIA_FLOWERS = getter.getOrThrow(RuVegetationFeatures.WHITE_MAGNOLIA_FLOWERS);
         //FOOD_PLANTS
         final Holder<ConfiguredFeature<?, ?>> SALMONBERRY_BUSH = getter.getOrThrow(RuVegetationFeatures.PATCH_SALMONBERRY_BUSH);
         final Holder<ConfiguredFeature<?, ?>> DUSKMELON = getter.getOrThrow(RuVegetationFeatures.DUSKMELON);
@@ -284,16 +245,11 @@ public class RuVegetationPlacements {
         // Shrub Mixes
         final Holder<ConfiguredFeature<?, ?>> BAOBAB_ACACIA_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.BAOBAB_ACACIA_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> AUTUMNAL_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.AUTUMNAL_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> BIRCH_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.BIRCH_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> BLACKWOOD_DARK_OAK_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.BLACKWOOD_DARK_OAK_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> MAGNOLIA_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.MAGNOLIA_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> DEAD_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.DEAD_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> LARCH_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.LARCH_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> GOLDEN_LARCH_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.GOLDEN_LARCH_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> MAPLE_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.MAPLE_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> MAUVE_ENCHANTED_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.MAUVE_ENCHANTED_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> PALM_JUNGLE_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.PALM_JUNGLE_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> PINE_SPRUCE_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.PINE_SPRUCE_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> PINE_DEAD_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.PINE_DEAD_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> WILLOW_CYPRESS_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.WILLOW_CYPRESS_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> WILLOW_MAGNOLIA_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.WILLOW_MAGNOLIA_SHRUB_MIX);
@@ -308,15 +264,15 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.MEADOW_VEGETATION, MEADOW_VEGETATION, NoiseThresholdCountPlacement.of(-0.8D, 5, 8), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         //GRASS
         register(context, RuVegetationPlacements.SANDY_GRASS, SANDY_GRASS, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.FERNS, FERNS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.GRASS, patchGrass, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.FERNS, FERNS, surfaceSpread(7, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.GRASS, patchGrass, surfaceSpread(6, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.CAVE_GRASS, patchGrass, List.of(CountOnEveryLayerPlacement.of(70), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE),  BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.TALL_GRASS, TALL_GRASS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.TALL_GRASS, TALL_GRASS, surfaceSpread(7, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.CAVE_TALL_GRASS, TALL_GRASS, List.of(CountOnEveryLayerPlacement.of(15), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.SNOW_GRASS, SNOW_GRASS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.WINDSWEPT_GRASS, WINDSWEPT_GRASS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.PATCH_GRASS_SPROUTS_DENSE, PATCH_GRASS_SPROUTS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE, PATCH_GRASS_SPROUTS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.SNOW_GRASS, SNOW_GRASS, surfaceSpread(7, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.WINDSWEPT_GRASS, WINDSWEPT_GRASS, surfaceSpread(6, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_GRASS_SPROUTS_DENSE, PATCH_GRASS_SPROUTS, surfaceSpread(12, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE, PATCH_GRASS_SPROUTS, surfaceSpread(6, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_ASHEN_GRASS, count(5), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, RUDatagenFeatureUtils.airAndBlocksBelow(RUBlocks.ASHEN_DIRT.get()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.PATCH_ASHEN_GRASS_SMOULDERING, count(5), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, RUDatagenFeatureUtils.airAndBlocksBelow(RUBlocks.ASHEN_DIRT.get(), Blocks.BASALT, Blocks.SMOOTH_BASALT), BiomeFilter.biome());
         register(context, RuVegetationPlacements.PATCH_ASH_VENTS, count(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, RUDatagenFeatureUtils.airAndBlocksBelow(RUBlocks.ASH.get()), BiomeFilter.biome());
@@ -340,25 +296,25 @@ public class RuVegetationPlacements {
             BiomeFilter.biome()
         );
         
-        register(context, RuVegetationPlacements.PATCH_GRASS_SPARSE, patchGrass, simpleSpread(2, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_GRASS, patchGrass, simpleSpread(4, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_GRASS_DENSE, patchGrass, simpleSpread(8, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_FERN, simpleSpread(2, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_STEPPE_GRASS, simpleSpread(2, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_SANDY_GRASS_SPARSE, simpleSpread(2, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_DESERT_SHRUB_ON_GRASS, simpleSpread(2, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_DESERT_SHRUB_ON_SAND, simpleSpread(1, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_STEPPE_SHRUB_ON_SAND, simpleSpread(1, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_GRASS_SPARSE, patchGrass, surfaceSpread(2, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_GRASS, patchGrass, surfaceSpread(4, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_GRASS_DENSE, patchGrass, surfaceSpread(8, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_FERN, surfaceSpread(2, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_STEPPE_GRASS, surfaceSpread(2, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_SANDY_GRASS_SPARSE, surfaceSpread(2, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_DESERT_SHRUB_ON_GRASS, surfaceSpread(2, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_DESERT_SHRUB_ON_SAND, surfaceSpread(1, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_STEPPE_SHRUB_ON_SAND, surfaceSpread(1, Types.WORLD_SURFACE_WG));
 
-        register(context, RuVegetationPlacements.BLACKWOOD_VEGETATION, BLACKWOOD_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.BLACKWOOD_VEGETATION, BLACKWOOD_VEGETATION, surfaceSpread(10, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.DECIDUOUS_VEGETATION, DECIDUOUS_VEGETATION, NoiseThresholdCountPlacement.of(-0.8D, 5, 24), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         register(context, RuVegetationPlacements.FEN_VEGETATION, FEN_VEGETATION, NoiseThresholdCountPlacement.of(-0.8D, 5, 24), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-        register(context, RuVegetationPlacements.SHRUBLAND_VEGETATION, SHRUBLAND_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.MOUNTAIN_VEGETATION, MOUNTAIN_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.STEPPE_VEGETATION, STEPPE_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 24), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.SOCOTRA_VEGETATION, SOCOTRA_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 24), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.SANDY_GRASS_VEGETATION, SANDY_GRASS_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.BAYOU_VEGETATION, BAYOU_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 14), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.SHRUBLAND_VEGETATION, SHRUBLAND_VEGETATION, surfaceSpread(10, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.MOUNTAIN_VEGETATION, MOUNTAIN_VEGETATION, surfaceSpread(12, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.STEPPE_VEGETATION, STEPPE_VEGETATION, surfaceSpread(24, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.SOCOTRA_VEGETATION, SOCOTRA_VEGETATION, surfaceSpread(24, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.SANDY_GRASS_VEGETATION, SANDY_GRASS_VEGETATION, surfaceSpread(12, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.BAYOU_VEGETATION, BAYOU_VEGETATION, surfaceSpread(14, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.DIRT_VEGETATION, DIRT_VEGETATION, NoiseThresholdCountPlacement.of(-0.8D, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BlockPredicateFilter.forPredicate(RUPlacedFeatureBootstrap.onDirtPredicate), BiomeFilter.biome());
         register(context, RuVegetationPlacements.GRASS_VEGETATION, GRASS_VEGETATION, NoiseThresholdCountPlacement.of(-0.8D, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BlockPredicateFilter.forPredicate(RUPlacedFeatureBootstrap.onGrassBlockPredicate), BiomeFilter.biome());
         register(context, RuVegetationPlacements.REDSTONE_BUD, REDSTONE_BUD, List.of(CountPlacement.of(255), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome()));
@@ -366,24 +322,24 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.BLADED_GRASS, BLADED_GRASS, CountOnEveryLayerPlacement.of(155), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome());
         //FLOWERS
         register(context, RuVegetationPlacements.ASTER, ASTER, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-        register(context, RuVegetationPlacements.TULIPS, TULIPS, List.of(RarityFilter.onAverageOnceEvery(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.TULIPS, TULIPS, surfaceSpread(0.0833, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.CAVE_HYSSOP, CAVE_HYSSOP, List.of(CountOnEveryLayerPlacement.of(2), BiomeFilter.biome()));
         register(context, RuVegetationPlacements.SMALL_FLOWERS, SMALL_FLOWERS, NoiseThresholdCountPlacement.of(-0.8D, 5, 6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         register(context, RuVegetationPlacements.TALL_FLOWERS, TALL_FLOWERS, RarityFilter.onAverageOnceEvery(5), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-        register(context, RuVegetationPlacements.ALPHA_DANDELION, ALPHA_DANDELION, List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.PATCH_ALPHA_DANDELION, surfaceSpread(0.5, Types.WORLD_SURFACE_WG));
 
         PlacementModifier airCheck = BlockPredicateFilter.forPredicate(BlockPredicate.matchesTag(BlockTags.AIR));
         register(context, RUPlacedFeatures.BONEMEAL_ALPHA_GRASS, getter.getOrThrow(RUConfiguredFeatures.BONEMEAL_ALPHA_GRASS), RarityFilter.onAverageOnceEvery(25), airCheck);
-        register(context, RuVegetationPlacements.ALPHA_ROSE, PATCH_ALPHA_ROSE, List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.WILTING_TRILLIUM, WILTING_TRILLIUM, List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.PATCH_ALPHA_ROSE, surfaceSpread(0.5, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_WILTING_TRILLIUM, surfaceSpread(0.25, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.WHITE_TRILLIUM, WHITE_TRILLIUM, List.of(RarityFilter.onAverageOnceEvery(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.AZURE_DAISY, AZURE_DAISY, List.of(RarityFilter.onAverageOnceEvery(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.DAISY, DAISY, List.of(RarityFilter.onAverageOnceEvery(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.WARATAH, WARATAH, List.of(RarityFilter.onAverageOnceEvery(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.PATCH_DAISIES, simpleSpread(5, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PRAIRIE_FLOWERS, PRAIRIE_FLOWERS, List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.SHRUBLAND_FLOWERS, SHRUBLAND_FLOWERS, List.of(RarityFilter.onAverageOnceEvery(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.WILLOW_FLOWERS, WILLOW_FLOWERS, List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.AZURE_DAISY, AZURE_DAISY, surfaceSpread(0.0833, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.DAISY, DAISY, surfaceSpread(0.333, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.WARATAH, WARATAH, surfaceSpread(1, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_DAISIES, surfaceSpread(5, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PRAIRIE_FLOWERS, PRAIRIE_FLOWERS, surfaceSpread(0.0625, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.SHRUBLAND_FLOWERS, SHRUBLAND_FLOWERS, surfaceSpread(0.0833, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.WILLOW_FLOWERS, WILLOW_FLOWERS, surfaceSpread(0.25, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.POPPIES, POPPIES, NoiseThresholdCountPlacement.of(-0.8D, 5, 14), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         register(context, RuVegetationPlacements.TASSEL_SPARSE, TASSEL, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         register(context, RuVegetationPlacements.TASSEL_DENSE, TASSEL, CountPlacement.of(8), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
@@ -391,41 +347,35 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.CORPSE_FLOWER, CORPSE_FLOWER, CountOnEveryLayerPlacement.of(10), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome());
         register(context, RuVegetationPlacements.DUSKTRAP, DUSKTRAP, CountOnEveryLayerPlacement.of(4), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome());
         register(context, RuVegetationPlacements.DAY_LILY, DAY_LILY, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-        register(context, RuVegetationPlacements.TSUBAKI, TSUBAKI, List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.HIBISCUS, HIBISCUS, List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.MALLOW, MALLOW, List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.HYSSOP, HYSSOP, List.of(RarityFilter.onAverageOnceEvery(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.TSUBAKI, TSUBAKI, surfaceSpread(0.5, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.HIBISCUS, HIBISCUS, surfaceSpread(0.5, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.MALLOW, MALLOW, surfaceSpread(0.125, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.HYSSOP, HYSSOP, surfaceSpread(1, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.BARLEY_SPARSE, BARLEY, RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, CountPlacement.of(ClampedInt.of(UniformInt.of(-3, 1), 0, 1)), BiomeFilter.biome());
         register(context, RuVegetationPlacements.BARLEY_DENSE, BARLEY, NoiseBasedCountPlacement.of(155, 75.0D, 0.0D), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BlockPredicateFilter.forPredicate(RUPlacedFeatureBootstrap.onGrassBlockPredicate), BiomeFilter.biome());
         register(context, RuVegetationPlacements.MEADOW_SAGE, MEADOW_SAGE, RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
         register(context, RuVegetationPlacements.REDSTONE_BULB, REDSTONE_BULB, List.of(CountPlacement.of(64), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome()));
 
-        register(context, RuVegetationPlacements.PATCH_ORANGE_CONEFLOWERS, List.of(
+        register(context, RuVegetationPlacements.PATCH_ORANGE_CONEFLOWERS,
             LithostitchedPlacementModifiers.noiseSlope(RUNoises.FLOWER_DENSITY, 22, -6, 2, 0),
             InSquarePlacement.spread(),
             PlacementUtils.HEIGHTMAP,
             BiomeFilter.biome()
-        ));
-        register(context, RuVegetationPlacements.PATCH_PURPLE_CONEFLOWERS, List.of(
+        );
+        register(context, RuVegetationPlacements.PATCH_PURPLE_CONEFLOWERS,
             LithostitchedPlacementModifiers.noiseSlope(RUNoises.FLOWER_DENSITY, 28, -10, 2, 0),
             InSquarePlacement.spread(),
             PlacementUtils.HEIGHTMAP,
             BiomeFilter.biome()
-        ));
-        register(context, RuVegetationPlacements.MAGNOLIA_FLOWERS, MAGNOLIA_FLOWERS, NoiseThresholdCountPlacement.of(-0.8D, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+        );
         register(context, RuVegetationPlacements.PATCH_CLOVERS_DENSE, CLOVER,
             count(3),
             InSquarePlacement.spread(),
             PlacementUtils.HEIGHTMAP,
             BiomeFilter.biome()
         );
-        register(context, RuVegetationPlacements.CLOVER_SPARSE, CLOVER, List.of(RarityFilter.onAverageOnceEvery(2),  NoiseThresholdCountPlacement.of(-0.8D, 5, 12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
-        //MULTIFACE FLOWERS
-        register(context, RuVegetationPlacements.PINK_MAGNOLIA_FLOWERS, PINK_MAGNOLIA_FLOWERS, CountPlacement.of(15), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
-        register(context, RuVegetationPlacements.WHITE_MAGNOLIA_FLOWERS, WHITE_MAGNOLIA_FLOWERS, CountPlacement.of(15), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
         //FOOD_PLANTS
         register(context, RuVegetationPlacements.RARE_SALMONBERRY_BUSH, SALMONBERRY_BUSH, RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
-        register(context, RuVegetationPlacements.COMMON_SALMONBERRY_BUSH, SALMONBERRY_BUSH, RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
         register(context, RuVegetationPlacements.DUSKMELON, DUSKMELON, CountOnEveryLayerPlacement.of(10), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome());
         //BIOSHROOM
         register(context, RuVegetationPlacements.BLUE_BIOSHROOM, BLUE_BIOSHROOM, List.of(CountOnEveryLayerPlacement.of(5), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome()));
@@ -452,30 +402,12 @@ public class RuVegetationPlacements {
         //SHRUBS
         register(context, RuVegetationPlacements.ASHEN_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.ACACIA_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.BAOBAB_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.BIRCH_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.BLACKWOOD_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.CHERRY_SHRUB, RarityFilter.onAverageOnceEvery(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.MAGNOLIA_SHRUB, RarityFilter.onAverageOnceEvery(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.PINK_MAGNOLIA_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.WHITE_MAGNOLIA_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.CYPRESS_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.DARK_OAK_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.DEAD_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.DEAD_PINE_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.EUCALYPTUS_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.FLOWERING_SHRUB, RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.JOSHUA_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.JUNGLE_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.LARCH_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.GOLDEN_LARCH_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.MANGROVE_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.MAPLE_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.RED_MAPLE_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.ORANGE_MAPLE_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.MAUVE_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.OAK_SHRUB, RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.PALM_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.PINE_SHRUB, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.REDWOOD_SHRUB,
             count(2),
@@ -484,51 +416,21 @@ public class RuVegetationPlacements {
             PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()),
             BiomeFilter.biome()
         );
-        register(context, RuVegetationPlacements.SILVER_BIRCH_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.SOCOTRA_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.SPRUCE_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.WILLOW_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         //mixes
         register(context, RuVegetationPlacements.BAOBAB_ACACIA_SHRUB_MIX, BAOBAB_ACACIA_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.AUTUMNAL_SHRUB_MIX, AUTUMNAL_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.BIRCH_SHRUB_MIX, BIRCH_SHRUB_MIX, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.BLACKWOOD_DARK_OAK_SHRUB_MIX, BLACKWOOD_DARK_OAK_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.MAGNOLIA_SHRUB_MIX, MAGNOLIA_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.DEAD_SHRUB_MIX, DEAD_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.LARCH_SHRUB_MIX, LARCH_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.MAGNOLIA_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.GOLDEN_LARCH_SHRUB_MIX, GOLDEN_LARCH_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.MAPLE_SHRUB_MIX, MAPLE_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.MAUVE_ENCHANTED_SHRUB_MIX, MAUVE_ENCHANTED_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.PALM_JUNGLE_SHRUB_MIX, PALM_JUNGLE_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.PINE_SPRUCE_SHRUB_MIX, PINE_SPRUCE_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.PINE_DEAD_SHRUB_MIX, PINE_DEAD_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.WILLOW_CYPRESS_SHRUB_MIX, WILLOW_CYPRESS_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.WILLOW_MAGNOLIA_SHRUB_MIX, WILLOW_MAGNOLIA_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
 
         register(context, RuVegetationPlacements.PRAIRIE_TREES, PRAIRIE_MIX, NoiseBasedCountPlacement.of(60, 30.0D, -0.5D), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BlockPredicateFilter.forPredicate(RUPlacedFeatureBootstrap.onGrassBlockPredicate), BiomeFilter.biome());
-        //BONE MEALS
-        register(context, RuVegetationPlacements.BLADED_GRASS_BONEMEAL, BLADED_GRASS_BONEMEAL, PlacementUtils.isEmpty());
-    }
-
-    protected static PlacementModifier airAnd(BlockPredicate predicate) {
-        return BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, predicate));
-    }
-
-    protected static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> feature, PlacementModifier... placement) {
-        register(context, key, feature, List.of(placement));
-    }
-
-    protected static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, PlacementModifier... placement) {
-        var featureGetter = context.lookup(Registries.CONFIGURED_FEATURE);
-        register(context, key, featureGetter.getOrThrow(RUConfiguredFeatures.fromPlaced(key)), List.of(placement));
-    }
-
-    protected static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, List<PlacementModifier> placement) {
-        var featureGetter = context.lookup(Registries.CONFIGURED_FEATURE);
-        register(context, key, featureGetter.getOrThrow(RUConfiguredFeatures.fromPlaced(key)), placement);
-    }
-
-    protected static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> feature, List<PlacementModifier> placement) {
-        context.register(key, new PlacedFeature(feature, placement));
     }
 }

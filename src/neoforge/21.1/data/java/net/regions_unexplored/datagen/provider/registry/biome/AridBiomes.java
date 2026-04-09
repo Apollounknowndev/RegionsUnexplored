@@ -54,7 +54,7 @@ public class AridBiomes {
             BiomeDefaultFeatures.addSavannaGrass(biomeBuilder);
         }
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        RUBiomeFeatures.addDefaultSoftDisks(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
         //add default flowers
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
@@ -65,7 +65,7 @@ public class AridBiomes {
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
         RUBiomeFeatures.globalOverworldGeneration(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        RUBiomeFeatures.addDefaultSoftDisks(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
         BiomeDefaultFeatures.addDesertVegetation(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_SUGAR_CANE_DESERT);

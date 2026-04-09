@@ -1,5 +1,5 @@
 {
-  "type": "regions_unexplored:large_pointed_redstone",
+  "type": "lithostitched:large_dripstone",
   "config": {
     "column_radius": {
       "type": "minecraft:uniform",
@@ -15,6 +15,7 @@
     "max_column_radius_to_cave_height_ratio": 0.33,
     "min_bluntness_for_wind": 0.6,
     "min_radius_for_wind": 4,
+    "replaceable_blocks": "#minecraft:base_stone_overworld",
     "stalactite_bluntness": {
       "type": "minecraft:uniform",
       "max_exclusive": 0.9,
@@ -24,6 +25,12 @@
       "type": "minecraft:uniform",
       "max_exclusive": 1.0,
       "min_inclusive": 0.4
+    },
+    "state_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "regions_unexplored:raw_redstone_block"
+      }
     },
     "wind_speed": {
       "type": "minecraft:uniform",

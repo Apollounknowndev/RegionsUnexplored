@@ -1,9 +1,9 @@
 {
-  "type": "regions_unexplored:new_rock",
+  "type": "regions_unexplored:rock",
   "config": {
     "blob_count": {
       "type": "minecraft:uniform",
-      "max_inclusive": 6,
+      "max_inclusive": 7,
       "min_inclusive": 4
     },
     "blob_offset_xz": {

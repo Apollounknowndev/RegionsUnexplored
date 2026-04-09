@@ -144,7 +144,7 @@ public class RuLanguageProvider extends LanguageProvider {
         this.add(RUBiomes.FEN, capitalizeString(filterBiomeLang(RUBiomes.FEN)));
         this.add(RUBiomes.FLOWER_FIELDS, capitalizeString(filterBiomeLang(RUBiomes.FLOWER_FIELDS)));
         this.add(RUBiomes.FROZEN_PINE_TAIGA, capitalizeString(filterBiomeLang(RUBiomes.FROZEN_PINE_TAIGA)));
-        this.add(RUBiomes.DEPRECATED_FROZEN_TUNDRA, capitalizeString(filterBiomeLang(RUBiomes.DEPRECATED_FROZEN_TUNDRA)));
+        this.add(RUBiomes.REMOVED_FROZEN_TUNDRA, capitalizeString(filterBiomeLang(RUBiomes.REMOVED_FROZEN_TUNDRA)));
         this.add(RUBiomes.TUNDRA, capitalizeString(filterBiomeLang(RUBiomes.TUNDRA)));
         this.add(RUBiomes.FUNGAL_FEN, capitalizeString(filterBiomeLang(RUBiomes.FUNGAL_FEN)));
         this.add(RUBiomes.GLISTERING_MEADOW, capitalizeString(filterBiomeLang(RUBiomes.GLISTERING_MEADOW)));

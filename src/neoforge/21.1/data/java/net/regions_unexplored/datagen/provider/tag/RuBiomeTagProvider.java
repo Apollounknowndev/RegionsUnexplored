@@ -182,7 +182,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(RUBiomes.COLD_BOREAL_TAIGA)
                 .add(RUBiomes.COLD_DECIDUOUS_FOREST)
                 .add(RUBiomes.FROZEN_PINE_TAIGA)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
                 .add(RUBiomes.TUNDRA)
                 .add(RUBiomes.ICY_HEIGHTS)
                 .add(RUBiomes.SPIRES)
@@ -215,7 +215,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(RUBiomes.SCORCHING_CAVES)
         ;
         this.tag(BiomeTags.POLAR_BEARS_SPAWN_ON_ALTERNATE_BLOCKS)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
         ;
         this.tag(BiomeTags.PRODUCES_CORALS_FROM_BONEMEAL)
                 .add(RUBiomes.TROPICS)
@@ -236,7 +236,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(RUBiomes.COLD_BOREAL_TAIGA)
                 .add(RUBiomes.ICY_HEIGHTS)
                 .add(RUBiomes.FROZEN_PINE_TAIGA)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
                 .add(RUBiomes.TUNDRA)
         ;
         this.tag(BiomeTags.SPAWNS_GOLD_RABBITS)
@@ -250,7 +250,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(RUBiomes.COLD_BOREAL_TAIGA)
                 .add(RUBiomes.ICY_HEIGHTS)
                 .add(RUBiomes.FROZEN_PINE_TAIGA)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
         ;
         this.tag(BiomeTags.SPAWNS_WARM_VARIANT_FROGS)
                 .add(RUBiomes.JOSHUA_DESERT)
@@ -268,7 +268,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(RUBiomes.COLD_BOREAL_TAIGA)
                 .add(RUBiomes.ICY_HEIGHTS)
                 .add(RUBiomes.FROZEN_PINE_TAIGA)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
         ;
         this.tag(BiomeTags.STRONGHOLD_BIASED_TO)
                 .add(RUBiomes.AUTUMNAL_MAPLE_FOREST)
@@ -324,7 +324,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(RUBiomes.COLD_BOREAL_TAIGA)
                 .add(RUBiomes.COLD_DECIDUOUS_FOREST)
                 .add(RUBiomes.FROZEN_PINE_TAIGA)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
                 .add(RUBiomes.TUNDRA)
                 .add(RUBiomes.ICY_HEIGHTS)
                 .add(RUBiomes.SPIRES)
@@ -405,7 +405,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(RUBiomes.PINE_SLOPES)
                 .add(RUBiomes.TOWERING_CLIFFS)
                 .add(RUBiomes.COLD_DECIDUOUS_FOREST)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
                 .add(RUBiomes.ICY_HEIGHTS)
                 .add(RUBiomes.SHRUBLAND)
                 .add(RUBiomes.SPIRES)
@@ -498,7 +498,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
         ;
         this.tag(BiomeTags.HAS_IGLOO)
                 .add(RUBiomes.COLD_BOREAL_TAIGA)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
                 .add(RUBiomes.SPIRES)
         ;
         this.tag(BiomeTags.HAS_JUNGLE_TEMPLE)
@@ -558,7 +558,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(RUBiomes.FUNGAL_FEN)
                 .add(RUBiomes.TOWERING_CLIFFS)
                 .add(RUBiomes.OUTBACK)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
                 .add(RUBiomes.TUNDRA)
                 .add(RUBiomes.COLD_DECIDUOUS_FOREST)
                 .add(RUBiomes.DRY_BUSHLAND)
@@ -686,7 +686,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(RUBiomes.COLD_BOREAL_TAIGA)
                 .add(RUBiomes.COLD_DECIDUOUS_FOREST)
                 .add(RUBiomes.FROZEN_PINE_TAIGA)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
                 .add(RUBiomes.TUNDRA)
                 .add(RUBiomes.ICY_HEIGHTS)
                 .add(RUBiomes.SPIRES)
@@ -716,7 +716,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(RUBiomes.DRY_BUSHLAND)
         ;
         this.tag(BiomeTags.HAS_VILLAGE_SNOWY)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
                 .add(RUBiomes.COLD_BOREAL_TAIGA)
         ;
         this.tag(BiomeTags.HAS_VILLAGE_TAIGA)
@@ -756,7 +756,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(RUBiomes.COLD_BOREAL_TAIGA)
                 .add(RUBiomes.ICY_HEIGHTS)
                 .add(RUBiomes.FROZEN_PINE_TAIGA)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
                 .add(RUBiomes.TUNDRA)
                 .add(RUBiomes.SPIRES)
         ;
@@ -935,16 +935,16 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(RUBiomes.COLD_BOREAL_TAIGA)
                 .add(RUBiomes.ICY_HEIGHTS)
                 .add(RUBiomes.FROZEN_PINE_TAIGA)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
                 .add(RUBiomes.SPIRES)
         ;
         this.tag(Tags.Biomes.IS_SNOWY_PLAINS)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
         ;
         this.tag(Tags.Biomes.IS_ICY)
                 .add(RUBiomes.ICY_HEIGHTS)
                 .add(RUBiomes.FROZEN_PINE_TAIGA)
-                .add(RUBiomes.DEPRECATED_FROZEN_TUNDRA)
+                .add(RUBiomes.REMOVED_FROZEN_TUNDRA)
                 .add(RUBiomes.SPIRES)
         ;
         this.tag(Tags.Biomes.IS_SPOOKY)

@@ -4,14 +4,12 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.regions_unexplored.platform.Registrar;
-import net.regions_unexplored.worldgen.treedecorator.BlackwoodBioshroomDecorator;
-import net.regions_unexplored.worldgen.treedecorator.BranchDecorator;
-import net.regions_unexplored.worldgen.treedecorator.PlaceOnGroundDecorator;
-import net.regions_unexplored.worldgen.treedecorator.WillowTrunkDecorator;
+import net.regions_unexplored.worldgen.treedecorator.*;
 
 import java.util.function.Supplier;
 
 public interface RUTreeDecoratorTypes {
+    Supplier<TreeDecoratorType<AttachedToLogsDecorator>> ATTACHED_TO_LOGS = register("attached_to_logs", AttachedToLogsDecorator.TYPE);
     Supplier<TreeDecoratorType<BlackwoodBioshroomDecorator>> BLACKWOOD_BIOSHROOMS = register("blackwood_bioshrooms", BlackwoodBioshroomDecorator.TYPE);
     Supplier<TreeDecoratorType<BranchDecorator>> BRANCH = register("branch", BranchDecorator.TYPE);
     Supplier<TreeDecoratorType<PlaceOnGroundDecorator>> PLACE_ON_GROUND = register("place_on_ground", PlaceOnGroundDecorator.TYPE);

@@ -321,22 +321,6 @@
       },
       "trigger": "minecraft:location"
     },
-    "frozen_tundra": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:frozen_tundra"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
     "fungal_fen": {
       "conditions": {
         "player": [
@@ -961,6 +945,22 @@
       },
       "trigger": "minecraft:location"
     },
+    "tundra": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "regions_unexplored:tundra"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "willow_forest": {
       "conditions": {
         "player": [
@@ -1051,9 +1051,6 @@
     ],
     [
       "frozen_pine_taiga"
-    ],
-    [
-      "frozen_tundra"
     ],
     [
       "fungal_fen"
@@ -1171,6 +1168,9 @@
     ],
     [
       "tropics"
+    ],
+    [
+      "tundra"
     ],
     [
       "willow_forest"

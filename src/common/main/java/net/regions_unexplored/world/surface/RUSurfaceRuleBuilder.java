@@ -149,7 +149,7 @@ public class RUSurfaceRuleBuilder {
         ConditionSource isSandBiome = isBiome(RUBiomes.ROCKY_REEF, RUBiomes.TROPICAL_RIVER, RUBiomes.GRASSY_BEACH);
         ConditionSource isPeatBiome = isBiome(RUBiomes.BAYOU, RUBiomes.FEN, RUBiomes.PINE_TAIGA, RUBiomes.BLACKWOOD_TAIGA, RUBiomes.BOREAL_TAIGA, RUBiomes.COLD_BOREAL_TAIGA, RUBiomes.GOLDEN_BOREAL_TAIGA);
         ConditionSource isSiltBiome = isBiome(RUBiomes.PUMPKIN_FIELDS, RUBiomes.POPPY_FIELDS, RUBiomes.AUTUMNAL_MAPLE_FOREST, RUBiomes.SILVER_BIRCH_FOREST, RUBiomes.TROPICS, RUBiomes.DRY_BUSHLAND, RUBiomes.JOSHUA_DESERT, RUBiomes.BARLEY_FIELDS, RUBiomes.PRAIRIE, RUBiomes.ORCHARD, RUBiomes.STEPPE);
-        ConditionSource isGrassBiome = isBiome(RUBiomes.ANCIENT_DELTA, RUBiomes.BAOBAB_SAVANNA, RUBiomes.BIOSHROOM_CAVES, RUBiomes.DECIDUOUS_FOREST, RUBiomes.DEPRECATED_FROZEN_TUNDRA, RUBiomes.FUNGAL_FEN, RUBiomes.PRISMACHASM, RUBiomes.REDSTONE_CAVES, RUBiomes.SCORCHING_CAVES);
+        ConditionSource isGrassBiome = isBiome(RUBiomes.ANCIENT_DELTA, RUBiomes.BAOBAB_SAVANNA, RUBiomes.BIOSHROOM_CAVES, RUBiomes.DECIDUOUS_FOREST, RUBiomes.REMOVED_FROZEN_TUNDRA, RUBiomes.FUNGAL_FEN, RUBiomes.PRISMACHASM, RUBiomes.REDSTONE_CAVES, RUBiomes.SCORCHING_CAVES);
 
         RuleSource AlphaGrassSurface = sequence(ifTrue(waterBlockCheck, ALPHA_GRASS), DIRT);
         RuleSource GrassSurface = sequence(ifTrue(waterBlockCheck, GRASS_BLOCK), DIRT);

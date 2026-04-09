@@ -31,7 +31,6 @@ public interface RUBiomes {
     ResourceKey<Biome> FEN = key("fen");
     ResourceKey<Biome> FLOWER_FIELDS = key("flower_fields");
     ResourceKey<Biome> FROZEN_PINE_TAIGA = key("frozen_pine_taiga");
-    ResourceKey<Biome> DEPRECATED_FROZEN_TUNDRA = key("frozen_tundra");
     ResourceKey<Biome> FUNGAL_FEN = key("fungal_fen");
     ResourceKey<Biome> GLISTERING_MEADOW = key("glistering_meadow");
     ResourceKey<Biome> GOLDEN_BOREAL_TAIGA = key("golden_boreal_taiga");
@@ -79,7 +78,8 @@ public interface RUBiomes {
     ResourceKey<Biome> TROPICS = key("tropics");
     ResourceKey<Biome> TUNDRA = key("tundra");
     ResourceKey<Biome> WILLOW_FOREST = key("willow_forest");
-
+    
+    ResourceKey<Biome> REMOVED_FROZEN_TUNDRA = key("frozen_tundra");
     ResourceKey<Biome> PLACEHOLDER_RIVER = key("placeholder_river");
 
     private static ResourceKey<Biome> key(String name) {
@@ -158,7 +158,7 @@ public interface RUBiomes {
         putVillagerBiome(COLD_BOREAL_TAIGA, VillagerType.SNOW);
         putVillagerBiome(COLD_DECIDUOUS_FOREST, VillagerType.SNOW);
         putVillagerBiome(FROZEN_PINE_TAIGA, VillagerType.SNOW);
-        putVillagerBiome(DEPRECATED_FROZEN_TUNDRA, VillagerType.SNOW);
+        putVillagerBiome(REMOVED_FROZEN_TUNDRA, VillagerType.SNOW);
         putVillagerBiome(ICY_HEIGHTS, VillagerType.SNOW);
         putVillagerBiome(SPIRES, VillagerType.SNOW);
         //CAVE

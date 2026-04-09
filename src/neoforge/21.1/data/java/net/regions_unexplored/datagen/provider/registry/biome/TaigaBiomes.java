@@ -41,7 +41,7 @@ public class TaigaBiomes {
         RUBiomeFeatures.grassSprouts(biomeBuilder);
         BiomeDefaultFeatures.addFerns(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        RUBiomeFeatures.addDefaultSoftDisks(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         if(hasSweetBerries) {
             BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);

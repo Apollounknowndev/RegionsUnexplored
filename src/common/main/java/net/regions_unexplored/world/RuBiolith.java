@@ -196,7 +196,7 @@ public class RuBiolith {
         if (RuCommonConfig.TOGGLE_TUNDRA.get()) {
             BiomePlacement.replaceOverworld(Biomes.SNOWY_PLAINS, RUBiomes.TUNDRA, 0.45f);
         } else if (RuCommonConfig.TOGGLE_FROZEN_TUNDRA.get()) {
-            BiomePlacement.replaceOverworld(Biomes.SNOWY_PLAINS, RUBiomes.DEPRECATED_FROZEN_TUNDRA, 0.45f);
+            BiomePlacement.replaceOverworld(Biomes.SNOWY_PLAINS, RUBiomes.REMOVED_FROZEN_TUNDRA, 0.45f);
         }
 
         // Forests

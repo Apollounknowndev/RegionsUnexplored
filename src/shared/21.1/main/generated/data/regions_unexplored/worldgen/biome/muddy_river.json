@@ -83,7 +83,7 @@
       "minecraft:patch_pumpkin",
       "minecraft:seagrass_river",
       "minecraft:kelp_warm",
-      "regions_unexplored:cattail_river",
+      "regions_unexplored:patch/cattail",
       "regions_unexplored:grass",
       "regions_unexplored:tall_grass"
     ],

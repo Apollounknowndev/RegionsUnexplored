@@ -30,6 +30,7 @@ public class RegionsUnexplored {
 
 		RUBiomes.init();
 		RUBlocks.init();
+		RUBlockStateProviderTypes.init();
 		RUCreativeModeTabs.init();
 		RUEntityTypes.init();
 		RUFeatureTypes.init();

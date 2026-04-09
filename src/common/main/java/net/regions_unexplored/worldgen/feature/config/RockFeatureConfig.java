@@ -16,10 +16,18 @@ public record RockFeatureConfig(BlockStateProvider stateProvider, IntProvider bl
     ).apply(i, RockFeatureConfig::new));
 
     public static RockFeatureConfig create(Block block) {
-        return new RockFeatureConfig(BlockStateProvider.simple(block), UniformInt.of(3, 4), UniformInt.of(-1, 1));
+        return create(BlockStateProvider.simple(block));
+    }
+    
+    public static RockFeatureConfig create(BlockStateProvider stateProvider) {
+        return new RockFeatureConfig(stateProvider, UniformInt.of(3, 4), UniformInt.of(-1, 1));
     }
 
     public static RockFeatureConfig createLarge(Block block) {
-        return new RockFeatureConfig(BlockStateProvider.simple(block), UniformInt.of(4, 7), UniformInt.of(-1, 1));
+        return createLarge(BlockStateProvider.simple(block));
+    }
+    
+    public static RockFeatureConfig createLarge(BlockStateProvider stateProvider) {
+        return new RockFeatureConfig(stateProvider, UniformInt.of(4, 7), UniformInt.of(-1, 1));
     }
 }

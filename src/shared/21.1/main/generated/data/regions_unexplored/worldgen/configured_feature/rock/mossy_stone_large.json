@@ -1,5 +1,5 @@
 {
-  "type": "regions_unexplored:new_rock",
+  "type": "regions_unexplored:rock",
   "config": {
     "blob_count": {
       "type": "minecraft:uniform",

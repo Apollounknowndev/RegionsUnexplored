@@ -1,6 +1,7 @@
 package net.regions_unexplored.datagen.provider.registry;
 
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuMiscOverworldPlacements;
@@ -9,18 +10,11 @@ import net.regions_unexplored.datagen.provider.registry.placed_feature.RuTreePla
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuVegetationPlacements;
 
 public class RUBiomeFeatures {
-
-    public static void addDefaultSoftDisks(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, RuMiscOverworldPlacements.DISK_SAND);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, RuMiscOverworldPlacements.DISK_CLAY);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, RuMiscOverworldPlacements.DISK_GRAVEL);
-    }
-
     public static void grassSprouts(BiomeGenerationSettings.Builder biomeBuilder) {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
     }
     public static void redwoodDecoration(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, RuMiscOverworldPlacements.REDWOODS_ROCK);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, MiscOverworldPlacements.FOREST_ROCK);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_FERNS_DENSE);
         addRareSalmonberryBush(biomeBuilder);
     }
@@ -66,9 +60,6 @@ public class RUBiomeFeatures {
         p_194721_.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, RuVegetationPlacements.BAMBOO);
     }
 
-    public static void addMeadowRocks(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.MEADOW_ROCK);
-    }
     public static void addHyssop(BiomeGenerationSettings.Builder biomeBuilder) {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.HYSSOP);
     }

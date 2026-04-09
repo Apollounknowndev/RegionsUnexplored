@@ -69,9 +69,9 @@
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "minecraft:underwater_magma",
-      "regions_unexplored:disk_sand",
-      "regions_unexplored:disk_clay",
-      "regions_unexplored:disk_gravel"
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
     ],
     [],
     [
@@ -87,7 +87,7 @@
       "minecraft:patch_berry_common",
       "regions_unexplored:tree/group/pine_taiga",
       "regions_unexplored:tree/pine_shrub_on_grass",
-      "regions_unexplored:fallen_pine_tree_on_dirt",
+      "regions_unexplored:tree/fallen_pine_on_dirt",
       "regions_unexplored:azure_daisy",
       "regions_unexplored:dirt_vegetation",
       "regions_unexplored:grass_vegetation",

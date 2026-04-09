@@ -34,7 +34,8 @@
       "minecraft:lake_lava_surface"
     ],
     [
-      "minecraft:amethyst_geode"
+      "minecraft:amethyst_geode",
+      "regions_unexplored:rock/group/temperate_grove"
     ],
     [
       "minecraft:monster_room",
@@ -69,9 +70,9 @@
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "minecraft:underwater_magma",
-      "regions_unexplored:disk_sand",
-      "regions_unexplored:disk_clay",
-      "regions_unexplored:disk_gravel"
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
     ],
     [],
     [
@@ -89,8 +90,7 @@
       "regions_unexplored:tree/oak_with_branch",
       "regions_unexplored:tree/maple_sparse",
       "regions_unexplored:tree/birch_aspen",
-      "regions_unexplored:meadow_rock",
-      "regions_unexplored:fallen_oak_tree_sparse",
+      "regions_unexplored:tree/fallen_oak_tree_sparse",
       "regions_unexplored:grass",
       "regions_unexplored:patch/purple_coneflowers",
       "regions_unexplored:shrub/oak"

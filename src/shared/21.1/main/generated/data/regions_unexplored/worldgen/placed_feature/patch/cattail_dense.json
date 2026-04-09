@@ -1,0 +1,21 @@
+{
+  "feature": "regions_unexplored:patch/cattail",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 6
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "absolute": 62
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
