@@ -68,7 +68,7 @@ public class RuCommonConfig extends Config {
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_FROZEN_PINE_TAIGA = biome(RUBiomes.FROZEN_PINE_TAIGA);
     @ConfigOption(category = "overworld_biome_toggles")
-    public static final ConfigValue<Boolean> TOGGLE_FROZEN_TUNDRA = biome(RUBiomes.FROZEN_TUNDRA);
+    public static final ConfigValue<Boolean> TOGGLE_FROZEN_TUNDRA = deprecatedBiome(RUBiomes.DEPRECATED_FROZEN_TUNDRA);
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_FUNGAL_FEN = biome(RUBiomes.FUNGAL_FEN);
     @ConfigOption(category = "overworld_biome_toggles")
@@ -146,6 +146,8 @@ public class RuCommonConfig extends Config {
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_TROPICS = biome(RUBiomes.TROPICS);
     @ConfigOption(category = "overworld_biome_toggles")
+    public static final ConfigValue<Boolean> TOGGLE_TUNDRA = biome(RUBiomes.TUNDRA);
+    @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_WILLOW_FOREST = biome(RUBiomes.WILLOW_FOREST);
 
     @ConfigOption(category = "overworld_cave_biome_toggles")
@@ -172,6 +174,12 @@ public class RuCommonConfig extends Config {
 
     @ConfigOption(category = "worldgen_surface_rules")
     public static final ConfigValue<Boolean> TOGGLE_CUSTOM_DIRTS = bool(true);
+    
+    private static ConfigValue<Boolean> deprecatedBiome(ResourceKey<Biome> biome) {
+        var config = bool(false);
+        BIOME_CONFIGS.put(biome, config);
+        return config;
+    }
     
     private static ConfigValue<Boolean> biome(ResourceKey<Biome> biome) {
         var config = bool(true);

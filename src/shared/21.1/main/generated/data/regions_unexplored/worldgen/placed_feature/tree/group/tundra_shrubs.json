@@ -1,9 +1,17 @@
 {
-  "feature": "regions_unexplored:tree/big_magnolia",
+  "feature": "regions_unexplored:tree/group/tundra_shrubs",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 1
+      "type": "lithostitched:noise_slope",
+      "noise": "regions_unexplored:tree_density",
+      "offset": -1,
+      "slope": -3,
+      "xz_scale": 1.0,
+      "y_scale": 0.0
+    },
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 3
     },
     {
       "type": "minecraft:in_square"

@@ -1,6 +1,5 @@
 package net.regions_unexplored.registry.data;
 
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -81,6 +80,8 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_TALL = tree("oak_tall");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_OAK = tree("big_oak");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_SHRUB = tree("oak_shrub");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_SHRUB_SMALL = tree("oak_shrub_small");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_SHRUB_LARGE = tree("oak_shrub_large");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_BUSH = tree("oak_bush");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_BUSH_WITH_FLOWERS = tree("oak_bush_with_flowers");
     ResourceKey<ConfiguredFeature<?,?>> TREE_PALM = tree("palm");
@@ -91,6 +92,8 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_PINE_SKINNY = tree("pine_skinny");
     ResourceKey<ConfiguredFeature<?,?>> TREE_PINE_SKINNY_TALL = tree("pine_skinny_tall");
     ResourceKey<ConfiguredFeature<?,?>> TREE_PINE_TALL = tree("pine_tall");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_PINE_TUNDRA = tree("pine_tundra");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_SPRUCE_TUNDRA = tree("spruce_tundra");
     ResourceKey<ConfiguredFeature<?,?>> TREE_STRIPPED_PINE = tree("stripped_pine");
     ResourceKey<ConfiguredFeature<?,?>> TREE_STRIPPED_PINE_TALL = tree("stripped_pine_tall");
     ResourceKey<ConfiguredFeature<?,?>> TREE_STRIPPED_PINE_MOUNTAIN = tree("stripped_pine_mountain");

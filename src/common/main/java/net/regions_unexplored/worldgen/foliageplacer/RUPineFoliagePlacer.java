@@ -11,15 +11,15 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 
 import static net.regions_unexplored.worldgen.foliageplacer.RUFoliagePlacerUtils.*;
 
-public class PineFoliagePlacer extends BlobFoliagePlacer {
-    public static final MapCodec<PineFoliagePlacer> CODEC = IntProvider.CODEC.fieldOf("offset").xmap(PineFoliagePlacer::new, p -> p.offset);
-    public static final FoliagePlacerType<PineFoliagePlacer> TYPE = new FoliagePlacerType<>(CODEC);
+public class RUPineFoliagePlacer extends BlobFoliagePlacer {
+    public static final MapCodec<RUPineFoliagePlacer> CODEC = IntProvider.CODEC.fieldOf("offset").xmap(RUPineFoliagePlacer::new, p -> p.offset);
+    public static final FoliagePlacerType<RUPineFoliagePlacer> TYPE = new FoliagePlacerType<>(CODEC);
 
-    public PineFoliagePlacer(IntProvider offset) {
-        this(ConstantInt.of(1), offset, 1);
+    public RUPineFoliagePlacer(IntProvider offset) {
+        this(ConstantInt.of(0), offset, 0);
     }
 
-    public PineFoliagePlacer(IntProvider radius, IntProvider offset, int height) {
+    public RUPineFoliagePlacer(IntProvider radius, IntProvider offset, int height) {
         super(radius, offset, height);
     }
 

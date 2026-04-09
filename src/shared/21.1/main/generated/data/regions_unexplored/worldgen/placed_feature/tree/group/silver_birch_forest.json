@@ -1,9 +1,13 @@
 {
-  "feature": "regions_unexplored:tree/big_white_magnolia",
+  "feature": "regions_unexplored:tree/group/silver_birch_forest",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 1
+      "type": "lithostitched:noise_slope",
+      "noise": "regions_unexplored:flower_density",
+      "offset": 6,
+      "slope": -8,
+      "xz_scale": 2.0,
+      "y_scale": 0.0
     },
     {
       "type": "minecraft:in_square"
@@ -21,7 +25,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "minecraft:oak_sapling",
+          "Name": "minecraft:birch_sapling",
           "Properties": {
             "stage": "0"
           }

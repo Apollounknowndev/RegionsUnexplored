@@ -82,7 +82,8 @@ public class RUBiomeBootstrap {
         register(context, RUBiomes.COLD_BOREAL_TAIGA, FrozenBiomes.coldBorealTaiga(featuresGetter, carversGetter));
         register(context, RUBiomes.COLD_DECIDUOUS_FOREST, FrozenBiomes.coldDeciduousForest(featuresGetter, carversGetter));
         register(context, RUBiomes.FROZEN_PINE_TAIGA, FrozenBiomes.frozenPineTaiga(featuresGetter, carversGetter));
-        register(context, RUBiomes.FROZEN_TUNDRA, FrozenBiomes.frozenTundra(featuresGetter, carversGetter));
+        register(context, RUBiomes.DEPRECATED_FROZEN_TUNDRA, FrozenBiomes.frozenTundra(featuresGetter, carversGetter));
+        register(context, RUBiomes.TUNDRA, FrozenBiomes.tundra(featuresGetter, carversGetter));
         register(context, RUBiomes.ICY_HEIGHTS, FrozenBiomes.icyHeights(featuresGetter, carversGetter));
         register(context, RUBiomes.SPIRES, FrozenBiomes.spires(featuresGetter, carversGetter));
         //CAVE

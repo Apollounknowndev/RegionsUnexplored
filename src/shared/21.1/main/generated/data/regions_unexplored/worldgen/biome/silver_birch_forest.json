@@ -85,12 +85,11 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:tree/silver_birch_tall",
-      "regions_unexplored:tree/silver_birch_dense",
+      "regions_unexplored:tree/group/silver_birch_forest",
       "regions_unexplored:fallen_silver_birch",
       "regions_unexplored:tassel_sparse",
       "regions_unexplored:grass",
-      "regions_unexplored:orange_coneflower"
+      "regions_unexplored:patch/orange_coneflowers"
     ],
     [
       "minecraft:freeze_top_layer"

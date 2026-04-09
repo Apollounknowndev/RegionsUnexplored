@@ -16,7 +16,6 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
-import net.minecraft.world.level.levelgen.feature.featuresize.FeatureSize;
 import net.minecraft.world.level.levelgen.feature.featuresize.ThreeLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.*;
@@ -24,6 +23,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.*;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.regions_unexplored.block.set.NaturalSet;
@@ -31,7 +31,7 @@ import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUFeatureTypes;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
-import net.regions_unexplored.worldgen.foliageplacer.PineFoliagePlacer;
+import net.regions_unexplored.worldgen.foliageplacer.RUPineFoliagePlacer;
 import net.regions_unexplored.worldgen.foliageplacer.RedwoodFoliagePlacer;
 import net.regions_unexplored.worldgen.foliageplacer.SakuraFoliagePlacer;
 import net.regions_unexplored.worldgen.foliageplacer.SkinnyPineFoliagePlacer;
@@ -53,10 +53,12 @@ import static net.regions_unexplored.datagen.provider.registry.placed_feature.Ru
 import static net.regions_unexplored.datagen.provider.registry.RUDatagenFeatureUtils.*;
 
 public class RuTreeFeatures {
+    public static final TreeDecorator PINE_BRANCH = BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3);
+    
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
-       register(context, TREE_GIANT_BLUE_BIOSHROOM, RUFeatureTypes.GIANT_BLUE_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(RUBlocks.BLUE_BIOSHROOM_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RUBlocks.GLOWING_BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), 7, 7));
-       register(context, TREE_GIANT_GREEN_BIOSHROOM, RUFeatureTypes.GIANT_GREEN_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(RUBlocks.GREEN_BIOSHROOM_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RUBlocks.GLOWING_GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), 8, 5));
-       register(context, TREE_GIANT_PINK_BIOSHROOM, RUFeatureTypes.GIANT_PINK_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(RUBlocks.PINK_BIOSHROOM_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.PINK_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RUBlocks.GLOWING_PINK_BIOSHROOM_BLOCK.get().defaultBlockState()), 7, 8));
+        register(context, TREE_GIANT_BLUE_BIOSHROOM, RUFeatureTypes.GIANT_BLUE_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(RUBlocks.BLUE_BIOSHROOM_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RUBlocks.GLOWING_BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), 7, 7));
+        register(context, TREE_GIANT_GREEN_BIOSHROOM, RUFeatureTypes.GIANT_GREEN_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(RUBlocks.GREEN_BIOSHROOM_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RUBlocks.GLOWING_GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), 8, 5));
+        register(context, TREE_GIANT_PINK_BIOSHROOM, RUFeatureTypes.GIANT_PINK_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(RUBlocks.PINK_BIOSHROOM_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.PINK_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RUBlocks.GLOWING_PINK_BIOSHROOM_BLOCK.get().defaultBlockState()), 7, 8));
        register(context, TREE_GIANT_YELLOW_BIOSHROOM, RUFeatureTypes.GIANT_YELLOW_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(RUBlocks.YELLOW_BIOSHROOM_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RUBlocks.GLOWING_YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState()), 5, 4));
        register(context, TREE_GIANT_BROWN_MUSHROOM, Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(Blocks.BROWN_MUSHROOM_BLOCK.defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.valueOf(true)).setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))), BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.valueOf(false)).setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))), 3));
        register(context, TREE_GIANT_RED_MUSHROOM, Feature.HUGE_RED_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(Blocks.RED_MUSHROOM_BLOCK.defaultBlockState().setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))), BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.valueOf(false)).setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))), 2));
@@ -102,8 +104,8 @@ public class RuTreeFeatures {
        register(context, TREE_BIG_PINK_MAGNOLIA, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.MAGNOLIA_WOOD_SET.getLog().defaultBlockState()),new FancyTrunkPlacer(8, 11, 0),BlockStateProvider.simple(RUBlocks.PINK_MAGNOLIA_NATURAL_SET.getLeaves().defaultBlockState()),new SakuraFoliagePlacer(ConstantInt.of(4), ConstantInt.of(0), ConstantInt.of(5), 0.25F), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().build());
        register(context, TREE_BIG_WHITE_MAGNOLIA, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.MAGNOLIA_WOOD_SET.getLog().defaultBlockState()),new FancyTrunkPlacer(8, 11, 0),BlockStateProvider.simple(RUBlocks.WHITE_MAGNOLIA_NATURAL_SET.getLeaves().defaultBlockState()),new SakuraFoliagePlacer(ConstantInt.of(4), ConstantInt.of(0), ConstantInt.of(5), 0.25F), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().build());
 
-       var cypress =register(context, TREE_CYPRESS, RUFeatureTypes.CYPRESS_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.CYPRESS_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.CYPRESS_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.CYPRESS_NATURAL_SET.getBranch().defaultBlockState()), 17, 4));
-       var giantCypress =register(context, TREE_GIANT_CYPRESS, RUFeatureTypes.GIANT_CYPRESS_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.CYPRESS_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.CYPRESS_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.CYPRESS_NATURAL_SET.getBranch().defaultBlockState()), 25, 5));
+       var cypress = register(context, TREE_CYPRESS, RUFeatureTypes.CYPRESS_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.CYPRESS_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.CYPRESS_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.CYPRESS_NATURAL_SET.getBranch().defaultBlockState()), 17, 4));
+       var giantCypress = register(context, TREE_GIANT_CYPRESS, RUFeatureTypes.GIANT_CYPRESS_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.CYPRESS_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.CYPRESS_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.CYPRESS_NATURAL_SET.getBranch().defaultBlockState()), 25, 5));
        registerPlaced(context, TREE_GROUP_OLD_GROWTH_BAYOU, Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
            List.of(new WeightedPlacedFeature(direct(cypress), 0.4f)),
            direct(giantCypress)
@@ -115,22 +117,22 @@ public class RuTreeFeatures {
 
        register(context, TREE_DEAD, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.DEAD_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(6, 2, 0),BlockStateProvider.simple(RUBlocks.DEAD_NATURAL_SET.getLeaves().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build());
        register(context, TREE_BIG_DEAD, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.DEAD_WOOD_SET.getLog().defaultBlockState()),new FancyTrunkPlacer(12, 3, 0),BlockStateProvider.simple(RUBlocks.DEAD_NATURAL_SET.getLeaves().defaultBlockState()),new FancyFoliagePlacer(ConstantInt.of(1), ConstantInt.of(2), 3), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().build());
-
+       
        var deadPine = register(context, TREE_DEAD_PINE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
            log(RUBlocks.PINE_WOOD_SET),
            new StraightTrunkPlacer(10, 4, 0),
            leaves(RUBlocks.DEAD_PINE_NATURAL_SET),
-           new PineFoliagePlacer(ConstantInt.of(0), UniformInt.of(0, 1), 0),
+           new RUPineFoliagePlacer(UniformInt.of(0, 1)),
            new TwoLayersFeatureSize(3, 0, 1)
-       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3))).build());
+       ).decorators(List.of(PINE_BRANCH)).build());
 
        var deadPineTall = register(context, TREE_DEAD_PINE_TALL, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
            log(RUBlocks.PINE_WOOD_SET),
            new StraightTrunkPlacer(14, 5, 0),
            leaves(RUBlocks.DEAD_PINE_NATURAL_SET),
-           new PineFoliagePlacer(ConstantInt.of(0), UniformInt.of(0, 1), 0),
+           new RUPineFoliagePlacer(UniformInt.of(0, 1)),
            new TwoLayersFeatureSize(3, 0, 1)
-       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3))).build());
+       ).decorators(List.of(PINE_BRANCH)).build());
 
        register(context, TREE_DEAD_STRIPPED_PINE, RUFeatureTypes.STRIPPED_PINE_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.PINE_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.DEAD_PINE_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.PINE_NATURAL_SET.getBranch().defaultBlockState()), 10, 4));
        register(context, TREE_DEAD_STRIPPED_PINE_TALL, RUFeatureTypes.STRIPPED_PINE_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.PINE_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.DEAD_PINE_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.PINE_NATURAL_SET.getBranch().defaultBlockState()), 14, 5));
@@ -168,8 +170,14 @@ public class RuTreeFeatures {
        var bigOrangeMaple = register(context, TREE_BIG_ORANGE_MAPLE, Feature.TREE,new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.MAPLE_WOOD_SET.getLog().defaultBlockState()),new FancyTrunkPlacer(8, 11, 0),BlockStateProvider.simple(RUBlocks.ORANGE_MAPLE_NATURAL_SET.getLeaves().defaultBlockState()),new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).decorators(List.of(PlaceOnGroundDecorator.leafLitter(RUBlocks.ORANGE_MAPLE_LEAF_LITTER.get(), 144))).ignoreVines().build());
 
        var silverBirch = register(context, TREE_SILVER_BIRCH, RUFeatureTypes.ASPEN_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.SILVER_BIRCH_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.SILVER_BIRCH_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.SILVER_BIRCH_NATURAL_SET.getBranch().defaultBlockState()), List.of(PlaceOnGroundDecorator.leafLitter(RUBlocks.SILVER_BIRCH_LEAF_LITTER.get(), 96)), 4, 4));
-       register(context, TREE_SILVER_BIRCH_TALL, RUFeatureTypes.ASPEN_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.SILVER_BIRCH_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.SILVER_BIRCH_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.SILVER_BIRCH_NATURAL_SET.getBranch().defaultBlockState()), List.of(PlaceOnGroundDecorator.leafLitter(RUBlocks.SILVER_BIRCH_LEAF_LITTER.get(), 96)), 5, 5));
-
+       var silverBirchTall = register(context, TREE_SILVER_BIRCH_TALL, RUFeatureTypes.ASPEN_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.SILVER_BIRCH_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.SILVER_BIRCH_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.SILVER_BIRCH_NATURAL_SET.getBranch().defaultBlockState()), List.of(PlaceOnGroundDecorator.leafLitter(RUBlocks.SILVER_BIRCH_LEAF_LITTER.get(), 96)), 5, 5));
+       
+       registerPlaced(context, TREE_GROUP_SILVER_BIRCH_FOREST, LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(WeightedList.<Holder<PlacedFeature>>builder()
+           .add(direct(silverBirch), 3)
+           .add(direct(silverBirchTall), 1)
+           .build()
+       ));
+       
        registerPlaced(context, TREE_GROUP_AUTUMNAL_MAPLE_FOREST, LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(WeightedList.<Holder<PlacedFeature>>builder()
            .add(direct(maple), 2)
            .add(direct(redMaple), 2)
@@ -201,6 +209,25 @@ public class RuTreeFeatures {
        register(context, TREE_OAK_SHRUB, RUFeatureTypes.TREE_SHRUB.get(), new RUTreeConfiguration(BlockStateProvider.simple(Blocks.OAK_LOG.defaultBlockState()), BlockStateProvider.simple(Blocks.OAK_LEAVES.defaultBlockState()), BlockStateProvider.simple(RUBlocks.OAK_NATURAL_SET.getBranch().defaultBlockState()), 1, 0));
        register(context, TREE_OAK_BUSH, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG.defaultBlockState()), new StraightTrunkPlacer(1, 0, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES.defaultBlockState()), new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2), new TwoLayersFeatureSize(0, 0, 0)).build());
        register(context, TREE_OAK_BUSH_WITH_FLOWERS, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG.defaultBlockState()), new StraightTrunkPlacer(1, 0, 0), new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.OAK_LEAVES.defaultBlockState(), 3).add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves().defaultBlockState(), 1)), new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2), new TwoLayersFeatureSize(0, 0, 0)).build());
+       var oakShrubSmall = register(context, TREE_OAK_SHRUB_SMALL, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           BlockStateProvider.simple(Blocks.OAK_LOG.defaultBlockState()),
+           new StraightTrunkPlacer(1, 0, 0),
+           BlockStateProvider.simple(Blocks.OAK_LEAVES.defaultBlockState()),
+           new PineFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), ConstantInt.of(2)),
+           new TwoLayersFeatureSize(0, 0, 0)
+       ).build());
+       var oakShrubLarge = register(context, TREE_OAK_SHRUB_LARGE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           BlockStateProvider.simple(Blocks.OAK_LOG.defaultBlockState()),
+           new StraightTrunkPlacer(1, 0, 0),
+           BlockStateProvider.simple(Blocks.OAK_LEAVES.defaultBlockState()),
+           new PineFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), ConstantInt.of(3)),
+           new TwoLayersFeatureSize(0, 0, 0)
+       ).build());
+       
+       registerPlaced(context, TREE_GROUP_TUNDRA_SHRUBS, LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(WeightedList.<Holder<PlacedFeature>>builder()
+           .add(direct(oakShrubSmall), 3)
+           .add(direct(oakShrubLarge), 2)
+           .build()));
 
        register(context, TREE_PALM, RUFeatureTypes.PALM_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.PALM_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.PALM_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.PALM_NATURAL_SET.getBranch().defaultBlockState()), 8, 5));
        register(context, TREE_TALL_PALM, RUFeatureTypes.PALM_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.PALM_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.PALM_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.PALM_NATURAL_SET.getBranch().defaultBlockState()), 12, 5));
@@ -210,17 +237,17 @@ public class RuTreeFeatures {
            log(RUBlocks.PINE_WOOD_SET),
            new StraightTrunkPlacer(10, 4, 0),
            leaves(RUBlocks.PINE_NATURAL_SET),
-           new PineFoliagePlacer(ConstantInt.of(0), UniformInt.of(0, 1), 0),
+           new RUPineFoliagePlacer(ConstantInt.of(0), UniformInt.of(0, 1), 0),
            new TwoLayersFeatureSize(3, 0, 1)
-       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3), new BeehiveDecorator(0.001f))).build());
+       ).decorators(List.of(PINE_BRANCH, new BeehiveDecorator(0.001f))).build());
        
        var pineBees = register(context, TREE_PINE_BEES, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
            log(RUBlocks.PINE_WOOD_SET),
            new StraightTrunkPlacer(9, 3, 0),
            leaves(RUBlocks.PINE_NATURAL_SET),
-           new PineFoliagePlacer(ConstantInt.of(0), UniformInt.of(1, 2), 0),
+           new RUPineFoliagePlacer(ConstantInt.of(0), UniformInt.of(1, 2), 0),
            new TwoLayersFeatureSize(3, 0, 1)
-       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3), new BeehiveDecorator(1f))).build());
+       ).decorators(List.of(PINE_BRANCH, new BeehiveDecorator(1f))).build());
 
        var pineSkinny = register(context, TREE_PINE_SKINNY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
             log(RUBlocks.PINE_WOOD_SET),
@@ -228,15 +255,15 @@ public class RuTreeFeatures {
             leaves(RUBlocks.PINE_NATURAL_SET),
             new SkinnyPineFoliagePlacer(ConstantInt.of(0), UniformInt.of(0, 1), 5),
             new TwoLayersFeatureSize(3, 0, 1)
-       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3), new BeehiveDecorator(0.001f))).build());
+       ).decorators(List.of(PINE_BRANCH, new BeehiveDecorator(0.001f))).build());
 
        var pineTall = register(context, TREE_PINE_TALL, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
            log(RUBlocks.PINE_WOOD_SET),
            new StraightTrunkPlacer(14, 5, 0),
            leaves(RUBlocks.PINE_NATURAL_SET),
-           new PineFoliagePlacer(ConstantInt.of(0), UniformInt.of(0, 1), 0),
+           new RUPineFoliagePlacer(ConstantInt.of(0), UniformInt.of(0, 1), 0),
            new TwoLayersFeatureSize(3, 0, 1)
-       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3), new BeehiveDecorator(0.001f))).build());
+       ).decorators(List.of(PINE_BRANCH, new BeehiveDecorator(0.001f))).build());
 
        var pineSkinnyTall = register(context, TREE_PINE_SKINNY_TALL, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
            log(RUBlocks.PINE_WOOD_SET),
@@ -244,7 +271,7 @@ public class RuTreeFeatures {
            leaves(RUBlocks.PINE_NATURAL_SET),
            new SkinnyPineFoliagePlacer(ConstantInt.of(0), UniformInt.of(0, 1), 5),
            new TwoLayersFeatureSize(3, 0, 1)
-       ).decorators(List.of(BranchDecorator.create(0.1f, RUBlocks.PINE_NATURAL_SET, RUBlocks.PINE_WOOD_SET, 3), new BeehiveDecorator(0.001f))).build());
+       ).decorators(List.of(PINE_BRANCH, new BeehiveDecorator(0.001f))).build());
 
        registerPlaced(context, TREE_GROUP_PINE_TAIGA, LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(WeightedList.<Holder<PlacedFeature>>builder()
            .add(direct(pine), 12)
@@ -274,7 +301,28 @@ public class RuTreeFeatures {
 
        register(context, TREE_SPRUCE_TALL, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.SPRUCE_LOG.defaultBlockState()), new StraightTrunkPlacer(13, 2, 2), BlockStateProvider.simple(Blocks.SPRUCE_LEAVES.defaultBlockState()), new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(2, 2), UniformInt.of(5, 5)), new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build());
        register(context, TREE_SPRUCE_SHRUB, RUFeatureTypes.TREE_SHRUB.get(), new RUTreeConfiguration(BlockStateProvider.simple(Blocks.SPRUCE_LOG.defaultBlockState()), BlockStateProvider.simple(Blocks.SPRUCE_LEAVES.defaultBlockState()), BlockStateProvider.simple(RUBlocks.OAK_NATURAL_SET.getBranch().defaultBlockState()), 1, 0));
-
+       
+       var spruceTundra = register(context, TREE_SPRUCE_TUNDRA, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           BlockStateProvider.simple(RUBlocks.PINE_WOOD_SET.getLog()),
+           new StraightTrunkPlacer(6, 3, 1),
+           BlockStateProvider.simple(Blocks.SPRUCE_LEAVES),
+           new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(1, 2), UniformInt.of(1, 2)),
+           new TwoLayersFeatureSize(2, 0, 2)
+       ).decorators(List.of(PINE_BRANCH)).ignoreVines().build());
+       
+       var spruceFancyTundra = register(context, TREE_PINE_TUNDRA, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           BlockStateProvider.simple(RUBlocks.PINE_WOOD_SET.getLog()),
+           new StraightTrunkPlacer(8, 4, 0),
+           BlockStateProvider.simple(Blocks.SPRUCE_LEAVES),
+           new RUPineFoliagePlacer(UniformInt.of(1, 2)),
+           new TwoLayersFeatureSize(2, 0, 2)
+       ).decorators(List.of(PINE_BRANCH)).ignoreVines().build());
+       
+       registerPlaced(context, TREE_GROUP_TUNDRA, LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(WeightedList.<Holder<PlacedFeature>>builder()
+           .add(direct(spruceTundra), 4)
+           .add(direct(spruceFancyTundra), 1)
+           .build()));
+       
        register(context, TREE_SMALL_OAK, RUFeatureTypes.SMALL_OAK_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.SMALL_OAK_LOG.get().defaultBlockState()), BlockStateProvider.simple(RUBlocks.SMALL_OAK_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.OAK_NATURAL_SET.getBranch().defaultBlockState()), 5, 4));
 
        register(context, TREE_LARGE_SOCOTRA, RUFeatureTypes.LARGE_SOCOTRA_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.SOCOTRA_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.SOCOTRA_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.SOCOTRA_NATURAL_SET.getBranch()), 8, 5));
@@ -342,6 +390,7 @@ public class RuTreeFeatures {
            .add(direct(redwoodLarge), 4)
            .add(direct(redwoodEmergent), 1)
         .build()));
+       
 
        register(context, TREE_WILLOW, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
            BlockStateProvider.simple(RUBlocks.WILLOW_WOOD_SET.getLog().defaultBlockState()),

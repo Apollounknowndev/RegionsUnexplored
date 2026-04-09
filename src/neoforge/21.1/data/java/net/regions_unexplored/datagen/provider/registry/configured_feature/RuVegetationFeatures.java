@@ -42,6 +42,7 @@ import net.regions_unexplored.world.level.block.plant.grass.AshenGrassBlock;
 import java.util.List;
 
 import static net.regions_unexplored.datagen.provider.registry.RUDatagenFeatureUtils.*;
+import static net.regions_unexplored.datagen.provider.registry.placed_feature.RuVegetationPlacements.*;
 import static net.regions_unexplored.registry.data.RUConfiguredFeatures.key;
 
 public class RuVegetationFeatures {
@@ -66,9 +67,7 @@ public class RuVegetationFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_LUPINES = key("patch/lupines");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_DAISIES = key("patch/daisies");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_GRASS_SPARSE = key("patch/grass_sparse");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_SANDY_GRASS_SPARSE = key("patch/sandy_grass_sparse");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_DESERT_SHRUB_SPARSE = key("patch/desert_shrub_sparse");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_BLADED_GRASS = key("patch_bladed_grass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_BLACKWOOD_VEGETATION = key("patch_blackwood_vegetation");
@@ -78,7 +77,6 @@ public class RuVegetationFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_MOUNTAIN_VEGETATION = key("patch_mountain_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_STEPPE_VEGETATION = key("patch_steppe_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_SOCOTRA_VEGETATION = key("patch_socotra_vegetation");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_OUTBACK_VEGETATION = key("patch_outback_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_SANDY_GRASS_VEGETATION = key("patch_sandy_grass_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_BAYOU_VEGETATION = key("patch_bayou_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_DIRT_VEGETATION = key("patch_dirt_vegetation");
@@ -118,7 +116,7 @@ public class RuVegetationFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SANDY_GRASS = key("sandy_grass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_REDSTONE_BULB = key("patch_redstone_bulb");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_ORANGE_CONEFLOWER = key("patch_orange_coneflower");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_ORANGE_CONEFLOWERS = key("patch/orange_coneflowers");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_PURPLE_CONEFLOWERS = key("patch/purple_coneflowers");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_MAGNOLIA_FLOWERS = key("patch_magnolia_flowers");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_CLOVER = key("patch_clover");
@@ -239,10 +237,24 @@ public class RuVegetationFeatures {
                 RandomOffsetPlacement.vertical(ConstantInt.of(-1))
             )
         ))));
-
-        register(context, PATCH_GRASS_SPARSE, Feature.RANDOM_PATCH, patch(weightedStates(pair(Blocks.SHORT_GRASS), pair(RUBlocks.GRASS_SPROUTS.get())), 64));
+        registerPlaced(context, PATCH_TUNDRA_FLOWERS, Feature.RANDOM_PATCH, patch(new NoiseProvider(
+            923586L,
+            new NormalNoise.NoiseParameters(-7, 2, 1.3),
+            1.5f,
+            List.of(
+               Blocks.LILY_OF_THE_VALLEY.defaultBlockState(),
+               RUBlocks.BLEEDING_HEART.get().defaultBlockState(),
+               Blocks.POPPY.defaultBlockState()
+            )
+        ), 48));
+        
+        register(context, PATCH_GRASS, Feature.RANDOM_PATCH, patch(weightedStates(pair(Blocks.SHORT_GRASS), pair(RUBlocks.GRASS_SPROUTS.get())), 64));
+        registerPlaced(context, PATCH_FERN, Feature.RANDOM_PATCH, patch(BlockStateProvider.simple(Blocks.FERN), 96));
         register(context, PATCH_SANDY_GRASS_SPARSE, Feature.RANDOM_PATCH, patch(BlockStateProvider.simple(RUBlocks.SANDY_GRASS.get()), 64));
-        register(context, PATCH_DESERT_SHRUB_SPARSE, Feature.RANDOM_PATCH, patch(BlockStateProvider.simple(RUBlocks.SMALL_DESERT_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.DIRT)));
+        registerPlaced(context, PATCH_STEPPE_GRASS, Feature.RANDOM_PATCH, patch(BlockStateProvider.simple(RUBlocks.STEPPE_GRASS.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.DIRT)));
+        registerPlaced(context, PATCH_DESERT_SHRUB_ON_GRASS, Feature.RANDOM_PATCH, patch(BlockStateProvider.simple(RUBlocks.SMALL_DESERT_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.DIRT)));
+        registerPlaced(context, PATCH_DESERT_SHRUB_ON_SAND, Feature.RANDOM_PATCH, patch(BlockStateProvider.simple(RUBlocks.SMALL_DESERT_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.SAND)));
+        registerPlaced(context, PATCH_STEPPE_SHRUB_ON_SAND, Feature.RANDOM_PATCH, patch(BlockStateProvider.simple(RUBlocks.DEAD_STEPPE_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.SAND)));
 
         register(context, PATCH_BARLEY, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(RUBlocks.BARLEY.get()))));
         register(context, PATCH_BAYOU_VEGETATION, Feature.RANDOM_PATCH, patch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.FERN.defaultBlockState(), 30).add(Blocks.SHORT_GRASS.defaultBlockState(), 15).add(Blocks.TALL_GRASS.defaultBlockState(), 3)), 32));
@@ -254,7 +266,6 @@ public class RuVegetationFeatures {
         register(context, PATCH_FEN_VEGETATION, Feature.RANDOM_PATCH, patch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.FERN.defaultBlockState(), 30).add(Blocks.SHORT_GRASS.defaultBlockState(), 15).add(Blocks.TALL_GRASS.defaultBlockState(), 10).add(Blocks.LARGE_FERN.defaultBlockState(), 5)), 32));
         register(context, PATCH_DIRT_VEGETATION, Feature.RANDOM_PATCH, patch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.FERN.defaultBlockState(), 30).add(Blocks.SHORT_GRASS.defaultBlockState(), 5).add(Blocks.LARGE_FERN.defaultBlockState(), 3)), 32));
         register(context, PATCH_FERNS, Feature.RANDOM_PATCH, patch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.FERN.defaultBlockState(), 10).add(Blocks.FERN.defaultBlockState(), 1)), 32));
-        register(context, PATCH_GRASS, Feature.RANDOM_PATCH, patch(BlockStateProvider.simple(Blocks.SHORT_GRASS.defaultBlockState()), 32));
         register(context, PATCH_GRASS_VEGETATION, Feature.RANDOM_PATCH, patch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.FERN.defaultBlockState(), 7).add(Blocks.SHORT_GRASS.defaultBlockState(), 15).add(Blocks.TALL_GRASS.defaultBlockState(), 2)), 32));
         register(context, PATCH_PRISMOSS_SPROUT, Feature.RANDOM_PATCH, patch(BlockStateProvider.simple(RUBlocks.PRISMOSS_SPROUT.get().defaultBlockState()), 32));
         register(context, PATCH_REDSTONE_BUD, Feature.RANDOM_PATCH, patch(BlockStateProvider.simple(RUBlocks.REDSTONE_BUD.get().defaultBlockState()), 128));
@@ -269,7 +280,6 @@ public class RuVegetationFeatures {
         register(context, PATCH_MOUNTAIN_VEGETATION, Feature.RANDOM_PATCH, patch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.FERN.defaultBlockState(), 30).add(Blocks.LARGE_FERN.defaultBlockState(), 15).add(Blocks.SHORT_GRASS.defaultBlockState(), 20).add(Blocks.TALL_GRASS.defaultBlockState(), 5)), 32));
         register(context, PATCH_STEPPE_VEGETATION, Feature.RANDOM_PATCH, patch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.STEPPE_GRASS.get().defaultBlockState(), 10).add(RUBlocks.STEPPE_SHRUB.get().defaultBlockState(), 10).add(RUBlocks.SMALL_DESERT_SHRUB.get().defaultBlockState(), 1).add(RUBlocks.STEPPE_TALL_GRASS.get().defaultBlockState(), 1).add(RUBlocks.DEAD_STEPPE_SHRUB.get().defaultBlockState(), 10)), 32));
         register(context, PATCH_SOCOTRA_VEGETATION, Feature.RANDOM_PATCH, patch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.STEPPE_SHRUB.get().defaultBlockState(), 10).add(Blocks.SHORT_GRASS.defaultBlockState(), 10).add(RUBlocks.SMALL_DESERT_SHRUB.get().defaultBlockState(), 5).add(Blocks.TALL_GRASS.defaultBlockState(), 1)), 32));
-        register(context, PATCH_OUTBACK_VEGETATION, Feature.RANDOM_PATCH, patch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.STEPPE_GRASS.get().defaultBlockState(), 10).add(Blocks.SHORT_GRASS.defaultBlockState(), 10).add(RUBlocks.DEAD_STEPPE_SHRUB.get().defaultBlockState(), 5).add(RUBlocks.SMALL_DESERT_SHRUB.get().defaultBlockState(), 10)), 32));
         register(context, PATCH_SANDY_GRASS_VEGETATION, Feature.RANDOM_PATCH, patch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.SANDY_GRASS.get().defaultBlockState(), 20).add(RUBlocks.SANDY_TALL_GRASS.get().defaultBlockState(), 1)), 32));
         register(context, PATCH_SNOW_GRASS, Feature.RANDOM_PATCH, patch(BlockStateProvider.simple(RUBlocks.FROZEN_GRASS.get().defaultBlockState()), 32));
         register(context, PATCH_GRASS_SPROUTS, Feature.RANDOM_PATCH, patch(BlockStateProvider.simple(RUBlocks.GRASS_SPROUTS.get().defaultBlockState()), 32));
@@ -314,9 +324,11 @@ public class RuVegetationFeatures {
 
         register(context, PATCH_MAGNOLIA_FLOWERS, Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(magnoliaFlowerBuilder)))));
         register(context, PATCH_MEADOW_VEGETATION, Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.HYSSOP.get().defaultBlockState(), 20).add(RUBlocks.FIREWEED.get().defaultBlockState(), 15).add(RUBlocks.DAISY.get().defaultBlockState(), 10).add(Blocks.SHORT_GRASS.defaultBlockState(), 40))))));
-        register(context, PATCH_ORANGE_CONEFLOWER, Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(orangeConeflowerBuilder)))));
         register(context, PATCH_POPPIES, Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.075F, List.of(RUBlocks.POPPY_BUSH.get().defaultBlockState(), RUBlocks.SALMON_POPPY_BUSH.get().defaultBlockState()))))));
         register(context, PATCH_PRAIRIE_FLOWERS, Feature.FLOWER, new RandomPatchConfiguration(32, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.POPPY_BUSH.get().defaultBlockState(), 3).add(RUBlocks.RED_LUPINE.get().defaultBlockState(), 2).add(RUBlocks.YELLOW_LUPINE.get().defaultBlockState(), 1))))));
+        register(context, PATCH_ORANGE_CONEFLOWERS, Feature.FLOWER, new RandomPatchConfiguration(36, 4, 2,
+            PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(orangeConeflowerBuilder)))
+        ));
         register(context, PATCH_PURPLE_CONEFLOWERS, Feature.FLOWER, new RandomPatchConfiguration(36, 4, 2,
             PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(purpleConeflowerBuilder)))
         ));
@@ -395,6 +407,10 @@ public class RuVegetationFeatures {
 
     private static RandomPatchConfiguration patch(BlockStateProvider stateProvider, int count, BlockPredicate predicate) {
         return FeatureUtils.simpleRandomPatchConfiguration(count, PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(stateProvider), BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, predicate)));
+    }
+    
+    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void registerPlaced(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<PlacedFeature> key, F feature, FC config) {
+        context.register(RUConfiguredFeatures.fromPlaced(key), new ConfiguredFeature<>(feature, config));
     }
 
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC config) {

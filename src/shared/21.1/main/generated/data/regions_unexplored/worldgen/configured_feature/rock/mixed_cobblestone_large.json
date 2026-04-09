@@ -1,0 +1,22 @@
+{
+  "type": "regions_unexplored:new_rock",
+  "config": {
+    "blob_count": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 6,
+      "min_inclusive": 4
+    },
+    "blob_offset_xz": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 1,
+      "min_inclusive": -1
+    },
+    "state_provider": {
+      "type": "lithostitched:random_block",
+      "blocks": [
+        "minecraft:cobblestone",
+        "minecraft:mossy_cobblestone"
+      ]
+    }
+  }
+}

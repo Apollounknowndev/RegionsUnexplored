@@ -6,10 +6,21 @@
         "type": "minecraft:simple_block",
         "config": {
           "to_place": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "minecraft:short_grass"
-            }
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "data": {
+                  "Name": "minecraft:short_grass"
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "regions_unexplored:grass_sprouts"
+                },
+                "weight": 1
+              }
+            ]
           }
         }
       },
@@ -23,7 +34,7 @@
         }
       ]
     },
-    "tries": 32,
+    "tries": 64,
     "xz_spread": 7,
     "y_spread": 3
   }

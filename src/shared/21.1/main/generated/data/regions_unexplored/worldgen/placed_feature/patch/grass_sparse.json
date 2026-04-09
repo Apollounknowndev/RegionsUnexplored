@@ -1,5 +1,5 @@
 {
-  "feature": "regions_unexplored:patch/grass_sparse",
+  "feature": "regions_unexplored:patch_grass",
   "placement": [
     {
       "type": "minecraft:count",

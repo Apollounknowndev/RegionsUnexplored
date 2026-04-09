@@ -56,10 +56,17 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> PATCH_FERNS_DENSE = key("patch/ferns_dense");
     public static final ResourceKey<PlacedFeature> PATCH_CLOVERS_DENSE = key("patch/clovers_dense");
     public static final ResourceKey<PlacedFeature> PATCH_DAISIES = key("patch/daisies");
+    public static final ResourceKey<PlacedFeature> PATCH_TUNDRA_FLOWERS = key("patch/tundra_flowers");
 
     public static final ResourceKey<PlacedFeature> PATCH_GRASS_SPARSE = key("patch/grass_sparse");
+    public static final ResourceKey<PlacedFeature> PATCH_GRASS = key("patch/grass");
+    public static final ResourceKey<PlacedFeature> PATCH_GRASS_DENSE = key("patch/grass_dense");
+    public static final ResourceKey<PlacedFeature> PATCH_FERN = key("patch/fern");
+    public static final ResourceKey<PlacedFeature> PATCH_STEPPE_GRASS = key("patch/steppe_grass");
     public static final ResourceKey<PlacedFeature> PATCH_SANDY_GRASS_SPARSE = key("patch/sandy_grass_sparse");
-    public static final ResourceKey<PlacedFeature> PATCH_DESERT_SHRUB_SPARSE = key("patch/desert_shrub_sparse");
+    public static final ResourceKey<PlacedFeature> PATCH_DESERT_SHRUB_ON_GRASS = key("patch/desert_shrub_on_grass");
+    public static final ResourceKey<PlacedFeature> PATCH_DESERT_SHRUB_ON_SAND = key("patch/desert_shrub_on_sand");
+    public static final ResourceKey<PlacedFeature> PATCH_STEPPE_SHRUB_ON_SAND = key("patch/steppe_shrub_on_sand");
 
 
     public static final ResourceKey<PlacedFeature> BLACKWOOD_VEGETATION = key("blackwood_vegetation");
@@ -67,7 +74,6 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> FEN_VEGETATION = key("fen_vegetation");
     public static final ResourceKey<PlacedFeature> SHRUBLAND_VEGETATION = key("shrubland_vegetation");
     public static final ResourceKey<PlacedFeature> MOUNTAIN_VEGETATION = key("mountain_vegetation");
-    public static final ResourceKey<PlacedFeature> OUTBACK_VEGETATION = key("outback_vegetation");
     public static final ResourceKey<PlacedFeature> STEPPE_VEGETATION = key("steppe_vegetation");
     public static final ResourceKey<PlacedFeature> SOCOTRA_VEGETATION = key("socotra_vegetation");
     public static final ResourceKey<PlacedFeature> BAYOU_VEGETATION = key("bayou_vegetation");
@@ -112,8 +118,7 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> MEADOW_SAGE = key("meadow_sage");
     public static final ResourceKey<PlacedFeature> REDSTONE_BULB = key("redstone_bulb");
 
-    public static final ResourceKey<PlacedFeature> ORANGE_CONEFLOWER = key("orange_coneflower");
-    public static final ResourceKey<PlacedFeature> SPARSE_ORANGE_CONEFLOWER = key("sparse_orange_coneflower");
+    public static final ResourceKey<PlacedFeature> PATCH_ORANGE_CONEFLOWERS = key("patch/orange_coneflowers");
     public static final ResourceKey<PlacedFeature> PATCH_PURPLE_CONEFLOWERS = key("patch/purple_coneflowers");
     public static final ResourceKey<PlacedFeature> MAGNOLIA_FLOWERS = key("magnolia_flowers");
     public static final ResourceKey<PlacedFeature> CLOVER_SPARSE = key("clover_sparse");
@@ -193,108 +198,107 @@ public class RuVegetationPlacements {
 
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
-        HolderGetter<ConfiguredFeature<?, ?>> featureGetter = context.lookup(Registries.CONFIGURED_FEATURE);
+        HolderGetter<ConfiguredFeature<?, ?>> getter = context.lookup(Registries.CONFIGURED_FEATURE);
+        
+        Holder<ConfiguredFeature<?, ?>> patchGrass = getter.getOrThrow(RuVegetationFeatures.PATCH_GRASS);
 
         //---------------------FEATURES---------------------//
-        final Holder<ConfiguredFeature<?, ?>> BLACKWOOD_MUSHROOMS = featureGetter.getOrThrow(RuVegetationFeatures.BLACKWOOD_BIOSHROOMS);
-        final Holder<ConfiguredFeature<?, ?>> BLACKWOOD_DECORATION = featureGetter.getOrThrow(RuVegetationFeatures.BLACKWOOD_DECORATION);
-        final Holder<ConfiguredFeature<?, ?>> MEADOW_VEGETATION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_MEADOW_VEGETATION);
+        final Holder<ConfiguredFeature<?, ?>> BLACKWOOD_MUSHROOMS = getter.getOrThrow(RuVegetationFeatures.BLACKWOOD_BIOSHROOMS);
+        final Holder<ConfiguredFeature<?, ?>> BLACKWOOD_DECORATION = getter.getOrThrow(RuVegetationFeatures.BLACKWOOD_DECORATION);
+        final Holder<ConfiguredFeature<?, ?>> MEADOW_VEGETATION = getter.getOrThrow(RuVegetationFeatures.PATCH_MEADOW_VEGETATION);
         //GRASS
-        final Holder<ConfiguredFeature<?, ?>> SANDY_GRASS = featureGetter.getOrThrow(RuVegetationFeatures.SANDY_GRASS);
-        final Holder<ConfiguredFeature<?, ?>> SNOW_GRASS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_SNOW_GRASS);
-        final Holder<ConfiguredFeature<?, ?>> FERNS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_FERNS);
-        final Holder<ConfiguredFeature<?, ?>> GRASS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_GRASS);
-        final Holder<ConfiguredFeature<?, ?>> TALL_GRASS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_TALL_GRASS);
-        final Holder<ConfiguredFeature<?, ?>> WINDSWEPT_GRASS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_WINDSWEPT_GRASS);
-        final Holder<ConfiguredFeature<?, ?>> PATCH_GRASS_SPROUTS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_GRASS_SPROUTS);
-        final Holder<ConfiguredFeature<?, ?>> BLACKWOOD_VEGETATION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_BLACKWOOD_VEGETATION);
-        final Holder<ConfiguredFeature<?, ?>> DECIDUOUS_VEGETATION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_DECIDUOUS_VEGETATION);
-        final Holder<ConfiguredFeature<?, ?>> FEN_VEGETATION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_FEN_VEGETATION);
-        final Holder<ConfiguredFeature<?, ?>> SHRUBLAND_VEGETATION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_SHRUBLAND_VEGETATION);
-        final Holder<ConfiguredFeature<?, ?>> MOUNTAIN_VEGETATION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_MOUNTAIN_VEGETATION);
-        final Holder<ConfiguredFeature<?, ?>> STEPPE_VEGETATION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_STEPPE_VEGETATION);
-        final Holder<ConfiguredFeature<?, ?>> SOCOTRA_VEGETATION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_SOCOTRA_VEGETATION);
-        final Holder<ConfiguredFeature<?, ?>> OUTBACK_VEGETATION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_OUTBACK_VEGETATION);
-        final Holder<ConfiguredFeature<?, ?>> BAYOU_VEGETATION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_BAYOU_VEGETATION);
-        final Holder<ConfiguredFeature<?, ?>> SANDY_GRASS_VEGETATION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_SANDY_GRASS_VEGETATION);
-        final Holder<ConfiguredFeature<?, ?>> DIRT_VEGETATION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_DIRT_VEGETATION);
-        final Holder<ConfiguredFeature<?, ?>> GRASS_VEGETATION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_GRASS_VEGETATION);
-        final Holder<ConfiguredFeature<?, ?>> REDSTONE_BUD = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_REDSTONE_BUD);
-        final Holder<ConfiguredFeature<?, ?>> PRISMOSS_SPROUT = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_PRISMOSS_SPROUT);
-        final Holder<ConfiguredFeature<?, ?>> BLADED_GRASS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_BLADED_GRASS);
-        final Holder<ConfiguredFeature<?, ?>> BLADED_GRASS_BONEMEAL = featureGetter.getOrThrow(RuVegetationFeatures.BLADED_GRASS_SINGLE);
+        final Holder<ConfiguredFeature<?, ?>> SANDY_GRASS = getter.getOrThrow(RuVegetationFeatures.SANDY_GRASS);
+        final Holder<ConfiguredFeature<?, ?>> SNOW_GRASS = getter.getOrThrow(RuVegetationFeatures.PATCH_SNOW_GRASS);
+        final Holder<ConfiguredFeature<?, ?>> FERNS = getter.getOrThrow(RuVegetationFeatures.PATCH_FERNS);
+        final Holder<ConfiguredFeature<?, ?>> TALL_GRASS = getter.getOrThrow(RuVegetationFeatures.PATCH_TALL_GRASS);
+        final Holder<ConfiguredFeature<?, ?>> WINDSWEPT_GRASS = getter.getOrThrow(RuVegetationFeatures.PATCH_WINDSWEPT_GRASS);
+        final Holder<ConfiguredFeature<?, ?>> PATCH_GRASS_SPROUTS = getter.getOrThrow(RuVegetationFeatures.PATCH_GRASS_SPROUTS);
+        final Holder<ConfiguredFeature<?, ?>> BLACKWOOD_VEGETATION = getter.getOrThrow(RuVegetationFeatures.PATCH_BLACKWOOD_VEGETATION);
+        final Holder<ConfiguredFeature<?, ?>> DECIDUOUS_VEGETATION = getter.getOrThrow(RuVegetationFeatures.PATCH_DECIDUOUS_VEGETATION);
+        final Holder<ConfiguredFeature<?, ?>> FEN_VEGETATION = getter.getOrThrow(RuVegetationFeatures.PATCH_FEN_VEGETATION);
+        final Holder<ConfiguredFeature<?, ?>> SHRUBLAND_VEGETATION = getter.getOrThrow(RuVegetationFeatures.PATCH_SHRUBLAND_VEGETATION);
+        final Holder<ConfiguredFeature<?, ?>> MOUNTAIN_VEGETATION = getter.getOrThrow(RuVegetationFeatures.PATCH_MOUNTAIN_VEGETATION);
+        final Holder<ConfiguredFeature<?, ?>> STEPPE_VEGETATION = getter.getOrThrow(RuVegetationFeatures.PATCH_STEPPE_VEGETATION);
+        final Holder<ConfiguredFeature<?, ?>> SOCOTRA_VEGETATION = getter.getOrThrow(RuVegetationFeatures.PATCH_SOCOTRA_VEGETATION);
+        final Holder<ConfiguredFeature<?, ?>> BAYOU_VEGETATION = getter.getOrThrow(RuVegetationFeatures.PATCH_BAYOU_VEGETATION);
+        final Holder<ConfiguredFeature<?, ?>> SANDY_GRASS_VEGETATION = getter.getOrThrow(RuVegetationFeatures.PATCH_SANDY_GRASS_VEGETATION);
+        final Holder<ConfiguredFeature<?, ?>> DIRT_VEGETATION = getter.getOrThrow(RuVegetationFeatures.PATCH_DIRT_VEGETATION);
+        final Holder<ConfiguredFeature<?, ?>> GRASS_VEGETATION = getter.getOrThrow(RuVegetationFeatures.PATCH_GRASS_VEGETATION);
+        final Holder<ConfiguredFeature<?, ?>> REDSTONE_BUD = getter.getOrThrow(RuVegetationFeatures.PATCH_REDSTONE_BUD);
+        final Holder<ConfiguredFeature<?, ?>> PRISMOSS_SPROUT = getter.getOrThrow(RuVegetationFeatures.PATCH_PRISMOSS_SPROUT);
+        final Holder<ConfiguredFeature<?, ?>> BLADED_GRASS = getter.getOrThrow(RuVegetationFeatures.PATCH_BLADED_GRASS);
+        final Holder<ConfiguredFeature<?, ?>> BLADED_GRASS_BONEMEAL = getter.getOrThrow(RuVegetationFeatures.BLADED_GRASS_SINGLE);
        //FLOWERS
-        final Holder<ConfiguredFeature<?, ?>> ASTER = featureGetter.getOrThrow(RuVegetationFeatures.ASTER);
-        final Holder<ConfiguredFeature<?, ?>> TULIPS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_TULIPS);
-        final Holder<ConfiguredFeature<?, ?>> CAVE_HYSSOP = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_CAVE_HYSSOP);
-        final Holder<ConfiguredFeature<?, ?>> SMALL_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_SMALL_FLOWERS);
-        final Holder<ConfiguredFeature<?, ?>> TALL_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_TALL_FLOWERS);
-        final Holder<ConfiguredFeature<?, ?>> ALPHA_DANDELION = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_ALPHA_DANDELION);
-        final Holder<ConfiguredFeature<?, ?>> PATCH_ALPHA_ROSE = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_ALPHA_ROSE);
-        final Holder<ConfiguredFeature<?, ?>> WILTING_TRILLIUM = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_WILTING_TRILLIUM);
-        final Holder<ConfiguredFeature<?, ?>> WHITE_TRILLIUM = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_WHITE_TRILLIUM);
-        final Holder<ConfiguredFeature<?, ?>> AZURE_DAISY = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_AZURE_DAISY);
-        final Holder<ConfiguredFeature<?, ?>> WARATAH = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_WARATAH);
-        final Holder<ConfiguredFeature<?, ?>> DAISY = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_DAISY);
-        final Holder<ConfiguredFeature<?, ?>> PRAIRIE_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_PRAIRIE_FLOWERS);
-        final Holder<ConfiguredFeature<?, ?>> SHRUBLAND_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_SHRUBLAND_FLOWERS);
-        final Holder<ConfiguredFeature<?, ?>> WILLOW_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_WILLOW_FLOWERS);
-        final Holder<ConfiguredFeature<?, ?>> POPPIES = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_POPPIES);
-        final Holder<ConfiguredFeature<?, ?>> TASSEL = featureGetter.getOrThrow(RuVegetationFeatures.TASSEL);
-        final Holder<ConfiguredFeature<?, ?>> SNOWBELLE = featureGetter.getOrThrow(RuVegetationFeatures.WHITE_SNOWBELLE);
-        final Holder<ConfiguredFeature<?, ?>> CORPSE_FLOWER = featureGetter.getOrThrow(RuVegetationFeatures.CORPSE_FLOWER);
-        final Holder<ConfiguredFeature<?, ?>> DUSKTRAP = featureGetter.getOrThrow(RuVegetationFeatures.DUSKTRAP);
-        final Holder<ConfiguredFeature<?, ?>> DAY_LILY = featureGetter.getOrThrow(RuVegetationFeatures.DAY_LILY);
-        final Holder<ConfiguredFeature<?, ?>> TSUBAKI = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_TSUBAKI);
-        final Holder<ConfiguredFeature<?, ?>> HIBISCUS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_HIBISCUS);
-        final Holder<ConfiguredFeature<?, ?>> MALLOW = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_MALLOW);
-        final Holder<ConfiguredFeature<?, ?>> HYSSOP = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_HYSSOP);
-        final Holder<ConfiguredFeature<?, ?>> FROZEN_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_FROZEN_FLOWERS);
-        final Holder<ConfiguredFeature<?, ?>> PINK_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_PINK_FLOWERS);
-        final Holder<ConfiguredFeature<?, ?>> BARLEY = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_BARLEY);
-        final Holder<ConfiguredFeature<?, ?>> MEADOW_SAGE = featureGetter.getOrThrow(RuVegetationFeatures.MEADOW_SAGE);
-        final Holder<ConfiguredFeature<?, ?>> REDSTONE_BULB = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_REDSTONE_BULB);
+        final Holder<ConfiguredFeature<?, ?>> ASTER = getter.getOrThrow(RuVegetationFeatures.ASTER);
+        final Holder<ConfiguredFeature<?, ?>> TULIPS = getter.getOrThrow(RuVegetationFeatures.PATCH_TULIPS);
+        final Holder<ConfiguredFeature<?, ?>> CAVE_HYSSOP = getter.getOrThrow(RuVegetationFeatures.PATCH_CAVE_HYSSOP);
+        final Holder<ConfiguredFeature<?, ?>> SMALL_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_SMALL_FLOWERS);
+        final Holder<ConfiguredFeature<?, ?>> TALL_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_TALL_FLOWERS);
+        final Holder<ConfiguredFeature<?, ?>> ALPHA_DANDELION = getter.getOrThrow(RuVegetationFeatures.PATCH_ALPHA_DANDELION);
+        final Holder<ConfiguredFeature<?, ?>> PATCH_ALPHA_ROSE = getter.getOrThrow(RuVegetationFeatures.PATCH_ALPHA_ROSE);
+        final Holder<ConfiguredFeature<?, ?>> WILTING_TRILLIUM = getter.getOrThrow(RuVegetationFeatures.PATCH_WILTING_TRILLIUM);
+        final Holder<ConfiguredFeature<?, ?>> WHITE_TRILLIUM = getter.getOrThrow(RuVegetationFeatures.PATCH_WHITE_TRILLIUM);
+        final Holder<ConfiguredFeature<?, ?>> AZURE_DAISY = getter.getOrThrow(RuVegetationFeatures.PATCH_AZURE_DAISY);
+        final Holder<ConfiguredFeature<?, ?>> WARATAH = getter.getOrThrow(RuVegetationFeatures.PATCH_WARATAH);
+        final Holder<ConfiguredFeature<?, ?>> DAISY = getter.getOrThrow(RuVegetationFeatures.PATCH_DAISY);
+        final Holder<ConfiguredFeature<?, ?>> PRAIRIE_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_PRAIRIE_FLOWERS);
+        final Holder<ConfiguredFeature<?, ?>> SHRUBLAND_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_SHRUBLAND_FLOWERS);
+        final Holder<ConfiguredFeature<?, ?>> WILLOW_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_WILLOW_FLOWERS);
+        final Holder<ConfiguredFeature<?, ?>> POPPIES = getter.getOrThrow(RuVegetationFeatures.PATCH_POPPIES);
+        final Holder<ConfiguredFeature<?, ?>> TASSEL = getter.getOrThrow(RuVegetationFeatures.TASSEL);
+        final Holder<ConfiguredFeature<?, ?>> SNOWBELLE = getter.getOrThrow(RuVegetationFeatures.WHITE_SNOWBELLE);
+        final Holder<ConfiguredFeature<?, ?>> CORPSE_FLOWER = getter.getOrThrow(RuVegetationFeatures.CORPSE_FLOWER);
+        final Holder<ConfiguredFeature<?, ?>> DUSKTRAP = getter.getOrThrow(RuVegetationFeatures.DUSKTRAP);
+        final Holder<ConfiguredFeature<?, ?>> DAY_LILY = getter.getOrThrow(RuVegetationFeatures.DAY_LILY);
+        final Holder<ConfiguredFeature<?, ?>> TSUBAKI = getter.getOrThrow(RuVegetationFeatures.PATCH_TSUBAKI);
+        final Holder<ConfiguredFeature<?, ?>> HIBISCUS = getter.getOrThrow(RuVegetationFeatures.PATCH_HIBISCUS);
+        final Holder<ConfiguredFeature<?, ?>> MALLOW = getter.getOrThrow(RuVegetationFeatures.PATCH_MALLOW);
+        final Holder<ConfiguredFeature<?, ?>> HYSSOP = getter.getOrThrow(RuVegetationFeatures.PATCH_HYSSOP);
+        final Holder<ConfiguredFeature<?, ?>> FROZEN_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_FROZEN_FLOWERS);
+        final Holder<ConfiguredFeature<?, ?>> PINK_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_PINK_FLOWERS);
+        final Holder<ConfiguredFeature<?, ?>> BARLEY = getter.getOrThrow(RuVegetationFeatures.PATCH_BARLEY);
+        final Holder<ConfiguredFeature<?, ?>> MEADOW_SAGE = getter.getOrThrow(RuVegetationFeatures.MEADOW_SAGE);
+        final Holder<ConfiguredFeature<?, ?>> REDSTONE_BULB = getter.getOrThrow(RuVegetationFeatures.PATCH_REDSTONE_BULB);
 
-        final Holder<ConfiguredFeature<?, ?>> ORANGE_CONEFLOWER = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_ORANGE_CONEFLOWER);
-        final Holder<ConfiguredFeature<?, ?>> MAGNOLIA_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_MAGNOLIA_FLOWERS);
-        final Holder<ConfiguredFeature<?, ?>> CLOVER = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_CLOVER);
+        final Holder<ConfiguredFeature<?, ?>> MAGNOLIA_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_MAGNOLIA_FLOWERS);
+        final Holder<ConfiguredFeature<?, ?>> CLOVER = getter.getOrThrow(RuVegetationFeatures.PATCH_CLOVER);
         //MULTIFACE FLOWERS
-        final Holder<ConfiguredFeature<?, ?>> PINK_MAGNOLIA_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.PINK_MAGNOLIA_FLOWERS);
-        final Holder<ConfiguredFeature<?, ?>> WHITE_MAGNOLIA_FLOWERS = featureGetter.getOrThrow(RuVegetationFeatures.WHITE_MAGNOLIA_FLOWERS);
+        final Holder<ConfiguredFeature<?, ?>> PINK_MAGNOLIA_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PINK_MAGNOLIA_FLOWERS);
+        final Holder<ConfiguredFeature<?, ?>> WHITE_MAGNOLIA_FLOWERS = getter.getOrThrow(RuVegetationFeatures.WHITE_MAGNOLIA_FLOWERS);
         //FOOD_PLANTS
-        final Holder<ConfiguredFeature<?, ?>> SALMONBERRY_BUSH = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_SALMONBERRY_BUSH);
-        final Holder<ConfiguredFeature<?, ?>> DUSKMELON = featureGetter.getOrThrow(RuVegetationFeatures.DUSKMELON);
+        final Holder<ConfiguredFeature<?, ?>> SALMONBERRY_BUSH = getter.getOrThrow(RuVegetationFeatures.PATCH_SALMONBERRY_BUSH);
+        final Holder<ConfiguredFeature<?, ?>> DUSKMELON = getter.getOrThrow(RuVegetationFeatures.DUSKMELON);
         //BIOSHROOM
-        final Holder<ConfiguredFeature<?, ?>> BLUE_BIOSHROOM = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_BLUE_BIOSHROOM);
-        final Holder<ConfiguredFeature<?, ?>> GREEN_BIOSHROOM = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_GREEN_BIOSHROOM);
-        final Holder<ConfiguredFeature<?, ?>> PINK_BIOSHROOM = featureGetter.getOrThrow(RuVegetationFeatures.PATCH_PINK_BIOSHROOM);
+        final Holder<ConfiguredFeature<?, ?>> BLUE_BIOSHROOM = getter.getOrThrow(RuVegetationFeatures.PATCH_BLUE_BIOSHROOM);
+        final Holder<ConfiguredFeature<?, ?>> GREEN_BIOSHROOM = getter.getOrThrow(RuVegetationFeatures.PATCH_GREEN_BIOSHROOM);
+        final Holder<ConfiguredFeature<?, ?>> PINK_BIOSHROOM = getter.getOrThrow(RuVegetationFeatures.PATCH_PINK_BIOSHROOM);
         //OTHER
-        final Holder<ConfiguredFeature<?, ?>> CACTUS = featureGetter.getOrThrow(VegetationFeatures.PATCH_CACTUS);
-        final Holder<ConfiguredFeature<?, ?>> BARREL_CACTUS = featureGetter.getOrThrow(RuVegetationFeatures.BARREL_CACTUS);
-        final Holder<ConfiguredFeature<?, ?>> BAMBOO = featureGetter.getOrThrow(RuVegetationFeatures.BAMBOO);
-        final Holder<ConfiguredFeature<?, ?>> FLOWERING_LILY = featureGetter.getOrThrow(RuVegetationFeatures.FLOWERING_LILY);
-        final Holder<ConfiguredFeature<?, ?>> GIANT_LILY = featureGetter.getOrThrow(RuVegetationFeatures.GIANT_LILY);
-        final Holder<ConfiguredFeature<?, ?>> ELEPHANT_EAR = featureGetter.getOrThrow(RuVegetationFeatures.ELEPHANT_EAR);
-        final Holder<ConfiguredFeature<?, ?>> DROPLEAF = featureGetter.getOrThrow(RuVegetationFeatures.DROPLEAF);
-        final Holder<ConfiguredFeature<?, ?>> DUCKWEED = featureGetter.getOrThrow(RuVegetationFeatures.DUCKWEED);
+        final Holder<ConfiguredFeature<?, ?>> CACTUS = getter.getOrThrow(VegetationFeatures.PATCH_CACTUS);
+        final Holder<ConfiguredFeature<?, ?>> BARREL_CACTUS = getter.getOrThrow(RuVegetationFeatures.BARREL_CACTUS);
+        final Holder<ConfiguredFeature<?, ?>> BAMBOO = getter.getOrThrow(RuVegetationFeatures.BAMBOO);
+        final Holder<ConfiguredFeature<?, ?>> FLOWERING_LILY = getter.getOrThrow(RuVegetationFeatures.FLOWERING_LILY);
+        final Holder<ConfiguredFeature<?, ?>> GIANT_LILY = getter.getOrThrow(RuVegetationFeatures.GIANT_LILY);
+        final Holder<ConfiguredFeature<?, ?>> ELEPHANT_EAR = getter.getOrThrow(RuVegetationFeatures.ELEPHANT_EAR);
+        final Holder<ConfiguredFeature<?, ?>> DROPLEAF = getter.getOrThrow(RuVegetationFeatures.DROPLEAF);
+        final Holder<ConfiguredFeature<?, ?>> DUCKWEED = getter.getOrThrow(RuVegetationFeatures.DUCKWEED);
         // Shrub Mixes
-        final Holder<ConfiguredFeature<?, ?>> BAOBAB_ACACIA_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.BAOBAB_ACACIA_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> AUTUMNAL_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.AUTUMNAL_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> BIRCH_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.BIRCH_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> BLACKWOOD_DARK_OAK_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.BLACKWOOD_DARK_OAK_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> MAGNOLIA_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.MAGNOLIA_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> DEAD_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.DEAD_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> LARCH_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.LARCH_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> GOLDEN_LARCH_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.GOLDEN_LARCH_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> MAPLE_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.MAPLE_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> MAUVE_ENCHANTED_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.MAUVE_ENCHANTED_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> PALM_JUNGLE_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.PALM_JUNGLE_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> PINE_SPRUCE_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.PINE_SPRUCE_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> PINE_DEAD_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.PINE_DEAD_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> WILLOW_CYPRESS_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.WILLOW_CYPRESS_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> WILLOW_MAGNOLIA_SHRUB_MIX = featureGetter.getOrThrow(RuVegetationFeatures.WILLOW_MAGNOLIA_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> BAOBAB_ACACIA_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.BAOBAB_ACACIA_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> AUTUMNAL_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.AUTUMNAL_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> BIRCH_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.BIRCH_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> BLACKWOOD_DARK_OAK_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.BLACKWOOD_DARK_OAK_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> MAGNOLIA_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.MAGNOLIA_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> DEAD_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.DEAD_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> LARCH_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.LARCH_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> GOLDEN_LARCH_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.GOLDEN_LARCH_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> MAPLE_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.MAPLE_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> MAUVE_ENCHANTED_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.MAUVE_ENCHANTED_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> PALM_JUNGLE_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.PALM_JUNGLE_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> PINE_SPRUCE_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.PINE_SPRUCE_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> PINE_DEAD_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.PINE_DEAD_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> WILLOW_CYPRESS_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.WILLOW_CYPRESS_SHRUB_MIX);
+        final Holder<ConfiguredFeature<?, ?>> WILLOW_MAGNOLIA_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.WILLOW_MAGNOLIA_SHRUB_MIX);
 
-        final Holder<ConfiguredFeature<?, ?>> PRAIRIE_MIX = featureGetter.getOrThrow(RuVegetationFeatures.PRAIRIE_MIX);
+        final Holder<ConfiguredFeature<?, ?>> PRAIRIE_MIX = getter.getOrThrow(RuVegetationFeatures.PRAIRIE_MIX);
 
         //--------------------PLACEMENTS--------------------//
         register(context, RuVegetationPlacements.PINK_FLOWERS, PINK_FLOWERS, RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
@@ -305,8 +309,8 @@ public class RuVegetationPlacements {
         //GRASS
         register(context, RuVegetationPlacements.SANDY_GRASS, SANDY_GRASS, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome());
         register(context, RuVegetationPlacements.FERNS, FERNS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.GRASS, GRASS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.CAVE_GRASS, GRASS, List.of(CountOnEveryLayerPlacement.of(70), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE),  BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.GRASS, patchGrass, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.CAVE_GRASS, patchGrass, List.of(CountOnEveryLayerPlacement.of(70), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE),  BiomeFilter.biome()));
         register(context, RuVegetationPlacements.TALL_GRASS, TALL_GRASS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         register(context, RuVegetationPlacements.CAVE_TALL_GRASS, TALL_GRASS, List.of(CountOnEveryLayerPlacement.of(15), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome()));
         register(context, RuVegetationPlacements.SNOW_GRASS, SNOW_GRASS, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
@@ -328,16 +332,29 @@ public class RuVegetationPlacements {
             PlacementUtils.HEIGHTMAP,
             BiomeFilter.biome()
         );
-        register(context, RuVegetationPlacements.PATCH_GRASS_SPARSE, simpleSpread(2, Types.WORLD_SURFACE_WG));
+        
+        register(context, RuVegetationPlacements.PATCH_TUNDRA_FLOWERS,
+            LithostitchedPlacementModifiers.noiseSlope(RUNoises.FLOWER_DENSITY, 4, 0, 1, 0),
+            InSquarePlacement.spread(),
+            PlacementUtils.HEIGHTMAP,
+            BiomeFilter.biome()
+        );
+        
+        register(context, RuVegetationPlacements.PATCH_GRASS_SPARSE, patchGrass, simpleSpread(2, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_GRASS, patchGrass, simpleSpread(4, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_GRASS_DENSE, patchGrass, simpleSpread(8, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_FERN, simpleSpread(2, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_STEPPE_GRASS, simpleSpread(2, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_SANDY_GRASS_SPARSE, simpleSpread(2, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_DESERT_SHRUB_SPARSE, simpleSpread(2, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_DESERT_SHRUB_ON_GRASS, simpleSpread(2, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_DESERT_SHRUB_ON_SAND, simpleSpread(1, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_STEPPE_SHRUB_ON_SAND, simpleSpread(1, Types.WORLD_SURFACE_WG));
 
         register(context, RuVegetationPlacements.BLACKWOOD_VEGETATION, BLACKWOOD_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         register(context, RuVegetationPlacements.DECIDUOUS_VEGETATION, DECIDUOUS_VEGETATION, NoiseThresholdCountPlacement.of(-0.8D, 5, 24), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         register(context, RuVegetationPlacements.FEN_VEGETATION, FEN_VEGETATION, NoiseThresholdCountPlacement.of(-0.8D, 5, 24), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         register(context, RuVegetationPlacements.SHRUBLAND_VEGETATION, SHRUBLAND_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         register(context, RuVegetationPlacements.MOUNTAIN_VEGETATION, MOUNTAIN_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
-        register(context, RuVegetationPlacements.OUTBACK_VEGETATION, OUTBACK_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         register(context, RuVegetationPlacements.STEPPE_VEGETATION, STEPPE_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 24), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         register(context, RuVegetationPlacements.SOCOTRA_VEGETATION, SOCOTRA_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 24), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         register(context, RuVegetationPlacements.SANDY_GRASS_VEGETATION, SANDY_GRASS_VEGETATION, List.of(NoiseThresholdCountPlacement.of(-0.8D, 5, 12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
@@ -356,7 +373,7 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.ALPHA_DANDELION, ALPHA_DANDELION, List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
 
         PlacementModifier airCheck = BlockPredicateFilter.forPredicate(BlockPredicate.matchesTag(BlockTags.AIR));
-        register(context, RUPlacedFeatures.BONEMEAL_ALPHA_GRASS, featureGetter.getOrThrow(RUConfiguredFeatures.BONEMEAL_ALPHA_GRASS), RarityFilter.onAverageOnceEvery(25), airCheck);
+        register(context, RUPlacedFeatures.BONEMEAL_ALPHA_GRASS, getter.getOrThrow(RUConfiguredFeatures.BONEMEAL_ALPHA_GRASS), RarityFilter.onAverageOnceEvery(25), airCheck);
         register(context, RuVegetationPlacements.ALPHA_ROSE, PATCH_ALPHA_ROSE, List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         register(context, RuVegetationPlacements.WILTING_TRILLIUM, WILTING_TRILLIUM, List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
         register(context, RuVegetationPlacements.WHITE_TRILLIUM, WHITE_TRILLIUM, List.of(RarityFilter.onAverageOnceEvery(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
@@ -383,8 +400,12 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.MEADOW_SAGE, MEADOW_SAGE, RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
         register(context, RuVegetationPlacements.REDSTONE_BULB, REDSTONE_BULB, List.of(CountPlacement.of(64), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome()));
 
-        register(context, RuVegetationPlacements.ORANGE_CONEFLOWER, ORANGE_CONEFLOWER, NoiseThresholdCountPlacement.of(-0.8D, 5, 10), RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-        register(context, RuVegetationPlacements.SPARSE_ORANGE_CONEFLOWER, ORANGE_CONEFLOWER, NoiseThresholdCountPlacement.of(-0.8D, 5, 10), RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+        register(context, RuVegetationPlacements.PATCH_ORANGE_CONEFLOWERS, List.of(
+            LithostitchedPlacementModifiers.noiseSlope(RUNoises.FLOWER_DENSITY, 22, -6, 2, 0),
+            InSquarePlacement.spread(),
+            PlacementUtils.HEIGHTMAP,
+            BiomeFilter.biome()
+        ));
         register(context, RuVegetationPlacements.PATCH_PURPLE_CONEFLOWERS, List.of(
             LithostitchedPlacementModifiers.noiseSlope(RUNoises.FLOWER_DENSITY, 28, -10, 2, 0),
             InSquarePlacement.spread(),

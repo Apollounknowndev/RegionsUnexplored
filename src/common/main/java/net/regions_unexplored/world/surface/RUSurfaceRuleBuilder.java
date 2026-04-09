@@ -149,7 +149,7 @@ public class RUSurfaceRuleBuilder {
         ConditionSource isSandBiome = isBiome(RUBiomes.ROCKY_REEF, RUBiomes.TROPICAL_RIVER, RUBiomes.GRASSY_BEACH);
         ConditionSource isPeatBiome = isBiome(RUBiomes.BAYOU, RUBiomes.FEN, RUBiomes.PINE_TAIGA, RUBiomes.BLACKWOOD_TAIGA, RUBiomes.BOREAL_TAIGA, RUBiomes.COLD_BOREAL_TAIGA, RUBiomes.GOLDEN_BOREAL_TAIGA);
         ConditionSource isSiltBiome = isBiome(RUBiomes.PUMPKIN_FIELDS, RUBiomes.POPPY_FIELDS, RUBiomes.AUTUMNAL_MAPLE_FOREST, RUBiomes.SILVER_BIRCH_FOREST, RUBiomes.TROPICS, RUBiomes.DRY_BUSHLAND, RUBiomes.JOSHUA_DESERT, RUBiomes.BARLEY_FIELDS, RUBiomes.PRAIRIE, RUBiomes.ORCHARD, RUBiomes.STEPPE);
-        ConditionSource isGrassBiome = isBiome(RUBiomes.ANCIENT_DELTA, RUBiomes.BAOBAB_SAVANNA, RUBiomes.BIOSHROOM_CAVES, RUBiomes.DECIDUOUS_FOREST, RUBiomes.FROZEN_TUNDRA, RUBiomes.FUNGAL_FEN, RUBiomes.PRISMACHASM, RUBiomes.REDSTONE_CAVES, RUBiomes.SCORCHING_CAVES);
+        ConditionSource isGrassBiome = isBiome(RUBiomes.ANCIENT_DELTA, RUBiomes.BAOBAB_SAVANNA, RUBiomes.BIOSHROOM_CAVES, RUBiomes.DECIDUOUS_FOREST, RUBiomes.DEPRECATED_FROZEN_TUNDRA, RUBiomes.FUNGAL_FEN, RUBiomes.PRISMACHASM, RUBiomes.REDSTONE_CAVES, RUBiomes.SCORCHING_CAVES);
 
         RuleSource AlphaGrassSurface = sequence(ifTrue(waterBlockCheck, ALPHA_GRASS), DIRT);
         RuleSource GrassSurface = sequence(ifTrue(waterBlockCheck, GRASS_BLOCK), DIRT);
@@ -263,9 +263,6 @@ public class RUSurfaceRuleBuilder {
                         sequence(powderSnowPatch2,
                                 ifTrue(waterBlockCheck, SNOW_BLOCK))),
 
-                ifTrue(isBiome(RUBiomes.FROZEN_TUNDRA),
-                        ifTrue(noiseCondition(Noises.SWAMP, 0.0D), SNOW_BLOCK)),
-
                 underSurfaceNoTop,
 
                 ifTrue(isBiome(RUBiomes.TOWERING_CLIFFS),
@@ -330,6 +327,15 @@ public class RUSurfaceRuleBuilder {
                 ifTrue(isBiome(RUBiomes.PINE_SLOPES), COARSE_DIRT),
 
                 ifTrue(isBiome(RUBiomes.REDWOODS), PODZOL),
+                
+                ifTrue(isBiome(RUBiomes.TUNDRA), sequence(
+                    ifTrue(
+                        noiseAbove(RUNoises.SURFACE_MEDIUM, 2.5d), COARSE_DIRT
+                    ),
+                    ifTrue(
+                        noiseAbove(RUNoises.SURFACE_MEDIUM, 2.0d), ifTrue(noiseCondition(RUNoises.WEIGHTED, RuleWeight.getPercent(50)), COARSE_DIRT)
+                    )
+                )),
 
                 ifTrue(isBiome(RUBiomes.CHALK_CLIFFS), ifTrue(not(LithostitchedSurfaceConditions.slope(new InclusiveRange<>(3, Integer.MAX_VALUE))), ChalkSurface)),
                 ifTrue(isPeatBiome, PeatGrassSurface),

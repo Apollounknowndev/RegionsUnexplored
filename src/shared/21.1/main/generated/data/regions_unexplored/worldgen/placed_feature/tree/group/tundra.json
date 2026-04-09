@@ -1,9 +1,13 @@
 {
-  "feature": "regions_unexplored:tree/silver_birch",
+  "feature": "regions_unexplored:tree/group/tundra",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 2
+      "type": "lithostitched:noise_slope",
+      "noise": "regions_unexplored:tree_density",
+      "offset": -6,
+      "slope": 5,
+      "xz_scale": 1.0,
+      "y_scale": 0.0
     },
     {
       "type": "minecraft:in_square"
@@ -21,7 +25,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "minecraft:oak_sapling",
+          "Name": "minecraft:spruce_sapling",
           "Properties": {
             "stage": "0"
           }

@@ -1,5 +1,5 @@
 {
-  "feature": "regions_unexplored:patch/desert_shrub_sparse",
+  "feature": "regions_unexplored:patch/desert_shrub_on_grass",
   "placement": [
     {
       "type": "minecraft:count",

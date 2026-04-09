@@ -41,7 +41,6 @@ public class FrozenBiomes {
     private static BiomeGenerationSettings.Builder baseFrozenGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
         RUBiomeFeatures.globalOverworldGeneration(biomeBuilder);
-        RUBiomeFeatures.grassSprouts(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         RUBiomeFeatures.addDefaultSoftDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
@@ -112,6 +111,7 @@ public class FrozenBiomes {
 
         //add features
         BiomeGenerationSettings.Builder biomeBuilder = baseFrozenGeneration(featureGetter, carverGetter);
+        RUBiomeFeatures.grassSprouts(biomeBuilder);
 
         //add RU features
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_WITH_BRANCH);
@@ -195,6 +195,7 @@ public class FrozenBiomes {
 
         //add features
         BiomeGenerationSettings.Builder biomeBuilder = baseFrozenGeneration(featureGetter, carverGetter);
+        RUBiomeFeatures.grassSprouts(biomeBuilder);
 
         //add RU features
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.SPRUCE_TALL_SPARSE);
@@ -222,6 +223,42 @@ public class FrozenBiomes {
                 .generationSettings(biomeBuilder.build())
                 .build();
     }
+    
+    public static Biome tundra(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
+            .skyColor(calculateSkyColor(0.0F))
+            .fogColor(OVERWORLD_FOG_COLOR)
+            .waterColor(NORMAL_WATER_COLOR)
+            .waterFogColor(NORMAL_WATER_FOG_COLOR)
+            .foliageColorOverride(-5207984)
+            .grassColorOverride(0xbc6a52)
+            .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_MEADOW));
+        
+        //add features
+        BiomeGenerationSettings.Builder biomeBuilder = baseFrozenGeneration(featureGetter, carverGetter);
+        
+        //add RU features
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, RuMiscOverworldPlacements.ROCK_GROUP_TUNDRA);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_DENSE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_FERN);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_TUNDRA_FLOWERS);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_TUNDRA);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_TUNDRA_SHRUBS);
+        
+        
+        //add mob spawns
+        MobSpawnSettings.Builder spawnBuilder = baseFrozenSpawning(false, false);
+        
+        return (new Biome.BiomeBuilder())
+            .hasPrecipitation(false)
+            .temperature(-0.3f)
+            .downfall(0.0f)
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(biomeBuilder.build())
+            .build();
+    }
 
     public static Biome icyHeights(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
@@ -236,6 +273,7 @@ public class FrozenBiomes {
 
         //add features
         BiomeGenerationSettings.Builder biomeBuilder = baseFrozenGeneration(featureGetter, carverGetter);
+        RUBiomeFeatures.grassSprouts(biomeBuilder);
 
         //add RU features
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.SCOTTS_PINE_MOUNTAIN_ON_SNOW);
@@ -275,6 +313,7 @@ public class FrozenBiomes {
 
         //add features
         BiomeGenerationSettings.Builder biomeBuilder = baseFrozenGeneration(featureGetter, carverGetter);
+        RUBiomeFeatures.grassSprouts(biomeBuilder);
 
         //add RU features
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.ICICLE_UP);

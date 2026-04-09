@@ -80,11 +80,11 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
+      "regions_unexplored:patch/grass_sprouts_sparse",
       "regions_unexplored:icicle_up",
       "regions_unexplored:tree/ice_spire",
       "regions_unexplored:tree/spruce_tall_on_snow",

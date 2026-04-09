@@ -70,9 +70,9 @@ public class RUDatagenFeatureUtils {
         return BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Vec3i.ZERO.below(), blocks)));
     }
 
-    public static PlacementModifier[] simpleSpread(int count, Heightmap.Types heightmap) {
+    public static PlacementModifier[] simpleSpread(double count, Heightmap.Types heightmap) {
         return new PlacementModifier[] {
-            count(count),
+            count >= 1 ? CountPlacement.of((int) count) : RarityFilter.onAverageOnceEvery((int) (1 / count)),
             InSquarePlacement.spread(),
             SurfaceWaterDepthFilter.forMaxDepth(0),
             HeightmapPlacement.onHeightmap(heightmap),

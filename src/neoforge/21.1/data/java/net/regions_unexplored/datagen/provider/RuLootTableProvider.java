@@ -10,8 +10,7 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 public class RuLootTableProvider {
-    public static LootTableProvider create(PackOutput output, CompletableFuture<HolderLookup.Provider> holderLookup)
-    {
+    public static LootTableProvider create(PackOutput output, CompletableFuture<HolderLookup.Provider> holderLookup) {
         return new LootTableProvider(output, Set.of(), List.of(new LootTableProvider.SubProviderEntry(RuBlockLootTableProvider::new, LootContextParamSets.BLOCK)), holderLookup);
     }
 }

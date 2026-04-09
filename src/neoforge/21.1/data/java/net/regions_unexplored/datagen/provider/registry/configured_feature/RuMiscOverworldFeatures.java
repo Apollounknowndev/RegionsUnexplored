@@ -2,6 +2,7 @@ package net.regions_unexplored.datagen.provider.registry.configured_feature;
 
 import dev.worldgen.lithostitched.api.util.WeightedList;
 import dev.worldgen.lithostitched.api.worldgen.feature.LithostitchedFeatures;
+import dev.worldgen.lithostitched.api.worldgen.stateprovider.LithostitchedStateProviders;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -18,6 +19,7 @@ import net.minecraft.util.valueproviders.ClampedNormalFloat;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformFloat;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CarvedPumpkinBlock;
 import net.minecraft.world.level.block.LeavesBlock;
@@ -35,6 +37,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+import net.regions_unexplored.datagen.provider.registry.placed_feature.RuMiscOverworldPlacements;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUFeatureTypes;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
@@ -91,10 +94,9 @@ public class RuMiscOverworldFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_NOISE_PUMPKINS = key("patch_noise_pumpkins");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_NOISE_ROCKS = key("patch_noise_rocks");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_NOISE_BUSH = key("patch_noise_bush");
-
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ROCK_GROUP_HIGHLAND_FIELDS = key("rock/group/highland_fields");
     
     public static final ResourceKey<ConfiguredFeature<?, ?>> ROCK_COBBLESTONE = key("rock/cobblestone");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ROCK_MIXED_COBBLESTONE_LARGE = key("rock/mixed_cobblestone_large");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ROCK_STONE_LARGE = key("rock/stone_large");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ROCK_MOSSY_STONE_LARGE = key("rock/mossy_stone_large");
 
@@ -145,12 +147,20 @@ public class RuMiscOverworldFeatures {
         register(context, PATCH_NOISE_BUSH, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.MAPLE_NATURAL_SET.getLeaves().defaultBlockState().setValue(LeavesBlock.PERSISTENT, true), 2).add(Blocks.OAK_LEAVES.defaultBlockState().setValue(LeavesBlock.PERSISTENT, true), 2).add(Blocks.AIR.defaultBlockState(), 75))), List.of(Blocks.GRASS_BLOCK), 125));
 
         var rockCobblestone = register(context, ROCK_COBBLESTONE, RUFeatureTypes.NEW_ROCK.get(), RockFeatureConfig.create(Blocks.COBBLESTONE));
+        var rockMixedCobblestoneLarge = register(context, ROCK_MIXED_COBBLESTONE_LARGE, RUFeatureTypes.NEW_ROCK.get(),
+            new RockFeatureConfig(LithostitchedStateProviders.randomBlock(Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE), UniformInt.of(4, 6), UniformInt.of(-1, 1))
+        );
         var rockStoneLarge = register(context, ROCK_STONE_LARGE, RUFeatureTypes.NEW_ROCK.get(), RockFeatureConfig.createLarge(Blocks.STONE));
         var rockMossyStoneLarge = register(context, ROCK_MOSSY_STONE_LARGE, RUFeatureTypes.NEW_ROCK.get(), RockFeatureConfig.createLarge(RUBlocks.MOSSY_STONE.get()));
-        register(context, ROCK_GROUP_HIGHLAND_FIELDS, LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(WeightedList.<Holder<PlacedFeature>>builder()
+        registerPlaced(context, RuMiscOverworldPlacements.ROCK_GROUP_HIGHLAND_FIELDS, LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(WeightedList.<Holder<PlacedFeature>>builder()
             .add(direct(rockCobblestone), 1)
             .add(direct(rockStoneLarge), 2)
             .add(direct(rockMossyStoneLarge), 3)
+        .build()));
+        
+        registerPlaced(context, RuMiscOverworldPlacements.ROCK_GROUP_TUNDRA, LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(WeightedList.<Holder<PlacedFeature>>builder()
+            .add(direct(rockCobblestone), 1)
+            .add(direct(rockMixedCobblestoneLarge), 2)
         .build()));
 
         register(context, RUConfiguredFeatures.BONEMEAL_ALPHA_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(RUBlocks.ALPHA_ROSE.get())));
@@ -162,5 +172,9 @@ public class RuMiscOverworldFeatures {
 
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder.Reference<ConfiguredFeature<?, ?>> register(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC config) {
         return context.register(key, new ConfiguredFeature<>(feature, config));
+    }
+    
+    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void registerPlaced(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<PlacedFeature> key, F feature, FC config) {
+        context.register(RUConfiguredFeatures.fromPlaced(key), new ConfiguredFeature<>(feature, config));
     }
 }

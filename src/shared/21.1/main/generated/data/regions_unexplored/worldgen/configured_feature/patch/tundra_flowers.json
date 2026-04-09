@@ -6,19 +6,25 @@
         "type": "minecraft:simple_block",
         "config": {
           "to_place": {
-            "type": "minecraft:weighted_state_provider",
-            "entries": [
+            "type": "minecraft:noise_provider",
+            "noise": {
+              "amplitudes": [
+                2.0,
+                1.3
+              ],
+              "firstOctave": -7
+            },
+            "scale": 1.5,
+            "seed": 923586,
+            "states": [
               {
-                "data": {
-                  "Name": "minecraft:short_grass"
-                },
-                "weight": 1
+                "Name": "minecraft:lily_of_the_valley"
               },
               {
-                "data": {
-                  "Name": "regions_unexplored:grass_sprouts"
-                },
-                "weight": 1
+                "Name": "regions_unexplored:bleeding_heart"
+              },
+              {
+                "Name": "minecraft:poppy"
               }
             ]
           }
@@ -34,7 +40,7 @@
         }
       ]
     },
-    "tries": 64,
+    "tries": 48,
     "xz_spread": 7,
     "y_spread": 3
   }

@@ -9,7 +9,7 @@ import net.regions_unexplored.worldgen.foliageplacer.*;
 import java.util.function.Supplier;
 
 public interface RUFoliagePlacerTypes {
-    Supplier<FoliagePlacerType<PineFoliagePlacer>> PINE = register("pine", PineFoliagePlacer.TYPE);
+    Supplier<FoliagePlacerType<RUPineFoliagePlacer>> PINE = register("pine", RUPineFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<RedwoodFoliagePlacer>> REDWOOD = register("redwood", RedwoodFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<SakuraFoliagePlacer>> SAKURA = register("sakura", SakuraFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<SkinnyPineFoliagePlacer>> SKINNY_PINE = register("skinny_pine", SkinnyPineFoliagePlacer.TYPE);

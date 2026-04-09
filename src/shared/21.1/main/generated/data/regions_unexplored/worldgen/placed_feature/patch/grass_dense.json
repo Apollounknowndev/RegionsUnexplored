@@ -1,14 +1,16 @@
 {
-  "feature": "regions_unexplored:patch_outback_vegetation",
+  "feature": "regions_unexplored:patch_grass",
   "placement": [
     {
-      "type": "minecraft:noise_threshold_count",
-      "above_noise": 16,
-      "below_noise": 5,
-      "noise_level": -0.8
+      "type": "minecraft:count",
+      "count": 8
     },
     {
       "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:surface_water_depth_filter",
+      "max_water_depth": 0
     },
     {
       "type": "minecraft:heightmap",

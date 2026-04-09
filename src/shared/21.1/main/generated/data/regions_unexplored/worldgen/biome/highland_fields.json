@@ -34,7 +34,8 @@
       "minecraft:lake_lava_surface"
     ],
     [
-      "minecraft:amethyst_geode"
+      "minecraft:amethyst_geode",
+      "regions_unexplored:rock/group/highland_fields"
     ],
     [
       "minecraft:monster_room",
@@ -86,7 +87,6 @@
       "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:patch_tall_grass_2",
       "regions_unexplored:tree/group/highland_fields",
-      "regions_unexplored:rock/group/highland_fields",
       "regions_unexplored:patch/daisies",
       "regions_unexplored:grass"
     ],

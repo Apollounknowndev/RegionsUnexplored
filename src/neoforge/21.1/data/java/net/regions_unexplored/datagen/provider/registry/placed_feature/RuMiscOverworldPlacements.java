@@ -1,6 +1,7 @@
 package net.regions_unexplored.datagen.provider.registry.placed_feature;
 
 import dev.worldgen.lithostitched.api.worldgen.blockpredicate.LithostitchedBlockPredicates;
+import dev.worldgen.lithostitched.api.worldgen.placementmodifier.LithostitchedPlacementModifiers;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -23,6 +24,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.datagen.provider.registry.configured_feature.RuMiscOverworldFeatures;
 import net.regions_unexplored.datagen.provider.registry.RUPlacedFeatureBootstrap;
+import net.regions_unexplored.registry.data.RUNoises;
 import net.regions_unexplored.registry.data.RUPlacedFeatures;
 
 import java.util.List;
@@ -75,6 +77,7 @@ public class RuMiscOverworldPlacements {
     public static final ResourceKey<PlacedFeature> NOISE_BUSH = key("noise_bush");
 
     public static final ResourceKey<PlacedFeature> ROCK_GROUP_HIGHLAND_FIELDS = key("rock/group/highland_fields");
+    public static final ResourceKey<PlacedFeature> ROCK_GROUP_TUNDRA = key("rock/group/tundra");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> getter = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -181,6 +184,14 @@ public class RuMiscOverworldPlacements {
         register(context, RuMiscOverworldPlacements.NOISE_BUSH, NOISE_BUSH, List.of(CountPlacement.of(15), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
 
         register(context, RuMiscOverworldPlacements.ROCK_GROUP_HIGHLAND_FIELDS, simpleSpread(1, Heightmap.Types.WORLD_SURFACE_WG));
+        register(context, RuMiscOverworldPlacements.ROCK_GROUP_TUNDRA,
+            LithostitchedPlacementModifiers.noiseSlope(RUNoises.TREE_DENSITY, -3, 2, 1, 0),
+            rarityFilter(12),
+            InSquarePlacement.spread(),
+            SurfaceWaterDepthFilter.forMaxDepth(0),
+            PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+            BiomeFilter.biome()
+        );
 
         final Holder<ConfiguredFeature<?, ?>>  singlePieceOfGrass = getter.getOrThrow(VegetationFeatures.SINGLE_PIECE_OF_GRASS);
         PlacementModifier airCheck = BlockPredicateFilter.forPredicate(BlockPredicate.matchesTag(BlockTags.AIR));
