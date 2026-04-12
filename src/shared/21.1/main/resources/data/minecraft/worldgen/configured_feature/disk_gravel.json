@@ -22,6 +22,10 @@
         "minecraft:dirt",
         "regions_unexplored:peat_dirt",
         "regions_unexplored:silt_dirt",
+        "regions_unexplored:peat_mud",
+        "regions_unexplored:silt_mud",
+        "regions_unexplored:peat_grass_block",
+        "regions_unexplored:silt_grass_block",
         "minecraft:grass_block"
       ]
     }
