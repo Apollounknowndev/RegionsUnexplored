@@ -96,7 +96,7 @@ public class RuMiscOverworldFeatures {
         registerPlaced(context, ASH_VENT, RUFeatureTypes.ASH_VENT.get(), FeatureConfiguration.NONE);
         registerPlaced(context, BASALT_BLOB, RUFeatureTypes.BASALT_BLOB.get(), new ColumnFeatureConfiguration(ConstantInt.of(1), UniformInt.of(1, 4)));
         //OTHER_FEATURES
-        register(context, MOSS_PATCH_WITH_WATER, Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(BlockTags.LUSH_GROUND_REPLACEABLE, BlockStateProvider.simple(Blocks.MOSS_BLOCK), PlacementUtils.inlinePlaced(holderGetter.getOrThrow(RuVegetationFeatures.PATCH_GRASS)), CaveSurface.FLOOR, ConstantInt.of(3), 0.8F, 5, 0.1F, UniformInt.of(4, 7), 0.7F));
+        register(context, MOSS_PATCH_WITH_WATER, Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(BlockTags.LUSH_GROUND_REPLACEABLE, BlockStateProvider.simple(Blocks.MOSS_BLOCK), PlacementUtils.inlinePlaced(holderGetter.getOrThrow(RuVegetationFeatures.PATCH_SHORT_GRASS)), CaveSurface.FLOOR, ConstantInt.of(3), 0.8F, 5, 0.1F, UniformInt.of(4, 7), 0.7F));
         registerPlaced(context, MARSH, RUFeatureTypes.MARSH.get(), FeatureConfiguration.NONE);
         registerPlaced(context, WATER_EDGE, RUFeatureTypes.WATER_EDGE.get(), FeatureConfiguration.NONE);
         registerPlaced(context, ICICLE_UP, RUFeatureTypes.ICICLE_UP.get(), FeatureConfiguration.NONE);
@@ -113,7 +113,12 @@ public class RuMiscOverworldFeatures {
         var rockStoneLarge = register(context, ROCK_STONE_LARGE, RUFeatureTypes.ROCK.get(), RockFeatureConfig.createLarge(Blocks.STONE));
         var rockMossyStoneLarge = register(context, ROCK_MOSSY_STONE_LARGE, RUFeatureTypes.ROCK.get(), RockFeatureConfig.createLarge(RUBlocks.MOSSY_STONE.get()));
         
-        registerSelector(context, RuMiscOverworldPlacements.ROCK_GROUP_HIGHLAND_FIELDS, builder -> builder
+        registerSelector(context, ROCK_GROUP_ICY_HEIGHTS, builder -> builder
+            .add(direct(rockMixedStone), 2)
+            .add(direct(rockMixedCobblestone), 1)
+        );
+        
+        registerSelector(context, ROCK_GROUP_HIGHLAND_FIELDS, builder -> builder
             .add(direct(rockCobblestone), 1)
             .add(direct(rockStoneLarge), 2)
             .add(direct(rockMossyStoneLarge), 3)

@@ -48,6 +48,7 @@ public class FlammableBlocks {
         registerFlammableBlock(RUBlocks.MALLOW.get(), 60, 100);
         registerFlammableBlock(RUBlocks.PINK_LUPINE.get(), 60, 100);
         registerFlammableBlock(RUBlocks.POPPY_BUSH.get(), 60, 100);
+        registerFlammableBlock(RUBlocks.SALMON_POPPY.get(), 60, 100);
         registerFlammableBlock(RUBlocks.SALMON_POPPY_BUSH.get(), 60, 100);
         registerFlammableBlock(RUBlocks.PURPLE_LUPINE.get(), 60, 100);
         registerFlammableBlock(RUBlocks.RED_LUPINE.get(), 60, 100);

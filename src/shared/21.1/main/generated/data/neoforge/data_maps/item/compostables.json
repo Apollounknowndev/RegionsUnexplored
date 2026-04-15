@@ -546,6 +546,9 @@
     "regions_unexplored:saguaro_cactus_flower": {
       "chance": 0.3
     },
+    "regions_unexplored:salmon_poppy": {
+      "chance": 0.4
+    },
     "regions_unexplored:salmon_poppy_bush": {
       "chance": 0.4
     },

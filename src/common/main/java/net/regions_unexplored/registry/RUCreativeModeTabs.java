@@ -85,6 +85,7 @@ public interface RUCreativeModeTabs {
             output.accept(RUBlocks.HYSSOP.get().asItem());
             output.accept(RUBlocks.MALLOW.get().asItem());
             output.accept(RUBlocks.POPPY_BUSH.get().asItem());
+            output.accept(RUBlocks.SALMON_POPPY.get().asItem());
             output.accept(RUBlocks.SALMON_POPPY_BUSH.get().asItem());
             output.accept(RUBlocks.TSUBAKI.get().asItem());
             output.accept(RUBlocks.WARATAH.get().asItem());

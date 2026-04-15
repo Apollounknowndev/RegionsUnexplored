@@ -1,0 +1,35 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/maple",
+          "placement": []
+        },
+        "weight": 4
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/red_maple",
+          "placement": []
+        },
+        "weight": 1
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/big_maple",
+          "placement": []
+        },
+        "weight": 1
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/spruce_tall",
+          "placement": []
+        },
+        "weight": 4
+      }
+    ]
+  }
+}

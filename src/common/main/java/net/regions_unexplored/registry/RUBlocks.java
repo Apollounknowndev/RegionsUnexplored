@@ -14,6 +14,8 @@ import net.regions_unexplored.block.set.ColoredSet;
 import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.block.RuWoodTypes;
+import net.regions_unexplored.block.type.flower.LargeFlowerBlock;
+import net.regions_unexplored.block.type.flower.ShortFlowerBlock;
 import net.regions_unexplored.client.color.RuColors;
 import net.regions_unexplored.item.RUItemUtils;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
@@ -89,28 +91,29 @@ public interface RUBlocks {
     Supplier<Block> STEPPE_TALL_GRASS = register("steppe_tall_grass", RuDoublePlantBlock::new, Blocks.TALL_GRASS);
     Supplier<Block> WINDSWEPT_GRASS = register("windswept_grass", RuDoublePlantBlock::new, Blocks.TALL_GRASS);
     //FLOWERS
-    Supplier<Block> ALPHA_DANDELION = register("alpha_dandelion", p -> new RuFlowerBlock(MobEffects.JUMP, 5, p), Blocks.DANDELION);
-    Supplier<Block> ALPHA_ROSE = register("alpha_rose", p -> new RuFlowerBlock(MobEffects.JUMP, 5, p), Blocks.DANDELION);
-    Supplier<Block> ASTER = register("aster", p -> new RuFlowerBlock(MobEffects.CONFUSION, 10, p.hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 13)), Blocks.DANDELION);
+    Supplier<Block> ALPHA_DANDELION = register("alpha_dandelion", p -> new FlowerBlock(MobEffects.JUMP, 5, p), Blocks.DANDELION);
+    Supplier<Block> ALPHA_ROSE = register("alpha_rose", p -> new FlowerBlock(MobEffects.JUMP, 5, p), Blocks.DANDELION);
+    Supplier<Block> ASTER = register("aster", p -> new FlowerBlock(MobEffects.CONFUSION, 10, p.hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 13)), Blocks.DANDELION);
     Supplier<Block> BLEEDING_HEART = register("bleeding_heart", p -> new RuSnowFlowerBlock(MobEffects.POISON, 9, p), Blocks.DANDELION);
-    Supplier<Block> BLUE_LUPINE = register("blue_lupine", p -> new RuFlowerBlock(MobEffects.SATURATION, 4, p), Blocks.DANDELION);
-    Supplier<Block> DAISY = register("daisy", p -> new RuFlowerBlock(MobEffects.MOVEMENT_SPEED, 8, p), Blocks.DANDELION);
+    Supplier<Block> BLUE_LUPINE = register("blue_lupine", p -> new LargeFlowerBlock(MobEffects.SATURATION, 4, p), Blocks.DANDELION);
+    Supplier<Block> DAISY = register("daisy", p -> new ShortFlowerBlock(MobEffects.MOVEMENT_SPEED, 8, p), Blocks.DANDELION);
     Supplier<Block> DORCEL = register("dorcel", p -> new DorcelPlantBlock(MobEffects.WITHER, 20, p.speedFactor(0.5F)), Blocks.DANDELION);
-    Supplier<Block> FELICIA_DAISY = register("felicia_daisy", p -> new RuFlowerBlock(MobEffects.MOVEMENT_SPEED, 8, p), Blocks.DANDELION);
-    Supplier<Block> FIREWEED = register("fireweed", p -> new RuFlowerBlock(MobEffects.GLOWING, 2, p), Blocks.DANDELION);
-    Supplier<Block> HIBISCUS = register("hibiscus", p -> new RuFlowerBlock(MobEffects.JUMP, 6, p), Blocks.DANDELION);
-    Supplier<Block> HYSSOP = register("hyssop", p -> new RuFlowerBlock(MobEffects.LUCK, 10, p), Blocks.DANDELION);
-    Supplier<Block> MALLOW = register("mallow", p -> new RuFlowerBlock(MobEffects.DIG_SLOWDOWN, 4, p), Blocks.DANDELION);
-    Supplier<Block> PINK_LUPINE = register("pink_lupine", p -> new RuFlowerBlock(MobEffects.SATURATION, 4, p), Blocks.DANDELION);
-    Supplier<Block> POPPY_BUSH = register("poppy_bush", p -> new RuFlowerBlock(MobEffects.WEAKNESS, 3, p.mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XYZ).ignitedByLava().pushReaction(PushReaction.DESTROY)), Blocks.DANDELION);
-    Supplier<Block> SALMON_POPPY_BUSH = register("salmon_poppy_bush", p -> new RuFlowerBlock(MobEffects.WEAKNESS, 3, p), POPPY_BUSH);
-    Supplier<Block> PURPLE_LUPINE = register("purple_lupine", p -> new RuFlowerBlock(MobEffects.SATURATION, 4, p), Blocks.DANDELION);
-    Supplier<Block> RED_LUPINE = register("red_lupine", p -> new RuFlowerBlock(MobEffects.SATURATION, 4, p), Blocks.DANDELION);
-    Supplier<Block> WARATAH = register("waratah", p -> new RuFlowerBlock(MobEffects.JUMP, 5, p), Blocks.DANDELION);
-    Supplier<Block> TSUBAKI = register("tsubaki", p -> new RuFlowerBlock(MobEffects.HEAL, 3, p), Blocks.DANDELION);
-    Supplier<Block> WHITE_TRILLIUM = register("white_trillium", p -> new RuFlowerBlock(MobEffects.DIG_SPEED, 7, p), Blocks.DANDELION);
-    Supplier<Block> WILTING_TRILLIUM = register("wilting_trillium", p -> new RuFlowerBlock(MobEffects.DIG_SLOWDOWN, 10, p), Blocks.DANDELION);
-    Supplier<Block> YELLOW_LUPINE = register("yellow_lupine", p -> new RuFlowerBlock(MobEffects.SATURATION, 4, p), Blocks.DANDELION);
+    Supplier<Block> FELICIA_DAISY = register("felicia_daisy", p -> new ShortFlowerBlock(MobEffects.MOVEMENT_SPEED, 8, p), Blocks.DANDELION);
+    Supplier<Block> FIREWEED = register("fireweed", p -> new FlowerBlock(MobEffects.GLOWING, 2, p), Blocks.DANDELION);
+    Supplier<Block> HIBISCUS = register("hibiscus", p -> new FlowerBlock(MobEffects.JUMP, 6, p), Blocks.DANDELION);
+    Supplier<Block> HYSSOP = register("hyssop", p -> new LargeFlowerBlock(MobEffects.LUCK, 10, p), Blocks.DANDELION);
+    Supplier<Block> MALLOW = register("mallow", p -> new FlowerBlock(MobEffects.DIG_SLOWDOWN, 4, p), Blocks.DANDELION);
+    Supplier<Block> PINK_LUPINE = register("pink_lupine", p -> new LargeFlowerBlock(MobEffects.SATURATION, 4, p), Blocks.DANDELION);
+    Supplier<Block> POPPY_BUSH = register("poppy_bush", p -> new LargeFlowerBlock(MobEffects.WEAKNESS, 3, p.mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XYZ).ignitedByLava().pushReaction(PushReaction.DESTROY)), Blocks.DANDELION);
+    Supplier<Block> SALMON_POPPY = register("salmon_poppy", p -> new FlowerBlock(MobEffects.WEAKNESS, 3, p), Blocks.POPPY);
+    Supplier<Block> SALMON_POPPY_BUSH = register("salmon_poppy_bush", p -> new LargeFlowerBlock(MobEffects.WEAKNESS, 3, p), POPPY_BUSH);
+    Supplier<Block> PURPLE_LUPINE = register("purple_lupine", p -> new LargeFlowerBlock(MobEffects.SATURATION, 4, p), Blocks.DANDELION);
+    Supplier<Block> RED_LUPINE = register("red_lupine", p -> new LargeFlowerBlock(MobEffects.SATURATION, 4, p), Blocks.DANDELION);
+    Supplier<Block> WARATAH = register("waratah", p -> new FlowerBlock(MobEffects.JUMP, 5, p), Blocks.DANDELION);
+    Supplier<Block> TSUBAKI = register("tsubaki", p -> new FlowerBlock(MobEffects.HEAL, 3, p), Blocks.DANDELION);
+    Supplier<Block> WHITE_TRILLIUM = register("white_trillium", p -> new FlowerBlock(MobEffects.DIG_SPEED, 7, p), Blocks.DANDELION);
+    Supplier<Block> WILTING_TRILLIUM = register("wilting_trillium", p -> new FlowerBlock(MobEffects.DIG_SLOWDOWN, 10, p), Blocks.DANDELION);
+    Supplier<Block> YELLOW_LUPINE = register("yellow_lupine", p -> new LargeFlowerBlock(MobEffects.SATURATION, 4, p), Blocks.DANDELION);
 
     Supplier<Block> ORANGE_CONEFLOWER = register("orange_coneflower", p -> new GroundCoverBlock(p.pushReaction(PushReaction.DESTROY).ignitedByLava().noCollission().sound(SoundType.PINK_PETALS)));
     Supplier<Block> PURPLE_CONEFLOWER = register("purple_coneflower", p -> new PinkPetalsBlock(p.pushReaction(PushReaction.DESTROY).ignitedByLava().noCollission().sound(SoundType.PINK_PETALS)));
@@ -439,6 +442,7 @@ public interface RUBlocks {
     Supplier<Block> POTTED_MALLOW = RUBlockUtils.registerNoItem("potted_mallow", p -> new FlowerPotBlock(MALLOW.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_PINK_LUPINE = RUBlockUtils.registerNoItem("potted_pink_lupine", p -> new FlowerPotBlock(PINK_LUPINE.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_POPPY_BUSH = RUBlockUtils.registerNoItem("potted_poppy_bush", p -> new FlowerPotBlock(POPPY_BUSH.get(), p), Blocks.POTTED_ALLIUM);
+    Supplier<Block> POTTED_SALMON_POPPY = RUBlockUtils.registerNoItem("potted_salmon_poppy", p -> new FlowerPotBlock(SALMON_POPPY.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_SALMON_POPPY_BUSH = RUBlockUtils.registerNoItem("potted_salmon_poppy_bush", p -> new FlowerPotBlock(SALMON_POPPY_BUSH.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_PURPLE_LUPINE = RUBlockUtils.registerNoItem("potted_purple_lupine", p -> new FlowerPotBlock(PURPLE_LUPINE.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_RED_LUPINE = RUBlockUtils.registerNoItem("potted_red_lupine", p -> new FlowerPotBlock(RED_LUPINE.get(), p), Blocks.POTTED_ALLIUM);
@@ -472,7 +476,7 @@ public interface RUBlocks {
     Supplier<Block> POTTED_BARREL_CACTUS = RUBlockUtils.registerNoItem("potted_barrel_cactus", p -> new FlowerPotBlock(BARREL_CACTUS.get(), p), Blocks.POTTED_CACTUS);
     Supplier<Block> POTTED_CAVE_HYSSOP = RUBlockUtils.registerNoItem("potted_cave_hyssop", p -> new FlowerPotBlock(CAVE_HYSSOP.get(), p), Blocks.POTTED_ALLIUM);
     //SNOWBELLES
-    ColoredSet SNOWBELLES = new ColoredSet(color -> register(color.getName() + "_snowbelle", p -> new RuFlowerBlock(MobEffects.MOVEMENT_SLOWDOWN, 10, p), Blocks.DANDELION));
+    ColoredSet SNOWBELLES = new ColoredSet(color -> register(color.getName() + "_snowbelle", p -> new LargeFlowerBlock(MobEffects.MOVEMENT_SLOWDOWN, 10, p), Blocks.DANDELION));
     ColoredSet POTTED_SNOWBELLES = new ColoredSet(color -> RUBlockUtils.registerNoItem("potted_" + color.getName() + "_snowbelle", p -> new FlowerPotBlock(SNOWBELLES.getMap().get(color), p), Blocks.POTTED_ALLIUM));
 
     static void applyAliases(BiConsumer<Identifier, Identifier> consumer) {

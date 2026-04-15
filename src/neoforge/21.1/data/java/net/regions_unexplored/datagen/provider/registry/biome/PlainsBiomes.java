@@ -232,7 +232,8 @@ public class PlainsBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = basePlainsGeneration(featureGetter, carverGetter);
 
         //add RU features
-        RUBiomeFeatures.addPoppies(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_POPPY_FIELDS);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_POPPIES);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
 
 
@@ -241,8 +242,8 @@ public class PlainsBiomes {
 
         return (new Biome.BiomeBuilder())
                 .hasPrecipitation(true)
-                .temperature(0.75f)
-                .downfall(0.8f)
+                .temperature(0.7f)
+                .downfall(0.5f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(biomeBuilder.build())

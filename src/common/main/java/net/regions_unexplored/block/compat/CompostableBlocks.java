@@ -78,6 +78,7 @@ public class CompostableBlocks {
         COMPOSTABLES.put(RUBlocks.MALLOW.get(), 0.4F);
         COMPOSTABLES.put(RUBlocks.PINK_LUPINE.get(), 0.4F);
         COMPOSTABLES.put(RUBlocks.POPPY_BUSH.get(), 0.4F);
+        COMPOSTABLES.put(RUBlocks.SALMON_POPPY.get(), 0.4F);
         COMPOSTABLES.put(RUBlocks.SALMON_POPPY_BUSH.get(), 0.4F);
         COMPOSTABLES.put(RUBlocks.PURPLE_LUPINE.get(), 0.4F);
         COMPOSTABLES.put(RUBlocks.RED_LUPINE.get(), 0.4F);

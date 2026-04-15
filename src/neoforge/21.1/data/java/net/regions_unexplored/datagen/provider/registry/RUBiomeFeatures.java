@@ -10,152 +10,138 @@ import net.regions_unexplored.datagen.provider.registry.placed_feature.RuTreePla
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuVegetationPlacements;
 
 public class RUBiomeFeatures {
-    public static void grassSprouts(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
+    public static void grassSprouts(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
     }
-    public static void redwoodDecoration(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, MiscOverworldPlacements.FOREST_ROCK);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_FERNS_DENSE);
-        addRareSalmonberryBush(biomeBuilder);
+    public static void redwoodDecoration(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, MiscOverworldPlacements.FOREST_ROCK);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_FERNS_DENSE);
+        addRareSalmonberryBush(builder);
     }
-    public static void pointedRedstone(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, RuMiscOverworldPlacements.ORE_REDSTONE_LARGE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.POINTED_REDSTONE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.LARGE_POINTED_REDSTONE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.POINTED_REDSTONE_CLUSTER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.REDSTONE_BUD);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.REDSTONE_BULB);
+    public static void pointedRedstone(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, RuMiscOverworldPlacements.ORE_REDSTONE_LARGE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.POINTED_REDSTONE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.LARGE_POINTED_REDSTONE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.POINTED_REDSTONE_CLUSTER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.REDSTONE_BUD);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.REDSTONE_BULB);
     }
-    public static void netherPointedRedstone(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuNetherPlacements.POINTED_REDSTONE_NETHER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuNetherPlacements.LARGE_POINTED_REDSTONE_NETHER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuNetherPlacements.POINTED_REDSTONE_CLUSTER_NETHER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.REDSTONE_BUD);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.REDSTONE_BULB);
+    public static void netherPointedRedstone(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuNetherPlacements.POINTED_REDSTONE_NETHER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuNetherPlacements.LARGE_POINTED_REDSTONE_NETHER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuNetherPlacements.POINTED_REDSTONE_CLUSTER_NETHER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.REDSTONE_BUD);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.REDSTONE_BULB);
     }
-    public static void mauveTrees(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.BIG_MAUVE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.MAUVE_DENSE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.ENCHANTED_BIRCH);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.ENCHANTED_BIRCH_TALL);
-    }
-
-    public static void addHibiscus(BiomeGenerationSettings.Builder p_194721_) {
-        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.HIBISCUS);
+    public static void mauveTrees(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.BIG_MAUVE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.MAUVE_DENSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.ENCHANTED_BIRCH);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.ENCHANTED_BIRCH_TALL);
     }
 
-    public static void addMallow(BiomeGenerationSettings.Builder p_194721_) {
-        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.MALLOW);
+    public static void addHibiscus(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.HIBISCUS);
     }
 
-    public static void addWaratah(BiomeGenerationSettings.Builder p_194721_) {
-        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WARATAH);
+    public static void addMallow(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.MALLOW);
     }
 
-    public static void addDaisies(BiomeGenerationSettings.Builder p_194721_) {
-        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_DAISIES);
+    public static void addWaratah(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WARATAH);
     }
 
-    public static void addBamboo(BiomeGenerationSettings.Builder p_194721_) {
-        p_194721_.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, RuVegetationPlacements.BAMBOO);
+    public static void addDaisies(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_DAISIES);
     }
 
-    public static void addHyssop(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.HYSSOP);
-    }
-    public static void addPinkFlowers(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PINK_FLOWERS);
-    }
-    public static void bleedingHeart(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.FROZEN_FLOWERS);
-    }
-    public static void addWillowFlowers(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WILLOW_FLOWERS);
-    }
-    public static void addAster(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.ASTER);
-    }
-    public static void addTulips(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TULIPS);
-    }
-    public static void shrublandFlowers(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SHRUBLAND_FLOWERS);
-    }
-    public static void addPrairieFlowers(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PRAIRIE_FLOWERS);
-    }
-    public static void addPoppies(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.POPPIES);
-    }
-    public static void addDirtSurfaceVegetation(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DIRT_VEGETATION);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS_VEGETATION);
-    }
-    public static void addTaigaFlowerPatch(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.AZURE_DAISY);
-    }
-    public static void addMeadowVegetation(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.MEADOW_VEGETATION);
-    }
-    public static void addBayouVegetation(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BAYOU_VEGETATION);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.FLOWERING_LILY);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WILLOW_CYPRESS_SHRUB_MIX);
-    }
-    public static void addRareSalmonberryBush(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.RARE_SALMONBERRY_BUSH);
-    }
-    public static void addOrangeCornflower(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_ORANGE_CONEFLOWERS);
+    public static void addBamboo(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, RuVegetationPlacements.BAMBOO);
     }
 
-    public static void addPurpleCornflower(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_PURPLE_CONEFLOWERS);
+    public static void addHyssop(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.HYSSOP);
     }
-    public static void addTsubaki(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TSUBAKI);
+    public static void addPinkFlowers(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PINK_FLOWERS);
     }
-    public static void addLupineVegetation(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_LUPINES);
+    public static void bleedingHeart(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.FROZEN_FLOWERS);
     }
-    public static void mapleForestTrees(BiomeGenerationSettings.Builder biomeBuilder){
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.MAPLE_DENSE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.RED_MAPLE_SPARSE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.BIG_MAPLE_SPARSE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.SPRUCE_TALL_DENSE);
+    public static void addWillowFlowers(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WILLOW_FLOWERS);
     }
-    public static void mapleForestVegetation(BiomeGenerationSettings.Builder biomeBuilder){
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_DENSE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WHITE_TRILLIUM);
+    public static void addAster(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.ASTER);
     }
-    public static void addTrillium(BiomeGenerationSettings.Builder biomeBuilder){
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WHITE_TRILLIUM);
+    public static void addTulips(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TULIPS);
     }
-    public static void flowerFieldsFlowers(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SMALL_FLOWERS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_FLOWERS);
+    public static void shrublandFlowers(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SHRUBLAND_FLOWERS);
     }
-    public static void sakuraTrees(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.MAGNOLIA);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.PINK_MAGNOLIA);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.WHITE_MAGNOLIA);
+    public static void addPrairieFlowers(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PRAIRIE_FLOWERS);
     }
-    public static void blackwoodTrees(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TALL_BLACKWOOD);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.BLACKWOOD);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TALL_DARK_OAK);
+    public static void addDirtSurfaceVegetation(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DIRT_VEGETATION);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS_VEGETATION);
     }
-    public static void addBlackwoodBioshrooms(BiomeGenerationSettings.Builder biomeBuilder) {
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BLACKWOOD_MUSHROOMS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BLACKWOOD_DECORATION);
+    public static void addTaigaFlowerPatch(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.AZURE_DAISY);
     }
-    public static void globalOverworldGeneration(BiomeGenerationSettings.Builder biomeBuilder) {
-        BiomeDefaultFeatures.addDefaultCarversAndLakes(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultCrystalFormations(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultMonsterRoom(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultUndergroundVariety(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultSprings(biomeBuilder);
-        BiomeDefaultFeatures.addSurfaceFreezing(biomeBuilder);
+    public static void addMeadowVegetation(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.MEADOW_VEGETATION);
+    }
+    public static void addBayouVegetation(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BAYOU_VEGETATION);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.FLOWERING_LILY);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WILLOW_CYPRESS_SHRUB_MIX);
+    }
+    public static void addRareSalmonberryBush(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.RARE_SALMONBERRY_BUSH);
+    }
+    public static void addOrangeCornflower(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_ORANGE_CONEFLOWER);
+    }
+
+    public static void addPurpleCornflower(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_PURPLE_CONEFLOWER);
+    }
+    public static void addTsubaki(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TSUBAKI);
+    }
+    public static void addLupineVegetation(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_LUPINES);
+    }
+    public static void addTrillium(BiomeGenerationSettings.Builder builder){
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WHITE_TRILLIUM);
+    }
+    public static void flowerFieldsFlowers(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SMALL_FLOWERS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_FLOWERS);
+    }
+    public static void sakuraTrees(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.MAGNOLIA);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.PINK_MAGNOLIA);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.WHITE_MAGNOLIA);
+    }
+    public static void blackwoodTrees(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TALL_BLACKWOOD);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.BLACKWOOD);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TALL_DARK_OAK);
+    }
+    public static void addBlackwoodBioshrooms(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BLACKWOOD_MUSHROOMS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BLACKWOOD_DECORATION);
+    }
+    public static void globalOverworldGeneration(BiomeGenerationSettings.Builder builder) {
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(builder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(builder);
+        BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
+        BiomeDefaultFeatures.addDefaultSprings(builder);
+        BiomeDefaultFeatures.addSurfaceFreezing(builder);
     }
 }

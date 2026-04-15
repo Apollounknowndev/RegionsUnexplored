@@ -83,6 +83,7 @@ public class RuRecipeProvider extends RecipeProvider implements IConditionBuilde
         oneToOneConversionRecipe(consumer, Items.PURPLE_DYE, RUBlocks.HYSSOP.get(), "purple_dye");
         oneToOneConversionRecipe(consumer, Items.PINK_DYE, RUBlocks.PINK_LUPINE.get(), "pink_dye");
         oneToOneConversionRecipe(consumer, Items.RED_DYE, RUBlocks.POPPY_BUSH.get(), "red_dye");
+        oneToOneConversionRecipe(consumer, Items.PINK_DYE, RUBlocks.SALMON_POPPY.get(), "pink_dye");
         oneToOneConversionRecipe(consumer, Items.PINK_DYE, RUBlocks.SALMON_POPPY_BUSH.get(), "pink_dye");
         oneToOneConversionRecipe(consumer, Items.PURPLE_DYE, RUBlocks.PURPLE_LUPINE.get(), "purple_dye");
         oneToOneConversionRecipe(consumer, Items.RED_DYE, RUBlocks.RED_LUPINE.get(), "red_dye");

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_salmon_poppy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "regions_unexplored:salmon_poppy"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "regions_unexplored:pink_dye_from_salmon_poppy"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_salmon_poppy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "regions_unexplored:pink_dye_from_salmon_poppy"
+    ]
+  }
+}

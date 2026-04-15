@@ -210,10 +210,11 @@ public class ForestBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = baseForestGeneration(featureGetter, carverGetter, true);
 
         //add RU features
-        RUBiomeFeatures.mapleForestTrees(biomeBuilder);
-        RUBiomeFeatures.mapleForestVegetation(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_MAPLE_FOREST);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_MAPLE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.MAPLE_SHRUB_MIX);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WHITE_TRILLIUM);
 
 
         //add mob spawns

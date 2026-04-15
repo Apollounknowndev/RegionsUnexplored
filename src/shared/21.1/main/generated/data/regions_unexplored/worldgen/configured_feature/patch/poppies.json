@@ -9,15 +9,21 @@
             "type": "minecraft:noise_provider",
             "noise": {
               "amplitudes": [
-                1.0
+                1.3
               ],
-              "firstOctave": 0
+              "firstOctave": -6
             },
-            "scale": 0.075,
-            "seed": 2345,
+            "scale": 1.0,
+            "seed": 498625,
             "states": [
               {
                 "Name": "regions_unexplored:poppy_bush"
+              },
+              {
+                "Name": "minecraft:poppy"
+              },
+              {
+                "Name": "regions_unexplored:salmon_poppy"
               },
               {
                 "Name": "regions_unexplored:salmon_poppy_bush"
@@ -36,8 +42,8 @@
         }
       ]
     },
-    "tries": 96,
-    "xz_spread": 6,
-    "y_spread": 2
+    "tries": 64,
+    "xz_spread": 7,
+    "y_spread": 3
   }
 }

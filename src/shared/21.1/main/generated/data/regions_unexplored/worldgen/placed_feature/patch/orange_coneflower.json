@@ -1,11 +1,11 @@
 {
-  "feature": "regions_unexplored:patch/purple_coneflowers",
+  "feature": "regions_unexplored:patch/orange_coneflower",
   "placement": [
     {
       "type": "lithostitched:noise_slope",
       "noise": "regions_unexplored:flower_density",
-      "offset": -10,
-      "slope": 28,
+      "offset": -6,
+      "slope": 22,
       "xz_scale": 2.0,
       "y_scale": 0.0
     },

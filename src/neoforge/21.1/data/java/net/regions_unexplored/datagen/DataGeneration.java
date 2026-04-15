@@ -18,6 +18,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.datagen.provider.client.RUBlockModelProvider;
+import net.regions_unexplored.datagen.provider.client.RUItemModelProvider;
 import net.regions_unexplored.datagen.provider.registry.*;
 import net.regions_unexplored.datagen.provider.*;
 import net.regions_unexplored.datagen.provider.tag.RuBiomeTagProvider;
@@ -54,6 +55,7 @@ public class DataGeneration {
         generator.addProvider(true, new RuAdvancementProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
 
         generator.addProvider(event.includeClient(), new RUBlockModelProvider(packOutput, existingFileHelper));
+        generator.addProvider(event.includeClient(), new RUItemModelProvider(packOutput, existingFileHelper));
 
         generator.addProvider(true, new RuRecipeProvider(packOutput, holder));
         generator.addProvider(true, RuLootTableProvider.create(packOutput, holder));

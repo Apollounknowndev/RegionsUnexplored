@@ -121,6 +121,7 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(RUBlocks.MALLOW.get());
         dropSelf(RUBlocks.PINK_LUPINE.get());
         dropSelf(RUBlocks.POPPY_BUSH.get());
+        dropSelf(RUBlocks.SALMON_POPPY.get());
         dropSelf(RUBlocks.SALMON_POPPY_BUSH.get());
         dropSelf(RUBlocks.PURPLE_LUPINE.get());
         dropSelf(RUBlocks.RED_LUPINE.get());
@@ -262,6 +263,7 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
         add(RUBlocks.POTTED_HYSSOP.get(), createPotFlowerItemTable(RUBlocks.HYSSOP.get()));
         add(RUBlocks.POTTED_MALLOW.get(), createPotFlowerItemTable(RUBlocks.MALLOW.get()));
         add(RUBlocks.POTTED_POPPY_BUSH.get(), createPotFlowerItemTable(RUBlocks.POPPY_BUSH.get()));
+        add(RUBlocks.POTTED_SALMON_POPPY.get(), createPotFlowerItemTable(RUBlocks.SALMON_POPPY.get()));
         add(RUBlocks.POTTED_SALMON_POPPY_BUSH.get(), createPotFlowerItemTable(RUBlocks.SALMON_POPPY_BUSH.get()));
         add(RUBlocks.POTTED_TSUBAKI.get(), createPotFlowerItemTable(RUBlocks.TSUBAKI.get()));
         add(RUBlocks.POTTED_WARATAH.get(), createPotFlowerItemTable(RUBlocks.WARATAH.get()));

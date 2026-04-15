@@ -58,9 +58,9 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> PATCH_DAISIES = key("patch/daisies");
     public static final ResourceKey<PlacedFeature> PATCH_TUNDRA_FLOWERS = key("patch/tundra_flowers");
 
-    public static final ResourceKey<PlacedFeature> PATCH_GRASS_SPARSE = key("patch/grass_sparse");
-    public static final ResourceKey<PlacedFeature> PATCH_GRASS = key("patch/grass");
-    public static final ResourceKey<PlacedFeature> PATCH_GRASS_DENSE = key("patch/grass_dense");
+    public static final ResourceKey<PlacedFeature> PATCH_SHORT_GRASS_SPARSE = key("patch/short_grass_sparse");
+    public static final ResourceKey<PlacedFeature> PATCH_SHORT_GRASS = key("patch/short_grass");
+    public static final ResourceKey<PlacedFeature> PATCH_SHORT_GRASS_DENSE = key("patch/short_grass_dense");
     public static final ResourceKey<PlacedFeature> PATCH_FERN = key("patch/fern");
     public static final ResourceKey<PlacedFeature> PATCH_STEPPE_GRASS = key("patch/steppe_grass");
     public static final ResourceKey<PlacedFeature> PATCH_SANDY_GRASS_SPARSE = key("patch/sandy_grass_sparse");
@@ -99,7 +99,7 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> PRAIRIE_FLOWERS = key("prairie_flowers");
     public static final ResourceKey<PlacedFeature> SHRUBLAND_FLOWERS = key("shrubland_flowers");
     public static final ResourceKey<PlacedFeature> WILLOW_FLOWERS = key("willow_flowers");
-    public static final ResourceKey<PlacedFeature> POPPIES = key("poppies");
+    public static final ResourceKey<PlacedFeature> PATCH_POPPIES = key("patch/poppies");
     public static final ResourceKey<PlacedFeature> TASSEL_SPARSE = key("tassel_sparse");
     public static final ResourceKey<PlacedFeature> TASSEL_DENSE = key("tassel_dense");
     public static final ResourceKey<PlacedFeature> CORPSE_FLOWER = key("corpse_flower");
@@ -117,8 +117,8 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> MEADOW_SAGE = key("meadow_sage");
     public static final ResourceKey<PlacedFeature> REDSTONE_BULB = key("redstone_bulb");
 
-    public static final ResourceKey<PlacedFeature> PATCH_ORANGE_CONEFLOWERS = key("patch/orange_coneflowers");
-    public static final ResourceKey<PlacedFeature> PATCH_PURPLE_CONEFLOWERS = key("patch/purple_coneflowers");
+    public static final ResourceKey<PlacedFeature> PATCH_ORANGE_CONEFLOWER = key("patch/orange_coneflower");
+    public static final ResourceKey<PlacedFeature> PATCH_PURPLE_CONEFLOWER = key("patch/purple_coneflower");
     //FOOD_PLANTS
     public static final ResourceKey<PlacedFeature> RARE_SALMONBERRY_BUSH = key("rare_salmonberry_bush");
     public static final ResourceKey<PlacedFeature> DUSKMELON = key("duskmelon");
@@ -169,7 +169,7 @@ public class RuVegetationPlacements {
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> getter = context.lookup(Registries.CONFIGURED_FEATURE);
         
-        Holder<ConfiguredFeature<?, ?>> patchGrass = getter.getOrThrow(RuVegetationFeatures.PATCH_GRASS);
+        Holder<ConfiguredFeature<?, ?>> patchGrass = getter.getOrThrow(RuVegetationFeatures.PATCH_SHORT_GRASS);
 
         //---------------------FEATURES---------------------//
         final Holder<ConfiguredFeature<?, ?>> BLACKWOOD_MUSHROOMS = getter.getOrThrow(RuVegetationFeatures.BLACKWOOD_BIOSHROOMS);
@@ -209,7 +209,6 @@ public class RuVegetationPlacements {
         final Holder<ConfiguredFeature<?, ?>> PRAIRIE_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_PRAIRIE_FLOWERS);
         final Holder<ConfiguredFeature<?, ?>> SHRUBLAND_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_SHRUBLAND_FLOWERS);
         final Holder<ConfiguredFeature<?, ?>> WILLOW_FLOWERS = getter.getOrThrow(RuVegetationFeatures.PATCH_WILLOW_FLOWERS);
-        final Holder<ConfiguredFeature<?, ?>> POPPIES = getter.getOrThrow(RuVegetationFeatures.PATCH_POPPIES);
         final Holder<ConfiguredFeature<?, ?>> TASSEL = getter.getOrThrow(RuVegetationFeatures.TASSEL);
         final Holder<ConfiguredFeature<?, ?>> SNOWBELLE = getter.getOrThrow(RuVegetationFeatures.WHITE_SNOWBELLE);
         final Holder<ConfiguredFeature<?, ?>> CORPSE_FLOWER = getter.getOrThrow(RuVegetationFeatures.CORPSE_FLOWER);
@@ -296,9 +295,9 @@ public class RuVegetationPlacements {
             BiomeFilter.biome()
         );
         
-        register(context, RuVegetationPlacements.PATCH_GRASS_SPARSE, patchGrass, surfaceSpread(2, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_GRASS, patchGrass, surfaceSpread(4, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_GRASS_DENSE, patchGrass, surfaceSpread(8, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE, patchGrass, surfaceSpread(2, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_SHORT_GRASS, patchGrass, surfaceSpread(4, Types.WORLD_SURFACE_WG));
+        register(context, RuVegetationPlacements.PATCH_SHORT_GRASS_DENSE, patchGrass, surfaceSpread(8, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_FERN, surfaceSpread(2, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_STEPPE_GRASS, surfaceSpread(2, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_SANDY_GRASS_SPARSE, surfaceSpread(2, Types.WORLD_SURFACE_WG));
@@ -340,7 +339,12 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.PRAIRIE_FLOWERS, PRAIRIE_FLOWERS, surfaceSpread(0.0625, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.SHRUBLAND_FLOWERS, SHRUBLAND_FLOWERS, surfaceSpread(0.0833, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.WILLOW_FLOWERS, WILLOW_FLOWERS, surfaceSpread(0.25, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.POPPIES, POPPIES, NoiseThresholdCountPlacement.of(-0.8D, 5, 14), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+        register(context, RuVegetationPlacements.PATCH_POPPIES,
+            LithostitchedPlacementModifiers.noiseSlope(RUNoises.FLOWER_DENSITY, 8, 6, 2, 0),
+            InSquarePlacement.spread(),
+            PlacementUtils.HEIGHTMAP,
+            BiomeFilter.biome()
+        );
         register(context, RuVegetationPlacements.TASSEL_SPARSE, TASSEL, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         register(context, RuVegetationPlacements.TASSEL_DENSE, TASSEL, CountPlacement.of(8), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         register(context, RuVegetationPlacements.SNOWBELLE, SNOWBELLE, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
@@ -356,13 +360,13 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.MEADOW_SAGE, MEADOW_SAGE, RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
         register(context, RuVegetationPlacements.REDSTONE_BULB, REDSTONE_BULB, List.of(CountPlacement.of(64), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome()));
 
-        register(context, RuVegetationPlacements.PATCH_ORANGE_CONEFLOWERS,
+        register(context, RuVegetationPlacements.PATCH_ORANGE_CONEFLOWER,
             LithostitchedPlacementModifiers.noiseSlope(RUNoises.FLOWER_DENSITY, 22, -6, 2, 0),
             InSquarePlacement.spread(),
             PlacementUtils.HEIGHTMAP,
             BiomeFilter.biome()
         );
-        register(context, RuVegetationPlacements.PATCH_PURPLE_CONEFLOWERS,
+        register(context, RuVegetationPlacements.PATCH_PURPLE_CONEFLOWER,
             LithostitchedPlacementModifiers.noiseSlope(RUNoises.FLOWER_DENSITY, 28, -10, 2, 0),
             InSquarePlacement.spread(),
             PlacementUtils.HEIGHTMAP,
