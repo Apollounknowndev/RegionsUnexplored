@@ -1,9 +1,9 @@
 {
-  "feature": "regions_unexplored:patch_grass",
+  "feature": "regions_unexplored:tree/group/blackwood_taiga_tertiary",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 8
+      "count": 48
     },
     {
       "type": "minecraft:in_square"
@@ -14,7 +14,7 @@
     },
     {
       "type": "minecraft:heightmap",
-      "heightmap": "WORLD_SURFACE_WG"
+      "heightmap": "OCEAN_FLOOR"
     },
     {
       "type": "minecraft:biome"

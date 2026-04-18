@@ -30,7 +30,7 @@ public class RUPineFoliagePlacer extends BlobFoliagePlacer {
 
     @Override
     protected void createFoliage(LevelSimulatedReader level, FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, int treeHeight, FoliageAttachment foliageAttachment, int foliageHeight, int leafRadius, int offset) {
-        Context context = new Context(level, foliageSetter, random, config, foliageAttachment.pos(), offset);
+        Context context = new Context(level, foliageSetter, random, config.foliageProvider, foliageAttachment.pos(), offset);
         placeSquare(context, 0, 2, false);
         placeSquare(context, 0, 1, false);
         placeDiamond(context, 1, 0, false);

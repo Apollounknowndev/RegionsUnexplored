@@ -37,14 +37,14 @@ public class CoastalBiomes {
     }
 
     private static BiomeGenerationSettings.Builder baseCoastGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        RUBiomeFeatures.globalOverworldGeneration(biomeBuilder);
-        RUBiomeFeatures.grassSprouts(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return biomeBuilder;
+        BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
+        RUBiomeFeatures.globalOverworldGeneration(builder);
+        RUBiomeFeatures.grassSprouts(builder);
+        BiomeDefaultFeatures.addDefaultOres(builder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(builder);
+        BiomeDefaultFeatures.addDefaultMushrooms(builder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
+        return builder;
     }
 
     public static Biome chalkCliffs(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
@@ -59,17 +59,17 @@ public class CoastalBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseCoastGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = baseCoastGeneration(featureGetter, carverGetter);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_BUSH_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_BUSH_SPARSE);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DAISY);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DAISY);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TASSEL_SPARSE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TASSEL_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.FLOWERING_SHRUB);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.FLOWERING_SHRUB);
 
 
         //add mob spawns
@@ -81,7 +81,7 @@ public class CoastalBiomes {
                 .downfall(0.7f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -97,10 +97,10 @@ public class CoastalBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseCoastGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = baseCoastGeneration(featureGetter, carverGetter);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SANDY_GRASS_VEGETATION);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SANDY_GRASS_VEGETATION);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseCoastSpawning(true);
@@ -111,7 +111,7 @@ public class CoastalBiomes {
                 .downfall(0.75f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -127,7 +127,7 @@ public class CoastalBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseCoastGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = baseCoastGeneration(featureGetter, carverGetter);
 
         //add RU features
 
@@ -140,7 +140,7 @@ public class CoastalBiomes {
                 .downfall(0.6f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 }

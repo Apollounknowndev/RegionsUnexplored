@@ -1,0 +1,103 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/tall_dark_oak",
+          "placement": [
+            {
+              "type": "minecraft:block_predicate_filter",
+              "predicate": {
+                "type": "minecraft:would_survive",
+                "state": {
+                  "Name": "minecraft:dark_oak_sapling",
+                  "Properties": {
+                    "stage": "0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "weight": 18
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/blue_bioshroom",
+          "placement": [
+            {
+              "type": "minecraft:heightmap",
+              "heightmap": "OCEAN_FLOOR_WG"
+            },
+            {
+              "type": "minecraft:surface_relative_threshold_filter",
+              "heightmap": "OCEAN_FLOOR",
+              "max_inclusive": -24
+            },
+            {
+              "type": "minecraft:block_predicate_filter",
+              "predicate": {
+                "type": "minecraft:all_of",
+                "predicates": [
+                  {
+                    "type": "minecraft:would_survive",
+                    "state": {
+                      "Name": "regions_unexplored:blue_bioshroom",
+                      "Properties": {
+                        "stage": "0"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:matching_blocks",
+                    "blocks": "minecraft:air"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "weight": 1
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/pink_bioshroom",
+          "placement": [
+            {
+              "type": "minecraft:heightmap",
+              "heightmap": "OCEAN_FLOOR_WG"
+            },
+            {
+              "type": "minecraft:surface_relative_threshold_filter",
+              "heightmap": "OCEAN_FLOOR",
+              "max_inclusive": -24
+            },
+            {
+              "type": "minecraft:block_predicate_filter",
+              "predicate": {
+                "type": "minecraft:all_of",
+                "predicates": [
+                  {
+                    "type": "minecraft:would_survive",
+                    "state": {
+                      "Name": "regions_unexplored:pink_bioshroom",
+                      "Properties": {
+                        "stage": "0"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:matching_blocks",
+                    "blocks": "minecraft:air"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "weight": 1
+      }
+    ]
+  }
+}

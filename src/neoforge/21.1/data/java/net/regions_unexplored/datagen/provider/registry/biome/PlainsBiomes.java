@@ -35,15 +35,15 @@ public class PlainsBiomes {
     }
 
     private static BiomeGenerationSettings.Builder basePlainsGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        RUBiomeFeatures.globalOverworldGeneration(biomeBuilder);
-        RUBiomeFeatures.grassSprouts(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
+        RUBiomeFeatures.globalOverworldGeneration(builder);
+        RUBiomeFeatures.grassSprouts(builder);
+        BiomeDefaultFeatures.addDefaultOres(builder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(builder);
+        BiomeDefaultFeatures.addDefaultMushrooms(builder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
 
-        return biomeBuilder;
+        return builder;
     }
 
     public static Biome barleyFields(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
@@ -58,12 +58,12 @@ public class PlainsBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = basePlainsGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
 
         //add RU features
-        RUBiomeFeatures.addPrairieFlowers(biomeBuilder);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BARLEY_DENSE);
+        RUBiomeFeatures.addPrairieFlowers(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BARLEY_DENSE);
 
 
         //add mob spawns
@@ -75,7 +75,7 @@ public class PlainsBiomes {
                 .downfall(0.6f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -91,12 +91,12 @@ public class PlainsBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FLOWER_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = basePlainsGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
 
         //add RU features
-        RUBiomeFeatures.flowerFieldsFlowers(biomeBuilder);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.ASTER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
+        RUBiomeFeatures.flowerFieldsFlowers(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.ASTER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
 
 
         //add mob spawns
@@ -108,7 +108,7 @@ public class PlainsBiomes {
                 .downfall(0.8f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -124,14 +124,14 @@ public class PlainsBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = basePlainsGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_SHRUB_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_SHRUB_SPARSE);
 
-        RUBiomeFeatures.addTulips(biomeBuilder);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WINDSWEPT_GRASS);
+        RUBiomeFeatures.addTulips(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WINDSWEPT_GRASS);
 
 
         //add mob spawns
@@ -143,7 +143,7 @@ public class PlainsBiomes {
                 .downfall(0.45f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -159,12 +159,12 @@ public class PlainsBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FLOWER_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = basePlainsGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
 
         //add RU features
-        RUBiomeFeatures.addLupineVegetation(biomeBuilder);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_CLOVERS_DENSE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
+        RUBiomeFeatures.addLupineVegetation(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_CLOVERS_DENSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
 
 
         //add mob spawns
@@ -176,7 +176,7 @@ public class PlainsBiomes {
                 .downfall(0.3f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -192,16 +192,16 @@ public class PlainsBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FLOWER_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = basePlainsGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, RuMiscOverworldPlacements.ROCK_GROUP_ROCKY_MEADOW);
+        builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, RuMiscOverworldPlacements.ROCK_GROUP_ROCKY_MEADOW);
         
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.MAUVE_MEADOW);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.MAUVE_SPARSE);
-        RUBiomeFeatures.addMeadowVegetation(biomeBuilder);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.MEADOW_SAGE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.MAUVE_MEADOW);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.MAUVE_SPARSE);
+        RUBiomeFeatures.addMeadowVegetation(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.MEADOW_SAGE);
 
 
         //add mob spawns
@@ -213,7 +213,7 @@ public class PlainsBiomes {
                 .downfall(0.7f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -229,12 +229,12 @@ public class PlainsBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = basePlainsGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_POPPY_FIELDS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_POPPIES);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_POPPY_FIELDS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_POPPIES);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
 
 
         //add mob spawns
@@ -246,7 +246,7 @@ public class PlainsBiomes {
                 .downfall(0.5f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -262,14 +262,14 @@ public class PlainsBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = basePlainsGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PRAIRIE_TREES);
-        RUBiomeFeatures.addPrairieFlowers(biomeBuilder);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_GRASS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BARLEY_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PRAIRIE_TREES);
+        RUBiomeFeatures.addPrairieFlowers(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BARLEY_SPARSE);
 
 
         //add mob spawns
@@ -281,7 +281,7 @@ public class PlainsBiomes {
                 .downfall(0.7f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -297,13 +297,13 @@ public class PlainsBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = basePlainsGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_PUMPKIN_FIELDS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.NOISE_PUMPKINS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.AUTUMNAL_SHRUB_MIX);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_PUMPKIN_FIELDS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.NOISE_PUMPKINS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.AUTUMNAL_SHRUB_MIX);
 
 
         //add mob spawns
@@ -315,7 +315,7 @@ public class PlainsBiomes {
                 .downfall(0.3f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -331,18 +331,18 @@ public class PlainsBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = basePlainsGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.SPRUCE_TALL_SPARSE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_SHRUB_DENSE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_BUSH_SINGLE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.SPRUCE_SHRUB_DENSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.SPRUCE_TALL_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_SHRUB_DENSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_BUSH_SINGLE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.SPRUCE_SHRUB_DENSE);
 
-        RUBiomeFeatures.shrublandFlowers(biomeBuilder);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SHRUBLAND_VEGETATION);
+        RUBiomeFeatures.shrublandFlowers(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SHRUBLAND_VEGETATION);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SPRUCE_SHRUB);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SPRUCE_SHRUB);
 
 
         //add mob spawns
@@ -354,7 +354,7 @@ public class PlainsBiomes {
                 .downfall(0.4f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 }

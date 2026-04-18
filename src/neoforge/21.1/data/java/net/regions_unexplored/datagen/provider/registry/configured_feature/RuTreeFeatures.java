@@ -5,6 +5,7 @@ import dev.worldgen.lithostitched.api.util.WeightedList;
 import dev.worldgen.lithostitched.api.worldgen.feature.LithostitchedFeatures;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
+import net.minecraft.core.Vec3i;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.random.SimpleWeightedRandomList;
@@ -12,6 +13,8 @@ import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
@@ -25,17 +28,16 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorato
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.*;
+import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.SurfaceRelativeThresholdFilter;
 import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUFeatureTypes;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
-import net.regions_unexplored.worldgen.foliageplacer.RUPineFoliagePlacer;
-import net.regions_unexplored.worldgen.foliageplacer.RedwoodFoliagePlacer;
-import net.regions_unexplored.worldgen.foliageplacer.SakuraFoliagePlacer;
-import net.regions_unexplored.worldgen.foliageplacer.SkinnyPineFoliagePlacer;
-import net.regions_unexplored.worldgen.foliageplacer.WillowFoliagePlacer;
+import net.regions_unexplored.worldgen.foliageplacer.*;
 import net.regions_unexplored.worldgen.treedecorator.BranchDecorator;
 import net.regions_unexplored.worldgen.treedecorator.PlaceOnGroundDecorator;
 import net.regions_unexplored.worldgen.treedecorator.WillowTrunkDecorator;
@@ -43,7 +45,7 @@ import net.regions_unexplored.world.level.block.leaves.AppleLeavesBlock;
 import net.regions_unexplored.world.level.block.wood.BambooLogBlock;
 import net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration;
 import net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration;
-import net.regions_unexplored.worldgen.trunkplacer.RedwoodTrunkPlacer;
+import net.regions_unexplored.worldgen.trunkplacer.*;
 
 import java.util.List;
 import java.util.OptionalInt;
@@ -86,14 +88,59 @@ public class RuTreeFeatures {
        register(context, TREE_MEGA_BAOBAB, RUFeatureTypes.MEGA_BAOBAB_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.BAOBAB_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.BAOBAB_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.BAOBAB_NATURAL_SET.getBranch()), 5, 5));
        register(context, TREE_ULTRA_BAOBAB, RUFeatureTypes.ULTRA_BAOBAB_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.BAOBAB_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.BAOBAB_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.BAOBAB_NATURAL_SET.getBranch()), 12, 6));
 
-       register(context, TREE_BLACKWOOD, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.BLACKWOOD_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(12, 4, 2), BlockStateProvider.simple(RUBlocks.BLACKWOOD_NATURAL_SET.getLeaves().defaultBlockState()), new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(2, 2), UniformInt.of(5, 5)), new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build());
-       register(context, TREE_BIG_BLACKWOOD, RUFeatureTypes.BLACKWOOD_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.BLACKWOOD_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.BLACKWOOD_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.BLACKWOOD_NATURAL_SET.getBranch().defaultBlockState()), 19, 5));
-
+       var blackwood = register(context, TREE_BLACKWOOD, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.BLACKWOOD_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(12, 4, 2), BlockStateProvider.simple(RUBlocks.BLACKWOOD_NATURAL_SET.getLeaves().defaultBlockState()), new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(2, 2), UniformInt.of(5, 5)), new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build());
+       var bigBlackwood = register(context, TREE_BIG_BLACKWOOD, RUFeatureTypes.BLACKWOOD_TREE.get(), new RUTreeConfiguration(
+           BlockStateProvider.simple(RUBlocks.BLACKWOOD_WOOD_SET.getLog().defaultBlockState()),
+           BlockStateProvider.simple(RUBlocks.BLACKWOOD_NATURAL_SET.getLeaves().defaultBlockState()),
+           BlockStateProvider.simple(RUBlocks.BLACKWOOD_NATURAL_SET.getBranch().defaultBlockState()),
+           19,
+           5
+       ));
+       var tallDarkOak = register(context, TREE_TALL_DARK_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.DARK_OAK_LOG), new DarkOakTrunkPlacer(8, 4, 1), BlockStateProvider.simple(Blocks.DARK_OAK_LEAVES), new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)), new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty())).ignoreVines().build());
+       
+       var blueBioshroom = register(context, TREE_BLUE_BIOSHROOM, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           BlockStateProvider.simple(RUBlocks.BLUE_BIOSHROOM_WOOD_SET.getLog()),
+           new StraightTrunkPlacer(1, 1, 1),
+           BlockStateProvider.simple(RUBlocks.BLUE_BIOSHROOM_BLOCK.get()),
+           new BioshroomFoliagePlacer(BlockStateProvider.simple(Blocks.SHROOMLIGHT)),
+           new TwoLayersFeatureSize(0, 0, 0)
+       ).ignoreVines().build());
+       var pinkBioshroom = register(context, TREE_PINK_BIOSHROOM, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           BlockStateProvider.simple(RUBlocks.PINK_BIOSHROOM_WOOD_SET.getLog()),
+           new StraightTrunkPlacer(1, 1, 1),
+           BlockStateProvider.simple(RUBlocks.PINK_BIOSHROOM_BLOCK.get()),
+           new BioshroomFoliagePlacer(BlockStateProvider.simple(Blocks.SHROOMLIGHT)),
+           new TwoLayersFeatureSize(0, 0, 0)
+       ).ignoreVines().build());
+       
+       registerPlaced(context, TREE_GROUP_BLACKWOOD_TAIGA_PRIMARY, LithostitchedFeatures.PLACED, LithostitchedFeatures.placed(direct(bigBlackwood)));
+       registerPlaced(context, TREE_GROUP_BLACKWOOD_TAIGA_SECONDARY, LithostitchedFeatures.PLACED, LithostitchedFeatures.placed(direct(blackwood)));
+       registerSelector(context, TREE_GROUP_BLACKWOOD_TAIGA_TERTIARY, builder -> builder
+           .add(Holder.direct(new PlacedFeature(tallDarkOak, List.of(
+               BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.DARK_OAK_SAPLING.defaultBlockState(), Vec3i.ZERO))
+           ))), 18)
+           .add(Holder.direct(new PlacedFeature(blueBioshroom, List.of(
+               HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG),
+               SurfaceRelativeThresholdFilter.of(Heightmap.Types.OCEAN_FLOOR, Integer.MIN_VALUE, -24),
+               BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                   BlockPredicate.wouldSurvive(RUBlocks.BLUE_BIOSHROOM.get().defaultBlockState(), Vec3i.ZERO),
+                   BlockPredicate.ONLY_IN_AIR_PREDICATE
+               ))
+           ))))
+           .add(Holder.direct(new PlacedFeature(pinkBioshroom, List.of(
+               HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG),
+               SurfaceRelativeThresholdFilter.of(Heightmap.Types.OCEAN_FLOOR, Integer.MIN_VALUE, -24),
+               BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                   BlockPredicate.wouldSurvive(RUBlocks.PINK_BIOSHROOM.get().defaultBlockState(), Vec3i.ZERO),
+                   BlockPredicate.ONLY_IN_AIR_PREDICATE
+               ))
+           ))))
+       );
+       
        register(context, TREE_BIRCH_ASPEN, RUFeatureTypes.ASPEN_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(Blocks.BIRCH_LOG.defaultBlockState()), BlockStateProvider.simple(Blocks.BIRCH_LEAVES.defaultBlockState()), BlockStateProvider.simple(RUBlocks.BIRCH_NATURAL_SET.getBranch().defaultBlockState()), 4, 3));
 
        register(context, TREE_COBALT, RUFeatureTypes.COBALT_TREE.get(), FeatureConfiguration.NONE);
 
-       register(context, TREE_TALL_DARK_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.DARK_OAK_LOG), new DarkOakTrunkPlacer(8, 4, 1), BlockStateProvider.simple(Blocks.DARK_OAK_LEAVES), new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)), new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty())).ignoreVines().build());
 
        var magnolia = register(context, TREE_MAGNOLIA, RUFeatureTypes.SAKURA_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.MAGNOLIA_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.MAGNOLIA_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.MAGNOLIA_NATURAL_SET.getBranch().defaultBlockState()), 1, 4));
        register(context, TREE_BLUE_MAGNOLIA, RUFeatureTypes.SAKURA_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(RUBlocks.MAGNOLIA_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.BLUE_MAGNOLIA_NATURAL_SET.getLeaves().defaultBlockState()), BlockStateProvider.simple(RUBlocks.MAGNOLIA_NATURAL_SET.getBranch().defaultBlockState()), 1, 4));

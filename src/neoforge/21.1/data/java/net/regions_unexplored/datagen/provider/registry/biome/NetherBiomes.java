@@ -38,26 +38,26 @@ public class NetherBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_CRIMSON_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.BLACKSTONE_BLOBS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NETHER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.RED_MUSHROOM_NETHER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
-        BiomeDefaultFeatures.addNetherDefaultOres(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
+        builder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.BLACKSTONE_BLOBS);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NETHER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.RED_MUSHROOM_NETHER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
+        BiomeDefaultFeatures.addNetherDefaultOres(builder);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.OBSIDIAN_SPIRE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuTreePlacements.COBALT);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.COBALT_ROOTS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.COBALT_EARLIGHT);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.TALL_COBALT_EARLIGHT);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.BLACKSTONE_CLUSTER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.HANGING_EARLIGHT);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.OBSIDIAN_SPIRE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuTreePlacements.COBALT);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.COBALT_ROOTS);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.COBALT_EARLIGHT);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.TALL_COBALT_EARLIGHT);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.BLACKSTONE_CLUSTER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.HANGING_EARLIGHT);
 
 
         //add mob spawns
@@ -73,7 +73,7 @@ public class NetherBiomes {
                 .downfall(0f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -92,27 +92,27 @@ public class NetherBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NETHER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.RED_MUSHROOM_NETHER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
-        BiomeDefaultFeatures.addNetherDefaultOres(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
+        builder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NETHER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.RED_MUSHROOM_NETHER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
+        BiomeDefaultFeatures.addNetherDefaultOres(builder);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuTreePlacements.BRIM_WILLOW);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuTreePlacements.TALL_BRIM_WILLOW);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuTreePlacements.BRIM_WILLOW);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuTreePlacements.TALL_BRIM_WILLOW);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.BRIMSPROUT);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.DORCEL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.BRIMSPROUT);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.DORCEL);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.BRIM_FLAMES);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.BRIM_FLAMES);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.BRIMWOOD_SHRUB);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.BRIMWOOD_SHRUB);
 
 
         //add mob spawns
@@ -128,7 +128,7 @@ public class NetherBiomes {
                 .downfall(0f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -147,25 +147,25 @@ public class NetherBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NETHER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.RED_MUSHROOM_NETHER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
-        BiomeDefaultFeatures.addNetherDefaultOres(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
+        builder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NETHER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.RED_MUSHROOM_NETHER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
+        BiomeDefaultFeatures.addNetherDefaultOres(builder);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_MEADOW_ROCK);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTER_BULB);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_SPROUT);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_FERN);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_BLOOM);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTER_SPIRE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_IVY);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_MEADOW_ROCK);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTER_BULB);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_SPROUT);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_FERN);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_BLOOM);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTER_SPIRE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_IVY);
 
 
 
@@ -182,7 +182,7 @@ public class NetherBiomes {
                 .downfall(0f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -201,24 +201,24 @@ public class NetherBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE_EXTRA);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
-        BiomeDefaultFeatures.addNetherDefaultOres(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
+        builder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE_EXTRA);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
+        BiomeDefaultFeatures.addNetherDefaultOres(builder);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuTreePlacements.GIANT_YELLOW_BIOSHROOM);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.SMALL_YELLOW_BIOSHROOM);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuTreePlacements.GIANT_YELLOW_BIOSHROOM);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.SMALL_YELLOW_BIOSHROOM);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.MYCOTOXIC_MUSHROOMS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.MYCOTOXIC_GRASS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.MYCOTOXIC_DAISY);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.MYCOTOXIC_BIOSHROOM);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.MYCOTOXIC_MUSHROOMS);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.MYCOTOXIC_GRASS);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.MYCOTOXIC_DAISY);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.MYCOTOXIC_BIOSHROOM);
 
 
         //add mob spawns
@@ -233,7 +233,7 @@ public class NetherBiomes {
                 .downfall(0f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -252,18 +252,18 @@ public class NetherBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_NETHER_WASTES));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NETHER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.RED_MUSHROOM_NETHER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
-        BiomeDefaultFeatures.addNetherDefaultOres(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NETHER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.RED_MUSHROOM_NETHER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
+        BiomeDefaultFeatures.addNetherDefaultOres(builder);
 
         //add RU features
-        RUBiomeFeatures.netherPointedRedstone(biomeBuilder);
+        RUBiomeFeatures.netherPointedRedstone(builder);
 
 
         //add mob spawns
@@ -277,7 +277,7 @@ public class NetherBiomes {
                 .downfall(0f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 }

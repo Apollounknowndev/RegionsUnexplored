@@ -4,6 +4,7 @@ import dev.worldgen.lithostitched.api.worldgen.placementmodifier.LithostitchedPl
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
@@ -33,7 +34,7 @@ import java.util.List;
 
 public class RuVegetationPlacements {
     //-----------------------KEYS-----------------------//
-    public static final ResourceKey<PlacedFeature> BLACKWOOD_MUSHROOMS = key("blackwood_mushrooms");
+    public static final ResourceKey<PlacedFeature> BLACKWOOD_BIOSHROOMS = key("blackwood_bioshrooms");
     public static final ResourceKey<PlacedFeature> BLACKWOOD_DECORATION = key("blackwood_decoration");
     public static final ResourceKey<PlacedFeature> MEADOW_VEGETATION = key("meadow_vegetation");
     //GRASS
@@ -172,7 +173,6 @@ public class RuVegetationPlacements {
         Holder<ConfiguredFeature<?, ?>> patchGrass = getter.getOrThrow(RuVegetationFeatures.PATCH_SHORT_GRASS);
 
         //---------------------FEATURES---------------------//
-        final Holder<ConfiguredFeature<?, ?>> BLACKWOOD_MUSHROOMS = getter.getOrThrow(RuVegetationFeatures.BLACKWOOD_BIOSHROOMS);
         final Holder<ConfiguredFeature<?, ?>> BLACKWOOD_DECORATION = getter.getOrThrow(RuVegetationFeatures.BLACKWOOD_DECORATION);
         final Holder<ConfiguredFeature<?, ?>> MEADOW_VEGETATION = getter.getOrThrow(RuVegetationFeatures.PATCH_MEADOW_VEGETATION);
         //GRASS
@@ -258,7 +258,18 @@ public class RuVegetationPlacements {
         //--------------------PLACEMENTS--------------------//
         register(context, RuVegetationPlacements.PINK_FLOWERS, PINK_FLOWERS, RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         register(context, RuVegetationPlacements.FROZEN_FLOWERS, FROZEN_FLOWERS, RarityFilter.onAverageOnceEvery(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-        register(context, RuVegetationPlacements.BLACKWOOD_MUSHROOMS, BLACKWOOD_MUSHROOMS, List.of(CountPlacement.of(2), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.BLACKWOOD_BIOSHROOMS,
+            count(2),
+            inSquare(),
+            notSubmerged(),
+            HeightmapPlacement.onHeightmap(Types.OCEAN_FLOOR_WG),
+            SurfaceRelativeThresholdFilter.of(Types.OCEAN_FLOOR, Integer.MIN_VALUE, -8),
+            BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                BlockPredicate.wouldSurvive(RUBlocks.BLUE_BIOSHROOM.get().defaultBlockState(), Vec3i.ZERO),
+                BlockPredicate.ONLY_IN_AIR_PREDICATE
+            )),
+            BiomeFilter.biome()
+        );
         register(context, RuVegetationPlacements.BLACKWOOD_DECORATION, BLACKWOOD_DECORATION, List.of(CountPlacement.of(8), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING), BiomeFilter.biome()));
         register(context, RuVegetationPlacements.MEADOW_VEGETATION, MEADOW_VEGETATION, NoiseThresholdCountPlacement.of(-0.8D, 5, 8), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         //GRASS

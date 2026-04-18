@@ -29,6 +29,7 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_APPLE_OAK = tree("apple_oak");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_APPLE_OAK = tree("big_apple_oak");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BLACKWOOD = tree("blackwood");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_BLUE_BIOSHROOM = tree("blue_bioshroom");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_BLACKWOOD = tree("big_blackwood");
     ResourceKey<ConfiguredFeature<?,?>> TREE_GIANT_BLACKWOOD = tree("giant_blackwood");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIRCH_ASPEN = tree("birch_aspen");
@@ -93,6 +94,7 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_PINE_SKINNY_TALL = tree("pine_skinny_tall");
     ResourceKey<ConfiguredFeature<?,?>> TREE_PINE_TALL = tree("pine_tall");
     ResourceKey<ConfiguredFeature<?,?>> TREE_PINE_TUNDRA = tree("pine_tundra");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_PINK_BIOSHROOM = tree("pink_bioshroom");
     ResourceKey<ConfiguredFeature<?,?>> TREE_SPRUCE_TUNDRA = tree("spruce_tundra");
     ResourceKey<ConfiguredFeature<?,?>> TREE_STRIPPED_PINE = tree("stripped_pine");
     ResourceKey<ConfiguredFeature<?,?>> TREE_STRIPPED_PINE_TALL = tree("stripped_pine_tall");

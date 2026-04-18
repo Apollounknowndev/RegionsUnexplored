@@ -8,10 +8,11 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.TreeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.material.Fluids;
 
 public class RUFoliagePlacerUtils {
-    public record Context(LevelSimulatedReader level, FoliagePlacer.FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, BlockPos origin, int offset) {}
+    public record Context(LevelSimulatedReader level, FoliagePlacer.FoliageSetter foliageSetter, RandomSource random, BlockStateProvider foliageProvider, BlockPos origin, int offset) {}
 
     public static void placeDiamond(Context context, int radius, int y, boolean doubleTrunk) {
         placeDiamond(context, radius, radius, y, doubleTrunk);
@@ -52,13 +53,17 @@ public class RUFoliagePlacerUtils {
         }
     }
 
-    private static void placeSingle(Context context, BlockPos pos) {
+    public static void placeSingle(Context context, BlockPos pos) {
+        placeSingle(context, pos, context.foliageProvider);
+    }
+    
+    public static void placeSingle(Context context, BlockPos pos, BlockStateProvider foliageProvider) {
         pos = pos.above(context.offset);
         boolean isPersistent = context.level.isStateAtPosition(pos, state -> state.getOptionalValue(BlockStateProperties.PERSISTENT).orElse(false));
         if (isPersistent || !TreeFeature.validTreePos(context.level, pos)) {
             return;
         }
-        BlockState foliageState = context.config.foliageProvider.getState(context.random, pos);
+        BlockState foliageState = foliageProvider.getState(context.random, pos);
         if (foliageState.hasProperty(BlockStateProperties.WATERLOGGED)) {
             foliageState = foliageState.setValue(BlockStateProperties.WATERLOGGED, context.level.isFluidAtPosition(pos, fluidState -> fluidState.isSourceOfType(Fluids.WATER)));
         }

@@ -18,11 +18,10 @@
       }
     },
     "foliage_provider": {
-      "type": "lithostitched:random_block",
-      "blocks": [
-        "regions_unexplored:blue_bioshroom_block",
-        "regions_unexplored:pink_bioshroom_block"
-      ]
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "regions_unexplored:blue_bioshroom_block"
+      }
     },
     "force_dirt": false,
     "ignore_vines": true,
@@ -34,21 +33,16 @@
     },
     "trunk_placer": {
       "type": "minecraft:straight_trunk_placer",
-      "base_height": 2,
+      "base_height": 1,
       "height_rand_a": 1,
-      "height_rand_b": 0
+      "height_rand_b": 1
     },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "minecraft:mushroom_stem",
+        "Name": "regions_unexplored:blue_bioshroom_stem",
         "Properties": {
-          "down": "true",
-          "east": "true",
-          "north": "true",
-          "south": "true",
-          "up": "true",
-          "west": "true"
+          "axis": "y"
         }
       }
     }

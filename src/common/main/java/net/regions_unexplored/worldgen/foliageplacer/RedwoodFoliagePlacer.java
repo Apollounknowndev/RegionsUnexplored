@@ -31,7 +31,7 @@ public class RedwoodFoliagePlacer extends BlobFoliagePlacer {
 
     @Override
     protected void createFoliage(LevelSimulatedReader level, FoliagePlacer.FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, int treeHeight, FoliagePlacer.FoliageAttachment foliageAttachment, int foliageHeight, int leafRadius, int offset) {
-        Context context = new Context(level, foliageSetter, random, config, foliageAttachment.pos(), offset);
+        Context context = new Context(level, foliageSetter, random, config.foliageProvider, foliageAttachment.pos(), offset);
         RUFoliagePlacerUtils.placeDiamond(context, 1, -1, false);
         RUFoliagePlacerUtils.placeDiamond(context, 2, 0, false);
         RUFoliagePlacerUtils.placeSquare(context, 1, 1, false, 0.33f);

@@ -14,7 +14,7 @@
     "surface": "floor",
     "vegetation_chance": 0.1,
     "vegetation_feature": {
-      "feature": "regions_unexplored:patch_grass",
+      "feature": "regions_unexplored:patch/short_grass",
       "placement": []
     },
     "vertical_range": 5,

@@ -60,39 +60,39 @@ public class AquaticBiomes {
     }
 
     private static BiomeGenerationSettings.Builder baseOceanGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        RUBiomeFeatures.globalOverworldGeneration(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
-        BiomeDefaultFeatures.addWaterTrees(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultGrass(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return biomeBuilder;
+        BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
+        RUBiomeFeatures.globalOverworldGeneration(builder);
+        BiomeDefaultFeatures.addDefaultOres(builder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(builder);
+        BiomeDefaultFeatures.addWaterTrees(builder);
+        BiomeDefaultFeatures.addDefaultGrass(builder);
+        BiomeDefaultFeatures.addDefaultMushrooms(builder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
+        return builder;
     }
     private static BiomeGenerationSettings.Builder baseRiverGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        RUBiomeFeatures.globalOverworldGeneration(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
+        RUBiomeFeatures.globalOverworldGeneration(builder);
+        BiomeDefaultFeatures.addDefaultOres(builder);
         //add default flowers
-        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_RIVER);
-        return biomeBuilder;
+        BiomeDefaultFeatures.addDefaultMushrooms(builder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_RIVER);
+        return builder;
     }
     private static BiomeGenerationSettings.Builder baseIslandGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter, boolean isTropical) {
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        RUBiomeFeatures.globalOverworldGeneration(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
+        RUBiomeFeatures.globalOverworldGeneration(builder);
+        BiomeDefaultFeatures.addDefaultOres(builder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(builder);
         //add default flowers
-        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultMushrooms(builder);
         if(isTropical){
-        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        BiomeDefaultFeatures.addJungleVines(biomeBuilder);
-        BiomeDefaultFeatures.addJungleMelons(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
+        BiomeDefaultFeatures.addJungleVines(builder);
+        BiomeDefaultFeatures.addJungleMelons(builder);
         }
-        return biomeBuilder;
+        return builder;
     }
 
     public static Biome alphaGrove(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
@@ -107,17 +107,17 @@ public class AquaticBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        BiomeDefaultFeatures.addDefaultCarversAndLakes(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultCrystalFormations(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultMonsterRoom(biomeBuilder);
-        BiomeDefaultFeatures.addSurfaceFreezing(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(builder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(builder);
+        BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
+        BiomeDefaultFeatures.addSurfaceFreezing(builder);
+        BiomeDefaultFeatures.addDefaultOres(builder);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_ALPHA_GROVE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_ALPHA_DANDELION);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_ALPHA_ROSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_ALPHA_GROVE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_ALPHA_DANDELION);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_ALPHA_ROSE);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseIslandSpawning(false);
@@ -128,7 +128,7 @@ public class AquaticBiomes {
                 .downfall(0.6f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -144,7 +144,7 @@ public class AquaticBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseRiverGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = baseRiverGeneration(featureGetter, carverGetter);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseRiverSpawning(false);
@@ -155,7 +155,7 @@ public class AquaticBiomes {
                 .downfall(0.7f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -171,16 +171,16 @@ public class AquaticBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_GROVE));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseOceanGeneration(featureGetter, carverGetter);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
-        BiomeDefaultFeatures.addLukeWarmKelp(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = baseOceanGeneration(featureGetter, carverGetter);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
+        BiomeDefaultFeatures.addLukeWarmKelp(builder);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, RuAquaticPlacements.SPECIAL_HYACINTH_ROCKS);
+        builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, RuAquaticPlacements.SPECIAL_HYACINTH_ROCKS);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.SPECIAL_TALL_HYACINTH_STOCK);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.SPECIAL_HYACINTH_PLANTS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.SPECIAL_HYACINTH_FLOWERS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.SPECIAL_TALL_HYACINTH_STOCK);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.SPECIAL_HYACINTH_PLANTS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.SPECIAL_HYACINTH_FLOWERS);
 
 
         //add mob spawns
@@ -193,7 +193,7 @@ public class AquaticBiomes {
                 .downfall(0.5f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -209,14 +209,14 @@ public class AquaticBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseRiverGeneration(featureGetter, carverGetter);
-        BiomeDefaultFeatures.addLukeWarmKelp(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = baseRiverGeneration(featureGetter, carverGetter);
+        BiomeDefaultFeatures.addLukeWarmKelp(builder);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.PATCH_CATTAIL);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.PATCH_CATTAIL);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_GRASS);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseRiverSpawning(true);
@@ -227,7 +227,7 @@ public class AquaticBiomes {
                 .downfall(0.7f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -243,14 +243,14 @@ public class AquaticBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseRiverGeneration(featureGetter, carverGetter);
-        BiomeDefaultFeatures.addLukeWarmKelp(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = baseRiverGeneration(featureGetter, carverGetter);
+        BiomeDefaultFeatures.addLukeWarmKelp(builder);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.PALM_ON_SAND);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.PALM_ON_SAND);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.FERNS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.FERNS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_GRASS);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseRiverSpawning(false);
@@ -263,7 +263,7 @@ public class AquaticBiomes {
                 .downfall(0.7f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -279,23 +279,23 @@ public class AquaticBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_GROVE));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseOceanGeneration(featureGetter, carverGetter);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_WARM);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEA_PICKLE);
-        BiomeDefaultFeatures.addLukeWarmKelp(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = baseOceanGeneration(featureGetter, carverGetter);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_WARM);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEA_PICKLE);
+        BiomeDefaultFeatures.addLukeWarmKelp(builder);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, RuAquaticPlacements.MOSSY_SEA_ROCKS);
+        builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, RuAquaticPlacements.MOSSY_SEA_ROCKS);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.BLUE_MAGNOLIA_FLOWERS_AQUATIC);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.PINK_MAGNOLIA_FLOWERS_AQUATIC);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.WHITE_MAGNOLIA_FLOWERS_AQUATIC);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.BLUE_MAGNOLIA_FLOWERS_AQUATIC);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.PINK_MAGNOLIA_FLOWERS_AQUATIC);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.WHITE_MAGNOLIA_FLOWERS_AQUATIC);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.PALM_SAPLING_AQUATIC);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.ELEPHANT_EAR_AQUATIC);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.PALM_SAPLING_AQUATIC);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.ELEPHANT_EAR_AQUATIC);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.JUNGLE_AQUATIC);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.PALM_AQUATIC);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.JUNGLE_AQUATIC);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.PALM_AQUATIC);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder())
@@ -310,7 +310,7 @@ public class AquaticBiomes {
                 .downfall(0.5f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -327,16 +327,16 @@ public class AquaticBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseIslandGeneration(featureGetter, carverGetter, false);
+        BiomeGenerationSettings.Builder builder = baseIslandGeneration(featureGetter, carverGetter, false);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, RuVegetationPlacements.PATCH_ASH_VENTS);
+        builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, RuVegetationPlacements.PATCH_ASH_VENTS);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_ASHEN_WOODLAND);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_WILTING_TRILLIUM);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_ASHEN_GRASS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_ASHEN_GRASS_SMOULDERING);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.ASHEN_SHRUB);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_ASHEN_WOODLAND);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_WILTING_TRILLIUM);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_ASHEN_GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_ASHEN_GRASS_SMOULDERING);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.ASHEN_SHRUB);
 
 
         //add mob spawns
@@ -351,7 +351,7 @@ public class AquaticBiomes {
                 .downfall(0.0f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -367,19 +367,19 @@ public class AquaticBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseIslandGeneration(featureGetter, carverGetter, true);
+        BiomeGenerationSettings.Builder builder = baseIslandGeneration(featureGetter, carverGetter, true);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.PALM_SPARSE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.PALM_SHRUB);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.JUNGLE_SPARSE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.BIG_JUNGLE_SPARSE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_BUSH_WITH_FLOWERS_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.PALM_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.PALM_SHRUB);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.JUNGLE_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.BIG_JUNGLE_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_BUSH_WITH_FLOWERS_SPARSE);
 
-        RUBiomeFeatures.addHibiscus(biomeBuilder);
+        RUBiomeFeatures.addHibiscus(builder);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.ELEPHANT_EAR_DENSE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PALM_JUNGLE_SHRUB_MIX);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.ELEPHANT_EAR_DENSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PALM_JUNGLE_SHRUB_MIX);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseIslandSpawning(true);
@@ -390,7 +390,7 @@ public class AquaticBiomes {
                 .downfall(0.95f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 }

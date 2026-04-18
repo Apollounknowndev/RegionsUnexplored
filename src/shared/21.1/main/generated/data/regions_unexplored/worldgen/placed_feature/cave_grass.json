@@ -1,5 +1,5 @@
 {
-  "feature": "regions_unexplored:patch_grass",
+  "feature": "regions_unexplored:patch/short_grass",
   "placement": [
     {
       "type": "minecraft:count_on_every_layer",

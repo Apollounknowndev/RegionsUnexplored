@@ -85,10 +85,9 @@
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
       "minecraft:patch_berry_common",
-      "regions_unexplored:tree/tall_blackwood",
-      "regions_unexplored:tree/blackwood",
-      "regions_unexplored:tree/tall_dark_oak",
-      "regions_unexplored:blackwood_mushrooms",
+      "regions_unexplored:tree/group/blackwood_taiga_primary",
+      "regions_unexplored:tree/group/blackwood_taiga_secondary",
+      "regions_unexplored:tree/group/blackwood_taiga_tertiary",
       "regions_unexplored:blackwood_decoration",
       "regions_unexplored:blackwood_vegetation",
       "regions_unexplored:blackwood_dark_oak_shrub_mix"

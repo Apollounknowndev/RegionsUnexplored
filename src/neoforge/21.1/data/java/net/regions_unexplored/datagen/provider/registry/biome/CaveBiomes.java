@@ -47,28 +47,28 @@ public class CaveBiomes {
     }
 
     private static BiomeGenerationSettings.Builder baseCaveGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        RUBiomeFeatures.globalOverworldGeneration(biomeBuilder);
-        BiomeDefaultFeatures.addPlainGrass(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
-        BiomeDefaultFeatures.addPlainVegetation(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return biomeBuilder;
+        BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
+        RUBiomeFeatures.globalOverworldGeneration(builder);
+        BiomeDefaultFeatures.addPlainGrass(builder);
+        BiomeDefaultFeatures.addDefaultOres(builder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(builder);
+        BiomeDefaultFeatures.addPlainVegetation(builder);
+        BiomeDefaultFeatures.addDefaultMushrooms(builder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
+        return builder;
     }
     private static BiomeGenerationSettings.Builder baseLushCaveGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter, boolean addClay) {
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        RUBiomeFeatures.globalOverworldGeneration(biomeBuilder);
-        BiomeDefaultFeatures.addPlainGrass(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
+        RUBiomeFeatures.globalOverworldGeneration(builder);
+        BiomeDefaultFeatures.addPlainGrass(builder);
+        BiomeDefaultFeatures.addDefaultOres(builder);
         if(addClay){
-            BiomeDefaultFeatures.addLushCavesSpecialOres(biomeBuilder);
+            BiomeDefaultFeatures.addLushCavesSpecialOres(builder);
         }
-        BiomeDefaultFeatures.addDefaultSoftDisks(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return biomeBuilder;
+        BiomeDefaultFeatures.addDefaultSoftDisks(builder);
+        BiomeDefaultFeatures.addDefaultMushrooms(builder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
+        return builder;
     }
 
     public static Biome ancientDelta(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
@@ -83,15 +83,15 @@ public class CaveBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseLushCaveGeneration(featureGetter, carverGetter, true);
+        BiomeGenerationSettings.Builder builder = baseLushCaveGeneration(featureGetter, carverGetter, true);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.MINERAL_POOL);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BLADED_GRASS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CORPSE_FLOWER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DUSKMELON);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DUSKTRAP);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DROPLEAF);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.MINERAL_POOL);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BLADED_GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CORPSE_FLOWER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DUSKMELON);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DUSKTRAP);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DROPLEAF);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseLushCaveSpawning();
@@ -102,7 +102,7 @@ public class CaveBiomes {
                 .downfall(0.8f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -118,18 +118,18 @@ public class CaveBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseLushCaveGeneration(featureGetter, carverGetter, false);
+        BiomeGenerationSettings.Builder builder = baseLushCaveGeneration(featureGetter, carverGetter, false);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.GIANT_GREEN_BIOSHROOM);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.GIANT_BLUE_BIOSHROOM);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.GIANT_GREEN_BIOSHROOM);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.GIANT_BLUE_BIOSHROOM);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CAVE_GRASS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CAVE_TALL_GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CAVE_GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CAVE_TALL_GRASS);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BLUE_BIOSHROOM);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GREEN_BIOSHROOM);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PINK_BIOSHROOM);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BLUE_BIOSHROOM);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GREEN_BIOSHROOM);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PINK_BIOSHROOM);
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseLushCaveSpawning();
 
@@ -139,7 +139,7 @@ public class CaveBiomes {
                 .downfall(0.9f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -156,13 +156,13 @@ public class CaveBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseCaveGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = baseCaveGeneration(featureGetter, carverGetter);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PRISMOSS_SPROUT);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CAVE_HYSSOP);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.PRISMARITE_CLUSTERS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.HANGING_PRISMARITE_CLUSTER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PRISMOSS_SPROUT);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CAVE_HYSSOP);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.PRISMARITE_CLUSTERS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.HANGING_PRISMARITE_CLUSTER);
 
 
         //add mob spawns
@@ -174,7 +174,7 @@ public class CaveBiomes {
                 .downfall(0.9f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -190,10 +190,10 @@ public class CaveBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseCaveGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = baseCaveGeneration(featureGetter, carverGetter);
 
         //add RU features
-        RUBiomeFeatures.pointedRedstone(biomeBuilder);
+        RUBiomeFeatures.pointedRedstone(builder);
 
 
         //add mob spawns
@@ -205,7 +205,7 @@ public class CaveBiomes {
                 .downfall(0.7f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 
@@ -222,13 +222,13 @@ public class CaveBiomes {
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DEEP_DARK));
 
         //add features
-        BiomeGenerationSettings.Builder biomeBuilder = baseCaveGeneration(featureGetter, carverGetter);
+        BiomeGenerationSettings.Builder builder = baseCaveGeneration(featureGetter, carverGetter);
 
         //add RU features
-        biomeBuilder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, RuMiscOverworldPlacements.OVERWORLD_LAVA_DELTA);
-        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, RuMiscOverworldPlacements.BASALT_BLOB);
-        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, RuMiscOverworldPlacements.ASH_VENT);
-        biomeBuilder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, RuMiscOverworldPlacements.LAVA_FALL);
+        builder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, RuMiscOverworldPlacements.OVERWORLD_LAVA_DELTA);
+        builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, RuMiscOverworldPlacements.BASALT_BLOB);
+        builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, RuMiscOverworldPlacements.ASH_VENT);
+        builder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, RuMiscOverworldPlacements.LAVA_FALL);
 
 
         //add mob spawns
@@ -240,7 +240,7 @@ public class CaveBiomes {
                 .downfall(0.0f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build())
+                .generationSettings(builder.build())
                 .build();
     }
 }
