@@ -1,0 +1,66 @@
+{
+  "parent": "minecraft:nether/create_beacon",
+  "criteria": {
+    "place_prismaglass_on_beacon": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:all_of",
+            "terms": [
+              {
+                "condition": "minecraft:location_check",
+                "predicate": {
+                  "block": {
+                    "blocks": "regions_unexplored:prismaglass"
+                  }
+                }
+              },
+              {
+                "condition": "minecraft:location_check",
+                "offsetY": -1,
+                "predicate": {
+                  "block": {
+                    "blocks": "minecraft:beacon"
+                  }
+                }
+              },
+              {
+                "condition": "minecraft:inverted",
+                "term": {
+                  "condition": "minecraft:location_check",
+                  "offsetY": -1,
+                  "predicate": {
+                    "block": {
+                      "blocks": "minecraft:beacon",
+                      "nbt": "{levels:0}"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.regions_unexplored.rgbeacon.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "regions_unexplored:prismaglass"
+    },
+    "title": {
+      "translate": "advancements.regions_unexplored.rgbeacon.title"
+    }
+  },
+  "requirements": [
+    [
+      "place_prismaglass_on_beacon"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

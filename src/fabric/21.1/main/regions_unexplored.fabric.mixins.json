@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "refmap": "${mod_id}.refmap.json",
   "mixins": [
+    "BeaconBlockEntityMixin",
     "FabricCropPlacerMixin"
   ],
   "client": [

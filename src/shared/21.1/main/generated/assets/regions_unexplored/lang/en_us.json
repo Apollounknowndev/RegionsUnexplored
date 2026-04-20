@@ -24,6 +24,8 @@
   "advancements.regions_unexplored.pioneer.title": "Pioneer",
   "advancements.regions_unexplored.regions_explored.description": "You've explored all the biomes from Regions Unexplored",
   "advancements.regions_unexplored.regions_explored.title": "Regions Explored",
+  "advancements.regions_unexplored.rgbeacon.description": "Place Prismaglass on an active Beacon",
+  "advancements.regions_unexplored.rgbeacon.title": "RGBeacon",
   "advancements.regions_unexplored.spelunker.description": "Find all Cave biomes from Regions Unexplored!",
   "advancements.regions_unexplored.spelunker.title": "Spelunker",
   "advancements.regions_unexplored.this_tree_bleeds_red.description": "Chop down a Socotra tree.",

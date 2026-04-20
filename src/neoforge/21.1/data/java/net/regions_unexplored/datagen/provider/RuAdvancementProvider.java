@@ -3,16 +3,28 @@ package net.regions_unexplored.datagen.provider;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementType;
+import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.advancements.critereon.*;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.contents.NbtContents;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.predicates.AllOfCondition;
+import net.minecraft.world.level.storage.loot.predicates.LocationCheck;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.regions_unexplored.RegionsUnexplored;
@@ -21,8 +33,10 @@ import net.regions_unexplored.registry.data.RUBiomes;
 import net.regions_unexplored.registry.RUItems;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
 
 public class RuAdvancementProvider extends AdvancementProvider {
 
@@ -449,6 +463,19 @@ public class RuAdvancementProvider extends AdvancementProvider {
                     .addCriterion("yellow_bioshroom_stem", InventoryChangeTrigger.TriggerInstance.hasItems(RUBlocks.YELLOW_BIOSHROOM_WOOD_SET.getLog().asItem()))
                     .addCriterion("green_bioshroom_stem", InventoryChangeTrigger.TriggerInstance.hasItems(RUBlocks.GREEN_BIOSHROOM_WOOD_SET.getLog().asItem()))
                     .save(saver, getAdvancementName(RegionsUnexplored.MOD_ID, "ancient_specimens"));
+            
+            CompoundTag beaconNbt = new CompoundTag();
+            beaconNbt.putInt("levels", 0);
+            
+            AdvancementHolder RGBEACON = Advancement.Builder.advancement()
+                .parent(Identifier.withDefaultNamespace("nether/create_beacon"))
+                .display(display(RUBlocks.PRISMAGLASS.get(), "rgbeacon", AdvancementType.GOAL))
+                .addCriterion("place_prismaglass_on_beacon", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(AllOfCondition.allOf(
+                    LocationCheck.checkLocation(blockPredicate(RUBlocks.PRISMAGLASS.get(), b -> b)),
+                    LocationCheck.checkLocation(blockPredicate(Blocks.BEACON, b -> b), BlockPos.ZERO.below()),
+                    LocationCheck.checkLocation(blockPredicate(Blocks.BEACON, b -> b.hasNbt(beaconNbt)), BlockPos.ZERO.below()).invert()
+                )))
+            .save(saver, getAdvancementName(RegionsUnexplored.MOD_ID, "rgbeacon"));
         }
 
 
@@ -457,4 +484,25 @@ public class RuAdvancementProvider extends AdvancementProvider {
         }
     }
     
+    private static LocationPredicate.Builder blockPredicate(Block block, UnaryOperator<BlockPredicate.Builder> operator) {
+        return LocationPredicate.Builder.location().setBlock(operator.apply(BlockPredicate.Builder.block().of(block)));
+    }
+    
+    
+    private static DisplayInfo display(ItemLike icon, String name, AdvancementType type) {
+        return new DisplayInfo(
+            new ItemStack(icon),
+            text(name, "title"),
+            text(name, "description"),
+            Optional.empty(),
+            type,
+            true,
+            true,
+            false
+        );
+    }
+    
+    private static Component text(String name, String suffix) {
+        return Component.translatable(String.format("advancements.regions_unexplored.%s.%s", name, suffix));
+    }
 }

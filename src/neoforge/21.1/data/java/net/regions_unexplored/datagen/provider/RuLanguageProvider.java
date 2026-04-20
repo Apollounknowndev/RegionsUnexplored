@@ -78,6 +78,9 @@ public class RuLanguageProvider extends LanguageProvider {
 
         this.add("advancements.regions_unexplored.ancient_specimens.title", "Ancient Specimens");
         this.add("advancements.regions_unexplored.ancient_specimens.description", "Collect every Bioshroom Stem type.");
+        
+        this.add("advancements.regions_unexplored.rgbeacon.title", "RGBeacon");
+        this.add("advancements.regions_unexplored.rgbeacon.description", "Place Prismaglass on an active Beacon");
 
         // Block translations
         BuiltInRegistries.BLOCK.stream().forEach(blockRegistryObject -> {

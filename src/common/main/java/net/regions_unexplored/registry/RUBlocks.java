@@ -16,6 +16,7 @@ import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.block.RuWoodTypes;
 import net.regions_unexplored.block.type.flower.LargeFlowerBlock;
 import net.regions_unexplored.block.type.flower.ShortFlowerBlock;
+import net.regions_unexplored.block.type.misc.PrismaglassBlock;
 import net.regions_unexplored.client.color.RuColors;
 import net.regions_unexplored.item.RUItemUtils;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
@@ -54,7 +55,7 @@ public interface RUBlocks {
     Supplier<Block> DEEPSLATE_PRISMOSS = register("deepslate_prismoss", p -> new PrismossBlock(p.mapColor(MapColor.COLOR_LIGHT_GREEN).sound(SoundType.DEEPSLATE).randomTicks().strength(3f, 6f).requiresCorrectToolForDrops()));
     Supplier<Block> HANGING_PRISMARITE = register("hanging_prismarite", p -> new HangingPrismariteBlock(p.pushReaction(PushReaction.DESTROY).sound(SoundType.AMETHYST).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 10)));
     Supplier<Block> LARGE_PRISMARITE_CLUSTER = register("large_prismarite_cluster", p -> new PrismariteDoubleBlock(p.pushReaction(PushReaction.DESTROY).noCollission().sound(SoundType.AMETHYST).offsetType(BlockBehaviour.OffsetType.XYZ).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 10)));
-    Supplier<Block> PRISMAGLASS = register("prismaglass", p -> new TransparentBlock(p.strength(0.3F).sound(SoundType.GLASS).noOcclusion().isValidSpawn(RUBlockUtils::never).isRedstoneConductor(RUBlockUtils::never).isSuffocating(RUBlockUtils::never).isViewBlocking(RUBlockUtils::never)));
+    Supplier<Block> PRISMAGLASS = register("prismaglass", p -> new PrismaglassBlock(p.strength(0.3F).sound(SoundType.GLASS).noOcclusion().isValidSpawn(RUBlockUtils::never).isRedstoneConductor(RUBlockUtils::never).isSuffocating(RUBlockUtils::never).isViewBlocking(RUBlockUtils::never)));
     Supplier<Block> PRISMARITE_CLUSTER = register("prismarite_cluster", p -> new PrismariteBlock(p.noCollission().noOcclusion().instabreak().sound(SoundType.AMETHYST_CLUSTER).pushReaction(PushReaction.DESTROY).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 10)));
     Supplier<Block> PRISMOSS_SPROUT = register("prismoss_sprout", p -> new PrismossSproutBlock(p.pushReaction(PushReaction.DESTROY).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XYZ)));
     //REDSTONE_BLOCKS
