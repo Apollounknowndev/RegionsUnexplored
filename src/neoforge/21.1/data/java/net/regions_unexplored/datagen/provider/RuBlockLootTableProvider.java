@@ -34,6 +34,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.common.Tags;
 import net.regions_unexplored.RegionsUnexplored;
+import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.registry.RUItems;
@@ -53,7 +54,6 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
     protected static final float[] FLOWERING_OAK_LEAVES_SAPLING_CHANCES = new float[]{0.08F, 0.091F, 0.1F, 0.12F};
     protected static final float[] JOSHUA_LEAVES_SAPLING_CHANCES = new float[]{0.13F, 0.15F, 0.17F, 0.185F};
     protected static final float[] PALM_LEAVES_SAPLING_CHANCES = new float[]{0.1F, 0.125F, 0.14F, 0.155F};
-    protected static final float[] SMALL_OAK_LEAVES_SAPLING_CHANCES = new float[]{0.075F, 0.08F, 0.089F, 0.1275F};
 
     private static final float[] NORMAL_LEAVES_STICK_CHANCES = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
 
@@ -154,78 +154,6 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
         add(RUBlocks.CATTAIL.get(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         add(RUBlocks.TASSEL.get(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         add(RUBlocks.DAY_LILY.get(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        //SAPLINGS
-        dropSelf(RUBlocks.ASHEN_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.ALPHA_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.APPLE_OAK_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.BAMBOO_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.BAOBAB_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.BLACKWOOD_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.SAGUARO_CACTUS_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.COBALT_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.MAGNOLIA_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.CYPRESS_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.DEAD_PINE_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.DEAD_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.EUCALYPTUS_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.FLOWERING_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.GOLDEN_LARCH_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.JOSHUA_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.KAPOK_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.LARCH_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.MAPLE_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.MAUVE_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.ORANGE_MAPLE_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.PALM_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.PINE_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.BLUE_MAGNOLIA_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.PINK_MAGNOLIA_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.REDWOOD_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.RED_MAPLE_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.BRIMWOOD_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.SILVER_BIRCH_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.SMALL_OAK_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.SOCOTRA_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.WHITE_MAGNOLIA_NATURAL_SET.getSapling());
-        dropSelf(RUBlocks.WILLOW_NATURAL_SET.getSapling());
-        //SHRUBS
-        add(RUBlocks.ASHEN_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.ACACIA_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.BAOBAB_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.BIRCH_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.BLACKWOOD_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.BRIMWOOD_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.MAGNOLIA_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.CHERRY_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.CYPRESS_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.DARK_OAK_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.DEAD_PINE_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.DEAD_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.EUCALYPTUS_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.FLOWERING_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.GOLDEN_LARCH_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.JOSHUA_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.JUNGLE_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.KAPOK_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.LARCH_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.MANGROVE_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.MAPLE_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.MAUVE_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.OAK_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.ORANGE_MAPLE_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.PALM_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.PINE_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.BLUE_MAGNOLIA_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.PINK_MAGNOLIA_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.REDWOOD_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.RED_MAPLE_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.SILVER_BIRCH_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.SOCOTRA_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.SPRUCE_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.WHITE_MAGNOLIA_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.WILLOW_NATURAL_SET.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         //MUSHROOMS
         dropSelf(RUBlocks.BLUE_BIOSHROOM.get());
         dropSelf(RUBlocks.GREEN_BIOSHROOM.get());
@@ -297,40 +225,6 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
         add(RUBlocks.POTTED_TALL_GREEN_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.TALL_GREEN_BIOSHROOM.get()));
         add(RUBlocks.POTTED_TALL_PINK_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.TALL_PINK_BIOSHROOM.get()));
         add(RUBlocks.POTTED_TALL_YELLOW_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.TALL_YELLOW_BIOSHROOM.get()));
-        add(RUBlocks.ASHEN_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.ASHEN_NATURAL_SET.getSapling()));
-        add(RUBlocks.ALPHA_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.ALPHA_NATURAL_SET.getSapling()));
-        add(RUBlocks.APPLE_OAK_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.APPLE_OAK_NATURAL_SET.getSapling()));
-        add(RUBlocks.BAMBOO_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.BAMBOO_NATURAL_SET.getSapling()));
-        add(RUBlocks.BAOBAB_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.BAOBAB_NATURAL_SET.getSapling()));
-        add(RUBlocks.BLACKWOOD_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.BLACKWOOD_NATURAL_SET.getSapling()));
-        add(RUBlocks.BRIMWOOD_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.BRIMWOOD_NATURAL_SET.getSapling()));
-        add(RUBlocks.COBALT_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.COBALT_NATURAL_SET.getSapling()));
-        add(RUBlocks.SAGUARO_CACTUS_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.SAGUARO_CACTUS_NATURAL_SET.getSapling()));
-        add(RUBlocks.MAGNOLIA_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.MAGNOLIA_NATURAL_SET.getSapling()));
-        add(RUBlocks.CYPRESS_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.CYPRESS_NATURAL_SET.getSapling()));
-        add(RUBlocks.DEAD_PINE_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.DEAD_PINE_NATURAL_SET.getSapling()));
-        add(RUBlocks.DEAD_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.DEAD_NATURAL_SET.getSapling()));
-        add(RUBlocks.EUCALYPTUS_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.EUCALYPTUS_NATURAL_SET.getSapling()));
-        add(RUBlocks.FLOWERING_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.FLOWERING_NATURAL_SET.getSapling()));
-        add(RUBlocks.GOLDEN_LARCH_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.GOLDEN_LARCH_NATURAL_SET.getSapling()));
-        add(RUBlocks.JOSHUA_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.JOSHUA_NATURAL_SET.getSapling()));
-        add(RUBlocks.KAPOK_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.KAPOK_NATURAL_SET.getSapling()));
-        add(RUBlocks.LARCH_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.LARCH_NATURAL_SET.getSapling()));
-        add(RUBlocks.MAPLE_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.MAPLE_NATURAL_SET.getSapling()));
-        add(RUBlocks.MAUVE_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.MAUVE_NATURAL_SET.getSapling()));
-        add(RUBlocks.ORANGE_MAPLE_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.ORANGE_MAPLE_NATURAL_SET.getSapling()));
-        add(RUBlocks.PALM_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.PALM_NATURAL_SET.getSapling()));
-        add(RUBlocks.PINE_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.PINE_NATURAL_SET.getSapling()));
-        add(RUBlocks.BLUE_MAGNOLIA_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.BLUE_MAGNOLIA_NATURAL_SET.getSapling()));
-        add(RUBlocks.PINK_MAGNOLIA_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.PINK_MAGNOLIA_NATURAL_SET.getSapling()));
-        add(RUBlocks.REDWOOD_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.REDWOOD_NATURAL_SET.getSapling()));
-        add(RUBlocks.RED_MAPLE_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.RED_MAPLE_NATURAL_SET.getSapling()));
-        add(RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getSapling()));
-        add(RUBlocks.SILVER_BIRCH_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.SILVER_BIRCH_NATURAL_SET.getSapling()));
-        add(RUBlocks.SMALL_OAK_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.SMALL_OAK_NATURAL_SET.getSapling()));
-        add(RUBlocks.SOCOTRA_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.SOCOTRA_NATURAL_SET.getSapling()));
-        add(RUBlocks.WHITE_MAGNOLIA_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.WHITE_MAGNOLIA_NATURAL_SET.getSapling()));
-        add(RUBlocks.WILLOW_NATURAL_SET.getPottedSapling(), createPotFlowerItemTable(RUBlocks.WILLOW_NATURAL_SET.getSapling()));
 
         /*-----------------PLANT_BLOCKS-----------------*/
         //MUSHROOMS
@@ -352,67 +246,54 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(RUBlocks.SAGUARO_CACTUS.get());
 
         /*-----------------LEAVES-----------------*/
-        add(RUBlocks.ALPHA_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.ALPHA_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.APPLE_OAK_NATURAL_SET.getLeaves(), (block) -> createOakLeavesDrops(block, RUBlocks.APPLE_OAK_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.ASHEN_NATURAL_SET.getLeaves(), (block) -> createOakLeavesDrops(block, RUBlocks.ASHEN_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.BAMBOO_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.BAMBOO_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.BAOBAB_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.BAOBAB_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.BLACKWOOD_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.BLACKWOOD_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.COBALT_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.COBALT_NATURAL_SET.getSapling(), COBALT_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.MAGNOLIA_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.MAGNOLIA_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.CYPRESS_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.CYPRESS_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.DEAD_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.DEAD_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.DEAD_PINE_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.DEAD_PINE_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.EUCALYPTUS_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.EUCALYPTUS_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves(), (block) -> createOakLeavesDrops(block, RUBlocks.FLOWERING_NATURAL_SET.getSapling(), FLOWERING_OAK_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.GOLDEN_LARCH_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.GOLDEN_LARCH_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.JOSHUA_NATURAL_SET.getLeaves(), (block) -> createDoublePlantWithSeedDropsNoGrass(block, RUBlocks.JOSHUA_NATURAL_SET.getLeaves(), RUBlocks.JOSHUA_NATURAL_SET.getSapling(), JOSHUA_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.KAPOK_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.KAPOK_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.LARCH_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.LARCH_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.MAPLE_NATURAL_SET.getLeaves(), (block) -> createOakLeavesDrops(block, RUBlocks.MAPLE_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.MAUVE_NATURAL_SET.getLeaves(), (block) -> createOakLeavesDrops(block, RUBlocks.MAUVE_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.ORANGE_MAPLE_NATURAL_SET.getLeaves(), (block) -> createOakLeavesDrops(block, RUBlocks.ORANGE_MAPLE_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.PALM_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.PALM_NATURAL_SET.getSapling(), PALM_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.PINE_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.PINE_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.BLUE_MAGNOLIA_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.BLUE_MAGNOLIA_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.PINK_MAGNOLIA_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.PINK_MAGNOLIA_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.REDWOOD_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.REDWOOD_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.RED_MAPLE_NATURAL_SET.getLeaves(), (block) -> createOakLeavesDrops(block, RUBlocks.RED_MAPLE_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.BRIMWOOD_NATURAL_SET.getLeaves(), (block) -> createSilkTouchOrShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(RUBlocks.BRIMWOOD_NATURAL_SET.getSapling())).when(BonusLevelTableCondition.bonusLevelFlatChance(registries.holderOrThrow(Enchantments.FORTUNE), NORMAL_LEAVES_SAPLING_CHANCES))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH)));
-        add(RUBlocks.SILVER_BIRCH_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.SILVER_BIRCH_NATURAL_SET.getSapling(), ASPEN_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.SMALL_OAK_NATURAL_SET.getLeaves(), (block) -> createOakLeavesDrops(block, RUBlocks.SMALL_OAK_NATURAL_SET.getSapling(), SMALL_OAK_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.SOCOTRA_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.SOCOTRA_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getSapling(), ASPEN_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.WHITE_MAGNOLIA_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.WHITE_MAGNOLIA_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(RUBlocks.WILLOW_NATURAL_SET.getLeaves(), (block) -> createLeavesDrops(block, RUBlocks.WILLOW_NATURAL_SET.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
-
-        /*-----------------BRANCHES-----------------*/
-        add(RUBlocks.ACACIA_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.BAOBAB_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.BIRCH_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.BLACKWOOD_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.MAGNOLIA_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.CYPRESS_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.CHERRY_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.DARK_OAK_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.DEAD_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.EUCALYPTUS_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.JOSHUA_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.JUNGLE_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.KAPOK_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.LARCH_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.MANGROVE_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.MAPLE_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.MAUVE_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.OAK_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.PALM_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.PINE_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.REDWOOD_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.SILVER_BIRCH_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.SOCOTRA_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.SPRUCE_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-        add(RUBlocks.WILLOW_NATURAL_SET.getBranch(), (block) -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
-
+        for (NaturalSet set : RUBlocks.NATURAL_SETS) {
+            String name = set.name;
+            
+            // Branches
+            if (set.getBranch() != null) {
+                add(set.getBranch(), block -> createShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(4.0F)).when(HAS_SHEARS.invert())));
+            }
+            
+            // Shrubs
+            if (set.getShrub() != null) {
+                add(set.getShrub(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+            }
+            
+            // Saplings
+            if (set.getSapling() != null) {
+                dropSelf(set.getSapling());
+                if (set.getPottedSapling() != null) {
+                    add(set.getPottedSapling(), createPotFlowerItemTable(set.getSapling()));
+                }
+            }
+            
+            // Leaves
+            if (name.equals("joshua")) {
+                add(RUBlocks.JOSHUA_NATURAL_SET.getLeaves(), (block) -> createDoublePlantWithSeedDropsNoGrass(block, RUBlocks.JOSHUA_NATURAL_SET.getLeaves(), RUBlocks.JOSHUA_NATURAL_SET.getSapling(), JOSHUA_LEAVES_SAPLING_CHANCES));
+            } else if (name.equals("brimwood")) {
+                add(RUBlocks.BRIMWOOD_NATURAL_SET.getLeaves(), (block) -> createSilkTouchOrShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(RUBlocks.BRIMWOOD_NATURAL_SET.getSapling())).when(BonusLevelTableCondition.bonusLevelFlatChance(registries.holderOrThrow(Enchantments.FORTUNE), NORMAL_LEAVES_SAPLING_CHANCES))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH)));
+            } else if (name.contains("apple") || name.contains("maple")) {
+              add(set.getLeaves(), block -> createOakLeavesDrops(block, set.getSapling(), NORMAL_LEAVES_SAPLING_CHANCES));
+            } else {
+                float[] saplingChances = switch (name) {
+                    case "cobalt" -> COBALT_LEAVES_SAPLING_CHANCES;
+                    case "flowering" -> FLOWERING_OAK_LEAVES_SAPLING_CHANCES;
+                    case "palm" -> PALM_LEAVES_SAPLING_CHANCES;
+                    case "silver_birch", "enchanted_birch" -> ASPEN_LEAVES_SAPLING_CHANCES;
+                    default ->  NORMAL_LEAVES_SAPLING_CHANCES;
+                };
+                if (set.getLeaves() != null && set.getSapling() != null) {
+                    add(set.getLeaves(), block -> createLeavesDrops(block, set.getSapling(), saplingChances));
+                }
+            }
+            
+            // Hanging Leaves
+            Block hangingLeaves = set.getVines();
+            if (hangingLeaves != null) {
+                dropSelf(hangingLeaves);
+                //createSilkTouchOrShearsDispatchTable(hangingLeaves, LootItem.lootTableItem(hangingLeaves));
+            }
+        }
         /*-----------------DIRT_BLOCKS-----------------*/
         //FOREST_DIRT_BLOCKS
         add(RUBlocks.PEAT_GRASS_BLOCK.get(), (block) -> createSingleItemTableWithSilkTouch(block, RUBlocks.PEAT_DIRT.get()));
@@ -565,18 +446,18 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected LootTable.Builder createLeavesDrops(Block block, Block block1, float... chances) {
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        return this.createSilkTouchOrShearsDispatchTable(block, ((LootPoolSingletonContainer.Builder)this.applyExplosionCondition(block, LootItem.lootTableItem(block1))).when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), chances))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH).add(((LootPoolSingletonContainer.Builder)this.applyExplosionDecay(block, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))).when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), NORMAL_LEAVES_STICK_CHANCES))));
+        return this.createSilkTouchOrShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(block1)).when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), chances))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH).add(((LootPoolSingletonContainer.Builder)this.applyExplosionDecay(block, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))).when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), NORMAL_LEAVES_STICK_CHANCES))));
     }
 
     @Override
     protected LootTable.Builder createOakLeavesDrops(Block block, Block block1, float... chances) {
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        return this.createLeavesDrops(block, block1, chances).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH).add(((LootPoolSingletonContainer.Builder)this.applyExplosionCondition(block, LootItem.lootTableItem(Items.APPLE))).when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), new float[]{0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F}))));
+        return this.createLeavesDrops(block, block1, chances).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH).add(this.applyExplosionCondition(block, LootItem.lootTableItem(Items.APPLE)).when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), new float[]{0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F}))));
     }
 
     @Override
     protected LootTable.Builder createDoublePlantWithSeedDrops(Block block, Block block1) {
-        LootPoolEntryContainer.Builder<?> builder = ((LootPoolSingletonContainer.Builder)LootItem.lootTableItem(block1).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))).when(HAS_SHEARS)).otherwise(((LootPoolSingletonContainer.Builder)this.applyExplosionCondition(block, LootItem.lootTableItem(Items.WHEAT_SEEDS))).when(LootItemRandomChanceCondition.randomChance(0.125F)));
-        return LootTable.lootTable().withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(net.minecraft.advancements.critereon.StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).when(LocationCheck.checkLocation(net.minecraft.advancements.critereon.LocationPredicate.Builder.location().setBlock(net.minecraft.advancements.critereon.BlockPredicate.Builder.block().of(new Block[]{block}).setProperties(net.minecraft.advancements.critereon.StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER))), new BlockPos(0, 1, 0)))).withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(net.minecraft.advancements.critereon.StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER))).when(LocationCheck.checkLocation(net.minecraft.advancements.critereon.LocationPredicate.Builder.location().setBlock(net.minecraft.advancements.critereon.BlockPredicate.Builder.block().of(new Block[]{block}).setProperties(net.minecraft.advancements.critereon.StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER))), new BlockPos(0, -1, 0))));
+        LootPoolEntryContainer.Builder<?> builder = (LootItem.lootTableItem(block1).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))).when(HAS_SHEARS)).otherwise((this.applyExplosionCondition(block, LootItem.lootTableItem(Items.WHEAT_SEEDS))).when(LootItemRandomChanceCondition.randomChance(0.125F)));
+        return LootTable.lootTable().withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(new Block[]{block}).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER))), new BlockPos(0, 1, 0)))).withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER))).when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(new Block[]{block}).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER))), new BlockPos(0, -1, 0))));
     }
 }

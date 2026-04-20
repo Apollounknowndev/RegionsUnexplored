@@ -81,7 +81,6 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:forest_flowers",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
@@ -91,9 +90,10 @@
       "regions_unexplored:tree/maple_sparse",
       "regions_unexplored:tree/birch_aspen",
       "regions_unexplored:tree/fallen_oak_tree_sparse",
-      "regions_unexplored:grass",
+      "regions_unexplored:shrub/oak",
       "regions_unexplored:patch/purple_coneflower",
-      "regions_unexplored:shrub/oak"
+      "regions_unexplored:patch/short_grass_sparse",
+      "regions_unexplored:patch/grass_sprouts_sparse"
     ],
     [
       "minecraft:freeze_top_layer"

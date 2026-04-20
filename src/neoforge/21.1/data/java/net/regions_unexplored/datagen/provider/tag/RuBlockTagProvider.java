@@ -70,8 +70,12 @@ public class RuBlockTagProvider extends BlockTagsProvider {
         RUBlocks.PAINTED_SLABS.getAll().forEach(slabs::add);
 
         var saplings = this.tag(BlockTags.SAPLINGS);
+        var climbable = this.tag(BlockTags.CLIMBABLE);
+        var mineableWithHoe = this.tag(BlockTags.MINEABLE_WITH_HOE);
         for (NaturalSet set : RUBlocks.NATURAL_SETS) {
             if (set.getSapling() != null) saplings.add(set.getSapling());
+            if (set.getVines() != null) climbable.add(set.getVines());
+            if (set.getLeaves() != null) mineableWithHoe.add(set.getLeaves());
         }
 
 
@@ -133,20 +137,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.GIANT_LILY_PAD.get())
             .addTag(RUBlockTags.SHRUBS)
         ;
-        this.tag(BlockTags.MINEABLE_WITH_HOE)
-            .add(RUBlocks.ALPHA_NATURAL_SET.getLeaves())
-            .add(RUBlocks.APPLE_OAK_NATURAL_SET.getLeaves())
-            .add(RUBlocks.ASHEN_NATURAL_SET.getLeaves())
-            .add(RUBlocks.BAMBOO_NATURAL_SET.getLeaves())
-            .add(RUBlocks.BAOBAB_NATURAL_SET.getLeaves())
-            .add(RUBlocks.BLACKWOOD_NATURAL_SET.getLeaves())
-            .add(RUBlocks.COBALT_NATURAL_SET.getLeaves())
-            .add(RUBlocks.BRIMWOOD_NATURAL_SET.getLeaves())
-            .add(RUBlocks.CYPRESS_NATURAL_SET.getLeaves())
-            .add(RUBlocks.DEAD_NATURAL_SET.getLeaves())
-            .add(RUBlocks.DEAD_PINE_NATURAL_SET.getLeaves())
-            .add(RUBlocks.EUCALYPTUS_NATURAL_SET.getLeaves())
-            .add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves())
+        mineableWithHoe
             .add(RUBlocks.BLUE_BIOSHROOM_BLOCK.get())
             .add(RUBlocks.GREEN_BIOSHROOM_BLOCK.get())
             .add(RUBlocks.PINK_BIOSHROOM_BLOCK.get())
@@ -155,26 +146,6 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.GLOWING_GREEN_BIOSHROOM_BLOCK.get())
             .add(RUBlocks.GLOWING_PINK_BIOSHROOM_BLOCK.get())
             .add(RUBlocks.GLOWING_YELLOW_BIOSHROOM_BLOCK.get())
-            .add(RUBlocks.GOLDEN_LARCH_NATURAL_SET.getLeaves())
-            .add(RUBlocks.JOSHUA_NATURAL_SET.getLeaves())
-            .add(RUBlocks.KAPOK_NATURAL_SET.getLeaves())
-            .add(RUBlocks.LARCH_NATURAL_SET.getLeaves())
-            .add(RUBlocks.MAPLE_NATURAL_SET.getLeaves())
-            .add(RUBlocks.MAUVE_NATURAL_SET.getLeaves())
-            .add(RUBlocks.ORANGE_MAPLE_NATURAL_SET.getLeaves())
-            .add(RUBlocks.PALM_NATURAL_SET.getLeaves())
-            .add(RUBlocks.PINE_NATURAL_SET.getLeaves())
-            .add(RUBlocks.BLUE_MAGNOLIA_NATURAL_SET.getLeaves())
-            .add(RUBlocks.PINK_MAGNOLIA_NATURAL_SET.getLeaves())
-            .add(RUBlocks.REDWOOD_NATURAL_SET.getLeaves())
-            .add(RUBlocks.RED_MAPLE_NATURAL_SET.getLeaves())
-            .add(RUBlocks.MAGNOLIA_NATURAL_SET.getLeaves())
-            .add(RUBlocks.SILVER_BIRCH_NATURAL_SET.getLeaves())
-            .add(RUBlocks.SMALL_OAK_NATURAL_SET.getLeaves())
-            .add(RUBlocks.SOCOTRA_NATURAL_SET.getLeaves())
-            .add(RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getLeaves())
-            .add(RUBlocks.WHITE_MAGNOLIA_NATURAL_SET.getLeaves())
-            .add(RUBlocks.WILLOW_NATURAL_SET.getLeaves())
             .add(RUBlocks.PRISMOSS_SPROUT.get())
             .add(RUBlocks.ORANGE_CONEFLOWER.get())
             .add(RUBlocks.PURPLE_CONEFLOWER.get())
@@ -221,26 +192,16 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.VIRIDESCENT_NYLIUM.get())
         ;
         this.tag(BlockTags.MINEABLE_WITH_SHOVEL)
+            .addTag(RUBlockTags.PEAT_ALL)
+            .addTag(RUBlockTags.SILT_ALL)
             .add(RUBlocks.ALPHA_GRASS_BLOCK.get())
             .add(RUBlocks.ASH.get())
             .add(RUBlocks.ASHEN_DIRT.get())
-            .add(RUBlocks.PEAT_COARSE_DIRT.get())
-            .add(RUBlocks.PEAT_PODZOL.get())
-            .add(RUBlocks.PEAT_DIRT.get())
-            .add(RUBlocks.PEAT_DIRT_PATH.get())
-            .add(RUBlocks.PEAT_FARMLAND.get())
-            .add(RUBlocks.PEAT_GRASS_BLOCK.get())
-            .add(RUBlocks.PEAT_MUD.get())
-            .add(RUBlocks.SILT_COARSE_DIRT.get())
-            .add(RUBlocks.SILT_PODZOL.get())
-            .add(RUBlocks.SILT_DIRT.get())
-            .add(RUBlocks.SILT_DIRT_PATH.get())
-            .add(RUBlocks.SILT_FARMLAND.get())
-            .add(RUBlocks.SILT_GRASS_BLOCK.get())
-            .add(RUBlocks.SILT_MUD.get())
             .add(RUBlocks.VOLCANIC_ASH.get())
         ;
         this.tag(BlockTags.ANIMALS_SPAWNABLE_ON)
+            .add(Blocks.COARSE_DIRT)
+            .add(Blocks.PODZOL)
             .add(RUBlocks.ALPHA_GRASS_BLOCK.get())
             .add(RUBlocks.ASHEN_DIRT.get())
             .add(RUBlocks.CHALK_GRASS_BLOCK.get())
@@ -263,12 +224,8 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.STONE_GRASS_BLOCK.get())
             .add(RUBlocks.ARGILLITE_GRASS_BLOCK.get())
             .add(RUBlocks.VIRIDESCENT_NYLIUM.get())
-            .add(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("minecraft", "podzol")))
-            .add(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("minecraft", "coarse_dirt")))
         ;
-        this.tag(BlockTags.AXOLOTLS_SPAWNABLE_ON)
-            .add(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("minecraft", "calcite")))
-        ;
+        this.tag(BlockTags.AXOLOTLS_SPAWNABLE_ON).add(Blocks.CALCITE);
         this.tag(BlockTags.AZALEA_GROWS_ON)
             .add(RUBlocks.ALPHA_GRASS_BLOCK.get())
             .add(RUBlocks.ASHEN_DIRT.get())
@@ -276,18 +233,6 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.DEEPSLATE_GRASS_BLOCK.get())
             .add(RUBlocks.DEEPSLATE_PRISMOSS.get())
             .add(RUBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM.get())
-            .add(RUBlocks.PEAT_COARSE_DIRT.get())
-            .add(RUBlocks.PEAT_PODZOL.get())
-            .add(RUBlocks.PEAT_DIRT.get())
-            .add(RUBlocks.PEAT_FARMLAND.get())
-            .add(RUBlocks.PEAT_GRASS_BLOCK.get())
-            .add(RUBlocks.PEAT_MUD.get())
-            .add(RUBlocks.SILT_COARSE_DIRT.get())
-            .add(RUBlocks.SILT_PODZOL.get())
-            .add(RUBlocks.SILT_DIRT.get())
-            .add(RUBlocks.SILT_FARMLAND.get())
-            .add(RUBlocks.SILT_GRASS_BLOCK.get())
-            .add(RUBlocks.SILT_MUD.get())
             .add(RUBlocks.PRISMOSS.get())
             .add(RUBlocks.STONE_GRASS_BLOCK.get())
             .add(RUBlocks.ARGILLITE_GRASS_BLOCK.get())
@@ -309,7 +254,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.SILVER_BIRCH_WOOD_SET.getLog())
             .add(RUBlocks.SILVER_BIRCH_WOOD_SET.getWood())
         ;
-        this.tag(BlockTags.CLIMBABLE)
+        climbable
             .add(RUBlocks.GLISTERING_IVY.get())
             .add(RUBlocks.GLISTERING_IVY_PLANT.get())
             .add(RUBlocks.HANGING_EARLIGHT.get())
@@ -336,18 +281,8 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.DEEPSLATE_GRASS_BLOCK.get())
             .add(RUBlocks.DEEPSLATE_PRISMOSS.get())
             .add(RUBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM.get())
-            .add(RUBlocks.PEAT_COARSE_DIRT.get())
-            .add(RUBlocks.PEAT_PODZOL.get())
-            .add(RUBlocks.PEAT_DIRT.get())
-            .add(RUBlocks.PEAT_FARMLAND.get())
-            .add(RUBlocks.PEAT_GRASS_BLOCK.get())
-            .add(RUBlocks.PEAT_MUD.get())
-            .add(RUBlocks.SILT_COARSE_DIRT.get())
-            .add(RUBlocks.SILT_PODZOL.get())
-            .add(RUBlocks.SILT_DIRT.get())
-            .add(RUBlocks.SILT_FARMLAND.get())
-            .add(RUBlocks.SILT_GRASS_BLOCK.get())
-            .add(RUBlocks.SILT_MUD.get())
+            .addTag(RUBlockTags.PEAT_SUBSTRATE)
+            .addTag(RUBlockTags.SILT_SUBSTRATE)
             .add(RUBlocks.PRISMOSS.get())
             .add(RUBlocks.STONE_GRASS_BLOCK.get())
             .add(RUBlocks.ARGILLITE_GRASS_BLOCK.get())
@@ -419,7 +354,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.POTTED_TALL_GREEN_BIOSHROOM.get())
             .add(RUBlocks.POTTED_TALL_PINK_BIOSHROOM.get())
             .add(RUBlocks.POTTED_TALL_YELLOW_BIOSHROOM.get())
-            ;
+        ;
         var leaves = this.tag(BlockTags.LEAVES);
         for (Block block : RUBlocks.POTTED_SNOWBELLES.getAll()) {
             flowerPots.add(block);
@@ -439,24 +374,16 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves())
         ;
         this.tag(BlockTags.FOXES_SPAWNABLE_ON)
-            .add(RUBlocks.PEAT_COARSE_DIRT.get())
-            .add(RUBlocks.PEAT_PODZOL.get())
-            .add(RUBlocks.PEAT_GRASS_BLOCK.get())
-            .add(RUBlocks.PEAT_MUD.get())
-            .add(RUBlocks.SILT_COARSE_DIRT.get())
-            .add(RUBlocks.SILT_PODZOL.get())
-            .add(RUBlocks.SILT_GRASS_BLOCK.get())
-            .add(RUBlocks.SILT_MUD.get())
+            .addTag(RUBlockTags.PEAT_SUBSTRATE)
+            .addTag(RUBlockTags.SILT_SUBSTRATE)
         ;
         this.tag(BlockTags.FROG_PREFER_JUMP_TO)
             .add(RUBlocks.FLOWERING_LILY_PAD.get())
             .add(RUBlocks.GIANT_LILY_PAD.get())
         ;
         this.tag(BlockTags.FROGS_SPAWNABLE_ON)
-            .add(RUBlocks.PEAT_COARSE_DIRT.get())
             .add(RUBlocks.PEAT_GRASS_BLOCK.get())
             .add(RUBlocks.PEAT_MUD.get())
-            .add(RUBlocks.SILT_COARSE_DIRT.get())
             .add(RUBlocks.SILT_GRASS_BLOCK.get())
             .add(RUBlocks.SILT_MUD.get())
         ;
@@ -511,10 +438,6 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.BLADED_TALL_GRASS.get())
             .add(RUBlocks.MEADOW_SAGE.get())
             .add(RUBlocks.BARLEY.get());
-        //this.tag(BlockTags.IRON_ORES);
-        //this.tag(BlockTags.JUNGLE_LOGS);
-        //this.tag(BlockTags.LAPIS_ORES);
-        //this.tag(BlockTags.LAVA_POOL_STONE_CANNOT_REPLACE);
         this.tag(BlockTags.LOGS)
             .addTag(RUBlockTags.BRIMWOOD_LOGS)
             .addTag(RUBlockTags.COBALT_LOGS)
@@ -622,22 +545,12 @@ public class RuBlockTagProvider extends BlockTagsProvider {
         ;
 
         this.tag(BlockTags.RABBITS_SPAWNABLE_ON)
+            .addTag(RUBlockTags.PEAT_SUBSTRATE)
+            .addTag(RUBlockTags.SILT_SUBSTRATE)
+            .add(Blocks.PODZOL)
+            .add(Blocks.COARSE_DIRT)
             .add(RUBlocks.ALPHA_GRASS_BLOCK.get())
-            .add(RUBlocks.PEAT_COARSE_DIRT.get())
-            .add(RUBlocks.PEAT_PODZOL.get())
-            .add(RUBlocks.PEAT_DIRT.get())
-            .add(RUBlocks.PEAT_GRASS_BLOCK.get())
-            .add(RUBlocks.PEAT_MUD.get())
-            .add(RUBlocks.SILT_COARSE_DIRT.get())
-            .add(RUBlocks.SILT_PODZOL.get())
-            .add(RUBlocks.SILT_DIRT.get())
-            .add(RUBlocks.SILT_GRASS_BLOCK.get())
-            .add(RUBlocks.SILT_MUD.get())
-            .add(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("minecraft", "podzol")))
-            .add(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("minecraft", "coarse_dirt")))
         ;
-        //this.tag(BlockTags.RAILS);
-        //this.tag(BlockTags.REDSTONE_ORES);
         this.tag(BlockTags.REPLACEABLE)
             .add(RUBlocks.DEAD_STEPPE_SHRUB.get())
             .add(RUBlocks.FROZEN_GRASS.get())
@@ -798,7 +711,34 @@ public class RuBlockTagProvider extends BlockTagsProvider {
     }
 
     public void addRUTags(HolderLookup.Provider provider) {
-
+        this.tag(RUBlockTags.PEAT_ALL)
+            .addTag(RUBlockTags.PEAT_SUBSTRATE)
+            .add(RUBlocks.PEAT_DIRT_PATH.get())
+            .add(RUBlocks.PEAT_FARMLAND.get())
+        ;
+        
+        this.tag(RUBlockTags.PEAT_SUBSTRATE)
+            .add(RUBlocks.PEAT_GRASS_BLOCK.get())
+            .add(RUBlocks.PEAT_DIRT.get())
+            .add(RUBlocks.PEAT_COARSE_DIRT.get())
+            .add(RUBlocks.PEAT_PODZOL.get())
+            .add(RUBlocks.PEAT_MUD.get())
+        ;
+        this.tag(RUBlockTags.SILT_ALL)
+            .addTag(RUBlockTags.SILT_SUBSTRATE)
+            .add(RUBlocks.SILT_DIRT_PATH.get())
+            .add(RUBlocks.SILT_FARMLAND.get())
+        ;
+        
+        this.tag(RUBlockTags.SILT_SUBSTRATE)
+            .add(RUBlocks.SILT_GRASS_BLOCK.get())
+            .add(RUBlocks.SILT_DIRT.get())
+            .add(RUBlocks.SILT_COARSE_DIRT.get())
+            .add(RUBlocks.SILT_PODZOL.get())
+            .add(RUBlocks.SILT_MUD.get())
+        ;
+        
+        
         this.tag(RUBlockTags.CROP_PLANTABLE_BLOCKS)
             .add(RUBlocks.PEAT_FARMLAND.get())
             .add(RUBlocks.SILT_FARMLAND.get())
@@ -833,7 +773,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.LARCH_NATURAL_SET.getBranch())
             .add(RUBlocks.MANGROVE_NATURAL_SET.getBranch())
             .add(RUBlocks.MAPLE_NATURAL_SET.getBranch())
-            .add(RUBlocks.MAUVE_NATURAL_SET.getBranch())
+            .add(RUBlocks.WISTERIA_NATURAL_SET.getBranch())
             .add(RUBlocks.OAK_NATURAL_SET.getBranch())
             .add(RUBlocks.PALM_NATURAL_SET.getBranch())
             .add(RUBlocks.PINE_NATURAL_SET.getBranch())
@@ -870,7 +810,9 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.MAPLE_NATURAL_SET.getShrub())
             .add(RUBlocks.RED_MAPLE_NATURAL_SET.getShrub())
             .add(RUBlocks.ORANGE_MAPLE_NATURAL_SET.getShrub())
-            .add(RUBlocks.MAUVE_NATURAL_SET.getShrub())
+            .add(RUBlocks.SKY_WISTERIA_NATURAL_SET.getShrub())
+            .add(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getShrub())
+            .add(RUBlocks.SALMON_WISTERIA_NATURAL_SET.getShrub())
             .add(RUBlocks.OAK_NATURAL_SET.getShrub())
             .add(RUBlocks.PALM_NATURAL_SET.getShrub())
             .add(RUBlocks.PINE_NATURAL_SET.getShrub())

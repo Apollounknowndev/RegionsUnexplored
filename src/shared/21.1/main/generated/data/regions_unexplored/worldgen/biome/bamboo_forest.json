@@ -80,7 +80,6 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:forest_flowers",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
@@ -89,9 +88,10 @@
       "regions_unexplored:tree/group/bamboo_forest_primary",
       "regions_unexplored:tree/group/bamboo_forest_secondary",
       "regions_unexplored:pink_flowers",
-      "regions_unexplored:grass",
       "regions_unexplored:ferns",
-      "regions_unexplored:shrub/cherry"
+      "regions_unexplored:shrub/cherry",
+      "regions_unexplored:patch/short_grass_sparse",
+      "regions_unexplored:patch/grass_sprouts_sparse"
     ],
     [
       "minecraft:freeze_top_layer",

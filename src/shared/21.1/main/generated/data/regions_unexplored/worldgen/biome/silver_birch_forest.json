@@ -80,16 +80,16 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
       "regions_unexplored:tree/group/silver_birch_forest",
       "regions_unexplored:tree/fallen_silver_birch",
+      "regions_unexplored:patch/orange_coneflower",
       "regions_unexplored:tassel_sparse",
-      "regions_unexplored:grass",
-      "regions_unexplored:patch/orange_coneflower"
+      "regions_unexplored:patch/short_grass_sparse",
+      "regions_unexplored:patch/grass_sprouts_sparse"
     ],
     [
       "minecraft:freeze_top_layer"

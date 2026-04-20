@@ -181,48 +181,6 @@ public class FrozenBiomes {
                 .generationSettings(builder.build())
                 .build();
     }
-
-    public static Biome frozenTundra(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
-                .skyColor(calculateSkyColor(0.0F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-5207984)
-                .grassColorOverride(-5215920)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_GROVE));
-
-        //add features
-        BiomeGenerationSettings.Builder builder = baseFrozenGeneration(featureGetter, carverGetter);
-        RUBiomeFeatures.grassSprouts(builder);
-
-        //add RU features
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.SPRUCE_TALL_SPARSE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_SHRUB_DENSE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_BUSH_SINGLE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.SPRUCE_SHRUB_DENSE);
-
-        RUBiomeFeatures.bleedingHeart(builder);
-
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SNOWBELLE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SNOW_GRASS);
-
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SPRUCE_SHRUB);
-
-
-        //add mob spawns
-        MobSpawnSettings.Builder spawnBuilder = baseFrozenSpawning(true, false);
-
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(true)
-                .temperature(-1f)
-                .downfall(0.0f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
-    }
     
     public static Biome tundra(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())

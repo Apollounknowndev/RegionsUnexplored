@@ -6,7 +6,13 @@ import net.minecraft.world.entity.npc.VillagerType;
 import net.minecraft.world.level.biome.Biome;
 import net.regions_unexplored.RegionsUnexplored;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface RUBiomes {
+    List<ResourceKey<Biome>> ALL_BIOMES = new ArrayList<>();
+    List<ResourceKey<Biome>> REMOVED_BIOMES = new ArrayList<>();
+    
     ResourceKey<Biome> ALPHA_GROVE = key("alpha_grove");
     ResourceKey<Biome> ANCIENT_DELTA = key("ancient_delta");
     ResourceKey<Biome> ARID_MOUNTAINS = key("arid_mountains");
@@ -45,7 +51,6 @@ public interface RUBiomes {
     ResourceKey<Biome> MAGNOLIA_WOODLAND = key("magnolia_woodland");
     ResourceKey<Biome> MAPLE_FOREST = key("maple_forest");
     ResourceKey<Biome> MARSH = key("marsh");
-    ResourceKey<Biome> MAUVE_HILLS = key("mauve_hills");
     ResourceKey<Biome> MOUNTAINS = key("mountains");
     ResourceKey<Biome> MUDDY_RIVER = key("muddy_river");
     ResourceKey<Biome> MYCOTOXIC_UNDERGROWTH = key("mycotoxic_undergrowth");
@@ -78,12 +83,23 @@ public interface RUBiomes {
     ResourceKey<Biome> TROPICS = key("tropics");
     ResourceKey<Biome> TUNDRA = key("tundra");
     ResourceKey<Biome> WILLOW_FOREST = key("willow_forest");
+    ResourceKey<Biome> WISTERIA_GROVE = key("wisteria_grove");
     
-    ResourceKey<Biome> REMOVED_FROZEN_TUNDRA = key("frozen_tundra");
-    ResourceKey<Biome> PLACEHOLDER_RIVER = key("placeholder_river");
-
+    // Removed
+    ResourceKey<Biome> REMOVED_FROZEN_TUNDRA = removed("frozen_tundra");
+    ResourceKey<Biome> REMOVED_MAUVE_HILLS = removed("mauve_hills");
+    ResourceKey<Biome> PLACEHOLDER_RIVER = removed("placeholder_river");
+    
     private static ResourceKey<Biome> key(String name) {
-        return RegionsUnexplored.key(Registries.BIOME, name);
+	    ResourceKey<Biome> key = RegionsUnexplored.key(Registries.BIOME, name);
+        ALL_BIOMES.add(key);
+        return key;
+    }
+    
+    private static ResourceKey<Biome> removed(String name) {
+        ResourceKey<Biome> key = key(name);
+        REMOVED_BIOMES.add(key);
+        return key;
     }
 
     private static void putVillagerBiome(ResourceKey<Biome> key, VillagerType type) {
@@ -97,7 +113,7 @@ public interface RUBiomes {
         putVillagerBiome(MAGNOLIA_WOODLAND, VillagerType.PLAINS);
         putVillagerBiome(DECIDUOUS_FOREST, VillagerType.PLAINS);
         putVillagerBiome(MAPLE_FOREST, VillagerType.TAIGA);
-        putVillagerBiome(MAUVE_HILLS, VillagerType.PLAINS);
+        putVillagerBiome(REMOVED_MAUVE_HILLS, VillagerType.PLAINS);
         putVillagerBiome(ORCHARD, VillagerType.PLAINS);
         putVillagerBiome(SILVER_BIRCH_FOREST, VillagerType.PLAINS);
         putVillagerBiome(TEMPERATE_GROVE, VillagerType.PLAINS);

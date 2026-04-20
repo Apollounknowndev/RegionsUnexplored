@@ -10,6 +10,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
@@ -57,7 +58,11 @@ public class BranchDecorator extends TreeDecorator {
     }
 
     public static BranchDecorator create(float probability, NaturalSet naturalSet, WoodSet woodSet, int requiredEmptyBlocks, BlockStateProvider leavesProvider) {
-        return new BranchDecorator(probability, naturalSet.getBranch(), woodSet.getLog(), requiredEmptyBlocks, Optional.of(leavesProvider));
+        return create(probability, naturalSet, woodSet.getLog(), requiredEmptyBlocks, leavesProvider);
+    }
+    
+    public static BranchDecorator create(float probability, NaturalSet naturalSet, Block log, int requiredEmptyBlocks, BlockStateProvider leavesProvider) {
+        return new BranchDecorator(probability, naturalSet.getBranch(), log, requiredEmptyBlocks, Optional.of(leavesProvider));
     }
 
     @Override
@@ -98,7 +103,7 @@ public class BranchDecorator extends TreeDecorator {
 
     private void placeLeaves(Context context, BlockPos pos) {
         if (context.isAir(pos)) {
-            context.setBlock(pos, this.leavesProvider.get().getState(context.random(), pos));
+            context.setBlock(pos, this.leavesProvider.get().getState(context.random(), pos).trySetValue(LeavesBlock.DISTANCE, 1));
         }
     }
 

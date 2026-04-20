@@ -68,8 +68,6 @@ public class RuCommonConfig extends Config {
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_FROZEN_PINE_TAIGA = biome(RUBiomes.FROZEN_PINE_TAIGA);
     @ConfigOption(category = "overworld_biome_toggles")
-    public static final ConfigValue<Boolean> TOGGLE_FROZEN_TUNDRA = deprecatedBiome(RUBiomes.REMOVED_FROZEN_TUNDRA);
-    @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_FUNGAL_FEN = biome(RUBiomes.FUNGAL_FEN);
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_GOLDEN_BOREAL_TAIGA = biome(RUBiomes.GOLDEN_BOREAL_TAIGA);
@@ -93,8 +91,6 @@ public class RuCommonConfig extends Config {
     public static final ConfigValue<Boolean> TOGGLE_MAPLE_FOREST = biome(RUBiomes.MAPLE_FOREST);
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_MARSH = biome(RUBiomes.MARSH);
-    @ConfigOption(category = "overworld_biome_toggles")
-    public static final ConfigValue<Boolean> TOGGLE_MAUVE_HILLS = biome(RUBiomes.MAUVE_HILLS);
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_ROCKY_MEADOW = biome(RUBiomes.ROCKY_MEADOW);
     @ConfigOption(category = "overworld_biome_toggles")
@@ -149,6 +145,8 @@ public class RuCommonConfig extends Config {
     public static final ConfigValue<Boolean> TOGGLE_TUNDRA = biome(RUBiomes.TUNDRA);
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_WILLOW_FOREST = biome(RUBiomes.WILLOW_FOREST);
+    @ConfigOption(category = "overworld_biome_toggles")
+    public static final ConfigValue<Boolean> TOGGLE_WISTERIA_GROVE = biome(RUBiomes.WISTERIA_GROVE);
 
     @ConfigOption(category = "overworld_cave_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_ANCIENT_DELTA = biome(RUBiomes.ANCIENT_DELTA);

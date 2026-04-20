@@ -17,6 +17,7 @@ import net.regions_unexplored.worldgen.feature.config.FallenTreeConfig;
 import net.regions_unexplored.worldgen.feature.config.RockFeatureConfig;
 
 public interface RUFeatureTypes {
+    // Trees
     Supplier<Feature<GiantBioshroomConfiguration>> GIANT_BLUE_BIOSHROOM = register("giant_blue_bioshroom", new GiantBlueBioshroomFeature(GiantBioshroomConfiguration.CODEC));
     Supplier<Feature<GiantBioshroomConfiguration>> GIANT_GREEN_BIOSHROOM = register("giant_green_bioshroom", new GiantGreenBioshroomFeature(GiantBioshroomConfiguration.CODEC));
     Supplier<Feature<GiantBioshroomConfiguration>> GIANT_PINK_BIOSHROOM = register("giant_pink_bioshroom", new GiantPinkBioshroomFeature(GiantBioshroomConfiguration.CODEC));
@@ -48,6 +49,10 @@ public interface RUFeatureTypes {
     Supplier<Feature<RUTreeConfiguration>> SAKURA_TREE = register("sakura_tree", new SakuraTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> LARGE_SOCOTRA_TREE = register("large_socotra_tree", new LargeSocotraTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> SMALL_SOCOTRA_TREE = register("small_socotra_tree", new SmallSocotraTreeFeature(NoneFeatureConfiguration.CODEC));
+    Supplier<Feature<NoneFeatureConfiguration>> BRIM_WILLOW = register("brim_willow", new BrimWillowFeature(NoneFeatureConfiguration.CODEC));
+    Supplier<Feature<NoneFeatureConfiguration>> TALL_BRIM_WILLOW = register("tall_brim_willow", new TallBrimWillowFeature(NoneFeatureConfiguration.CODEC));
+    Supplier<Feature<RUTreeConfiguration>> TREE_SHRUB = register("tree_shrub", new TreeShrubFeature(RUTreeConfiguration.CODEC));
+    // Not trees
     Supplier<Feature<PointedRedstoneConfiguration>> POINTED_REDSTONE = register("pointed_redstone", new PointedRedstoneFeature(PointedRedstoneConfiguration.CODEC));
     Supplier<Feature<PointedRedstoneClusterConfiguration>> POINTED_REDSTONE_CLUSTER = register("pointed_redstone_cluster", new PointedRedstoneClusterFeature(PointedRedstoneClusterConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> HANGING_PRISMARITE = register("hanging_prismarite", new HangingPrismariteFeature(NoneFeatureConfiguration.CODEC));
@@ -55,9 +60,6 @@ public interface RUFeatureTypes {
     Supplier<Feature<NoneFeatureConfiguration>> ASH_VENT = register("scorch_vent", new AshVentFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> LAVA_FALL = register("lava_fall", new LavaFallFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<VegetationPatchConfiguration>> OVERWORLD_LAVA_DELTA = register("overworld_lava_delta", new LavaDeltaFeature(VegetationPatchConfiguration.CODEC));
-    Supplier<Feature<NoneFeatureConfiguration>> BRIM_WILLOW = register("brim_willow", new BrimWillowFeature(NoneFeatureConfiguration.CODEC));
-    Supplier<Feature<NoneFeatureConfiguration>> TALL_BRIM_WILLOW = register("tall_brim_willow", new TallBrimWillowFeature(NoneFeatureConfiguration.CODEC));
-    Supplier<Feature<RUTreeConfiguration>> TREE_SHRUB = register("tree_shrub", new TreeShrubFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> GIANT_LILY = register("giant_lily", new GiantLilyPadFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> ICICLE_UP = register("icicle_up", new FloorIcicleFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<MultifaceGrowthConfiguration>> AIR_MULTIFACE_GROWTH = register("air_multiface_growth", new AirMultifaceGrowthFeature(MultifaceGrowthConfiguration.CODEC));
@@ -72,7 +74,7 @@ public interface RUFeatureTypes {
     Supplier<Feature<NoneFeatureConfiguration>> GLISTERING_IVY = register("glistering_ivy", new GlisteringIvyFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> HANGING_EARLIGHT = register("hanging_earlight", new HangingEarlightFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> OBSIDIAN_SPIRE = register("obsidian_spire", new ObsidianSpireFeature(NoneFeatureConfiguration.CODEC));
-
+    // 0.6+ features
     Supplier<Feature<RockFeatureConfig>> ROCK = register("rock", new RURockFeature());
     Supplier<Feature<FallenTreeConfig>> FALLEN_TREE = register("fallen_tree", new RUFallenTreeFeature());
 

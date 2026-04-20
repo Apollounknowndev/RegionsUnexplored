@@ -21,11 +21,11 @@ public class RUBiomeBootstrap {
         register(context, RUBiomes.MAGNOLIA_WOODLAND, ForestBiomes.magnoliaHighlands(featuresGetter, carversGetter));
         register(context, RUBiomes.DECIDUOUS_FOREST, ForestBiomes.deciduousForest(featuresGetter, carversGetter));
         register(context, RUBiomes.MAPLE_FOREST, ForestBiomes.mapleForest(featuresGetter, carversGetter));
-        register(context, RUBiomes.MAUVE_HILLS, ForestBiomes.mauveHills(featuresGetter, carversGetter));
         register(context, RUBiomes.ORCHARD, ForestBiomes.orchard(featuresGetter, carversGetter));
         register(context, RUBiomes.SILVER_BIRCH_FOREST, ForestBiomes.silverBirchForest(featuresGetter, carversGetter));
         register(context, RUBiomes.TEMPERATE_GROVE, ForestBiomes.temperateGrove(featuresGetter, carversGetter));
         register(context, RUBiomes.WILLOW_FOREST, ForestBiomes.willowForest(featuresGetter, carversGetter));
+        register(context, RUBiomes.WISTERIA_GROVE, ForestBiomes.wisteriaGrove(featuresGetter, carversGetter));
         //TAIGA
         register(context, RUBiomes.BLACKWOOD_TAIGA, TaigaBiomes.blackwoodTaiga(featuresGetter, carversGetter));
         register(context, RUBiomes.BOREAL_TAIGA, TaigaBiomes.borealTaiga(featuresGetter, carversGetter));
@@ -82,7 +82,6 @@ public class RUBiomeBootstrap {
         register(context, RUBiomes.COLD_BOREAL_TAIGA, FrozenBiomes.coldBorealTaiga(featuresGetter, carversGetter));
         register(context, RUBiomes.COLD_DECIDUOUS_FOREST, FrozenBiomes.coldDeciduousForest(featuresGetter, carversGetter));
         register(context, RUBiomes.FROZEN_PINE_TAIGA, FrozenBiomes.frozenPineTaiga(featuresGetter, carversGetter));
-        register(context, RUBiomes.REMOVED_FROZEN_TUNDRA, FrozenBiomes.frozenTundra(featuresGetter, carversGetter));
         register(context, RUBiomes.TUNDRA, FrozenBiomes.tundra(featuresGetter, carversGetter));
         register(context, RUBiomes.ICY_HEIGHTS, FrozenBiomes.icyHeights(featuresGetter, carversGetter));
         register(context, RUBiomes.SPIRES, FrozenBiomes.spires(featuresGetter, carversGetter));
@@ -98,7 +97,10 @@ public class RUBiomeBootstrap {
         register(context, RUBiomes.GLISTERING_MEADOW, NetherBiomes.glisteringMeadow(featuresGetter, carversGetter));
         register(context, RUBiomes.MYCOTOXIC_UNDERGROWTH, NetherBiomes.mycotoxicUndergrowth(featuresGetter, carversGetter));
         register(context, RUBiomes.REDSTONE_ABYSS, NetherBiomes.redstoneAbyss(featuresGetter, carversGetter));
-
+        
+        // Removed
+        register(context, RUBiomes.REMOVED_FROZEN_TUNDRA, FrozenBiomes.tundra(featuresGetter, carversGetter));
+        register(context, RUBiomes.REMOVED_MAUVE_HILLS, ForestBiomes.wisteriaGrove(featuresGetter, carversGetter));
     }
 
     private static void register(BootstrapContext<Biome> context, ResourceKey<Biome> key, Biome biome) {

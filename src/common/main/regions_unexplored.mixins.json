@@ -8,6 +8,7 @@
     "BiomeMixin",
     "CropPlacerMixin",
     "EatBlockGoalMixin",
+    "HolderLookupMixin",
     "NetherrackBlockMixin",
     "TrunkPlacerDirtMixin"
   ],

@@ -80,7 +80,6 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:forest_flowers",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
@@ -93,7 +92,9 @@
       "regions_unexplored:tree/blue_magnolia",
       "regions_unexplored:willow_flowers",
       "regions_unexplored:ferns",
-      "regions_unexplored:willow_magnolia_shrub_mix"
+      "regions_unexplored:willow_magnolia_shrub_mix",
+      "regions_unexplored:patch/short_grass_sparse",
+      "regions_unexplored:patch/grass_sprouts_sparse"
     ],
     [
       "minecraft:freeze_top_layer"

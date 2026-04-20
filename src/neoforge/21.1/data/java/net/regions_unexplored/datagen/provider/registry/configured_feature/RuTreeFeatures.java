@@ -39,6 +39,7 @@ import net.regions_unexplored.registry.RUFeatureTypes;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
 import net.regions_unexplored.worldgen.foliageplacer.*;
 import net.regions_unexplored.worldgen.treedecorator.BranchDecorator;
+import net.regions_unexplored.worldgen.treedecorator.HangingLeavesDecorator;
 import net.regions_unexplored.worldgen.treedecorator.PlaceOnGroundDecorator;
 import net.regions_unexplored.worldgen.treedecorator.WillowTrunkDecorator;
 import net.regions_unexplored.world.level.block.leaves.AppleLeavesBlock;
@@ -248,9 +249,9 @@ public class RuTreeFeatures {
            .add(direct(silverBirch), 2)
        .build()));
 
-       register(context, TREE_MAUVE_OAK_BEE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.MAUVE_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(5, 2, 0),BlockStateProvider.simple(RUBlocks.MAUVE_NATURAL_SET.getLeaves().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(List.of(new BeehiveDecorator(1f))).ignoreVines().build());
-       register(context, TREE_MAUVE_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.MAUVE_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(5, 2, 0),BlockStateProvider.simple(RUBlocks.MAUVE_NATURAL_SET.getLeaves().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(List.of(new BeehiveDecorator(0.25f))).ignoreVines().build());
-       register(context, TREE_BIG_MAUVE_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.MAUVE_WOOD_SET.getLog().defaultBlockState()), new FancyTrunkPlacer(8, 11, 0),BlockStateProvider.simple(RUBlocks.MAUVE_NATURAL_SET.getLeaves().defaultBlockState()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().build());
+       register(context, TREE_MAUVE_OAK_BEE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.MAUVE_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(5, 2, 0),BlockStateProvider.simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(List.of(new BeehiveDecorator(1f))).ignoreVines().build());
+       register(context, TREE_MAUVE_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.MAUVE_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(5, 2, 0),BlockStateProvider.simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(List.of(new BeehiveDecorator(0.25f))).ignoreVines().build());
+       register(context, TREE_BIG_MAUVE_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.MAUVE_WOOD_SET.getLog().defaultBlockState()), new FancyTrunkPlacer(8, 11, 0),BlockStateProvider.simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().build());
 
        register(context, TREE_OAK_WITH_FLOWERS, RUFeatureTypes.ASPEN_TREE.get(), new RUTreeConfiguration(BlockStateProvider.simple(Blocks.OAK_LOG.defaultBlockState()), new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.OAK_LEAVES.defaultBlockState(), 3).add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves().defaultBlockState(), 1)), BlockStateProvider.simple(RUBlocks.OAK_NATURAL_SET.getBranch().defaultBlockState()), 5, 5));
 
@@ -459,10 +460,84 @@ public class RuTreeFeatures {
            new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3),
            new TwoLayersFeatureSize(1, 0, 1)
        ).decorators(ImmutableList.of(WillowTrunkDecorator.of(0.5f))).build());
-       register(context, TREE_BIG_WILLOW, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.WILLOW_WOOD_SET.getLog().defaultBlockState()), new FancyTrunkPlacer(9, 9, 0), BlockStateProvider.simple(RUBlocks.WILLOW_NATURAL_SET.getLeaves().defaultBlockState()), new WillowFoliagePlacer(ConstantInt.of(4), ConstantInt.of(0), ConstantInt.of(5), 0.25F), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().decorators(ImmutableList.of(WillowTrunkDecorator.of(0.5f))).build());
+       register(context, TREE_BIG_WILLOW, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           BlockStateProvider.simple(RUBlocks.WILLOW_WOOD_SET.getLog().defaultBlockState()),
+           new FancyTrunkPlacer(9, 9, 0),
+           BlockStateProvider.simple(RUBlocks.WILLOW_NATURAL_SET.getLeaves().defaultBlockState()),
+           new WillowFoliagePlacer(0.25F),
+           new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))
+       ).ignoreVines().decorators(ImmutableList.of(WillowTrunkDecorator.of(0.5f))).build());
        register(context, TREE_WILLOW_VINES, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(RUBlocks.WILLOW_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(8, 2, 0),BlockStateProvider.simple(RUBlocks.WILLOW_NATURAL_SET.getLeaves().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(ImmutableList.of(new LeaveVineDecorator(0.25f), WillowTrunkDecorator.of(1))).build());
-
-
+       
+       var wisteriaSky = register(context, TREE_WISTERIA_SKY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           BlockStateProvider.simple(Blocks.CHERRY_LOG.defaultBlockState()),
+           new MagnoliaTrunkPlacer(UniformInt.of(2, 5), UniformInt.of(4, 5), UniformInt.of(2, 3)),
+           BlockStateProvider.simple(RUBlocks.SKY_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()),
+           new MagnoliaFoliagePlacer(),
+           new TwoLayersFeatureSize(1, 0, 1)
+       ).ignoreVines().decorators(List.of(
+           HangingLeavesDecorator.create(RUBlocks.SKY_WISTERIA_NATURAL_SET, 0.15f)
+       )).build());
+       var wisteriaLavender = register(context, TREE_WISTERIA_LAVENDER, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           BlockStateProvider.simple(Blocks.CHERRY_LOG.defaultBlockState()),
+           new MagnoliaTrunkPlacer(UniformInt.of(2, 5), UniformInt.of(4, 5), UniformInt.of(3, 4)),
+           BlockStateProvider.simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()),
+           new MagnoliaFoliagePlacer(),
+           new TwoLayersFeatureSize(1, 0, 1)
+       ).ignoreVines().decorators(List.of(
+           HangingLeavesDecorator.create(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET, 0.15f)
+       )).build());
+       var wisteriaSalmon = register(context, TREE_WISTERIA_SALMON, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           BlockStateProvider.simple(Blocks.CHERRY_LOG.defaultBlockState()),
+           new MagnoliaTrunkPlacer(UniformInt.of(2, 5), UniformInt.of(4, 5), UniformInt.of(2, 3)),
+           BlockStateProvider.simple(RUBlocks.SALMON_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()),
+           new MagnoliaFoliagePlacer(),
+           new TwoLayersFeatureSize(1, 0, 1)
+       ).ignoreVines().decorators(List.of(
+           HangingLeavesDecorator.create(RUBlocks.SALMON_WISTERIA_NATURAL_SET, 0.15f)
+       )).build());
+       
+       var wisteriaLargeSky = register(context, TREE_WISTERIA_LARGE_SKY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           BlockStateProvider.simple(Blocks.CHERRY_LOG.defaultBlockState()),
+           new FancyTrunkPlacer(9, 9, 0),
+           BlockStateProvider.simple(RUBlocks.SKY_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()),
+           new WillowFoliagePlacer(0.5F),
+           new TwoLayersFeatureSize(1, 0, 1)
+       ).ignoreVines().decorators(List.of(
+           HangingLeavesDecorator.create(RUBlocks.SKY_WISTERIA_NATURAL_SET, 0.2f),
+           BranchDecorator.create(0.1f, RUBlocks.CHERRY_NATURAL_SET, Blocks.CHERRY_LOG, 3, BlockStateProvider.simple(RUBlocks.SKY_WISTERIA_NATURAL_SET.getLeaves()))
+       )).build());
+       var wisteriaLargeLavender = register(context, TREE_WISTERIA_LARGE_LAVENDER, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           BlockStateProvider.simple(Blocks.CHERRY_LOG.defaultBlockState()),
+           new FancyTrunkPlacer(9, 9, 0),
+           BlockStateProvider.simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()),
+           new WillowFoliagePlacer(0.5F),
+           new TwoLayersFeatureSize(1, 0, 1)
+       ).ignoreVines().decorators(List.of(
+           HangingLeavesDecorator.create(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET, 0.2f),
+           BranchDecorator.create(0.1f, RUBlocks.CHERRY_NATURAL_SET, Blocks.CHERRY_LOG, 3, BlockStateProvider.simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves()))
+       )).build());
+       var wisteriaLargeSalmon = register(context, TREE_WISTERIA_LARGE_SALMON, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           BlockStateProvider.simple(Blocks.CHERRY_LOG.defaultBlockState()),
+           new FancyTrunkPlacer(9, 9, 0),
+           BlockStateProvider.simple(RUBlocks.SALMON_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()),
+           new WillowFoliagePlacer(0.5F),
+           new TwoLayersFeatureSize(1, 0, 1)
+       ).ignoreVines().decorators(List.of(
+           HangingLeavesDecorator.create(RUBlocks.SALMON_WISTERIA_NATURAL_SET, 0.2f),
+           BranchDecorator.create(0.1f, RUBlocks.CHERRY_NATURAL_SET, Blocks.CHERRY_LOG, 3, BlockStateProvider.simple(RUBlocks.SALMON_WISTERIA_NATURAL_SET.getLeaves()))
+       )).build());
+       
+       
+       
+       registerSelector(context, TREE_GROUP_WISTERIA_GROVE, builder -> builder
+           .add(direct(wisteriaSky), 1)
+           .add(direct(wisteriaLavender), 1)
+           .add(direct(wisteriaSalmon), 1)
+           .add(direct(wisteriaLargeSky), 4)
+           .add(direct(wisteriaLargeLavender), 4)
+           .add(direct(wisteriaLargeSalmon), 4)
+       );
     }
 
     private static BlockStateProvider log(WoodSet wood) {

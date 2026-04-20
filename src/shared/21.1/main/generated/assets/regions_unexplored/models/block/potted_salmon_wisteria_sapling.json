@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/flower_pot_cross",
+  "textures": {
+    "plant": "regions_unexplored:block/salmon_wisteria_sapling"
+  }
+}

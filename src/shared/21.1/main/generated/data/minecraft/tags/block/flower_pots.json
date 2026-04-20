@@ -81,7 +81,6 @@
     "regions_unexplored:potted_larch_sapling",
     "regions_unexplored:potted_magnolia_sapling",
     "regions_unexplored:potted_maple_sapling",
-    "regions_unexplored:potted_mauve_sapling",
     "regions_unexplored:potted_orange_maple_sapling",
     "regions_unexplored:potted_palm_sapling",
     "regions_unexplored:potted_pine_sapling",
@@ -93,6 +92,9 @@
     "regions_unexplored:potted_small_oak_sapling",
     "regions_unexplored:potted_socotra_sapling",
     "regions_unexplored:potted_white_magnolia_sapling",
-    "regions_unexplored:potted_willow_sapling"
+    "regions_unexplored:potted_willow_sapling",
+    "regions_unexplored:potted_sky_wisteria_sapling",
+    "regions_unexplored:potted_lavender_wisteria_sapling",
+    "regions_unexplored:potted_salmon_wisteria_sapling"
   ]
 }

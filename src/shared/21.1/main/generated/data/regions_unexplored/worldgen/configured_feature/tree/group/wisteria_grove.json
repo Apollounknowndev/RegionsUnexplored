@@ -1,0 +1,49 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/wisteria_sky",
+          "placement": []
+        },
+        "weight": 1
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/wisteria_lavender",
+          "placement": []
+        },
+        "weight": 1
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/wisteria_salmon",
+          "placement": []
+        },
+        "weight": 1
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/wisteria_large_sky",
+          "placement": []
+        },
+        "weight": 4
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/wisteria_large_lavender",
+          "placement": []
+        },
+        "weight": 4
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/wisteria_large_salmon",
+          "placement": []
+        },
+        "weight": 4
+      }
+    ]
+  }
+}

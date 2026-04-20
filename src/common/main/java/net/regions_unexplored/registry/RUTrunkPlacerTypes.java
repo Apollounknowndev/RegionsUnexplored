@@ -9,6 +9,7 @@ import net.regions_unexplored.worldgen.trunkplacer.*;
 import java.util.function.Supplier;
 
 public interface RUTrunkPlacerTypes {
+    Supplier<TrunkPlacerType<MagnoliaTrunkPlacer>> MAGNOLIA = register("magnolia", MagnoliaTrunkPlacer.TYPE);
     Supplier<TrunkPlacerType<RedwoodTrunkPlacer>> REDWOOD = register("redwood", RedwoodTrunkPlacer.TYPE);
     
     static <T extends TrunkPlacer> Supplier<TrunkPlacerType<T>> register(String name, TrunkPlacerType<T> type) {

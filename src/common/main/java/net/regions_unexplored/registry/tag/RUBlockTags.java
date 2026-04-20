@@ -14,6 +14,11 @@ public interface RUBlockTags {
    TagKey<Block> REPLACEABLE_BY_SILT_DIRT = key("replaceable_by_silt_dirt");
 
    TagKey<Block> DIRT_AND_PODZOL = key("dirt_and_podzol");
+   
+   TagKey<Block> PEAT_ALL = key("peat/all");
+   TagKey<Block> PEAT_SUBSTRATE = key("peat/substrate");
+   TagKey<Block> SILT_ALL = key("silt/all");
+   TagKey<Block> SILT_SUBSTRATE = key("silt/substrate");
 
    TagKey<Block> BRANCHES_CAN_SURVIVE_ON = key("branches_can_survive_on");
    TagKey<Block> BRIM_PLANT_CAN_SURVIVE_ON = key("brim_plant_can_survive_on");

@@ -172,13 +172,15 @@ public interface RUCreativeModeTabs {
             //CACTUS
             output.accept(RUBlocks.SAGUARO_CACTUS.get().asItem());
 
-            /*-----------------LEAVES-----------------*/
             for (NaturalSet set : RUBlocks.NATURAL_SETS) {
-                if (set.getLeaves() == null) continue;
-                output.accept(set.getLeaves());
+                if (set.getLeaves() != null) {
+                    output.accept(set.getLeaves());
+                }
+                if (set.getVines() != null) {
+                    output.accept(set.getVines());
+                }
             }
 
-            /*-----------------BRANCHES-----------------*/
             for (NaturalSet set : RUBlocks.NATURAL_SETS) {
                 if (set.getBranch() == null) continue;
                 output.accept(set.getBranch());

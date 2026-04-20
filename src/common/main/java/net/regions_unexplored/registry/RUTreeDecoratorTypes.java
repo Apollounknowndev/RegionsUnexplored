@@ -10,8 +10,8 @@ import java.util.function.Supplier;
 
 public interface RUTreeDecoratorTypes {
     Supplier<TreeDecoratorType<AttachedToLogsDecorator>> ATTACHED_TO_LOGS = register("attached_to_logs", AttachedToLogsDecorator.TYPE);
-    Supplier<TreeDecoratorType<BlackwoodBioshroomDecorator>> BLACKWOOD_BIOSHROOMS = register("blackwood_bioshrooms", BlackwoodBioshroomDecorator.TYPE);
     Supplier<TreeDecoratorType<BranchDecorator>> BRANCH = register("branch", BranchDecorator.TYPE);
+    Supplier<TreeDecoratorType<HangingLeavesDecorator>> HANGING_LEAVES = register("hanging_leaves", HangingLeavesDecorator.TYPE);
     Supplier<TreeDecoratorType<PlaceOnGroundDecorator>> PLACE_ON_GROUND = register("place_on_ground", PlaceOnGroundDecorator.TYPE);
     Supplier<TreeDecoratorType<WillowTrunkDecorator>> WILLOW = register("willow", WillowTrunkDecorator.TYPE);
 

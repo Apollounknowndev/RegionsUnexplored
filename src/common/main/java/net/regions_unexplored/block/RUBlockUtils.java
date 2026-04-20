@@ -13,6 +13,8 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.platform.Registrar;
 import net.regions_unexplored.item.RUItemUtils;
 import org.jetbrains.annotations.Nullable;
@@ -165,5 +167,21 @@ public class RUBlockUtils {
     }
     public static Boolean ocelotOrParrot(BlockState state, BlockGetter getter, BlockPos pos, EntityType<?> type) {
         return (type == EntityType.OCELOT || type == EntityType.PARROT);
+    }
+    
+    // Shape builders
+    
+    public static VoxelShape column(final double sizeXZ, final double minY, final double maxY) {
+        return column(sizeXZ, sizeXZ, minY, maxY);
+    }
+    
+    public static VoxelShape column(final double sizeX, final double sizeZ, final double minY, final double maxY) {
+        double halfX = sizeX / 2.0;
+        double halfZ = sizeZ / 2.0;
+        return box(8.0 - halfX, minY, 8.0 - halfZ, 8.0 + halfX, maxY, 8.0 + halfZ);
+    }
+    
+    public static VoxelShape box(final double minX, final double minY, final double minZ, final double maxX, final double maxY, final double maxZ) {
+        return Shapes.box(minX / 16.0, minY / 16.0, minZ / 16.0, maxX / 16.0, maxY / 16.0, maxZ / 16.0);
     }
 }

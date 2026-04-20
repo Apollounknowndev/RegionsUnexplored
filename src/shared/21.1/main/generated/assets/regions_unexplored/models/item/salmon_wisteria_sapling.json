@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "regions_unexplored:block/salmon_wisteria_sapling"
+  }
+}

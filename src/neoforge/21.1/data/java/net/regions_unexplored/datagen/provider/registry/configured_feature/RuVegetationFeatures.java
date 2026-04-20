@@ -22,7 +22,6 @@ import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.*;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.*;
@@ -34,7 +33,6 @@ import net.regions_unexplored.registry.RUFeatureTypes;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
 import net.regions_unexplored.worldgen.foliageplacer.BioshroomFoliagePlacer;
 import net.regions_unexplored.worldgen.stateprovider.RandomizedGroundCoverStateProvider;
-import net.regions_unexplored.worldgen.treedecorator.BlackwoodBioshroomDecorator;
 import net.regions_unexplored.world.level.block.plant.food.DuskmelonBlock;
 import net.regions_unexplored.world.level.block.plant.food.SalmonBerryBushBlock;
 import net.regions_unexplored.world.level.block.plant.grass.AshenGrassBlock;
@@ -125,7 +123,6 @@ public class RuVegetationFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLACKWOOD_DARK_OAK_SHRUB_MIX = key("blackwood_dark_oak_shrub_mix");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GOLDEN_LARCH_SHRUB_MIX = key("golden_larch_shrub_mix");
     public static final ResourceKey<ConfiguredFeature<?, ?>> MAPLE_SHRUB_MIX = key("maple_shrub_mix");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MAUVE_ENCHANTED_SHRUB_MIX = key("mauve_enchanted_shrub_mix");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_JUNGLE_SHRUB_MIX = key("palm_jungle_shrub_mix");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PINE_DEAD_SHRUB_MIX = key("pine_dead_shrub_mix");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WILLOW_CYPRESS_SHRUB_MIX = key("willow_cypress_shrub_mix");
@@ -320,6 +317,16 @@ public class RuVegetationFeatures {
         register(context, PATCH_HIBISCUS, Feature.FLOWER, patch(RUBlocks.HIBISCUS, 14, 1, 2));
         register(context, PATCH_MALLOW, Feature.FLOWER, patch(RUBlocks.MALLOW, 16, 6, 2));
         register(context, PATCH_HYSSOP, Feature.FLOWER, patch(RUBlocks.HYSSOP, 16, 1, 2));
+        
+        var tassel = registerPlaced(context, PATCH_TASSEL, Feature.FLOWER, patch(RUBlocks.TASSEL, 96, 7, 3));
+        var lilac = registerPlaced(context, PATCH_LILAC, Feature.FLOWER, patch(() -> Blocks.LILAC, 96, 7, 3));
+        var peony = registerPlaced(context, PATCH_PEONY, Feature.FLOWER, patch(() -> Blocks.PEONY, 96, 7, 3));
+        registerSelector(context, PATCH_TALL_FLOWERS_WISTERIA_GROVE, b -> b
+            .add(direct(tassel))
+            .add(direct(lilac))
+            .add(direct(peony))
+        );
+        
         //FOOD_PLANTS
         register(context, PATCH_SALMONBERRY_BUSH, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(RUBlocks.SALMONBERRY_BUSH.get().defaultBlockState().setValue(SalmonBerryBushBlock.AGE, Integer.valueOf(3)))), List.of(Blocks.GRASS_BLOCK, Blocks.PODZOL, RUBlocks.PEAT_GRASS_BLOCK.get(), RUBlocks.SILT_GRASS_BLOCK.get(), RUBlocks.PEAT_PODZOL.get(), RUBlocks.SILT_PODZOL.get())));
         register(context, DUSKMELON, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(duskMelon)));
@@ -356,7 +363,6 @@ public class RuVegetationFeatures {
         registerPlaced(context, MAGNOLIA_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState(), 1).add(RUBlocks.PINK_MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState(), 1).add(RUBlocks.WHITE_MAGNOLIA_NATURAL_SET.getShrub().defaultBlockState(), 1))));
         register(context, GOLDEN_LARCH_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.LARCH_NATURAL_SET.getShrub().defaultBlockState(), 1).add(RUBlocks.GOLDEN_LARCH_NATURAL_SET.getShrub().defaultBlockState(), 3))));
         register(context, MAPLE_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.MAPLE_NATURAL_SET.getShrub().defaultBlockState(), 4).add(RUBlocks.RED_MAPLE_NATURAL_SET.getShrub().defaultBlockState(), 1))));
-        register(context, MAUVE_ENCHANTED_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.MAUVE_NATURAL_SET.getShrub().defaultBlockState(), 3).add(RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getShrub().defaultBlockState(), 1))));
         register(context, PINE_DEAD_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.PINE_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.DEAD_PINE_NATURAL_SET.getShrub().defaultBlockState(), 1))));
         register(context, PALM_JUNGLE_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.PALM_NATURAL_SET.getShrub().defaultBlockState(), 5).add(RUBlocks.JUNGLE_NATURAL_SET.getShrub().defaultBlockState(), 1))));
         register(context, WILLOW_CYPRESS_SHRUB_MIX, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.WILLOW_NATURAL_SET.getShrub().defaultBlockState(), 2).add(RUBlocks.CYPRESS_NATURAL_SET.getShrub().defaultBlockState(), 1))));

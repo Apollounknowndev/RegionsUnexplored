@@ -357,6 +357,15 @@
     "regions_unexplored:larch_shrub": {
       "chance": 0.65
     },
+    "regions_unexplored:lavender_wisteria_leaves": {
+      "chance": 0.3
+    },
+    "regions_unexplored:lavender_wisteria_sapling": {
+      "chance": 0.3
+    },
+    "regions_unexplored:lavender_wisteria_shrub": {
+      "chance": 0.65
+    },
     "regions_unexplored:light_blue_snowbelle": {
       "chance": 0.4
     },
@@ -403,18 +412,6 @@
       "chance": 0.3
     },
     "regions_unexplored:maple_shrub": {
-      "chance": 0.65
-    },
-    "regions_unexplored:mauve_branch": {
-      "chance": 0.3
-    },
-    "regions_unexplored:mauve_leaves": {
-      "chance": 0.3
-    },
-    "regions_unexplored:mauve_sapling": {
-      "chance": 0.3
-    },
-    "regions_unexplored:mauve_shrub": {
       "chance": 0.65
     },
     "regions_unexplored:meadow_sage": {
@@ -552,6 +549,15 @@
     "regions_unexplored:salmon_poppy_bush": {
       "chance": 0.4
     },
+    "regions_unexplored:salmon_wisteria_leaves": {
+      "chance": 0.3
+    },
+    "regions_unexplored:salmon_wisteria_sapling": {
+      "chance": 0.3
+    },
+    "regions_unexplored:salmon_wisteria_shrub": {
+      "chance": 0.65
+    },
     "regions_unexplored:salmonberry": {
       "chance": 0.25
     },
@@ -574,6 +580,15 @@
       "chance": 0.3
     },
     "regions_unexplored:silver_birch_shrub": {
+      "chance": 0.65
+    },
+    "regions_unexplored:sky_wisteria_leaves": {
+      "chance": 0.3
+    },
+    "regions_unexplored:sky_wisteria_sapling": {
+      "chance": 0.3
+    },
+    "regions_unexplored:sky_wisteria_shrub": {
       "chance": 0.65
     },
     "regions_unexplored:small_desert_shrub": {
@@ -674,6 +689,9 @@
     },
     "regions_unexplored:windswept_grass": {
       "chance": 0.5
+    },
+    "regions_unexplored:wisteria_branch": {
+      "chance": 0.3
     },
     "regions_unexplored:yellow_bioshroom": {
       "chance": 0.35

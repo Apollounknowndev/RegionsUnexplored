@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "regions_unexplored:block/white_magnolia_shrub_lower"
+    },
+    "half=upper": {
+      "model": "regions_unexplored:block/white_magnolia_shrub_upper"
+    }
+  }
+}

@@ -107,92 +107,27 @@ public class RuLanguageProvider extends LanguageProvider {
         this.add("death.attack.dusk_trap.player", "%s was eaten by a Dusktrap");
 
         // Item translations
-        BuiltInRegistries.ITEM.stream().forEach(itemRegistryObject -> {
-            if(itemRegistryObject.toString().contains("regions_unexplored")){
-                if(itemRegistryObject.toString().contains("boat")){
-                    if(itemRegistryObject.toString().contains("chest_boat")){
-                        this.add(itemRegistryObject, filterChestBoatLang(itemRegistryObject));
+        BuiltInRegistries.ITEM.stream().forEach(item -> {
+            if(item.toString().contains("regions_unexplored")){
+                if(item.toString().contains("boat")){
+                    if(item.toString().contains("chest_boat")){
+                        this.add(item, filterChestBoatLang(item));
                     }
                     else{
-                        this.add(itemRegistryObject, capitalizeString(filterItemLang(itemRegistryObject)));
+                        this.add(item, capitalizeString(filterItemLang(item)));
                     }
                 }
             }
         });
 
         // Biome Translations
-        this.add(RUBiomes.ALPHA_GROVE, capitalizeString(filterBiomeLang(RUBiomes.ALPHA_GROVE)));
-        this.add(RUBiomes.ANCIENT_DELTA, capitalizeString(filterBiomeLang(RUBiomes.ANCIENT_DELTA)));
-        this.add(RUBiomes.ARID_MOUNTAINS, capitalizeString(filterBiomeLang(RUBiomes.ARID_MOUNTAINS)));
-        this.add(RUBiomes.ASHEN_WOODLAND, capitalizeString(filterBiomeLang(RUBiomes.ASHEN_WOODLAND)));
-        this.add(RUBiomes.AUTUMNAL_MAPLE_FOREST, capitalizeString(filterBiomeLang(RUBiomes.AUTUMNAL_MAPLE_FOREST)));
-        this.add(RUBiomes.BAOBAB_SAVANNA, capitalizeString(filterBiomeLang(RUBiomes.BAOBAB_SAVANNA)));
-        this.add(RUBiomes.BAMBOO_FOREST, capitalizeString(filterBiomeLang(RUBiomes.BAMBOO_FOREST)));
-        this.add(RUBiomes.BARLEY_FIELDS, capitalizeString(filterBiomeLang(RUBiomes.BARLEY_FIELDS)));
-        this.add(RUBiomes.BAYOU, capitalizeString(filterBiomeLang(RUBiomes.BAYOU)));
-        this.add(RUBiomes.BIOSHROOM_CAVES, capitalizeString(filterBiomeLang(RUBiomes.BIOSHROOM_CAVES)));
-        this.add(RUBiomes.BLACKSTONE_BASIN, capitalizeString(filterBiomeLang(RUBiomes.BLACKSTONE_BASIN)));
-        this.add(RUBiomes.BLACKWOOD_TAIGA, capitalizeString(filterBiomeLang(RUBiomes.BLACKWOOD_TAIGA)));
-        this.add(RUBiomes.BOREAL_TAIGA, capitalizeString(filterBiomeLang(RUBiomes.BOREAL_TAIGA)));
-        this.add(RUBiomes.CHALK_CLIFFS, capitalizeString(filterBiomeLang(RUBiomes.CHALK_CLIFFS)));
-        this.add(RUBiomes.COLD_BOREAL_TAIGA, capitalizeString(filterBiomeLang(RUBiomes.COLD_BOREAL_TAIGA)));
-        this.add(RUBiomes.COLD_DECIDUOUS_FOREST, capitalizeString(filterBiomeLang(RUBiomes.COLD_DECIDUOUS_FOREST)));
-        this.add(RUBiomes.COLD_RIVER, capitalizeString(filterBiomeLang(RUBiomes.COLD_RIVER)));
-        this.add(RUBiomes.DECIDUOUS_FOREST, capitalizeString(filterBiomeLang(RUBiomes.DECIDUOUS_FOREST)));
-        this.add(RUBiomes.DRY_BUSHLAND, capitalizeString(filterBiomeLang(RUBiomes.DRY_BUSHLAND)));
-        this.add(RUBiomes.EUCALYPTUS_FOREST, capitalizeString(filterBiomeLang(RUBiomes.EUCALYPTUS_FOREST)));
-        this.add(RUBiomes.FEN, capitalizeString(filterBiomeLang(RUBiomes.FEN)));
-        this.add(RUBiomes.FLOWER_FIELDS, capitalizeString(filterBiomeLang(RUBiomes.FLOWER_FIELDS)));
-        this.add(RUBiomes.FROZEN_PINE_TAIGA, capitalizeString(filterBiomeLang(RUBiomes.FROZEN_PINE_TAIGA)));
-        this.add(RUBiomes.REMOVED_FROZEN_TUNDRA, capitalizeString(filterBiomeLang(RUBiomes.REMOVED_FROZEN_TUNDRA)));
-        this.add(RUBiomes.TUNDRA, capitalizeString(filterBiomeLang(RUBiomes.TUNDRA)));
-        this.add(RUBiomes.FUNGAL_FEN, capitalizeString(filterBiomeLang(RUBiomes.FUNGAL_FEN)));
-        this.add(RUBiomes.GLISTERING_MEADOW, capitalizeString(filterBiomeLang(RUBiomes.GLISTERING_MEADOW)));
-        this.add(RUBiomes.GOLDEN_BOREAL_TAIGA, capitalizeString(filterBiomeLang(RUBiomes.GOLDEN_BOREAL_TAIGA)));
-        this.add(RUBiomes.GRASSLAND, capitalizeString(filterBiomeLang(RUBiomes.GRASSLAND)));
-        this.add(RUBiomes.GRASSY_BEACH, capitalizeString(filterBiomeLang(RUBiomes.GRASSY_BEACH)));
-        this.add(RUBiomes.GRAVEL_BEACH, capitalizeString(filterBiomeLang(RUBiomes.GRAVEL_BEACH)));
-        this.add(RUBiomes.HIGHLAND_FIELDS, capitalizeString(filterBiomeLang(RUBiomes.HIGHLAND_FIELDS)));
-        this.add(RUBiomes.HYACINTH_DEEPS, capitalizeString(filterBiomeLang(RUBiomes.HYACINTH_DEEPS)));
-        this.add(RUBiomes.ICY_HEIGHTS, capitalizeString(filterBiomeLang(RUBiomes.ICY_HEIGHTS)));
-        this.add(RUBiomes.INFERNAL_HOLT, capitalizeString(filterBiomeLang(RUBiomes.INFERNAL_HOLT)));
-        this.add(RUBiomes.JOSHUA_DESERT, capitalizeString(filterBiomeLang(RUBiomes.JOSHUA_DESERT)));
-        this.add(RUBiomes.MAGNOLIA_WOODLAND, capitalizeString(filterBiomeLang(RUBiomes.MAGNOLIA_WOODLAND)));
-        this.add(RUBiomes.MARSH, capitalizeString(filterBiomeLang(RUBiomes.MARSH)));
-        this.add(RUBiomes.MAPLE_FOREST, capitalizeString(filterBiomeLang(RUBiomes.MAPLE_FOREST)));
-        this.add(RUBiomes.MOUNTAINS, capitalizeString(filterBiomeLang(RUBiomes.MOUNTAINS)));
-        this.add(RUBiomes.MAUVE_HILLS, capitalizeString(filterBiomeLang(RUBiomes.MAUVE_HILLS)));
-        this.add(RUBiomes.MUDDY_RIVER, capitalizeString(filterBiomeLang(RUBiomes.MUDDY_RIVER)));
-        this.add(RUBiomes.MYCOTOXIC_UNDERGROWTH, capitalizeString(filterBiomeLang(RUBiomes.MYCOTOXIC_UNDERGROWTH)));
-        this.add(RUBiomes.ORCHARD, capitalizeString(filterBiomeLang(RUBiomes.ORCHARD)));
-        this.add(RUBiomes.OUTBACK, capitalizeString(filterBiomeLang(RUBiomes.OUTBACK)));
-        this.add(RUBiomes.OLD_GROWTH_BAYOU, capitalizeString(filterBiomeLang(RUBiomes.OLD_GROWTH_BAYOU)));
-        this.add(RUBiomes.PINE_SLOPES, capitalizeString(filterBiomeLang(RUBiomes.PINE_SLOPES)));
-        this.add(RUBiomes.PINE_TAIGA, capitalizeString(filterBiomeLang(RUBiomes.PINE_TAIGA)));
-        this.add(RUBiomes.PRAIRIE, capitalizeString(filterBiomeLang(RUBiomes.PRAIRIE)));
-        this.add(RUBiomes.PRISMACHASM, capitalizeString(filterBiomeLang(RUBiomes.PRISMACHASM)));
-        this.add(RUBiomes.POPPY_FIELDS, capitalizeString(filterBiomeLang(RUBiomes.POPPY_FIELDS)));
-        this.add(RUBiomes.PUMPKIN_FIELDS, capitalizeString(filterBiomeLang(RUBiomes.PUMPKIN_FIELDS)));
-        this.add(RUBiomes.RAINFOREST, capitalizeString(filterBiomeLang(RUBiomes.RAINFOREST)));
-        this.add(RUBiomes.REDWOODS, capitalizeString(filterBiomeLang(RUBiomes.REDWOODS)));
-        this.add(RUBiomes.REDSTONE_ABYSS, capitalizeString(filterBiomeLang(RUBiomes.REDSTONE_ABYSS)));
-        this.add(RUBiomes.REDSTONE_CAVES, capitalizeString(filterBiomeLang(RUBiomes.REDSTONE_CAVES)));
-        this.add(RUBiomes.ROCKY_MEADOW, capitalizeString(filterBiomeLang(RUBiomes.ROCKY_MEADOW)));
-        this.add(RUBiomes.ROCKY_REEF, capitalizeString(filterBiomeLang(RUBiomes.ROCKY_REEF)));
-        this.add(RUBiomes.SAGUARO_DESERT, capitalizeString(filterBiomeLang(RUBiomes.SAGUARO_DESERT)));
-        this.add(RUBiomes.SHRUBLAND, capitalizeString(filterBiomeLang(RUBiomes.SHRUBLAND)));
-        this.add(RUBiomes.SCORCHING_CAVES, capitalizeString(filterBiomeLang(RUBiomes.SCORCHING_CAVES)));
-        this.add(RUBiomes.SPIRES, capitalizeString(filterBiomeLang(RUBiomes.SPIRES)));
-        this.add(RUBiomes.STEPPE, capitalizeString(filterBiomeLang(RUBiomes.STEPPE)));
-        this.add(RUBiomes.SILVER_BIRCH_FOREST, capitalizeString(filterBiomeLang(RUBiomes.SILVER_BIRCH_FOREST)));
-        this.add(RUBiomes.SPARSE_RAINFOREST, capitalizeString(filterBiomeLang(RUBiomes.SPARSE_RAINFOREST)));
-        this.add(RUBiomes.SPARSE_REDWOODS, capitalizeString(filterBiomeLang(RUBiomes.SPARSE_REDWOODS)));
-        this.add(RUBiomes.TEMPERATE_GROVE, capitalizeString(filterBiomeLang(RUBiomes.TEMPERATE_GROVE)));
-        this.add(RUBiomes.TROPICS, capitalizeString(filterBiomeLang(RUBiomes.TROPICS)));
-        this.add(RUBiomes.TROPICAL_RIVER, capitalizeString(filterBiomeLang(RUBiomes.TROPICAL_RIVER)));
-        this.add(RUBiomes.TOWERING_CLIFFS, capitalizeString(filterBiomeLang(RUBiomes.TOWERING_CLIFFS)));
-        this.add(RUBiomes.WILLOW_FOREST, capitalizeString(filterBiomeLang(RUBiomes.WILLOW_FOREST)));
-        this.add(RUBiomes.CLOVER_PLAINS, capitalizeString(filterBiomeLang(RUBiomes.CLOVER_PLAINS)));
+        for (ResourceKey<Biome> biome : RUBiomes.ALL_BIOMES) {
+            String name = capitalizeString(filterBiomeLang(biome));
+            if (RUBiomes.REMOVED_BIOMES.contains(biome)) {
+                name = name + " (Removed)";
+            }
+            this.add(biome, name);
+        }
     }
 
     /**

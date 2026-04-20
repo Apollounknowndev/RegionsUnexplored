@@ -2,156 +2,63 @@ package net.regions_unexplored.worldgen.foliageplacer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
-import net.minecraft.world.level.material.Fluids;
 
-public class WillowFoliagePlacer extends FoliagePlacer {
-    public static final MapCodec<WillowFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((placer) -> foliagePlacerParts(placer).and(
-        placer.group(
-                IntProvider.codec(4, 16).fieldOf("height").forGetter(
-                        (height) -> height.height), Codec.floatRange(0.0F, 1.0F).fieldOf("flower_decoration_chance").forGetter(
-                        (flowerChance) -> flowerChance.flowerDecorationChance)
-                )
-        )
-        .apply(placer, WillowFoliagePlacer::new)
-    );
+import static net.regions_unexplored.worldgen.foliageplacer.RUFoliagePlacerUtils.*;
+
+public class WillowFoliagePlacer extends BlobFoliagePlacer {
+    public static final MapCodec<WillowFoliagePlacer> CODEC = Codec.floatRange(0f, 1f).fieldOf("hanging_leaves_chance").xmap(WillowFoliagePlacer::new, WillowFoliagePlacer::hangingLeavesChance);
     public static FoliagePlacerType<WillowFoliagePlacer> TYPE = new FoliagePlacerType<>(CODEC);
 
+    private final float hangingLeavesChance;
+
+    public WillowFoliagePlacer(float hangingLeavesChance) {
+        super(ConstantInt.ZERO, ConstantInt.ZERO, 0);
+        this.hangingLeavesChance = hangingLeavesChance;
+    }
+    
+    public float hangingLeavesChance() {
+        return this.hangingLeavesChance;
+    }
+    
+    @Override
+    protected void createFoliage(LevelSimulatedReader level, FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, int treeHeight, FoliageAttachment foliageAttachment, int foliageHeight, int leafRadius, int offset) {
+        BlockPos origin = foliageAttachment.pos();
+        Context context = new Context(level, foliageSetter, random, config.foliageProvider, origin, offset);
+        
+        placeDiamond(context, 1, 2, false);
+        placeDiamond(context, 2, 1, false);
+        for (Direction direction : Direction.Plane.HORIZONTAL) {
+            BlockPos pos = origin.above().relative(direction, 2);
+            placeSingle(context, pos.relative(direction.getClockWise()), 0.3f);
+            placeSingle(context, pos.relative(direction.getCounterClockWise()), 0.3f);
+        }
+        
+        placeSquare(context, 2, 0, false, 0);
+        
+        for (int x = -2; x <= 2; x++) {
+            for (int z = -2; z <= 2; z++) {
+                boolean xEdge = Math.abs(x) == 2;
+                boolean zEdge = Math.abs(z) == 2;
+                if (xEdge == zEdge || this.hangingLeavesChance < random.nextFloat()) continue;
+                BlockPos pos = origin.offset(x, -1, z);
+                int length = random.nextInt(2) + 1;
+                for (int i = 0; i < length; i++) {
+                    placeSingle(context, pos.below(i));
+                }
+            }
+        }
+    }
+    
+    @Override
     protected FoliagePlacerType<?> type() {
         return TYPE;
-    }
-
-    private final IntProvider height;
-    private final float flowerDecorationChance;
-
-    public WillowFoliagePlacer(IntProvider ip1, IntProvider ip2, IntProvider height, float flowerDecorationChance) {
-        super(ip1, ip2);
-        this.height = height;
-        this.flowerDecorationChance = flowerDecorationChance;
-    }
-
-    protected void createFoliage(LevelSimulatedReader level, FoliageSetter setter, RandomSource random, TreeConfiguration treeConfig, int p_272975_, FoliageAttachment foliage, int j, int k, int height) {
-        boolean flag = foliage.doubleTrunk();
-        BlockPos blockpos = foliage.pos().above(height);
-        int i = k + foliage.radiusOffset() - 1;
-        //layer_1
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos);
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.north());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.south());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.east());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.west());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.north().north());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.south().south());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.east().east());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.west().west());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.north().west());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.north().north().west());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.north().west().west());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.south().west());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.south().south().west());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.south().west().west());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.north().east());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.north().north().east());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.north().east().east());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.south().east());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.south().south().east());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.south().east().east());
-        //layer_2
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().north());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().south());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().east());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().west());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().north().north());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().south().south());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().east().east());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().west().west());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().north().west());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().south().west());
-        if (random.nextInt(3) == 0) {
-            tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().south().south().west());
-        }
-        if (random.nextInt(3) == 0) {
-            tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().south().west().west());
-        }
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().north().east());
-        if (random.nextInt(3) == 0) {
-            tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().north().north().east());
-        }
-        if (random.nextInt(3) == 0) {
-            tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().north().east().east());
-        }
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().south().east());
-        if (random.nextInt(3) == 0) {
-            tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().south().south().east());
-        }
-        if (random.nextInt(3) == 0) {
-            tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().south().east().east());
-        }
-        //layer_3
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().above());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().above().north());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().above().south());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().above().east());
-        tryPlaceLeaf(level, setter, random, treeConfig, blockpos.above().above().west());
-        //hanging
-        placeHangingLeaves(level, setter, random, treeConfig, blockpos.north().north());
-        placeHangingLeaves(level, setter, random, treeConfig, blockpos.south().south());
-        placeHangingLeaves(level, setter, random, treeConfig, blockpos.east().east());
-        placeHangingLeaves(level, setter, random, treeConfig, blockpos.west().west());
-        placeHangingLeaves(level, setter, random, treeConfig, blockpos.north().north().west());
-        placeHangingLeaves(level, setter, random, treeConfig, blockpos.north().west().west());
-        placeHangingLeaves(level, setter, random, treeConfig, blockpos.south().south().west());
-        placeHangingLeaves(level, setter, random, treeConfig, blockpos.south().west().west());
-        placeHangingLeaves(level, setter, random, treeConfig, blockpos.north().north().east());
-        placeHangingLeaves(level, setter, random, treeConfig, blockpos.north().east().east());
-        placeHangingLeaves(level, setter, random, treeConfig, blockpos.south().south().east());
-        placeHangingLeaves(level, setter, random, treeConfig, blockpos.south().east().east());
-    }
-
-    public int foliageHeight(RandomSource random, int i, TreeConfiguration treeConfiguration) {
-        return this.height.sample(random);
-    }
-
-    protected boolean shouldSkipLocation(RandomSource randomSource, int i, int j, int k, int l, boolean b) {
-        return false;
-    }
-
-    protected static boolean tryPlaceLeaf(LevelSimulatedReader level, FoliageSetter setter, RandomSource random, TreeConfiguration treeConfiguration, BlockPos pos) {
-        if (!TreeFeature.validTreePos(level, pos)) {
-            return false;
-        } else {
-            BlockState blockstate = treeConfiguration.foliageProvider.getState(random, pos);
-            if (blockstate.hasProperty(BlockStateProperties.WATERLOGGED)) {
-                blockstate = blockstate.setValue(BlockStateProperties.WATERLOGGED, level.isFluidAtPosition(pos, (p_225638_) -> p_225638_.isSourceOfType(Fluids.WATER)));
-            }
-
-            setter.set(pos, blockstate);
-            return true;
-        }
-    }
-
-    protected static void placeHangingLeaves(LevelSimulatedReader level, FoliageSetter setter, RandomSource random, TreeConfiguration treeConfiguration, BlockPos pos) {
-        int type = random.nextInt(3);
-        if (type == 0) {
-            tryPlaceLeaf(level, setter, random, treeConfiguration, pos);
-        } else if (type == 1) {
-            tryPlaceLeaf(level, setter, random, treeConfiguration, pos);
-            tryPlaceLeaf(level, setter, random, treeConfiguration, pos.below());
-        } else {
-            tryPlaceLeaf(level, setter, random, treeConfiguration, pos);
-            tryPlaceLeaf(level, setter, random, treeConfiguration, pos.below());
-            tryPlaceLeaf(level, setter, random, treeConfiguration, pos.below().below());
-        }
     }
 }

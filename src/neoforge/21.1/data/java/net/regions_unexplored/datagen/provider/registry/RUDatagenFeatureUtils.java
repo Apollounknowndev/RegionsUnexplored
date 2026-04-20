@@ -45,12 +45,12 @@ public class RUDatagenFeatureUtils {
         return context.register(key, new ConfiguredFeature<>(feature, config));
     }
     
-    public static <FC extends FeatureConfiguration, F extends Feature<FC>> void registerPlaced(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<PlacedFeature> key, F feature, FC config) {
-        context.register(RUConfiguredFeatures.fromPlaced(key), new ConfiguredFeature<>(feature, config));
+    public static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder.Reference<ConfiguredFeature<?, ?>> registerPlaced(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<PlacedFeature> key, F feature, FC config) {
+        return context.register(RUConfiguredFeatures.fromPlaced(key), new ConfiguredFeature<>(feature, config));
     }
     
-    public static <FC extends FeatureConfiguration, F extends Feature<FC>> void registerSelector(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<PlacedFeature> key, UnaryOperator<WeightedList.Builder<Holder<PlacedFeature>>> operator) {
-        context.register(RUConfiguredFeatures.fromPlaced(key), new ConfiguredFeature<>(LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(operator.apply(WeightedList.builder()).build())));
+    public static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder.Reference<ConfiguredFeature<?, ?>> registerSelector(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<PlacedFeature> key, UnaryOperator<WeightedList.Builder<Holder<PlacedFeature>>> operator) {
+        return context.register(RUConfiguredFeatures.fromPlaced(key), new ConfiguredFeature<>(LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(operator.apply(WeightedList.builder()).build())));
     }
     
     public static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, PlacementModifier... placement) {

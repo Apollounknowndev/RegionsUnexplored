@@ -95,7 +95,6 @@ public class RuAdvancementProvider extends AdvancementProvider {
                     .addCriterion("magnolia_highlands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.MAGNOLIA_WOODLAND))))
                     .addCriterion("maple_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.MAPLE_FOREST))))
                     .addCriterion("marsh", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.MARSH))))
-                    .addCriterion("mauve_hills", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.MAUVE_HILLS))))
                     .addCriterion("mountains", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.MOUNTAINS))))
                     .addCriterion("muddy_river", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.MUDDY_RIVER))))
                     .addCriterion("old_growth_bayou", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.OLD_GROWTH_BAYOU))))
@@ -123,6 +122,7 @@ public class RuAdvancementProvider extends AdvancementProvider {
                     .addCriterion("tropics", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.TROPICS))))
                     .addCriterion("tundra", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.TUNDRA))))
                     .addCriterion("willow_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.WILLOW_FOREST))))
+                    .addCriterion("wisteria_grove", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.WISTERIA_GROVE))))
                     .save(saver, getAdvancementName(RegionsUnexplored.MOD_ID, "pioneer"));
 
             AdvancementHolder REGIONS_EXPLORED = Advancement.Builder.advancement()
@@ -175,7 +175,6 @@ public class RuAdvancementProvider extends AdvancementProvider {
                     .addCriterion("magnolia_highlands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.MAGNOLIA_WOODLAND))))
                     .addCriterion("maple_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.MAPLE_FOREST))))
                     .addCriterion("marsh", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.MARSH))))
-                    .addCriterion("mauve_hills", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.MAUVE_HILLS))))
                     .addCriterion("mountains", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.MOUNTAINS))))
                     .addCriterion("muddy_river", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.MUDDY_RIVER))))
                     .addCriterion("mycotoxic_undergrowth", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.MYCOTOXIC_UNDERGROWTH))))
@@ -208,6 +207,7 @@ public class RuAdvancementProvider extends AdvancementProvider {
                     .addCriterion("tropics", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.TROPICS))))
                     .addCriterion("tundra", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.TUNDRA))))
                     .addCriterion("willow_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.WILLOW_FOREST))))
+                    .addCriterion("wisteria_grove", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(RUBiomes.WISTERIA_GROVE))))
                     .save(saver, getAdvancementName(RegionsUnexplored.MOD_ID, "regions_explored"));
 
             AdvancementHolder EVERY_BIT_OF_THE_RAINBOW = Advancement.Builder.advancement()

@@ -1,5 +1,7 @@
 {
   "values": [
+    "minecraft:coarse_dirt",
+    "minecraft:podzol",
     "regions_unexplored:alpha_grass_block",
     "regions_unexplored:ashen_dirt",
     "regions_unexplored:chalk_grass_block",
@@ -21,8 +23,6 @@
     "regions_unexplored:prismoss",
     "regions_unexplored:stone_grass_block",
     "regions_unexplored:argillite_grass_block",
-    "regions_unexplored:viridescent_nylium",
-    "minecraft:podzol",
-    "minecraft:coarse_dirt"
+    "regions_unexplored:viridescent_nylium"
   ]
 }

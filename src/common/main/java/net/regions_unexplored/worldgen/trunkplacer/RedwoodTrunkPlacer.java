@@ -65,7 +65,7 @@ public class RedwoodTrunkPlacer extends RUTrunkPlacer {
         for (IntProvider branchLength : this.branchCounts) {
             for (int i = 0; i < branchLength.sample(random); i++) {
                 placePos.move(Direction.DOWN, this.branchOffset);
-                placeBranch(placePos, random, trunkSetter, attachments, config, length);
+                placeBranch(level, trunkSetter, random, length, placePos, config, attachments);
                 if (length > 2) {
                     placeBlobsAround(attachments, placePos);
                 }
@@ -87,20 +87,16 @@ public class RedwoodTrunkPlacer extends RUTrunkPlacer {
         }
     }
 
-    private void placeBranch(BlockPos pos, RandomSource random, BiConsumer<BlockPos, BlockState> trunkSetter, List<FoliageAttachment> foliageSetter, TreeConfiguration config, int length) {
+    private void placeBranch(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> trunkSetter, RandomSource random, int length, BlockPos pos, TreeConfiguration config, List<FoliageAttachment> foliageSetter) {
         Direction.Axis axis = Direction.Plane.HORIZONTAL.getRandomAxis(random);
 
         for (Direction direction : Direction.Plane.HORIZONTAL) {
             BlockPos.MutableBlockPos currentPos = pos.mutable();
             if (axis != direction.getAxis()) currentPos.move(Direction.DOWN);
-
+            
             for (int i = 0; i < length; i++) {
                 currentPos.move(direction);
-                BlockState state = config.trunkProvider.getState(random, pos);
-                if (state.hasProperty(RotatedPillarBlock.AXIS)) {
-                    state = state.setValue(RotatedPillarBlock.AXIS, direction.getAxis());
-                }
-                trunkSetter.accept(currentPos.immutable(), state);
+                this.placeLog(level, trunkSetter, random, currentPos.immutable(), config, setAxis(direction));
             }
             foliageSetter.add(attachment(currentPos.immutable()));
         }
@@ -112,8 +108,7 @@ public class RedwoodTrunkPlacer extends RUTrunkPlacer {
 
         BlockPos.MutableBlockPos currentPos = pos.mutable();
         for (int y = 0; y < columnHeight; y++) {
-            if (TreeFeature.validTreePos(level, currentPos) || level.isStateAtPosition(pos, state -> state.is(BlockTags.LOGS))) {
-                trunkSetter.accept(currentPos.immutable(), config.trunkProvider.getState(random, currentPos));
+            if (this.placeLog(level, trunkSetter, random, currentPos.immutable(), config)) {
                 currentPos.move(Direction.UP);
                 continue;
             }

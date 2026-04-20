@@ -1,0 +1,67 @@
+{
+  "type": "minecraft:tree",
+  "config": {
+    "decorators": [
+      {
+        "type": "regions_unexplored:hanging_leaves",
+        "block": "regions_unexplored:salmon_wisteria_vines",
+        "probability": 0.15
+      }
+    ],
+    "dirt_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
+    },
+    "foliage_placer": {
+      "type": "regions_unexplored:magnolia"
+    },
+    "foliage_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "regions_unexplored:salmon_wisteria_leaves",
+        "Properties": {
+          "distance": "7",
+          "persistent": "false",
+          "waterlogged": "false"
+        }
+      }
+    },
+    "force_dirt": false,
+    "ignore_vines": true,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 0,
+      "upper_size": 1
+    },
+    "trunk_placer": {
+      "type": "regions_unexplored:magnolia",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 5,
+        "min_inclusive": 2
+      },
+      "primary_branch_length": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 5,
+        "min_inclusive": 4
+      },
+      "secondary_branch_length": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 3,
+        "min_inclusive": 2
+      }
+    },
+    "trunk_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:cherry_log",
+        "Properties": {
+          "axis": "y"
+        }
+      }
+    }
+  }
+}

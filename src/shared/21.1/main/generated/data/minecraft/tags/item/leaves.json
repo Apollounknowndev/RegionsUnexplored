@@ -21,7 +21,6 @@
     "regions_unexplored:larch_leaves",
     "regions_unexplored:magnolia_leaves",
     "regions_unexplored:maple_leaves",
-    "regions_unexplored:mauve_leaves",
     "regions_unexplored:orange_maple_leaves",
     "regions_unexplored:palm_leaves",
     "regions_unexplored:pine_leaves",
@@ -32,6 +31,9 @@
     "regions_unexplored:small_oak_leaves",
     "regions_unexplored:socotra_leaves",
     "regions_unexplored:white_magnolia_leaves",
-    "regions_unexplored:willow_leaves"
+    "regions_unexplored:willow_leaves",
+    "regions_unexplored:sky_wisteria_leaves",
+    "regions_unexplored:lavender_wisteria_leaves",
+    "regions_unexplored:salmon_wisteria_leaves"
   ]
 }

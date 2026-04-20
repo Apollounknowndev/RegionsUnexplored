@@ -80,7 +80,6 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
@@ -88,10 +87,11 @@
       "regions_unexplored:tree/magnolia",
       "regions_unexplored:tree/pink_magnolia",
       "regions_unexplored:tree/white_magnolia",
+      "regions_unexplored:magnolia_shrub_mix",
       "regions_unexplored:tsubaki",
-      "regions_unexplored:grass",
       "regions_unexplored:day_lily",
-      "regions_unexplored:magnolia_shrub_mix"
+      "regions_unexplored:patch/short_grass_sparse",
+      "regions_unexplored:patch/grass_sprouts_sparse"
     ],
     [
       "minecraft:freeze_top_layer"

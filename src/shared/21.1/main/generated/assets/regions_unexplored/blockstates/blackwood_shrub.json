@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "regions_unexplored:block/blackwood_shrub_lower"
+    },
+    "half=upper": {
+      "model": "regions_unexplored:block/blackwood_shrub_upper"
+    }
+  }
+}

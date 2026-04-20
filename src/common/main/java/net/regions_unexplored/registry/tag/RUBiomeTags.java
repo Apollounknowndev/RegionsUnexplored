@@ -15,6 +15,8 @@ public interface RUBiomeTags {
    TagKey<Biome> HAS_SPOTTED_WOLF = key("has_wolf_variant/spotted");
    TagKey<Biome> HAS_STRIPED_WOLF = key("has_wolf_variant/striped");
    TagKey<Biome> HAS_WOODS_WOLF = key("has_wolf_variant/woods");
+   
+   TagKey<Biome> REMOVED = key("removed");
 
    private static TagKey<Biome> key(String name) {
       return TagKey.create(Registries.BIOME, RegionsUnexplored.id(name));

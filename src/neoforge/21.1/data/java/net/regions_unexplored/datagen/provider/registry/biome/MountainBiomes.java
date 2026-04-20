@@ -98,8 +98,6 @@ public class MountainBiomes {
         //add RU features
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_SHRUB_ON_STONE);
 
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
-
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseExtremeHillsSpawning();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.ARMADILLO, 6, 1, 2));

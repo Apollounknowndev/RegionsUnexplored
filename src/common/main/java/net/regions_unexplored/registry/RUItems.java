@@ -20,14 +20,21 @@ public interface RUItems {
     Supplier<Item> MEADOW_SAGE = RUItemUtils.register("meadow_sage", p -> new BlockItem(RUBlocks.MEADOW_SAGE.get(), p.food(food(2, 0.15f, t -> t.effect(new MobEffectInstance(MobEffects.HEAL, 20), 0.5f)))));
 
     static void applyAliases(BiConsumer<Identifier, Identifier> consumer) {
+        consumer.accept(id("medium_grass"), id("grass_sprouts"));
+        consumer.accept(id("stone_bud"), id("grass_sprouts"));
+        
         consumer.accept(id("cactus_flower"), id("saguaro_cactus_flower"));
+        
         consumer.accept(id("maple_leaf_pile"), id("maple_leaf_litter"));
         consumer.accept(id("red_maple_leaf_pile"), id("red_maple_leaf_litter"));
         consumer.accept(id("orange_maple_leaf_pile"), id("orange_maple_leaf_litter"));
         consumer.accept(id("silver_birch_leaf_pile"), id("silver_birch_leaf_litter"));
         consumer.accept(id("enchanted_birch_leaf_pile"), id("enchanted_birch_leaf_litter"));
-        consumer.accept(id("medium_grass"), id("grass_sprouts"));
-        consumer.accept(id("stone_bud"), id("grass_sprouts"));
+        
+        consumer.accept(id("mauve_branch"), id("wisteria_branch"));
+        consumer.accept(id("mauve_shrub"), id("lavender_wisteria_shrub"));
+        consumer.accept(id("mauve_leaves"), id("lavender_wisteria_leaves"));
+        consumer.accept(id("mauve_sapling"), id("lavender_wisteria_sapling"));
     }
 
     static void init() {

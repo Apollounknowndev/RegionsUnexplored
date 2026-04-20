@@ -38,7 +38,6 @@ public class ForestBiomes {
     private static BiomeGenerationSettings.Builder baseForestGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter, boolean addDefaultFlowers) {
         BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
         RUBiomeFeatures.globalOverworldGeneration(builder);
-        RUBiomeFeatures.grassSprouts(builder);
         if(addDefaultFlowers){
             BiomeDefaultFeatures.addForestFlowers(builder);
         }
@@ -65,9 +64,10 @@ public class ForestBiomes {
 
         //add RU features
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_AUTUMNAL_MAPLE_FOREST);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
-        RUBiomeFeatures.addTrillium(builder);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.AUTUMNAL_SHRUB_MIX);
+        RUBiomeFeatures.addTrillium(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseForestSpawning(true);
@@ -101,11 +101,12 @@ public class ForestBiomes {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_BAMBOO_FOREST_SECONDARY);
 
         RUBiomeFeatures.addPinkFlowers(builder);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.FERNS);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CHERRY_SHRUB);
-
         RUBiomeFeatures.addBamboo(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
+
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseForestSpawning(false);
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.PANDA, 80, 1, 2));
@@ -136,13 +137,11 @@ public class ForestBiomes {
 
         //add RU features
         RUBiomeFeatures.sakuraTrees(builder);
-
-        RUBiomeFeatures.addTsubaki(builder);
-
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DAY_LILY);
-
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.MAGNOLIA_SHRUB_MIX);
+        RUBiomeFeatures.addTsubaki(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DAY_LILY);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseForestSpawning(false);
@@ -181,6 +180,8 @@ public class ForestBiomes {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_OAK_DENSE);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DECIDUOUS_VEGETATION);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.OAK_SHRUB);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseForestSpawning(true);
@@ -213,8 +214,9 @@ public class ForestBiomes {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_MAPLE_FOREST);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_MAPLE);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.MAPLE_SHRUB_MIX);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WHITE_TRILLIUM);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
 
 
         //add mob spawns
@@ -231,29 +233,27 @@ public class ForestBiomes {
                 .build();
     }
 
-    public static Biome mauveHills(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+    public static Biome wisteriaGrove(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
                 .skyColor(calculateSkyColor(1.0F))
                 .fogColor(OVERWORLD_FOG_COLOR)
                 .waterColor(5546361)
                 .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(3966928)
-                .grassColorOverride(7518100)
+                .foliageColorOverride(0xadaaff) // 0x3c87d0
+                .grassColorOverride(0x72b788)
                 .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
-        BiomeGenerationSettings.Builder builder = baseForestGeneration(featureGetter, carverGetter, true);
+        BiomeGenerationSettings.Builder builder = baseForestGeneration(featureGetter, carverGetter, false);
 
         //add RU features
-        RUBiomeFeatures.mauveTrees(builder);
-
-        RUBiomeFeatures.addAster(builder);
-
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TASSEL_DENSE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
-
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.MAUVE_ENCHANTED_SHRUB_MIX);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_WISTERIA_GROVE);
+        //builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.MAUVE_ENCHANTED_SHRUB_MIX);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.ASTER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_TALL_FLOWERS_WISTERIA_GROVE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_DENSE);
+        
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseForestSpawning(false);
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 10, 4, 4));
@@ -286,11 +286,12 @@ public class ForestBiomes {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.APPLE_OAK);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.BIG_APPLE_OAK);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.BIG_OAK_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.OAK_SHRUB);
 
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TASSEL_SPARSE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
 
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.OAK_SHRUB);
 
 
         //add mob spawns
@@ -324,9 +325,10 @@ public class ForestBiomes {
         //add RU features
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_SILVER_BIRCH_FOREST);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_SILVER_BIRCH);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TASSEL_SPARSE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
         RUBiomeFeatures.addOrangeCornflower(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TASSEL_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
 
 
         //add mob spawns
@@ -364,9 +366,10 @@ public class ForestBiomes {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.MAPLE_SPARSE);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.BIRCH_ASPEN);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_OAK_SPARSE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
-        RUBiomeFeatures.addPurpleCornflower(builder);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.OAK_SHRUB);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_PURPLE_CONEFLOWER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseForestSpawning(false);
@@ -409,6 +412,8 @@ public class ForestBiomes {
 
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.FERNS);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WILLOW_MAGNOLIA_SHRUB_MIX);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseForestSpawning(true);
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.FOX, 10, 3, 4));

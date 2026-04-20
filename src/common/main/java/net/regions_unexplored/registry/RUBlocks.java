@@ -220,10 +220,6 @@ public interface RUBlocks {
         .withBranch().withShrub()
         .withLeaves(small(TintGetter.defaultDarken(0.6f)))
         .withSapling(RuTreeGrowers.MAPLE);
-    NaturalSet MAUVE_NATURAL_SET = NaturalSet.create("mauve")
-        .withBranch().withShrub()
-        .withLeaves(MapColor.COLOR_PURPLE, small(TintGetter.constant(0xDA73f8)))
-        .withSapling(RuTreeGrowers.MAUVE);
     NaturalSet ORANGE_MAPLE_NATURAL_SET = NaturalSet.create("orange_maple")
         .withShrub()
         .withLeaves(MapColor.COLOR_ORANGE, small(TintGetter.constant(0x98541F)))
@@ -263,6 +259,30 @@ public interface RUBlocks {
     NaturalSet WILLOW_NATURAL_SET = NaturalSet.create("willow")
         .withBranch().withShrub().withLeaves(standard(TintGetter.defaultDarken(0.7f)))
         .withSapling(RuTreeGrowers.WILLOW);
+    
+    
+    NaturalSet WISTERIA_NATURAL_SET = NaturalSet.create("wisteria").withBranch();
+    
+    NaturalSet SKY_WISTERIA_NATURAL_SET = NaturalSet.create("sky_wisteria")
+        .withShrub()
+        .withLeaves(small(TintGetter.constant(0x66a4c5)))
+        .withVines(MapColor.COLOR_LIGHT_BLUE)
+        .withSapling(RuTreeGrowers.MAUVE);
+    NaturalSet LAVENDER_WISTERIA_NATURAL_SET = NaturalSet.create("lavender_wisteria")
+        .withShrub()
+        .withLeaves(small(TintGetter.constant(0xc394ef)))
+        .withVines(MapColor.COLOR_PURPLE)
+        .withSapling(RuTreeGrowers.MAUVE);
+    NaturalSet SALMON_WISTERIA_NATURAL_SET = NaturalSet.create("salmon_wisteria")
+        .withShrub()
+        .withLeaves(small(TintGetter.constant(0xffa3ad)))
+        .withVines(MapColor.COLOR_PINK)
+        .withSapling(RuTreeGrowers.MAUVE);
+    List<NaturalSet> WISTERIA_NATURAL_SETS = List.of(
+        SKY_WISTERIA_NATURAL_SET,
+        LAVENDER_WISTERIA_NATURAL_SET,
+        SALMON_WISTERIA_NATURAL_SET
+    );
 
     //MUSHROOMS
     Supplier<Block> BLUE_BIOSHROOM = register("blue_bioshroom", p -> new BioshroomBlock(RuTreeGrowers.BLUE_BIOSHROOM, MobEffects.POISON, 10, 0x8EE5FF, p.mapColor(MapColor.COLOR_LIGHT_BLUE).pushReaction(PushReaction.DESTROY).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 10)));
@@ -482,13 +502,21 @@ public interface RUBlocks {
     static void applyAliases(BiConsumer<Identifier, Identifier> consumer) {
         consumer.accept(id("medium_grass"), id("grass_sprouts"));
         consumer.accept(id("stone_bud"), id("grass_sprouts"));
+        
         consumer.accept(id("cactus_flower"), id("saguaro_cactus_flower"));
         consumer.accept(id("potted_cactus_flower"), id("potted_saguaro_cactus_flower"));
+        
         consumer.accept(id("maple_leaf_pile"), id("maple_leaf_litter"));
         consumer.accept(id("red_maple_leaf_pile"), id("red_maple_leaf_litter"));
         consumer.accept(id("orange_maple_leaf_pile"), id("orange_maple_leaf_litter"));
         consumer.accept(id("silver_birch_leaf_pile"), id("silver_birch_leaf_litter"));
         consumer.accept(id("enchanted_birch_leaf_pile"), id("enchanted_birch_leaf_litter"));
+        
+        consumer.accept(id("mauve_branch"), id("wisteria_branch"));
+        consumer.accept(id("mauve_shrub"), id("lavender_wisteria_shrub"));
+        consumer.accept(id("mauve_leaves"), id("lavender_wisteria_leaves"));
+        consumer.accept(id("mauve_sapling"), id("lavender_wisteria_sapling"));
+        consumer.accept(id("potted_mauve_sapling"), id("potted_lavender_wisteria_sapling"));
     }
 
     static void init() {

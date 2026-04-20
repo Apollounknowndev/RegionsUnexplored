@@ -26,7 +26,6 @@ import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.registry.tag.RUItemTags;
-import net.regions_unexplored.registry.tag.RUItemTags;
 import net.regions_unexplored.registry.RUItems;
 
 import javax.annotation.Nullable;
@@ -139,7 +138,7 @@ public class RuRecipeProvider extends RecipeProvider implements IConditionBuilde
         oneToOneConversionRecipe(consumer, RUBlocks.LARCH_NATURAL_SET.getSapling(), RUBlocks.LARCH_NATURAL_SET.getShrub(), "saplings", 2);
         oneToOneConversionRecipe(consumer, Blocks.MANGROVE_PROPAGULE, RUBlocks.MANGROVE_NATURAL_SET.getShrub(), "saplings", 2);
         oneToOneConversionRecipe(consumer, RUBlocks.MAPLE_NATURAL_SET.getSapling(), RUBlocks.MAPLE_NATURAL_SET.getShrub(), "saplings", 2);
-        oneToOneConversionRecipe(consumer, RUBlocks.MAUVE_NATURAL_SET.getSapling(), RUBlocks.MAUVE_NATURAL_SET.getShrub(), "saplings", 2);
+        //oneToOneConversionRecipe(consumer, RUBlocks.WISTERIA_NATURAL_SET.getSapling(), RUBlocks.WISTERIA_NATURAL_SET.getShrub(), "saplings", 2);
         oneToOneConversionRecipe(consumer, Blocks.OAK_SAPLING, RUBlocks.OAK_NATURAL_SET.getShrub(), "saplings", 2);
         oneToOneConversionRecipe(consumer, RUBlocks.ORANGE_MAPLE_NATURAL_SET.getSapling(), RUBlocks.ORANGE_MAPLE_NATURAL_SET.getShrub(), "saplings", 2);
         oneToOneConversionRecipe(consumer, RUBlocks.PALM_NATURAL_SET.getSapling(), RUBlocks.PALM_NATURAL_SET.getShrub(), "saplings", 2);
@@ -176,7 +175,7 @@ public class RuRecipeProvider extends RecipeProvider implements IConditionBuilde
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RUBlocks.LARCH_NATURAL_SET.getShrub(), 1).define('#', RUBlocks.LARCH_NATURAL_SET.getSapling()).pattern("#").pattern("#").group("shrubs").unlockedBy("has_larch_sapling", has(RUBlocks.LARCH_NATURAL_SET.getSapling())).save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RUBlocks.MANGROVE_NATURAL_SET.getShrub(), 1).define('#', Blocks.MANGROVE_PROPAGULE).pattern("#").pattern("#").group("shrubs").unlockedBy("has_mangrove_propagule", has(Blocks.MANGROVE_PROPAGULE)).save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RUBlocks.MAPLE_NATURAL_SET.getShrub(), 1).define('#', RUBlocks.MAPLE_NATURAL_SET.getSapling()).pattern("#").pattern("#").group("shrubs").unlockedBy("has_maple_sapling", has(RUBlocks.MAPLE_NATURAL_SET.getSapling())).save(consumer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RUBlocks.MAUVE_NATURAL_SET.getShrub(), 1).define('#', RUBlocks.MAUVE_NATURAL_SET.getSapling()).pattern("#").pattern("#").group("shrubs").unlockedBy("has_mauve_sapling", has(RUBlocks.MAUVE_NATURAL_SET.getSapling())).save(consumer);
+        //ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RUBlocks.WISTERIA_NATURAL_SET.getShrub(), 1).define('#', RUBlocks.WISTERIA_NATURAL_SET.getSapling()).pattern("#").pattern("#").group("shrubs").unlockedBy("has_mauve_sapling", has(RUBlocks.WISTERIA_NATURAL_SET.getSapling())).save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RUBlocks.OAK_NATURAL_SET.getShrub(), 1).define('#', Blocks.OAK_SAPLING).pattern("#").pattern("#").group("shrubs").unlockedBy("has_oak_sapling", has(Blocks.OAK_SAPLING)).save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RUBlocks.ORANGE_MAPLE_NATURAL_SET.getShrub(), 1).define('#', RUBlocks.ORANGE_MAPLE_NATURAL_SET.getSapling()).pattern("#").pattern("#").group("shrubs").unlockedBy("has_orange_maple_sapling", has(RUBlocks.ORANGE_MAPLE_NATURAL_SET.getSapling())).save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RUBlocks.PALM_NATURAL_SET.getShrub(), 1).define('#', RUBlocks.PALM_NATURAL_SET.getSapling()).pattern("#").pattern("#").group("shrubs").unlockedBy("has_palm_sapling", has(RUBlocks.PALM_NATURAL_SET.getSapling())).save(consumer);
@@ -227,79 +226,32 @@ public class RuRecipeProvider extends RecipeProvider implements IConditionBuilde
 
         /*-----------------BRANCHES-----------------*/
         branchFromLog(consumer, RUBlocks.ACACIA_NATURAL_SET.getBranch(), Blocks.ACACIA_LOG);
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.ACACIA_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.BAOBAB_NATURAL_SET.getBranch(), RUBlocks.BAOBAB_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.BAOBAB_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.BIRCH_NATURAL_SET.getBranch(), Blocks.BIRCH_LOG);
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.BIRCH_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.BLACKWOOD_NATURAL_SET.getBranch(), RUBlocks.BLACKWOOD_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.BLACKWOOD_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.MAGNOLIA_NATURAL_SET.getBranch(), RUBlocks.MAGNOLIA_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.MAGNOLIA_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.CYPRESS_NATURAL_SET.getBranch(), RUBlocks.CYPRESS_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.CYPRESS_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.CHERRY_NATURAL_SET.getBranch(), Blocks.CHERRY_LOG);
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.CHERRY_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.DARK_OAK_NATURAL_SET.getBranch(), Blocks.DARK_OAK_LOG);
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.DARK_OAK_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.DEAD_NATURAL_SET.getBranch(), RUBlocks.DEAD_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.DEAD_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.EUCALYPTUS_NATURAL_SET.getBranch(), RUBlocks.EUCALYPTUS_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.EUCALYPTUS_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.JOSHUA_NATURAL_SET.getBranch(), RUBlocks.JOSHUA_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.JOSHUA_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.KAPOK_NATURAL_SET.getBranch(), RUBlocks.KAPOK_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.KAPOK_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.JUNGLE_NATURAL_SET.getBranch(), Blocks.JUNGLE_LOG);
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.JUNGLE_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.LARCH_NATURAL_SET.getBranch(), RUBlocks.LARCH_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.LARCH_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.MANGROVE_NATURAL_SET.getBranch(), Blocks.MANGROVE_LOG);
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.MANGROVE_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.MAPLE_NATURAL_SET.getBranch(), RUBlocks.MAPLE_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.MAPLE_NATURAL_SET.getBranch(), "stick", 4);
-
-        branchFromLog(consumer, RUBlocks.MAUVE_NATURAL_SET.getBranch(), RUBlocks.MAUVE_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.MAUVE_NATURAL_SET.getBranch(), "stick", 4);
-
+        branchFromLog(consumer, RUBlocks.WISTERIA_NATURAL_SET.getBranch(), RUBlocks.MAUVE_WOOD_SET.getLog());
         branchFromLog(consumer, RUBlocks.OAK_NATURAL_SET.getBranch(), Blocks.OAK_LOG);
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.OAK_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.PALM_NATURAL_SET.getBranch(), RUBlocks.PALM_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.PALM_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.PINE_NATURAL_SET.getBranch(), RUBlocks.PINE_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.PINE_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.REDWOOD_NATURAL_SET.getBranch(), RUBlocks.REDWOOD_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.REDWOOD_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.SILVER_BIRCH_NATURAL_SET.getBranch(), RUBlocks.SILVER_BIRCH_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.SILVER_BIRCH_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.SOCOTRA_NATURAL_SET.getBranch(), RUBlocks.SOCOTRA_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.SOCOTRA_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.SPRUCE_NATURAL_SET.getBranch(), Blocks.SPRUCE_LOG);
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.SPRUCE_NATURAL_SET.getBranch(), "stick", 4);
-
         branchFromLog(consumer, RUBlocks.WILLOW_NATURAL_SET.getBranch(), RUBlocks.WILLOW_WOOD_SET.getLog());
-        oneToOneConversionRecipe(consumer, Items.STICK, RUBlocks.WILLOW_NATURAL_SET.getBranch(), "stick", 4);
+        
+        oneToOneConversionRecipe(consumer, RUItemTags.BRANCHES, Items.STICK, 4, RecipeCategory.MISC, "sticks");
 
         /*-----------------DIRT_BLOCKS-----------------*/
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, RUBlocks.PEAT_COARSE_DIRT.get(), 4).define('D', RUBlocks.PEAT_DIRT.get()).define('G', Blocks.GRAVEL).pattern("DG").pattern("GD").group("coarse_dirt").unlockedBy("has_gravel", has(Blocks.GRAVEL)).save(consumer);
@@ -531,7 +483,16 @@ public class RuRecipeProvider extends RecipeProvider implements IConditionBuilde
         oneToOneConversionRecipe(consumer, item, item2, group, 1);
     }
 
-    protected static void oneToOneConversionRecipe(RecipeOutput consumer, ItemLike item, ItemLike item2, @Nullable String group, int ammount) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, item, ammount).requires(item2).group(group).unlockedBy(getHasName(item2), has(item2)).save(consumer, RegionsUnexplored.id(getConversionRecipeName(item, item2)));
+    protected static void oneToOneConversionRecipe(RecipeOutput consumer, ItemLike result, ItemLike input, @Nullable String group, int resultCount) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result, resultCount).requires(input).group(group).unlockedBy(getHasName(input), has(input)).save(consumer, RegionsUnexplored.id(getConversionRecipeName(result, input)));
+    }
+    
+    protected static void oneToOneConversionRecipe(RecipeOutput output, ItemLike input, ItemLike result, int resultCount, RecipeCategory category, @Nullable String group) {
+        ShapelessRecipeBuilder.shapeless(category, result, resultCount).requires(input).group(group).unlockedBy(getHasName(input), has(input)).save(output, RegionsUnexplored.id(getConversionRecipeName(result, input)));
+    }
+    
+    protected static void oneToOneConversionRecipe(RecipeOutput output, TagKey<Item> input, ItemLike result, int resultCount, RecipeCategory category, @Nullable String group) {
+        String inputName = input.location().getPath();
+        ShapelessRecipeBuilder.shapeless(category, result, resultCount).requires(input).group(group).unlockedBy("has_" + inputName, has(input)).save(output, RegionsUnexplored.id(getItemName(result) + "_from_" + inputName));
     }
 }

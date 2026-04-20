@@ -119,6 +119,12 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_WILLOW = tree("willow");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_WILLOW = tree("big_willow");
     ResourceKey<ConfiguredFeature<?,?>> TREE_WILLOW_VINES = tree("willow_vines");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_WISTERIA_SKY = tree("wisteria_sky");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_WISTERIA_LAVENDER = tree("wisteria_lavender");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_WISTERIA_SALMON = tree("wisteria_salmon");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_WISTERIA_LARGE_SKY = tree("wisteria_large_sky");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_WISTERIA_LARGE_LAVENDER = tree("wisteria_large_lavender");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_WISTERIA_LARGE_SALMON = tree("wisteria_large_salmon");
     // Bonemealables
     ResourceKey<ConfiguredFeature<?,?>> BONEMEAL_ALPHA_GRASS = key("bonemeal/grass/alpha");
     ResourceKey<ConfiguredFeature<?,?>> BONEMEAL_MYCOTOXIC_NYLIUM = key("bonemeal/nylium/mycotoxic");

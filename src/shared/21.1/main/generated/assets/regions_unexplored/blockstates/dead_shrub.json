@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "regions_unexplored:block/dead_shrub_lower"
+    },
+    "half=upper": {
+      "model": "regions_unexplored:block/dead_shrub_upper"
+    }
+  }
+}

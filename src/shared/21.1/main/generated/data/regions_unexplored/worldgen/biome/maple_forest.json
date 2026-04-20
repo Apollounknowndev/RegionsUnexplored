@@ -80,7 +80,6 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:forest_flowers",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
@@ -89,8 +88,9 @@
       "regions_unexplored:tree/group/maple_forest",
       "regions_unexplored:tree/fallen_maple",
       "regions_unexplored:maple_shrub_mix",
-      "regions_unexplored:patch/short_grass",
-      "regions_unexplored:white_trillium"
+      "regions_unexplored:white_trillium",
+      "regions_unexplored:patch/short_grass_sparse",
+      "regions_unexplored:patch/grass_sprouts_sparse"
     ],
     [
       "minecraft:freeze_top_layer"

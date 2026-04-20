@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "tip=false": {
+      "model": "regions_unexplored:block/lavender_wisteria_vines"
+    },
+    "tip=true": {
+      "model": "regions_unexplored:block/lavender_wisteria_vines_tip"
+    }
+  }
+}

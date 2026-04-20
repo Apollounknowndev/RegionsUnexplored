@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.regions_unexplored.block.BlockFactory;
 import net.regions_unexplored.config.RuClientConfig;
+import net.regions_unexplored.registry.RUParticleTypes;
 
 import java.util.function.Supplier;
 

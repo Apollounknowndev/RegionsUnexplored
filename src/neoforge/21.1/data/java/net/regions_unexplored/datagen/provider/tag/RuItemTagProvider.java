@@ -39,6 +39,8 @@ public class RuItemTagProvider extends ItemTagsProvider {
         var nonFlammableWood = this.tag(ItemTags.NON_FLAMMABLE_WOOD);
         var logs = this.tag(ItemTags.LOGS);
         var logsThatBurn = this.tag(ItemTags.LOGS_THAT_BURN);
+        var strippedLogs = this.tag(Tags.Items.STRIPPED_LOGS);
+        var strippedWoods = this.tag(Tags.Items.STRIPPED_WOODS);
         var planks = this.tag(ItemTags.PLANKS);
         var stairs = this.tag(ItemTags.WOODEN_STAIRS);
         var slabs = this.tag(ItemTags.WOODEN_SLABS);
@@ -63,6 +65,8 @@ public class RuItemTagProvider extends ItemTagsProvider {
                 tag.add(set.getLog().asItem());
                 ruLogs.add(set.getLog().asItem());
             }
+            if (set.getStrippedLog() != null) strippedLogs.add(set.getStrippedLog().asItem());
+            if (set.getStrippedWood() != null) strippedWoods.add(set.getStrippedWood().asItem());
             if (set.getPlanks() != null) planks.add(set.getPlanks().asItem());
             if (set.getStairs() != null) stairs.add(set.getStairs().asItem());
             if (set.getSlab() != null) slabs.add(set.getSlab().asItem());
@@ -88,14 +92,18 @@ public class RuItemTagProvider extends ItemTagsProvider {
         }
 
 
-        var saplings = this.tag(ItemTags.SAPLINGS);
+        var branches = this.tag(RUItemTags.BRANCHES);
         var leaves = this.tag(ItemTags.LEAVES);
-
-
+        var saplings = this.tag(ItemTags.SAPLINGS);
+        var shrubs = this.tag(RUItemTags.SHRUBS);
+        
         for (NaturalSet set : RUBlocks.NATURAL_SETS) {
-            if (set.getSapling() != null) saplings.add(set.getSapling().asItem());
+            if (set.getBranch() != null) branches.add(set.getBranch().asItem());
             if (set.getLeaves() != null) leaves.add(set.getLeaves().asItem());
+            if (set.getSapling() != null) saplings.add(set.getSapling().asItem());
+            if (set.getShrub() != null) shrubs.add(set.getShrub().asItem());
         }
+        
         this.tag(ItemTags.DIRT)
             .add(RUBlocks.ALPHA_GRASS_BLOCK.get().asItem())
             .add(RUBlocks.ASHEN_DIRT.get().asItem())
@@ -197,33 +205,6 @@ public class RuItemTagProvider extends ItemTagsProvider {
                 .add(RUBlocks.ASH.get().asItem())
                 .add(RUBlocks.VOLCANIC_ASH.get().asItem())
         ;
-        this.tag(RUItemTags.BRANCHES)
-                .add(RUBlocks.ACACIA_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.BAOBAB_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.BIRCH_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.BLACKWOOD_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.CYPRESS_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.CHERRY_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.DARK_OAK_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.DEAD_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.EUCALYPTUS_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.JOSHUA_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.JUNGLE_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.KAPOK_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.LARCH_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.MANGROVE_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.MAPLE_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.MAUVE_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.OAK_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.PALM_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.PINE_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.REDWOOD_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.MAGNOLIA_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.SILVER_BIRCH_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.SOCOTRA_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.SPRUCE_NATURAL_SET.getBranch().asItem())
-                .add(RUBlocks.WILLOW_NATURAL_SET.getBranch().asItem())
-        ;
         this.tag(RUItemTags.BIOSHROOMS)
                 .add(RUBlocks.BLUE_BIOSHROOM.get().asItem())
                 .add(RUBlocks.GREEN_BIOSHROOM.get().asItem())
@@ -233,44 +214,6 @@ public class RuItemTagProvider extends ItemTagsProvider {
                 .add(RUBlocks.TALL_GREEN_BIOSHROOM.get().asItem())
                 .add(RUBlocks.TALL_PINK_BIOSHROOM.get().asItem())
                 .add(RUBlocks.TALL_YELLOW_BIOSHROOM.get().asItem())
-        ;
-
-        this.tag(RUItemTags.SHRUBS)
-                .add(RUBlocks.ACACIA_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.BAOBAB_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.BIRCH_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.BLACKWOOD_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.BRIMWOOD_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.CHERRY_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.MAGNOLIA_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.BLUE_MAGNOLIA_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.PINK_MAGNOLIA_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.WHITE_MAGNOLIA_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.CYPRESS_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.DARK_OAK_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.DEAD_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.DEAD_PINE_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.EUCALYPTUS_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.FLOWERING_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.JOSHUA_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.KAPOK_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.JUNGLE_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.GOLDEN_LARCH_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.LARCH_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.MANGROVE_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.MAPLE_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.RED_MAPLE_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.ORANGE_MAPLE_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.MAUVE_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.OAK_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.PALM_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.PINE_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.REDWOOD_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.SILVER_BIRCH_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.SOCOTRA_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.SPRUCE_NATURAL_SET.getShrub().asItem())
-                .add(RUBlocks.WILLOW_NATURAL_SET.getShrub().asItem())
         ;
         this.tag(RUItemTags.ALPHA_LOGS)
             .add(RUBlocks.ALPHA_WOOD_SET.getLog().asItem())
@@ -418,7 +361,7 @@ public class RuItemTagProvider extends ItemTagsProvider {
 
     public void addCommonTags(HolderLookup.Provider provider) {
         this.tag(Tags.Items.STORAGE_BLOCKS_BONE_MEAL).add(RUBlocks.OVERGROWN_BONE_BLOCK.get().asItem());
-
+        
         var fenceGates = this.tag(Tags.Items.FENCE_GATES_WOODEN);
         var fences = this.tag(Tags.Items.FENCES_WOODEN);
         for (WoodSet set : RUBlocks.WOOD_SETS) {
@@ -443,60 +386,13 @@ public class RuItemTagProvider extends ItemTagsProvider {
             .add(RUBlocks.TALL_YELLOW_BIOSHROOM.get().asItem())
             .add(RUBlocks.MYCOTOXIC_MUSHROOMS.get().asItem());
         this.tag(Tags.Items.STONES)
-                .add(RUBlocks.MOSSY_STONE.get().asItem())
-                .add(RUBlocks.ARGILLITE.get().asItem())
-                .add(RUBlocks.CHALK.get().asItem());
+            .add(RUBlocks.MOSSY_STONE.get().asItem())
+            .add(RUBlocks.ARGILLITE.get().asItem())
+            .add(RUBlocks.CHALK.get().asItem());
         this.tag(Tags.Items.GRAVELS)
-                .add(RUBlocks.ASH.get().asItem())
-                .add(RUBlocks.VOLCANIC_ASH.get().asItem());
+            .add(RUBlocks.ASH.get().asItem())
+            .add(RUBlocks.VOLCANIC_ASH.get().asItem());
         this.tag(Tags.Items.OBSIDIANS_CRYING)
-                .add(RUBlocks.COBALT_OBSIDIAN.get().asItem());
-        this.tag(Tags.Items.STRIPPED_LOGS)
-                .add(RUBlocks.BAOBAB_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.BLACKWOOD_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.BLUE_BIOSHROOM_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.BRIMWOOD_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.COBALT_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.CYPRESS_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.DEAD_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.EUCALYPTUS_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.GREEN_BIOSHROOM_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.JOSHUA_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.KAPOK_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.LARCH_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.MAGNOLIA_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.MAPLE_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.MAUVE_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.PALM_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.PINE_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.PINK_BIOSHROOM_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.REDWOOD_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.SOCOTRA_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.WILLOW_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.YELLOW_BIOSHROOM_WOOD_SET.getStrippedLog().asItem())
-        ;
-        this.tag(Tags.Items.STRIPPED_WOODS)
-                .add(RUBlocks.BAOBAB_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.BLACKWOOD_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.BLUE_BIOSHROOM_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.BRIMWOOD_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.COBALT_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.CYPRESS_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.DEAD_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.EUCALYPTUS_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.GREEN_BIOSHROOM_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.JOSHUA_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.KAPOK_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.LARCH_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.MAGNOLIA_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.MAPLE_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.MAUVE_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.PALM_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.PINE_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.PINK_BIOSHROOM_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.REDWOOD_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.SOCOTRA_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.WILLOW_WOOD_SET.getStrippedWood().asItem())
-                .add(RUBlocks.YELLOW_BIOSHROOM_WOOD_SET.getStrippedWood().asItem());
+            .add(RUBlocks.COBALT_OBSIDIAN.get().asItem());
     }
 }

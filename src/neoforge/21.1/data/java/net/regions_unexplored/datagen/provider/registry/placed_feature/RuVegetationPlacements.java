@@ -102,6 +102,10 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> WILLOW_FLOWERS = key("willow_flowers");
     public static final ResourceKey<PlacedFeature> PATCH_POPPIES = key("patch/poppies");
     public static final ResourceKey<PlacedFeature> TASSEL_SPARSE = key("tassel_sparse");
+    public static final ResourceKey<PlacedFeature> PATCH_TALL_FLOWERS_WISTERIA_GROVE = key("patch/tall_flowers_wisteria_grove");
+    public static final ResourceKey<PlacedFeature> PATCH_TASSEL = key("patch/tassel");
+    public static final ResourceKey<PlacedFeature> PATCH_LILAC = key("patch/lilac");
+    public static final ResourceKey<PlacedFeature> PATCH_PEONY = key("patch/peony");
     public static final ResourceKey<PlacedFeature> TASSEL_DENSE = key("tassel_dense");
     public static final ResourceKey<PlacedFeature> CORPSE_FLOWER = key("corpse_flower");
     public static final ResourceKey<PlacedFeature> DUSKTRAP = key("dusktrap");
@@ -158,7 +162,6 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> MAGNOLIA_SHRUB_MIX = key("magnolia_shrub_mix");
     public static final ResourceKey<PlacedFeature> GOLDEN_LARCH_SHRUB_MIX = key("golden_larch_shrub_mix");
     public static final ResourceKey<PlacedFeature> MAPLE_SHRUB_MIX = key("maple_shrub_mix");
-    public static final ResourceKey<PlacedFeature> MAUVE_ENCHANTED_SHRUB_MIX = key("mauve_enchanted_shrub_mix");
     public static final ResourceKey<PlacedFeature> PALM_JUNGLE_SHRUB_MIX = key("palm_jungle_shrub_mix");
     public static final ResourceKey<PlacedFeature> PINE_DEAD_SHRUB_MIX = key("pine_dead_shrub_mix");
     public static final ResourceKey<PlacedFeature> WILLOW_CYPRESS_SHRUB_MIX = key("willow_cypress_shrub_mix");
@@ -247,7 +250,6 @@ public class RuVegetationPlacements {
         final Holder<ConfiguredFeature<?, ?>> BLACKWOOD_DARK_OAK_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.BLACKWOOD_DARK_OAK_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> GOLDEN_LARCH_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.GOLDEN_LARCH_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> MAPLE_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.MAPLE_SHRUB_MIX);
-        final Holder<ConfiguredFeature<?, ?>> MAUVE_ENCHANTED_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.MAUVE_ENCHANTED_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> PALM_JUNGLE_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.PALM_JUNGLE_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> PINE_DEAD_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.PINE_DEAD_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> WILLOW_CYPRESS_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.WILLOW_CYPRESS_SHRUB_MIX);
@@ -357,7 +359,7 @@ public class RuVegetationPlacements {
             BiomeFilter.biome()
         );
         register(context, RuVegetationPlacements.TASSEL_SPARSE, TASSEL, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-        register(context, RuVegetationPlacements.TASSEL_DENSE, TASSEL, CountPlacement.of(8), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+        register(context, RuVegetationPlacements.PATCH_TALL_FLOWERS_WISTERIA_GROVE, rarityFilter(6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         register(context, RuVegetationPlacements.SNOWBELLE, SNOWBELLE, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         register(context, RuVegetationPlacements.CORPSE_FLOWER, CORPSE_FLOWER, CountOnEveryLayerPlacement.of(10), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome());
         register(context, RuVegetationPlacements.DUSKTRAP, DUSKTRAP, CountOnEveryLayerPlacement.of(4), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome());
@@ -440,7 +442,6 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.MAGNOLIA_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.GOLDEN_LARCH_SHRUB_MIX, GOLDEN_LARCH_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.MAPLE_SHRUB_MIX, MAPLE_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
-        register(context, RuVegetationPlacements.MAUVE_ENCHANTED_SHRUB_MIX, MAUVE_ENCHANTED_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.PALM_JUNGLE_SHRUB_MIX, PALM_JUNGLE_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.PINE_DEAD_SHRUB_MIX, PINE_DEAD_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.WILLOW_CYPRESS_SHRUB_MIX, WILLOW_CYPRESS_SHRUB_MIX, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());

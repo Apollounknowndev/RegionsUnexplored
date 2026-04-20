@@ -11,6 +11,10 @@ public class RuBlockCropCutouts {
     public static void init() {
         RenderUtil.putBlocks(
                 RenderType.cutout(),
+                
+                RUBlocks.SKY_WISTERIA_NATURAL_SET.getVines(),
+                RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getVines(),
+                RUBlocks.SALMON_WISTERIA_NATURAL_SET.getVines(),
                 /*-----------------CAVE_BLOCKS-----------------*/
                 //temp fix
                 RUBlocks.FLOWERING_NATURAL_SET.getLeaves(),
@@ -237,7 +241,7 @@ public class RuBlockCropCutouts {
                 RUBlocks.LARCH_NATURAL_SET.getBranch(),
                 RUBlocks.MANGROVE_NATURAL_SET.getBranch(),
                 RUBlocks.MAPLE_NATURAL_SET.getBranch(),
-                RUBlocks.MAUVE_NATURAL_SET.getBranch(),
+                RUBlocks.WISTERIA_NATURAL_SET.getBranch(),
                 RUBlocks.OAK_NATURAL_SET.getBranch(),
                 RUBlocks.PALM_NATURAL_SET.getBranch(),
                 RUBlocks.PINE_NATURAL_SET.getBranch(),

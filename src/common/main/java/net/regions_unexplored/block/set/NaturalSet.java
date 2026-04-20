@@ -6,11 +6,11 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.regions_unexplored.block.BlockFactory;
+import net.regions_unexplored.block.type.leaves.HangingVinesBlock;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.sapling.RuTreeGrowers;
 import net.regions_unexplored.block.RUBlockUtils;
 import net.regions_unexplored.world.level.block.leaves.RUTintedParticlesLeavesBlock;
-import net.regions_unexplored.world.level.block.leaves.RUUntintedParticlesLeavesBlock;
 import net.regions_unexplored.world.level.block.plant.branch.BranchBlock;
 import net.regions_unexplored.world.level.block.plant.sapling.RuCactusSaplingBlock;
 import net.regions_unexplored.world.level.block.plant.sapling.RuNetherSaplingBlock;
@@ -27,6 +27,7 @@ public class NaturalSet {
     protected Supplier<Block> branch;
     protected Supplier<Block> shrub;
     protected Supplier<Block> leaves;
+    protected Supplier<Block> vines;
     protected Supplier<Block> sapling;
     protected Supplier<Block> pottedSapling;
 
@@ -45,7 +46,7 @@ public class NaturalSet {
 
     public static NaturalSet ashen() {
         NaturalSet set = NaturalSet.create("ashen").withLeaves(MapColor.COLOR_LIGHT_GRAY, RUTintedParticlesLeavesBlock.small(RUTintedParticlesLeavesBlock.TintGetter.constant(0x767470))).withSapling(RuTreeGrowers.ASHEN);
-        set.shrub = RUBlockUtils.register("ashen_shrub", p -> new ShrubBlock(SHRUB_PROPERTIES.apply(p).sound(SoundType.ROOTED_DIRT).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
+        set.shrub = RUBlockUtils.register("ashen_shrub", p -> new ShrubBlock(SHRUB_PROPERTIES.apply(p).sound(SoundType.ROOTED_DIRT).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
         return set;
     }
 
@@ -95,6 +96,13 @@ public class NaturalSet {
         this.leaves = RUBlockUtils.register(this.name + "_leaves", p -> RUBlockUtils.leaves(p, color, this.fireproof, factory));
         return this;
     }
+    
+    public NaturalSet withVines(MapColor color) {
+        this.vines = RUBlockUtils.register(this.name + "_vines", p -> new HangingVinesBlock(
+            p.ignitedByLava().mapColor(color).noCollission().sound(SoundType.MOSS_CARPET).pushReaction(PushReaction.DESTROY))
+        );
+        return this;
+    }
 
     public NaturalSet withSapling(TreeGrower grower) {
         return withSapling(p -> new SaplingBlock(grower, p));
@@ -117,6 +125,10 @@ public class NaturalSet {
 
     public Block getLeaves() {
         return leaves != null ? leaves.get() : null;
+    }
+    
+    public Block getVines() {
+        return vines != null ? vines.get() : null;
     }
 
     public Block getSapling() {

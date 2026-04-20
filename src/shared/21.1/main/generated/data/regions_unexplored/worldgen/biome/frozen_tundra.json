@@ -10,7 +10,7 @@
   "effects": {
     "fog_color": 12638463,
     "foliage_color": -5207984,
-    "grass_color": -5215920,
+    "grass_color": 12347986,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -21,7 +21,7 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:music.overworld.grove"
+      "sound": "minecraft:music.overworld.meadow"
     },
     "sky_color": 8364543,
     "water_color": 4159204,
@@ -34,7 +34,8 @@
       "minecraft:lake_lava_surface"
     ],
     [
-      "minecraft:amethyst_geode"
+      "minecraft:amethyst_geode",
+      "regions_unexplored:rock/group/tundra"
     ],
     [
       "minecraft:monster_room",
@@ -84,21 +85,17 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:patch/grass_sprouts_sparse",
-      "regions_unexplored:tree/spruce_tall_sparse",
-      "regions_unexplored:tree/oak_shrub_dense",
-      "regions_unexplored:tree/oak_bush_single",
-      "regions_unexplored:tree/spruce_shrub_dense",
-      "regions_unexplored:frozen_flowers",
-      "regions_unexplored:snowbelle",
-      "regions_unexplored:snow_grass",
-      "regions_unexplored:shrub/spruce"
+      "regions_unexplored:patch/short_grass_dense",
+      "regions_unexplored:patch/fern",
+      "regions_unexplored:patch/tundra_flowers",
+      "regions_unexplored:tree/group/tundra",
+      "regions_unexplored:tree/group/tundra_shrubs"
     ],
     [
       "minecraft:freeze_top_layer"
     ]
   ],
-  "has_precipitation": true,
+  "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {
     "ambient": [
@@ -116,12 +113,6 @@
         "maxCount": 3,
         "minCount": 2,
         "weight": 10
-      },
-      {
-        "type": "minecraft:polar_bear",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 1
       }
     ],
     "misc": [],
@@ -192,5 +183,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": -1.0
+  "temperature": -0.3
 }

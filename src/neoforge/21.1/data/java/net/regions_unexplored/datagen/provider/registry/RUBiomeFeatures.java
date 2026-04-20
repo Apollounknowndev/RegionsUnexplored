@@ -36,13 +36,6 @@ public class RUBiomeFeatures {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.REDSTONE_BUD);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.REDSTONE_BULB);
     }
-    
-    public static void mauveTrees(BiomeGenerationSettings.Builder builder) {
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.BIG_MAUVE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.MAUVE_DENSE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.ENCHANTED_BIRCH);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.ENCHANTED_BIRCH_TALL);
-    }
 
     public static void addHibiscus(BiomeGenerationSettings.Builder builder) {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.HIBISCUS);
@@ -78,10 +71,6 @@ public class RUBiomeFeatures {
     
     public static void addWillowFlowers(BiomeGenerationSettings.Builder builder) {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WILLOW_FLOWERS);
-    }
-    
-    public static void addAster(BiomeGenerationSettings.Builder builder) {
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.ASTER);
     }
     
     public static void addTulips(BiomeGenerationSettings.Builder builder) {
@@ -121,10 +110,6 @@ public class RUBiomeFeatures {
     
     public static void addOrangeCornflower(BiomeGenerationSettings.Builder builder) {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_ORANGE_CONEFLOWER);
-    }
-
-    public static void addPurpleCornflower(BiomeGenerationSettings.Builder builder) {
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_PURPLE_CONEFLOWER);
     }
     
     public static void addTsubaki(BiomeGenerationSettings.Builder builder) {

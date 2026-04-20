@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "sticks",
+  "ingredients": [
+    {
+      "tag": "regions_unexplored:branches"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:stick"
+  }
+}

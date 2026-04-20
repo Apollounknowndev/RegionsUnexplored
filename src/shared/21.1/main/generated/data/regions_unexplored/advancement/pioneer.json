@@ -529,22 +529,6 @@
       },
       "trigger": "minecraft:location"
     },
-    "mauve_hills": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:mauve_hills"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
     "mountains": {
       "conditions": {
         "player": [
@@ -976,6 +960,22 @@
         ]
       },
       "trigger": "minecraft:location"
+    },
+    "wisteria_grove": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "regions_unexplored:wisteria_grove"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
     }
   },
   "display": {
@@ -1092,9 +1092,6 @@
       "marsh"
     ],
     [
-      "mauve_hills"
-    ],
-    [
       "mountains"
     ],
     [
@@ -1174,6 +1171,9 @@
     ],
     [
       "willow_forest"
+    ],
+    [
+      "wisteria_grove"
     ]
   ],
   "sends_telemetry_event": true

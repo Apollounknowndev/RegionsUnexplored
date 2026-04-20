@@ -195,16 +195,14 @@ public class RuBiolith {
         }
         if (RuCommonConfig.TOGGLE_TUNDRA.get()) {
             BiomePlacement.replaceOverworld(Biomes.SNOWY_PLAINS, RUBiomes.TUNDRA, 0.45f);
-        } else if (RuCommonConfig.TOGGLE_FROZEN_TUNDRA.get()) {
-            BiomePlacement.replaceOverworld(Biomes.SNOWY_PLAINS, RUBiomes.REMOVED_FROZEN_TUNDRA, 0.45f);
         }
 
         // Forests
         if (RuCommonConfig.TOGGLE_ORCHARD.get()) {
             BiomePlacement.replaceOverworld(Biomes.FLOWER_FOREST, RUBiomes.ORCHARD, 0.45f);
         }
-        if (RuCommonConfig.TOGGLE_MAUVE_HILLS.get()) {
-            BiomePlacement.replaceOverworld(Biomes.FLOWER_FOREST, RUBiomes.MAUVE_HILLS, 0.45f);
+        if (RuCommonConfig.TOGGLE_WISTERIA_GROVE.get()) {
+            BiomePlacement.replaceOverworld(Biomes.FLOWER_FOREST, RUBiomes.WISTERIA_GROVE, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_WILLOW_FOREST.get()) {
             BiomePlacement.replaceOverworld(Biomes.BIRCH_FOREST, RUBiomes.WILLOW_FOREST, 0.3f);
