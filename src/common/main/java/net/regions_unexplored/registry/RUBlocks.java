@@ -175,7 +175,7 @@ public interface RUBlocks {
         .withLeaves(MapColor.COLOR_LIGHT_BLUE, RUUntintedParticlesLeavesBlock.of(RUParticleTypes.BLUE_MAGNOLIA_LEAVES))
         .withSapling(RuTreeGrowers.BLUE_MAGNOLIA);
     NaturalSet BRIMWOOD_NATURAL_SET = NaturalSet.create("brimwood")
-        .withShrub()
+        .withShrub(BrimwoodShrubBlock::new)
         .withLeaves(MapColor.COLOR_BROWN, BrimwoodLeavesBlock::new)
         .withSapling(p -> new RuBrimSaplingBlock(RuTreeGrowers.BRIMWOOD, p));
     NaturalSet COBALT_NATURAL_SET = NaturalSet.cobalt();

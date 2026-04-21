@@ -67,7 +67,11 @@ public class NaturalSet {
     }
 
     public NaturalSet withShrub() {
-        this.shrub = RUBlockUtils.register(this.name + "_shrub", p -> new ShrubBlock(SHRUB_PROPERTIES.apply(p)));
+        return withShrub(ShrubBlock::new);
+    }
+    
+    public NaturalSet withShrub(BlockFactory factory) {
+        this.shrub = RUBlockUtils.register(this.name + "_shrub", p -> factory.apply(SHRUB_PROPERTIES.apply(p)));
         return this;
     }
 

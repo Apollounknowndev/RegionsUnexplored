@@ -13,13 +13,13 @@ public class RuBrimSaplingBlock extends SaplingBlock implements BonemealableBloc
 
     public RuBrimSaplingBlock(TreeGrower treeGrower, Properties properties) {
         super(treeGrower, properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, Integer.valueOf(0)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, 0));
     }
 
     @Override
-    public boolean canSurvive(BlockState state, LevelReader level, BlockPos p_51030_) {
-        BlockPos blockpos = p_51030_.below();
-        return mayPlaceOn(level.getBlockState(blockpos), level, blockpos);
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockPos below = pos.below();
+        return mayPlaceOn(level.getBlockState(below), level, below);
     }
 
     @Override
