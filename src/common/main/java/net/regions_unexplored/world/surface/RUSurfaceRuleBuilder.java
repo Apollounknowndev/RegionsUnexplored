@@ -14,7 +14,7 @@ import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.config.RuCommonConfig;
 import net.regions_unexplored.registry.data.RUNoises;
 import net.regions_unexplored.registry.data.RUBiomes;
-import net.regions_unexplored.world.level.block.other_dirt.AshenDirtBlock;
+import net.regions_unexplored.block.type.dirt.AshenDirtBlock;
 
 import java.util.function.Supplier;
 

@@ -14,21 +14,20 @@ import net.regions_unexplored.block.set.ColoredSet;
 import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.block.RuWoodTypes;
+import net.regions_unexplored.block.type.dirt.*;
 import net.regions_unexplored.block.type.flower.LargeFlowerBlock;
 import net.regions_unexplored.block.type.flower.ShortFlowerBlock;
+import net.regions_unexplored.block.type.leaves.*;
 import net.regions_unexplored.block.type.misc.PrismaglassBlock;
 import net.regions_unexplored.client.color.RuColors;
 import net.regions_unexplored.item.RUItemUtils;
+import net.regions_unexplored.registry.data.RUBlockIds;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
-import net.regions_unexplored.world.level.block.alpha.*;
+import net.regions_unexplored.registry.data.RUPlacedFeatures;
 import net.regions_unexplored.world.level.block.cave.*;
-import net.regions_unexplored.world.level.block.forest_dirt.*;
-import net.regions_unexplored.world.level.block.leaves.*;
-import net.regions_unexplored.world.level.block.leaves.RUTintedParticlesLeavesBlock.TintGetter;
+import net.regions_unexplored.block.type.leaves.RUTintedParticlesLeavesBlock.TintGetter;
 import net.regions_unexplored.world.level.block.nether.*;
 import net.regions_unexplored.world.level.block.other.*;
-import net.regions_unexplored.world.level.block.other_dirt.*;
-import net.regions_unexplored.world.level.block.plains_dirt.*;
 import net.regions_unexplored.world.level.block.plant.aquatic.*;
 import net.regions_unexplored.world.level.block.plant.flower.*;
 import net.regions_unexplored.world.level.block.plant.food.*;
@@ -47,7 +46,7 @@ import java.util.function.Supplier;
 
 import static net.regions_unexplored.RegionsUnexplored.id;
 import static net.regions_unexplored.block.RUBlockUtils.*;
-import static net.regions_unexplored.world.level.block.leaves.RUTintedParticlesLeavesBlock.*;
+import static net.regions_unexplored.block.type.leaves.RUTintedParticlesLeavesBlock.*;
 
 
 public interface RUBlocks {
@@ -64,9 +63,10 @@ public interface RUBlocks {
     Supplier<Block> REDSTONE_BUD = register("redstone_bud", p -> new RedstoneBudBlock(p.pushReaction(PushReaction.DESTROY).replaceable().mapColor(MapColor.COLOR_RED).noCollission().sound(SoundType.TUFF).offsetType(BlockBehaviour.OffsetType.XZ)));
     Supplier<Block> REDSTONE_BULB = register("redstone_bulb", p -> new RedstoneBulbBlock(p.pushReaction(PushReaction.DESTROY).noCollission().sound(SoundType.AMETHYST).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 12).isRedstoneConductor(RUBlockUtils::never)));
     //OTHER_CAVE_BLOCKS
-    Supplier<Block> ARGILLITE_GRASS_BLOCK = register("argillite_grass_block", p -> new ArgilliteGrassBlock(p.mapColor(MapColor.GRASS).sound(SoundType.STONE).randomTicks().strength(1.5f, 6f).requiresCorrectToolForDrops()));
-    Supplier<Block> STONE_GRASS_BLOCK = register("stone_grass_block", p -> new StoneGrassBlock(p.mapColor(MapColor.GRASS).sound(SoundType.STONE).randomTicks().strength(1.5f, 6f).requiresCorrectToolForDrops()));
-    Supplier<Block> DEEPSLATE_GRASS_BLOCK = register("deepslate_grass_block", p -> new DeepslateGrassBlock(p.mapColor(MapColor.GRASS).sound(SoundType.DEEPSLATE).randomTicks().strength(3f, 6f).requiresCorrectToolForDrops()));
+    Supplier<Block> ARGILLITE = register("argillite", p -> new Block(p.mapColor(MapColor.TERRACOTTA_ORANGE).sound(SoundType.CALCITE)), Blocks.STONE);
+    Supplier<Block> ARGILLITE_GRASS_BLOCK = register("argillite_grass_block", p -> RUGrassBlock.simple(ARGILLITE, RUPlacedFeatures.BONEMEAL_ARGILLITE_GRASS, p.mapColor(MapColor.GRASS).sound(SoundType.STONE).randomTicks().strength(1.5f, 6f).requiresCorrectToolForDrops()));
+    Supplier<Block> STONE_GRASS_BLOCK = register("stone_grass_block", p -> RUGrassBlock.simple(() -> Blocks.STONE, RUPlacedFeatures.BONEMEAL_STONE_GRASS, p.mapColor(MapColor.GRASS).sound(SoundType.STONE).randomTicks().strength(1.5f, 6f).requiresCorrectToolForDrops()));
+    Supplier<Block> DEEPSLATE_GRASS_BLOCK = register("deepslate_grass_block", p -> RUGrassBlock.simple(() -> Blocks.DEEPSLATE, RUPlacedFeatures.BONEMEAL_DEEPSLATE_GRASS, p.mapColor(MapColor.GRASS).sound(SoundType.DEEPSLATE).randomTicks().strength(3f, 6f).requiresCorrectToolForDrops()));
     Supplier<Block> VIRIDESCENT_NYLIUM = register("viridescent_nylium", p -> new ViridescentNyliumBlock(p.mapColor(MapColor.GRASS).sound(SoundType.NYLIUM).strength(1.5f, 6f).requiresCorrectToolForDrops()));
     Supplier<Block> DEEPSLATE_VIRIDESCENT_NYLIUM = register("deepslate_viridescent_nylium", p -> new ViridescentNyliumBlock(p.mapColor(MapColor.GRASS).sound(SoundType.NYLIUM).strength(3f, 6f).requiresCorrectToolForDrops()));
 
@@ -330,28 +330,28 @@ public interface RUBlocks {
 
     /*-----------------DIRT_BLOCKS-----------------*/
     //FOREST_DIRT_BLOCKS
-    Supplier<Block> PEAT_GRASS_BLOCK = register("peat_grass_block", PeatGrassBlock::new, Blocks.GRASS_BLOCK);
-    Supplier<Block> PEAT_DIRT = register("peat_dirt", TillableDirtBlock::new, Blocks.DIRT);
-    Supplier<Block> PEAT_DIRT_PATH = register("peat_dirt_path", p -> new PeatDirtPathBlock(p.strength(0.65F).sound(SoundType.GRASS).isViewBlocking(RUBlockUtils::always).isSuffocating(RUBlockUtils::always)));
-    Supplier<Block> PEAT_COARSE_DIRT = register("peat_coarse_dirt", TillableDirtBlock::new, Blocks.COARSE_DIRT);
+    Supplier<Block> PEAT_DIRT_PATH = register("peat_dirt_path", p -> new RUDirtPathBlock(RUBlockIds.PEAT_DIRT, p.strength(0.65F).sound(SoundType.GRASS).isViewBlocking(RUBlockUtils::always).isSuffocating(RUBlockUtils::always)));
+    Supplier<Block> PEAT_FARMLAND = register("peat_farmland", p -> new RUFarmlandBlock(RUBlockIds.PEAT_DIRT, p.randomTicks().strength(0.6F).sound(SoundType.GRAVEL).isViewBlocking(RUBlockUtils::always).isSuffocating(RUBlockUtils::always)));
+    Supplier<Block> PEAT_MUD = register("peat_mud", p -> new MudBlock(p.mapColor(MapColor.TERRACOTTA_BROWN).randomTicks().isValidSpawn(RUBlockUtils::always).isRedstoneConductor(RUBlockUtils::always).isViewBlocking(RUBlockUtils::always).isSuffocating(RUBlockUtils::always).sound(SoundType.MUD)), Blocks.DIRT);
     Supplier<Block> PEAT_PODZOL = register("peat_podzol", SnowyDirtBlock::new, Blocks.PODZOL);
-    Supplier<Block> PEAT_MUD = register("peat_mud", p -> new RuMudBlock(p.mapColor(MapColor.TERRACOTTA_BROWN).randomTicks().isValidSpawn(RUBlockUtils::always).isRedstoneConductor(RUBlockUtils::always).isViewBlocking(RUBlockUtils::always).isSuffocating(RUBlockUtils::always).sound(SoundType.MUD)), Blocks.DIRT);
-    Supplier<Block> PEAT_FARMLAND = register("peat_farmland", p -> new PeatFarmBlock(p.randomTicks().strength(0.6F).sound(SoundType.GRAVEL).isViewBlocking(RUBlockUtils::always).isSuffocating(RUBlockUtils::always)));
+    Supplier<Block> PEAT_COARSE_DIRT = register("peat_coarse_dirt", p -> new RUDirtBlock(PEAT_DIRT_PATH, PEAT_FARMLAND, p), Blocks.COARSE_DIRT);
+    Supplier<Block> PEAT_DIRT = register("peat_dirt", p -> new RUDirtBlock(PEAT_DIRT_PATH, PEAT_FARMLAND, p), Blocks.DIRT);
+    Supplier<Block> PEAT_GRASS_BLOCK = register("peat_grass_block", p -> new RUGrassBlock(PEAT_DIRT, PEAT_DIRT_PATH, PEAT_FARMLAND, RUPlacedFeatures.BONEMEAL_PEAT_GRASS, p), Blocks.GRASS_BLOCK);
     //PLAINS_DIRT_BLOCKS
-    Supplier<Block> SILT_GRASS_BLOCK = register("silt_grass_block", SiltGrassBlock::new, Blocks.GRASS_BLOCK);
-    Supplier<Block> SILT_DIRT = register("silt_dirt", TillableDirtBlock::new, Blocks.DIRT);
-    Supplier<Block> SILT_DIRT_PATH = register("silt_dirt_path", p -> new SiltDirtPathBlock(p.strength(0.65F).sound(SoundType.GRASS).isViewBlocking(RUBlockUtils::always).isSuffocating(RUBlockUtils::always)));
-    Supplier<Block> SILT_COARSE_DIRT = register("silt_coarse_dirt", TillableDirtBlock::new, Blocks.COARSE_DIRT);
+    Supplier<Block> SILT_DIRT_PATH = register("silt_dirt_path", p -> new RUDirtPathBlock(RUBlockIds.SILT_DIRT, p.strength(0.65F).sound(SoundType.GRASS).isViewBlocking(RUBlockUtils::always).isSuffocating(RUBlockUtils::always)));
+    Supplier<Block> SILT_FARMLAND = register("silt_farmland", p -> new RUFarmlandBlock(RUBlockIds.SILT_DIRT, p.randomTicks().strength(0.6F).sound(SoundType.GRAVEL).isViewBlocking(RUBlockUtils::always).isSuffocating(RUBlockUtils::always)));
+    Supplier<Block> SILT_MUD = register("silt_mud", p -> new MudBlock(p.mapColor(MapColor.TERRACOTTA_YELLOW).randomTicks().isValidSpawn(RUBlockUtils::always).isRedstoneConductor(RUBlockUtils::always).isViewBlocking(RUBlockUtils::always).isSuffocating(RUBlockUtils::always).sound(SoundType.MUD)), Blocks.DIRT);
     Supplier<Block> SILT_PODZOL = register("silt_podzol", SnowyDirtBlock::new, Blocks.PODZOL);
-    Supplier<Block> SILT_MUD = register("silt_mud", p -> new RuMudBlock(p.mapColor(MapColor.TERRACOTTA_YELLOW).randomTicks().isValidSpawn(RUBlockUtils::always).isRedstoneConductor(RUBlockUtils::always).isViewBlocking(RUBlockUtils::always).isSuffocating(RUBlockUtils::always).sound(SoundType.MUD)), Blocks.DIRT);
-    Supplier<Block> SILT_FARMLAND = register("silt_farmland", p -> new SiltFarmBlock(p.randomTicks().strength(0.6F).sound(SoundType.GRAVEL).isViewBlocking(RUBlockUtils::always).isSuffocating(RUBlockUtils::always)));
+    Supplier<Block> SILT_COARSE_DIRT = register("silt_coarse_dirt", p -> new RUDirtBlock(SILT_DIRT_PATH, SILT_FARMLAND, p), Blocks.COARSE_DIRT);
+    Supplier<Block> SILT_DIRT = register("silt_dirt", p -> new RUDirtBlock(SILT_DIRT_PATH, SILT_FARMLAND, p), Blocks.DIRT);
+    Supplier<Block> SILT_GRASS_BLOCK = register("silt_grass_block", p -> new RUGrassBlock(SILT_DIRT, SILT_DIRT_PATH, SILT_FARMLAND, RUPlacedFeatures.BONEMEAL_SILT_GRASS, p), Blocks.GRASS_BLOCK);
     //OTHER_DIRT_BLOCKS
-    Supplier<Block> ALPHA_GRASS_BLOCK = register("alpha_grass_block", p -> new AlphaGrassBlock(p.mapColor(MapColor.GRASS).randomTicks().strength(0.6F).sound(SoundType.GRAVEL)));
+    Supplier<Block> ALPHA_GRASS_BLOCK = register("alpha_grass_block", p -> RUGrassBlock.simple(() -> Blocks.DIRT, RUPlacedFeatures.BONEMEAL_ALPHA_GRASS, p.mapColor(MapColor.GRASS).randomTicks().strength(0.6F).sound(SoundType.GRAVEL)));
 
     /*-----------------STONE_BLOCKS-----------------*/
     //CHALKS
     Supplier<Block> CHALK = register("chalk", p -> new Block(p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).strength(0.5f).requiresCorrectToolForDrops()));
-    Supplier<Block> CHALK_GRASS_BLOCK = register("chalk_grass_block", p -> new ChalkGrassBlock(p.mapColor(MapColor.GRASS).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).randomTicks().strength(0.6f).requiresCorrectToolForDrops()));
+    Supplier<Block> CHALK_GRASS_BLOCK = register("chalk_grass_block", p -> RUGrassBlock.simple(CHALK, RUPlacedFeatures.BONEMEAL_CHALK_GRASS, p.mapColor(MapColor.GRASS).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).randomTicks().strength(0.6f).requiresCorrectToolForDrops()));
     Supplier<Block> CHALK_BRICKS = register("chalk_bricks", p -> new Block(p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).strength(0.6f).requiresCorrectToolForDrops()));
     Supplier<Block> CHALK_BRICK_SLAB = register("chalk_brick_slab", p -> new SlabBlock(p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).strength(0.6f).requiresCorrectToolForDrops()));
     Supplier<Block> CHALK_BRICK_STAIRS = register("chalk_brick_stairs", p -> new StairBlock(CHALK.get().defaultBlockState(), p), CHALK_BRICKS);
@@ -362,7 +362,6 @@ public interface RUBlocks {
     Supplier<Block> POLISHED_CHALK_SLAB = register("polished_chalk_slab", p -> new SlabBlock(p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).strength(0.5f).requiresCorrectToolForDrops()));
     Supplier<Block> POLISHED_CHALK_STAIRS = register("polished_chalk_stairs", p -> new StairBlock(CHALK.get().defaultBlockState(), p), POLISHED_CHALK);
     //STONES
-    Supplier<Block> ARGILLITE = register("argillite", p -> new Block(p.mapColor(MapColor.TERRACOTTA_ORANGE).sound(SoundType.CALCITE)), Blocks.STONE);
     Supplier<Block> MOSSY_STONE = register("mossy_stone", Block::new, Blocks.STONE);
 
     /*-----------------OCEAN_BLOCKS-----------------*/
@@ -372,7 +371,7 @@ public interface RUBlocks {
     Supplier<Block> HYACINTH_FLOWERS = register("hyacinth_flowers", p -> new GlowLichenBlock(p.replaceable().mapColor(MapColor.GLOW_LICHEN).noCollission().strength(0.2F).sound(SoundType.GLOW_LICHEN).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 8)));
     Supplier<Block> TALL_HYACINTH_STOCK = register("tall_hyacinth_stock", p -> new TallHyacinthStockBlock(p.noCollission().instabreak().sound(SoundType.WET_GRASS).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 12)));
     //SMOULDERING_WOODLAND_BLOCKS
-    Supplier<Block> ASHEN_DIRT = register("ashen_dirt", p -> new AshenDirtBlock(p.mapColor(MapColor.COLOR_GRAY).strength(0.5F).sound(SoundType.GRAVEL).randomTicks().lightLevel((bs) -> AshenDirtBlock.isSmouldering(bs) ? 7 : 0)));
+    Supplier<Block> ASHEN_DIRT = register("ashen_dirt", p -> new AshenDirtBlock(p.mapColor(MapColor.COLOR_GRAY).strength(0.5F).sound(SoundType.GRAVEL).randomTicks().lightLevel(state -> AshenDirtBlock.isSmouldering(state) ? 7 : 0)));
     Supplier<Block> ASHEN_GRASS = register("ashen_grass", p -> new AshenGrassBlock(p.pushReaction(PushReaction.DESTROY).replaceable().noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XYZ).hasPostProcess((bs, br, bp) -> AshenGrassBlock.isSmouldering(bs)).emissiveRendering((bs, br, bp) -> AshenGrassBlock.isSmouldering(bs)).lightLevel((bs) -> AshenGrassBlock.isSmouldering(bs) ? 5 : 0)));
 
     /*-----------------OTHER_BLOCKS-----------------*/

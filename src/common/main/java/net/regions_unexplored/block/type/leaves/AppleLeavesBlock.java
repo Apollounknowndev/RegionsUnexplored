@@ -1,4 +1,4 @@
-package net.regions_unexplored.world.level.block.leaves;
+package net.regions_unexplored.block.type.leaves;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

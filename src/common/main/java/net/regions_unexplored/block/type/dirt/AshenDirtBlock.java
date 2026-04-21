@@ -1,4 +1,4 @@
-package net.regions_unexplored.world.level.block.other_dirt;
+package net.regions_unexplored.block.type.dirt;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -15,24 +15,26 @@ import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.world.level.block.state.properties.RuBlockStateProperties;
 
 public class AshenDirtBlock extends Block {
-
     public static final BooleanProperty SMOULDERING = RuBlockStateProperties.SMOULDERING;
 
     public AshenDirtBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(SMOULDERING, false));
     }
-
+    
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateBuilder) {
         stateBuilder.add(SMOULDERING);
     }
-
+    
+    @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (level.getBlockState(pos.above()).is(Blocks.FIRE)) {
             level.setBlockAndUpdate(pos, RUBlocks.ASHEN_DIRT.get().defaultBlockState().setValue(SMOULDERING, true));
         }
     }
 
+    @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         if(state== RUBlocks.ASHEN_DIRT.get().defaultBlockState().setValue(SMOULDERING, true)){
             super.animateTick(state, level, pos, random);
@@ -46,8 +48,8 @@ public class AshenDirtBlock extends Block {
     public static boolean isSmouldering(BlockState state) {
         return state.getValue(SMOULDERING);
     }
-
-
+    
+    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         return this.defaultBlockState();
     }

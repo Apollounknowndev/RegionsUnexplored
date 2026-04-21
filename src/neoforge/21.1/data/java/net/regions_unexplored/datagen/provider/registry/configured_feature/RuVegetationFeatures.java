@@ -1,6 +1,5 @@
 package net.regions_unexplored.datagen.provider.registry.configured_feature;
 
-import com.google.common.collect.ImmutableList;
 import dev.worldgen.lithostitched.api.worldgen.stateprovider.LithostitchedStateProviders;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
@@ -206,7 +205,7 @@ public class RuVegetationFeatures {
                 RandomOffsetPlacement.vertical(ConstantInt.of(-1))
             )
         ))));
-        registerPlaced(context, PATCH_TUNDRA_FLOWERS, Feature.RANDOM_PATCH, patch(new NoiseProvider(
+        registerPlaced(context, PATCH_FLOWERS_TUNDRA, Feature.RANDOM_PATCH, patch(new NoiseProvider(
             923586L,
             new NormalNoise.NoiseParameters(-7, 2, 1.3),
             1.5f,
@@ -214,6 +213,16 @@ public class RuVegetationFeatures {
                Blocks.LILY_OF_THE_VALLEY.defaultBlockState(),
                RUBlocks.BLEEDING_HEART.get().defaultBlockState(),
                Blocks.POPPY.defaultBlockState()
+            )
+        ), 48));
+        registerPlaced(context, PATCH_FLOWERS_ROCKY_MEADOW, Feature.RANDOM_PATCH, patch(new NoiseProvider(
+            530167L,
+            new NormalNoise.NoiseParameters(-6, 2, 1.5),
+            1.5f,
+            List.of(
+                RUBlocks.HYSSOP.get().defaultBlockState(),
+                RUBlocks.FIREWEED.get().defaultBlockState(),
+                RUBlocks.DAISY.get().defaultBlockState()
             )
         ), 48));
         

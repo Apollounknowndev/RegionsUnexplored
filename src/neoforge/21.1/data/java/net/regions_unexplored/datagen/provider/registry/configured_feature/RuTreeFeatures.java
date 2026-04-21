@@ -42,7 +42,7 @@ import net.regions_unexplored.worldgen.treedecorator.BranchDecorator;
 import net.regions_unexplored.worldgen.treedecorator.HangingLeavesDecorator;
 import net.regions_unexplored.worldgen.treedecorator.PlaceOnGroundDecorator;
 import net.regions_unexplored.worldgen.treedecorator.WillowTrunkDecorator;
-import net.regions_unexplored.world.level.block.leaves.AppleLeavesBlock;
+import net.regions_unexplored.block.type.leaves.AppleLeavesBlock;
 import net.regions_unexplored.world.level.block.wood.BambooLogBlock;
 import net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration;
 import net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration;

@@ -1,5 +1,5 @@
 {
-  "feature": "regions_unexplored:patch/tundra_flowers",
+  "feature": "regions_unexplored:patch/flowers_tundra",
   "placement": [
     {
       "type": "lithostitched:noise_slope",

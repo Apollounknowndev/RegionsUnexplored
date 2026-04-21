@@ -10,9 +10,9 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.regions_unexplored.block.type.wood.BranchBlock;
 import net.regions_unexplored.registry.RUBlocks;
-import net.regions_unexplored.world.level.block.leaves.JoshuaLeavesBlock;
-import net.regions_unexplored.world.level.block.plant.branch.BranchBlock;
+import net.regions_unexplored.block.type.leaves.JoshuaLeavesBlock;
 
 import java.util.Random;
 

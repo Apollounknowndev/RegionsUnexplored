@@ -1,4 +1,4 @@
-package net.regions_unexplored.world.level.block.leaves;
+package net.regions_unexplored.block.type.leaves;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,43 +27,49 @@ public class JoshuaLeavesBlock extends DoublePlantBlock implements SimpleWaterlo
 
     public JoshuaLeavesBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(NATURAL, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)).setValue(HALF, DoubleBlockHalf.LOWER));
+        this.registerDefaultState(this.stateDefinition.any()
+            .setValue(NATURAL, false)
+            .setValue(WATERLOGGED, false)
+            .setValue(HALF, DoubleBlockHalf.LOWER)
+        );
     }
 
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_52901_) {
         p_52901_.add(NATURAL, WATERLOGGED, HALF);
     }
-
-    public BlockState updateShape(BlockState state, Direction direction, BlockState state1, LevelAccessor level, BlockPos pos, BlockPos pos1) {
+    
+    @Override
+    public BlockState updateShape(BlockState state, Direction directionToNeighbour, BlockState neighbourState, LevelAccessor level, BlockPos pos, BlockPos neighbourPos) {
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        DoubleBlockHalf doubleblockhalf = state.getValue(HALF);
-        if (direction.getAxis() != Direction.Axis.Y || doubleblockhalf == DoubleBlockHalf.LOWER != (direction == Direction.UP) || state1.is(this) && state1.getValue(HALF) != doubleblockhalf) {
-            return doubleblockhalf == DoubleBlockHalf.LOWER && direction == Direction.DOWN && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, state1, level, pos, pos1);
+        DoubleBlockHalf half = state.getValue(HALF);
+        if (directionToNeighbour.getAxis() != Direction.Axis.Y || half == DoubleBlockHalf.LOWER != (directionToNeighbour == Direction.UP) || neighbourState.is(this) && neighbourState.getValue(HALF) != half) {
+            return half == DoubleBlockHalf.LOWER && directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, directionToNeighbour, neighbourState, level, pos, neighbourPos);
         } else {
             return Blocks.AIR.defaultBlockState();
         }
     }
-
-    public FluidState getFluidState(BlockState p_221384_) {
-        return p_221384_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_221384_);
+    
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
-
+    
+    @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockPos blockpos = pos.below();
         BlockState groundState = level.getBlockState(blockpos);
         if (state.getValue(HALF) == DoubleBlockHalf.UPPER){
             return groundState.is(this) && groundState.getValue(HALF) == DoubleBlockHalf.LOWER;
         }
-        else{
-            if(state.getValue(NATURAL)==true){
-                return groundState.is(BlockTags.LOGS);
-            }
-            else{
-            return groundState.isFaceSturdy(level, blockpos, Direction.UP);
-            }
+        
+        if(state.getValue(NATURAL)){
+            return groundState.is(BlockTags.LOGS);
         }
+        
+        return groundState.isFaceSturdy(level, blockpos, Direction.UP);
     }
 
     @Override
@@ -78,7 +84,10 @@ public class JoshuaLeavesBlock extends DoublePlantBlock implements SimpleWaterlo
         Level level = context.getLevel();
         if(blockpos.getY() < level.getMaxBuildHeight() - 1) {
             if(level.getBlockState(blockpos.above()).canBeReplaced(context)) {
-                return this.stateDefinition.any().setValue(NATURAL, Boolean.valueOf(false)).setValue(HALF, DoubleBlockHalf.LOWER).setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+                return this.stateDefinition.any()
+                    .setValue(NATURAL, Boolean.FALSE)
+                    .setValue(HALF, DoubleBlockHalf.LOWER)
+                    .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
             }
         }
         return super.getStateForPlacement(context);

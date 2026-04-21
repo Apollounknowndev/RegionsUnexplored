@@ -1,7 +1,6 @@
 package net.regions_unexplored.worldgen.treedecorator;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
@@ -20,7 +19,6 @@ import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.config.RuCommonConfig;
 import net.regions_unexplored.util.RUUtils;
-import net.regions_unexplored.world.level.block.plant.branch.BranchBlock;
 
 import java.util.Optional;
 

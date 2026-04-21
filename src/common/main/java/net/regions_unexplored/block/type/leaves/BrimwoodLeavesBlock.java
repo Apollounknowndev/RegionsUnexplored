@@ -1,4 +1,4 @@
-package net.regions_unexplored.world.level.block.leaves;
+package net.regions_unexplored.block.type.leaves;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
@@ -13,7 +13,7 @@ import net.regions_unexplored.block.RUBlockUtils;
 
 public class BrimwoodLeavesBlock extends LeavesBlock {
     public BrimwoodLeavesBlock(BlockBehaviour.Properties properties) {
-        super(Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(BrimwoodLeavesBlock::ocelotOrParrot).isSuffocating(BrimwoodLeavesBlock::never).isViewBlocking(BrimwoodLeavesBlock::never).pushReaction(PushReaction.DESTROY).isRedstoneConductor(RUBlockUtils::never));
+        super(properties.mapColor(MapColor.COLOR_BROWN).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(BrimwoodLeavesBlock::ocelotOrParrot).isSuffocating(BrimwoodLeavesBlock::never).isViewBlocking(BrimwoodLeavesBlock::never).pushReaction(PushReaction.DESTROY).isRedstoneConductor(RUBlockUtils::never));
     }
 
     @Override

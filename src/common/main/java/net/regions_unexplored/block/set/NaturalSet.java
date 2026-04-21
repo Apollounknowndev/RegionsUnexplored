@@ -7,11 +7,12 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.regions_unexplored.block.BlockFactory;
 import net.regions_unexplored.block.type.leaves.HangingVinesBlock;
+import net.regions_unexplored.block.type.wood.BeardBlock;
+import net.regions_unexplored.block.type.wood.BranchBlock;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.sapling.RuTreeGrowers;
 import net.regions_unexplored.block.RUBlockUtils;
-import net.regions_unexplored.world.level.block.leaves.RUTintedParticlesLeavesBlock;
-import net.regions_unexplored.world.level.block.plant.branch.BranchBlock;
+import net.regions_unexplored.block.type.leaves.RUTintedParticlesLeavesBlock;
 import net.regions_unexplored.world.level.block.plant.sapling.RuCactusSaplingBlock;
 import net.regions_unexplored.world.level.block.plant.sapling.RuNetherSaplingBlock;
 import net.regions_unexplored.world.level.block.plant.tall.ShrubBlock;
@@ -71,12 +72,12 @@ public class NaturalSet {
     }
 
     public NaturalSet withBranch() {
-        this.branch = RUBlockUtils.register(this.name + "_branch", p -> new BranchBlock(BRANCH_PROPERTIES.apply(p), BranchBlock.BranchType.BRANCH));
+        this.branch = RUBlockUtils.register(this.name + "_branch", p -> new BranchBlock(BRANCH_PROPERTIES.apply(p)));
         return this;
     }
 
     public NaturalSet withBeard() {
-        this.branch = RUBlockUtils.register(this.name + "_beard", p -> new BranchBlock(BRANCH_PROPERTIES.apply(p), BranchBlock.BranchType.BEARD));
+        this.branch = RUBlockUtils.register(this.name + "_beard", p -> new BeardBlock(BRANCH_PROPERTIES.apply(p)));
         return this;
     }
 

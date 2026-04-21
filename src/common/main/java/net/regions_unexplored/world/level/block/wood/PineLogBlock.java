@@ -19,16 +19,12 @@ public class PineLogBlock extends Block {
    public static final BooleanProperty TRANSITION_BLOCK = RuBlockStateProperties.TRANSITION_BLOCK;
    public static final BooleanProperty IS_STRIPPED = RuBlockStateProperties.IS_STRIPPED;
 
-   public PineLogBlock(Properties p_55926_) {
-      super(p_55926_);
+   public PineLogBlock(Properties properties) {
+      super(properties);
       this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.Y).setValue(TRANSITION_BLOCK, false).setValue(IS_STRIPPED, false));
    }
 
-   public BlockState rotate(BlockState p_55930_, Rotation p_55931_) {
-      return rotatePillar(p_55930_, p_55931_);
-   }
-
-   public static BlockState rotatePillar(BlockState state, Rotation rotation) {
+   public BlockState rotate(BlockState state, Rotation rotation) {
       switch (rotation) {
          case COUNTERCLOCKWISE_90:
          case CLOCKWISE_90:
