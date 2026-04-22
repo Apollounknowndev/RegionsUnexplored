@@ -87,7 +87,8 @@
       "regions_unexplored:tree/group/wisteria_grove",
       "regions_unexplored:aster",
       "regions_unexplored:patch/tall_flowers_wisteria_grove",
-      "regions_unexplored:patch/short_grass_dense"
+      "regions_unexplored:patch/flowers_wisteria_grove",
+      "regions_unexplored:patch/short_grass_sparse"
     ],
     [
       "minecraft:freeze_top_layer"

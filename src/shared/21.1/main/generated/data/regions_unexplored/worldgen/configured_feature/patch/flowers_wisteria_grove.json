@@ -9,12 +9,11 @@
             "type": "minecraft:noise_provider",
             "noise": {
               "amplitudes": [
-                2.0,
-                1.5
+                1.0
               ],
-              "firstOctave": -6
+              "firstOctave": -3
             },
-            "scale": 1.5,
+            "scale": 0.1,
             "seed": 530167,
             "states": [
               {
@@ -40,7 +39,7 @@
         }
       ]
     },
-    "tries": 48,
+    "tries": 8,
     "xz_spread": 7,
     "y_spread": 3
   }

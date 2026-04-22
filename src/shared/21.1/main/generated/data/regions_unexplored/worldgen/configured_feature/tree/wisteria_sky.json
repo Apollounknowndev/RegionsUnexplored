@@ -6,6 +6,10 @@
         "type": "regions_unexplored:hanging_leaves",
         "block": "regions_unexplored:sky_wisteria_vines",
         "probability": 0.15
+      },
+      {
+        "type": "minecraft:beehive",
+        "probability": 0.002
       }
     ],
     "dirt_provider": {

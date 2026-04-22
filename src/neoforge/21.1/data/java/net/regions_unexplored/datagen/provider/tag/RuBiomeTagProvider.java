@@ -16,7 +16,6 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.registry.tag.RUBiomeTags;
-import net.regions_unexplored.registry.data.RUBiomes;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -143,7 +142,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(FLOWER_FIELDS)
                 .add(GRASSLAND)
                 .add(CLOVER_PLAINS)
-                .add(ROCKY_MEADOW)
+                .add(REMOVED_ROCKY_MEADOW)
                 .add(POPPY_FIELDS)
                 .add(PRAIRIE)
                 .add(PUMPKIN_FIELDS)
@@ -299,7 +298,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(FLOWER_FIELDS)
                 .add(GRASSLAND)
                 .add(CLOVER_PLAINS)
-                .add(ROCKY_MEADOW)
+                .add(REMOVED_ROCKY_MEADOW)
                 .add(POPPY_FIELDS)
                 .add(PRAIRIE)
                 .add(PUMPKIN_FIELDS)
@@ -439,7 +438,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(FLOWER_FIELDS)
                 .add(GRASSLAND)
                 .add(MARSH)
-                .add(ROCKY_MEADOW)
+                .add(REMOVED_ROCKY_MEADOW)
                 .add(TEMPERATE_GROVE)
         ;
         this.tag(RUBiomeTags.HAS_RUSTY_WOLF)
@@ -485,6 +484,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
         this.tag(RUBiomeTags.REMOVED)
             .add(REMOVED_FROZEN_TUNDRA)
             .add(REMOVED_MAUVE_HILLS)
+            .add(REMOVED_ROCKY_MEADOW)
         ;
     }
 
@@ -563,7 +563,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(REMOVED_MAUVE_HILLS)
                 .add(WISTERIA_GROVE)
                 .add(MARSH)
-                .add(ROCKY_MEADOW)
+                .add(REMOVED_ROCKY_MEADOW)
                 .add(ICY_HEIGHTS)
                 .add(FROZEN_PINE_TAIGA)
                 .add(FUNGAL_FEN)
@@ -595,7 +595,8 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(FLOWER_FIELDS)
                 .add(TEMPERATE_GROVE)
                 .add(DRY_BUSHLAND)
-                .add(ROCKY_MEADOW)
+                .add(WISTERIA_GROVE)
+                .add(REMOVED_ROCKY_MEADOW)
         ;
         this.tag(BiomeTags.HAS_RUINED_PORTAL_DESERT)
                 .add(JOSHUA_DESERT)
@@ -619,7 +620,8 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(PRAIRIE)
                 .add(BARLEY_FIELDS)
                 .add(FLOWER_FIELDS)
-                .add(ROCKY_MEADOW)
+                .add(WISTERIA_GROVE)
+                .add(REMOVED_ROCKY_MEADOW)
                 .add(REDSTONE_CAVES)
                 .add(ANCIENT_DELTA)
                 .add(PRISMACHASM)
@@ -660,7 +662,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(FLOWER_FIELDS)
                 .add(GRASSLAND)
                 .add(CLOVER_PLAINS)
-                .add(ROCKY_MEADOW)
+                .add(REMOVED_ROCKY_MEADOW)
                 .add(POPPY_FIELDS)
                 .add(PRAIRIE)
                 .add(PUMPKIN_FIELDS)
@@ -719,7 +721,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(TEMPERATE_GROVE)
                 .add(HIGHLAND_FIELDS)
                 .add(DECIDUOUS_FOREST)
-                .add(ROCKY_MEADOW)
+                .add(REMOVED_ROCKY_MEADOW)
                 .add(EUCALYPTUS_FOREST)
         ;
         this.tag(BiomeTags.HAS_VILLAGE_SAVANNA)
@@ -921,7 +923,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(FLOWER_FIELDS)
                 .add(GRASSLAND)
                 .add(CLOVER_PLAINS)
-                .add(ROCKY_MEADOW)
+                .add(REMOVED_ROCKY_MEADOW)
                 .add(POPPY_FIELDS)
                 .add(PRAIRIE)
                 .add(PUMPKIN_FIELDS)

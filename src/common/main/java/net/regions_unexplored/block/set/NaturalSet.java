@@ -10,7 +10,7 @@ import net.regions_unexplored.block.type.leaves.HangingVinesBlock;
 import net.regions_unexplored.block.type.wood.BeardBlock;
 import net.regions_unexplored.block.type.wood.BranchBlock;
 import net.regions_unexplored.registry.RUBlocks;
-import net.regions_unexplored.block.sapling.RuTreeGrowers;
+import net.regions_unexplored.block.sapling.RUTreeGrowers;
 import net.regions_unexplored.block.RUBlockUtils;
 import net.regions_unexplored.block.type.leaves.RUTintedParticlesLeavesBlock;
 import net.regions_unexplored.world.level.block.plant.sapling.RuCactusSaplingBlock;
@@ -40,13 +40,13 @@ public class NaturalSet {
 
     public static NaturalSet saguaroCactus() {
         NaturalSet set = NaturalSet.create("saguaro_cactus");
-        set.sapling = RUBlockUtils.register("saguaro_cactus_flower", p -> new RuCactusSaplingBlock(RuTreeGrowers.SAGUARO_CACTUS, p), Blocks.OAK_SAPLING);
+        set.sapling = RUBlockUtils.register("saguaro_cactus_flower", p -> new RuCactusSaplingBlock(RUTreeGrowers.SAGUARO_CACTUS, p), Blocks.OAK_SAPLING);
         set.pottedSapling = RUBlockUtils.registerNoItem("potted_saguaro_cactus_flower", p -> new FlowerPotBlock(set.sapling.get(), p), Blocks.POTTED_OAK_SAPLING);
         return set;
     }
 
     public static NaturalSet ashen() {
-        NaturalSet set = NaturalSet.create("ashen").withLeaves(MapColor.COLOR_LIGHT_GRAY, RUTintedParticlesLeavesBlock.small(RUTintedParticlesLeavesBlock.TintGetter.constant(0x767470))).withSapling(RuTreeGrowers.ASHEN);
+        NaturalSet set = NaturalSet.create("ashen").withLeaves(MapColor.COLOR_LIGHT_GRAY, RUTintedParticlesLeavesBlock.small(RUTintedParticlesLeavesBlock.TintGetter.constant(0x767470))).withSapling(RUTreeGrowers.ASHEN);
         set.shrub = RUBlockUtils.register("ashen_shrub", p -> new ShrubBlock(SHRUB_PROPERTIES.apply(p).sound(SoundType.ROOTED_DIRT).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
         return set;
     }
@@ -54,7 +54,7 @@ public class NaturalSet {
     public static NaturalSet cobalt() {
         NaturalSet set = NaturalSet.create("cobalt");
         set.leaves = RUBlockUtils.register("cobalt_webbing", p -> RUBlockUtils.leaves(p, MapColor.COLOR_BLUE, true, LeavesBlock::new));
-        set.withSapling(p -> new RuNetherSaplingBlock(RuTreeGrowers.COBALT, p.sound(SoundType.NETHER_SPROUTS)));
+        set.withSapling(p -> new RuNetherSaplingBlock(RUTreeGrowers.COBALT, p.sound(SoundType.NETHER_SPROUTS)));
         return set;
     }
 

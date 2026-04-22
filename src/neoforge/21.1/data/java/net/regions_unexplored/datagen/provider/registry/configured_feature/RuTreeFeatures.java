@@ -476,7 +476,8 @@ public class RuTreeFeatures {
            new MagnoliaFoliagePlacer(),
            new TwoLayersFeatureSize(1, 0, 1)
        ).ignoreVines().decorators(List.of(
-           HangingLeavesDecorator.create(RUBlocks.SKY_WISTERIA_NATURAL_SET, 0.15f)
+           HangingLeavesDecorator.create(RUBlocks.SKY_WISTERIA_NATURAL_SET, 0.15f),
+           new BeehiveDecorator(0.002f)
        )).build());
        var wisteriaLavender = register(context, TREE_WISTERIA_LAVENDER, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
            BlockStateProvider.simple(Blocks.CHERRY_LOG.defaultBlockState()),
@@ -485,7 +486,8 @@ public class RuTreeFeatures {
            new MagnoliaFoliagePlacer(),
            new TwoLayersFeatureSize(1, 0, 1)
        ).ignoreVines().decorators(List.of(
-           HangingLeavesDecorator.create(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET, 0.15f)
+           HangingLeavesDecorator.create(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET, 0.15f),
+           new BeehiveDecorator(0.002f)
        )).build());
        var wisteriaSalmon = register(context, TREE_WISTERIA_SALMON, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
            BlockStateProvider.simple(Blocks.CHERRY_LOG.defaultBlockState()),
@@ -494,7 +496,8 @@ public class RuTreeFeatures {
            new MagnoliaFoliagePlacer(),
            new TwoLayersFeatureSize(1, 0, 1)
        ).ignoreVines().decorators(List.of(
-           HangingLeavesDecorator.create(RUBlocks.SALMON_WISTERIA_NATURAL_SET, 0.15f)
+           HangingLeavesDecorator.create(RUBlocks.SALMON_WISTERIA_NATURAL_SET, 0.15f),
+           new BeehiveDecorator(0.002f)
        )).build());
        
        var wisteriaLargeSky = register(context, TREE_WISTERIA_LARGE_SKY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -505,6 +508,7 @@ public class RuTreeFeatures {
            new TwoLayersFeatureSize(1, 0, 1)
        ).ignoreVines().decorators(List.of(
            HangingLeavesDecorator.create(RUBlocks.SKY_WISTERIA_NATURAL_SET, 0.2f),
+           new BeehiveDecorator(0.002f),
            BranchDecorator.create(0.1f, RUBlocks.CHERRY_NATURAL_SET, Blocks.CHERRY_LOG, 3, BlockStateProvider.simple(RUBlocks.SKY_WISTERIA_NATURAL_SET.getLeaves()))
        )).build());
        var wisteriaLargeLavender = register(context, TREE_WISTERIA_LARGE_LAVENDER, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -515,6 +519,7 @@ public class RuTreeFeatures {
            new TwoLayersFeatureSize(1, 0, 1)
        ).ignoreVines().decorators(List.of(
            HangingLeavesDecorator.create(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET, 0.2f),
+           new BeehiveDecorator(0.002f),
            BranchDecorator.create(0.1f, RUBlocks.CHERRY_NATURAL_SET, Blocks.CHERRY_LOG, 3, BlockStateProvider.simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves()))
        )).build());
        var wisteriaLargeSalmon = register(context, TREE_WISTERIA_LARGE_SALMON, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -525,6 +530,7 @@ public class RuTreeFeatures {
            new TwoLayersFeatureSize(1, 0, 1)
        ).ignoreVines().decorators(List.of(
            HangingLeavesDecorator.create(RUBlocks.SALMON_WISTERIA_NATURAL_SET, 0.2f),
+           new BeehiveDecorator(0.002f),
            BranchDecorator.create(0.1f, RUBlocks.CHERRY_NATURAL_SET, Blocks.CHERRY_LOG, 3, BlockStateProvider.simple(RUBlocks.SALMON_WISTERIA_NATURAL_SET.getLeaves()))
        )).build());
        

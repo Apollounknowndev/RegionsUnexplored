@@ -190,8 +190,8 @@ public class RuBiolith {
         if (RuCommonConfig.TOGGLE_HIGHLAND_FIELDS.get()) {
             BiomePlacement.replaceOverworld(Biomes.MEADOW, RUBiomes.HIGHLAND_FIELDS, 0.45f);
         }
-        if (RuCommonConfig.TOGGLE_ROCKY_MEADOW.get()) {
-            BiomePlacement.replaceOverworld(Biomes.MEADOW, RUBiomes.ROCKY_MEADOW, 0.45f);
+        if (RuCommonConfig.TOGGLE_WISTERIA_GROVE.get()) {
+            BiomePlacement.replaceOverworld(Biomes.MEADOW, RUBiomes.WISTERIA_GROVE, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_TUNDRA.get()) {
             BiomePlacement.replaceOverworld(Biomes.SNOWY_PLAINS, RUBiomes.TUNDRA, 0.45f);
@@ -200,9 +200,6 @@ public class RuBiolith {
         // Forests
         if (RuCommonConfig.TOGGLE_ORCHARD.get()) {
             BiomePlacement.replaceOverworld(Biomes.FLOWER_FOREST, RUBiomes.ORCHARD, 0.45f);
-        }
-        if (RuCommonConfig.TOGGLE_WISTERIA_GROVE.get()) {
-            BiomePlacement.replaceOverworld(Biomes.FLOWER_FOREST, RUBiomes.WISTERIA_GROVE, 0.45f);
         }
         if (RuCommonConfig.TOGGLE_WILLOW_FOREST.get()) {
             BiomePlacement.replaceOverworld(Biomes.BIRCH_FOREST, RUBiomes.WILLOW_FOREST, 0.3f);

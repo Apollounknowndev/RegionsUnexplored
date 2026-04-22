@@ -38,7 +38,7 @@ public class RUBiomeBootstrap {
         register(context, RUBiomes.FLOWER_FIELDS, PlainsBiomes.flowerFields(featuresGetter, carversGetter));
         register(context, RUBiomes.GRASSLAND, PlainsBiomes.grassland(featuresGetter, carversGetter));
         register(context, RUBiomes.CLOVER_PLAINS, PlainsBiomes.cloverPlains(featuresGetter, carversGetter));
-        register(context, RUBiomes.ROCKY_MEADOW, PlainsBiomes.rockyMeadow(featuresGetter, carversGetter));
+        register(context, RUBiomes.REMOVED_ROCKY_MEADOW, ForestBiomes.wisteriaGrove(featuresGetter, carversGetter));
         register(context, RUBiomes.POPPY_FIELDS, PlainsBiomes.poppyFields(featuresGetter, carversGetter));
         register(context, RUBiomes.PRAIRIE, PlainsBiomes.prairie(featuresGetter, carversGetter));
         register(context, RUBiomes.PUMPKIN_FIELDS, PlainsBiomes.pumpkinFields(featuresGetter, carversGetter));

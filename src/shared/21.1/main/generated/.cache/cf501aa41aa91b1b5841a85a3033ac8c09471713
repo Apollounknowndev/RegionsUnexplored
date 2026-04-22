@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-20T01:23:08.8129022	Tags for minecraft:worldgen/biome mod id regions_unexplored
+// 1.21.1	2026-04-22T18:27:56.7038613	Tags for minecraft:worldgen/biome mod id regions_unexplored
 8d156d72ef8a23249d1b4daacebeae371ee9e1da data/c/tags/worldgen/biome/has_wolf_variant/ashen.json
 3f4edc8db4b1d27358677fe8a8ddd2ea645e6671 data/c/tags/worldgen/biome/has_wolf_variant/black.json
 678b5589cab20b0eb152dda5986bf246674305fb data/c/tags/worldgen/biome/has_wolf_variant/chestnut.json
@@ -59,12 +59,12 @@ f11cb6f67f20aabfb63d7d27eb36972814d697d7 data/minecraft/tags/worldgen/biome/has_
 59561d59132d14bb7a938c56ed620168265c4ff2 data/minecraft/tags/worldgen/biome/has_structure/mineshaft.json
 d2ae9180aa2e96a827ce9567b19e1357443fb342 data/minecraft/tags/worldgen/biome/has_structure/ocean_ruin_cold.json
 26ca6127ec2c19192aa79c979b9433df820357f1 data/minecraft/tags/worldgen/biome/has_structure/ocean_ruin_warm.json
-70679fea329fbda60c99e6c053fd3d4b95452cb3 data/minecraft/tags/worldgen/biome/has_structure/pillager_outpost.json
+e3dd613871782b0200bb96ab12699cd34cf25da2 data/minecraft/tags/worldgen/biome/has_structure/pillager_outpost.json
 7408c66b2f378a79bb389271ea57af46c1193fe8 data/minecraft/tags/worldgen/biome/has_structure/ruined_portal_desert.json
 64304c17b2e91202dda442319ce2aa15f43a6ec0 data/minecraft/tags/worldgen/biome/has_structure/ruined_portal_jungle.json
 cb44e4a0adb6db622d47802733c30c8f1bc6e2b4 data/minecraft/tags/worldgen/biome/has_structure/ruined_portal_mountain.json
 d2ae9180aa2e96a827ce9567b19e1357443fb342 data/minecraft/tags/worldgen/biome/has_structure/ruined_portal_ocean.json
-d8af867fea2d1ee2f73bff0853e016a29798d594 data/minecraft/tags/worldgen/biome/has_structure/ruined_portal_standard.json
+d47547b5caef3efc0a8045c039204f26775c4d9e data/minecraft/tags/worldgen/biome/has_structure/ruined_portal_standard.json
 2248f8e5b0318da27df0a8412e301cd296ac5635 data/minecraft/tags/worldgen/biome/has_structure/ruined_portal_swamp.json
 c50d53164356d12a116c632c00c6993573f85d10 data/minecraft/tags/worldgen/biome/has_structure/swamp_hut.json
 d81138ebed29955d0007d481cdc834c91a928a77 data/minecraft/tags/worldgen/biome/has_structure/trial_chambers.json
@@ -111,4 +111,4 @@ d961ecff415a1d51108f0dcb04b40078ea171daa data/regions_unexplored/tags/worldgen/b
 7b6ecafcf9d21596345837936008226db69f1641 data/regions_unexplored/tags/worldgen/biome/has_wolf_variant/spotted.json
 2d8f90300afd8adae76689a225e772ed37cb4d56 data/regions_unexplored/tags/worldgen/biome/has_wolf_variant/striped.json
 7e6bd77ac614363d6fccf60b2391ca5c600f6bab data/regions_unexplored/tags/worldgen/biome/has_wolf_variant/woods.json
-2b17ec3072451cceaa500b0488a2ec6d21a1d327 data/regions_unexplored/tags/worldgen/biome/removed.json
+b81801a47c827f76f6a890027adc293532a7f089 data/regions_unexplored/tags/worldgen/biome/removed.json

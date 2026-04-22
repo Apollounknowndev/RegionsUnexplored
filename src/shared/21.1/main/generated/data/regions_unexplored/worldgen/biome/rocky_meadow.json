@@ -6,11 +6,11 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.7,
+  "downfall": 0.85,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": -9001891,
-    "grass_color": -7486095,
+    "foliage_color": 11381503,
+    "grass_color": 7518088,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -21,10 +21,10 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:music.overworld.flower_forest"
+      "sound": "minecraft:music.overworld.forest"
     },
-    "sky_color": 7907327,
-    "water_color": 4159204,
+    "sky_color": 7776511,
+    "water_color": 5546361,
     "water_fog_color": 329011
   },
   "features": [
@@ -34,8 +34,7 @@
       "minecraft:lake_lava_surface"
     ],
     [
-      "minecraft:amethyst_geode",
-      "regions_unexplored:rock/group/rocky_meadow"
+      "minecraft:amethyst_geode"
     ],
     [
       "minecraft:monster_room",
@@ -81,16 +80,15 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:tree/mauve_meadow",
-      "regions_unexplored:tree/mauve_sparse",
-      "regions_unexplored:patch/flowers_rocky_meadow",
-      "regions_unexplored:grass",
-      "regions_unexplored:meadow_sage"
+      "regions_unexplored:tree/group/wisteria_grove",
+      "regions_unexplored:aster",
+      "regions_unexplored:patch/tall_flowers_wisteria_grove",
+      "regions_unexplored:patch/flowers_wisteria_grove",
+      "regions_unexplored:patch/short_grass_sparse"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -134,16 +132,10 @@
         "weight": 8
       },
       {
-        "type": "minecraft:horse",
-        "maxCount": 6,
-        "minCount": 2,
-        "weight": 5
-      },
-      {
-        "type": "minecraft:donkey",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 1
+        "type": "minecraft:chicken",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 10
       }
     ],
     "misc": [],
@@ -208,5 +200,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.825
+  "temperature": 1.1
 }

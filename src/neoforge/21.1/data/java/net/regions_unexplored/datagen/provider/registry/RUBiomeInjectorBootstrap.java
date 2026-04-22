@@ -12,10 +12,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
 import net.regions_unexplored.lithostitched.BiomeEnabledPredicate;
-import net.regions_unexplored.registry.data.RUBiomes;
-import net.regions_unexplored.registry.data.RURegions;
 
 import java.util.Arrays;
 import java.util.function.Function;

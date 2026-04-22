@@ -180,43 +180,6 @@ public class PlainsBiomes {
                 .build();
     }
 
-    public static Biome rockyMeadow(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
-                .skyColor(calculateSkyColor(0.8F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-9001891)
-                .grassColorOverride(-7486095)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FLOWER_FOREST));
-
-        //add features
-        BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
-
-        //add RU features
-        builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, RuMiscOverworldPlacements.ROCK_GROUP_ROCKY_MEADOW);
-        
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.MAUVE_MEADOW);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.MAUVE_SPARSE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_FLOWERS_ROCKY_MEADOW);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.MEADOW_SAGE);
-
-
-        //add mob spawns
-        MobSpawnSettings.Builder spawnBuilder = basePlainsSpawning(false);
-
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(true)
-                .temperature(0.825f)
-                .downfall(0.7f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
-    }
-
     public static Biome poppyFields(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
                 .skyColor(calculateSkyColor(0.7F))

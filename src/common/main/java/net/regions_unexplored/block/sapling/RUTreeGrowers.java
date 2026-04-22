@@ -1,13 +1,17 @@
 package net.regions_unexplored.block.sapling;
 
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.grower.TreeGrower;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+
+import java.util.Optional;
 
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 
 import static net.regions_unexplored.registry.data.RUConfiguredFeatures.*;
 
-public interface RuTreeGrowers {
+public interface RUTreeGrowers {
     TreeGrower ASHEN = new TreeGrower("ashen", empty(), of(TREE_ASHEN), empty());
     TreeGrower ALPHA_OAK = new TreeGrower("alpha_oak", empty(), of(TREE_ALPHA_OAK), empty());
     TreeGrower APPLE_OAK = new TreeGrower("apple_oak", 0.2F, empty(), empty(), of(TREE_APPLE_OAK), of(TREE_BIG_APPLE_OAK), empty(), empty());
@@ -31,7 +35,6 @@ public interface RuTreeGrowers {
     TreeGrower MAPLE = new TreeGrower("maple", 0.1F, empty(), empty(), of(TREE_MAPLE), of(TREE_BIG_MAPLE), empty(), empty());
     TreeGrower RED_MAPLE = new TreeGrower("red_maple", 0.1F, empty(), empty(), of(TREE_RED_MAPLE), of(TREE_BIG_RED_MAPLE), empty(), empty());
     TreeGrower ORANGE_MAPLE = new TreeGrower("orange_maple", 0.1F, empty(), empty(), of(TREE_ORANGE_MAPLE), of(TREE_BIG_ORANGE_MAPLE), empty(), empty());
-    TreeGrower MAUVE = new TreeGrower("mauve", 0.1F, empty(), empty(), of(TREE_MAUVE_OAK), of(TREE_BIG_MAUVE_OAK), of(TREE_MAUVE_OAK_BEE), empty());
     TreeGrower BRIMWOOD = new TreeGrower("brimwood", 0.25F, empty(), empty(), of(TREE_BRIM_WILLOW), of(TREE_TALL_BRIM_WILLOW), empty(), empty());
     TreeGrower COBALT = new TreeGrower("cobalt", empty(), of(TREE_COBALT), empty());
     TreeGrower SILVER_BIRCH = new TreeGrower("silver_birch", 0.25F, empty(), empty(), of(TREE_SILVER_BIRCH), of(TREE_SILVER_BIRCH_TALL), empty(), empty());
@@ -47,4 +50,16 @@ public interface RuTreeGrowers {
     RuUltraFromSuperTreeGrower REDWOOD = new RuUltraFromSuperTreeGrower("redwood", of(TREE_REDWOOD_LARGE), of(TREE_REDWOOD_MEDIUM), of(TREE_REDWOOD_SMALL), empty());
     TreeGrower PALM = new TreeGrower("palm", 0.1F, empty(), empty(), of(TREE_PALM), of(TREE_TALL_PALM), empty(), empty());
     TreeGrower PINE = new TreeGrower("pine", 0.1F, empty(), empty(), of(TREE_PINE), of(TREE_STRIPPED_PINE), of(TREE_PINE_TALL), of(TREE_STRIPPED_PINE_MOUNTAIN));
+    TreeGrower SKY_WISTERIA = createSimple("sky_wisteria", 0.1F, TREE_WISTERIA_SKY, TREE_WISTERIA_LARGE_SKY);
+    TreeGrower LAVENDER_WISTERIA = createSimple("lavender_wisteria", 0.1F, TREE_WISTERIA_LAVENDER, TREE_WISTERIA_LARGE_LAVENDER);
+    TreeGrower SALMON_WISTERIA = createSimple("salmon_wisteria", 0.1F, TREE_WISTERIA_SALMON, TREE_WISTERIA_LARGE_SALMON);
+    
+    static TreeGrower createSimple(
+        final String name,
+        final float secondaryChance,
+        final ResourceKey<ConfiguredFeature<?, ?>> tree,
+        final ResourceKey<ConfiguredFeature<?, ?>> secondaryTree
+    ) {
+        return new TreeGrower(name, secondaryChance, Optional.empty(), Optional.empty(), Optional.of(tree), Optional.of(secondaryTree), Optional.empty(), Optional.empty());
+    }
 }

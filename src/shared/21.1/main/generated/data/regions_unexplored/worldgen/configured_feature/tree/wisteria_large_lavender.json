@@ -8,6 +8,10 @@
         "probability": 0.2
       },
       {
+        "type": "minecraft:beehive",
+        "probability": 0.002
+      },
+      {
         "type": "regions_unexplored:branch",
         "branch_block": "regions_unexplored:cherry_branch",
         "leaves_provider": {

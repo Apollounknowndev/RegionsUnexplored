@@ -215,16 +215,16 @@ public class RuVegetationFeatures {
                Blocks.POPPY.defaultBlockState()
             )
         ), 48));
-        registerPlaced(context, PATCH_FLOWERS_ROCKY_MEADOW, Feature.RANDOM_PATCH, patch(new NoiseProvider(
+        registerPlaced(context, PATCH_FLOWERS_WISTERIA_GROVE, Feature.RANDOM_PATCH, patch(new NoiseProvider(
             530167L,
-            new NormalNoise.NoiseParameters(-6, 2, 1.5),
-            1.5f,
+            new NormalNoise.NoiseParameters(-3, 1),
+            0.1f,
             List.of(
                 RUBlocks.HYSSOP.get().defaultBlockState(),
                 RUBlocks.FIREWEED.get().defaultBlockState(),
                 RUBlocks.DAISY.get().defaultBlockState()
             )
-        ), 48));
+        ), 8));
         
         register(context, PATCH_SHORT_GRASS, Feature.RANDOM_PATCH, patch(weightedStates(pair(Blocks.SHORT_GRASS), pair(RUBlocks.GRASS_SPROUTS.get())), 64));
         registerPlaced(context, PATCH_FERN, Feature.RANDOM_PATCH, patch(BlockStateProvider.simple(Blocks.FERN), 96));

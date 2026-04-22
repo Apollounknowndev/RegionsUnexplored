@@ -67,7 +67,6 @@ public interface RUBiomes {
     ResourceKey<Biome> REDSTONE_ABYSS = key("redstone_abyss");
     ResourceKey<Biome> REDSTONE_CAVES = key("redstone_caves");
     ResourceKey<Biome> REDWOODS = key("redwoods");
-    ResourceKey<Biome> ROCKY_MEADOW = key("rocky_meadow");
     ResourceKey<Biome> ROCKY_REEF = key("rocky_reef");
     ResourceKey<Biome> SAGUARO_DESERT = key("saguaro_desert");
     ResourceKey<Biome> SCORCHING_CAVES = key("scorching_caves");
@@ -88,6 +87,7 @@ public interface RUBiomes {
     // Removed
     ResourceKey<Biome> REMOVED_FROZEN_TUNDRA = removed("frozen_tundra");
     ResourceKey<Biome> REMOVED_MAUVE_HILLS = removed("mauve_hills");
+    ResourceKey<Biome> REMOVED_ROCKY_MEADOW = removed("rocky_meadow");
     ResourceKey<Biome> PLACEHOLDER_RIVER = removed("placeholder_river");
     
     private static ResourceKey<Biome> key(String name) {
@@ -130,7 +130,7 @@ public interface RUBiomes {
         putVillagerBiome(FLOWER_FIELDS, VillagerType.PLAINS);
         putVillagerBiome(GRASSLAND, VillagerType.PLAINS);
         putVillagerBiome(CLOVER_PLAINS, VillagerType.PLAINS);
-        putVillagerBiome(ROCKY_MEADOW, VillagerType.PLAINS);
+        putVillagerBiome(REMOVED_ROCKY_MEADOW, VillagerType.PLAINS);
         putVillagerBiome(POPPY_FIELDS, VillagerType.PLAINS);
         putVillagerBiome(PRAIRIE, VillagerType.PLAINS);
         putVillagerBiome(PUMPKIN_FIELDS, VillagerType.PLAINS);

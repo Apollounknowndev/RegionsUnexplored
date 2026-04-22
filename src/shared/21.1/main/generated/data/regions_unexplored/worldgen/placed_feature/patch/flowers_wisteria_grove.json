@@ -1,5 +1,5 @@
 {
-  "feature": "regions_unexplored:patch/flowers_rocky_meadow",
+  "feature": "regions_unexplored:patch/flowers_wisteria_grove",
   "placement": [
     {
       "type": "minecraft:count",
@@ -14,7 +14,7 @@
     },
     {
       "type": "minecraft:heightmap",
-      "heightmap": "MOTION_BLOCKING"
+      "heightmap": "MOTION_BLOCKING_NO_LEAVES"
     },
     {
       "type": "minecraft:biome"

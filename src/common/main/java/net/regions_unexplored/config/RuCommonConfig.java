@@ -92,8 +92,6 @@ public class RuCommonConfig extends Config {
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_MARSH = biome(RUBiomes.MARSH);
     @ConfigOption(category = "overworld_biome_toggles")
-    public static final ConfigValue<Boolean> TOGGLE_ROCKY_MEADOW = biome(RUBiomes.ROCKY_MEADOW);
-    @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_MOUNTAINS = biome(RUBiomes.MOUNTAINS);
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_MUDDY_RIVER = biome(RUBiomes.MUDDY_RIVER);

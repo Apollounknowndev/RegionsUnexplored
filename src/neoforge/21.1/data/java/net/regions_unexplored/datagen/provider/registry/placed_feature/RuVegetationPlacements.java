@@ -58,7 +58,8 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> PATCH_CLOVERS_DENSE = key("patch/clovers_dense");
     public static final ResourceKey<PlacedFeature> PATCH_DAISIES = key("patch/daisies");
     public static final ResourceKey<PlacedFeature> PATCH_FLOWERS_TUNDRA = key("patch/flowers_tundra");
-    public static final ResourceKey<PlacedFeature> PATCH_FLOWERS_ROCKY_MEADOW = key("patch/flowers_rocky_meadow");
+    public static final ResourceKey<PlacedFeature> PATCH_TALL_FLOWERS_WISTERIA_GROVE = key("patch/tall_flowers_wisteria_grove");
+    public static final ResourceKey<PlacedFeature> PATCH_FLOWERS_WISTERIA_GROVE = key("patch/flowers_wisteria_grove");
 
     public static final ResourceKey<PlacedFeature> PATCH_SHORT_GRASS_SPARSE = key("patch/short_grass_sparse");
     public static final ResourceKey<PlacedFeature> PATCH_SHORT_GRASS = key("patch/short_grass");
@@ -121,7 +122,6 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> BARLEY_DENSE = key("barley_dense");
     public static final ResourceKey<PlacedFeature> MEADOW_SAGE = key("meadow_sage");
     public static final ResourceKey<PlacedFeature> REDSTONE_BULB = key("redstone_bulb");
-    public static final ResourceKey<PlacedFeature> PATCH_TALL_FLOWERS_WISTERIA_GROVE = key("patch/tall_flowers_wisteria_grove");
 
     public static final ResourceKey<PlacedFeature> PATCH_ORANGE_CONEFLOWER = key("patch/orange_coneflower");
     public static final ResourceKey<PlacedFeature> PATCH_PURPLE_CONEFLOWER = key("patch/purple_coneflower");
@@ -309,7 +309,7 @@ public class RuVegetationPlacements {
             BiomeFilter.biome()
         );
         
-        register(context, RuVegetationPlacements.PATCH_FLOWERS_ROCKY_MEADOW, surfaceSpread(2, Types.MOTION_BLOCKING));
+        register(context, RuVegetationPlacements.PATCH_FLOWERS_WISTERIA_GROVE, surfaceSpread(2, Types.MOTION_BLOCKING_NO_LEAVES));
         
         register(context, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE, patchGrass, surfaceSpread(2, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_SHORT_GRASS, patchGrass, surfaceSpread(4, Types.WORLD_SURFACE_WG));
