@@ -1,0 +1,15 @@
+{
+  "type": "lithostitched:reference",
+  "rules": [
+    "regions_unexplored:overworld/under_surface/common/powder_snow",
+    "regions_unexplored:overworld/surface_and_under_surface",
+    "regions_unexplored:overworld/under_surface/towering_cliffs",
+    "regions_unexplored:overworld/under_surface/maple_forest",
+    "regions_unexplored:overworld/under_surface/hyacinth_deeps",
+    "regions_unexplored:overworld/under_surface/ashen_woodland",
+    "regions_unexplored:overworld/under_surface/old_growth_bayou",
+    "regions_unexplored:overworld/under_surface/common/peat",
+    "regions_unexplored:overworld/under_surface/common/silt",
+    "regions_unexplored:overworld/under_surface/common/dirt"
+  ]
+}

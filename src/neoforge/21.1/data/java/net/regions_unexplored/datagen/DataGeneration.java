@@ -38,7 +38,8 @@ public class DataGeneration {
         .add(Registries.NOISE, RUNoiseBootstrap::bootstrap)
         .add(Registries.DAMAGE_TYPE, RUDamageTypeBootstrap::bootstrap)
         .add(Registries.PROCESSOR_LIST, RUProcessorListBootstrap::bootstrap)
-        .add(LithostitchedRegistries.BIOME_INJECTOR, RUBiomeInjectorBootstrap::bootstrap)
+        .add(LithostitchedRegistries.WORLDGEN_MODIFIER, RUWorldgenModifierBootstrap::bootstrap)
+        .add(LithostitchedRegistries.SURFACE_RULE, RUSurfaceRuleBootstrap::bootstrap)
     ;
 
     @SubscribeEvent

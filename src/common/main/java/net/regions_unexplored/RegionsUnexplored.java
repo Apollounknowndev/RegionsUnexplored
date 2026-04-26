@@ -41,7 +41,7 @@ public class RegionsUnexplored {
 		RUSoundEvents.init();
 		RUTreeDecoratorTypes.init();
 		RUTrunkPlacerTypes.init();
-
+		
 		RULithostitched.init();
 	}
 
@@ -49,7 +49,8 @@ public class RegionsUnexplored {
 		BlockToolCompat.setup();
 		//CompostableBlocks.setup();
 		FlammableBlocks.setup();
-
+		
+		RUEntityTypes.initPostRegistryFreeze();
 		RuBiolith.init();
 	}
 

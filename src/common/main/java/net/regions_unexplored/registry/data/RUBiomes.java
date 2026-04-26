@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface RUBiomes {
     List<ResourceKey<Biome>> ALL_BIOMES = new ArrayList<>();
+    List<ResourceKey<Biome>> NETHER_BIOMES = new ArrayList<>();
     List<ResourceKey<Biome>> REMOVED_BIOMES = new ArrayList<>();
     
     ResourceKey<Biome> ALPHA_GROVE = key("alpha_grove");
@@ -23,7 +24,7 @@ public interface RUBiomes {
     ResourceKey<Biome> BARLEY_FIELDS = key("barley_fields");
     ResourceKey<Biome> BAYOU = key("bayou");
     ResourceKey<Biome> BIOSHROOM_CAVES = key("bioshroom_caves");
-    ResourceKey<Biome> BLACKSTONE_BASIN = key("blackstone_basin");
+    ResourceKey<Biome> BLACKSTONE_BASIN = nether("blackstone_basin");
     ResourceKey<Biome> BLACKWOOD_TAIGA = key("blackwood_taiga");
     ResourceKey<Biome> BOREAL_TAIGA = key("boreal_taiga");
     ResourceKey<Biome> CHALK_CLIFFS = key("chalk_cliffs");
@@ -38,7 +39,7 @@ public interface RUBiomes {
     ResourceKey<Biome> FLOWER_FIELDS = key("flower_fields");
     ResourceKey<Biome> FROZEN_PINE_TAIGA = key("frozen_pine_taiga");
     ResourceKey<Biome> FUNGAL_FEN = key("fungal_fen");
-    ResourceKey<Biome> GLISTERING_MEADOW = key("glistering_meadow");
+    ResourceKey<Biome> GLISTERING_MEADOW = nether("glistering_meadow");
     ResourceKey<Biome> GOLDEN_BOREAL_TAIGA = key("golden_boreal_taiga");
     ResourceKey<Biome> GRASSLAND = key("grassland");
     ResourceKey<Biome> GRASSY_BEACH = key("grassy_beach");
@@ -46,14 +47,14 @@ public interface RUBiomes {
     ResourceKey<Biome> HIGHLAND_FIELDS = key("highland_fields");
     ResourceKey<Biome> HYACINTH_DEEPS = key("hyacinth_deeps");
     ResourceKey<Biome> ICY_HEIGHTS = key("icy_heights");
-    ResourceKey<Biome> INFERNAL_HOLT = key("infernal_holt");
+    ResourceKey<Biome> INFERNAL_HOLT = nether("infernal_holt");
     ResourceKey<Biome> JOSHUA_DESERT = key("joshua_desert");
     ResourceKey<Biome> MAGNOLIA_WOODLAND = key("magnolia_woodland");
     ResourceKey<Biome> MAPLE_FOREST = key("maple_forest");
     ResourceKey<Biome> MARSH = key("marsh");
     ResourceKey<Biome> MOUNTAINS = key("mountains");
     ResourceKey<Biome> MUDDY_RIVER = key("muddy_river");
-    ResourceKey<Biome> MYCOTOXIC_UNDERGROWTH = key("mycotoxic_undergrowth");
+    ResourceKey<Biome> MYCOTOXIC_UNDERGROWTH = nether("mycotoxic_undergrowth");
     ResourceKey<Biome> OLD_GROWTH_BAYOU = key("old_growth_bayou");
     ResourceKey<Biome> ORCHARD = key("orchard");
     ResourceKey<Biome> OUTBACK = key("outback");
@@ -64,7 +65,7 @@ public interface RUBiomes {
     ResourceKey<Biome> PRISMACHASM = key("prismachasm");
     ResourceKey<Biome> PUMPKIN_FIELDS = key("pumpkin_fields");
     ResourceKey<Biome> RAINFOREST = key("rainforest");
-    ResourceKey<Biome> REDSTONE_ABYSS = key("redstone_abyss");
+    ResourceKey<Biome> REDSTONE_ABYSS = nether("redstone_abyss");
     ResourceKey<Biome> REDSTONE_CAVES = key("redstone_caves");
     ResourceKey<Biome> REDWOODS = key("redwoods");
     ResourceKey<Biome> ROCKY_REEF = key("rocky_reef");
@@ -88,11 +89,16 @@ public interface RUBiomes {
     ResourceKey<Biome> REMOVED_FROZEN_TUNDRA = removed("frozen_tundra");
     ResourceKey<Biome> REMOVED_MAUVE_HILLS = removed("mauve_hills");
     ResourceKey<Biome> REMOVED_ROCKY_MEADOW = removed("rocky_meadow");
-    ResourceKey<Biome> PLACEHOLDER_RIVER = removed("placeholder_river");
     
     private static ResourceKey<Biome> key(String name) {
 	    ResourceKey<Biome> key = RegionsUnexplored.key(Registries.BIOME, name);
         ALL_BIOMES.add(key);
+        return key;
+    }
+    
+    private static ResourceKey<Biome> nether(String name) {
+        ResourceKey<Biome> key = key(name);
+        NETHER_BIOMES.add(key);
         return key;
     }
     

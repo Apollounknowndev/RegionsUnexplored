@@ -1,0 +1,24 @@
+package net.regions_unexplored.platform;
+
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.msrandom.multiplatform.annotations.Actual;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.regions_unexplored.RegionsUnexploredNeo;
+
+public class EntityHelperActual {
+	@Actual
+	public static <T extends Mob> void registerPlacement(EntityType<T> type, SpawnPlacementType placementType, Heightmap.Types heightmap, SpawnPlacements.SpawnPredicate<T> predicate) {
+		RegionsUnexploredNeo.SPAWN_PLACEMENTS.add(event -> {
+			event.register(type, placementType, heightmap, predicate, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+		});
+	}
+	
+	@Actual
+	public static void registerAttributes(EntityType<? extends LivingEntity> type, AttributeSupplier.Builder builder) {
+		RegionsUnexploredNeo.ENTITY_ATTRIBUTES.add(event -> {
+			event.put(type, builder.build());
+		});
+	}
+}

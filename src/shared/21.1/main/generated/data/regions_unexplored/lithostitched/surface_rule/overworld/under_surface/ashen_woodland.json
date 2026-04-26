@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:condition",
+  "if_true": {
+    "type": "minecraft:biome",
+    "biome_is": [
+      "regions_unexplored:ashen_woodland"
+    ]
+  },
+  "then_run": {
+    "type": "minecraft:block",
+    "result_state": {
+      "Name": "regions_unexplored:ashen_dirt",
+      "Properties": {
+        "smouldering": "false"
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "type": "minecraft:condition",
+  "if_true": {
+    "type": "minecraft:biome",
+    "biome_is": [
+      "regions_unexplored:ashen_woodland"
+    ]
+  },
+  "then_run": {
+    "type": "minecraft:sequence",
+    "sequence": [
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "lithostitched:all_of",
+          "conditions": [
+            {
+              "type": "minecraft:noise_threshold",
+              "max_threshold": 0.42,
+              "min_threshold": 0.18,
+              "noise": "regions_unexplored:surface_medium"
+            },
+            {
+              "type": "minecraft:noise_threshold",
+              "max_threshold": 1.7976931348623157E308,
+              "min_threshold": 0.0,
+              "noise": "regions_unexplored:weighted"
+            }
+          ]
+        },
+        "then_run": {
+          "type": "minecraft:sequence",
+          "sequence": [
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "max_threshold": 1.7976931348623157E308,
+                "min_threshold": 0.3,
+                "noise": "regions_unexplored:weighted"
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "regions_unexplored:ashen_dirt",
+                  "Properties": {
+                    "smouldering": "true"
+                  }
+                }
+              }
+            },
+            {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "regions_unexplored:ashen_dirt",
+                "Properties": {
+                  "smouldering": "false"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:noise_threshold",
+          "max_threshold": 1.7976931348623157E308,
+          "min_threshold": 0.3,
+          "noise": "regions_unexplored:surface_medium"
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "regions_unexplored:ash",
+            "Properties": {
+              "has_gravity": "true"
+            }
+          }
+        }
+      },
+      {
+        "type": "minecraft:block",
+        "result_state": {
+          "Name": "regions_unexplored:ashen_dirt",
+          "Properties": {
+            "smouldering": "false"
+          }
+        }
+      }
+    ]
+  }
+}

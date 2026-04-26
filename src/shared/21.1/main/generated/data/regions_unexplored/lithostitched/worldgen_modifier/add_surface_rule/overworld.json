@@ -1,0 +1,11 @@
+{
+  "type": "lithostitched:add_surface_rule",
+  "injection_type": "prepend",
+  "levels": [
+    "minecraft:overworld"
+  ],
+  "surface_rule": {
+    "type": "lithostitched:reference",
+    "rules": "regions_unexplored:overworld"
+  }
+}

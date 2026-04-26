@@ -10,7 +10,8 @@
     "EatBlockGoalMixin",
     "HolderLookupMixin",
     "NetherrackBlockMixin",
-    "TrunkPlacerDirtMixin"
+    "TrunkPlacerDirtMixin",
+    "WorldCarverMixin"
   ],
   "server": [],
   "injectors": {

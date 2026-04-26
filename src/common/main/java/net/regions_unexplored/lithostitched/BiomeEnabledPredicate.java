@@ -12,7 +12,7 @@ public record BiomeEnabledPredicate(ResourceKey<Biome> biome) implements LoadPre
 
     @Override
     public boolean test() {
-        return RuCommonConfig.BIOME_CONFIGS.get(biome).get();
+        return RuCommonConfig.BIOME_WEIGHTS.get(biome).get() > 0;
     }
 
     @Override

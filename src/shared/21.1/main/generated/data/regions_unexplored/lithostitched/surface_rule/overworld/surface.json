@@ -1,0 +1,27 @@
+{
+  "type": "lithostitched:reference",
+  "rules": [
+    "regions_unexplored:overworld/surface/frozen_pine_taiga",
+    "regions_unexplored:overworld/surface_and_under_surface",
+    "regions_unexplored:overworld/surface/towering_cliffs",
+    "regions_unexplored:overworld/surface/maple_forest",
+    "regions_unexplored:overworld/surface/deciduous_forest",
+    "regions_unexplored:overworld/surface/pine_taiga",
+    "regions_unexplored:overworld/surface/pumpkin_fields",
+    "regions_unexplored:overworld/surface/dry_bushland",
+    "regions_unexplored:overworld/surface/fen",
+    "regions_unexplored:overworld/surface/fungal_fen",
+    "regions_unexplored:overworld/surface/ashen_woodland",
+    "regions_unexplored:overworld/surface/bayou",
+    "regions_unexplored:overworld/surface/old_growth_bayou",
+    "regions_unexplored:overworld/surface/tropics",
+    "regions_unexplored:overworld/surface/baobab_savanna",
+    "regions_unexplored:overworld/surface/pine_slopes",
+    "regions_unexplored:overworld/surface/redwoods",
+    "regions_unexplored:overworld/surface/tundra",
+    "regions_unexplored:overworld/surface/chalk_cliffs",
+    "regions_unexplored:overworld/surface/common/peat",
+    "regions_unexplored:overworld/surface/common/silt",
+    "regions_unexplored:overworld/surface/common/grass"
+  ]
+}

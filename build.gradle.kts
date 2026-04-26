@@ -22,7 +22,7 @@ repositories {
 
 group = "net.regions_unexplored"
 version = "0.6+beta4"
-val lithostitchedVersion = "1.6.3"
+val lithostitchedVersion = "1.7.2"
 
 cloche {
     metadata {
@@ -92,7 +92,7 @@ cloche {
 
             modApi("com.terraformersmc:biolith-fabric:3.0.10")
             modRuntimeOnly("maven.modrinth:world-preview:qc0AtV3T")
-            modImplementation("maven.modrinth:lithostitched:1.6.3-fabric-21.1")
+            modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-fabric-21.1")
 
             modImplementation("com.terraformersmc:modmenu:11.0.3")
         }
@@ -134,7 +134,7 @@ cloche {
 
         dependencies {
             modApi("com.terraformersmc:biolith-neoforge:3.0.10")
-            modImplementation("maven.modrinth:lithostitched:1.6.5-neoforge-21.1")
+            modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-21.1")
         }
 
         data()

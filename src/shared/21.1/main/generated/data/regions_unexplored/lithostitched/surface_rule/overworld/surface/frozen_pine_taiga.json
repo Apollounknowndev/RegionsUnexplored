@@ -1,0 +1,55 @@
+{
+  "type": "minecraft:condition",
+  "if_true": {
+    "type": "minecraft:biome",
+    "biome_is": [
+      "regions_unexplored:frozen_pine_taiga"
+    ]
+  },
+  "then_run": {
+    "type": "minecraft:sequence",
+    "sequence": [
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "lithostitched:all_of",
+          "conditions": [
+            {
+              "type": "minecraft:noise_threshold",
+              "max_threshold": 0.6,
+              "min_threshold": 0.35,
+              "noise": "minecraft:powder_snow"
+            },
+            {
+              "type": "minecraft:water",
+              "add_stone_depth": false,
+              "offset": 0,
+              "surface_depth_multiplier": 0
+            }
+          ]
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "minecraft:powder_snow"
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:water",
+          "add_stone_depth": false,
+          "offset": 0,
+          "surface_depth_multiplier": 0
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "minecraft:snow_block"
+          }
+        }
+      }
+    ]
+  }
+}

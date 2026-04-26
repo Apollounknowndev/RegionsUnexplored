@@ -1,0 +1,46 @@
+{
+  "type": "minecraft:condition",
+  "if_true": {
+    "type": "minecraft:biome",
+    "biome_is": [
+      "regions_unexplored:tundra"
+    ]
+  },
+  "then_run": {
+    "type": "minecraft:condition",
+    "if_true": {
+      "type": "lithostitched:any_of",
+      "conditions": [
+        {
+          "type": "minecraft:noise_threshold",
+          "max_threshold": 1.7976931348623157E308,
+          "min_threshold": 0.3,
+          "noise": "regions_unexplored:surface_medium"
+        },
+        {
+          "type": "lithostitched:all_of",
+          "conditions": [
+            {
+              "type": "minecraft:noise_threshold",
+              "max_threshold": 1.7976931348623157E308,
+              "min_threshold": 0.25,
+              "noise": "regions_unexplored:surface_medium"
+            },
+            {
+              "type": "minecraft:noise_threshold",
+              "max_threshold": 1.7976931348623157E308,
+              "min_threshold": 0.0,
+              "noise": "regions_unexplored:weighted"
+            }
+          ]
+        }
+      ]
+    },
+    "then_run": {
+      "type": "minecraft:block",
+      "result_state": {
+        "Name": "minecraft:coarse_dirt"
+      }
+    }
+  }
+}

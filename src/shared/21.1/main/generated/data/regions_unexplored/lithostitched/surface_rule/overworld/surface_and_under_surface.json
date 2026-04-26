@@ -1,0 +1,17 @@
+{
+  "type": "lithostitched:reference",
+  "rules": [
+    "regions_unexplored:overworld/surface_and_under_surface/mountains",
+    "regions_unexplored:overworld/surface_and_under_surface/common/snow",
+    "regions_unexplored:overworld/surface_and_under_surface/arid_mountains",
+    "regions_unexplored:overworld/surface_and_under_surface/baobab_savanna",
+    "regions_unexplored:overworld/surface_and_under_surface/joshua_desert",
+    "regions_unexplored:overworld/surface_and_under_surface/saguaro_desert",
+    "regions_unexplored:overworld/surface_and_under_surface/outback",
+    "regions_unexplored:overworld/surface_and_under_surface/alpha_grove",
+    "regions_unexplored:overworld/surface_and_under_surface/tropics",
+    "regions_unexplored:overworld/surface_and_under_surface/muddy_river",
+    "regions_unexplored:overworld/surface_and_under_surface/common/gravel",
+    "regions_unexplored:overworld/surface_and_under_surface/common/sand"
+  ]
+}
