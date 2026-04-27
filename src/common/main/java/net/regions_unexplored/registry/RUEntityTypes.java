@@ -1,5 +1,6 @@
 package net.regions_unexplored.registry;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -23,7 +24,7 @@ public interface RUEntityTypes {
     .build("ashen"));
 
     static <T extends Entity> Supplier<EntityType<T>> register(String name, Supplier<EntityType<T>> type) {
-        return Registrar.registerEntity(name, type);
+        return Registrar.register(BuiltInRegistries.ENTITY_TYPE, name, type);
     }
 
     static void init() {

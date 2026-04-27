@@ -18,21 +18,9 @@ import java.util.function.Supplier;
 
 public class RegistrarActual {
     @Actual
-    public static <T> Supplier<T> register(Registry<T> registry, String name, Supplier<T> value) {
+    public static <T> Supplier<T> register(Registry<? super T> registry, String name, Supplier<T> value) {
         T registered = Registry.register(registry, RegionsUnexplored.id(name), value.get());
         return () -> registered;
-    }
-
-    @Actual
-    public static <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, Supplier<EntityType<T>> type) {
-        EntityType <T> registered = Registry.register(BuiltInRegistries.ENTITY_TYPE, RegionsUnexplored.id(name), type.get());
-        return () -> registered;
-    }
-
-    @Actual
-    public static <FC extends FeatureConfiguration> Supplier<Feature<FC>> registerFeature(String name, Supplier<Feature<FC>> feature) {
-        Registry.register(BuiltInRegistries.FEATURE, RegionsUnexplored.id(name), feature.get());
-        return feature;
     }
 
     @Actual

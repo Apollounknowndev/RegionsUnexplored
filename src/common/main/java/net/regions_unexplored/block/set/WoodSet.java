@@ -14,7 +14,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.regions_unexplored.block.BlockFactory;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.entity.custom.RuBoat;
-import net.regions_unexplored.item.items.RuBoatItem;
+import net.regions_unexplored.item.type.RuBoatItem;
 import net.regions_unexplored.block.RUBlockUtils;
 import net.regions_unexplored.item.RUItemUtils;
 

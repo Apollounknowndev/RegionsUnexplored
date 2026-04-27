@@ -21,7 +21,7 @@ public interface HolderLookupMixin {
 			target = "Lnet/minecraft/core/HolderLookup;listElements()Ljava/util/stream/Stream;"
 		)
 	)
-	private <T> Stream<Holder.Reference<T>> hideRemovedEnchantments(HolderLookup<T> $this, Operation<Stream<Holder.Reference<T>>> operation) {
+	private <T> Stream<Holder.Reference<T>> hideRemovedBiomes(HolderLookup<T> $this, Operation<Stream<Holder.Reference<T>>> operation) {
 		return operation.call($this).filter(holder -> !holder.key().isFor(Registries.BIOME) || !holder.is((TagKey<T>) RUBiomeTags.REMOVED));
 	}
 }

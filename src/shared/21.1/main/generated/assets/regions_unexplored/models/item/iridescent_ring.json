@@ -1,0 +1,6 @@
+{
+  "parent": "regions_unexplored:item/template/ring",
+  "textures": {
+    "ring": "regions_unexplored:item/iridescent_ring"
+  }
+}

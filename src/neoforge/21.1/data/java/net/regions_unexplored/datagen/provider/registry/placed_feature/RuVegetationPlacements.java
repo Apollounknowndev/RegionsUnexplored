@@ -142,7 +142,7 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> ELEPHANT_EAR_SPARSE = key("elephant_ear_sparse");
     public static final ResourceKey<PlacedFeature> ELEPHANT_EAR_DENSE = key("elephant_ear_dense");
     public static final ResourceKey<PlacedFeature> DROPLEAF = key("dropleaf");
-    public static final ResourceKey<PlacedFeature> DUCKWEED = key("duckweed");
+    public static final ResourceKey<PlacedFeature> DUCKWEED = key("patch/duckweed");
     //SHRUBS
     public static final ResourceKey<PlacedFeature> ASHEN_SHRUB = key("shrub/ashen");
     public static final ResourceKey<PlacedFeature> ACACIA_SHRUB = key("shrub/acacia");
@@ -244,7 +244,6 @@ public class RuVegetationPlacements {
         final Holder<ConfiguredFeature<?, ?>> GIANT_LILY = getter.getOrThrow(RuVegetationFeatures.GIANT_LILY);
         final Holder<ConfiguredFeature<?, ?>> ELEPHANT_EAR = getter.getOrThrow(RuVegetationFeatures.ELEPHANT_EAR);
         final Holder<ConfiguredFeature<?, ?>> DROPLEAF = getter.getOrThrow(RuVegetationFeatures.DROPLEAF);
-        final Holder<ConfiguredFeature<?, ?>> DUCKWEED = getter.getOrThrow(RuVegetationFeatures.DUCKWEED);
         // Shrub Mixes
         final Holder<ConfiguredFeature<?, ?>> BAOBAB_ACACIA_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.BAOBAB_ACACIA_SHRUB_MIX);
         final Holder<ConfiguredFeature<?, ?>> AUTUMNAL_SHRUB_MIX = getter.getOrThrow(RuVegetationFeatures.AUTUMNAL_SHRUB_MIX);
@@ -418,7 +417,12 @@ public class RuVegetationPlacements {
             RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
             BiomeFilter.biome()
         ));
-        register(context, RuVegetationPlacements.DUCKWEED, DUCKWEED, List.of(CountPlacement.of(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        register(context, RuVegetationPlacements.DUCKWEED,
+            LithostitchedPlacementModifiers.noiseSlope(RUNoises.FLOWER_DENSITY, 32, 0, 3, 0),
+            InSquarePlacement.spread(),
+            PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+            BiomeFilter.biome()
+        );
         //SHRUBS
         register(context, RuVegetationPlacements.ASHEN_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());
         register(context, RuVegetationPlacements.ACACIA_SHRUB, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.filteredByBlockSurvival(RUBlocks.OAK_NATURAL_SET.getShrub()), BiomeFilter.biome());

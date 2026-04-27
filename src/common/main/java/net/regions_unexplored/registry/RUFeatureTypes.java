@@ -79,8 +79,7 @@ public interface RUFeatureTypes {
     Supplier<Feature<FallenTreeConfig>> FALLEN_TREE = register("fallen_tree", new RUFallenTreeFeature());
 
     private static <FC extends FeatureConfiguration> Supplier<Feature<FC>> register(String name, Feature<FC> feature) {
-        Registrar.register(BuiltInRegistries.FEATURE, name, () -> feature);
-        return () -> feature;
+        return Registrar.register(BuiltInRegistries.FEATURE, name, () -> feature);
     }
 
     static void init() {

@@ -115,7 +115,6 @@ public class RuVegetationFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> GIANT_LILY = key("giant_lily");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ELEPHANT_EAR = key("elephant_ear");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DROPLEAF = key("dropleaf");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DUCKWEED = key("duckweed");
     // Shrubs
     public static final ResourceKey<ConfiguredFeature<?, ?>> BAOBAB_ACACIA_SHRUB_MIX = key("baobab_acacia_shrub_mix");
     public static final ResourceKey<ConfiguredFeature<?, ?>> AUTUMNAL_SHRUB_MIX = key("autumnal_shrub_mix");
@@ -357,7 +356,7 @@ public class RuVegetationFeatures {
                 ), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, true
             ),
             BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.hasSturdyFace(Vec3i.ZERO.above(), Direction.DOWN), BlockPredicate.matchesTag(BlockTags.AIR))))));
-        register(context, DUCKWEED, Feature.RANDOM_PATCH, patch(RUBlocks.DUCKWEED, 10, 7, 3));
+        registerPlaced(context, DUCKWEED, Feature.RANDOM_PATCH, patch(RUBlocks.DUCKWEED, 24, 4, 0));
 
         //SHRUBS
         for (NaturalSet set : RUBlocks.NATURAL_SETS) {

@@ -9,6 +9,7 @@
     "CropPlacerMixin",
     "EatBlockGoalMixin",
     "HolderLookupMixin",
+    "LocalPlayerMixin",
     "NetherrackBlockMixin",
     "TrunkPlacerDirtMixin",
     "WorldCarverMixin"

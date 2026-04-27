@@ -1,4 +1,4 @@
-package net.regions_unexplored.item.items;
+package net.regions_unexplored.item.type;
 
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;

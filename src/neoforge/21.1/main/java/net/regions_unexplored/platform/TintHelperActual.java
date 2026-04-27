@@ -2,6 +2,7 @@ package net.regions_unexplored.platform;
 
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.msrandom.multiplatform.annotations.Actual;
 import net.regions_unexplored.client.TintRegistration;
@@ -13,7 +14,7 @@ public class TintHelperActual {
     }
 
     @Actual
-    public static void tintItems(ItemColor itemColor, Block... items) {
+    public static void tintItems(ItemColor itemColor, ItemLike... items) {
         TintRegistration.ITEM_TINTS.computeIfAbsent(itemColor, i -> items);
     }
 }

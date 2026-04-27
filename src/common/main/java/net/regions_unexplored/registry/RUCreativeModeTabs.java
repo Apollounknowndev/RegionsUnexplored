@@ -31,6 +31,7 @@ public interface RUCreativeModeTabs {
             output.accept(RUBlocks.HANGING_PRISMARITE.get().asItem());
             output.accept(RUBlocks.PRISMOSS_SPROUT.get().asItem());
             output.accept(RUBlocks.PRISMAGLASS.get().asItem());
+            output.accept(RUItems.IRIDESCENT_RING.get());
             //REDSTONE_BLOCKS
             output.accept(RUBlocks.REDSTONE_BUD.get().asItem());
             output.accept(RUBlocks.REDSTONE_BULB.get().asItem());

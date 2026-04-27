@@ -1,0 +1,23 @@
+{
+  "feature": "regions_unexplored:patch/duckweed",
+  "placement": [
+    {
+      "type": "lithostitched:noise_slope",
+      "noise": "regions_unexplored:flower_density",
+      "offset": 0,
+      "slope": 32,
+      "xz_scale": 3.0,
+      "y_scale": 0.0
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

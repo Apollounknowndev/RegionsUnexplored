@@ -1,0 +1,46 @@
+{
+  "textures": {
+    "particle": "#ring"
+  },
+  "elements": [
+    {
+      "from": [6, 6, 7],
+      "to": [10, 10, 8],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 8], "texture": "#ring"},
+        "east": {"uv": [0, 0, 4, 8], "texture": "#ring"},
+        "south": {"uv": [16, 0, 0, 8], "texture": "#ring"},
+        "west": {"uv": [12, 0, 16, 8], "texture": "#ring"},
+        "up": {"uv": [16, 0, 0, 2], "texture": "#ring"},
+        "down": {"uv": [16, 6, 0, 8], "texture": "#ring"}
+      }
+    },
+    {
+      "from": [7, 10, 6.5],
+      "to": [9, 11, 8.5],
+      "faces": {
+        "north": {"uv": [0, 12, 8, 14], "texture": "#ring", "tintindex": 0},
+        "east": {"uv": [8, 14, 16, 16], "texture": "#ring", "tintindex": 0},
+        "south": {"uv": [0, 14, 8, 16], "texture": "#ring", "tintindex": 0},
+        "west": {"uv": [8, 12, 16, 14], "texture": "#ring", "tintindex": 0},
+        "up": {"uv": [0, 8, 8, 12], "texture": "#ring", "tintindex": 0},
+        "down": {"uv": [8, 8, 16, 12], "texture": "#ring", "tintindex": 0}
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [0, 0, -90],
+      "translation": [1.5, -2, 1],
+      "scale": [0.7, 0.7, 0.7]
+    },
+    "firstperson_righthand": {
+      "translation": [0, -4, 0]
+    },
+    "gui": {
+      "rotation": [20, -45, 0],
+      "translation": [-0.75, -0.5, 0],
+      "scale": [2, 2, 2]
+    }
+  }
+}

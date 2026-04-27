@@ -20,18 +20,8 @@ import java.util.function.Supplier;
 public class RegistrarActual {
 
     @Actual
-    public static <T> Supplier<T> register(Registry<T> registry, String name, Supplier<T> value) {
+    public static <T> Supplier<T> register(Registry<? super T> registry, String name, Supplier<T> value) {
         return RegionsUnexploredNeo.REGISTER_CACHE.computeIfAbsent(registry.key(), key -> DeferredRegister.create(registry.key().identifier(), RegionsUnexplored.MOD_ID)).register(name, value);
-    }
-
-    @Actual
-    public static <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, Supplier<EntityType<T>> type) {
-        return RegionsUnexploredNeo.REGISTER_CACHE.computeIfAbsent(BuiltInRegistries.ENTITY_TYPE.key(), resourceKey -> DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, RegionsUnexplored.MOD_ID)).register(name, type);
-    }
-
-    @Actual
-    public static <FC extends FeatureConfiguration> Supplier<Feature<FC>> registerFeature(String name, Supplier<Feature<FC>> feature) {
-        return RegionsUnexploredNeo.REGISTER_CACHE.computeIfAbsent(BuiltInRegistries.FEATURE.key(), resourceKey -> DeferredRegister.create(BuiltInRegistries.FEATURE, RegionsUnexplored.MOD_ID)).register(name, feature);
     }
 
     @Actual

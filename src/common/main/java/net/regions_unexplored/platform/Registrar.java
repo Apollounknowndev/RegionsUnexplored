@@ -1,6 +1,7 @@
 package net.regions_unexplored.platform;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
@@ -13,13 +14,7 @@ import java.util.function.Supplier;
 
 public class Registrar {
     @Expect
-    public static <T> Supplier<T> register(Registry<T> registry, String name, Supplier<T> value);
-
-    @Expect
-    public static <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, Supplier<EntityType<T>> type);
-
-    @Expect
-    public static <FC extends FeatureConfiguration> Supplier<Feature<FC>> registerFeature(String name, Supplier<Feature<FC>> feature);
+    public static <T> Supplier<T> register(Registry<? super T> registry, String name, Supplier<T> value);
 
     @Expect
     public static Supplier<CreativeModeTab> registerCreativeModeTab(String name, Supplier<ItemStack> icon, Supplier<CreativeModeTab.DisplayItemsGenerator> items);
