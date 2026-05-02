@@ -1,0 +1,35 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/lush_pine",
+          "placement": []
+        },
+        "weight": 2
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/giant_pink_bioshroom",
+          "placement": []
+        },
+        "weight": 1
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/giant_red_mushroom",
+          "placement": []
+        },
+        "weight": 1
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/giant_brown_mushroom",
+          "placement": []
+        },
+        "weight": 1
+      }
+    ]
+  }
+}

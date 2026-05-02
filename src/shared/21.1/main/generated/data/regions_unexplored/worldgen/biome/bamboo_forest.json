@@ -87,15 +87,13 @@
       "minecraft:patch_pumpkin",
       "regions_unexplored:tree/group/bamboo_forest_primary",
       "regions_unexplored:tree/group/bamboo_forest_secondary",
-      "regions_unexplored:pink_flowers",
-      "regions_unexplored:ferns",
-      "regions_unexplored:shrub/cherry",
-      "regions_unexplored:patch/short_grass_sparse",
-      "regions_unexplored:patch/grass_sprouts_sparse"
+      "regions_unexplored:shrub/group/bamboo_forest",
+      "regions_unexplored:patch/bamboo_flowers",
+      "regions_unexplored:patch/fern_sparse",
+      "regions_unexplored:patch/short_grass_sparse"
     ],
     [
-      "minecraft:freeze_top_layer",
-      "regions_unexplored:bamboo"
+      "minecraft:freeze_top_layer"
     ]
   ],
   "has_precipitation": true,

@@ -90,16 +90,16 @@
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "regions_unexplored:tree/group/ashen_woodland",
-      "regions_unexplored:patch_wilting_trillium",
+      "regions_unexplored:shrub/group/ashen_woodland",
+      "regions_unexplored:patch/wilting_trillium",
       "regions_unexplored:patch/ashen_grass",
-      "regions_unexplored:patch/smouldering_ashen_grass",
-      "regions_unexplored:shrub/ashen"
+      "regions_unexplored:patch/smouldering_ashen_grass"
     ],
     [
       "minecraft:freeze_top_layer"
     ]
   ],
-  "has_precipitation": false,
+  "has_precipitation": true,
   "spawn_costs": {},
   "spawners": {
     "ambient": [

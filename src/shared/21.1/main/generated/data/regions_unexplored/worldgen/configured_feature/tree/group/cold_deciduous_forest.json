@@ -1,0 +1,35 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/oak_with_branch",
+          "placement": []
+        },
+        "weight": 1
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/big_oak",
+          "placement": []
+        },
+        "weight": 2
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/big_red_maple",
+          "placement": []
+        },
+        "weight": 2
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/spruce_tall",
+          "placement": []
+        },
+        "weight": 4
+      }
+    ]
+  }
+}

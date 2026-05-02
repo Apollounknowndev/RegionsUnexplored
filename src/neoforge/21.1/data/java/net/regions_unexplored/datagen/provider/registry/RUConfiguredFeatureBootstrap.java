@@ -12,6 +12,7 @@ public class RUConfiguredFeatureBootstrap {
         RuAquaticFeatures.bootstrap(context);
         RuMiscOverworldFeatures.bootstrap(context);
         RuNetherFeatures.bootstrap(context);
+        RUShrubFeatures.bootstrapConfigured(context);
         RuTreeFeatures.bootstrap(context);
         RuVegetationFeatures.bootstrap(context);
     }

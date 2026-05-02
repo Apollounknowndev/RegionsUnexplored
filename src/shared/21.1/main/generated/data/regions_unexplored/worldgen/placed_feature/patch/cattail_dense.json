@@ -2,8 +2,12 @@
   "feature": "regions_unexplored:patch/cattail",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 6
+      "type": "lithostitched:noise_slope",
+      "noise": "regions_unexplored:flower_density",
+      "offset": 2,
+      "slope": -3,
+      "xz_scale": 3.0,
+      "y_scale": 0.0
     },
     {
       "type": "minecraft:in_square"

@@ -72,7 +72,7 @@
       "minecraft:disk_sand",
       "minecraft:disk_clay",
       "minecraft:disk_gravel",
-      "regions_unexplored:ore_redstone_large"
+      "regions_unexplored:special/ore_redstone_large"
     ],
     [],
     [
@@ -89,11 +89,11 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:pointed_redstone",
-      "regions_unexplored:large_pointed_redstone",
-      "regions_unexplored:pointed_redstone_cluster",
-      "regions_unexplored:redstone_bud",
-      "regions_unexplored:redstone_bulb"
+      "regions_unexplored:special/pointed_redstone",
+      "regions_unexplored:special/large_pointed_redstone",
+      "regions_unexplored:special/pointed_redstone_cluster",
+      "regions_unexplored:patch/redstone_bud",
+      "regions_unexplored:patch/redstone_bulb"
     ],
     [
       "minecraft:freeze_top_layer"

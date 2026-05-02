@@ -5,5 +5,5 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.function.Function;
 
-public interface BlockFactory extends Function<BlockBehaviour.Properties, Block> {
+public interface BlockFactory<T extends Block> extends Function<BlockBehaviour.Properties, T> {
 }

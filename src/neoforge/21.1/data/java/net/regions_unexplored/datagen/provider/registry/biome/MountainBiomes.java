@@ -4,35 +4,29 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.regions_unexplored.datagen.provider.registry.RUBiomeFeatures;
+import net.regions_unexplored.datagen.provider.registry.configured_feature.RUShrubFeatures;
+import net.regions_unexplored.datagen.provider.registry.util.RUBiomeUtils;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuMiscOverworldPlacements;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuTreePlacements;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuVegetationPlacements;
+import net.regions_unexplored.registry.data.RUBiomes;
+
+import static net.regions_unexplored.datagen.provider.registry.util.RUBiomeUtils.*;
 
 public class MountainBiomes {
-    protected static final int NORMAL_WATER_COLOR = 4159204;
-    protected static final int NORMAL_WATER_FOG_COLOR = 329011;
-    private static final int OVERWORLD_FOG_COLOR = 12638463;
-
-    protected static int calculateSkyColor(float color) {
-        float $$1 = color / 3.0F;
-        $$1 = Mth.clamp($$1, -1.0F, 1.0F);
-        return Mth.hsvToRgb(0.62222224F - $$1 * 0.05F, 0.5F + $$1 * 0.1F, 1.0F);
-    }
-
     private static MobSpawnSettings.Builder baseMountainSpawning() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         return spawnBuilder;
     }
+    
     private static MobSpawnSettings.Builder baseSlopeSpawning() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 4, 2, 3));
@@ -40,6 +34,7 @@ public class MountainBiomes {
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         return spawnBuilder;
     }
+    
     private static MobSpawnSettings.Builder baseExtremeHillsSpawning() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
@@ -51,7 +46,7 @@ public class MountainBiomes {
 
     private static BiomeGenerationSettings.Builder baseMountainGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        RUBiomeFeatures.globalOverworldGeneration(builder);
+        RUBiomeUtils.globalOverworldGeneration(builder);
         BiomeDefaultFeatures.addDefaultOres(builder);
         BiomeDefaultFeatures.addDefaultSoftDisks(builder);
         BiomeDefaultFeatures.addExtraEmeralds(builder);
@@ -60,8 +55,7 @@ public class MountainBiomes {
     }
     private static BiomeGenerationSettings.Builder baseSlopeGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        RUBiomeFeatures.globalOverworldGeneration(builder);
-        RUBiomeFeatures.grassSprouts(builder);
+        RUBiomeUtils.globalOverworldGeneration(builder);
         BiomeDefaultFeatures.addPlainGrass(builder);
         BiomeDefaultFeatures.addDefaultOres(builder);
         BiomeDefaultFeatures.addDefaultSoftDisks(builder);
@@ -71,7 +65,7 @@ public class MountainBiomes {
     }
     private static BiomeGenerationSettings.Builder baseExtremeHillsGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        RUBiomeFeatures.globalOverworldGeneration(builder);
+        RUBiomeUtils.globalOverworldGeneration(builder);
         BiomeDefaultFeatures.addDefaultOres(builder);
         BiomeDefaultFeatures.addDefaultSoftDisks(builder);
         BiomeDefaultFeatures.addDefaultMushrooms(builder);
@@ -82,144 +76,131 @@ public class MountainBiomes {
     }
 
     public static Biome aridMountains(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
-                .skyColor(calculateSkyColor(1.5F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-6773446)
-                .grassColorOverride(-4279222)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_STONY_PEAKS));
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(1.5f)
+            .foliageColorOverride(0x98a53a)
+            .grassColorOverride(0xbeb44a)
+            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_STONY_PEAKS));
 
         //add features
         BiomeGenerationSettings.Builder builder = baseMountainGeneration(featureGetter, carverGetter);
 
         //add RU features
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.OAK_SHRUB_ON_STONE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_ARID_MOUNTAINS);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseExtremeHillsSpawning();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.ARMADILLO, 6, 1, 2));
 
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(false)
-                .temperature(2f)
-                .downfall(0.0f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(2, 0, false)
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome highlandFields(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
-                .skyColor(calculateSkyColor(2F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-8275350)
-                .grassColorOverride(-9782677)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_MEADOW));
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(2)
+            .foliageColorOverride(0x81ba6a)
+            .grassColorOverride(0x6aba6b)
+            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_MEADOW));
 
         //add features
         BiomeGenerationSettings.Builder builder = baseSlopeGeneration(featureGetter, carverGetter);
 
         //add RU features
         builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, RuMiscOverworldPlacements.ROCK_GROUP_HIGHLAND_FIELDS);
+        
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_HIGHLAND_FIELDS);
-        RUBiomeFeatures.addDaisies(builder);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_DAISIES);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseSlopeSpawning();
 
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(true)
-                .temperature(0.65f)
-                .downfall(0.6f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(0.65f, 0.6f)
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
+    }
+    
+    public static Biome pineSlopes(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.4f)
+            .foliageColorOverride(0x758646)
+            .grassColorOverride(0x84a75a)
+            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JAGGED_PEAKS));
+        
+        //add features
+        BiomeGenerationSettings.Builder builder = baseMountainGeneration(featureGetter, carverGetter);
+        
+        //add RU features
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_PINE_SLOPES);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_PINE_ON_DIRT);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.PINE_SLOPES));
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_FERN);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS);
+        
+        //add mob spawns
+        MobSpawnSettings.Builder spawnBuilder = baseMountainSpawning();
+        
+        return biomeBuilder(0.25f, 0.6f)
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
-    public static Biome mountainsAndSlopes(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter, boolean slopes) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
-                .skyColor(calculateSkyColor(0.4F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-9075130)
-                .grassColorOverride(-8083622)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JAGGED_PEAKS));
+    public static Biome mountains(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.4f)
+            .foliageColorOverride(0x758646)
+            .grassColorOverride(0x84a75a)
+            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JAGGED_PEAKS));
 
         //add features
         BiomeGenerationSettings.Builder builder = baseMountainGeneration(featureGetter, carverGetter);
 
         //add RU features
-        if(!slopes){
-            builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.PINE_ON_DIRT);
-        }
-        else{
-            builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.SCOTTS_PINE_ON_DIRT);
-        }
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_MOUNTAINS);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_PINE_ON_DIRT);
-
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.MOUNTAIN_VEGETATION);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PINE_SHRUB);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.MOUNTAINS));
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_FERN);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseMountainSpawning();
 
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(true)
-                .temperature(0.28f)
-                .downfall(0.6f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(0.25f, 0.6f)
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome toweringCliffs(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
-                .skyColor(calculateSkyColor(0.7F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-7362208)
-                .grassColorOverride(-8482734)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_STONY_PEAKS));
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.7f)
+            .foliageColorOverride(0x8fa960)
+            .grassColorOverride(0x7e9052)
+            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_STONY_PEAKS));
 
         //add features
         BiomeGenerationSettings.Builder builder = baseExtremeHillsGeneration(featureGetter, carverGetter);
 
         //add RU features
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.SCOTTS_PINE_MOUNTAIN);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.DEAD_SCOTTS_PINE_MOUNTAIN);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_TOWERING_CLIFFS);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_PINE);
-
-        RUBiomeFeatures.addHyssop(builder);
-
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.FERNS);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PINE_DEAD_SHRUB_MIX);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.TOWERING_CLIFFS));
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_HYSSOP);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_FERN);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseExtremeHillsSpawning();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GOAT, 5, 1, 3));
 
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(true)
-                .temperature(0.75f)
-                .downfall(0.8f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(0.75f, 0.8f)
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
 }

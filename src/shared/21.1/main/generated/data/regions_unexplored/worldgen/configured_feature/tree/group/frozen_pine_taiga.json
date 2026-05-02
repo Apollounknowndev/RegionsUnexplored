@@ -1,0 +1,28 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/stripped_pine",
+          "placement": []
+        },
+        "weight": 7
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/stripped_pine_tall",
+          "placement": []
+        },
+        "weight": 2
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/pine_shrub",
+          "placement": []
+        },
+        "weight": 1
+      }
+    ]
+  }
+}

@@ -84,8 +84,8 @@
       "minecraft:seagrass_river",
       "minecraft:kelp_warm",
       "regions_unexplored:patch/cattail",
-      "regions_unexplored:grass",
-      "regions_unexplored:tall_grass"
+      "regions_unexplored:patch/tall_grass",
+      "regions_unexplored:patch/short_grass_dense"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -186,5 +186,5 @@
       }
     ]
   },
-  "temperature": 0.75
+  "temperature": 0.6
 }

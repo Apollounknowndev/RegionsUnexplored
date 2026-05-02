@@ -35,7 +35,7 @@
     ],
     [
       "minecraft:amethyst_geode",
-      "regions_unexplored:mossy_sea_rocks"
+      "regions_unexplored:special/rocky_reef_rocks"
     ],
     [
       "minecraft:monster_room",
@@ -90,13 +90,10 @@
       "minecraft:seagrass_warm",
       "minecraft:sea_pickle",
       "minecraft:kelp_warm",
-      "regions_unexplored:red_magnolia_flowers_aquatic",
-      "regions_unexplored:pink_magnolia_flowers_aquatic",
-      "regions_unexplored:white_magnolia_flowers_aquatic",
-      "regions_unexplored:palm_sapling_aquatic",
-      "regions_unexplored:elephant_ear_aquatic",
-      "regions_unexplored:jungle_tree_aquatic",
-      "regions_unexplored:palm_tree_aquatic"
+      "regions_unexplored:tree/group/rocky_reef",
+      "regions_unexplored:shrub/group/rocky_reef",
+      "regions_unexplored:special/magnolias",
+      "regions_unexplored:patch/elephant_ear_unrecoverably_dense"
     ],
     [
       "minecraft:freeze_top_layer"

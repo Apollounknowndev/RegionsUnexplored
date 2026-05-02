@@ -85,13 +85,10 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:tree/giant_green_bioshroom",
-      "regions_unexplored:tree/giant_blue_bioshroom",
-      "regions_unexplored:cave_grass",
-      "regions_unexplored:cave_tall_grass",
-      "regions_unexplored:blue_bioshroom",
-      "regions_unexplored:green_bioshroom",
-      "regions_unexplored:pink_bioshroom"
+      "regions_unexplored:tree/group/bioshroom_caves",
+      "regions_unexplored:patch/cave_bioshrooms",
+      "regions_unexplored:patch/tall_grass_caves",
+      "regions_unexplored:patch/short_grass_caves"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -1,0 +1,63 @@
+{
+  "type": "minecraft:flower",
+  "config": {
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:dual_noise_provider",
+            "noise": {
+              "amplitudes": [
+                1.0
+              ],
+              "firstOctave": -2
+            },
+            "scale": 1.0,
+            "seed": 9987,
+            "slow_noise": {
+              "amplitudes": [
+                2.5
+              ],
+              "firstOctave": -6
+            },
+            "slow_scale": 0.7,
+            "states": [
+              {
+                "Name": "regions_unexplored:steppe_grass"
+              },
+              {
+                "Name": "minecraft:short_grass"
+              },
+              {
+                "Name": "regions_unexplored:grass_sprouts"
+              },
+              {
+                "Name": "regions_unexplored:dead_steppe_shrub"
+              },
+              {
+                "Name": "regions_unexplored:small_desert_shrub"
+              }
+            ],
+            "variety": [
+              2,
+              3
+            ]
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        }
+      ]
+    },
+    "tries": 32,
+    "xz_spread": 7,
+    "y_spread": 3
+  }
+}

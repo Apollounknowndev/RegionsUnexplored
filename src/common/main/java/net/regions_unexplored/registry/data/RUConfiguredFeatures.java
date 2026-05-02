@@ -11,11 +11,12 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_GIANT_BLUE_BIOSHROOM = tree("giant_blue_bioshroom");
     ResourceKey<ConfiguredFeature<?,?>> TREE_GIANT_GREEN_BIOSHROOM = tree("giant_green_bioshroom");
     ResourceKey<ConfiguredFeature<?,?>> TREE_GIANT_PINK_BIOSHROOM = tree("giant_pink_bioshroom");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_GIANT_YELLOW_BIOSHROOM = tree("giant_yellow_bioshroom");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_YELLOW_BIOSHROOM_SMALL = key("nether/tree/yellow_bioshroom_small");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_YELLOW_BIOSHROOM_LARGE = key("nether/tree/yellow_bioshroom_large");
     ResourceKey<ConfiguredFeature<?,?>> TREE_GIANT_RED_MUSHROOM = tree("giant_red_mushroom");
     ResourceKey<ConfiguredFeature<?,?>> TREE_GIANT_BROWN_MUSHROOM = tree("giant_brown_mushroom");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_BRIM_WILLOW = tree("brim_willow");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_TALL_BRIM_WILLOW = tree("tall_brim_willow");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_BRIM_WILLOW = key("nether/tree/brim_willow");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_TALL_BRIM_WILLOW = key("nether/tree/tall_brim_willow");
     ResourceKey<ConfiguredFeature<?,?>> TREE_ACACIA = tree("acacia");
     ResourceKey<ConfiguredFeature<?,?>> TREE_ACACIA_SHRUB = tree("acacia_shrub");
     ResourceKey<ConfiguredFeature<?,?>> TREE_ALPHA_OAK = tree("alpha_oak");
@@ -33,7 +34,7 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_BLACKWOOD = tree("big_blackwood");
     ResourceKey<ConfiguredFeature<?,?>> TREE_GIANT_BLACKWOOD = tree("giant_blackwood");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIRCH_ASPEN = tree("birch_aspen");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_COBALT = tree("cobalt");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_COBALT = key("nether/tree/cobalt");
     ResourceKey<ConfiguredFeature<?,?>> TREE_TALL_DARK_OAK = tree("tall_dark_oak");
     ResourceKey<ConfiguredFeature<?,?>> TREE_MAGNOLIA = tree("magnolia");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BLUE_MAGNOLIA = tree("blue_magnolia");
@@ -60,6 +61,7 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_JOSHUA_MEDIUM = tree("joshua_medium");
     ResourceKey<ConfiguredFeature<?,?>> TREE_JOSHUA_LARGE = tree("joshua_large");
     ResourceKey<ConfiguredFeature<?,?>> TREE_JUNGLE = tree("jungle");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_JUNGLE_AQUATIC = tree("jungle_aquatic");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_JUNGLE = tree("big_jungle");
     ResourceKey<ConfiguredFeature<?,?>> TREE_KAPOK = tree("kapok");
     ResourceKey<ConfiguredFeature<?,?>> TREE_LARCH = tree("larch");
@@ -80,7 +82,6 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK = tree("oak");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_TALL = tree("oak_tall");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_OAK = tree("big_oak");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_SHRUB = tree("oak_shrub");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_SHRUB_SMALL = tree("oak_shrub_small");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_SHRUB_LARGE = tree("oak_shrub_large");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_BUSH = tree("oak_bush");
@@ -132,20 +133,16 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> BONEMEAL_COBALT_NYLIUM = key("bonemeal/nylium/cobalt");
     ResourceKey<ConfiguredFeature<?,?>> BONEMEAL_BRIMSPROUT_NYLIUM = key("bonemeal/nylium/brimsprout");
 
-    static ResourceKey<ConfiguredFeature<?,?>> shrubGroup(String name) {
-        return shrub("group/" + name);
-    }
-
     static ResourceKey<ConfiguredFeature<?,?>> shrub(String name) {
         return key("shrub/" + name);
-    }
-
-    static ResourceKey<ConfiguredFeature<?,?>> treeGroup(String name) {
-        return tree("group/" + name);
     }
     
     static ResourceKey<ConfiguredFeature<?,?>> tree(String name) {
         return key("tree/" + name);
+    }
+    
+    static ResourceKey<ConfiguredFeature<?,?>> patch(String name) {
+        return key("patch/" + name);
     }
     
     static ResourceKey<ConfiguredFeature<?,?>> key(String name) {

@@ -9,7 +9,7 @@
   "downfall": 0.0,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": -5207984,
+    "foliage_color": 11569232,
     "grass_color": 12347986,
     "mood_sound": {
       "block_search_extent": 8,
@@ -85,11 +85,11 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:patch/short_grass_dense",
-      "regions_unexplored:patch/fern",
-      "regions_unexplored:patch/flowers_tundra",
       "regions_unexplored:tree/group/tundra",
-      "regions_unexplored:tree/group/tundra_shrubs"
+      "regions_unexplored:tree/group/tundra_bushes",
+      "regions_unexplored:patch/flowers_tundra",
+      "regions_unexplored:patch/fern_sparse",
+      "regions_unexplored:patch/short_grass_dense"
     ],
     [
       "minecraft:freeze_top_layer"

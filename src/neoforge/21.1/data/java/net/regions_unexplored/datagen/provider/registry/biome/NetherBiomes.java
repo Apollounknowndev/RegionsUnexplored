@@ -2,7 +2,6 @@ package net.regions_unexplored.datagen.provider.registry.biome;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.data.worldgen.placement.NetherPlacements;
@@ -16,15 +15,14 @@ import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.regions_unexplored.datagen.provider.registry.placed_feature.RuVegetationPlacements;
 import net.regions_unexplored.registry.RUParticleTypes;
-import net.regions_unexplored.datagen.provider.registry.RUBiomeFeatures;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuNetherPlacements;
-import net.regions_unexplored.datagen.provider.registry.placed_feature.RuTreePlacements;
 
 public class NetherBiomes {
 
     public static Biome blackstoneBasin(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
+        BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
                 .skyColor(395547)
                 .fogColor(395547)
                 .waterColor(5463027)
@@ -52,22 +50,22 @@ public class NetherBiomes {
 
         //add RU features
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.OBSIDIAN_SPIRE);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuTreePlacements.COBALT);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.COBALT_ROOTS);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.COBALT_EARLIGHT);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.TREE_GROUP_BLACKSTONE_BASIN);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_COBALT_ROOTS);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_COBALT_EARLIGHT);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.TALL_COBALT_EARLIGHT);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.BLACKSTONE_CLUSTER);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.HANGING_EARLIGHT);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_BLACKSTONE_CLUSTER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_HANGING_EARLIGHT);
 
 
         //add mob spawns
-        MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder())
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder()
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIFIED_PIGLIN, 25, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITHER_SKELETON, 20, 1, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 1, 2))
                 .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 60, 1, 2));
 
-        return (new Biome.BiomeBuilder())
+        return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(2f)
                 .downfall(0f)
@@ -78,7 +76,7 @@ public class NetherBiomes {
     }
 
     public static Biome infernalHolt(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
+        BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
                 .skyColor(3479565)
                 .fogColor(3479565)
                 .waterColor(3479565)
@@ -104,25 +102,21 @@ public class NetherBiomes {
         BiomeDefaultFeatures.addNetherDefaultOres(builder);
 
         //add RU features
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuTreePlacements.BRIM_WILLOW);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuTreePlacements.TALL_BRIM_WILLOW);
-
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.BRIMSPROUT);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.DORCEL);
-
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.BRIM_FLAMES);
-
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.BRIMWOOD_SHRUB);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.TREE_GROUP_INFERNAL_HOLT);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_BRIMSPROUT);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.SINGLE_DORCEL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_INFERNAL_HOLT_FIRE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.SINGLE_BRIMWOOD_SHRUB);
 
 
         //add mob spawns
-        MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder())
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder()
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIFIED_PIGLIN, 1, 2, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.HOGLIN, 9, 3, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 5, 3, 4))
                 .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 60, 1, 2));
 
-        return (new Biome.BiomeBuilder())
+        return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(2f)
                 .downfall(0f)
@@ -133,7 +127,7 @@ public class NetherBiomes {
     }
 
     public static Biome glisteringMeadow(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
+        BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
                 .skyColor(4328552)
                 .fogColor(4328552)
                 .waterColor(12058781)
@@ -160,23 +154,23 @@ public class NetherBiomes {
 
         //add RU features
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_MEADOW_ROCK);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTER_BULB);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_SPROUT);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_FERN);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_BLOOM);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTER_SPIRE);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.GLISTERING_IVY);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_GLISTER_BULB);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_GLISTERING_SPROUT);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_GLISTERING_FERN);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_GLISTERING_BLOOM);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_GLISTER_SPIRE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_GLISTERING_IVY);
 
 
 
         //add mob spawns
-        MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder())
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder()
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.GHAST, 5, 1, 1))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 1, 1))
                 .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 40, 1, 2))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.HOGLIN, 5, 1, 3));
 
-        return (new Biome.BiomeBuilder())
+        return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(2f)
                 .downfall(0f)
@@ -187,14 +181,14 @@ public class NetherBiomes {
     }
 
     public static Biome mycotoxicUndergrowth(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
+        BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
                 .skyColor(10717988)
                 .fogColor(10717988)
                 .waterColor(10717988)
                 .waterFogColor(10717988)
                 .foliageColorOverride(10717988)
                 .grassColorOverride(10717988)
-                .ambientParticle(new AmbientParticleSettings((SimpleParticleType)RUParticleTypes.MYCOTOXIC_SPORE.get(), 0.01f))
+                .ambientParticle(new AmbientParticleSettings(RUParticleTypes.MYCOTOXIC_SPORE.get(), 0.01f))
                 .ambientLoopSound(SoundEvents.AMBIENT_WARPED_FOREST_LOOP)
                 .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2.0D))
                 .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, 0.0111D))
@@ -212,22 +206,20 @@ public class NetherBiomes {
         BiomeDefaultFeatures.addNetherDefaultOres(builder);
 
         //add RU features
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuTreePlacements.GIANT_YELLOW_BIOSHROOM);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.SMALL_YELLOW_BIOSHROOM);
-
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.MYCOTOXIC_MUSHROOMS);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.MYCOTOXIC_GRASS);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.MYCOTOXIC_DAISY);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.MYCOTOXIC_BIOSHROOM);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.TREE_GROUP_MYCOTOXIC_UNDERGROWTH);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_MYCOTOXIC_MUSHROOMS);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_MYCOTOXIC_GRASS);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_MYCOTOXIC_DAISY);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_YELLOW_BIOSHROOMS);
 
 
         //add mob spawns
-        MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder())
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder()
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIFIED_PIGLIN, 100, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 5, 3, 4))
                 .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 60, 1, 2));
 
-        return (new Biome.BiomeBuilder())
+        return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(2f)
                 .downfall(0f)
@@ -238,7 +230,7 @@ public class NetherBiomes {
     }
 
     public static Biome redstoneAbyss(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
+        BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
                 .skyColor(5439488)
                 .fogColor(5439488)
                 .waterColor(10623252)
@@ -263,15 +255,19 @@ public class NetherBiomes {
         BiomeDefaultFeatures.addNetherDefaultOres(builder);
 
         //add RU features
-        RUBiomeFeatures.netherPointedRedstone(builder);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuNetherPlacements.POINTED_REDSTONE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuNetherPlacements.LARGE_POINTED_REDSTONE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuNetherPlacements.POINTED_REDSTONE_CLUSTER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_REDSTONE_BUD);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_REDSTONE_BULB);
 
 
         //add mob spawns
-        MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder())
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder()
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIFIED_PIGLIN, 100, 4, 4))
                 .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 60, 1, 2));
 
-        return (new Biome.BiomeBuilder())
+        return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(2f)
                 .downfall(0f)

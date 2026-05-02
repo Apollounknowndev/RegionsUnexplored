@@ -1,0 +1,28 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "regions_unexplored:patch/blue_bioshroom",
+          "placement": []
+        },
+        "weight": 7
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:patch/green_bioshroom",
+          "placement": []
+        },
+        "weight": 7
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:patch/pink_bioshroom",
+          "placement": []
+        },
+        "weight": 1
+      }
+    ]
+  }
+}

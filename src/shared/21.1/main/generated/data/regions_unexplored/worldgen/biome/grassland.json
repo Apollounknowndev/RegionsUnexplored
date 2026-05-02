@@ -9,8 +9,8 @@
   "downfall": 0.45,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": -7159980,
-    "grass_color": -6044317,
+    "foliage_color": 9617236,
+    "grass_color": 10732899,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -80,15 +80,14 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:tree/oak_shrub_sparse",
-      "regions_unexplored:tulips",
-      "regions_unexplored:grass",
-      "regions_unexplored:windswept_grass"
+      "regions_unexplored:tree/group/grassland",
+      "regions_unexplored:patch/tulips",
+      "regions_unexplored:patch/windswept_grass",
+      "regions_unexplored:patch/short_grass"
     ],
     [
       "minecraft:freeze_top_layer"

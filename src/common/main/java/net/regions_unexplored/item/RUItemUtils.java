@@ -16,7 +16,7 @@ public class RUItemUtils {
         return Registrar.register(BuiltInRegistries.ITEM, name, () -> factory.apply(new Item.Properties()));
     }
 
-    public static Supplier<Item> registerBlock(String name, Supplier<Block> block) {
+    public static <T extends Block> Supplier<Item> registerBlock(String name, Supplier<T> block) {
         return register(name, p -> new BlockItem(block.get(), p));
     }
 

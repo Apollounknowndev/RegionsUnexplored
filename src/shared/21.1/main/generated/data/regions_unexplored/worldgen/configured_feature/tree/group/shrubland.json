@@ -1,0 +1,35 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/oak_shrub_small",
+          "placement": []
+        },
+        "weight": 65
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/spruce_shrub",
+          "placement": []
+        },
+        "weight": 65
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/oak_bush",
+          "placement": []
+        },
+        "weight": 19
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/spruce_tall",
+          "placement": []
+        },
+        "weight": 1
+      }
+    ]
+  }
+}

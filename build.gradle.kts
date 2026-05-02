@@ -21,7 +21,7 @@ repositories {
 }
 
 group = "net.regions_unexplored"
-version = "0.6+beta4"
+version = "0.6+indev+phase2"
 val lithostitchedVersion = "1.7.2"
 
 cloche {
@@ -76,7 +76,7 @@ cloche {
         dependsOn(shared21)
         mixins.from(file("src/fabric/21.1/main/regions_unexplored.fabric.mixins.json"))
 
-        loaderVersion = "0.18.4"
+        loaderVersion = "0.19.2"
         minecraftVersion = "1.21.1"
 
         mappings {

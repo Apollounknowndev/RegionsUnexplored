@@ -9,8 +9,8 @@
   "downfall": 0.6,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": -9922472,
-    "grass_color": -9917084,
+    "foliage_color": 6854744,
+    "grass_color": 6860132,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -80,19 +80,15 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:patch_large_fern",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
       "minecraft:patch_berry_common",
-      "regions_unexplored:tree/larch_dense",
-      "regions_unexplored:tree/golden_larch_sparse",
-      "regions_unexplored:tree/birch_aspen",
-      "regions_unexplored:tree/oak_bush_sparse",
-      "regions_unexplored:tree/fallen_larch",
-      "regions_unexplored:azure_daisy",
-      "regions_unexplored:snowbelle",
-      "regions_unexplored:shrub/larch"
+      "regions_unexplored:tree/group/cold_boreal_taiga",
+      "regions_unexplored:tree/fallen/larch",
+      "regions_unexplored:shrub/group/cold_boreal_taiga",
+      "regions_unexplored:patch/azure_daisy",
+      "regions_unexplored:single/snowbelle"
     ],
     [
       "minecraft:freeze_top_layer"

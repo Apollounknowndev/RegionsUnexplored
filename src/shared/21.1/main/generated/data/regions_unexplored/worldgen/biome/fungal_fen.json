@@ -36,7 +36,7 @@
     ],
     [
       "minecraft:amethyst_geode",
-      "regions_unexplored:water_edge"
+      "regions_unexplored:special/water_edge"
     ],
     [
       "minecraft:fossil_upper",
@@ -91,14 +91,11 @@
       "minecraft:patch_sugar_cane_swamp",
       "minecraft:patch_pumpkin",
       "minecraft:seagrass_swamp",
-      "regions_unexplored:tree/giant_pink_bioshroom",
-      "regions_unexplored:tree/giant_brown_mushroom",
-      "regions_unexplored:tree/giant_red_mushroom",
-      "regions_unexplored:tree/lush_pine",
-      "regions_unexplored:pink_bioshroom_dense",
-      "regions_unexplored:grass",
-      "regions_unexplored:ferns",
-      "regions_unexplored:shrub/pine"
+      "regions_unexplored:tree/group/fungal_fen",
+      "regions_unexplored:shrub/group/fungal_fen",
+      "regions_unexplored:patch/pink_bioshroom",
+      "regions_unexplored:patch/fern",
+      "regions_unexplored:patch/short_grass"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -80,16 +80,15 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:tree/oak_bush_sparse",
-      "regions_unexplored:daisy",
-      "regions_unexplored:tassel_sparse",
-      "regions_unexplored:grass",
-      "regions_unexplored:shrub/flowering"
+      "regions_unexplored:tree/group/chalk_river",
+      "regions_unexplored:shrub/group/chalk_cliffs",
+      "regions_unexplored:patch/daisy",
+      "regions_unexplored:single/tassel_sparse",
+      "regions_unexplored:patch/short_grass"
     ],
     [
       "minecraft:freeze_top_layer"

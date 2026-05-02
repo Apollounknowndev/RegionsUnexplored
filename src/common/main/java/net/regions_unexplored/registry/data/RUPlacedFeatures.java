@@ -13,7 +13,11 @@ public interface RUPlacedFeatures {
     ResourceKey<PlacedFeature> BONEMEAL_PEAT_GRASS = key("bonemeal/grass/peat");
     ResourceKey<PlacedFeature> BONEMEAL_SILT_GRASS = key("bonemeal/grass/silt");
     ResourceKey<PlacedFeature> BONEMEAL_STONE_GRASS = key("bonemeal/grass/stone");
-
+    
+    static ResourceKey<PlacedFeature> patch(String name) {
+        return key("patch/" + name);
+    }
+    
     static ResourceKey<PlacedFeature> key(String name) {
         return RegionsUnexplored.key(Registries.PLACED_FEATURE, name);
     }

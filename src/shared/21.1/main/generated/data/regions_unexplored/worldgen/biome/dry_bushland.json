@@ -84,13 +84,12 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:tree/large_socotra",
-      "regions_unexplored:tree/small_socotra",
-      "regions_unexplored:tree/acacia",
-      "regions_unexplored:tree/oak_shrub_sparse",
-      "regions_unexplored:mallow",
-      "regions_unexplored:socotra_vegetation",
-      "regions_unexplored:shrub/socotra"
+      "regions_unexplored:tree/group/dry_bushland",
+      "regions_unexplored:shrub/group/dry_bushland",
+      "regions_unexplored:patch/mallow",
+      "regions_unexplored:patch/tall_grass",
+      "regions_unexplored:patch/desert_shrub_on_grass",
+      "regions_unexplored:patch/short_grass_dense"
     ],
     [
       "minecraft:freeze_top_layer"

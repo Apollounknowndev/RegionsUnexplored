@@ -9,8 +9,8 @@
   "downfall": 0.6,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": -9075130,
-    "grass_color": -8083622,
+    "foliage_color": 7702086,
+    "grass_color": 8693594,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -83,10 +83,11 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:tree/pine_on_dirt",
-      "regions_unexplored:tree/fallen_pine_on_dirt",
-      "regions_unexplored:mountain_vegetation",
-      "regions_unexplored:shrub/pine"
+      "regions_unexplored:tree/group/mountains",
+      "regions_unexplored:tree/fallen/pine_on_dirt",
+      "regions_unexplored:shrub/group/mountains",
+      "regions_unexplored:patch/fern",
+      "regions_unexplored:patch/short_grass"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -174,5 +175,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.28
+  "temperature": 0.25
 }

@@ -10,19 +10,13 @@
           "data": {
             "Name": "regions_unexplored:glistering_sprout"
           },
-          "weight": 140
+          "weight": 4
         },
         {
           "data": {
             "Name": "regions_unexplored:glistering_bloom"
           },
-          "weight": 30
-        },
-        {
-          "data": {
-            "Name": "regions_unexplored:glistering_bloom"
-          },
-          "weight": 10
+          "weight": 1
         }
       ]
     }

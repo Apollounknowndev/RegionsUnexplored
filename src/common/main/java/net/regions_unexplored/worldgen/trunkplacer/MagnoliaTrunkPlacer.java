@@ -44,22 +44,17 @@ public class MagnoliaTrunkPlacer extends RUTrunkPlacer {
     @Override
     public List<FoliageAttachment> placeTrunk(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> trunkSetter, RandomSource random, int treeHeight, BlockPos origin, TreeConfiguration config) {
         List<FoliageAttachment> attachments = new ArrayList<>();
-        // Lower
-        Direction rootDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-        this.placeLog(level, trunkSetter, random, origin.relative(rootDirection), config, setAxis(rootDirection));
-        this.placeLog(level, trunkSetter, random, origin.relative(rootDirection.getClockWise()).relative(rootDirection.getOpposite()), config);
-        
         // Middle
         for (int y = 0; y < treeHeight; ++y) {
             this.placeLog(level, trunkSetter, random, origin.above(y), config);
         }
         
         // Upper
-        Direction primaryDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
+        Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
         BlockPos.MutableBlockPos pos = origin.above(treeHeight - 1).mutable();
         for (int i = 0; i < this.primaryBranchLength.sample(random); i++) {
             if (i % 3 == 0) {
-                pos.move(primaryDirection);
+                pos.move(direction);
             } else {
                 pos.move(Direction.UP);
             }
@@ -72,8 +67,8 @@ public class MagnoliaTrunkPlacer extends RUTrunkPlacer {
             if (i % 2 == 0) {
                 pos.move(Direction.UP);
             }
-            pos.move(primaryDirection.getOpposite());
-            this.placeLog(level, trunkSetter, random, pos.immutable(), config, setAxis(primaryDirection));
+            pos.move(direction.getOpposite());
+            this.placeLog(level, trunkSetter, random, pos.immutable(), config, setAxis(direction));
         }
         attachments.add(attachment(pos.immutable()));
         

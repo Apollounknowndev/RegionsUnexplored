@@ -27,8 +27,7 @@ public class RuBiolith {
         if (RuCommonConfig.TOGGLE_BIOSHROOM_CAVES.get() > 0) {
             // High humidity, high erosion, positive weirdness
             BiomePlacement.addSubOverworld(Biomes.LUSH_CAVES, RUBiomes.BIOSHROOM_CAVES, CriterionBuilder.allOf(
-                CriterionBuilder.valueMin(BiomeParameterTargets.EROSION, 0.4f),
-                CriterionBuilder.valueMin(BiomeParameterTargets.WEIRDNESS, 0f)
+                CriterionBuilder.valueMin(BiomeParameterTargets.EROSION, 0.3f)
             ));
         }
         if (RuCommonConfig.TOGGLE_PRISMACHASM.get() > 0) {
@@ -145,12 +144,7 @@ public class RuBiolith {
             BiomePlacement.addSubOverworld(RUBiomes.DECIDUOUS_FOREST, Biomes.FOREST, CriterionBuilder.valueMin(BiomeParameterTargets.TEMPERATURE, -0.1f));
         }
         if (RuCommonConfig.TOGGLE_COLD_DECIDUOUS_FOREST.get() > 0) {
-            var noiseCriterion = CriterionBuilder.allOf(
-                CriterionBuilder.alternate(RUBiomes.DECIDUOUS_FOREST, Biomes.FOREST),
-                CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, -0.1f, 0.1f)
-            );
-            BiomePlacement.addSubOverworld(Biomes.SNOWY_TAIGA, RUBiomes.COLD_DECIDUOUS_FOREST, noiseCriterion);
-            BiomePlacement.addSubOverworld(Biomes.SNOWY_PLAINS, RUBiomes.COLD_DECIDUOUS_FOREST, noiseCriterion);
+            BiomePlacement.replaceOverworld(Biomes.SNOWY_TAIGA, RUBiomes.COLD_DECIDUOUS_FOREST, 0.3f);
         }
         if (RuCommonConfig.TOGGLE_MAGNOLIA_WOODLAND.get() > 0) {
             BiomePlacement.replaceOverworld(Biomes.CHERRY_GROVE, RUBiomes.MAGNOLIA_WOODLAND, 0.35f);

@@ -10,13 +10,13 @@
           "data": {
             "Name": "regions_unexplored:cobalt_roots"
           },
-          "weight": 100
+          "weight": 99
         },
         {
           "data": {
             "Name": "regions_unexplored:cobalt_earlight"
           },
-          "weight": 2
+          "weight": 1
         }
       ]
     }

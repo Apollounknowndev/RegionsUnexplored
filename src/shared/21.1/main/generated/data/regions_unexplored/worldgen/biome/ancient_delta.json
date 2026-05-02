@@ -86,12 +86,12 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:mineral_pool",
-      "regions_unexplored:bladed_grass",
-      "regions_unexplored:corpse_flower",
-      "regions_unexplored:duskmelon",
-      "regions_unexplored:dusktrap",
-      "regions_unexplored:dropleaf"
+      "regions_unexplored:special/calcite_pool",
+      "regions_unexplored:patch/bladed_grass",
+      "regions_unexplored:single/corpse_flower",
+      "regions_unexplored:single/duskmelon",
+      "regions_unexplored:single/dusktrap",
+      "regions_unexplored:patch/dropleaf"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -57,7 +57,7 @@ public class RockPillarFeature extends Feature<NoneFeatureConfiguration> {
                 int tryPlaceS = context.random().nextInt(5);
                 int tryPlaceE = context.random().nextInt(5);
                 int tryPlaceW = context.random().nextInt(5);
-                level.setBlock(placePos1, Blocks.STONE.defaultBlockState(), 2);
+                level.setBlock(placePos1, Blocks.STONE.defaultBlockState(), 3);
                 placeBlob(level, placePos1, false, 5, 5, 5);
                 if(tryPlaceN==0){
                     placeBlob(level, placePos1.north(), false, 5, 5, 5);
@@ -82,7 +82,7 @@ public class RockPillarFeature extends Feature<NoneFeatureConfiguration> {
                 int tryPlaceS = context.random().nextInt(5);
                 int tryPlaceE = context.random().nextInt(5);
                 int tryPlaceW = context.random().nextInt(5);
-                level.setBlock(placePos, Blocks.STONE.defaultBlockState(), 2);
+                level.setBlock(placePos, Blocks.STONE.defaultBlockState(), 3);
                 placeBlob(level, placePos, true, j, j+1, j);
                 if(tryPlaceN==0){
                     placeBlob(level, placePos.north(), true, j, j+1, j);
@@ -113,288 +113,288 @@ public class RockPillarFeature extends Feature<NoneFeatureConfiguration> {
     public void placeCoral(LevelAccessor level, BlockPos pos) {
         Random random = new Random();
         
-        int type = random.nextInt(4);
+        int type = random.nextInt(5);
         if(type == 0){
             if (!level.isOutsideBuildHeight(pos)) {
                 if (isReplaceable(level, pos.north())) {
-                    level.setBlock(pos.north(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().north())) {
-                    level.setBlock(pos.north().north(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().north(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //NORTH-WEST
                 if (isReplaceable(level, pos.north().west())) {
-                    level.setBlock(pos.north().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().north().west())) {
-                    level.setBlock(pos.north().north().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().north().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().west().west())) {
-                    level.setBlock(pos.north().west().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().west().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //WEST
                 if (isReplaceable(level, pos.west())) {
-                    level.setBlock(pos.west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.west().west())) {
-                    level.setBlock(pos.west().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.west().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //SOUTH-WEST
                 if (isReplaceable(level, pos.south().west())) {
-                    level.setBlock(pos.south().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().south().west())) {
-                    level.setBlock(pos.south().south().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().south().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().west().west())) {
-                    level.setBlock(pos.south().west().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().west().west(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //SOUTH
                 if (isReplaceable(level, pos.south())) {
-                    level.setBlock(pos.south(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().south())) {
-                    level.setBlock(pos.south().south(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().south(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //SOUTH-EAST
                 if (isReplaceable(level, pos.south().east())) {
-                    level.setBlock(pos.south().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().south().east())) {
-                    level.setBlock(pos.south().south().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().south().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().east().east())) {
-                    level.setBlock(pos.south().east().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().east().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //EAST
                 if (isReplaceable(level, pos.east())) {
-                    level.setBlock(pos.east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.east().east())) {
-                    level.setBlock(pos.east().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.east().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //NORTH-EAST
                 if (isReplaceable(level, pos.north().east())) {
-                    level.setBlock(pos.north().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().north().east())) {
-                    level.setBlock(pos.north().north().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().north().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().east().east())) {
-                    level.setBlock(pos.north().east().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().east().east(), Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 3);
                 }
             }
         }
         if(type == 1){
             if (!level.isOutsideBuildHeight(pos)) {
                 if (isReplaceable(level, pos.north())) {
-                    level.setBlock(pos.north(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().north())) {
-                    level.setBlock(pos.north().north(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().north(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //NORTH-WEST
                 if (isReplaceable(level, pos.north().west())) {
-                    level.setBlock(pos.north().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().north().west())) {
-                    level.setBlock(pos.north().north().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().north().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().west().west())) {
-                    level.setBlock(pos.north().west().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().west().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //WEST
                 if (isReplaceable(level, pos.west())) {
-                    level.setBlock(pos.west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.west().west())) {
-                    level.setBlock(pos.west().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.west().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //SOUTH-WEST
                 if (isReplaceable(level, pos.south().west())) {
-                    level.setBlock(pos.south().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().south().west())) {
-                    level.setBlock(pos.south().south().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().south().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().west().west())) {
-                    level.setBlock(pos.south().west().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().west().west(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //SOUTH
                 if (isReplaceable(level, pos.south())) {
-                    level.setBlock(pos.south(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().south())) {
-                    level.setBlock(pos.south().south(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().south(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //SOUTH-EAST
                 if (isReplaceable(level, pos.south().east())) {
-                    level.setBlock(pos.south().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().south().east())) {
-                    level.setBlock(pos.south().south().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().south().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().east().east())) {
-                    level.setBlock(pos.south().east().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().east().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //EAST
                 if (isReplaceable(level, pos.east())) {
-                    level.setBlock(pos.east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.east().east())) {
-                    level.setBlock(pos.east().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.east().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //NORTH-EAST
                 if (isReplaceable(level, pos.north().east())) {
-                    level.setBlock(pos.north().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().north().east())) {
-                    level.setBlock(pos.north().north().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().north().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().east().east())) {
-                    level.setBlock(pos.north().east().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().east().east(), Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
             }
         }
         if(type == 2){
             if (!level.isOutsideBuildHeight(pos)) {
                 if (isReplaceable(level, pos.north())) {
-                    level.setBlock(pos.north(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().north())) {
-                    level.setBlock(pos.north().north(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().north(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //NORTH-WEST
                 if (isReplaceable(level, pos.north().west())) {
-                    level.setBlock(pos.north().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().north().west())) {
-                    level.setBlock(pos.north().north().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().north().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().west().west())) {
-                    level.setBlock(pos.north().west().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().west().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //WEST
                 if (isReplaceable(level, pos.west())) {
-                    level.setBlock(pos.west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.west().west())) {
-                    level.setBlock(pos.west().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.west().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //SOUTH-WEST
                 if (isReplaceable(level, pos.south().west())) {
-                    level.setBlock(pos.south().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().south().west())) {
-                    level.setBlock(pos.south().south().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().south().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().west().west())) {
-                    level.setBlock(pos.south().west().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().west().west(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //SOUTH
                 if (isReplaceable(level, pos.south())) {
-                    level.setBlock(pos.south(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().south())) {
-                    level.setBlock(pos.south().south(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().south(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //SOUTH-EAST
                 if (isReplaceable(level, pos.south().east())) {
-                    level.setBlock(pos.south().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().south().east())) {
-                    level.setBlock(pos.south().south().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().south().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().east().east())) {
-                    level.setBlock(pos.south().east().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().east().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //EAST
                 if (isReplaceable(level, pos.east())) {
-                    level.setBlock(pos.east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.east().east())) {
-                    level.setBlock(pos.east().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.east().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //NORTH-EAST
                 if (isReplaceable(level, pos.north().east())) {
-                    level.setBlock(pos.north().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().north().east())) {
-                    level.setBlock(pos.north().north().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().north().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().east().east())) {
-                    level.setBlock(pos.north().east().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().east().east(), Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
             }
         }
         if(type == 3){
             if (!level.isOutsideBuildHeight(pos)) {
                 if (isReplaceable(level, pos.north())) {
-                    level.setBlock(pos.north(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().north())) {
-                    level.setBlock(pos.north().north(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().north(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //NORTH-WEST
                 if (isReplaceable(level, pos.north().west())) {
-                    level.setBlock(pos.north().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().north().west())) {
-                    level.setBlock(pos.north().north().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().north().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().west().west())) {
-                    level.setBlock(pos.north().west().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().west().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //WEST
                 if (isReplaceable(level, pos.west())) {
-                    level.setBlock(pos.west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.west().west())) {
-                    level.setBlock(pos.west().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.west().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //SOUTH-WEST
                 if (isReplaceable(level, pos.south().west())) {
-                    level.setBlock(pos.south().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().south().west())) {
-                    level.setBlock(pos.south().south().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().south().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().west().west())) {
-                    level.setBlock(pos.south().west().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().west().west(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //SOUTH
                 if (isReplaceable(level, pos.south())) {
-                    level.setBlock(pos.south(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().south())) {
-                    level.setBlock(pos.south().south(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().south(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //SOUTH-EAST
                 if (isReplaceable(level, pos.south().east())) {
-                    level.setBlock(pos.south().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().south().east())) {
-                    level.setBlock(pos.south().south().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().south().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.south().east().east())) {
-                    level.setBlock(pos.south().east().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.south().east().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //EAST
                 if (isReplaceable(level, pos.east())) {
-                    level.setBlock(pos.east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.east().east())) {
-                    level.setBlock(pos.east().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.east().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 //NORTH-EAST
                 if (isReplaceable(level, pos.north().east())) {
-                    level.setBlock(pos.north().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().north().east())) {
-                    level.setBlock(pos.north().north().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().north().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
                 if (isReplaceable(level, pos.north().east().east())) {
-                    level.setBlock(pos.north().east().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 2);
+                    level.setBlock(pos.north().east().east(), Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 3);
                 }
             }
         }
@@ -412,9 +412,9 @@ public class RockPillarFeature extends Feature<NoneFeatureConfiguration> {
                 for(BlockPos blockpos1 : BlockPos.betweenClosed(pos.offset(-i, -j, -k), pos.offset(i, j, k))) {
                     if (blockpos1.distSqr(pos) <= (double)(f * f)) {
                         if(level.getBlockState(blockpos1.below()).getBlock()== RUBlocks.STONE_GRASS_BLOCK){
-                            level.setBlock(blockpos1.below(), Blocks.STONE.defaultBlockState(), 4);
+                            level.setBlock(blockpos1.below(), Blocks.STONE.defaultBlockState(), 3);
                         }
-                        level.setBlock(blockpos1, Blocks.STONE.defaultBlockState(), 4);
+                        level.setBlock(blockpos1, Blocks.STONE.defaultBlockState(), 3);
                     }
                 }
 
@@ -430,9 +430,9 @@ public class RockPillarFeature extends Feature<NoneFeatureConfiguration> {
                     if (pos1.distSqr(pos) <= (double)(f * f)) {
                         if(level.isEmptyBlock(pos1.above())||level.getBlockState(pos1.above()).is(Blocks.SHORT_GRASS)) {
                             if(level.getBlockState(pos1.below()).is(Blocks.STONE)){
-                                level.setBlock(pos1, RUBlocks.STONE_GRASS_BLOCK.get().defaultBlockState(), 4);
+                                level.setBlock(pos1, RUBlocks.STONE_GRASS_BLOCK.get().defaultBlockState(), 3);
                                 if(random.nextInt(4)==0) {
-                                    level.setBlock(pos1.above(), Blocks.SHORT_GRASS.defaultBlockState(), 4);
+                                    level.setBlock(pos1.above(), Blocks.SHORT_GRASS.defaultBlockState(), 3);
                                 }
                             }
                         }

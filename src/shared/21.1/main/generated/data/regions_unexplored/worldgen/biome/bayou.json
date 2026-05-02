@@ -90,13 +90,12 @@
       "minecraft:patch_sugar_cane_swamp",
       "minecraft:patch_pumpkin",
       "minecraft:seagrass_swamp",
-      "regions_unexplored:tree/cypress",
-      "regions_unexplored:tree/willow_vines",
-      "regions_unexplored:tree/oak_bush_sparse",
-      "regions_unexplored:bayou_vegetation",
-      "regions_unexplored:flowering_lily",
-      "regions_unexplored:willow_cypress_shrub_mix",
-      "regions_unexplored:elephant_ear_sparse"
+      "regions_unexplored:tree/group/bayou",
+      "regions_unexplored:shrub/group/bayou",
+      "regions_unexplored:patch/flowering_lily_pad",
+      "regions_unexplored:patch/elephant_ear_sparse",
+      "regions_unexplored:patch/fern",
+      "regions_unexplored:patch/short_grass"
     ],
     [
       "minecraft:freeze_top_layer"

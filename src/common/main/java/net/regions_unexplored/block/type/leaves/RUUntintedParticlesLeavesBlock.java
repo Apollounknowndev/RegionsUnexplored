@@ -23,7 +23,7 @@ public class RUUntintedParticlesLeavesBlock extends LeavesBlock {
         this.particle = particle;
     }
 
-    public static BlockFactory of(Supplier<SimpleParticleType> type) {
+    public static BlockFactory<RUUntintedParticlesLeavesBlock> of(Supplier<SimpleParticleType> type) {
         return p -> new RUUntintedParticlesLeavesBlock(p, type);
     }
 

@@ -13,36 +13,36 @@ import net.minecraft.world.level.levelgen.feature.configurations.MultifaceGrowth
 import java.util.List;
 
 public class AirMultifaceGrowthFeature extends Feature<MultifaceGrowthConfiguration> {
-   public AirMultifaceGrowthFeature(Codec<MultifaceGrowthConfiguration> p_225156_) {
-      super(p_225156_);
+   public AirMultifaceGrowthFeature(Codec<MultifaceGrowthConfiguration> codec) {
+      super(codec);
    }
 
-   public boolean place(FeaturePlaceContext<MultifaceGrowthConfiguration> p_225165_) {
-      WorldGenLevel worldgenlevel = p_225165_.level();
-      BlockPos blockpos = p_225165_.origin();
-      RandomSource randomsource = p_225165_.random();
-      MultifaceGrowthConfiguration multifacegrowthconfiguration = p_225165_.config();
-      if (!isAir(worldgenlevel.getBlockState(blockpos))) {
+   public boolean place(FeaturePlaceContext<MultifaceGrowthConfiguration> context) {
+      WorldGenLevel level = context.level();
+      BlockPos origin = context.origin();
+      RandomSource random = context.random();
+      MultifaceGrowthConfiguration config = context.config();
+      if (!isAir(level.getBlockState(origin))) {
          return false;
       } else {
-         List<Direction> list = multifacegrowthconfiguration.getShuffledDirections(randomsource);
-         if (placeGrowthIfPossible(worldgenlevel, blockpos, worldgenlevel.getBlockState(blockpos), multifacegrowthconfiguration, randomsource, list)) {
+         List<Direction> list = config.getShuffledDirections(random);
+         if (placeGrowthIfPossible(level, origin, level.getBlockState(origin), config, random, list)) {
             return true;
          } else {
-            BlockPos.MutableBlockPos blockpos$mutableblockpos = blockpos.mutable();
+            BlockPos.MutableBlockPos pos = origin.mutable();
 
             for(Direction direction : list) {
-               blockpos$mutableblockpos.set(blockpos);
-               List<Direction> list1 = multifacegrowthconfiguration.getShuffledDirectionsExcept(randomsource, direction.getOpposite());
+               pos.set(origin);
+               List<Direction> list1 = config.getShuffledDirectionsExcept(random, direction.getOpposite());
 
-               for(int i = 0; i < multifacegrowthconfiguration.searchRange; ++i) {
-                  blockpos$mutableblockpos.setWithOffset(blockpos, direction);
-                  BlockState blockstate = worldgenlevel.getBlockState(blockpos$mutableblockpos);
-                  if (!isAir(blockstate) && !blockstate.is(multifacegrowthconfiguration.placeBlock)) {
+               for(int i = 0; i < config.searchRange; ++i) {
+                  pos.setWithOffset(origin, direction);
+                  BlockState blockstate = level.getBlockState(pos);
+                  if (!isAir(blockstate) && !blockstate.is(config.placeBlock)) {
                      break;
                   }
 
-                  if (placeGrowthIfPossible(worldgenlevel, blockpos$mutableblockpos, blockstate, multifacegrowthconfiguration, randomsource, list1)) {
+                  if (placeGrowthIfPossible(level, pos, blockstate, config, random, list1)) {
                      return true;
                   }
                }

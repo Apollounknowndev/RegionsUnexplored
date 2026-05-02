@@ -31,31 +31,31 @@ public class RUTintedParticlesLeavesBlock extends LeavesBlock {
         this.particleChance = particleChance;
     }
 
-    public static BlockFactory small(TintGetter tint) {
+    public static BlockFactory<RUTintedParticlesLeavesBlock> small(TintGetter tint) {
         return p -> new RUTintedParticlesLeavesBlock(p, RUParticleTypes.SMALL_LEAVES, tint, DEFAULT_PARTICLE_CHANCE);
     }
 
-    public static BlockFactory large(TintGetter tint) {
+    public static BlockFactory<RUTintedParticlesLeavesBlock> large(TintGetter tint) {
         return p -> new RUTintedParticlesLeavesBlock(p, RUParticleTypes.LARGE_LEAVES, tint, 0.01f);
     }
 
-    public static BlockFactory pine(int tint) {
+    public static BlockFactory<RUTintedParticlesLeavesBlock> pine(int tint) {
         return p -> new RUTintedParticlesLeavesBlock(p, RUParticleTypes.PINE_LEAVES, TintGetter.constant(tint), 0.01f);
     }
 
-    public static BlockFactory standard() {
+    public static BlockFactory<RUTintedParticlesLeavesBlock> standard() {
         return standard(TintGetter.DEFAULT);
     }
 
-    public static BlockFactory standard(TintGetter tint) {
+    public static BlockFactory<RUTintedParticlesLeavesBlock> standard(TintGetter tint) {
         return standard(RUParticleTypes.STANDARD_LEAVES, tint);
     }
 
-    public static BlockFactory standard(Supplier<ParticleType<ColorParticleOption>> type, TintGetter tint) {
+    public static BlockFactory<RUTintedParticlesLeavesBlock> standard(Supplier<ParticleType<ColorParticleOption>> type, TintGetter tint) {
         return standard(type, tint, DEFAULT_PARTICLE_CHANCE);
     }
 
-    public static BlockFactory standard(Supplier<ParticleType<ColorParticleOption>> type, TintGetter tint, float particleChance) {
+    public static BlockFactory<RUTintedParticlesLeavesBlock> standard(Supplier<ParticleType<ColorParticleOption>> type, TintGetter tint, float particleChance) {
         return p -> new RUTintedParticlesLeavesBlock(p, type, tint, particleChance);
     }
 

@@ -85,15 +85,11 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:tree/big_oak_dense",
-      "regions_unexplored:tree/small_oak",
-      "regions_unexplored:tree/oak_tall",
-      "regions_unexplored:tree/oak_bush_sparse",
-      "regions_unexplored:tree/fallen_oak_tree_dense",
-      "regions_unexplored:deciduous_vegetation",
-      "regions_unexplored:shrub/oak",
-      "regions_unexplored:patch/short_grass_sparse",
-      "regions_unexplored:patch/grass_sprouts_sparse"
+      "regions_unexplored:tree/group/deciduous_forest",
+      "regions_unexplored:tree/fallen/oak_dense",
+      "regions_unexplored:shrub/group/deciduous_forest",
+      "regions_unexplored:patch/fern_sparse",
+      "regions_unexplored:patch/short_grass_sparse"
     ],
     [
       "minecraft:freeze_top_layer"

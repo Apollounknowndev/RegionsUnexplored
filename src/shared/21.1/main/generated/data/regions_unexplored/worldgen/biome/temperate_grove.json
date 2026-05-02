@@ -86,14 +86,11 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:tree/oak_with_branch",
-      "regions_unexplored:tree/maple_sparse",
-      "regions_unexplored:tree/birch_aspen",
-      "regions_unexplored:tree/fallen_oak_tree_sparse",
-      "regions_unexplored:shrub/oak",
+      "regions_unexplored:tree/group/temperate_grove",
+      "regions_unexplored:tree/fallen/oak_sparse",
+      "regions_unexplored:shrub/group/temperate_grove",
       "regions_unexplored:patch/purple_coneflower",
-      "regions_unexplored:patch/short_grass_sparse",
-      "regions_unexplored:patch/grass_sprouts_sparse"
+      "regions_unexplored:patch/short_grass_sparse"
     ],
     [
       "minecraft:freeze_top_layer"

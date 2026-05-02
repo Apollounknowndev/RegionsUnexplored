@@ -9,8 +9,8 @@
   "downfall": 0.6,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": -8275350,
-    "grass_color": -9782677,
+    "foliage_color": 8501866,
+    "grass_color": 6994539,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -84,11 +84,10 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:patch_tall_grass_2",
       "regions_unexplored:tree/group/highland_fields",
       "regions_unexplored:patch/daisies",
-      "regions_unexplored:grass"
+      "regions_unexplored:patch/short_grass"
     ],
     [
       "minecraft:freeze_top_layer"

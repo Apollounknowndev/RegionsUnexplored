@@ -56,13 +56,13 @@
       "minecraft:ore_quartz_nether",
       "minecraft:ore_ancient_debris_large",
       "minecraft:ore_debris_small",
-      "regions_unexplored:glistering_meadow_rock",
-      "regions_unexplored:glister_bulb",
-      "regions_unexplored:glistering_sprout",
-      "regions_unexplored:glistering_fern",
-      "regions_unexplored:glistering_bloom",
-      "regions_unexplored:glister_spire",
-      "regions_unexplored:glistering_ivy"
+      "regions_unexplored:nether/glistering_meadow_rock",
+      "regions_unexplored:nether/patch/glister_bulb",
+      "regions_unexplored:nether/patch/glistering_sprout",
+      "regions_unexplored:nether/patch/glistering_fern",
+      "regions_unexplored:nether/patch/glistering_bloom",
+      "regions_unexplored:nether/patch/glister_spire",
+      "regions_unexplored:nether/patch/glistering_ivy"
     ]
   ],
   "has_precipitation": false,

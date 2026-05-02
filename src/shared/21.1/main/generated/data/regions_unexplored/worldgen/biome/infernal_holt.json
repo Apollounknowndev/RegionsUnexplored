@@ -56,12 +56,11 @@
       "minecraft:ore_quartz_nether",
       "minecraft:ore_ancient_debris_large",
       "minecraft:ore_debris_small",
-      "regions_unexplored:tree/brim_willow",
-      "regions_unexplored:tree/tall_brim_willow",
-      "regions_unexplored:brimsprout",
-      "regions_unexplored:dorcel",
-      "regions_unexplored:brim_flames",
-      "regions_unexplored:brimwood_shrub"
+      "regions_unexplored:nether/tree/infernal_holt",
+      "regions_unexplored:nether/patch/brimsprout",
+      "regions_unexplored:nether/dorcel",
+      "regions_unexplored:nether/patch/fire_unrestricted",
+      "regions_unexplored:nether/brimwood_shrub"
     ]
   ],
   "has_precipitation": false,

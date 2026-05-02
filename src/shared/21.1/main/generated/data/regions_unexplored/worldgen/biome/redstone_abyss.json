@@ -57,11 +57,11 @@
     ],
     [],
     [
-      "regions_unexplored:pointed_redstone_nether",
-      "regions_unexplored:large_pointed_redstone_nether",
-      "regions_unexplored:pointed_redstone_cluster_nether",
-      "regions_unexplored:redstone_bud",
-      "regions_unexplored:redstone_bulb"
+      "regions_unexplored:nether/pointed_redstone",
+      "regions_unexplored:nether/large_pointed_redstone",
+      "regions_unexplored:nether/pointed_redstone_cluster",
+      "regions_unexplored:patch/redstone_bud",
+      "regions_unexplored:patch/redstone_bulb"
     ]
   ],
   "has_precipitation": false,

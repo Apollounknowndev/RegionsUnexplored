@@ -50,8 +50,8 @@ public class RUBiomeBootstrap {
         register(context, RUBiomes.MARSH, WetBiomes.marsh(featuresGetter, carversGetter));
         register(context, RUBiomes.FUNGAL_FEN, WetBiomes.fungalFen(featuresGetter, carversGetter));
         register(context, RUBiomes.OLD_GROWTH_BAYOU, WetBiomes.oldGrowthBayou(featuresGetter, carversGetter));
-        register(context, RUBiomes.SPARSE_RAINFOREST, WetBiomes.rainforest(featuresGetter, carversGetter, false));
-        register(context, RUBiomes.RAINFOREST, WetBiomes.rainforest(featuresGetter, carversGetter, true));
+        register(context, RUBiomes.SPARSE_RAINFOREST, WetBiomes.sparseRainforest(featuresGetter, carversGetter));
+        register(context, RUBiomes.RAINFOREST, WetBiomes.rainforest(featuresGetter, carversGetter));
         //ARID
         register(context, RUBiomes.BAOBAB_SAVANNA, AridBiomes.baobabSavanna(featuresGetter, carversGetter));
         register(context, RUBiomes.DRY_BUSHLAND, AridBiomes.dryBushland(featuresGetter, carversGetter));
@@ -62,8 +62,8 @@ public class RUBiomeBootstrap {
         //MOUNTAIN
         register(context, RUBiomes.ARID_MOUNTAINS, MountainBiomes.aridMountains(featuresGetter, carversGetter));
         register(context, RUBiomes.HIGHLAND_FIELDS, MountainBiomes.highlandFields(featuresGetter, carversGetter));
-        register(context, RUBiomes.MOUNTAINS, MountainBiomes.mountainsAndSlopes(featuresGetter, carversGetter, false));
-        register(context, RUBiomes.PINE_SLOPES, MountainBiomes.mountainsAndSlopes(featuresGetter, carversGetter, true));
+        register(context, RUBiomes.MOUNTAINS, MountainBiomes.mountains(featuresGetter, carversGetter));
+        register(context, RUBiomes.PINE_SLOPES, MountainBiomes.pineSlopes(featuresGetter, carversGetter));
         register(context, RUBiomes.TOWERING_CLIFFS, MountainBiomes.toweringCliffs(featuresGetter, carversGetter));
         //COASTAL
         register(context, RUBiomes.CHALK_CLIFFS, CoastalBiomes.chalkCliffs(featuresGetter, carversGetter));

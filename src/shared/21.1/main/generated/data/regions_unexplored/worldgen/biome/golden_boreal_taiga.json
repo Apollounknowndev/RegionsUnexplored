@@ -80,19 +80,15 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:patch_large_fern",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
       "minecraft:patch_berry_common",
-      "regions_unexplored:tree/golden_larch_dense",
-      "regions_unexplored:tree/larch_sparse",
-      "regions_unexplored:tree/birch_aspen",
-      "regions_unexplored:tree/oak_bush_sparse",
-      "regions_unexplored:tree/fallen_larch",
-      "regions_unexplored:azure_daisy",
-      "regions_unexplored:grass",
-      "regions_unexplored:golden_larch_shrub_mix"
+      "regions_unexplored:tree/group/golden_boreal_taiga",
+      "regions_unexplored:tree/fallen/larch",
+      "regions_unexplored:shrub/group/golden_boreal_taiga",
+      "regions_unexplored:patch/azure_daisy",
+      "regions_unexplored:patch/short_grass"
     ],
     [
       "minecraft:freeze_top_layer"

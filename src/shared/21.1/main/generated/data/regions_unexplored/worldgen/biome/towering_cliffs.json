@@ -9,8 +9,8 @@
   "downfall": 0.8,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": -7362208,
-    "grass_color": -8482734,
+    "foliage_color": 9415008,
+    "grass_color": 8294482,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -87,12 +87,11 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:tree/scotts_pine_mountain",
-      "regions_unexplored:tree/dead_scotts_pine_mountain",
-      "regions_unexplored:tree/fallen_pine",
-      "regions_unexplored:hyssop",
-      "regions_unexplored:ferns",
-      "regions_unexplored:pine_dead_shrub_mix"
+      "regions_unexplored:tree/group/towering_cliffs",
+      "regions_unexplored:tree/fallen/pine",
+      "regions_unexplored:shrub/group/towering_cliffs",
+      "regions_unexplored:patch/hyssop",
+      "regions_unexplored:patch/fern"
     ],
     [
       "minecraft:freeze_top_layer"

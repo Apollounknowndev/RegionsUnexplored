@@ -1,9 +1,9 @@
 {
-  "feature": "regions_unexplored:patch/sandy_grass_sparse",
+  "feature": "regions_unexplored:patch/sandy_grass",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 2
+      "type": "minecraft:rarity_filter",
+      "chance": 3
     },
     {
       "type": "minecraft:in_square"

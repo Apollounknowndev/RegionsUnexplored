@@ -84,7 +84,7 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:steppe_vegetation"
+      "regions_unexplored:patch/grasses_steppe"
     ],
     [
       "minecraft:freeze_top_layer"

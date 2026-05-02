@@ -45,19 +45,19 @@ import net.regions_unexplored.worldgen.treedecorator.AttachedToLogsDecorator;
 import java.util.List;
 
 import static dev.worldgen.lithostitched.api.worldgen.stateprovider.LithostitchedStateProviders.randomBlock;
-import static net.regions_unexplored.datagen.provider.registry.RUDatagenFeatureUtils.direct;
+import static net.regions_unexplored.datagen.provider.registry.util.RUFeatureUtils.direct;
 
 import static net.regions_unexplored.registry.data.RUConfiguredFeatures.*;
 import static net.regions_unexplored.datagen.provider.registry.placed_feature.RuMiscOverworldPlacements.*;
-import static net.regions_unexplored.datagen.provider.registry.RUDatagenFeatureUtils.*;
+import static net.regions_unexplored.datagen.provider.registry.util.RUFeatureUtils.*;
 
 public class RuMiscOverworldFeatures {
     //FALLEN_TREES
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FALLEN_OAK = key("tree/fallen_oak");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FALLEN_PINE = key("tree/fallen_pine");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FALLEN_SNOW_PINE = key("tree/fallen_snow_pine");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FALLEN_OAK = key("tree/fallen/oak");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FALLEN_PINE = key("tree/fallen/pine");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FALLEN_SNOW_PINE = key("tree/fallen/snow_pine");
     //OTHER_FEATURES
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MOSS_PATCH_WITH_WATER = key("moss_patch_with_water");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SPECIAL_MOSS_PATCH_WITH_WATER = key("special/moss_patch_with_water");
     
     public static final ResourceKey<ConfiguredFeature<?, ?>> ROCK_COBBLESTONE = key("rock/cobblestone");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ROCK_MIXED_COBBLESTONE = key("rock/mixed_cobblestone");
@@ -81,26 +81,33 @@ public class RuMiscOverworldFeatures {
         register(context, FALLEN_SNOW_PINE, RUFeatureTypes.FALLEN_TREE.get(), FallenTreeConfig.of(RUBlocks.PINE_WOOD_SET.getStrippedLog().defaultBlockState(), 7, 12, List.of(new AttachedToLogsDecorator(0.4f, BlockStateProvider.simple(Blocks.SNOW), List.of(Direction.UP, Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST), true))));
         registerPlaced(context, FALLEN_SILVER_BIRCH, RUFeatureTypes.FALLEN_TREE.get(), FallenTreeConfig.of(RUBlocks.SILVER_BIRCH_WOOD_SET.getLog().defaultBlockState().setValue(AspenLogBlock.IS_BASE, true), 6, 10));
         //CAVE_FEATURES
-        registerPlaced(context, POINTED_REDSTONE, Feature.SIMPLE_RANDOM_SELECTOR, new SimpleRandomFeatureConfiguration(HolderSet.direct(PlacementUtils.inlinePlaced(RUFeatureTypes.POINTED_REDSTONE.get(), new PointedRedstoneConfiguration(0.5F, 0.7F, 0.5F, 0.5F), EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1))), PlacementUtils.inlinePlaced(RUFeatureTypes.POINTED_REDSTONE.get(), new PointedRedstoneConfiguration(0.5F, 0.7F, 0.5F, 0.5F), EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(-1))))));
-        registerPlaced(context, LARGE_POINTED_REDSTONE, LithostitchedFeatures.LARGE_DRIPSTONE, LithostitchedFeatures.largeDripstone(BlockStateProvider.simple(RUBlocks.RAW_REDSTONE_BLOCK.get()), context.lookup(Registries.BLOCK).getOrThrow(BlockTags.BASE_STONE_OVERWORLD), 30, UniformInt.of(1, 6), UniformFloat.of(0.4F, 2.0F), 0.33F, UniformFloat.of(0.3F, 0.9F), UniformFloat.of(0.4F, 1.0F), UniformFloat.of(0.0F, 0.3F), 4, 0.6F));
-        registerPlaced(context, POINTED_REDSTONE_CLUSTER, RUFeatureTypes.POINTED_REDSTONE_CLUSTER.get(), new PointedRedstoneClusterConfiguration(12, UniformInt.of(3, 6), UniformInt.of(2, 8), 1, 3, UniformInt.of(2, 4), UniformFloat.of(0.3F, 0.7F), ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
-        registerPlaced(context, ORE_REDSTONE_LARGE, Feature.ORE, new OreConfiguration(ORE_REDSTONE_TARGET_LIST, 20));
+        registerPlaced(context, SPECIAL_POINTED_REDSTONE, Feature.SIMPLE_RANDOM_SELECTOR, new SimpleRandomFeatureConfiguration(HolderSet.direct(PlacementUtils.inlinePlaced(RUFeatureTypes.POINTED_REDSTONE.get(), new PointedRedstoneConfiguration(0.5F, 0.7F, 0.5F, 0.5F), EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1))), PlacementUtils.inlinePlaced(RUFeatureTypes.POINTED_REDSTONE.get(), new PointedRedstoneConfiguration(0.5F, 0.7F, 0.5F, 0.5F), EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(-1))))));
+        registerPlaced(context, SPECIAL_LARGE_POINTED_REDSTONE, LithostitchedFeatures.LARGE_DRIPSTONE, LithostitchedFeatures.largeDripstone(BlockStateProvider.simple(RUBlocks.RAW_REDSTONE_BLOCK.get()), context.lookup(Registries.BLOCK).getOrThrow(BlockTags.BASE_STONE_OVERWORLD), 30, UniformInt.of(1, 6), UniformFloat.of(0.4F, 2.0F), 0.33F, UniformFloat.of(0.3F, 0.9F), UniformFloat.of(0.4F, 1.0F), UniformFloat.of(0.0F, 0.3F), 4, 0.6F));
+        registerPlaced(context, SPECIAL_POINTED_REDSTONE_CLUSTER, RUFeatureTypes.POINTED_REDSTONE_CLUSTER.get(), new PointedRedstoneClusterConfiguration(12, UniformInt.of(3, 6), UniformInt.of(2, 8), 1, 3, UniformInt.of(2, 4), UniformFloat.of(0.3F, 0.7F), ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
+        registerPlaced(context, SPECIAL_ORE_REDSTONE_LARGE, Feature.ORE, new OreConfiguration(ORE_REDSTONE_TARGET_LIST, 20));
 
-        registerPlaced(context, PRISMARITE_CLUSTERS, Feature.RANDOM_PATCH, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.LARGE_PRISMARITE_CLUSTER.get().defaultBlockState(), 1).add(RUBlocks.PRISMARITE_CLUSTER.get().defaultBlockState(), 5)), 32));
-        registerPlaced(context, HANGING_PRISMARITE_CLUSTER, RUFeatureTypes.HANGING_PRISMARITE.get(), FeatureConfiguration.NONE);
+        registerPlaced(context, PATCH_PRISMARITE_CLUSTER, Feature.RANDOM_PATCH, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.LARGE_PRISMARITE_CLUSTER.get().defaultBlockState(), 1).add(RUBlocks.PRISMARITE_CLUSTER.get().defaultBlockState(), 5)), 32));
+        registerPlaced(context, SPECIAL_HANGING_PRISMARITE_CLUSTER, RUFeatureTypes.HANGING_PRISMARITE.get(), FeatureConfiguration.NONE);
 
-        registerPlaced(context, MINERAL_POOL, Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(BlockTags.LUSH_GROUND_REPLACEABLE, BlockStateProvider.simple(Blocks.CALCITE), PlacementUtils.inlinePlaced(holderGetter.getOrThrow(CaveFeatures.POINTED_DRIPSTONE)), CaveSurface.FLOOR, ConstantInt.of(3), 0.8F, 5, 0.1F, UniformInt.of(4, 7), 0.7F));
+        registerPlaced(context, SPECIAL_CALCITE_POOL, Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(BlockTags.LUSH_GROUND_REPLACEABLE, BlockStateProvider.simple(Blocks.CALCITE), PlacementUtils.inlinePlaced(holderGetter.getOrThrow(CaveFeatures.POINTED_DRIPSTONE)), CaveSurface.FLOOR, ConstantInt.of(3), 0.8F, 5, 0.1F, UniformInt.of(4, 7), 0.7F));
 
-        registerPlaced(context, LAVA_FALL, RUFeatureTypes.LAVA_FALL.get(), FeatureConfiguration.NONE);
-        registerPlaced(context, OVERWORLD_LAVA_DELTA, RUFeatureTypes.OVERWORLD_LAVA_DELTA.get(), new VegetationPatchConfiguration(BlockTags.LUSH_GROUND_REPLACEABLE, BlockStateProvider.simple(RUBlocks.VOLCANIC_ASH.get().defaultBlockState().setValue(AshBlock.HAS_GRAVITY, false)), PlacementUtils.inlinePlaced(holderGetter.getOrThrow(CaveFeatures.POINTED_DRIPSTONE)), CaveSurface.FLOOR, ConstantInt.of(3), 0.8F, 5, 0.1F, UniformInt.of(4, 7), 0.7F));
-        registerPlaced(context, ASH_VENT, RUFeatureTypes.ASH_VENT.get(), FeatureConfiguration.NONE);
-        registerPlaced(context, BASALT_BLOB, RUFeatureTypes.BASALT_BLOB.get(), new ColumnFeatureConfiguration(ConstantInt.of(1), UniformInt.of(1, 4)));
+        registerPlaced(context, SPECIAL_LAVA_FALL, RUFeatureTypes.LAVA_FALL.get(), FeatureConfiguration.NONE);
+        registerPlaced(context, SPECIAL_OVERWORLD_LAVA_DELTA, RUFeatureTypes.OVERWORLD_LAVA_DELTA.get(), new VegetationPatchConfiguration(BlockTags.LUSH_GROUND_REPLACEABLE, BlockStateProvider.simple(RUBlocks.VOLCANIC_ASH.get().defaultBlockState().setValue(AshBlock.HAS_GRAVITY, false)), PlacementUtils.inlinePlaced(holderGetter.getOrThrow(CaveFeatures.POINTED_DRIPSTONE)), CaveSurface.FLOOR, ConstantInt.of(3), 0.8F, 5, 0.1F, UniformInt.of(4, 7), 0.7F));
+        registerPlaced(context, SPECIAL_ASH_VENT, RUFeatureTypes.ASH_VENT.get(), FeatureConfiguration.NONE);
+        registerPlaced(context, SPECIAL_BASALT_BLOB, RUFeatureTypes.BASALT_BLOB.get(), new ColumnFeatureConfiguration(ConstantInt.of(1), UniformInt.of(1, 4)));
         //OTHER_FEATURES
-        register(context, MOSS_PATCH_WITH_WATER, Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(BlockTags.LUSH_GROUND_REPLACEABLE, BlockStateProvider.simple(Blocks.MOSS_BLOCK), PlacementUtils.inlinePlaced(holderGetter.getOrThrow(RuVegetationFeatures.PATCH_SHORT_GRASS)), CaveSurface.FLOOR, ConstantInt.of(3), 0.8F, 5, 0.1F, UniformInt.of(4, 7), 0.7F));
-        registerPlaced(context, MARSH, RUFeatureTypes.MARSH.get(), FeatureConfiguration.NONE);
-        registerPlaced(context, WATER_EDGE, RUFeatureTypes.WATER_EDGE.get(), FeatureConfiguration.NONE);
-        registerPlaced(context, ICICLE_UP, RUFeatureTypes.ICICLE_UP.get(), FeatureConfiguration.NONE);
-        registerPlaced(context, NOISE_PUMPKINS, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.PUMPKIN.defaultBlockState(), 96).add(Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, Direction.NORTH), 1).add(Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, Direction.SOUTH), 1).add(Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, Direction.EAST), 1).add(Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, Direction.WEST), 1))), List.of(RUBlocks.SILT_PODZOL.get(), Blocks.SNOW_BLOCK), 16));
+        register(context, SPECIAL_MOSS_PATCH_WITH_WATER, Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(BlockTags.LUSH_GROUND_REPLACEABLE, BlockStateProvider.simple(Blocks.MOSS_BLOCK), PlacementUtils.inlinePlaced(holderGetter.getOrThrow(RuVegetationFeatures.PATCH_SHORT_GRASS)), CaveSurface.FLOOR, ConstantInt.of(3), 0.8F, 5, 0.1F, UniformInt.of(4, 7), 0.7F));
+        registerPlaced(context, SPECIAL_MARSH, RUFeatureTypes.MARSH.get(), FeatureConfiguration.NONE);
+        registerPlaced(context, SPECIAL_WATER_EDGE, RUFeatureTypes.WATER_EDGE.get(), FeatureConfiguration.NONE);
+        registerPlaced(context, SPECIAL_ICICLE_UP, RUFeatureTypes.ICICLE_UP.get(), FeatureConfiguration.NONE);
+        registerPlaced(context, PATCH_PUMPKIN_FIELD_PUMPKINS, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+            new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                .add(Blocks.PUMPKIN.defaultBlockState(), 96)
+                .add(Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, Direction.NORTH), 1)
+                .add(Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, Direction.SOUTH), 1)
+                .add(Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, Direction.EAST), 1)
+                .add(Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, Direction.WEST), 1))
+        ), List.of(RUBlocks.SILT_PODZOL.get(), Blocks.SNOW_BLOCK), 16));
         
         var rockCobblestone = register(context, ROCK_COBBLESTONE, RUFeatureTypes.ROCK.get(), RockFeatureConfig.create(Blocks.COBBLESTONE));
         var rockMixedCobblestone = register(context, ROCK_MIXED_COBBLESTONE, RUFeatureTypes.ROCK.get(),

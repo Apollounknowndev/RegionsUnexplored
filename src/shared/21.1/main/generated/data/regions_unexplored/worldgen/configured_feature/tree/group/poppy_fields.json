@@ -1,21 +1,7 @@
 {
-  "type": "lithostitched:weighted_selector",
+  "type": "lithostitched:placed",
   "config": {
-    "features": [
-      {
-        "data": {
-          "feature": "regions_unexplored:tree/magnolia",
-          "placement": []
-        },
-        "weight": 4
-      },
-      {
-        "data": {
-          "feature": "regions_unexplored:tree/big_magnolia",
-          "placement": []
-        },
-        "weight": 1
-      }
-    ]
+    "feature": "regions_unexplored:tree/magnolia",
+    "placement": []
   }
 }

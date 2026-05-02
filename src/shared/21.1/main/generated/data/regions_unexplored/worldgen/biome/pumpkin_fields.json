@@ -80,15 +80,14 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
       "regions_unexplored:tree/group/pumpkin_fields",
-      "regions_unexplored:noise_pumpkins",
-      "regions_unexplored:grass",
-      "regions_unexplored:autumnal_shrub_mix"
+      "regions_unexplored:shrub/group/pumpkin_fields",
+      "regions_unexplored:patch/pumpkin_field_pumpkins",
+      "regions_unexplored:patch/short_grass"
     ],
     [
       "minecraft:freeze_top_layer"

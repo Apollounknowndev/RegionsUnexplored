@@ -4,14 +4,14 @@
     {
       "type": "lithostitched:noise_slope",
       "noise": "regions_unexplored:tree_density",
-      "offset": 0,
+      "offset": 2,
       "slope": 3,
       "xz_scale": 1.0,
       "y_scale": 0.0
     },
     {
       "type": "minecraft:count",
-      "count": 4
+      "count": 6
     },
     {
       "type": "minecraft:in_square"

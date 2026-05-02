@@ -90,11 +90,12 @@
       "minecraft:patch_pumpkin",
       "minecraft:seagrass_swamp",
       "regions_unexplored:tree/group/old_growth_bayou",
-      "regions_unexplored:bayou_vegetation",
-      "regions_unexplored:flowering_lily",
-      "regions_unexplored:willow_cypress_shrub_mix",
-      "regions_unexplored:elephant_ear_dense",
-      "regions_unexplored:giant_lily"
+      "regions_unexplored:shrub/group/old_growth_bayou",
+      "regions_unexplored:special/giant_lily",
+      "regions_unexplored:patch/flowering_lily_pad",
+      "regions_unexplored:patch/elephant_ear_dense",
+      "regions_unexplored:patch/fern_dense",
+      "regions_unexplored:patch/short_grass_dense"
     ],
     [
       "minecraft:freeze_top_layer"

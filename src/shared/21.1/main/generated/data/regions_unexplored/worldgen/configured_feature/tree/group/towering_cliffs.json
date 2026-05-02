@@ -1,0 +1,21 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/stripped_pine_mountain",
+          "placement": []
+        },
+        "weight": 19
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/dead_stripped_pine_mountain",
+          "placement": []
+        },
+        "weight": 1
+      }
+    ]
+  }
+}

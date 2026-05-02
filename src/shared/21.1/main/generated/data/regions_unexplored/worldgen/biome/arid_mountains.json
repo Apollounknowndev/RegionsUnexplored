@@ -9,8 +9,8 @@
   "downfall": 0.0,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": -6773446,
-    "grass_color": -4279222,
+    "foliage_color": 10003770,
+    "grass_color": 12497994,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -83,7 +83,7 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:tree/oak_shrub_on_stone"
+      "regions_unexplored:tree/group/arid_mountains"
     ],
     [
       "minecraft:freeze_top_layer"

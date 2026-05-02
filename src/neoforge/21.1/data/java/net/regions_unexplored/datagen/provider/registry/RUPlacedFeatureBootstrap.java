@@ -6,6 +6,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.regions_unexplored.datagen.provider.registry.configured_feature.RUShrubFeatures;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.*;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.tag.*;
@@ -21,6 +22,7 @@ public class RUPlacedFeatureBootstrap {
         RuAquaticPlacements.bootstrap(context);
         RuMiscOverworldPlacements.bootstrap(context);
         RuNetherPlacements.bootstrap(context);
+        RUShrubFeatures.bootstrapPlaced(context);
         RuTreePlacements.bootstrap(context);
         RuVegetationPlacements.bootstrap(context);
     }

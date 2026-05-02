@@ -24,12 +24,12 @@ import java.util.function.Supplier;
 
 public class RUBlockUtils {
     // TODO: Consolidate unnecessary factory methods here
-    public static Block block(BlockBehaviour.Properties properties, float destroyTime, float explosionResistance, MapColor colour, SoundType sound, boolean fireproof, BlockFactory factory) {
+    public static Block block(BlockBehaviour.Properties properties, float destroyTime, float explosionResistance, MapColor colour, SoundType sound, boolean fireproof, BlockFactory<?> factory) {
         applyProperties(properties, destroyTime, explosionResistance, sound, fireproof, colour);
         return factory.apply(properties);
     }
 
-    public static Block log(BlockBehaviour.Properties properties, BlockFactory blockFactory, MapColor plankColour, MapColor logColour, SoundType sound, boolean fireproof) {
+    public static Block log(BlockBehaviour.Properties properties, BlockFactory<?> blockFactory, MapColor plankColour, MapColor logColour, SoundType sound, boolean fireproof) {
         applyProperties(properties, 2f, 2f, sound, fireproof, null).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? plankColour : logColour);
         return blockFactory.apply(properties);
     }
@@ -111,41 +111,41 @@ public class RUBlockUtils {
         return properties;
     }
 
-    public static Supplier<Block> register(String name, BlockFactory factory) {
+    public static <T extends Block> Supplier<T> register(String name, BlockFactory<T> factory) {
         return register(name, factory, RUItemUtils::registerBlock, null);
     }
 
-    public static Supplier<Block> register(String name, BlockFactory factory, Block copiedBlock) {
+    public static <T extends Block> Supplier<T> register(String name, BlockFactory<T> factory, T copiedBlock) {
         return register(name, factory, RUItemUtils::registerBlock, () -> copiedBlock);
     }
 
-    public static Supplier<Block> register(String name, BlockFactory factory, Supplier<Block> copiedBlock) {
+    public static <T extends Block> Supplier<T> register(String name, BlockFactory<T> factory, Supplier<T> copiedBlock) {
         return register(name, factory, RUItemUtils::registerBlock, copiedBlock);
     }
 
-    public static Supplier<Block> registerNoItem(String name, BlockFactory factory) {
+    public static <T extends Block> Supplier<T> registerNoItem(String name, BlockFactory<T> factory) {
         return register(name, factory, (a, b) -> {}, null);
     }
 
-    public static Supplier<Block> registerNoItem(String name, BlockFactory factory, Block copiedBlock) {
+    public static <T extends Block> Supplier<T> registerNoItem(String name, BlockFactory<T> factory, T copiedBlock) {
         return register(name, factory, (a, b) -> {}, () -> copiedBlock);
     }
 
-    public static Supplier<Block> registerNoItem(String name, BlockFactory factory, Supplier<Block> copiedBlock) {
+    public static <T extends Block> Supplier<T> registerNoItem(String name, BlockFactory<T> factory, Supplier<T> copiedBlock) {
         return register(name, factory, (a, b) -> {}, copiedBlock);
     }
 
-    public static Supplier<Block> register(String name, BlockFactory factory, BiConsumer<String, Supplier<Block>> itemCreator, @Nullable Supplier<Block> copiedBlock) {
-        Supplier<Block> block = Registrar.register(BuiltInRegistries.BLOCK, name, () -> factory.apply(createProperties(copiedBlock)));
+    public static <T extends Block> Supplier<T> register(String name, BlockFactory<T> factory, BiConsumer<String, Supplier<T>> itemCreator, @Nullable Supplier<T> copiedBlock) {
+        Supplier<T> block = Registrar.register(BuiltInRegistries.BLOCK, name, () -> factory.apply(createProperties(copiedBlock)));
         itemCreator.accept(name, block);
         return block;
     }
 
-    private static BlockBehaviour.Properties createProperties(@Nullable Supplier<Block> copiedBlock) {
+    private static <T extends Block> BlockBehaviour.Properties createProperties(@Nullable Supplier<T> copiedBlock) {
         return copiedBlock != null ? BlockBehaviour.Properties.ofFullCopy(copiedBlock.get()) : BlockBehaviour.Properties.of();
     }
 
-    public static Block leaves(BlockBehaviour.Properties properties, MapColor colour, boolean fireproof, BlockFactory factory) {
+    public static Block leaves(BlockBehaviour.Properties properties, MapColor colour, boolean fireproof, BlockFactory<?> factory) {
         properties.mapColor(colour).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(RUBlockUtils::ocelotOrParrot).isSuffocating(RUBlockUtils::never).isViewBlocking(RUBlockUtils::never).pushReaction(PushReaction.DESTROY).isRedstoneConductor(RUBlockUtils::never);
         if (!fireproof) properties.ignitedByLava();
         return factory.apply(properties);

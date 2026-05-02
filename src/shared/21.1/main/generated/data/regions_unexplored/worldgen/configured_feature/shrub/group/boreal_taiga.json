@@ -1,0 +1,47 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": {
+            "type": "minecraft:simple_block",
+            "config": {
+              "to_place": {
+                "type": "minecraft:simple_state_provider",
+                "state": {
+                  "Name": "regions_unexplored:golden_larch_shrub",
+                  "Properties": {
+                    "half": "lower"
+                  }
+                }
+              }
+            }
+          },
+          "placement": []
+        },
+        "weight": 1
+      },
+      {
+        "data": {
+          "feature": {
+            "type": "minecraft:simple_block",
+            "config": {
+              "to_place": {
+                "type": "minecraft:simple_state_provider",
+                "state": {
+                  "Name": "regions_unexplored:larch_shrub",
+                  "Properties": {
+                    "half": "lower"
+                  }
+                }
+              }
+            }
+          },
+          "placement": []
+        },
+        "weight": 3
+      }
+    ]
+  }
+}

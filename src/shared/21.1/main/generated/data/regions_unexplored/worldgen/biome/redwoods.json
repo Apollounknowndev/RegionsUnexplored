@@ -81,16 +81,15 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:patch_large_fern",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
       "regions_unexplored:tree/group/redwoods_primary",
       "regions_unexplored:tree/group/redwoods_secondary",
-      "regions_unexplored:tree/oak_bush_single",
-      "regions_unexplored:patch/ferns_dense",
-      "regions_unexplored:rare_salmonberry_bush",
-      "regions_unexplored:shrub/redwood"
+      "regions_unexplored:tree/group/redwoods_tertiary",
+      "regions_unexplored:shrub/group/redwoods",
+      "regions_unexplored:patch/salmonberry_bush",
+      "regions_unexplored:patch/fern_redwoods"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -10,7 +10,7 @@
           "data": {
             "Name": "regions_unexplored:mycotoxic_grass"
           },
-          "weight": 100
+          "weight": 95
         },
         {
           "data": {
@@ -19,7 +19,7 @@
               "stage": "0"
             }
           },
-          "weight": 7
+          "weight": 5
         }
       ]
     }

@@ -58,7 +58,7 @@ public class WoodSet {
         return simple(name, woodType, sound, plankColour, logColour, fireproof, RotatedPillarBlock::new, true);
     }
 
-    public static WoodSet simple(String name, WoodType woodType, SoundType sound, MapColor plankColour, MapColor logColour, boolean fireproof, BlockFactory logFactory, boolean boat) {
+    public static WoodSet simple(String name, WoodType woodType, SoundType sound, MapColor plankColour, MapColor logColour, boolean fireproof, BlockFactory<Block> logFactory, boolean boat) {
         WoodSet set = new WoodSet(name, fireproof);
         set.addLogs(name, "log", "wood", sound, plankColour, logColour, fireproof, logFactory, true);
         set.addCommonWoodBlocks(name, woodType, plankColour, sound, fireproof);
@@ -85,14 +85,14 @@ public class WoodSet {
         return set;
     }
 
-    public static WoodSet onlyLogs(String name, SoundType sound, MapColor plankColor, MapColor logColor, boolean fireproof, BlockFactory logFactory) {
+    public static WoodSet onlyLogs(String name, SoundType sound, MapColor plankColor, MapColor logColor, boolean fireproof, BlockFactory<Block> logFactory) {
         WoodSet set = new WoodSet(name, false);
         set.addLogs(name, "log", "wood", sound, plankColor, logColor, fireproof, logFactory, false);
         RUBlocks.WOOD_SETS.add(set);
         return set;
     }
 
-    protected void addLogs(String typeName, String logName, String woodName, SoundType sound, MapColor plankColour, MapColor logColour, boolean fireproof, BlockFactory logFactory, boolean generateStripped) {
+    protected void addLogs(String typeName, String logName, String woodName, SoundType sound, MapColor plankColour, MapColor logColour, boolean fireproof, BlockFactory<Block> logFactory, boolean generateStripped) {
         this.log = RUBlockUtils.register(typeName + "_" + logName, p -> RUBlockUtils.log(p, logFactory, plankColour, logColour, sound, fireproof));
         this.wood = RUBlockUtils.register(typeName + "_" + woodName, p -> RUBlockUtils.log(p, RotatedPillarBlock::new, plankColour, logColour, sound, fireproof));
         if (!generateStripped) return;

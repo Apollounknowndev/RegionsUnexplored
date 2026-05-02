@@ -28,7 +28,9 @@
     "water_fog_color": 677798
   },
   "features": [
-    [],
+    [
+      "regions_unexplored:special/moss_patch_with_water_sparse"
+    ],
     [
       "minecraft:lake_lava_underground",
       "minecraft:lake_lava_surface"
@@ -87,15 +89,10 @@
       "minecraft:patch_pumpkin",
       "minecraft:vines",
       "minecraft:patch_melon",
-      "regions_unexplored:tree/palm_dense",
-      "regions_unexplored:tree/kapok_sparse",
-      "regions_unexplored:tree/big_jungle_dense",
-      "regions_unexplored:tree/palm_shrub",
-      "regions_unexplored:tree/oak_bush_sparse",
-      "regions_unexplored:hibiscus",
-      "regions_unexplored:elephant_ear_dense",
-      "regions_unexplored:palm_jungle_shrub_mix",
-      "regions_unexplored:moss_patch_with_water_rare"
+      "regions_unexplored:tree/group/sparse_rainforest",
+      "regions_unexplored:shrub/group/rainforest",
+      "regions_unexplored:patch/hibiscus",
+      "regions_unexplored:patch/elephant_ear_dense"
     ],
     [
       "minecraft:freeze_top_layer"

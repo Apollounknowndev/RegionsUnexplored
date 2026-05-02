@@ -12,31 +12,19 @@ import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.regions_unexplored.datagen.provider.registry.RUBiomeFeatures;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuMiscOverworldPlacements;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuTreePlacements;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuVegetationPlacements;
 import net.regions_unexplored.registry.RUParticleTypes;
 
+import static net.regions_unexplored.datagen.provider.registry.util.RUBiomeUtils.*;
+
 public class CaveBiomes {
-    protected static final int NORMAL_WATER_COLOR = 4159204;
-    protected static final int NORMAL_WATER_FOG_COLOR = 329011;
-    private static final int OVERWORLD_FOG_COLOR = 12638463;
-
-    protected static int calculateSkyColor(float color) {
-        float $$1 = color / 3.0F;
-        $$1 = Mth.clamp($$1, -1.0F, 1.0F);
-        return Mth.hsvToRgb(0.62222224F - $$1 * 0.05F, 0.5F + $$1 * 0.1F, 1.0F);
-    }
-
-    private static MobSpawnSettings.Builder baseCaveSpawning(boolean addDrowned) {
+    private static MobSpawnSettings.Builder baseCaveSpawning() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.caveSpawns(spawnBuilder);
         BiomeDefaultFeatures.monsters(spawnBuilder, 95, 5, 100, false);
-        if(addDrowned){
-            spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.DROWNED, 95, 4, 4));
-        }
-        return spawnBuilder;
+	    return spawnBuilder;
     }
     private static MobSpawnSettings.Builder baseLushCaveSpawning() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
@@ -48,7 +36,7 @@ public class CaveBiomes {
 
     private static BiomeGenerationSettings.Builder baseCaveGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        RUBiomeFeatures.globalOverworldGeneration(builder);
+        globalOverworldGeneration(builder);
         BiomeDefaultFeatures.addPlainGrass(builder);
         BiomeDefaultFeatures.addDefaultOres(builder);
         BiomeDefaultFeatures.addDefaultSoftDisks(builder);
@@ -59,7 +47,7 @@ public class CaveBiomes {
     }
     private static BiomeGenerationSettings.Builder baseLushCaveGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter, boolean addClay) {
         BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        RUBiomeFeatures.globalOverworldGeneration(builder);
+        globalOverworldGeneration(builder);
         BiomeDefaultFeatures.addPlainGrass(builder);
         BiomeDefaultFeatures.addDefaultOres(builder);
         if(addClay){
@@ -72,7 +60,7 @@ public class CaveBiomes {
     }
 
     public static Biome ancientDelta(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
+        BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
                 .skyColor(calculateSkyColor(0.7F))
                 .fogColor(OVERWORLD_FOG_COLOR)
                 .waterColor(-13369345)
@@ -86,12 +74,12 @@ public class CaveBiomes {
         BiomeGenerationSettings.Builder builder = baseLushCaveGeneration(featureGetter, carverGetter, true);
 
         //add RU features
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.MINERAL_POOL);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BLADED_GRASS);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CORPSE_FLOWER);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DUSKMELON);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DUSKTRAP);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.DROPLEAF);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.SPECIAL_CALCITE_POOL);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_BLADED_GRASS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SINGLE_CORPSE_FLOWER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SINGLE_DUSKMELON);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.SINGLE_DUSKTRAP);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_DROPLEAF);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseLushCaveSpawning();
@@ -107,7 +95,7 @@ public class CaveBiomes {
     }
 
     public static Biome bioshroomCaves(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
+        BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
                 .skyColor(calculateSkyColor(2F))
                 .fogColor(OVERWORLD_FOG_COLOR)
                 .waterColor(NORMAL_WATER_COLOR)
@@ -121,15 +109,10 @@ public class CaveBiomes {
         BiomeGenerationSettings.Builder builder = baseLushCaveGeneration(featureGetter, carverGetter, false);
 
         //add RU features
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.GIANT_GREEN_BIOSHROOM);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.GIANT_BLUE_BIOSHROOM);
-
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CAVE_GRASS);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CAVE_TALL_GRASS);
-
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.BLUE_BIOSHROOM);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.GREEN_BIOSHROOM);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PINK_BIOSHROOM);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_BIOSHROOM_CAVES);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_CAVE_BIOSHROOMS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_TALL_GRASS_CAVES);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_CAVES);
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseLushCaveSpawning();
 
@@ -144,7 +127,7 @@ public class CaveBiomes {
     }
 
     public static Biome prismachasm(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
+        BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
                 .skyColor(calculateSkyColor(0.7F))
                 .fogColor(OVERWORLD_FOG_COLOR)
                 .waterColor(NORMAL_WATER_COLOR)
@@ -159,14 +142,14 @@ public class CaveBiomes {
         BiomeGenerationSettings.Builder builder = baseCaveGeneration(featureGetter, carverGetter);
 
         //add RU features
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PRISMOSS_SPROUT);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CAVE_HYSSOP);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.PRISMARITE_CLUSTERS);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.HANGING_PRISMARITE_CLUSTER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_PRISMOSS_SPROUT);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_CAVE_HYSSOP);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.PATCH_PRISMARITE_CLUSTER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.SPECIAL_HANGING_PRISMARITE_CLUSTER);
 
 
         //add mob spawns
-        MobSpawnSettings.Builder spawnBuilder = baseCaveSpawning(false);
+        MobSpawnSettings.Builder spawnBuilder = baseCaveSpawning();
 
         return (new Biome.BiomeBuilder())
                 .hasPrecipitation(true)
@@ -179,7 +162,7 @@ public class CaveBiomes {
     }
 
     public static Biome redstoneCaves(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
+        BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
                 .skyColor(calculateSkyColor(0.7F))
                 .fogColor(OVERWORLD_FOG_COLOR)
                 .waterColor(NORMAL_WATER_COLOR)
@@ -193,11 +176,17 @@ public class CaveBiomes {
         BiomeGenerationSettings.Builder builder = baseCaveGeneration(featureGetter, carverGetter);
 
         //add RU features
-        RUBiomeFeatures.pointedRedstone(builder);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, RuMiscOverworldPlacements.SPECIAL_ORE_REDSTONE_LARGE);
+        
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.SPECIAL_POINTED_REDSTONE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.SPECIAL_LARGE_POINTED_REDSTONE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.SPECIAL_POINTED_REDSTONE_CLUSTER);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_REDSTONE_BUD);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_REDSTONE_BULB);
 
 
         //add mob spawns
-        MobSpawnSettings.Builder spawnBuilder = baseCaveSpawning(false);
+        MobSpawnSettings.Builder spawnBuilder = baseCaveSpawning();
 
         return (new Biome.BiomeBuilder())
                 .hasPrecipitation(true)
@@ -210,7 +199,7 @@ public class CaveBiomes {
     }
 
     public static Biome scorchingCaves(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = (new BiomeSpecialEffects.Builder())
+        BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
                 .skyColor(calculateSkyColor(0.7F))
                 .fogColor(OVERWORLD_FOG_COLOR)
                 .waterColor(NORMAL_WATER_COLOR)
@@ -225,14 +214,14 @@ public class CaveBiomes {
         BiomeGenerationSettings.Builder builder = baseCaveGeneration(featureGetter, carverGetter);
 
         //add RU features
-        builder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, RuMiscOverworldPlacements.OVERWORLD_LAVA_DELTA);
-        builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, RuMiscOverworldPlacements.BASALT_BLOB);
-        builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, RuMiscOverworldPlacements.ASH_VENT);
-        builder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, RuMiscOverworldPlacements.LAVA_FALL);
+        builder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, RuMiscOverworldPlacements.SPECIAL_OVERWORLD_LAVA_DELTA);
+        builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, RuMiscOverworldPlacements.SPECIAL_BASALT_BLOB);
+        builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, RuMiscOverworldPlacements.SPECIAL_ASH_VENT);
+        builder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, RuMiscOverworldPlacements.SPECIAL_LAVA_FALL);
 
 
         //add mob spawns
-        MobSpawnSettings.Builder spawnBuilder = baseCaveSpawning(false);
+        MobSpawnSettings.Builder spawnBuilder = baseCaveSpawning();
 
         return (new Biome.BiomeBuilder())
                 .hasPrecipitation(false)

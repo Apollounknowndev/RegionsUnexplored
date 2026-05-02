@@ -80,18 +80,17 @@
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:patch/grass_sprouts_sparse",
       "minecraft:patch_large_fern",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
       "minecraft:patch_berry_common",
-      "regions_unexplored:tree/group/pine_taiga",
-      "regions_unexplored:tree/pine_shrub_on_grass",
-      "regions_unexplored:tree/fallen_pine_on_dirt",
-      "regions_unexplored:azure_daisy",
-      "regions_unexplored:dirt_vegetation",
-      "regions_unexplored:grass_vegetation",
-      "regions_unexplored:shrub/pine"
+      "regions_unexplored:tree/group/pine_taiga_primary",
+      "regions_unexplored:tree/group/pine_taiga_secondary",
+      "regions_unexplored:tree/fallen/pine_on_dirt",
+      "regions_unexplored:shrub/group/pine_taiga",
+      "regions_unexplored:patch/azure_daisy",
+      "regions_unexplored:patch/fern",
+      "regions_unexplored:patch/short_grass"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -83,9 +83,7 @@
       "minecraft:patch_pumpkin",
       "minecraft:seagrass_river",
       "minecraft:kelp_warm",
-      "regions_unexplored:tree/palm_on_sand",
-      "regions_unexplored:ferns",
-      "regions_unexplored:tall_grass"
+      "regions_unexplored:tree/group/tropical_river"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -199,5 +197,5 @@
       }
     ]
   },
-  "temperature": 0.75
+  "temperature": 0.8
 }

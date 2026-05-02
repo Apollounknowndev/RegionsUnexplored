@@ -19,7 +19,7 @@ public interface RUTreeGrowers {
     TreeGrower BLUE_BIOSHROOM = new TreeGrower("blue_bioshroom", empty(), of(TREE_GIANT_BLUE_BIOSHROOM), empty());
     TreeGrower GREEN_BIOSHROOM = new TreeGrower("green_bioshroom", empty(), of(TREE_GIANT_GREEN_BIOSHROOM), empty());
     TreeGrower PINK_BIOSHROOM = new TreeGrower("pink_bioshroom", empty(), of(TREE_GIANT_PINK_BIOSHROOM), empty());
-    TreeGrower YELLOW_BIOSHROOM = new TreeGrower("yellow_bioshroom", empty(), of(TREE_GIANT_YELLOW_BIOSHROOM), empty());
+    TreeGrower YELLOW_BIOSHROOM = new TreeGrower("yellow_bioshroom", empty(), of(TREE_YELLOW_BIOSHROOM_LARGE), empty());
     TreeGrower BAMBOO = new TreeGrower("bamboo", empty(), of(TREE_BAMBOO), empty());
     RuUltraFromMegaTreeGrower BAOBAB = new RuUltraFromMegaTreeGrower("baobab", of(TREE_ULTRA_BAOBAB), of(TREE_MEGA_BAOBAB), empty(), empty());
     TreeGrower BLACKWOOD = new TreeGrower("blackwood", 0.1F, of(TREE_GIANT_BLACKWOOD), empty(), of(TREE_BIG_BLACKWOOD), of(TREE_BLACKWOOD), empty(), empty());

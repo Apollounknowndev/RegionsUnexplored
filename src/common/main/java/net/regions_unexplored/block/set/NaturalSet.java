@@ -70,7 +70,7 @@ public class NaturalSet {
         return withShrub(ShrubBlock::new);
     }
     
-    public NaturalSet withShrub(BlockFactory factory) {
+    public <T extends Block> NaturalSet withShrub(BlockFactory<T> factory) {
         this.shrub = RUBlockUtils.register(this.name + "_shrub", p -> factory.apply(SHRUB_PROPERTIES.apply(p)));
         return this;
     }
@@ -93,11 +93,11 @@ public class NaturalSet {
         return withLeaves(color, RUTintedParticlesLeavesBlock.standard());
     }
 
-    public NaturalSet withLeaves(BlockFactory factory) {
+    public NaturalSet withLeaves(BlockFactory<?> factory) {
         return withLeaves(MapColor.PLANT, factory);
     }
 
-    public NaturalSet withLeaves(MapColor color, BlockFactory factory) {
+    public NaturalSet withLeaves(MapColor color, BlockFactory<?> factory) {
         this.leaves = RUBlockUtils.register(this.name + "_leaves", p -> RUBlockUtils.leaves(p, color, this.fireproof, factory));
         return this;
     }
@@ -113,7 +113,7 @@ public class NaturalSet {
         return withSapling(p -> new SaplingBlock(grower, p));
     }
 
-    public NaturalSet withSapling(BlockFactory factory) {
+    public NaturalSet withSapling(BlockFactory<Block> factory) {
         this.sapling = RUBlockUtils.register(this.name + "_sapling", factory, Blocks.OAK_SAPLING);
         this.pottedSapling = RUBlockUtils.registerNoItem("potted_" + this.name + "_sapling", p -> new FlowerPotBlock(this.getSapling(), p), Blocks.POTTED_OAK_SAPLING);
         return this;

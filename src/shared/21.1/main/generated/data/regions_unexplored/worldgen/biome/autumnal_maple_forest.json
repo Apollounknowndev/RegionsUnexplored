@@ -86,10 +86,9 @@
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
       "regions_unexplored:tree/group/autumnal_maple_forest",
-      "regions_unexplored:autumnal_shrub_mix",
-      "regions_unexplored:white_trillium",
-      "regions_unexplored:patch/short_grass_sparse",
-      "regions_unexplored:patch/grass_sprouts_sparse"
+      "regions_unexplored:shrub/group/autumnal_maple_forest",
+      "regions_unexplored:patch/white_trillium",
+      "regions_unexplored:patch/short_grass_sparse"
     ],
     [
       "minecraft:freeze_top_layer"

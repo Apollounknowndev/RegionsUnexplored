@@ -87,13 +87,11 @@
       "minecraft:patch_pumpkin",
       "minecraft:vines",
       "minecraft:patch_melon_sparse",
-      "regions_unexplored:tree/eucalyptus",
-      "regions_unexplored:tree/small_eucalyptus",
-      "regions_unexplored:tree/oak_bush_dense",
-      "regions_unexplored:waratah",
-      "regions_unexplored:elephant_ear_sparse",
-      "regions_unexplored:tall_grass",
-      "regions_unexplored:shrub/eucalyptus"
+      "regions_unexplored:tree/group/eucalyptus_forest",
+      "regions_unexplored:shrub/group/eucalyptus_forest",
+      "regions_unexplored:patch/waratah",
+      "regions_unexplored:patch/elephant_ear_sparse",
+      "regions_unexplored:patch/tall_grass"
     ],
     [
       "minecraft:freeze_top_layer"

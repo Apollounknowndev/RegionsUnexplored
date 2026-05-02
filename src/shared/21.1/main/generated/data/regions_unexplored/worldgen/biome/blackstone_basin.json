@@ -57,13 +57,13 @@
       "minecraft:ore_quartz_nether",
       "minecraft:ore_ancient_debris_large",
       "minecraft:ore_debris_small",
-      "regions_unexplored:obsidian_spire",
-      "regions_unexplored:tree/cobalt",
-      "regions_unexplored:cobalt_roots",
-      "regions_unexplored:cobalt_earlight",
-      "regions_unexplored:tall_cobalt_earlight",
-      "regions_unexplored:blackstone_cluster",
-      "regions_unexplored:hanging_earlight"
+      "regions_unexplored:nether/obsidian_spire",
+      "regions_unexplored:nether/tree/blackstone_basin",
+      "regions_unexplored:nether/patch/cobalt_roots",
+      "regions_unexplored:nether/patch/cobalt_earlight",
+      "regions_unexplored:nether/tall_cobalt_earlight",
+      "regions_unexplored:nether/patch/blackstone_cluster",
+      "regions_unexplored:nether/patch/hanging_earlight"
     ]
   ],
   "has_precipitation": false,

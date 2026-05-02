@@ -9,8 +9,8 @@
   "downfall": 0.7,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": -9913745,
-    "grass_color": -9059189,
+    "foliage_color": 6863471,
+    "grass_color": 7718027,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -84,14 +84,11 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:patch/grass_sprouts_sparse",
-      "regions_unexplored:tree/scotts_pine_mountain_on_snow",
-      "regions_unexplored:tree/dead_scotts_pine_mountain_on_snow",
-      "regions_unexplored:tree/pine_shrub_on_snow_sparse",
-      "regions_unexplored:tree/fallen_pine_on_snow",
+      "regions_unexplored:tree/group/icy_heights",
+      "regions_unexplored:tree/fallen/pine_on_snow",
       "regions_unexplored:rock/group/icy_heights",
-      "regions_unexplored:frozen_flowers",
-      "regions_unexplored:snow_grass"
+      "regions_unexplored:patch/snowy_flowers",
+      "regions_unexplored:patch/frozen_grass"
     ],
     [
       "minecraft:freeze_top_layer"
