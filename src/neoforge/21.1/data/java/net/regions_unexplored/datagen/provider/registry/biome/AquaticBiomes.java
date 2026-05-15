@@ -17,6 +17,7 @@ import net.regions_unexplored.datagen.provider.registry.util.RUBiomeUtils;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuAquaticPlacements;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuTreePlacements;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuVegetationPlacements;
+import net.regions_unexplored.registry.RUEntityTypes;
 import net.regions_unexplored.registry.data.RUBiomes;
 
 import static net.regions_unexplored.datagen.provider.registry.util.RUBiomeUtils.*;
@@ -191,7 +192,6 @@ public class AquaticBiomes {
 
         //add features
         BiomeGenerationSettings.Builder builder = baseRiverGeneration(featureGetter, carverGetter);
-        BiomeDefaultFeatures.addLukeWarmKelp(builder);
 
         //add RU features
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuAquaticPlacements.PATCH_CATTAIL);
@@ -221,7 +221,6 @@ public class AquaticBiomes {
 
         //add features
         BiomeGenerationSettings.Builder builder = baseRiverGeneration(featureGetter, carverGetter);
-        BiomeDefaultFeatures.addLukeWarmKelp(builder);
 
         //add RU features
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_TROPICAL_RIVER);
@@ -304,8 +303,8 @@ public class AquaticBiomes {
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 100, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.HUSK, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(RUEntityTypes.ASHEN.get(), 1, 4, 4));
+        spawnBuilder.addMobCharge(RUEntityTypes.ASHEN.get(), 1, 0.25);
         BiomeDefaultFeatures.caveSpawns(spawnBuilder);
 
         return biomeBuilder(2f, 0f)

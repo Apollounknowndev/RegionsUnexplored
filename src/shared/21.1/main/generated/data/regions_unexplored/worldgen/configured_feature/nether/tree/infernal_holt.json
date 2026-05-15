@@ -3,18 +3,12 @@
   "config": {
     "features": [
       {
-        "data": {
-          "feature": "regions_unexplored:nether/tree/brim_willow",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:nether/tree/brim_willow",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:nether/tree/tall_brim_willow",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:nether/tree/tall_brim_willow",
+        "placement": []
       }
     ]
   }

@@ -7,28 +7,29 @@
           "feature": "regions_unexplored:tree/larch",
           "placement": []
         },
-        "weight": 7
+        "weight": 6
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/larch_pine",
+          "placement": []
+        },
+        "weight": 2
       },
       {
         "data": {
           "feature": "regions_unexplored:tree/larch_golden",
           "placement": []
         },
-        "weight": 1
+        "weight": 3
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/birch_aspen",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/larch_golden_pine",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/oak_bush",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/birch_aspen",
+        "placement": []
       }
     ]
   }

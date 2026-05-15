@@ -22,7 +22,7 @@ repositories {
 
 group = "net.regions_unexplored"
 version = "0.6+indev+phase2"
-val lithostitchedVersion = "1.7.2"
+val lithostitchedVersion = "1.7.7"
 
 cloche {
     metadata {

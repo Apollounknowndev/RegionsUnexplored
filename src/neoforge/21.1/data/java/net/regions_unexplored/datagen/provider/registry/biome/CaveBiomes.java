@@ -5,7 +5,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
@@ -15,6 +14,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuMiscOverworldPlacements;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuTreePlacements;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuVegetationPlacements;
+import net.regions_unexplored.registry.RUEntityTypes;
 import net.regions_unexplored.registry.RUParticleTypes;
 
 import static net.regions_unexplored.datagen.provider.registry.util.RUBiomeUtils.*;
@@ -198,7 +198,7 @@ public class CaveBiomes {
                 .build();
     }
 
-    public static Biome scorchingCaves(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+    public static Biome inferno(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
                 .skyColor(calculateSkyColor(0.7F))
                 .fogColor(OVERWORLD_FOG_COLOR)
@@ -206,22 +206,23 @@ public class CaveBiomes {
                 .waterFogColor(NORMAL_WATER_FOG_COLOR)
                 .foliageColorOverride(-8949914)
                 .grassColorOverride(-8621472)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.1F))
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.003F))
                 .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DEEP_DARK));
+                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES));
 
         //add features
         BiomeGenerationSettings.Builder builder = baseCaveGeneration(featureGetter, carverGetter);
 
         //add RU features
-        builder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, RuMiscOverworldPlacements.SPECIAL_OVERWORLD_LAVA_DELTA);
-        builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, RuMiscOverworldPlacements.SPECIAL_BASALT_BLOB);
-        builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, RuMiscOverworldPlacements.SPECIAL_ASH_VENT);
         builder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, RuMiscOverworldPlacements.SPECIAL_LAVA_FALL);
+        builder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, RuMiscOverworldPlacements.SPECIAL_INFERNO_LAVA_DELTA);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.PATCH_ASH_VENTS_INFERNO);
+        //builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, RuMiscOverworldPlacements.SPECIAL_BASALT_BLOB);
 
 
         //add mob spawns
-        MobSpawnSettings.Builder spawnBuilder = baseCaveSpawning();
+        MobSpawnSettings.Builder spawnBuilder = baseCaveSpawning()
+            .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(RUEntityTypes.ASHEN.get(), 100, 4, 4));
 
         return (new Biome.BiomeBuilder())
                 .hasPrecipitation(false)

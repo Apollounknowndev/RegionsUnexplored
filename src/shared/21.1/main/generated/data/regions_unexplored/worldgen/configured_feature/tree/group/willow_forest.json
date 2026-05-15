@@ -3,11 +3,8 @@
   "config": {
     "features": [
       {
-        "data": {
-          "feature": "regions_unexplored:tree/willow",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/willow",
+        "placement": []
       },
       {
         "data": {
@@ -24,11 +21,8 @@
         "weight": 2
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/oak_bush",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/oak_bush",
+        "placement": []
       },
       {
         "data": {

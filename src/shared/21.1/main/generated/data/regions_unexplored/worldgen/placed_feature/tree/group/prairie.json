@@ -2,10 +2,12 @@
   "feature": "regions_unexplored:tree/group/prairie",
   "placement": [
     {
-      "type": "minecraft:noise_based_count",
-      "noise_factor": 30.0,
-      "noise_offset": -0.5,
-      "noise_to_count_ratio": 60
+      "type": "lithostitched:noise_slope",
+      "noise": "regions_unexplored:tree_density",
+      "offset": -5,
+      "slope": 4,
+      "xz_scale": 1.5,
+      "y_scale": 0.0
     },
     {
       "type": "minecraft:in_square"
@@ -21,19 +23,13 @@
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:matching_blocks",
-        "blocks": [
-          "minecraft:grass_block",
-          "regions_unexplored:peat_grass_block",
-          "regions_unexplored:silt_grass_block",
-          "regions_unexplored:stone_grass_block",
-          "regions_unexplored:deepslate_grass_block"
-        ],
-        "offset": [
-          0,
-          -1,
-          0
-        ]
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "minecraft:oak_sapling",
+          "Properties": {
+            "stage": "0"
+          }
+        }
       }
     },
     {

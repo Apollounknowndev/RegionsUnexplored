@@ -1,11 +1,14 @@
 package net.regions_unexplored.block.type.leaves;
 
+import dev.worldgen.lithostitched.api.util.WeightedList;
+import dev.worldgen.lithostitched.api.worldgen.stateprovider.LithostitchedStateProviders;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -14,15 +17,21 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUParticleTypes;
+
+import static net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider.simple;
 
 public class AppleLeavesBlock extends RUTintedParticlesLeavesBlock implements BonemealableBlock{
     public static final int MAX_AGE = 4;
@@ -103,4 +112,10 @@ public class AppleLeavesBlock extends RUTintedParticlesLeavesBlock implements Bo
         level.setBlock(pos, state.setValue(AGE, Integer.valueOf(i)), 2);
     }
 
+    public static BlockStateProvider createStateProvider(int normalWeight) {
+        return LithostitchedStateProviders.weighted(WeightedList.<BlockStateProvider>builder()
+            .add(simple(Blocks.OAK_LEAVES), normalWeight)
+            .add(new RandomizedIntStateProvider(simple(RUBlocks.APPLE_OAK_NATURAL_SET.getLeaves()), AppleLeavesBlock.AGE, UniformInt.of(2, 4)), 1)
+        .build());
+    }
 }

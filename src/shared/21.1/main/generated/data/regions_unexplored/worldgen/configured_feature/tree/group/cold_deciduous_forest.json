@@ -3,11 +3,8 @@
   "config": {
     "features": [
       {
-        "data": {
-          "feature": "regions_unexplored:tree/oak_with_branch",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/oak_with_branch",
+        "placement": []
       },
       {
         "data": {

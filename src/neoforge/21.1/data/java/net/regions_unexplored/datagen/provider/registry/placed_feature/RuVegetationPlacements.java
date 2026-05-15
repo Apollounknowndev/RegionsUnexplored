@@ -51,9 +51,10 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> PATCH_FERN_REDWOODS = patch("fern_redwoods");
     public static final ResourceKey<PlacedFeature> PATCH_CLOVER = patch("clover");
     public static final ResourceKey<PlacedFeature> PATCH_DAISIES = patch("daisies");
-    public static final ResourceKey<PlacedFeature> PATCH_FLOWERS_TUNDRA = patch("flowers_tundra");
-    public static final ResourceKey<PlacedFeature> PATCH_TALL_FLOWERS_WISTERIA_GROVE = patch("tall_flowers_wisteria_grove");
-    public static final ResourceKey<PlacedFeature> PATCH_FLOWERS_WISTERIA_GROVE = patch("flowers_wisteria_grove");
+    public static final ResourceKey<PlacedFeature> PATCH_FLOWERS_TUNDRA = patch("flowers/tundra");
+    public static final ResourceKey<PlacedFeature> PATCH_TALL_FLOWERS_WISTERIA_GROVE = patch("tall_flowers/wisteria_grove");
+    public static final ResourceKey<PlacedFeature> PATCH_FLOWERS_WISTERIA_GROVE = patch("flowers/wisteria_grove");
+    public static final ResourceKey<PlacedFeature> PATCH_FLOWERS_AUTUMNAL_MAPLE_FOREST = patch("flowers/autumnal_maple_forest");
 
     public static final ResourceKey<PlacedFeature> PATCH_SHORT_GRASS_SPARSE = patch("short_grass_sparse");
     public static final ResourceKey<PlacedFeature> PATCH_SHORT_GRASS = patch("short_grass");
@@ -81,7 +82,6 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> PATCH_ALPHA_DANDELION = patch("alpha_dandelion");
     public static final ResourceKey<PlacedFeature> PATCH_ALPHA_ROSE = patch("alpha_rose");
     public static final ResourceKey<PlacedFeature> PATCH_WILTING_TRILLIUM = patch("wilting_trillium");
-    public static final ResourceKey<PlacedFeature> PATCH_WHITE_TRILLIUM = patch("white_trillium");
     public static final ResourceKey<PlacedFeature> PATCH_AZURE_DAISY = patch("azure_daisy");
     public static final ResourceKey<PlacedFeature> PATCH_DAISY = patch("daisy");
     public static final ResourceKey<PlacedFeature> PATCH_WARATAH = patch("waratah");
@@ -221,7 +221,7 @@ public class RuVegetationPlacements {
         register(context, RUPlacedFeatures.BONEMEAL_ALPHA_GRASS, getter.getOrThrow(RUConfiguredFeatures.BONEMEAL_ALPHA_GRASS), RarityFilter.onAverageOnceEvery(25), airCheck);
         register(context, RuVegetationPlacements.PATCH_ALPHA_ROSE, surfaceSpread(0.5, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_WILTING_TRILLIUM, surfaceSpread(0.25, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_WHITE_TRILLIUM, placement(0.08f, Types.WORLD_SURFACE));
+        register(context, RuVegetationPlacements.PATCH_FLOWERS_AUTUMNAL_MAPLE_FOREST, placement(2f, Types.WORLD_SURFACE));
         register(context, RuVegetationPlacements.PATCH_AZURE_DAISY, surfaceSpread(0.0833, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_DAISY, surfaceSpread(0.333, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_WARATAH, surfaceSpread(1, Types.WORLD_SURFACE_WG));
@@ -245,7 +245,14 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.PATCH_HIBISCUS, placement(0.5f, Types.MOTION_BLOCKING_NO_LEAVES));
         register(context, RuVegetationPlacements.PATCH_MALLOW, placement(0.125f, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_HYSSOP, placement(1, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_BARLEY_SPARSE, patchBarley, RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, CountPlacement.of(ClampedInt.of(UniformInt.of(-3, 1), 0, 1)), BiomeFilter.biome());
+        register(context, RuVegetationPlacements.PATCH_BARLEY_SPARSE, patchBarley,
+            LithostitchedPlacementModifiers.noiseSlope(RUNoises.FLOWER_DENSITY, 3, -1, 1, 0),
+            count(2),
+            InSquarePlacement.spread(),
+            PlacementUtils.HEIGHTMAP,
+            BiomeFilter.biome()
+        );
+        
         register(context, RuVegetationPlacements.PATCH_BARLEY_DENSE, patchBarley, placement()
             .count(NoiseBasedCountPlacement.of(155, 75.0D, 0.0D))
             .notSubmerged()

@@ -17,11 +17,8 @@
         "weight": 4
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/dead_bog",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/dead_bog",
+        "placement": []
       }
     ]
   }

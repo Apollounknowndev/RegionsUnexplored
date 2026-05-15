@@ -9,7 +9,6 @@
     }
   },
   "display": {
-    "background": "regions_unexplored:textures/gui/advancements/backgrounds/argillite.png",
     "description": {
       "translate": "advancements.regions_unexplored.light_as_a_frog.description"
     },

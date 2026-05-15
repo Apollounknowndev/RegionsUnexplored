@@ -1,5 +1,5 @@
 {
-  "parent": "regions_unexplored:pioneer",
+  "parent": "regions_unexplored:parent",
   "criteria": {
     "alpha_grove": {
       "conditions": {
@@ -26,22 +26,6 @@
             "predicate": {
               "location": {
                 "biomes": "regions_unexplored:ancient_delta"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
-    "arid_mountains": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:arid_mountains"
               }
             }
           }
@@ -113,22 +97,6 @@
       },
       "trigger": "minecraft:location"
     },
-    "barley_fields": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:barley_fields"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
     "bayou": {
       "conditions": {
         "player": [
@@ -193,7 +161,7 @@
       },
       "trigger": "minecraft:location"
     },
-    "boreal_forest": {
+    "boreal_taiga": {
       "conditions": {
         "player": [
           {
@@ -225,6 +193,22 @@
       },
       "trigger": "minecraft:location"
     },
+    "clover_plains": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "regions_unexplored:clover_plains"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "cold_boreal_taiga": {
       "conditions": {
         "player": [
@@ -234,22 +218,6 @@
             "predicate": {
               "location": {
                 "biomes": "regions_unexplored:cold_boreal_taiga"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
-    "cold_deciduous_forest": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:cold_deciduous_forest"
               }
             }
           }
@@ -401,22 +369,6 @@
       },
       "trigger": "minecraft:location"
     },
-    "golden_boreal_taiga": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:golden_boreal_taiga"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
     "grassland": {
       "conditions": {
         "player": [
@@ -529,6 +481,22 @@
       },
       "trigger": "minecraft:location"
     },
+    "inferno": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "regions_unexplored:inferno"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "joshua_desert": {
       "conditions": {
         "player": [
@@ -545,23 +513,7 @@
       },
       "trigger": "minecraft:location"
     },
-    "lupine_plains": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:clover_plains"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
-    "magnolia_highlands": {
+    "magnolia_woodland": {
       "conditions": {
         "player": [
           {
@@ -657,22 +609,6 @@
       },
       "trigger": "minecraft:location"
     },
-    "ochard": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:orchard"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
     "old_growth_bayou": {
       "conditions": {
         "player": [
@@ -682,6 +618,54 @@
             "predicate": {
               "location": {
                 "biomes": "regions_unexplored:old_growth_bayou"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "old_growth_boreal_taiga": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "regions_unexplored:old_growth_boreal_taiga"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "old_growth_golden_boreal_taiga": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "regions_unexplored:old_growth_golden_boreal_taiga"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "orchard": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "regions_unexplored:orchard"
               }
             }
           }
@@ -785,22 +769,6 @@
       },
       "trigger": "minecraft:location"
     },
-    "pumpkin_fields": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:pumpkin_fields"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
     "rainforest": {
       "conditions": {
         "player": [
@@ -810,22 +778,6 @@
             "predicate": {
               "location": {
                 "biomes": "regions_unexplored:rainforest"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
-    "redstone_abyss": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:redstone_abyss"
               }
             }
           }
@@ -890,22 +842,6 @@
             "predicate": {
               "location": {
                 "biomes": "regions_unexplored:saguaro_desert"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
-    "scorching_caves": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:scorching_caves"
               }
             }
           }
@@ -993,38 +929,6 @@
       },
       "trigger": "minecraft:location"
     },
-    "steppe": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:steppe"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
-    "temperate_grove": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:temperate_grove"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
     "towering_cliffs": {
       "conditions": {
         "player": [
@@ -1105,6 +1009,22 @@
       },
       "trigger": "minecraft:location"
     },
+    "windswept_maple_forest": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "regions_unexplored:windswept_maple_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "wisteria_grove": {
       "conditions": {
         "player": [
@@ -1123,7 +1043,6 @@
     }
   },
   "display": {
-    "background": "regions_unexplored:textures/gui/advancements/backgrounds/argillite.png",
     "description": {
       "translate": "advancements.regions_unexplored.regions_explored.description"
     },
@@ -1145,16 +1064,10 @@
       "ancient_delta"
     ],
     [
-      "arid_mountains"
-    ],
-    [
       "ashen_woodland"
     ],
     [
       "autumnal_maple_forest"
-    ],
-    [
-      "bayou"
     ],
     [
       "bamboo_forest"
@@ -1163,7 +1076,7 @@
       "baobab_savanna"
     ],
     [
-      "barley_fields"
+      "bayou"
     ],
     [
       "bioshroom_caves"
@@ -1175,16 +1088,16 @@
       "blackwood_taiga"
     ],
     [
-      "boreal_forest"
+      "boreal_taiga"
     ],
     [
       "chalk_cliffs"
     ],
     [
-      "cold_boreal_taiga"
+      "clover_plains"
     ],
     [
-      "cold_deciduous_forest"
+      "cold_boreal_taiga"
     ],
     [
       "cold_river"
@@ -1214,9 +1127,6 @@
       "glistering_meadow"
     ],
     [
-      "golden_boreal_taiga"
-    ],
-    [
       "grassland"
     ],
     [
@@ -1238,22 +1148,19 @@
       "infernal_holt"
     ],
     [
+      "inferno"
+    ],
+    [
       "joshua_desert"
     ],
     [
-      "lupine_plains"
-    ],
-    [
-      "magnolia_highlands"
+      "magnolia_woodland"
     ],
     [
       "maple_forest"
     ],
     [
       "marsh"
-    ],
-    [
-      "mountains"
     ],
     [
       "muddy_river"
@@ -1265,7 +1172,13 @@
       "old_growth_bayou"
     ],
     [
-      "ochard"
+      "old_growth_boreal_taiga"
+    ],
+    [
+      "old_growth_golden_boreal_taiga"
+    ],
+    [
+      "orchard"
     ],
     [
       "outback"
@@ -1286,13 +1199,7 @@
       "prismachasm"
     ],
     [
-      "pumpkin_fields"
-    ],
-    [
       "rainforest"
-    ],
-    [
-      "redstone_abyss"
     ],
     [
       "redstone_caves"
@@ -1305,9 +1212,6 @@
     ],
     [
       "saguaro_desert"
-    ],
-    [
-      "scorching_caves"
     ],
     [
       "shrubland"
@@ -1325,12 +1229,6 @@
       "spires"
     ],
     [
-      "steppe"
-    ],
-    [
-      "temperate_grove"
-    ],
-    [
       "towering_cliffs"
     ],
     [
@@ -1343,10 +1241,16 @@
       "tundra"
     ],
     [
+      "windswept_maple_forest"
+    ],
+    [
       "willow_forest"
     ],
     [
       "wisteria_grove"
+    ],
+    [
+      "mountains"
     ]
   ],
   "sends_telemetry_event": true

@@ -1,0 +1,14 @@
+{
+  "type": "lithostitched:add_processor_list_processors",
+  "processor_lists": [
+    "minecraft:street_plains",
+    "minecraft:street_savanna",
+    "minecraft:street_snowy_or_taiga"
+  ],
+  "processors": [
+    {
+      "processor_lists": "regions_unexplored:village_path_fix",
+      "processor_type": "lithostitched:reference"
+    }
+  ]
+}

@@ -7,21 +7,18 @@
           "feature": "regions_unexplored:tree/apple_oak",
           "placement": []
         },
-        "weight": 1
+        "weight": 7
       },
       {
         "data": {
           "feature": "regions_unexplored:tree/big_apple_oak",
           "placement": []
         },
-        "weight": 1
+        "weight": 2
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/big_oak",
-          "placement": []
-        },
-        "weight": 2
+        "feature": "regions_unexplored:tree/big_oak",
+        "placement": []
       }
     ]
   }

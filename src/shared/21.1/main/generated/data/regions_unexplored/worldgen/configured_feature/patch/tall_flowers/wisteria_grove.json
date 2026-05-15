@@ -1,0 +1,19 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "feature": "regions_unexplored:patch/tassel",
+        "placement": []
+      },
+      {
+        "feature": "regions_unexplored:patch/lilac",
+        "placement": []
+      },
+      {
+        "feature": "regions_unexplored:patch/peony",
+        "placement": []
+      }
+    ]
+  }
+}

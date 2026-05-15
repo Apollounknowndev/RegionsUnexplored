@@ -6,11 +6,11 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.3,
+  "downfall": 0.35,
   "effects": {
     "fog_color": 12638463,
     "foliage_color": 9877306,
-    "grass_color": 11585358,
+    "grass_color": 13414979,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -23,7 +23,7 @@
       "replace_current_music": false,
       "sound": "minecraft:music.overworld.forest"
     },
-    "sky_color": 7972607,
+    "sky_color": 8103167,
     "water_color": 4159204,
     "water_fog_color": 329011
   },
@@ -80,14 +80,16 @@
     ],
     [
       "minecraft:glow_lichen",
+      "minecraft:forest_flowers",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:tree/group/pumpkin_fields",
-      "regions_unexplored:shrub/group/pumpkin_fields",
-      "regions_unexplored:patch/pumpkin_field_pumpkins",
-      "regions_unexplored:patch/short_grass"
+      "regions_unexplored:tree/group/autumnal_maple_forest",
+      "regions_unexplored:shrub/group/autumnal_maple_forest",
+      "regions_unexplored:patch/silt_podzol_pumpkins",
+      "regions_unexplored:patch/flowers/autumnal_maple_forest",
+      "regions_unexplored:patch/short_grass_sparse"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -131,16 +133,10 @@
         "weight": 8
       },
       {
-        "type": "minecraft:horse",
-        "maxCount": 6,
-        "minCount": 2,
+        "type": "minecraft:wolf",
+        "maxCount": 4,
+        "minCount": 4,
         "weight": 5
-      },
-      {
-        "type": "minecraft:donkey",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 1
       }
     ],
     "misc": [],
@@ -205,5 +201,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.225
+  "temperature": 0.25
 }

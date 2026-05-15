@@ -17,11 +17,8 @@
         "weight": 2
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/oak_bush",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/oak_bush",
+        "placement": []
       }
     ]
   }

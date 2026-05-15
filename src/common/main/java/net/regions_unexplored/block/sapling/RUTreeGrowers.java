@@ -29,8 +29,8 @@ public interface RUTreeGrowers {
     TreeGrower DEAD = new TreeGrower("dead", 0.1F, empty(), empty(), of(TREE_DEAD), of(TREE_BIG_DEAD), of(TREE_DEAD_BOG), empty());
     TreeGrower EUCALYPTUS = new TreeGrower("eucalyptus", 0.33F, empty(), empty(), of(TREE_EUCALYPTUS), of(TREE_SMALL_EUCALYPTUS), empty(), empty());
     TreeGrower FLOWERING_OAK = new TreeGrower("flowering_oak", 0.2F, empty(), empty(), of(TREE_FLOWERING_OAK), of(TREE_BIG_FLOWERING_OAK), empty(), empty());
-    TreeGrower GOLDEN_LARCH = new TreeGrower("golden_larch", 0.25F, empty(), empty(), of(TREE_GOLDEN_LARCH), of(TREE_BIG_GOLDEN_LARCH), empty(), empty());
-    TreeGrower LARCH = new TreeGrower("larch", 0.25F, empty(), empty(), of(TREE_LARCH), of(TREE_BIG_LARCH), empty(), empty());
+    TreeGrower GOLDEN_LARCH = new TreeGrower("golden_larch", 0.25F, empty(), empty(), of(TREE_LARCH_GOLDEN), of(TREE_LARCH_GOLDEN_LARGE), empty(), empty());
+    TreeGrower LARCH = new TreeGrower("larch", 0.25F, empty(), empty(), of(TREE_LARCH), of(TREE_LARCH_LARGE), empty(), empty());
     TreeGrower JOSHUA = new TreeGrower("joshua", 0.33F, empty(), empty(), of(TREE_JOSHUA_MEDIUM), of(TREE_JOSHUA_LARGE), empty(), empty());
     TreeGrower MAPLE = new TreeGrower("maple", 0.1F, empty(), empty(), of(TREE_MAPLE), of(TREE_BIG_MAPLE), empty(), empty());
     TreeGrower RED_MAPLE = new TreeGrower("red_maple", 0.1F, empty(), empty(), of(TREE_RED_MAPLE), of(TREE_BIG_RED_MAPLE), empty(), empty());

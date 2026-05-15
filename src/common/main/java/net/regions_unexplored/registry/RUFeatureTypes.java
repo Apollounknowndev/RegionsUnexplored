@@ -38,7 +38,6 @@ public interface RUFeatureTypes {
     Supplier<Feature<RUTreeConfiguration>> LARCH_TREE = register("larch_tree", new LarchTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> LARGE_JOSHUA_TREE = register("large_joshua_tree", new LargeJoshuaTreeFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> KAPOK_TREE = register("kapok_tree", new KapokTreeFeature(RUTreeConfiguration.CODEC));
-    Supplier<Feature<RUTreeConfiguration>> MAPLE_TREE = register("maple_tree", new MapleTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> MEDIUM_JOSHUA_TREE = register("medium_joshua_tree", new MediumJoshuaTreeFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> PALM_TREE = register("palm_tree", new PalmTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> LUSH_PINE_TREE = register("lush_pine_tree", new LushPineTreeFeature(RUTreeConfiguration.CODEC));

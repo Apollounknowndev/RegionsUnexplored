@@ -13,7 +13,6 @@
     }
   },
   "display": {
-    "background": "regions_unexplored:textures/gui/advancements/backgrounds/argillite.png",
     "description": {
       "translate": "advancements.regions_unexplored.this_tree_bleeds_red.description"
     },

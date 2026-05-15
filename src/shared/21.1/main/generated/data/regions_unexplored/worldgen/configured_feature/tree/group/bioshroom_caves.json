@@ -3,18 +3,12 @@
   "config": {
     "features": [
       {
-        "data": {
-          "feature": "regions_unexplored:tree/giant_blue_bioshroom",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/giant_blue_bioshroom",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/giant_green_bioshroom",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/giant_green_bioshroom",
+        "placement": []
       }
     ]
   }

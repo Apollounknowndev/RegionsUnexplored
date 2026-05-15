@@ -1,0 +1,46 @@
+{
+  "processors": [
+    {
+      "else": [],
+      "if_true": {
+        "type": "regions_unexplored:matching_biomes",
+        "biomes": "#regions_unexplored:surface/silt"
+      },
+      "processor_type": "lithostitched:condition",
+      "random_mode": {
+        "mode": "per_block",
+        "name": "lithostitched:default"
+      },
+      "then": [
+        {
+          "blocks": {
+            "minecraft:dirt_path": "regions_unexplored:silt_dirt_path",
+            "minecraft:grass_block": "regions_unexplored:silt_grass_block"
+          },
+          "processor_type": "lithostitched:block_swap"
+        }
+      ]
+    },
+    {
+      "else": [],
+      "if_true": {
+        "type": "regions_unexplored:matching_biomes",
+        "biomes": "#regions_unexplored:surface/peat"
+      },
+      "processor_type": "lithostitched:condition",
+      "random_mode": {
+        "mode": "per_block",
+        "name": "lithostitched:default"
+      },
+      "then": [
+        {
+          "blocks": {
+            "minecraft:dirt_path": "regions_unexplored:peat_dirt_path",
+            "minecraft:grass_block": "regions_unexplored:peat_grass_block"
+          },
+          "processor_type": "lithostitched:block_swap"
+        }
+      ]
+    }
+  ]
+}

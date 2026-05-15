@@ -1,14 +1,23 @@
 {
-  "type": "regions_unexplored:maple_tree",
+  "type": "minecraft:tree",
   "config": {
-    "branch_provider": {
+    "decorators": [
+      {
+        "type": "regions_unexplored:group_branch",
+        "branch_block": "regions_unexplored:oak_branch",
+        "log_block": "minecraft:oak_log",
+        "probability": 1.0,
+        "top_offset": 3
+      }
+    ],
+    "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "regions_unexplored:oak_branch",
-        "Properties": {
-          "facing": "north"
-        }
+        "Name": "minecraft:dirt"
       }
+    },
+    "foliage_placer": {
+      "type": "regions_unexplored:maple"
     },
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
@@ -21,8 +30,20 @@
         }
       }
     },
-    "minimum_size": 6,
-    "size_variation": 4,
+    "force_dirt": false,
+    "ignore_vines": false,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 0,
+      "upper_size": 1
+    },
+    "trunk_placer": {
+      "type": "minecraft:straight_trunk_placer",
+      "base_height": 7,
+      "height_rand_a": 2,
+      "height_rand_b": 2
+    },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {

@@ -12,7 +12,7 @@
         "probability": 0.002
       },
       {
-        "type": "regions_unexplored:branch",
+        "type": "regions_unexplored:random_branch",
         "branch_block": "regions_unexplored:cherry_branch",
         "leaves_provider": {
           "type": "minecraft:simple_state_provider",

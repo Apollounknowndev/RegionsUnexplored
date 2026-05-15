@@ -3,25 +3,16 @@
   "config": {
     "features": [
       {
-        "data": {
-          "feature": "regions_unexplored:tree/eucalyptus",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/eucalyptus",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/small_eucalyptus",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/small_eucalyptus",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/oak_bush",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/oak_bush",
+        "placement": []
       }
     ]
   }

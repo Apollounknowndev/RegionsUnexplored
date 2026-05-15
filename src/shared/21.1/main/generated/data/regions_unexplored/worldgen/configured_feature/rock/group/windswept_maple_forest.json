@@ -1,0 +1,18 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "feature": "regions_unexplored:rock/mixed_cobblestone",
+        "placement": []
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:rock/mixed_stone",
+          "placement": []
+        },
+        "weight": 2
+      }
+    ]
+  }
+}

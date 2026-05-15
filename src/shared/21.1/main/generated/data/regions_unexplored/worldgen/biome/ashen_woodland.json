@@ -100,7 +100,12 @@
     ]
   ],
   "has_precipitation": true,
-  "spawn_costs": {},
+  "spawn_costs": {
+    "regions_unexplored:ashen": {
+      "charge": 1.0,
+      "energy_budget": 0.25
+    }
+  },
   "spawners": {
     "ambient": [
       {
@@ -115,16 +120,10 @@
     "misc": [],
     "monster": [
       {
-        "type": "minecraft:creeper",
+        "type": "regions_unexplored:ashen",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 100
-      },
-      {
-        "type": "minecraft:husk",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 100
+        "weight": 1
       }
     ],
     "underground_water_creature": [

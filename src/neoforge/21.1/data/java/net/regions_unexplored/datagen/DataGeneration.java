@@ -21,10 +21,7 @@ import net.regions_unexplored.datagen.provider.client.RUBlockModelProvider;
 import net.regions_unexplored.datagen.provider.client.RUItemModelProvider;
 import net.regions_unexplored.datagen.provider.registry.*;
 import net.regions_unexplored.datagen.provider.*;
-import net.regions_unexplored.datagen.provider.tag.RuBiomeTagProvider;
-import net.regions_unexplored.datagen.provider.tag.RuBlockTagProvider;
-import net.regions_unexplored.datagen.provider.tag.RuItemTagProvider;
-import net.regions_unexplored.datagen.provider.tag.RuProcessorListTagProvider;
+import net.regions_unexplored.datagen.provider.tag.*;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -64,9 +61,10 @@ public class DataGeneration {
 
         //tags
         TagsProvider<Block> blockTagsProvider = generator.addProvider(event.includeServer(), new RuBlockTagProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
-        TagsProvider<Item> itemTagsProvider = generator.addProvider(event.includeServer(), new RuItemTagProvider(packOutput, datapackRegistries.getRegistryProvider(), blockTagsProvider.contentsGetter(), existingFileHelper));
-        TagsProvider<Biome> biomeTagsProvider = generator.addProvider(event.includeServer(), new RuBiomeTagProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
-        TagsProvider<StructureProcessorList> processorListTagsProvider = generator.addProvider(event.includeServer(), new RuProcessorListTagProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
+        generator.addProvider(event.includeServer(), new RuItemTagProvider(packOutput, datapackRegistries.getRegistryProvider(), blockTagsProvider.contentsGetter(), existingFileHelper));
+        generator.addProvider(event.includeServer(), new RUEntityTypeTagProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
+        generator.addProvider(event.includeServer(), new RuBiomeTagProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
+        generator.addProvider(event.includeServer(), new RuProcessorListTagProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
 
         generator.addProvider(event.includeServer(), new RuDataMapGenerator(packOutput, holder));
     }

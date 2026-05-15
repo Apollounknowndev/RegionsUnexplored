@@ -3,25 +3,16 @@
   "config": {
     "features": [
       {
-        "data": {
-          "feature": "regions_unexplored:tree/wisteria_sky",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/wisteria_sky",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/wisteria_lavender",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/wisteria_lavender",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/wisteria_salmon",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/wisteria_salmon",
+        "placement": []
       },
       {
         "data": {

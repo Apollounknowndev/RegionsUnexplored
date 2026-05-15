@@ -1,30 +1,73 @@
 {
-  "type": "regions_unexplored:overworld_lava_delta",
+  "type": "minecraft:disk",
   "config": {
-    "depth": 3,
-    "extra_bottom_block_chance": 0.8,
-    "extra_edge_column_chance": 0.7,
-    "ground_state": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "regions_unexplored:volcanic_ash",
-        "Properties": {
-          "has_gravity": "false"
-        }
-      }
-    },
-    "replaceable": "#minecraft:lush_ground_replaceable",
-    "surface": "floor",
-    "vegetation_chance": 0.1,
-    "vegetation_feature": {
-      "feature": "minecraft:pointed_dripstone",
-      "placement": []
-    },
-    "vertical_range": 5,
-    "xz_radius": {
+    "half_height": 0,
+    "radius": {
       "type": "minecraft:uniform",
-      "max_inclusive": 7,
-      "min_inclusive": 4
+      "max_inclusive": 4,
+      "min_inclusive": 3
+    },
+    "state_provider": {
+      "fallback": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:magma_block"
+        }
+      },
+      "rules": [
+        {
+          "if_true": {
+            "type": "minecraft:all_of",
+            "predicates": [
+              {
+                "type": "minecraft:not",
+                "predicate": {
+                  "type": "minecraft:solid",
+                  "offset": [
+                    0,
+                    1,
+                    0
+                  ]
+                }
+              },
+              {
+                "type": "lithostitched:random_chance",
+                "chance": 0.25
+              }
+            ]
+          },
+          "then": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "minecraft:lava",
+              "Properties": {
+                "level": "0"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "target": {
+      "type": "lithostitched:grid",
+      "allowed_count": 0,
+      "distance_between_points": 1,
+      "predicate": {
+        "type": "minecraft:not",
+        "predicate": {
+          "type": "minecraft:any_of",
+          "predicates": [
+            {
+              "type": "minecraft:solid"
+            },
+            {
+              "type": "minecraft:matching_blocks",
+              "blocks": "minecraft:lava"
+            }
+          ]
+        }
+      },
+      "radius": 1
     }
   }
 }

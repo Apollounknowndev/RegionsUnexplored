@@ -10,25 +10,16 @@
         "weight": 2
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/giant_pink_bioshroom",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/giant_pink_bioshroom",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/giant_red_mushroom",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/giant_red_mushroom",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/giant_brown_mushroom",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/giant_brown_mushroom",
+        "placement": []
       }
     ]
   }

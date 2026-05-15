@@ -10,25 +10,16 @@
         "weight": 2
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/palm_shrub",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/palm_shrub",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/jungle",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/jungle",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/big_jungle",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/big_jungle",
+        "placement": []
       },
       {
         "data": {

@@ -145,7 +145,7 @@ public class RuColors {
     }
 
     public static int getAspenColor(BlockAndTintGetter world, BlockPos pos) {
-        Color aspen = Color.getHSBColor(((Mth.sin(((float)pos.getX()/10) + Mth.sin(((float)pos.getZ() + (float)pos.getX()) / 50) * 3)) / 75)+0.15F, 0.8F, 1.0F);
+        Color aspen = Color.getHSBColor(((Mth.sin(((float)pos.getX()/10) + Mth.sin(((float)pos.getZ() + (float)pos.getX()) / 50) * 3)) / 75)+0.15F, 0.75F, 0.8F);
         return aspen.getRGB();
     }
 

@@ -15,8 +15,14 @@ public interface RUProcessorLists {
     ResourceKey<StructureProcessorList> SHIPWRECK_DEAD_AND_DARK_OAK = shipwreck("dead", "dark_oak");
     ResourceKey<StructureProcessorList> SHIPWRECK_DEAD_AND_LARCH = shipwreck("dead", "larch");
     ResourceKey<StructureProcessorList> SHIPWRECK_DEAD_AND_SPRUCE = shipwreck("dead", "spruce");
+    
+    ResourceKey<StructureProcessorList> VILLAGE_PATH_FIX = key("village_path_fix");
 
     private static ResourceKey<StructureProcessorList> shipwreck(String primaryWood, String secondaryWood) {
-        return RegionsUnexplored.key(Registries.PROCESSOR_LIST, String.format("shipwreck_palette/%s_and_%s", primaryWood, secondaryWood));
+        return key(String.format("shipwreck_palette/%s_and_%s", primaryWood, secondaryWood));
+    }
+    
+    private static ResourceKey<StructureProcessorList> key(String name) {
+        return RegionsUnexplored.key(Registries.PROCESSOR_LIST, name);
     }
 }

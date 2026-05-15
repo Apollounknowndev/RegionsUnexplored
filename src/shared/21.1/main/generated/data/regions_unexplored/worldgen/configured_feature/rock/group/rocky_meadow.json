@@ -3,11 +3,8 @@
   "config": {
     "features": [
       {
-        "data": {
-          "feature": "regions_unexplored:rock/mixed_stone",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:rock/mixed_stone",
+        "placement": []
       },
       {
         "data": {

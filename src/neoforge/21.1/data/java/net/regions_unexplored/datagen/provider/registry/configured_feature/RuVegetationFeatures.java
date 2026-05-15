@@ -22,11 +22,10 @@ import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConf
 import net.minecraft.world.level.levelgen.feature.stateproviders.*;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
-import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.datagen.provider.registry.util.RUFeatureUtils;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUFeatureTypes;
-import net.regions_unexplored.registry.data.RUConfiguredFeatures;
+import net.regions_unexplored.registry.tag.RUBlockTags;
 import net.regions_unexplored.worldgen.stateprovider.RandomizedGroundCoverStateProvider;
 import net.regions_unexplored.world.level.block.plant.food.DuskmelonBlock;
 import net.regions_unexplored.world.level.block.plant.food.SalmonBerryBushBlock;
@@ -146,7 +145,7 @@ public class RuVegetationFeatures {
         registerPlaced(context, PATCH_DESERT_SHRUB_ON_SAND, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.SMALL_DESERT_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.SAND)));
         registerPlaced(context, PATCH_STEPPE_SHRUB_ON_SAND, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.DEAD_STEPPE_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.SAND)));
 
-        register(context, PATCH_BARLEY, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, simple(RUBlocks.BARLEY.get())));
+        register(context, PATCH_BARLEY, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.BARLEY.get()), 144));
         registerPlaced(context, PATCH_BLADED_GRASS, Feature.RANDOM_PATCH, randomPatch(weightedStates(pair(RUBlocks.BLADED_GRASS.get(), 4), pair(RUBlocks.BLADED_TALL_GRASS.get()), pair(Blocks.SHORT_GRASS, 4)), 64));
         registerPlaced(context, PATCH_CAVE_HYSSOP, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.CAVE_HYSSOP.get().defaultBlockState()), 32));
         registerPlaced(context, PATCH_CLOVER, Feature.RANDOM_PATCH, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, RandomizedGroundCoverStateProvider.asConfig(RUBlocks.CLOVER))));
@@ -242,7 +241,20 @@ public class RuVegetationFeatures {
         registerPlaced(context, PATCH_WILLOW_FLOWERS, Feature.FLOWER, new RandomPatchConfiguration(32, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.FELICIA_DAISY.get().defaultBlockState(), 2).add(RUBlocks.BLUE_LUPINE.get().defaultBlockState(), 2).add(Blocks.ALLIUM.defaultBlockState(), 1).add(Blocks.CORNFLOWER.defaultBlockState(), 2))))));
         registerPlaced(context, PATCH_SMALL_FLOWERS, Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.075F, List.of(RUBlocks.MALLOW.get().defaultBlockState(), RUBlocks.YELLOW_LUPINE.get().defaultBlockState(), Blocks.PINK_TULIP.defaultBlockState(), RUBlocks.POPPY_BUSH.get().defaultBlockState(), Blocks.OXEYE_DAISY.defaultBlockState(), RUBlocks.RED_LUPINE.get().defaultBlockState(), Blocks.CORNFLOWER.defaultBlockState(), RUBlocks.PINK_LUPINE.get().defaultBlockState(), RUBlocks.TSUBAKI.get().defaultBlockState(), Blocks.ORANGE_TULIP.defaultBlockState(), RUBlocks.WARATAH.get().defaultBlockState(), Blocks.WHITE_TULIP.defaultBlockState(), RUBlocks.HYSSOP.get().defaultBlockState(), Blocks.ALLIUM.defaultBlockState(), RUBlocks.BLUE_LUPINE.get().defaultBlockState(), RUBlocks.BLEEDING_HEART.get().defaultBlockState(), RUBlocks.SALMON_POPPY_BUSH.get().defaultBlockState(), RUBlocks.WHITE_TRILLIUM.get().defaultBlockState(), Blocks.BLUE_ORCHID.defaultBlockState(), RUBlocks.FIREWEED.get().defaultBlockState(), RUBlocks.DAISY.get().defaultBlockState(), RUBlocks.PURPLE_LUPINE.get().defaultBlockState(), Blocks.RED_TULIP.defaultBlockState(), RUBlocks.FELICIA_DAISY.get().defaultBlockState(), Blocks.POPPY.defaultBlockState(), Blocks.LILY_OF_THE_VALLEY.defaultBlockState()))))));
         registerPlaced(context, PATCH_TULIPS, Feature.FLOWER, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.WHITE_TULIP.defaultBlockState(), 4).add(Blocks.PINK_TULIP.defaultBlockState(), 2).add(Blocks.ORANGE_TULIP.defaultBlockState(), 2).add(Blocks.RED_TULIP.defaultBlockState(), 2)))));
-        registerPlaced(context, PATCH_WHITE_TRILLIUM, Feature.FLOWER, randomPatch(RUBlocks.WHITE_TRILLIUM, 32, 4, 2));
+        registerPlaced(context, PATCH_FLOWERS_AUTUMNAL_MAPLE_FOREST, Feature.FLOWER, randomPatch(
+            new NoiseProvider(
+                809256L,
+                    new NormalNoise.NoiseParameters(-5, 2),
+                1.3f,
+                List.of(
+                    RUBlocks.WHITE_TRILLIUM.get().defaultBlockState(),
+                    Blocks.LILY_OF_THE_VALLEY.defaultBlockState(),
+                    Blocks.DANDELION.defaultBlockState()
+                )
+            ),
+            24,
+            BlockPredicate.not(BlockPredicate.matchesTag(Vec3i.ZERO.below(), RUBlockTags.DIRT_AND_PODZOL))
+        ));
         registerPlaced(context, PATCH_WILTING_TRILLIUM, Feature.FLOWER, randomPatch(RUBlocks.WILTING_TRILLIUM, 32, 4, 2));
         registerPlaced(context, PATCH_TSUBAKI, Feature.FLOWER, randomPatch(RUBlocks.TSUBAKI, 32, 1, 2));
         registerPlaced(context, PATCH_HIBISCUS, Feature.FLOWER, randomPatch(RUBlocks.HIBISCUS, 14, 1, 2));

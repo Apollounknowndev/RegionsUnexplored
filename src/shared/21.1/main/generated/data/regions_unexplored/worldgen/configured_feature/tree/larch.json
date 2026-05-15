@@ -1,13 +1,48 @@
 {
-  "type": "regions_unexplored:larch_tree",
+  "type": "minecraft:tree",
   "config": {
-    "branch_provider": {
+    "decorators": [
+      {
+        "type": "regions_unexplored:random_branch",
+        "branch_block": "regions_unexplored:larch_branch",
+        "leaves_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "regions_unexplored:larch_leaves",
+            "Properties": {
+              "distance": "7",
+              "persistent": "false",
+              "waterlogged": "false"
+            }
+          }
+        },
+        "log_block": "regions_unexplored:larch_log",
+        "probability": 0.1,
+        "required_empty_blocks": 3
+      }
+    ],
+    "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "regions_unexplored:larch_branch",
-        "Properties": {
-          "facing": "north"
-        }
+        "Name": "minecraft:dirt"
+      }
+    },
+    "foliage_placer": {
+      "type": "minecraft:spruce_foliage_placer",
+      "offset": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 2,
+        "min_inclusive": 1
+      },
+      "radius": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 3,
+        "min_inclusive": 2
+      },
+      "trunk_height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 2,
+        "min_inclusive": 1
       }
     },
     "foliage_provider": {
@@ -21,8 +56,20 @@
         }
       }
     },
-    "minimum_size": 18,
-    "size_variation": 5,
+    "force_dirt": false,
+    "ignore_vines": true,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 2,
+      "lower_size": 0,
+      "upper_size": 2
+    },
+    "trunk_placer": {
+      "type": "minecraft:straight_trunk_placer",
+      "base_height": 6,
+      "height_rand_a": 3,
+      "height_rand_b": 3
+    },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {

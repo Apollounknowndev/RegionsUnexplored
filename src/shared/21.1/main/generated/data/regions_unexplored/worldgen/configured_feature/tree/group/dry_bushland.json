@@ -3,25 +3,16 @@
   "config": {
     "features": [
       {
-        "data": {
-          "feature": "regions_unexplored:tree/large_socotra",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/large_socotra",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/small_socotra",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/small_socotra",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/acacia",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/acacia",
+        "placement": []
       },
       {
         "data": {

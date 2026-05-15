@@ -23,13 +23,20 @@ public record BiomeTarget(ResourceKey<Level> level, ResourceKey<Region> region, 
 	}
 	
 	@SafeVarargs
-	public static BiomeTarget create(ResourceKey<Level> level, ResourceKey<Biome> biome, ResourceKey<Biome>... targets) {
-		return create(level, RURegions.key(biome), biome, b -> b, targets);
+	public static BiomeTarget create(ResourceKey<Biome> biome, ResourceKey<Biome>... targets) {
+		return create(Level.OVERWORLD, RURegions.key(biome), biome, List.of(targets), b -> b);
 	}
 	
-	@SafeVarargs
-	public static BiomeTarget create(ResourceKey<Level> level, ResourceKey<Region> region, ResourceKey<Biome> biome, UnaryOperator<ParameterBuilder> operator, ResourceKey<Biome>... targets) {
-		return new BiomeTarget(level, region, biome, List.of(targets), RuCommonConfig.BIOME_WEIGHTS.get(biome), operator);
+	public static BiomeTarget create(ResourceKey<Region> region, ResourceKey<Biome> biome, ResourceKey<Biome> target, UnaryOperator<ParameterBuilder> operator) {
+		return create(Level.OVERWORLD, region, biome, List.of(target), operator);
+	}
+	
+	public static BiomeTarget create(ResourceKey<Level> level, ResourceKey<Region> region, ResourceKey<Biome> biome, ResourceKey<Biome> target, UnaryOperator<ParameterBuilder> operator) {
+		return create(level, region, biome, List.of(target), operator);
+	}
+	
+	public static BiomeTarget create(ResourceKey<Level> level, ResourceKey<Region> region, ResourceKey<Biome> biome, List<ResourceKey<Biome>> targets, UnaryOperator<ParameterBuilder> operator) {
+		return new BiomeTarget(level, region, biome, targets, RuCommonConfig.BIOME_WEIGHTS.get(biome), operator);
 	}
 	
 	public Optional<BiomeInjector> createInjector(Registry<Biome> registry) {
@@ -40,11 +47,11 @@ public record BiomeTarget(ResourceKey<Level> level, ResourceKey<Region> region, 
 		
 		Optional<Holder.Reference<Biome>> optional = registry.getHolder(this.biome);
 		return optional.map(biome -> BiomeInjector.builder(this.level)
-			.replacePartially(getTargets(registry), biome, operator.apply(ParameterBuilder.create().region(this.region)))
+			.replacePartially(getTargets(registry, this.targets), biome, operator.apply(ParameterBuilder.create().region(this.region)))
 		);
 	}
 	
-	public HolderSet<Biome> getTargets(Registry<Biome> registry) {
-		return HolderSet.direct(this.targets.stream().map(registry::getHolder).filter(Optional::isPresent).map(Optional::get).toList());
+	public static HolderSet<Biome> getTargets(Registry<Biome> registry, List<ResourceKey<Biome>> targets) {
+		return HolderSet.direct(targets.stream().map(registry::getHolder).filter(Optional::isPresent).map(Optional::get).toList());
 	}
 }

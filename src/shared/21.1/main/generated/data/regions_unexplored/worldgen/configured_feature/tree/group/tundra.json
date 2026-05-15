@@ -10,11 +10,8 @@
         "weight": 4
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/pine_tundra",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/pine_tundra",
+        "placement": []
       }
     ]
   }

@@ -33,6 +33,22 @@
       },
       "trigger": "minecraft:location"
     },
+    "inferno": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "regions_unexplored:inferno"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "prismachasm": {
       "conditions": {
         "player": [
@@ -64,26 +80,9 @@
         ]
       },
       "trigger": "minecraft:location"
-    },
-    "scorching_caves": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:scorching_caves"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
     }
   },
   "display": {
-    "background": "regions_unexplored:textures/gui/advancements/backgrounds/argillite.png",
     "description": {
       "translate": "advancements.regions_unexplored.spelunker.description"
     },
@@ -97,19 +96,19 @@
   },
   "requirements": [
     [
+      "ancient_delta"
+    ],
+    [
       "bioshroom_caves"
     ],
     [
-      "ancient_delta"
+      "inferno"
     ],
     [
       "prismachasm"
     ],
     [
       "redstone_caves"
-    ],
-    [
-      "scorching_caves"
     ]
   ],
   "sends_telemetry_event": true

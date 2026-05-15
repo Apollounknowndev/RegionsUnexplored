@@ -88,9 +88,9 @@ public class RUSurfaceRuleBootstrap {
                 ifTrue(aboveY(186), SNOW_BLOCK),
                 ifTrue(noiseBetween(Noises.CALCITE, -0.0125D, 0.0125D), block(Blocks.CALCITE)),
                 STONE
-            ), RUBiomes.MOUNTAINS),
+            ), RUBiomes.REMOVED_MOUNTAINS),
             biomes(context, prefix + "/common/snow", ifTrue(notUnderwater, SNOW_BLOCK), RUBiomes.ICY_HEIGHTS, RUBiomes.SPIRES),
-            biome(context, prefix, TERRACOTTA, RUBiomes.ARID_MOUNTAINS),
+            biome(context, prefix, TERRACOTTA, RUBiomes.REMOVED_ARID_MOUNTAINS),
             biome(context, prefix, ifTrue(noiseAbove(0.25), TERRACOTTA), RUBiomes.BAOBAB_SAVANNA),
             biome(context, prefix, ifTrue(noiseAbove(RUNoises.SHIELD, 0), sandOrSandstoneIfCeiling), RUBiomes.JOSHUA_DESERT),
             biome(context, prefix, sandOrSandstoneIfCeiling, RUBiomes.SAGUARO_DESERT),
@@ -163,11 +163,14 @@ public class RUSurfaceRuleBootstrap {
                 ifTrue(noiseAbove(0.2), configSelector(RUBlocks.PEAT_COARSE_DIRT, Blocks.COARSE_DIRT)),
                 ifTrue(noiseAbove(-0.12), configSelector(RUBlocks.PEAT_PODZOL, Blocks.PODZOL))
             ), RUBiomes.PINE_TAIGA),
-            biome(context, prefix, ifTrue(noiseAbove(0.2), configSelector(RUBlocks.SILT_PODZOL, Blocks.PODZOL)), RUBiomes.PUMPKIN_FIELDS),
             biome(context, prefix, ifTrue(noiseAbove(0.15), ifTrue(
                 anyOf(noiseAbove(RUNoises.SHIELD, 0.25), allOf(noiseAbove(RUNoises.SHIELD, 0.15), RANDOM)),
-                configSelector(RUBlocks.SILT_COARSE_DIRT, Blocks.GRASS_BLOCK))
+                configSelector(RUBlocks.SILT_COARSE_DIRT, Blocks.COARSE_DIRT))
             ), RUBiomes.DRY_BUSHLAND),
+            biome(context, prefix, ifTrue(noiseAbove(0.15), ifTrue(
+                anyOf(noiseAbove(RUNoises.SHIELD, 0.25), allOf(noiseAbove(RUNoises.SHIELD, 0.15), RANDOM)),
+                configSelector(RUBlocks.SILT_PODZOL, Blocks.PODZOL))
+            ), RUBiomes.AUTUMNAL_MAPLE_FOREST),
             biome(context, prefix, ifTrue(noiseAbove(0.15), configSelector(RUBlocks.PEAT_COARSE_DIRT, Blocks.COARSE_DIRT)), RUBiomes.FEN),
             biome(context, prefix, ifTrue(
                 anyOf(noiseAbove(0.2), allOf(noiseAbove(-0.06), RANDOM)),
@@ -289,7 +292,7 @@ public class RUSurfaceRuleBootstrap {
                     ifTrue(notUnderDeepWater, sequence(
                         ifTrue(VERY_DEEP_UNDER_FLOOR, sequence(
                             ifTrue(isBiome(RUBiomes.CHALK_CLIFFS), block(RUBlocks.CHALK)),
-                            ifTrue(isBiome(RUBiomes.ARID_MOUNTAINS, RUBiomes.BAOBAB_SAVANNA), TERRACOTTA)
+                            ifTrue(isBiome(RUBiomes.REMOVED_ARID_MOUNTAINS, RUBiomes.BAOBAB_SAVANNA), TERRACOTTA)
                         )),
                         ifTrue(UNDER_FLOOR, reference(underSurface)),
                         ifTrue(DEEP_UNDER_FLOOR, ifTrue(inBiomeTag(context, RUBiomeTags.SURFACE_SAND), SANDSTONE)),

@@ -86,8 +86,8 @@
       "minecraft:patch_pumpkin",
       "regions_unexplored:tree/group/wisteria_grove",
       "regions_unexplored:shrub/group/wisteria_grove",
-      "regions_unexplored:patch/tall_flowers_wisteria_grove",
-      "regions_unexplored:patch/flowers_wisteria_grove",
+      "regions_unexplored:patch/tall_flowers/wisteria_grove",
+      "regions_unexplored:patch/flowers/wisteria_grove",
       "regions_unexplored:single/aster",
       "regions_unexplored:patch/short_grass_sparse"
     ],

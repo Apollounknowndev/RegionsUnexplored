@@ -2,8 +2,16 @@
   "feature": "regions_unexplored:patch/barley",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 4
+      "type": "lithostitched:noise_slope",
+      "noise": "regions_unexplored:flower_density",
+      "offset": -1,
+      "slope": 3,
+      "xz_scale": 1.0,
+      "y_scale": 0.0
+    },
+    {
+      "type": "minecraft:count",
+      "count": 2
     },
     {
       "type": "minecraft:in_square"
@@ -11,19 +19,6 @@
     {
       "type": "minecraft:heightmap",
       "heightmap": "MOTION_BLOCKING"
-    },
-    {
-      "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:clamped",
-        "max_inclusive": 1,
-        "min_inclusive": 0,
-        "source": {
-          "type": "minecraft:uniform",
-          "max_inclusive": 1,
-          "min_inclusive": -3
-        }
-      }
     },
     {
       "type": "minecraft:biome"

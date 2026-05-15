@@ -11,6 +11,13 @@
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+      }
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
         "type": "minecraft:would_survive",
         "state": {
           "Name": "regions_unexplored:dead_pine_shrub",

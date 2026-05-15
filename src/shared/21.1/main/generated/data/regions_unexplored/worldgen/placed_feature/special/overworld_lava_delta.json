@@ -3,7 +3,7 @@
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 115
+      "count": 100
     },
     {
       "type": "minecraft:in_square"
@@ -33,14 +33,6 @@
       }
     },
     {
-      "type": "minecraft:random_offset",
-      "xz_spread": 0,
-      "y_spread": 1
-    },
-    {
-      "type": "minecraft:biome"
-    },
-    {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:not",
@@ -49,6 +41,9 @@
           "search_range": 4
         }
       }
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }

@@ -10,11 +10,8 @@
         "weight": 3
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/silver_birch_tall",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/silver_birch_tall",
+        "placement": []
       }
     ]
   }

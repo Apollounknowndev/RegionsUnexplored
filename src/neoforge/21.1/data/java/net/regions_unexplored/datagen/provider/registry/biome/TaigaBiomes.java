@@ -74,8 +74,37 @@ public class TaigaBiomes {
                 .generationSettings(builder.build())
                 .build();
     }
-
+    
     public static Biome borealTaiga(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.55f)
+            .waterColor(-12619852)
+            .waterFogColor(7436392)
+            .foliageColorOverride(8103502)
+            .grassColorOverride(8957796)
+            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA));
+        
+        //add features
+        BiomeGenerationSettings.Builder builder = baseTaigaGeneration(featureGetter, carverGetter, true);
+        
+        //add RU features
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_BOREAL_TAIGA);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_LARCH);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.BOREAL_TAIGA));
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_AZURE_DAISY);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS);
+        
+        
+        //add mob spawns
+        MobSpawnSettings.Builder spawnBuilder = baseTaigaSpawning();
+        
+        return biomeBuilder(0.5f, 0.4f)
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
+    }
+
+    public static Biome oldGrowthBorealTaiga(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.55f)
             .waterColor(-12619852)
             .waterFogColor(7436392)
@@ -87,9 +116,9 @@ public class TaigaBiomes {
         BiomeGenerationSettings.Builder builder = baseTaigaGeneration(featureGetter, carverGetter, true);
 
         //add RU features
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_BOREAL_TAIGA);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_OLD_GROWTH_BOREAL_TAIGA);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_LARCH);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.BOREAL_TAIGA));
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.OLD_GROWTH_BOREAL_TAIGA));
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_AZURE_DAISY);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS);
 
@@ -104,7 +133,7 @@ public class TaigaBiomes {
             .build();
     }
 
-    public static Biome goldenBorealTaiga(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+    public static Biome oldGrowthGoldenBorealTaiga(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.65f)
             .waterColor(-12619852)
             .waterFogColor(7436392)
@@ -116,9 +145,9 @@ public class TaigaBiomes {
         BiomeGenerationSettings.Builder builder = baseTaigaGeneration(featureGetter, carverGetter, true);
 
         //add RU features
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_GOLDEN_BOREAL_TAIGA);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_OLD_GROWTH_GOLDEN_BOREAL_TAIGA);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_LARCH);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.GOLDEN_BOREAL_TAIGA));
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.OLD_GROWTH_GOLDEN_BOREAL_TAIGA));
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_AZURE_DAISY);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS);
 

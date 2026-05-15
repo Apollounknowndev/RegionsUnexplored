@@ -43,7 +43,7 @@ public class ForestBiomes {
     public static Biome autumnalMapleForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.5f)
             .foliageColorOverride(0x96b73a)
-            .grassColorOverride(0xc4c73a)
+            .grassColorOverride(0xccb243)
             .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
@@ -52,7 +52,8 @@ public class ForestBiomes {
         //add RU features
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_AUTUMNAL_MAPLE_FOREST);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.AUTUMNAL_MAPLE_FOREST));
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_WHITE_TRILLIUM);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.PATCH_SILT_PODZOL_PUMPKINS);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_FLOWERS_AUTUMNAL_MAPLE_FOREST);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE);
 
         //add mob spawns
@@ -138,14 +139,12 @@ public class ForestBiomes {
 
     public static Biome deciduousForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(calculateSkyColor(0.7F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(7578936)
-                .grassColorOverride(8700997)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
+            .skyColor(calculateSkyColor(0.7F))
+            .fogColor(OVERWORLD_FOG_COLOR)
+            .waterColor(NORMAL_WATER_COLOR)
+            .waterFogColor(NORMAL_WATER_FOG_COLOR)
+            .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
 
         //add features
         BiomeGenerationSettings.Builder builder = baseForestGeneration(featureGetter, carverGetter, true);
@@ -163,8 +162,8 @@ public class ForestBiomes {
 
         return (new Biome.BiomeBuilder())
                 .hasPrecipitation(true)
-                .temperature(0.75f)
-                .downfall(0.8f)
+                .temperature(0.8f)
+                .downfall(0.6f)
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(builder.build())
@@ -189,9 +188,8 @@ public class ForestBiomes {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_MAPLE_FOREST);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_MAPLE);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.MAPLE_FOREST));
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_WHITE_TRILLIUM);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_FLOWERS_AUTUMNAL_MAPLE_FOREST);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE);
-        //builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_GRASS_SPROUTS_SPARSE);
 
 
         //add mob spawns
@@ -316,7 +314,7 @@ public class ForestBiomes {
                 .build();
     }
 
-    public static Biome temperateGrove(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
+    public static Biome windsweptMapleForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
                 .skyColor(calculateSkyColor(0.8F))
                 .fogColor(OVERWORLD_FOG_COLOR)
@@ -331,11 +329,11 @@ public class ForestBiomes {
         BiomeGenerationSettings.Builder builder = baseForestGeneration(featureGetter, carverGetter, true);
 
         //add RU features
-        builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, RuMiscOverworldPlacements.ROCK_GROUP_TEMPERATE_GROVE);
+        builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, RuMiscOverworldPlacements.ROCK_GROUP_WINDSWEPT_MAPLE_FOREST);
         
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_TEMPERATE_GROVE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_OAK_SPARSE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.TEMPERATE_GROVE));
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_WINDSWEPT_MAPLE_FOREST);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_MAPLE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.WINDSWEPT_MAPLE_FOREST));
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_PURPLE_CONEFLOWER);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE);
 

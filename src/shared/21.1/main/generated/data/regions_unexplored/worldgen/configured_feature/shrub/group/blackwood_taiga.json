@@ -23,24 +23,21 @@
         "weight": 3
       },
       {
-        "data": {
-          "feature": {
-            "type": "minecraft:simple_block",
-            "config": {
-              "to_place": {
-                "type": "minecraft:simple_state_provider",
-                "state": {
-                  "Name": "regions_unexplored:dark_oak_shrub",
-                  "Properties": {
-                    "half": "lower"
-                  }
+        "feature": {
+          "type": "minecraft:simple_block",
+          "config": {
+            "to_place": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "regions_unexplored:dark_oak_shrub",
+                "Properties": {
+                  "half": "lower"
                 }
               }
             }
-          },
-          "placement": []
+          }
         },
-        "weight": 1
+        "placement": []
       }
     ]
   }

@@ -4,8 +4,10 @@
     "regions_unexplored:fen",
     "regions_unexplored:pine_taiga",
     "regions_unexplored:blackwood_taiga",
-    "regions_unexplored:boreal_taiga",
     "regions_unexplored:cold_boreal_taiga",
+    "regions_unexplored:boreal_taiga",
+    "regions_unexplored:old_growth_boreal_taiga",
+    "regions_unexplored:old_growth_golden_boreal_taiga",
     "regions_unexplored:golden_boreal_taiga"
   ]
 }

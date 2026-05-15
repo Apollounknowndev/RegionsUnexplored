@@ -79,7 +79,8 @@ public class RuTreePlacements {
     public static final ResourceKey<PlacedFeature> GOLDEN_LARCH_DENSE = key("golden_larch_dense");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_COLD_BOREAL_TAIGA = group("cold_boreal_taiga");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_BOREAL_TAIGA = group("boreal_taiga");
-    public static final ResourceKey<PlacedFeature> TREE_GROUP_GOLDEN_BOREAL_TAIGA = group("golden_boreal_taiga");
+    public static final ResourceKey<PlacedFeature> TREE_GROUP_OLD_GROWTH_BOREAL_TAIGA = group("old_growth_boreal_taiga");
+    public static final ResourceKey<PlacedFeature> TREE_GROUP_OLD_GROWTH_GOLDEN_BOREAL_TAIGA = group("old_growth_golden_boreal_taiga");
 
     public static final ResourceKey<PlacedFeature> TREE_GROUP_AUTUMNAL_MAPLE_FOREST = group("autumnal_maple_forest");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_PUMPKIN_FIELDS = group("pumpkin_fields");
@@ -140,7 +141,7 @@ public class RuTreePlacements {
     public static final ResourceKey<PlacedFeature> TREE_GROUP_PRAIRIE = group("prairie");
 
     public static final ResourceKey<PlacedFeature> TREE_GROUP_SAGUARO_DESERT = group("saguaro_desert");
-    public static final ResourceKey<PlacedFeature> TREE_GROUP_TEMPERATE_GROVE = group("temperate_grove");
+    public static final ResourceKey<PlacedFeature> TREE_GROUP_WINDSWEPT_MAPLE_FOREST = group("windswept_maple_forest");
 
     public static final ResourceKey<PlacedFeature> TREE_GROUP_SILVER_BIRCH_FOREST = group("silver_birch_forest");
     
@@ -188,8 +189,8 @@ public class RuTreePlacements {
 
         final Holder<ConfiguredFeature<?, ?>> KAPOK = getter.getOrThrow(RUConfiguredFeatures.TREE_KAPOK);
 
-        final Holder<ConfiguredFeature<?, ?>> LARCH = getter.getOrThrow(RUConfiguredFeatures.TREE_LARCH);
-        final Holder<ConfiguredFeature<?, ?>> GOLDEN_LARCH = getter.getOrThrow(RUConfiguredFeatures.TREE_GOLDEN_LARCH);
+        final Holder<ConfiguredFeature<?, ?>> LARCH = getter.getOrThrow(RUConfiguredFeatures.TREE_LARCH_LARGE);
+        final Holder<ConfiguredFeature<?, ?>> GOLDEN_LARCH = getter.getOrThrow(RUConfiguredFeatures.TREE_LARCH_GOLDEN_LARGE);
 
         final Holder<ConfiguredFeature<?, ?>> BIG_RED_MAPLE = getter.getOrThrow(RUConfiguredFeatures.TREE_BIG_RED_MAPLE);
 
@@ -322,12 +323,13 @@ public class RuTreePlacements {
             BiomeFilter.biome()
         );
         register(context, RuTreePlacements.TREE_GROUP_BOREAL_TAIGA, placementTree(10, RUBlocks.LARCH_NATURAL_SET));
-        register(context, RuTreePlacements.TREE_GROUP_GOLDEN_BOREAL_TAIGA, placementTree(10, RUBlocks.LARCH_NATURAL_SET));
+        register(context, RuTreePlacements.TREE_GROUP_OLD_GROWTH_BOREAL_TAIGA, placementTree(10, RUBlocks.LARCH_NATURAL_SET));
+        register(context, RuTreePlacements.TREE_GROUP_OLD_GROWTH_GOLDEN_BOREAL_TAIGA, placementTree(10, RUBlocks.LARCH_NATURAL_SET));
         register(context, RuTreePlacements.TREE_GROUP_COLD_BOREAL_TAIGA, placementTree(10, RUBlocks.LARCH_NATURAL_SET));
         register(context, RuTreePlacements.TREE_GROUP_MAPLE_FOREST, surfaceSpread(8, Types.OCEAN_FLOOR, RUBlocks.MAPLE_NATURAL_SET.getSapling()));
         register(context, RuTreePlacements.BIG_RED_MAPLE_SPARSE, BIG_RED_MAPLE, placementTree(2, Blocks.OAK_SAPLING));
 
-        register(context, RuTreePlacements.TREE_GROUP_ORCHARD, placementTree(4, Blocks.OAK_SAPLING));
+        register(context, RuTreePlacements.TREE_GROUP_ORCHARD, placementTree(3, Blocks.OAK_SAPLING));
         register(context, RuTreePlacements.TREE_GROUP_COLD_DECIDUOUS_FOREST, placementSnowyTree(10, Blocks.OAK_SAPLING));
         register(context, RuTreePlacements.TREE_GROUP_DECIDUOUS_FOREST, placementTree(10, Blocks.OAK_SAPLING));
         register(context, RuTreePlacements.BIG_OAK_SPARSE, BIG_OAK, placementTree(2, Blocks.OAK_SAPLING));
@@ -382,7 +384,7 @@ public class RuTreePlacements {
         register(context, RuTreePlacements.TREE_GROUP_ICY_HEIGHTS, placementSnowyTree(4, RUBlocks.PINE_NATURAL_SET.getSapling()));
         register(context, RuTreePlacements.TREE_GROUP_FROZEN_PINE_TAIGA, placementSnowyTree(10, RUBlocks.PINE_NATURAL_SET.getSapling()));
         register(context, RuTreePlacements.TREE_GROUP_FUNGAL_FEN, placementTree(4, RUBlocks.PINE_NATURAL_SET));
-        register(context, RuTreePlacements.TREE_GROUP_TEMPERATE_GROVE, placementTree(4, Blocks.OAK_SAPLING));
+        register(context, RuTreePlacements.TREE_GROUP_WINDSWEPT_MAPLE_FOREST, placementTree(4, Blocks.OAK_SAPLING));
         
         register(context, RuTreePlacements.TREE_GROUP_REDWOODS_PRIMARY,
             treeDensity(2, 2),
@@ -417,7 +419,12 @@ public class RuTreePlacements {
 
         register(context, TREE_GROUP_POPPY_FIELDS, surfaceSpread(0.0666, Types.OCEAN_FLOOR_WG, RUBlocks.MAGNOLIA_NATURAL_SET.getSapling()));
         register(context, TREE_GROUP_MAGNOLIA_WOODLAND, surfaceSpread(3, Types.OCEAN_FLOOR_WG, RUBlocks.MAGNOLIA_NATURAL_SET.getSapling()));
-        register(context, TREE_GROUP_PRAIRIE, placement().count(NoiseBasedCountPlacement.of(60, 30.0D, -0.5D)).notSubmerged().heightmap(Types.OCEAN_FLOOR).filter(RUPlacedFeatureBootstrap.onGrassBlockPredicate));
+        register(context, TREE_GROUP_PRAIRIE, placement()
+            .count(LithostitchedPlacementModifiers.noiseSlope(RUNoises.TREE_DENSITY, 4, -5, 1.5, 0))
+            .notSubmerged()
+            .heightmap(Types.OCEAN_FLOOR)
+            .filter(Blocks.OAK_SAPLING)
+        );
         
         register(context, RuTreePlacements.TREE_GROUP_SAGUARO_DESERT, placement()
             .count(NoiseBasedCountPlacement.of(1, 75.0D, 0.0D))

@@ -6,11 +6,12 @@
       "minecraft:canyon"
     ]
   },
+  "creature_spawn_probability": 0.03,
   "downfall": 0.0,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": 10003770,
-    "grass_color": 12497994,
+    "foliage_color": 10387789,
+    "grass_color": 9470285,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -21,9 +22,9 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:music.overworld.stony_peaks"
+      "sound": "minecraft:music.overworld.badlands"
     },
-    "sky_color": 7515647,
+    "sky_color": 7254527,
     "water_color": 4159204,
     "water_fog_color": 329011
   },
@@ -69,21 +70,25 @@
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "minecraft:underwater_magma",
+      "minecraft:ore_gold_extra",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
-      "minecraft:disk_gravel",
-      "minecraft:ore_emerald"
+      "minecraft:disk_gravel"
     ],
-    [
-      "minecraft:ore_infested"
-    ],
+    [],
     [
       "minecraft:spring_water",
       "minecraft:spring_lava"
     ],
     [
       "minecraft:glow_lichen",
-      "regions_unexplored:tree/group/arid_mountains"
+      "minecraft:patch_grass_badlands",
+      "minecraft:patch_dead_bush_badlands",
+      "minecraft:brown_mushroom_normal",
+      "minecraft:red_mushroom_normal",
+      "minecraft:patch_sugar_cane_badlands",
+      "minecraft:patch_pumpkin",
+      "minecraft:patch_cactus_decorated"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -102,42 +107,6 @@
     ],
     "axolotls": [],
     "creature": [
-      {
-        "type": "minecraft:sheep",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 12
-      },
-      {
-        "type": "minecraft:pig",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:chicken",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:cow",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 8
-      },
-      {
-        "type": "minecraft:rabbit",
-        "maxCount": 3,
-        "minCount": 2,
-        "weight": 4
-      },
-      {
-        "type": "minecraft:llama",
-        "maxCount": 6,
-        "minCount": 4,
-        "weight": 5
-      },
       {
         "type": "minecraft:armadillo",
         "maxCount": 2,

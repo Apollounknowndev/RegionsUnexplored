@@ -1,188 +1,34 @@
 {
-  "type": "regions_unexplored:maple_tree",
+  "type": "minecraft:tree",
   "config": {
-    "branch_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "regions_unexplored:maple_branch",
-        "Properties": {
-          "facing": "north"
-        }
-      }
-    },
     "decorators": [
+      {
+        "type": "regions_unexplored:group_branch",
+        "branch_block": "regions_unexplored:maple_branch",
+        "log_block": "regions_unexplored:maple_log",
+        "probability": 1.0,
+        "top_offset": 3
+      },
       {
         "type": "regions_unexplored:place_on_ground",
         "block_state_provider": {
-          "type": "minecraft:weighted_state_provider",
-          "entries": [
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "north",
-                  "flower_amount": "1"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "east",
-                  "flower_amount": "1"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "south",
-                  "flower_amount": "1"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "west",
-                  "flower_amount": "1"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "north",
-                  "flower_amount": "2"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "east",
-                  "flower_amount": "2"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "south",
-                  "flower_amount": "2"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "west",
-                  "flower_amount": "2"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "north",
-                  "flower_amount": "3"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "east",
-                  "flower_amount": "3"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "south",
-                  "flower_amount": "3"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "west",
-                  "flower_amount": "3"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "north",
-                  "flower_amount": "4"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "east",
-                  "flower_amount": "4"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "south",
-                  "flower_amount": "4"
-                }
-              },
-              "weight": 1
-            },
-            {
-              "data": {
-                "Name": "regions_unexplored:red_maple_leaf_litter",
-                "Properties": {
-                  "facing": "west",
-                  "flower_amount": "4"
-                }
-              },
-              "weight": 1
-            }
-          ]
+          "type": "regions_unexplored:randomized_ground_cover",
+          "block": "regions_unexplored:red_maple_leaf_litter"
         },
-        "height": 2,
-        "radius": 4,
-        "tries": 96
+        "height": 1,
+        "radius": 3,
+        "tries": 48
       }
     ],
+    "dirt_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
+    },
+    "foliage_placer": {
+      "type": "regions_unexplored:maple"
+    },
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
@@ -194,8 +40,20 @@
         }
       }
     },
-    "minimum_size": 6,
-    "size_variation": 4,
+    "force_dirt": false,
+    "ignore_vines": false,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 0,
+      "upper_size": 1
+    },
+    "trunk_placer": {
+      "type": "minecraft:straight_trunk_placer",
+      "base_height": 7,
+      "height_rand_a": 2,
+      "height_rand_b": 2
+    },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {

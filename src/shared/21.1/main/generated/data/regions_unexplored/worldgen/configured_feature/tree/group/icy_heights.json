@@ -17,11 +17,8 @@
         "weight": 9
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/dead_stripped_pine_mountain",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/dead_stripped_pine_mountain",
+        "placement": []
       }
     ]
   }

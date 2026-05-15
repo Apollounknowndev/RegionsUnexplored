@@ -10,18 +10,12 @@
         "weight": 4
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/red_maple",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/red_maple",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/big_maple",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/big_maple",
+        "placement": []
       },
       {
         "data": {

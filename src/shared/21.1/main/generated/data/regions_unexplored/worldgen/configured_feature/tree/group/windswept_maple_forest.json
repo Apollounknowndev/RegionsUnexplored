@@ -1,0 +1,26 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/maple",
+          "placement": []
+        },
+        "weight": 3
+      },
+      {
+        "feature": "regions_unexplored:tree/big_maple",
+        "placement": []
+      },
+      {
+        "feature": "regions_unexplored:tree/oak_with_branch",
+        "placement": []
+      },
+      {
+        "feature": "regions_unexplored:tree/birch_aspen",
+        "placement": []
+      }
+    ]
+  }
+}

@@ -10,9 +10,10 @@ import java.util.function.Supplier;
 
 public interface RUTreeDecoratorTypes {
     Supplier<TreeDecoratorType<AttachedToLogsDecorator>> ATTACHED_TO_LOGS = register("attached_to_logs", AttachedToLogsDecorator.TYPE);
-    Supplier<TreeDecoratorType<BranchDecorator>> BRANCH = register("branch", BranchDecorator.TYPE);
+    Supplier<TreeDecoratorType<GroupBranchDecorator>> GROUP_BRANCH = register("group_branch", GroupBranchDecorator.TYPE);
     Supplier<TreeDecoratorType<HangingLeavesDecorator>> HANGING_LEAVES = register("hanging_leaves", HangingLeavesDecorator.TYPE);
     Supplier<TreeDecoratorType<PlaceOnGroundDecorator>> PLACE_ON_GROUND = register("place_on_ground", PlaceOnGroundDecorator.TYPE);
+    Supplier<TreeDecoratorType<RandomBranchDecorator>> RANDOM_BRANCH = register("random_branch", RandomBranchDecorator.TYPE);
     Supplier<TreeDecoratorType<WillowTrunkDecorator>> WILLOW = register("willow", WillowTrunkDecorator.TYPE);
 
     static <T extends TreeDecorator> Supplier<TreeDecoratorType<T>> register(String name, TreeDecoratorType<T> type) {

@@ -17,11 +17,8 @@
         "weight": 4
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/redwood_emergent",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/redwood_emergent",
+        "placement": []
       }
     ]
   }

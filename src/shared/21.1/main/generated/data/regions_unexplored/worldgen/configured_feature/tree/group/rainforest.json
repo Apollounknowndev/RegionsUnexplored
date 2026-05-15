@@ -24,11 +24,8 @@
         "weight": 4
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/palm_shrub",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/palm_shrub",
+        "placement": []
       },
       {
         "data": {

@@ -1,9 +1,6 @@
 package net.regions_unexplored.world.surface;
 
-import com.google.common.collect.ImmutableList;
-import dev.worldgen.lithostitched.api.worldgen.surface.LithostitchedSurfaceConditions;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.InclusiveRange;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
@@ -11,10 +8,8 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.regions_unexplored.registry.RUBlocks;
-import net.regions_unexplored.config.RuCommonConfig;
 import net.regions_unexplored.registry.data.RUNoises;
 import net.regions_unexplored.registry.data.RUBiomes;
-import net.regions_unexplored.block.type.dirt.AshenDirtBlock;
 
 import java.util.function.Supplier;
 
@@ -80,7 +75,7 @@ public class RUSurfaceRuleBuilder {
                         )
                 ),
                 ifTrue(isBiome(RUBiomes.BLACKSTONE_BASIN), sequence(ifTrue(UNDER_CEILING, ifTrue(stateSelectorNoise, BLACKSTONE)), ifTrue(UNDER_FLOOR, BLACKSTONE))),
-                ifTrue(isBiome(RUBiomes.REDSTONE_ABYSS), sequence(ifTrue(UNDER_FLOOR, ifTrue(soulSandLayerNoise, sequence(ifTrue(not(hole), ifTrue(start30, ifTrue(end35, SOUL_SAND))), NETHERRACK))), ifTrue(ON_FLOOR, ifTrue(above31, ifTrue(end35, ifTrue(gravelLayerNoise, sequence(ifTrue(above32, GRAVEL), ifTrue(not(hole), GRAVEL))))))))
+                ifTrue(isBiome(RUBiomes.REMOVED_REDSTONE_ABYSS), sequence(ifTrue(UNDER_FLOOR, ifTrue(soulSandLayerNoise, sequence(ifTrue(not(hole), ifTrue(start30, ifTrue(end35, SOUL_SAND))), NETHERRACK))), ifTrue(ON_FLOOR, ifTrue(above31, ifTrue(end35, ifTrue(gravelLayerNoise, sequence(ifTrue(above32, GRAVEL), ifTrue(not(hole), GRAVEL))))))))
         );
     }
 

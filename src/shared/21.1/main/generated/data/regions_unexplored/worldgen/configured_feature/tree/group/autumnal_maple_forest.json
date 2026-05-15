@@ -31,18 +31,12 @@
         "weight": 2
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/big_red_maple",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/big_red_maple",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/big_orange_maple",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/big_orange_maple",
+        "placement": []
       }
     ]
   }

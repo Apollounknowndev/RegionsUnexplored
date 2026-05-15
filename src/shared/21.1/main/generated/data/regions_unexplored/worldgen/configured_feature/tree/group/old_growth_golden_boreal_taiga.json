@@ -1,0 +1,26 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/larch_golden_large",
+          "placement": []
+        },
+        "weight": 7
+      },
+      {
+        "feature": "regions_unexplored:tree/larch_large",
+        "placement": []
+      },
+      {
+        "feature": "regions_unexplored:tree/birch_aspen",
+        "placement": []
+      },
+      {
+        "feature": "regions_unexplored:tree/oak_bush",
+        "placement": []
+      }
+    ]
+  }
+}

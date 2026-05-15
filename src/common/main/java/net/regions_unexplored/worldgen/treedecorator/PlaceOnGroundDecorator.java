@@ -23,7 +23,9 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStatePr
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.regions_unexplored.world.level.block.plant.flower.GroundCoverBlock;
 import net.regions_unexplored.world.level.block.plant.flower.RULeafLitterBlock;
+import net.regions_unexplored.worldgen.stateprovider.RandomizedGroundCoverStateProvider;
 
 public class PlaceOnGroundDecorator extends TreeDecorator {
     public static final MapCodec<PlaceOnGroundDecorator> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
@@ -47,17 +49,7 @@ public class PlaceOnGroundDecorator extends TreeDecorator {
     }
 
     public static PlaceOnGroundDecorator leafLitter(Block block, int tries) {
-        if (block instanceof RULeafLitterBlock) {
-            BlockState state = block.defaultBlockState();
-            SimpleWeightedRandomList.Builder<BlockState> stateList = SimpleWeightedRandomList.builder();
-            for (int i = 1; i <= 4; i++) {
-                for (Direction direction : Direction.Plane.HORIZONTAL) {
-                    stateList.add(state.setValue(RULeafLitterBlock.FACING, direction).setValue(RULeafLitterBlock.AMOUNT, i));
-                }
-            }
-            return new PlaceOnGroundDecorator(tries, 4, 2, new WeightedStateProvider(stateList.build()));
-        }
-        throw new IllegalStateException("Block must be instance of RULeafLitterBlock, got " + block.getClass().getName());
+        return new PlaceOnGroundDecorator(tries, 3, 1, new RandomizedGroundCoverStateProvider(block));
     }
 
     @Override

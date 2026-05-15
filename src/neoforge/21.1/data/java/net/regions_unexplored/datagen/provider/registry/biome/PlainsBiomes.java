@@ -39,31 +39,6 @@ public class PlainsBiomes {
         return builder;
     }
 
-    public static Biome barleyFields(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.75f)
-            .foliageColorOverride(0xafc957)
-            .grassColorOverride(0xffe986)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
-
-        //add features
-        BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
-
-        //add RU features
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_BARLEY_DENSE);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_PRAIRIE_FLOWERS);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS);
-
-
-        //add mob spawns
-        MobSpawnSettings.Builder spawnBuilder = basePlainsSpawning(false);
-
-        return biomeBuilder(0.85f, 0.6f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
-    }
-
     public static Biome flowerFields(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = effectBuilder(1)
             .foliageColorOverride(0x5db743)
@@ -187,32 +162,6 @@ public class PlainsBiomes {
         MobSpawnSettings.Builder spawnBuilder = basePlainsSpawning(false);
 
         return biomeBuilder(0.75f, 0.7f)
-            .specialEffects(effectBuilder.build())
-            .mobSpawnSettings(spawnBuilder.build())
-            .generationSettings(builder.build())
-            .build();
-    }
-
-    public static Biome pumpkinFields(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.7f)
-            .foliageColorOverride(0x96b73a)
-            .grassColorOverride(0xb0c74e)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
-
-        //add features
-        BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
-
-        //add RU features
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_PUMPKIN_FIELDS);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.PUMPKIN_FIELDS));
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.PATCH_PUMPKIN_FIELD_PUMPKINS);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS);
-
-
-        //add mob spawns
-        MobSpawnSettings.Builder spawnBuilder = basePlainsSpawning(false);
-
-        return biomeBuilder(0.225f, 0.3f)
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())

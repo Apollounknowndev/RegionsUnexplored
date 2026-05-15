@@ -15,14 +15,12 @@ import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.regions_unexplored.RegionsUnexplored;
-import net.regions_unexplored.registry.data.RUBiomes;
 import net.regions_unexplored.registry.tag.RUBiomeTags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-import static net.minecraft.world.level.levelgen.SurfaceRules.isBiome;
 import static net.regions_unexplored.registry.data.RUBiomes.*;
 
 public class RuBiomeTagProvider extends BiomeTagsProvider {
@@ -47,7 +45,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 allNether.add(biome);
             } else {
                 allOverworld.add(biome);
-                if (!SCORCHING_CAVES.equals(biome)) {
+                if (!REMOVED_SCORCHING_CAVES.equals(biome) && !INFERNO.equals(biome)) {
                     allOverworldNoDeepCaves.add(biome);
                 }
             }
@@ -66,22 +64,24 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
             .add(FEN)
             .add(PINE_TAIGA)
             .add(BLACKWOOD_TAIGA)
-            .add(BOREAL_TAIGA)
             .add(COLD_BOREAL_TAIGA)
-            .add(GOLDEN_BOREAL_TAIGA)
+            .add(BOREAL_TAIGA)
+            .add(OLD_GROWTH_BOREAL_TAIGA)
+            .add(OLD_GROWTH_GOLDEN_BOREAL_TAIGA)
+            .add(REMOVED_GOLDEN_BOREAL_TAIGA)
         ;
         
         this.tag(RUBiomeTags.SURFACE_SILT)
-            .add(PUMPKIN_FIELDS)
+            .add(REMOVED_PUMPKIN_FIELDS)
             .add(AUTUMNAL_MAPLE_FOREST)
             .add(SILVER_BIRCH_FOREST)
             .add(TROPICS)
             .add(DRY_BUSHLAND)
             .add(JOSHUA_DESERT)
-            .add(BARLEY_FIELDS)
+            .add(REMOVED_BARLEY_FIELDS)
             .add(PRAIRIE)
             .add(ORCHARD)
-            .add(STEPPE)
+            .add(REMOVED_STEPPE)
         ;
         
         this.tag(RUBiomeTags.SURFACE_SAND)
@@ -95,10 +95,10 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(CHALK_CLIFFS)
                 .add(COLD_BOREAL_TAIGA)
                 .add(FROZEN_PINE_TAIGA)
-                .add(MOUNTAINS)
+                .add(REMOVED_MOUNTAINS)
                 .add(PINE_SLOPES)
                 .add(TOWERING_CLIFFS)
-                .add(COLD_DECIDUOUS_FOREST)
+                .add(REMOVED_COLD_DECIDUOUS_FOREST)
                 .add(REMOVED_FROZEN_TUNDRA)
                 .add(WISTERIA_GROVE)
                 .add(ICY_HEIGHTS)
@@ -110,11 +110,10 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(BLACKWOOD_TAIGA)
                 .add(MAGNOLIA_WOODLAND)
                 .add(PINE_TAIGA)
-                .add(SCORCHING_CAVES)
                 .add(TROPICS)
         ;
         this.tag(RUBiomeTags.HAS_CHESTNUT_WOLF)
-                .add(BARLEY_FIELDS)
+                .add(REMOVED_BARLEY_FIELDS)
                 .add(CLOVER_PLAINS)
                 .add(HIGHLAND_FIELDS)
                 .add(POPPY_FIELDS)
@@ -128,7 +127,8 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(GRASSLAND)
                 .add(MARSH)
                 .add(REMOVED_ROCKY_MEADOW)
-                .add(TEMPERATE_GROVE)
+                .add(WINDSWEPT_MAPLE_FOREST)
+                .add(REMOVED_TEMPERATE_GROVE)
         ;
         this.tag(RUBiomeTags.HAS_RUSTY_WOLF)
                 .add(ANCIENT_DELTA)
@@ -136,7 +136,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(BAMBOO_FOREST)
                 .add(BIOSHROOM_CAVES)
                 .add(EUCALYPTUS_FOREST)
-                .add(PUMPKIN_FIELDS)
+                .add(REMOVED_PUMPKIN_FIELDS)
                 .add(REDWOODS)
                 .add(SPARSE_REDWOODS)
         ;
@@ -151,30 +151,28 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(SAGUARO_DESERT)
         ;
         this.tag(RUBiomeTags.HAS_STRIPED_WOLF)
-                .add(ARID_MOUNTAINS)
+                .add(REMOVED_ARID_MOUNTAINS)
                 .add(DRY_BUSHLAND)
                 .add(OUTBACK)
                 .add(RAINFOREST)
                 .add(ROCKY_REEF)
                 .add(SPARSE_RAINFOREST)
-                .add(STEPPE)
+                .add(REMOVED_STEPPE)
         ;
         this.tag(RUBiomeTags.HAS_WOODS_WOLF)
                 .add(BAYOU)
                 .add(DECIDUOUS_FOREST)
                 .add(FEN)
-                .add(GOLDEN_BOREAL_TAIGA)
                 .add(MAPLE_FOREST)
                 .add(OLD_GROWTH_BAYOU)
                 .add(ORCHARD)
                 .add(SILVER_BIRCH_FOREST)
         ;
         
-        this.tag(RUBiomeTags.REMOVED)
-            .add(REMOVED_FROZEN_TUNDRA)
-            .add(REMOVED_MAUVE_HILLS)
-            .add(REMOVED_ROCKY_MEADOW)
-        ;
+        var removed = this.tag(RUBiomeTags.REMOVED);
+        for (ResourceKey<Biome> biome : REMOVED_BIOMES) {
+            removed.add(biome);
+        }
     }
 
     public void addVanillaTags() {
@@ -231,13 +229,12 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
             .add(WISTERIA_GROVE)
             .add(ORCHARD)
             .add(SILVER_BIRCH_FOREST)
-            .add(TEMPERATE_GROVE)
+            .add(WINDSWEPT_MAPLE_FOREST)
+            .add(REMOVED_TEMPERATE_GROVE)
             .add(WILLOW_FOREST)
         ;
         this.tag(BiomeTags.IS_HILL)
-            .add(REMOVED_MAUVE_HILLS)
-            .add(TOWERING_CLIFFS)
-            .add(ICY_HEIGHTS)
+            .add(WINDSWEPT_MAPLE_FOREST)
         ;
         this.tag(BiomeTags.IS_JUNGLE)
             .add(RAINFOREST)
@@ -249,15 +246,15 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
             .add(TOWERING_CLIFFS)
             .add(ICY_HEIGHTS)
             .add(HIGHLAND_FIELDS)
-            .add(MOUNTAINS)
-            .add(ARID_MOUNTAINS)
+            .add(REMOVED_MOUNTAINS)
+            .add(REMOVED_ARID_MOUNTAINS)
         ;
         this.tag(BiomeTags.IS_NETHER)
             .add(MYCOTOXIC_UNDERGROWTH)
             .add(BLACKSTONE_BASIN)
             .add(INFERNAL_HOLT)
             .add(GLISTERING_MEADOW)
-            .add(REDSTONE_ABYSS)
+            .add(REMOVED_REDSTONE_ABYSS)
         ;
         this.tag(BiomeTags.IS_OCEAN)
             .add(ROCKY_REEF)
@@ -272,20 +269,23 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
             .add(TROPICAL_RIVER)
         ;
         this.tag(BiomeTags.IS_SAVANNA)
-            .add(STEPPE)
+            .add(REMOVED_STEPPE)
             .add(BAOBAB_SAVANNA)
             .add(DRY_BUSHLAND)
         ;
         this.tag(BiomeTags.IS_TAIGA)
             .add(BLACKWOOD_TAIGA)
             .add(BOREAL_TAIGA)
-            .add(GOLDEN_BOREAL_TAIGA)
+            .add(OLD_GROWTH_BOREAL_TAIGA)
+            .add(OLD_GROWTH_GOLDEN_BOREAL_TAIGA)
+            .add(REMOVED_GOLDEN_BOREAL_TAIGA)
             .add(PINE_TAIGA)
             .add(REDWOODS)
             .add(SPARSE_REDWOODS)
         ;
         this.tag(BiomeTags.MINESHAFT_BLOCKING)
-            .add(SCORCHING_CAVES)
+            .add(INFERNO)
+            .add(REMOVED_SCORCHING_CAVES)
         ;
         this.tag(BiomeTags.POLAR_BEARS_SPAWN_ON_ALTERNATE_BLOCKS)
             .add(REMOVED_FROZEN_TUNDRA)
@@ -298,14 +298,14 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
             .add(JOSHUA_DESERT)
             .add(SAGUARO_DESERT)
             .add(OUTBACK)
-            .add(ARID_MOUNTAINS)
-            .add(STEPPE)
+            .add(REMOVED_ARID_MOUNTAINS)
+            .add(REMOVED_STEPPE)
             .add(BAOBAB_SAVANNA)
             .add(DRY_BUSHLAND)
         ;
         this.tag(BiomeTags.SPAWNS_COLD_VARIANT_FROGS)
             .add(SPIRES)
-            .add(COLD_DECIDUOUS_FOREST)
+            .add(REMOVED_COLD_DECIDUOUS_FOREST)
             .add(COLD_BOREAL_TAIGA)
             .add(ICY_HEIGHTS)
             .add(FROZEN_PINE_TAIGA)
@@ -319,7 +319,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
         ;
         this.tag(BiomeTags.SPAWNS_SNOW_FOXES)
             .add(SPIRES)
-            .add(COLD_DECIDUOUS_FOREST)
+            .add(REMOVED_COLD_DECIDUOUS_FOREST)
             .add(COLD_BOREAL_TAIGA)
             .add(ICY_HEIGHTS)
             .add(FROZEN_PINE_TAIGA)
@@ -337,7 +337,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
         ;
         this.tag(BiomeTags.SPAWNS_WHITE_RABBITS)
             .add(SPIRES)
-            .add(COLD_DECIDUOUS_FOREST)
+            .add(REMOVED_COLD_DECIDUOUS_FOREST)
             .add(COLD_BOREAL_TAIGA)
             .add(ICY_HEIGHTS)
             .add(FROZEN_PINE_TAIGA)
@@ -406,13 +406,14 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(POPPY_FIELDS)
                 .add(SHRUBLAND)
                 .add(GRASSLAND)
-                .add(STEPPE)
+                .add(REMOVED_STEPPE)
                 .add(PRAIRIE)
                 .add(JOSHUA_DESERT)
                 .add(OUTBACK)
-                .add(BARLEY_FIELDS)
+                .add(REMOVED_BARLEY_FIELDS)
                 .add(FLOWER_FIELDS)
-                .add(TEMPERATE_GROVE)
+                .add(WINDSWEPT_MAPLE_FOREST)
+                .add(REMOVED_TEMPERATE_GROVE)
                 .add(DRY_BUSHLAND)
                 .add(WISTERIA_GROVE)
                 .add(REMOVED_ROCKY_MEADOW)
@@ -435,16 +436,17 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(POPPY_FIELDS)
                 .add(SHRUBLAND)
                 .add(GRASSLAND)
-                .add(STEPPE)
+                .add(REMOVED_STEPPE)
                 .add(PRAIRIE)
-                .add(BARLEY_FIELDS)
+                .add(REMOVED_BARLEY_FIELDS)
                 .add(FLOWER_FIELDS)
                 .add(WISTERIA_GROVE)
                 .add(REMOVED_ROCKY_MEADOW)
                 .add(REDSTONE_CAVES)
                 .add(ANCIENT_DELTA)
                 .add(PRISMACHASM)
-                .add(SCORCHING_CAVES)
+                .add(INFERNO)
+                .add(REMOVED_SCORCHING_CAVES)
                 .add(BIOSHROOM_CAVES)
         ;
         this.tag(BiomeTags.HAS_RUINED_PORTAL_SWAMP)
@@ -470,7 +472,6 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(CLOVER_PLAINS)
                 .add(PRAIRIE)
                 .add(WILLOW_FOREST)
-                .add(TEMPERATE_GROVE)
                 .add(HIGHLAND_FIELDS)
                 .add(DECIDUOUS_FOREST)
                 .add(REMOVED_ROCKY_MEADOW)
@@ -478,7 +479,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
         ;
         this.tag(BiomeTags.HAS_VILLAGE_SAVANNA)
                 .add(OUTBACK)
-                .add(STEPPE)
+                .add(REMOVED_STEPPE)
                 .add(DRY_BUSHLAND)
         ;
         this.tag(BiomeTags.HAS_VILLAGE_SNOWY)
@@ -489,7 +490,9 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(SHRUBLAND)
                 .add(BLACKWOOD_TAIGA)
                 .add(BOREAL_TAIGA)
-                .add(GOLDEN_BOREAL_TAIGA)
+                .add(OLD_GROWTH_BOREAL_TAIGA)
+                .add(OLD_GROWTH_GOLDEN_BOREAL_TAIGA)
+                .add(REMOVED_GOLDEN_BOREAL_TAIGA)
                 .add(SPARSE_REDWOODS)
                 .add(TUNDRA)
         ;
@@ -504,7 +507,8 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(SILVER_BIRCH_FOREST)
         ;
         this.tag(Tags.Biomes.IS_CAVE)
-                .add(SCORCHING_CAVES)
+                .add(INFERNO)
+                .add(REMOVED_SCORCHING_CAVES)
                 .add(REDSTONE_CAVES)
                 .add(PRISMACHASM)
                 .add(BIOSHROOM_CAVES)
@@ -512,13 +516,15 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
         ;
         this.tag(Tags.Biomes.IS_COLD_OVERWORLD)
                 .add(AUTUMNAL_MAPLE_FOREST)
-                .add(PUMPKIN_FIELDS)
+                .add(REMOVED_PUMPKIN_FIELDS)
                 .add(POPPY_FIELDS)
                 .add(HYACINTH_DEEPS)
                 .add(SILVER_BIRCH_FOREST)
                 .add(BOREAL_TAIGA)
-                .add(GOLDEN_BOREAL_TAIGA)
-                .add(COLD_DECIDUOUS_FOREST)
+                .add(OLD_GROWTH_BOREAL_TAIGA)
+                .add(OLD_GROWTH_GOLDEN_BOREAL_TAIGA)
+                .add(REMOVED_GOLDEN_BOREAL_TAIGA)
+                .add(REMOVED_COLD_DECIDUOUS_FOREST)
                 .add(COLD_BOREAL_TAIGA)
                 .add(ICY_HEIGHTS)
                 .add(FROZEN_PINE_TAIGA)
@@ -530,8 +536,8 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(JOSHUA_DESERT)
                 .add(SAGUARO_DESERT)
                 .add(OUTBACK)
-                .add(ARID_MOUNTAINS)
-                .add(STEPPE)
+                .add(REMOVED_ARID_MOUNTAINS)
+                .add(REMOVED_STEPPE)
                 .add(BAOBAB_SAVANNA)
                 .add(DRY_BUSHLAND)
         ;
@@ -540,7 +546,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(BLACKSTONE_BASIN)
                 .add(INFERNAL_HOLT)
                 .add(GLISTERING_MEADOW)
-                .add(REDSTONE_ABYSS)
+                .add(REMOVED_REDSTONE_ABYSS)
         ;
         this.tag(Tags.Biomes.IS_FLORAL)
                 .add(CLOVER_PLAINS)
@@ -558,8 +564,8 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(JOSHUA_DESERT)
                 .add(SAGUARO_DESERT)
                 .add(OUTBACK)
-                .add(ARID_MOUNTAINS)
-                .add(STEPPE)
+                .add(REMOVED_ARID_MOUNTAINS)
+                .add(REMOVED_STEPPE)
                 .add(BAOBAB_SAVANNA)
                 .add(DRY_BUSHLAND)
                 .add(RAINFOREST)
@@ -572,7 +578,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(BLACKSTONE_BASIN)
                 .add(INFERNAL_HOLT)
                 .add(GLISTERING_MEADOW)
-                .add(REDSTONE_ABYSS)
+                .add(REMOVED_REDSTONE_ABYSS)
         ;
         this.tag(Tags.Biomes.IS_WET_OVERWORLD)
                 .add(RAINFOREST)
@@ -589,8 +595,9 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
         ;
         this.tag(Tags.Biomes.IS_DENSE_VEGETATION_OVERWORLD)
                 .add(BLACKWOOD_TAIGA)
-                .add(BOREAL_TAIGA)
-                .add(GOLDEN_BOREAL_TAIGA)
+                .add(OLD_GROWTH_BOREAL_TAIGA)
+                .add(OLD_GROWTH_GOLDEN_BOREAL_TAIGA)
+                .add(REMOVED_GOLDEN_BOREAL_TAIGA)
                 .add(REDWOODS)
                 .add(BAMBOO_FOREST)
                 .add(DECIDUOUS_FOREST)
@@ -602,7 +609,6 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
         this.tag(Tags.Biomes.IS_SPARSE_VEGETATION_OVERWORLD)
                 .add(BAOBAB_SAVANNA)
                 .add(DRY_BUSHLAND)
-                .add(TEMPERATE_GROVE)
                 .add(ICY_HEIGHTS)
                 .add(TOWERING_CLIFFS)
         ;
@@ -612,7 +618,9 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
         this.tag(Tags.Biomes.IS_CONIFEROUS_TREE)
                 .add(BLACKWOOD_TAIGA)
                 .add(BOREAL_TAIGA)
-                .add(GOLDEN_BOREAL_TAIGA)
+                .add(OLD_GROWTH_BOREAL_TAIGA)
+                .add(OLD_GROWTH_GOLDEN_BOREAL_TAIGA)
+                .add(REMOVED_GOLDEN_BOREAL_TAIGA)
                 .add(PINE_TAIGA)
                 .add(COLD_BOREAL_TAIGA)
                 .add(FROZEN_PINE_TAIGA)
@@ -623,7 +631,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
         ;
         this.tag(Tags.Biomes.IS_DECIDUOUS_TREE)
                 .add(AUTUMNAL_MAPLE_FOREST)
-                .add(COLD_DECIDUOUS_FOREST)
+                .add(REMOVED_COLD_DECIDUOUS_FOREST)
                 .add(DECIDUOUS_FOREST)
                 .add(MAGNOLIA_WOODLAND)
                 .add(MAPLE_FOREST)
@@ -631,7 +639,8 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(WISTERIA_GROVE)
                 .add(ORCHARD)
                 .add(SILVER_BIRCH_FOREST)
-                .add(TEMPERATE_GROVE)
+                .add(WINDSWEPT_MAPLE_FOREST)
+                .add(REMOVED_TEMPERATE_GROVE)
                 .add(WILLOW_FOREST)
         ;
         this.tag(Tags.Biomes.IS_DESERT)
@@ -647,8 +656,8 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(PRISMACHASM)
         ;
         this.tag(Tags.Biomes.IS_MOUNTAIN_PEAK)
-                .add(ARID_MOUNTAINS)
-                .add(MOUNTAINS)
+                .add(REMOVED_ARID_MOUNTAINS)
+                .add(REMOVED_MOUNTAINS)
         ;
         this.tag(Tags.Biomes.IS_MOUNTAIN_SLOPE)
                 .add(PINE_SLOPES)
@@ -668,20 +677,20 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(ROCKY_REEF)
         ;
         this.tag(Tags.Biomes.IS_PLAINS)
-                .add(BARLEY_FIELDS)
+                .add(REMOVED_BARLEY_FIELDS)
                 .add(FLOWER_FIELDS)
                 .add(GRASSLAND)
                 .add(CLOVER_PLAINS)
                 .add(REMOVED_ROCKY_MEADOW)
                 .add(POPPY_FIELDS)
                 .add(PRAIRIE)
-                .add(PUMPKIN_FIELDS)
+                .add(REMOVED_PUMPKIN_FIELDS)
                 .add(SHRUBLAND)
         ;
         this.tag(Tags.Biomes.IS_PLATEAU)
                 .add(MAGNOLIA_WOODLAND)
                 .add(HIGHLAND_FIELDS)
-                .add(STEPPE)
+                .add(REMOVED_STEPPE)
                 .add(ICY_HEIGHTS)
         ;
         this.tag(Tags.Biomes.IS_RARE)
@@ -697,7 +706,7 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(GRASSY_BEACH)
         ;
         this.tag(Tags.Biomes.IS_SNOWY)
-                .add(COLD_DECIDUOUS_FOREST)
+                .add(REMOVED_COLD_DECIDUOUS_FOREST)
                 .add(COLD_BOREAL_TAIGA)
                 .add(ICY_HEIGHTS)
                 .add(FROZEN_PINE_TAIGA)
@@ -721,7 +730,8 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(CHALK_CLIFFS)
         ;
         this.tag(Tags.Biomes.IS_TEMPERATE_OVERWORLD)
-                .add(TEMPERATE_GROVE)
+            .add(WINDSWEPT_MAPLE_FOREST)
+            .add(REMOVED_TEMPERATE_GROVE)
         ;
         this.tag(Tags.Biomes.IS_WASTELAND)
                 .add(ASHEN_WOODLAND)

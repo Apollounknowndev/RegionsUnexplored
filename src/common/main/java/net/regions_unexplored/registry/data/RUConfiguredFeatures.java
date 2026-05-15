@@ -65,9 +65,11 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_JUNGLE = tree("big_jungle");
     ResourceKey<ConfiguredFeature<?,?>> TREE_KAPOK = tree("kapok");
     ResourceKey<ConfiguredFeature<?,?>> TREE_LARCH = tree("larch");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_LARCH = tree("big_larch");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_GOLDEN_LARCH = tree("larch_golden");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_GOLDEN_LARCH = tree("big_golden_larch");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_LARCH_PINE = tree("larch_pine");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_LARCH_LARGE = tree("larch_large");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_LARCH_GOLDEN = tree("larch_golden");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_LARCH_GOLDEN_PINE = tree("larch_golden_pine");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_LARCH_GOLDEN_LARGE = tree("larch_golden_large");
     ResourceKey<ConfiguredFeature<?,?>> TREE_MAPLE = tree("maple");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_MAPLE = tree("big_maple");
     ResourceKey<ConfiguredFeature<?,?>> TREE_RED_MAPLE = tree("red_maple");

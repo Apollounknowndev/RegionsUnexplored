@@ -48,8 +48,8 @@ public class RuMiscOverworldPlacements {
     public static final ResourceKey<PlacedFeature> PATCH_PRISMARITE_CLUSTER = patch("prismarite_cluster");
     public static final ResourceKey<PlacedFeature> SPECIAL_HANGING_PRISMARITE_CLUSTER = key("special/hanging_prismarite_cluster");
     public static final ResourceKey<PlacedFeature> SPECIAL_LAVA_FALL = key("special/lava_fall");
-    public static final ResourceKey<PlacedFeature> SPECIAL_OVERWORLD_LAVA_DELTA = key("special/overworld_lava_delta");
-    public static final ResourceKey<PlacedFeature> SPECIAL_ASH_VENT = key("special/ash_vent");
+    public static final ResourceKey<PlacedFeature> SPECIAL_INFERNO_LAVA_DELTA = key("special/overworld_lava_delta");
+    public static final ResourceKey<PlacedFeature> PATCH_ASH_VENTS_INFERNO = key("patch/ash_vents_inferno");
     public static final ResourceKey<PlacedFeature> SPECIAL_BASALT_BLOB = key("special/basalt_blob");
     //OTHER_FEATURES
     public static final ResourceKey<PlacedFeature> SPECIAL_CALCITE_POOL = key("special/calcite_pool");
@@ -60,13 +60,15 @@ public class RuMiscOverworldPlacements {
     public static final ResourceKey<PlacedFeature> SPECIAL_MARSH = key("special/marsh");
     public static final ResourceKey<PlacedFeature> SPECIAL_WATER_EDGE = key("special/water_edge");
     public static final ResourceKey<PlacedFeature> SPECIAL_ICICLE_UP = key("special/icicle_up");
-    public static final ResourceKey<PlacedFeature> PATCH_PUMPKIN_FIELD_PUMPKINS = patch("pumpkin_field_pumpkins");
+    public static final ResourceKey<PlacedFeature> PATCH_SILT_PODZOL_PUMPKINS = patch("silt_podzol_pumpkins");
 
     public static final ResourceKey<PlacedFeature> ROCK_GROUP_ICY_HEIGHTS = key("rock/group/icy_heights");
     public static final ResourceKey<PlacedFeature> ROCK_GROUP_HIGHLAND_FIELDS = key("rock/group/highland_fields");
     public static final ResourceKey<PlacedFeature> ROCK_GROUP_ROCKY_MEADOW = key("rock/group/rocky_meadow");
-    public static final ResourceKey<PlacedFeature> ROCK_GROUP_TEMPERATE_GROVE = key("rock/group/temperate_grove");
+    public static final ResourceKey<PlacedFeature> ROCK_GROUP_WINDSWEPT_MAPLE_FOREST = key("rock/group/windswept_maple_forest");
     public static final ResourceKey<PlacedFeature> ROCK_GROUP_TUNDRA = key("rock/group/tundra");
+    
+    private static final BlockPredicateFilter NOT_IN_STRUCTURE = BlockPredicateFilter.forPredicate(BlockPredicate.not(LithostitchedBlockPredicates.inStructure(4)));
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> getter = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -76,10 +78,10 @@ public class RuMiscOverworldPlacements {
         var fallenSnowPine = getter.getOrThrow(RuMiscOverworldFeatures.FALLEN_SNOW_PINE);
         var mossPatchWithWater = getter.getOrThrow(RuMiscOverworldFeatures.SPECIAL_MOSS_PATCH_WITH_WATER);
         var singlePieceOfGrass = getter.getOrThrow(VegetationFeatures.SINGLE_PIECE_OF_GRASS);
-        
-        var notInStructurePredicate = BlockPredicateFilter.forPredicate(BlockPredicate.not(LithostitchedBlockPredicates.inStructure(4)));
-        
-        register(context, RuMiscOverworldPlacements.FALLEN_LARCH, surfaceSpread(0.333, Types.OCEAN_FLOOR, RUBlocks.LARCH_NATURAL_SET.getSapling()));
+	    
+	    
+	    
+	    register(context, RuMiscOverworldPlacements.FALLEN_LARCH, surfaceSpread(0.333, Types.OCEAN_FLOOR, RUBlocks.LARCH_NATURAL_SET.getSapling()));
         register(context, RuMiscOverworldPlacements.FALLEN_SILVER_BIRCH, surfaceSpread(0.5, Types.OCEAN_FLOOR, Blocks.BIRCH_SAPLING));
         register(context, RuMiscOverworldPlacements.FALLEN_MAPLE, surfaceSpread(0.5, Types.OCEAN_FLOOR, RUBlocks.MAPLE_NATURAL_SET.getSapling()));
         register(context, RuMiscOverworldPlacements.FALLEN_OAK_SPARSE, fallenOak, surfaceSpread(0.16, Types.OCEAN_FLOOR, Blocks.BIRCH_SAPLING));
@@ -98,25 +100,13 @@ public class RuMiscOverworldPlacements {
 
         register(context, RuMiscOverworldPlacements.SPECIAL_CALCITE_POOL, CountPlacement.of(70), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1)), BiomeFilter.biome());
 
-        register(context, RuMiscOverworldPlacements.SPECIAL_LAVA_FALL,
-                CountOnEveryLayerPlacement.of(1),
-                BiomeFilter.biome(),
-                notInStructurePredicate
+        register(context, RuMiscOverworldPlacements.SPECIAL_LAVA_FALL, placement().count(100)
+            .add(PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT)
+            .add(NOT_IN_STRUCTURE)
         );
-        register(context, RuMiscOverworldPlacements.SPECIAL_OVERWORLD_LAVA_DELTA,
-                CountPlacement.of(115),
-                InSquarePlacement.spread(),
-                PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT,
-                EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12),
-                RandomOffsetPlacement.vertical(ConstantInt.of(1)),
-                BiomeFilter.biome(),
-                notInStructurePredicate
-        );
-        register(context, RuMiscOverworldPlacements.SPECIAL_ASH_VENT,
-                CountOnEveryLayerPlacement.of(7),
-                BiomeFilter.biome(),
-                notInStructurePredicate
-        );
+        register(context, RuMiscOverworldPlacements.SPECIAL_INFERNO_LAVA_DELTA, cavePlacement(100, Direction.DOWN, false));
+        register(context, RuMiscOverworldPlacements.PATCH_ASH_VENTS_INFERNO, cavePlacement(100, Direction.DOWN, true));
+        
         register(context, RuMiscOverworldPlacements.SPECIAL_BASALT_BLOB, CountOnEveryLayerPlacement.of(4), BiomeFilter.biome());
 
         register(context, RuMiscOverworldPlacements.SPECIAL_MOSS_PATCH_WITH_WATER_DENSE, mossPatchWithWater, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1)), BiomeFilter.biome());
@@ -125,12 +115,12 @@ public class RuMiscOverworldPlacements {
         register(context, RuMiscOverworldPlacements.SPECIAL_MARSH, CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
         register(context, RuMiscOverworldPlacements.SPECIAL_WATER_EDGE, CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,  BiomeFilter.biome());
         register(context, RuMiscOverworldPlacements.SPECIAL_ICICLE_UP, CountPlacement.of(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BlockPredicateFilter.forPredicate(RUPlacedFeatureBootstrap.onSnowPredicate), BiomeFilter.biome()) ;
-        register(context, RuMiscOverworldPlacements.PATCH_PUMPKIN_FIELD_PUMPKINS, placement().count(NoiseBasedCountPlacement.of(4, 40, 0.4)).heightmap(Types.MOTION_BLOCKING));
+        register(context, RuMiscOverworldPlacements.PATCH_SILT_PODZOL_PUMPKINS, placement(0.5f, Types.MOTION_BLOCKING));
 
         register(context, RuMiscOverworldPlacements.ROCK_GROUP_ICY_HEIGHTS, surfaceSpread(1, Types.WORLD_SURFACE_WG));
         register(context, RuMiscOverworldPlacements.ROCK_GROUP_HIGHLAND_FIELDS, surfaceSpread(1, Types.WORLD_SURFACE_WG));
         register(context, RuMiscOverworldPlacements.ROCK_GROUP_ROCKY_MEADOW, surfaceSpread(1, Types.WORLD_SURFACE_WG));
-        register(context, RuMiscOverworldPlacements.ROCK_GROUP_TEMPERATE_GROVE, surfaceSpread(0.5, Types.WORLD_SURFACE_WG));
+        register(context, RuMiscOverworldPlacements.ROCK_GROUP_WINDSWEPT_MAPLE_FOREST, surfaceSpread(0.5, Types.WORLD_SURFACE_WG));
         register(context, RuMiscOverworldPlacements.ROCK_GROUP_TUNDRA,
             LithostitchedPlacementModifiers.noiseSlope(RUNoises.TREE_DENSITY, -3, 2, 1, 0),
             rarityFilter(12),
@@ -147,6 +137,17 @@ public class RuMiscOverworldPlacements {
         register(context, RUPlacedFeatures.BONEMEAL_SILT_GRASS, singlePieceOfGrass, airCheck);
         register(context, RUPlacedFeatures.BONEMEAL_STONE_GRASS, singlePieceOfGrass, airCheck);
     }
+    
+    private static PlacementBuilder cavePlacement(int count, Direction direction, boolean offset) {
+        PlacementBuilder builder = placement().count(count)
+            .add(PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT)
+            .add(EnvironmentScanPlacement.scanningFor(direction, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12));
+        if (offset) {
+            builder.add(RandomOffsetPlacement.vertical(ConstantInt.of(-direction.getStepY())));
+        }
+        return builder.add(NOT_IN_STRUCTURE);
+    }
+    
     private static PlacementModifier[] orePlacement(PlacementModifier placementModifier, PlacementModifier placementModifier1) {
         return new PlacementModifier[] {
             placementModifier,

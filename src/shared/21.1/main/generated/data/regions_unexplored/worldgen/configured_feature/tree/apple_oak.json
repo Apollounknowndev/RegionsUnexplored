@@ -15,78 +15,42 @@
       "radius": 2
     },
     "foliage_provider": {
-      "type": "minecraft:weighted_state_provider",
+      "type": "lithostitched:weighted",
       "entries": [
         {
           "data": {
-            "Name": "minecraft:oak_leaves",
-            "Properties": {
-              "distance": "7",
-              "persistent": "false",
-              "waterlogged": "false"
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "minecraft:oak_leaves",
+              "Properties": {
+                "distance": "7",
+                "persistent": "false",
+                "waterlogged": "false"
+              }
             }
           },
-          "weight": 18
+          "weight": 29
         },
         {
-          "data": {
-            "Name": "regions_unexplored:apple_oak_leaves",
-            "Properties": {
-              "age": "0",
-              "distance": "7",
-              "persistent": "false",
-              "waterlogged": "false"
+          "type": "minecraft:randomized_int_state_provider",
+          "property": "age",
+          "source": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "regions_unexplored:apple_oak_leaves",
+              "Properties": {
+                "age": "0",
+                "distance": "7",
+                "persistent": "false",
+                "waterlogged": "false"
+              }
             }
           },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "regions_unexplored:apple_oak_leaves",
-            "Properties": {
-              "age": "1",
-              "distance": "7",
-              "persistent": "false",
-              "waterlogged": "false"
-            }
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "regions_unexplored:apple_oak_leaves",
-            "Properties": {
-              "age": "2",
-              "distance": "7",
-              "persistent": "false",
-              "waterlogged": "false"
-            }
-          },
-          "weight": 2
-        },
-        {
-          "data": {
-            "Name": "regions_unexplored:apple_oak_leaves",
-            "Properties": {
-              "age": "3",
-              "distance": "7",
-              "persistent": "false",
-              "waterlogged": "false"
-            }
-          },
-          "weight": 2
-        },
-        {
-          "data": {
-            "Name": "regions_unexplored:apple_oak_leaves",
-            "Properties": {
-              "age": "4",
-              "distance": "7",
-              "persistent": "false",
-              "waterlogged": "false"
-            }
-          },
-          "weight": 2
+          "values": {
+            "type": "minecraft:uniform",
+            "max_inclusive": 4,
+            "min_inclusive": 2
+          }
         }
       ]
     },
@@ -102,7 +66,7 @@
       "type": "minecraft:straight_trunk_placer",
       "base_height": 4,
       "height_rand_a": 2,
-      "height_rand_b": 0
+      "height_rand_b": 2
     },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",

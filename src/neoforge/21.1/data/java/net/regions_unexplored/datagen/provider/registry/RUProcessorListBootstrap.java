@@ -1,13 +1,21 @@
 package net.regions_unexplored.datagen.provider.registry;
 
 import dev.worldgen.lithostitched.api.worldgen.processor.LithostitchedProcessors;
+import dev.worldgen.lithostitched.api.worldgen.processor.RandomSettings;
+import dev.worldgen.lithostitched.api.worldgen.processor.enums.RandomMode;
+import dev.worldgen.lithostitched.api.worldgen.processorcondition.LithostitchedProcessorConditions;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.set.WoodSet;
+import net.regions_unexplored.registry.tag.RUBiomeTags;
+import net.regions_unexplored.worldgen.processorcondition.MatchingBiomesCondition;
 
 import java.util.List;
 import java.util.Map;
@@ -16,6 +24,27 @@ import static net.regions_unexplored.registry.data.RUProcessorLists.*;
 
 public class RUProcessorListBootstrap {
     public static void bootstrap(BootstrapContext<StructureProcessorList> context) {
+        HolderSet<Biome> surfaceSilt = context.lookup(Registries.BIOME).getOrThrow(RUBiomeTags.SURFACE_SILT);
+        HolderSet<Biome> surfacePeat = context.lookup(Registries.BIOME).getOrThrow(RUBiomeTags.SURFACE_PEAT);
+        context.register(VILLAGE_PATH_FIX, new StructureProcessorList(List.of(
+            LithostitchedProcessors.condition(
+                new RandomSettings(RandomMode.PER_BLOCK),
+                new MatchingBiomesCondition(surfaceSilt),
+                LithostitchedProcessors.blockSwap(Map.of(
+                    id(Blocks.GRASS_BLOCK), id(RUBlocks.SILT_GRASS_BLOCK.get()),
+                    id(Blocks.DIRT_PATH), id(RUBlocks.SILT_DIRT_PATH.get())
+                ))
+            ),
+            LithostitchedProcessors.condition(
+                new RandomSettings(RandomMode.PER_BLOCK),
+                new MatchingBiomesCondition(surfacePeat),
+                LithostitchedProcessors.blockSwap(Map.of(
+                    id(Blocks.GRASS_BLOCK), id(RUBlocks.PEAT_GRASS_BLOCK.get()),
+                    id(Blocks.DIRT_PATH), id(RUBlocks.PEAT_DIRT_PATH.get())
+                ))
+            )
+        )));
+        
         context.register(SHIPWRECK_DARK_OAK_AND_BAOBAB, darkOakAndModded(RUBlocks.BAOBAB_WOOD_SET));
         context.register(SHIPWRECK_DARK_OAK_AND_DEAD, darkOakAndModded(RUBlocks.DEAD_WOOD_SET));
         context.register(SHIPWRECK_DARK_OAK_AND_EUCALYPTUS, darkOakAndModded(RUBlocks.EUCALYPTUS_WOOD_SET));

@@ -24,11 +24,8 @@
         "weight": 19
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/spruce_tall",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/spruce_tall",
+        "placement": []
       }
     ]
   }

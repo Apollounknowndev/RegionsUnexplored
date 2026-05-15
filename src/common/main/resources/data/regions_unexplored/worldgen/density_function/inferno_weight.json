@@ -1,0 +1,48 @@
+{
+  "type": "minecraft:flat_cache",
+  "argument": {
+    "type": "minecraft:cache_2d",
+    "argument": {
+      "type": "minecraft:clamp",
+      "input": {
+        "type": "minecraft:range_choice",
+        "input": "minecraft:y",
+        "min_inclusive": -4064,
+        "max_exclusive": 0,
+        "when_in_range": {
+          "type": "minecraft:range_choice",
+          "input": {
+            "type": "lithostitched:fast_noise",
+            "config": "regions_unexplored:inferno_cells",
+            "xz_scale": 0.7,
+            "y_scale": 0,
+            "shift_x": "lithostitched:region/shift_x",
+            "shift_z": "lithostitched:region/shift_z"
+          },
+          "min_inclusive": 0.9,
+          "max_exclusive": 1,
+          "when_in_range": {
+            "type": "minecraft:mul",
+            "argument1": 5,
+            "argument2": {
+              "type": "minecraft:add",
+              "argument1": 1,
+              "argument2": {
+                "type": "lithostitched:fast_noise",
+                "config": "regions_unexplored:inferno_distance",
+                "xz_scale": 0.7,
+                "y_scale": 0,
+                "shift_x": "lithostitched:region/shift_x",
+                "shift_z": "lithostitched:region/shift_z"
+              }
+            }
+          },
+          "when_out_of_range": 0
+        },
+        "when_out_of_range": 0
+      },
+      "min": 0,
+      "max": 1
+    }
+  }
+}

@@ -17,11 +17,8 @@
         "weight": 7
       },
       {
-        "data": {
-          "feature": "regions_unexplored:patch/pink_bioshroom",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:patch/pink_bioshroom",
+        "placement": []
       }
     ]
   }

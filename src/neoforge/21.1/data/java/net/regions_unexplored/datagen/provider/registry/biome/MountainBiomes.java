@@ -128,7 +128,7 @@ public class MountainBiomes {
         BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.4f)
             .foliageColorOverride(0x758646)
             .grassColorOverride(0x84a75a)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JAGGED_PEAKS));
+            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_GROVE));
         
         //add features
         BiomeGenerationSettings.Builder builder = baseMountainGeneration(featureGetter, carverGetter);
@@ -143,7 +143,7 @@ public class MountainBiomes {
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseMountainSpawning();
         
-        return biomeBuilder(0.25f, 0.6f)
+        return biomeBuilder(0.4f, 0.4f)
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -162,7 +162,7 @@ public class MountainBiomes {
         //add RU features
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_MOUNTAINS);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuMiscOverworldPlacements.FALLEN_PINE_ON_DIRT);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.MOUNTAINS));
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RUShrubFeatures.get(RUBiomes.REMOVED_MOUNTAINS));
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_FERN);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS);
 

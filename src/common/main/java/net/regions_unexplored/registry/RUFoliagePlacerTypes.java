@@ -10,8 +10,9 @@ import java.util.function.Supplier;
 
 public interface RUFoliagePlacerTypes {
     Supplier<FoliagePlacerType<BioshroomFoliagePlacer>> BIOSHROOM = register("bioshroom", BioshroomFoliagePlacer.TYPE);
+    Supplier<FoliagePlacerType<FancyPineFoliagePlacer>> FANCY_PINE = register("fancy_pine", FancyPineFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<MagnoliaFoliagePlacer>> MAGNOLIA = register("magnolia", MagnoliaFoliagePlacer.TYPE);
-    Supplier<FoliagePlacerType<RUPineFoliagePlacer>> PINE = register("pine", RUPineFoliagePlacer.TYPE);
+    Supplier<FoliagePlacerType<MapleFoliagePlacer>> MAPLE = register("maple", MapleFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<RedwoodFoliagePlacer>> REDWOOD = register("redwood", RedwoodFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<SakuraFoliagePlacer>> SAKURA = register("sakura", SakuraFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<SkinnyPineFoliagePlacer>> SKINNY_PINE = register("skinny_pine", SkinnyPineFoliagePlacer.TYPE);

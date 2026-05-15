@@ -10,11 +10,8 @@
         "weight": 2
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/big_oak",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/big_oak",
+        "placement": []
       }
     ]
   }

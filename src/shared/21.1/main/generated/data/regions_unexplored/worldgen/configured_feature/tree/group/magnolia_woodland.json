@@ -3,25 +3,16 @@
   "config": {
     "features": [
       {
-        "data": {
-          "feature": "regions_unexplored:tree/magnolia",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/magnolia",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/pink_magnolia",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/pink_magnolia",
+        "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/white_magnolia",
-          "placement": []
-        },
-        "weight": 1
+        "feature": "regions_unexplored:tree/white_magnolia",
+        "placement": []
       }
     ]
   }

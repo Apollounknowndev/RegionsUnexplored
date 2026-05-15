@@ -47,4 +47,9 @@ public class Ashen extends Zombie {
 	protected ItemStack getSkull() {
 		return ItemStack.EMPTY;
 	}
+	
+	@Override
+	public boolean fireImmune() {
+		return true;
+	}
 }
