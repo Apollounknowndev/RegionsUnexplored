@@ -15,7 +15,6 @@ import net.regions_unexplored.internal.config.Config;
 import net.regions_unexplored.internal.config.ConfigManager;
 import net.regions_unexplored.internal.config.gui.ConfigScreenRegistry;
 import net.regions_unexplored.registry.data.RUBiomes;
-import net.regions_unexplored.world.RuBiolith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,7 +52,6 @@ public class RegionsUnexplored {
 		FlammableBlocks.setup();
 		
 		RUEntityTypes.initPostRegistryFreeze();
-		RuBiolith.init();
 	}
 
 	public static Identifier id(String path) {

@@ -49,7 +49,6 @@ cloche {
             compileOnly("org.spongepowered:mixin:0.8.5")
             implementation("com.electronwill.night-config:core:3.8.3")
             implementation("com.electronwill.night-config:toml:3.8.3")
-            modImplementation("com.terraformersmc:biolith-neoforge:3.0.10")
             modCompileOnlyApi("maven.modrinth:lithostitched:1.6.5-neoforge-21.1")
         }
 
@@ -57,9 +56,6 @@ cloche {
 
         metadata {
             dependencies {
-                dependency {
-                    modId = "biolith"
-                }
                 dependency {
                     modId = "lithostitched"
                     version(lithostitchedVersion)
@@ -90,7 +86,6 @@ cloche {
             include("com.electronwill.night-config:core:3.8.3")
             include("com.electronwill.night-config:toml:3.8.3")
 
-            modApi("com.terraformersmc:biolith-fabric:3.0.10")
             modRuntimeOnly("maven.modrinth:world-preview:qc0AtV3T")
             modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-fabric-21.1")
 
@@ -133,7 +128,6 @@ cloche {
         }
 
         dependencies {
-            modApi("com.terraformersmc:biolith-neoforge:3.0.10")
             modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-21.1")
         }
 
