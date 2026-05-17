@@ -35,3 +35,5 @@ accessible method net/minecraft/client/renderer/blockentity/BlockEntityRenderers
 
 accessible method net/minecraft/world/level/block/state/properties/BlockSetType register (Lnet/minecraft/world/level/block/state/properties/BlockSetType;)Lnet/minecraft/world/level/block/state/properties/BlockSetType;
 accessible method net/minecraft/world/level/block/state/properties/WoodType register (Lnet/minecraft/world/level/block/state/properties/WoodType;)Lnet/minecraft/world/level/block/state/properties/WoodType;
+
+accessible class net/minecraft/client/gui/screens/CreateBuffetWorldScreen$BiomeList

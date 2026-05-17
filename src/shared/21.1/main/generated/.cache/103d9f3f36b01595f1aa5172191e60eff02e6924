@@ -1,4 +1,4 @@
-// 1.21.1	2026-05-17T04:01:45.9097779	Registries
+// 1.21.1	2026-05-17T04:51:38.4093198	Registries
 7160b581d0e9c894f25f3d6f26a93cd78c42e0cd data/regions_unexplored/damage_type/dorcel.json
 d22fdc0aeef6a23fc29b12a9ebabe7e22aea59c4 data/regions_unexplored/damage_type/dusk_trap.json
 b023a02c884697a41bec5a19199e2f90e2a50727 data/regions_unexplored/lithostitched/surface_rule/overworld.json
@@ -806,3 +806,4 @@ dc5183aa58fe7e2cf33f92170fc7d54c65900905 data/regions_unexplored/worldgen/proces
 80a65a28e45f7c22c8f997a4c1d0cbbbf876c44f data/regions_unexplored/worldgen/processor_list/shipwreck_palette/dead_and_larch.json
 230cff0ac30e31e427fdae537d4588b47c3a8ef5 data/regions_unexplored/worldgen/processor_list/shipwreck_palette/dead_and_spruce.json
 a3ed922d48cb08f992a4018674b8c7fd2de3a006 data/regions_unexplored/worldgen/processor_list/village_path_fix.json
+eb9dc35f0c28de27b8614f2f1aad89284ab0bceb data/regions_unexplored/worldgen/template_pool/trial_chambers/ashen.json

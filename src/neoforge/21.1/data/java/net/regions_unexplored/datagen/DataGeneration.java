@@ -34,6 +34,7 @@ public class DataGeneration {
         .add(Registries.BIOME, RUBiomeBootstrap::bootstrap)
         .add(Registries.NOISE, RUNoiseBootstrap::bootstrap)
         .add(Registries.DAMAGE_TYPE, RUDamageTypeBootstrap::bootstrap)
+        .add(Registries.TEMPLATE_POOL, RUTemplatePoolBootstrap::bootstrap)
         .add(Registries.PROCESSOR_LIST, RUProcessorListBootstrap::bootstrap)
         .add(LithostitchedRegistries.WORLDGEN_MODIFIER, RUWorldgenModifierBootstrap::bootstrap)
         .add(LithostitchedRegistries.SURFACE_RULE, RUSurfaceRuleBootstrap::bootstrap)
@@ -64,6 +65,7 @@ public class DataGeneration {
         generator.addProvider(event.includeServer(), new RuItemTagProvider(packOutput, datapackRegistries.getRegistryProvider(), blockTagsProvider.contentsGetter(), existingFileHelper));
         generator.addProvider(event.includeServer(), new RUEntityTypeTagProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
         generator.addProvider(event.includeServer(), new RuBiomeTagProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
+        generator.addProvider(event.includeServer(), new RUTemplatePoolTagProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
         generator.addProvider(event.includeServer(), new RuProcessorListTagProvider(packOutput, datapackRegistries.getRegistryProvider(), existingFileHelper));
 
         generator.addProvider(event.includeServer(), new RuDataMapGenerator(packOutput, holder));
