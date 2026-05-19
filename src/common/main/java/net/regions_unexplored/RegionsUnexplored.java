@@ -3,6 +3,9 @@ package net.regions_unexplored;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
+import net.regions_unexplored.config.RUConfigHandler;
+import net.regions_unexplored.config.json5.Json5Ops;
+import net.regions_unexplored.config.state.common.RUCommonConfig;
 import net.regions_unexplored.lithostitched.RULithostitched;
 import net.regions_unexplored.registry.*;
 import net.regions_unexplored.block.compat.BlockToolCompat;
@@ -24,6 +27,7 @@ public class RegionsUnexplored {
 
 	// We do this because terrablender might load before us or after us, so this catches both cases.
 	public static void init(boolean isClient) {
+		RUConfigHandler.loadConfigs();
 		registerConfig("regions_unexplored/client", "Client", RuClientConfig.class, isClient);
 		registerConfig("regions_unexplored/common", "Common", RuCommonConfig.class, isClient);
 

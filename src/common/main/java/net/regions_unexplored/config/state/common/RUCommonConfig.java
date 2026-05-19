@@ -1,0 +1,240 @@
+package net.regions_unexplored.config.state.common;
+
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.regions_unexplored.config.json5.CommentedMapCodec;
+import net.regions_unexplored.config.state.common.BiomeTarget.DoubleRange;
+import net.regions_unexplored.registry.data.RUBiomes;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static dev.worldgen.lithostitched.api.worldgen.biomeinjector.BiomeInjector.ClimateParameter.*;
+import static java.util.Map.entry;
+import static net.regions_unexplored.config.state.common.BiomeTarget.*;
+
+public class RUCommonConfig {
+	public static final RUCommonConfig DEFAULT = new RUCommonConfig(BiomeGroups.DEFAULT_GROUPS, BiomePlacements.DEFAULT_PLACEMENTS, Misc.DEFAULT_MISC);
+	public static final Codec<RUCommonConfig> CODEC = RecordCodecBuilder.create(i -> i.group(
+		CommentedMapCodec.commented(BiomeGroups.CODEC.fieldOf("biome_groups"), "biome_groups", "Biome groups allows several biomes of similar styles to more consistently spawn adjacent to one another.").forGetter(c -> c.biomeGroups),
+		BiomePlacements.CODEC.fieldOf("biome_placements").forGetter(c -> c.biomePlacements),
+		Misc.CODEC.fieldOf("misc").forGetter(c -> c.misc)
+	).apply(i, RUCommonConfig::new));
+	
+	public BiomeGroups biomeGroups;
+	public BiomePlacements biomePlacements;
+	public Misc misc;
+	
+	public RUCommonConfig(BiomeGroups biomeGroups, BiomePlacements biomePlacements, Misc misc) {
+		this.biomeGroups = biomeGroups;
+		this.biomePlacements = biomePlacements;
+		this.misc = misc;
+	}
+	
+	public Misc.BranchMode getBranchMode() {
+		return this.misc.branchMode;
+	}
+	
+	public static class BiomeGroups {
+		private static final BiomeGroups DEFAULT_GROUPS = new BiomeGroups(Map.of(
+			"rivers", ofWeighted(60, Biomes.RIVER),
+			"swamps", ofWeighted(100, Biomes.SWAMP),
+			"plains", ofWeighted(100, Biomes.PLAINS),
+			"forests", ofWeighted(50, Biomes.FOREST),
+			"boreal_taigas", ofWeighted(75, Biomes.TAIGA, Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA, Biomes.SNOWY_TAIGA),
+			"pine_and_redwood_taigas", ofWeighted(75, Biomes.TAIGA, Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA, Biomes.SNOWY_TAIGA),
+			"jungles", ofWeighted(50, Biomes.JUNGLE, Biomes.SPARSE_JUNGLE)
+		));
+		public static final Codec<BiomeGroups> CODEC = Codec.unboundedMap(Codec.STRING.validate(
+			string -> Identifier.isValidPath(string) ? DataResult.success(string) : DataResult.error(() -> "Invalid character(s) in group name: " + string)
+		), BiomeTarget.CODEC).xmap(BiomeGroups::new, g -> g.groups);
+	
+		public Map<String, BiomeTarget> groups;
+		
+		public BiomeGroups(Map<String, BiomeTarget> groups) {
+			this.groups = new HashMap<>(groups);
+		}
+	}
+	
+	public static class BiomePlacements {
+		private static final BiomePlacements DEFAULT_PLACEMENTS = new BiomePlacements(Map.<ResourceKey<Biome>, BiomeTarget>ofEntries(
+			entry(RUBiomes.ALPHA_GROVE, ofWeighted(20, Biomes.MUSHROOM_FIELDS)),
+			entry(RUBiomes.ASHEN_WOODLAND, ofWeighted(20, Biomes.MUSHROOM_FIELDS)),
+			entry(RUBiomes.TROPICS, ofWeighted(20, Biomes.MUSHROOM_FIELDS)),
+			entry(RUBiomes.HYACINTH_DEEPS, ofWeighted(50, Biomes.DEEP_FROZEN_OCEAN)),
+			entry(RUBiomes.ROCKY_REEF, ofWeighted(50, Biomes.WARM_OCEAN)),
+			entry(RUBiomes.GRASSY_BEACH, ofWeighted(50, Biomes.BEACH)),
+			entry(RUBiomes.GRAVEL_BEACH, ofWeighted(50, Biomes.BEACH)),
+			entry(RUBiomes.COLD_RIVER, BiomeTarget.ofGroupToggle("rivers", Biomes.RIVER, Map.of(
+				TEMPERATURE, DoubleRange.below(-0.1)
+			))),
+			entry(RUBiomes.MUDDY_RIVER, BiomeTarget.ofGroupToggle("rivers", Biomes.RIVER, Map.of(
+				TEMPERATURE, DoubleRange.between(-0.1, 0.55)
+			))),
+			entry(RUBiomes.TROPICAL_RIVER, BiomeTarget.ofGroupToggle("rivers", Biomes.RIVER, Map.of(
+				TEMPERATURE, DoubleRange.above(0.55),
+				HUMIDITY, DoubleRange.above(0.3),
+				EROSION, DoubleRange.above(0.15)
+			))),
+			entry(RUBiomes.FEN, BiomeTarget.ofGroupToggle("swamp", Biomes.SWAMP, Map.of(
+				TEMPERATURE, DoubleRange.between(-0.45, -0.1),
+				HUMIDITY, DoubleRange.above(-0.35)
+			))),
+			entry(RUBiomes.FUNGAL_FEN, BiomeTarget.ofGroupToggle("swamp", Biomes.SWAMP, Map.of(
+				TEMPERATURE, DoubleRange.between(-0.45, -0.1),
+				HUMIDITY, DoubleRange.below(-0.35)
+			))),
+			entry(RUBiomes.BAYOU, BiomeTarget.ofGroupToggle("swamp", Biomes.SWAMP, Map.of(
+				TEMPERATURE, DoubleRange.between(-0.1, 0.2),
+				HUMIDITY, DoubleRange.below(3)
+			))),
+			entry(RUBiomes.OLD_GROWTH_BAYOU, BiomeTarget.ofGroupToggle("swamp", Biomes.SWAMP, Map.of(
+				TEMPERATURE, DoubleRange.between(-0.1, 0.2),
+				HUMIDITY, DoubleRange.above(3)
+			))),
+			entry(RUBiomes.MARSH, ofWeighted(50, Biomes.SWAMP)),
+			entry(RUBiomes.TUNDRA, ofWeighted(100, Biomes.SNOWY_PLAINS, Map.of(
+				HUMIDITY, DoubleRange.below(-0.1)
+			))),
+			entry(RUBiomes.ORCHARD, ofWeighted(50, Biomes.SUNFLOWER_PLAINS, Biomes.FLOWER_FOREST)),
+			entry(RUBiomes.FLOWER_FIELDS, ofWeighted(30, Biomes.SUNFLOWER_PLAINS, Biomes.FLOWER_FOREST)),
+			entry(RUBiomes.POPPY_FIELDS, ofWeighted(70, Biomes.SUNFLOWER_PLAINS, Biomes.FLOWER_FOREST)),
+			entry(RUBiomes.SHRUBLAND, BiomeTarget.ofGroupToggle("plains", Biomes.PLAINS, Map.of(
+				TEMPERATURE, DoubleRange.below(-0.1)
+			))),
+			entry(RUBiomes.CLOVER_PLAINS, BiomeTarget.ofGroupToggle("plains", Biomes.PLAINS, Map.of(
+				TEMPERATURE, DoubleRange.between(-0.1, 0.2)
+			))),
+			entry(RUBiomes.GRASSLAND, BiomeTarget.ofGroupToggle("plains", Biomes.PLAINS, Map.of(
+				TEMPERATURE, DoubleRange.above(0.2)
+			))),
+			entry(RUBiomes.HIGHLAND_FIELDS, ofWeighted(50, Biomes.MEADOW)),
+			entry(RUBiomes.WISTERIA_GROVE, ofWeighted(50, Biomes.MEADOW)),
+			entry(RUBiomes.MAGNOLIA_WOODLAND, ofWeighted(50, Biomes.CHERRY_GROVE)),
+			entry(RUBiomes.WILLOW_FOREST, BiomeTarget.ofGroupToggle("forests", Biomes.FOREST, Map.of(
+				TEMPERATURE, DoubleRange.below(-0.1)
+			))),
+			entry(RUBiomes.MAPLE_FOREST, BiomeTarget.ofGroupToggle("forests", Biomes.FOREST, Map.of(
+				TEMPERATURE, DoubleRange.between(-0.1, 0.2)
+			))),
+			entry(RUBiomes.DECIDUOUS_FOREST, BiomeTarget.ofGroupToggle("forests", Biomes.FOREST, Map.of(
+				TEMPERATURE, DoubleRange.above(0.2)
+			))),
+			entry(RUBiomes.AUTUMNAL_MAPLE_FOREST, ofWeighted(50, Biomes.BIRCH_FOREST)),
+			entry(RUBiomes.SILVER_BIRCH_FOREST, ofWeighted(50, Biomes.OLD_GROWTH_BIRCH_FOREST)),
+			entry(RUBiomes.BLACKWOOD_TAIGA, ofWeighted(50, Biomes.DARK_FOREST)),
+			entry(RUBiomes.PINE_TAIGA, ofGroupToggle("pine_and_redwood_taigas", Biomes.TAIGA)),
+			entry(RUBiomes.FROZEN_PINE_TAIGA, ofGroupToggle("pine_and_redwood_taigas", Biomes.SNOWY_TAIGA)),
+			entry(RUBiomes.REDWOODS, ofGroupToggle("pine_and_redwood_taigas", Biomes.OLD_GROWTH_SPRUCE_TAIGA)),
+			entry(RUBiomes.SPARSE_REDWOODS, ofGroupToggle("pine_and_redwood_taigas", Biomes.OLD_GROWTH_PINE_TAIGA)),
+			entry(RUBiomes.BOREAL_TAIGA, ofGroupToggle("boreal_taigas", Biomes.TAIGA)),
+			entry(RUBiomes.COLD_BOREAL_TAIGA, ofGroupToggle("boreal_taigas", Biomes.SNOWY_TAIGA)),
+			entry(RUBiomes.OLD_GROWTH_BOREAL_TAIGA, ofGroupToggle("boreal_taigas", Biomes.OLD_GROWTH_SPRUCE_TAIGA)),
+			entry(RUBiomes.OLD_GROWTH_GOLDEN_BOREAL_TAIGA, ofGroupToggle("boreal_taigas", Biomes.OLD_GROWTH_PINE_TAIGA)),
+			entry(RUBiomes.PINE_SLOPES, ofWeighted(50, Biomes.GROVE, Map.of(
+				TEMPERATURE, DoubleRange.above(-0.45)
+			))),
+			entry(RUBiomes.DRY_BUSHLAND, ofWeighted(100, Biomes.SAVANNA, Biomes.SAVANNA_PLATEAU)),
+			entry(RUBiomes.PRAIRIE, ofWeighted(100, Biomes.SAVANNA, Biomes.SAVANNA_PLATEAU)),
+			entry(RUBiomes.JOSHUA_DESERT, ofWeighted(50, Biomes.DESERT)),
+			entry(RUBiomes.SAGUARO_DESERT, ofWeighted(50, Biomes.DESERT)),
+			entry(RUBiomes.RAINFOREST, ofGroupToggle("jungles", Biomes.JUNGLE)),
+			entry(RUBiomes.SPARSE_RAINFOREST, ofGroupToggle("jungles", Biomes.SPARSE_JUNGLE)),
+			entry(RUBiomes.BAMBOO_FOREST, ofWeighted(100, Biomes.BAMBOO_JUNGLE)),
+			entry(RUBiomes.WINDSWEPT_MAPLE_FOREST, ofWeighted(100, Biomes.WINDSWEPT_FOREST)),
+			entry(RUBiomes.TOWERING_CLIFFS, ofWeighted(100, Biomes.WINDSWEPT_SAVANNA)),
+			entry(RUBiomes.EUCALYPTUS_FOREST, ofWeighted(50, Biomes.WOODED_BADLANDS)),
+			entry(RUBiomes.MYCOTOXIC_UNDERGROWTH, nether(60, Biomes.NETHER_WASTES)),
+			entry(RUBiomes.GLISTERING_MEADOW, nether(60, Biomes.SOUL_SAND_VALLEY)),
+			entry(RUBiomes.BLACKSTONE_BASIN, nether(60, Biomes.CRIMSON_FOREST)),
+			entry(RUBiomes.INFERNAL_HOLT, nether(60, Biomes.BASALT_DELTAS)),
+			entry(RUBiomes.ANCIENT_DELTA, ofToggle(List.of(Biomes.DRIPSTONE_CAVES), Map.of(
+				HUMIDITY, DoubleRange.below(-0.4)
+			))),
+			entry(RUBiomes.BIOSHROOM_CAVES, ofToggle(List.of(Biomes.LUSH_CAVES), Map.of(
+				EROSION, DoubleRange.above(0.3)
+			))),
+			entry(RUBiomes.PRISMACHASM, ofSpecial()),
+			entry(RUBiomes.REDSTONE_CAVES, ofSpecial()),
+			entry(RUBiomes.INFERNO, ofSpecial()),
+			entry(RUBiomes.CHALK_CLIFFS, ofSpecial()),
+			entry(RUBiomes.OUTBACK, ofToggle(List.of(Biomes.DESERT), Map.of(
+				EROSION, DoubleRange.below(0.15)
+			))),
+			entry(RUBiomes.SPIRES, ofToggle(List.of(Biomes.FROZEN_RIVER, Biomes.ICE_SPIKES, Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA, Biomes.TAIGA), Map.of(
+				EROSION, DoubleRange.above(0.6),
+				TEMPERATURE, DoubleRange.below(-0.45)
+			))),
+			entry(RUBiomes.ICY_HEIGHTS, ofToggle(List.of(Biomes.ICE_SPIKES, Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA), Map.of(
+				EROSION, DoubleRange.between(0.45, 0.55),
+				CONTINENTALNESS, DoubleRange.below(0.03),
+				WEIRDNESS, DoubleRange.above(0)
+			))),
+			entry(RUBiomes.BAOBAB_SAVANNA, ofToggle(List.of(Biomes.SAVANNA, Biomes.SAVANNA_PLATEAU), Map.of(
+				HUMIDITY, DoubleRange.below(-0.35)
+			)))
+		));
+		public static final Codec<BiomePlacements> CODEC = Codec.unboundedMap(ResourceKey.codec(Registries.BIOME), BiomeTarget.CODEC).xmap(BiomePlacements::new, g -> g.placements);
+		
+		public Map<ResourceKey<Biome>, BiomeTarget> placements;
+		
+		public BiomePlacements(Map<ResourceKey<Biome>, BiomeTarget> placements) {
+			this.placements = new HashMap<>(placements);
+		}
+	}
+	
+	public static class Misc {
+		public static final Misc DEFAULT_MISC = new Misc(BranchMode.PLACE_BRANCHES, true);
+		public static final Codec<Misc> CODEC = RecordCodecBuilder.create(i -> i.group(
+			CommentedMapCodec.commented(BranchMode.CODEC, "branch_mode", "\"place_branches\" = place RU's dedicated branch blocks, \"place_logs\" = place log blocks, \"dont_place\" = don't place any branches").orElse(BranchMode.PLACE_BRANCHES).forGetter(m -> m.branchMode),
+			CommentedMapCodec.commented(Codec.BOOL, "custom_dirts", "Controls the Peat and Silt dirt block family generation").orElse(true).forGetter(m -> m.customDirts)
+		).apply(i, Misc::new));
+		
+		public BranchMode branchMode;
+		public boolean customDirts;
+		
+		public Misc(BranchMode branchMode, boolean customDirts) {
+			this.branchMode = branchMode;
+			this.customDirts = customDirts;
+		}
+		
+		
+		public enum BranchMode implements StringRepresentable {
+			PLACE_BRANCHES("place_branches"),
+			PLACE_LOGS("place_logs"),
+			DONT_PLACE("dont_place");
+			
+			private static final Codec<BranchMode> CODEC = StringRepresentable.fromValues(BranchMode::values);
+			private final String name;
+			
+			BranchMode(String name) {
+				this.name = name;
+			}
+			
+			public boolean cannotPlace() {
+				return this == DONT_PLACE;
+			}
+			
+			public BlockState selectBlock(Block branch, Block log) {
+				return (this == PLACE_BRANCHES ? branch : log).defaultBlockState();
+			}
+			
+			@Override
+			@NotNull
+			public String getSerializedName() {
+				return this.name;
+			}
+		}
+	}
+}

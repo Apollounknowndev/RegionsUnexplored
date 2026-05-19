@@ -13,6 +13,7 @@ import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUItems;
 import net.regions_unexplored.registry.data.RUBiomes;
 import net.regions_unexplored.registry.RUEntityTypes;
+import org.apache.commons.lang3.text.WordUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class RuLanguageProvider extends LanguageProvider {
@@ -182,10 +183,8 @@ public class RuLanguageProvider extends LanguageProvider {
                 .replace("item.regions_unexplored.", "")
                 .replace("chest_boat", "")
                 .replace("_", "");
-
-        String name = capitalizeString(type)+" Boat with Chest";
-
-        return name;
+	    
+	    return capitalizeString(type) + " Boat with Chest";
     }
 
 

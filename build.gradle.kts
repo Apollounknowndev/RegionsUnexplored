@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "2.1.21"
-    id("earth.terrarium.cloche") version "0.18.10"
+    id("earth.terrarium.cloche") version "0.18.14"
 }
 
 repositories {
@@ -47,6 +47,7 @@ cloche {
 
         dependencies {
             compileOnly("org.spongepowered:mixin:0.8.5")
+            implementation("de.marhali:json5-java:3.0.0")
             implementation("com.electronwill.night-config:core:3.8.3")
             implementation("com.electronwill.night-config:toml:3.8.3")
             modCompileOnlyApi("maven.modrinth:lithostitched:1.6.5-neoforge-21.1")
@@ -128,6 +129,7 @@ cloche {
         }
 
         dependencies {
+            legacyClasspath("de.marhali:json5-java:3.0.0")
             modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-21.1")
         }
 

@@ -16,7 +16,10 @@ public class RuCommonConfig extends Config {
     
     @ConfigOption(category = "features")
     public static final ConfigValue<Boolean> USE_LOGS_FOR_BRANCHES = bool(false);
-
+    
+    @ConfigOption(category = "worldgen_surface_rules")
+    public static final ConfigValue<Boolean> TOGGLE_CUSTOM_DIRTS = bool(true);
+    
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Integer> TOGGLE_ALPHA_GROVE = weightedBiome(RUBiomes.ALPHA_GROVE, 20);
     @ConfigOption(category = "overworld_biome_toggles")
@@ -88,8 +91,6 @@ public class RuCommonConfig extends Config {
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_OUTBACK = toggledBiome(RUBiomes.OUTBACK);
     @ConfigOption(category = "overworld_biome_toggles")
-    public static final ConfigValue<Integer> PINE_SLOPES_WEIGHT = weightedBiome(RUBiomes.PINE_SLOPES, 50);
-    @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_PINE_TAIGA = toggledBiome(RUBiomes.PINE_TAIGA);
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Integer> TOGGLE_POPPY_FIELDS = weightedBiome(RUBiomes.POPPY_FIELDS, 70);
@@ -141,6 +142,8 @@ public class RuCommonConfig extends Config {
     public static final ConfigValue<Integer> SECONDARY_TAIGA_WEIGHT = integer(75);
     @ConfigOption(category = "overworld_biome_toggles")
     public static final ConfigValue<Integer> RAINFOREST_WEIGHT = integer(50);
+    @ConfigOption(category = "overworld_biome_toggles")
+    public static final ConfigValue<Integer> PINE_SLOPES_WEIGHT = weightedBiome(RUBiomes.PINE_SLOPES, 50);
 
     @ConfigOption(category = "overworld_cave_biome_toggles")
     public static final ConfigValue<Boolean> TOGGLE_ANCIENT_DELTA = toggledBiome(RUBiomes.ANCIENT_DELTA);
@@ -162,8 +165,6 @@ public class RuCommonConfig extends Config {
     @ConfigOption(category = "nether_biome_toggles")
     public static final ConfigValue<Integer> TOGGLE_MYCOTOXIC_UNDERGROWTH = weightedBiome(RUBiomes.MYCOTOXIC_UNDERGROWTH, 60);
 
-    @ConfigOption(category = "worldgen_surface_rules")
-    public static final ConfigValue<Boolean> TOGGLE_CUSTOM_DIRTS = bool(true);
     
     private static ConfigValue<Boolean> toggledBiome(ResourceKey<Biome> biome) {
         var config = bool(true);

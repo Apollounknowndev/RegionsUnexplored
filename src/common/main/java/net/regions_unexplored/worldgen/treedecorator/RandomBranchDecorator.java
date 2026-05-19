@@ -17,7 +17,8 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.set.WoodSet;
-import net.regions_unexplored.config.RuCommonConfig;
+import net.regions_unexplored.config.RUConfigHandler;
+import net.regions_unexplored.config.state.common.RUCommonConfig.Misc.BranchMode;
 import net.regions_unexplored.util.RUUtils;
 
 import java.util.Optional;
@@ -74,6 +75,9 @@ public class RandomBranchDecorator extends TreeDecorator {
 
     @Override
     public void place(Context context) {
+        BranchMode mode = RUConfigHandler.COMMON.getBranchMode();
+        if (mode.cannotPlace()) return;
+        
         RandomSource random = context.random();
         int topLogY = Integer.MIN_VALUE;
         for (BlockPos pos : context.logs()) {
@@ -86,14 +90,13 @@ public class RandomBranchDecorator extends TreeDecorator {
             Direction branchDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
             BlockPos placementPos = logsPos.relative(branchDirection);
             if (!(random.nextFloat() <= this.probability) || !hasRequiredEmptyBlocks(context, placementPos)) continue;
-
-            BlockState toPlace = (RuCommonConfig.USE_LOGS_FOR_BRANCHES.get() ? this.logBlock : this.branchBlock).defaultBlockState();
-            if (toPlace.hasProperty(BlockStateProperties.AXIS)) {
-                toPlace = toPlace.setValue(BlockStateProperties.AXIS, branchDirection.getAxis());
-            } else if (toPlace.hasProperty(BlockStateProperties.HORIZONTAL_FACING)) {
-                toPlace = toPlace.setValue(BlockStateProperties.HORIZONTAL_FACING, branchDirection);
-            }
+            
+            BlockState toPlace = mode.selectBlock(this.branchBlock, this.logBlock)
+                .trySetValue(BlockStateProperties.AXIS, branchDirection.getAxis())
+                .trySetValue(BlockStateProperties.HORIZONTAL_FACING, branchDirection);
+            
             context.setBlock(placementPos, toPlace);
+            
             if (this.leavesProvider.isPresent()) {
                 for (Direction direction : Direction.values()) {
                     if (direction == Direction.DOWN) continue;

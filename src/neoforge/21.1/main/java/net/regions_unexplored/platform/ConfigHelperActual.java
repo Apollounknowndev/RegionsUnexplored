@@ -8,6 +8,6 @@ import java.nio.file.Path;
 public class ConfigHelperActual {
     @Actual
     public static Path getConfigDirectory() {
-        return FMLPaths.CONFIGDIR.get();
+        return FMLPaths.CONFIGDIR.get().resolve("regions_unexplored");
     }
 }

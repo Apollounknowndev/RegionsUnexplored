@@ -18,7 +18,8 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.set.WoodSet;
-import net.regions_unexplored.config.RuCommonConfig;
+import net.regions_unexplored.config.RUConfigHandler;
+import net.regions_unexplored.config.state.common.RUCommonConfig.Misc.BranchMode;
 
 import java.util.Optional;
 
@@ -76,6 +77,9 @@ public class GroupBranchDecorator extends TreeDecorator {
 
     @Override
     public void place(Context context) {
+        BranchMode mode = RUConfigHandler.COMMON.getBranchMode();
+        if (mode.cannotPlace()) return;
+        
         RandomSource random = context.random();
         int topLogY = context.logs().stream().mapToInt(Vec3i::getY).max().orElse(Integer.MAX_VALUE);
         
@@ -85,7 +89,7 @@ public class GroupBranchDecorator extends TreeDecorator {
             for (Direction branchDirection : Direction.Plane.HORIZONTAL) {
                 BlockPos branchPos = logsPos.relative(branchDirection);
                 
-                BlockState toPlace = (RuCommonConfig.USE_LOGS_FOR_BRANCHES.get() ? this.logBlock : this.branchBlock).defaultBlockState()
+                BlockState toPlace = mode.selectBlock(this.branchBlock, this.logBlock)
                     .trySetValue(BlockStateProperties.AXIS, branchDirection.getAxis())
                     .trySetValue(BlockStateProperties.HORIZONTAL_FACING, branchDirection);
                 

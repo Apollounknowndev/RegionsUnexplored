@@ -2,41 +2,35 @@ package net.regions_unexplored.lithostitched;
 
 import dev.worldgen.lithostitched.api.event.AddBiomeInjectorsEvent;
 import dev.worldgen.lithostitched.api.event.AddRegionsEvent;
+import dev.worldgen.lithostitched.api.event.AddRegionsEvent.RegionConsumer;
 import dev.worldgen.lithostitched.api.event.AddWorldgenModifiersEvent;
-import dev.worldgen.lithostitched.api.registry.LithostitchedRegistries;
 import dev.worldgen.lithostitched.api.util.InjectionType;
 import dev.worldgen.lithostitched.api.worldgen.biomeinjector.BiomeInjector;
+import dev.worldgen.lithostitched.api.worldgen.biomeinjector.ParameterBuilder;
 import dev.worldgen.lithostitched.api.worldgen.densityfunction.LithostitchedDensityFunctions;
 import dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier;
-import dev.worldgen.lithostitched.api.worldgen.surface.LithostitchedSurfaceRules;
 import dev.worldgen.lithostitched.api.worldgen.util.NoiseRouterTarget;
-import net.minecraft.core.HolderGetter;
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.DensityFunctions;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.regions_unexplored.RegionsUnexplored;
-import net.regions_unexplored.config.BiomeTarget;
-import net.regions_unexplored.config.BiomeTargets;
-import net.regions_unexplored.config.RuCommonConfig;
+import net.regions_unexplored.config.RUConfigHandler;
+import net.regions_unexplored.config.state.common.BiomeTarget;
 import net.regions_unexplored.registry.data.RUBiomes;
 import net.regions_unexplored.registry.data.RUDensityFunctions;
 import net.regions_unexplored.registry.data.RURegions;
-import net.regions_unexplored.registry.data.RUSurfaceRules;
 import net.regions_unexplored.world.surface.RUSurfaceRuleBuilder;
-
-import java.util.Optional;
 
 public class RULithostitched {
     public static void init() {
         AddWorldgenModifiersEvent.EVENT.register((registries, consumer) -> {
             consumer.accept(
-                RegionsUnexplored.id("add_nether_surface"),
+                RegionsUnexplored.id("surface_rule/nether"),
                 WorldgenModifier.builder().addSurfaceRule(Level.NETHER, InjectionType.PREPEND, RUSurfaceRuleBuilder.nether())
             );
             
@@ -65,29 +59,62 @@ public class RULithostitched {
         });
 
         AddRegionsEvent.EVENT.register((registries, consumer) -> {
-            var registry = registries.registryOrThrow(Registries.BIOME);
-            for (BiomeTarget target : BiomeTargets.ALL) {
-                if (target.weight() == null) continue;
-                int weight = target.weight().get();
-                if (weight <= 0) continue;
-                consumer.accept(
-                    RURegions.key(target.biome()),
-                    target.level(),
-                    BiomeTarget.getTargets(registry, target.targets()),
-                    weight
-                );
+	        Registry<Biome> registry = registries.registryOrThrow(Registries.BIOME);
+            for (var entry : RUConfigHandler.COMMON.biomeGroups.groups.entrySet()) {
+                addRegion(consumer, registry, entry.getKey(), entry.getValue());
             }
-            BiomeTargets.applyAdditionalRegions(registry, consumer);
+            for (var entry : RUConfigHandler.COMMON.biomePlacements.placements.entrySet()) {
+                addRegion(consumer, registry, entry.getKey().identifier().getPath(), entry.getValue());
+            }
         });
         
         AddBiomeInjectorsEvent.EVENT.register((registries, consumer) -> {
             var registry = registries.registryOrThrow(Registries.BIOME);
-            for (BiomeTarget target : BiomeTargets.ALL) {
-                Optional<BiomeInjector> injector = target.createInjector(registry);
-                if (injector.isEmpty()) continue;
-                consumer.accept(target.biome().identifier(), injector.get());
+            for (var entry : RUConfigHandler.COMMON.biomePlacements.placements.entrySet()) {
+                ResourceKey<Biome> biome = entry.getKey();
+                BiomeTarget target = entry.getValue();
+                BiomeInjector injector;
+                if (!target.canGenerate()) continue;
+                
+                // Weighted
+                if (target.weight.orElse(0) > 0 && target.canReplace.isPresent()) {
+                    injector = BiomeInjector.builder(target.dimension).replacePartially(
+                        BiomeTarget.getTargets(registry, target.canReplace.get()),
+                        registry.getHolderOrThrow(biome),
+                        target.getParameters().region(RURegions.key(biome))
+                    );
+                }
+                // Toggled
+                else if (target.canReplace.isPresent() && target.parameters.isPresent()) {
+                    ParameterBuilder parameters = target.getParameters();
+	                target.group.ifPresent(g -> parameters.region(RURegions.key(g)));
+                    
+                    injector = BiomeInjector.builder(target.dimension).replacePartially(
+                        BiomeTarget.getTargets(registry, target.canReplace.get()),
+                        registry.getHolderOrThrow(biome),
+                        parameters
+                    );
+                }
+                // Special
+                else {
+                    injector = BiomeTarget.createSpecialInjector(registries, registry.getHolderOrThrow(biome), target);
+                }
+                
+                if (injector != null) {
+                    consumer.accept(biome.identifier(), injector);
+                }
             }
-            BiomeTargets.applyAdditionalInjectors(registries, consumer);
         });
+    }
+    
+    private static void addRegion(RegionConsumer consumer, Registry<Biome> registry, String name, BiomeTarget target) {
+        int weight = target.weight.orElse(0);
+        if (weight <= 0 || target.canReplace.isEmpty()) return;
+        consumer.accept(
+            RURegions.key(name),
+            target.dimension,
+            BiomeTarget.getTargets(registry, target.canReplace.get()),
+            weight
+        );
     }
 }
