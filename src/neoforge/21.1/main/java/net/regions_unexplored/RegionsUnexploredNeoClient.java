@@ -16,8 +16,7 @@ import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.regions_unexplored.client.ParticleRegistration;
 import net.regions_unexplored.client.TintRegistration;
-import net.regions_unexplored.config.RuClientConfig;
-import net.regions_unexplored.internal.config.gui.ConfigSelectionScreen;
+import net.regions_unexplored.client.gui.RUConfigScreen;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUCreativeModeTabs;
 
@@ -35,7 +34,7 @@ public class RegionsUnexploredNeoClient {
 
         container.registerExtensionPoint(
             IConfigScreenFactory.class,
-            (minecraft, parent) -> new ConfigSelectionScreen(parent)
+            (minecraft, parent) -> new RUConfigScreen(parent)
         );
     }
 
@@ -49,8 +48,6 @@ public class RegionsUnexploredNeoClient {
     }
 
     private static void addToVanillaCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
-        if (!RuClientConfig.CUSTOM_ITEMS_IN_VANILLA_CREATIVE_TABS.get()) return;
-
         var consumer = getVanillaCreativeModeTabAdder(event);
         if (event.getTabKey().equals(CreativeModeTabs.BUILDING_BLOCKS)) {
             RUCreativeModeTabs.addToBuildingBlocks(consumer);

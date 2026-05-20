@@ -56,12 +56,8 @@ public interface RUFeatureTypes {
     Supplier<Feature<PointedRedstoneClusterConfiguration>> POINTED_REDSTONE_CLUSTER = register("pointed_redstone_cluster", new PointedRedstoneClusterFeature(PointedRedstoneClusterConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> HANGING_PRISMARITE = register("hanging_prismarite", new HangingPrismariteFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<ColumnFeatureConfiguration>> BASALT_BLOB = register("basalt_blob", new BasaltBlobFeature(ColumnFeatureConfiguration.CODEC));
-    Supplier<Feature<NoneFeatureConfiguration>> ASH_VENT = register("scorch_vent", new AshVentFeature(NoneFeatureConfiguration.CODEC));
-    Supplier<Feature<NoneFeatureConfiguration>> LAVA_FALL = register("lava_fall", new LavaFallFeature(NoneFeatureConfiguration.CODEC));
-    Supplier<Feature<VegetationPatchConfiguration>> OVERWORLD_LAVA_DELTA = register("overworld_lava_delta", new LavaDeltaFeature(VegetationPatchConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> GIANT_LILY = register("giant_lily", new GiantLilyPadFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> ICICLE_UP = register("icicle_up", new FloorIcicleFeature(NoneFeatureConfiguration.CODEC));
-    Supplier<Feature<MultifaceGrowthConfiguration>> AIR_MULTIFACE_GROWTH = register("air_multiface_growth", new AirMultifaceGrowthFeature(MultifaceGrowthConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> SPIRE = register("spire", new IceSpireFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> MARSH = register("marsh", new MarshFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> WATER_EDGE = register("water_edge", new WaterEdgeFeature(NoneFeatureConfiguration.CODEC));

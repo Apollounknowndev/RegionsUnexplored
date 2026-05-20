@@ -19,7 +19,6 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 public class RUConfigHandler {
-	
 	public static RUClientConfig CLIENT = RUClientConfig.DEFAULT;
 	private static final Path CLIENT_PATH = ConfigHelper.getConfigDirectory().resolve("client.json");
 	
@@ -38,7 +37,6 @@ public class RUConfigHandler {
 	}
 	
 	public static void loadClient() {
-		
 		if (!Files.isRegularFile(CLIENT_PATH)) {
 			saveClient();
 		}

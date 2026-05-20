@@ -4,19 +4,12 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import net.regions_unexplored.config.RUConfigHandler;
-import net.regions_unexplored.config.json5.Json5Ops;
-import net.regions_unexplored.config.state.common.RUCommonConfig;
 import net.regions_unexplored.lithostitched.RULithostitched;
 import net.regions_unexplored.registry.*;
 import net.regions_unexplored.block.compat.BlockToolCompat;
 import net.regions_unexplored.block.compat.FlammableBlocks;
 import net.regions_unexplored.registry.RUParticleTypes;
-import net.regions_unexplored.config.RuClientConfig;
-import net.regions_unexplored.config.RuCommonConfig;
 import net.regions_unexplored.registry.RUEntityTypes;
-import net.regions_unexplored.internal.config.Config;
-import net.regions_unexplored.internal.config.ConfigManager;
-import net.regions_unexplored.internal.config.gui.ConfigScreenRegistry;
 import net.regions_unexplored.registry.data.RUBiomes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,10 +19,8 @@ public class RegionsUnexplored {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	// We do this because terrablender might load before us or after us, so this catches both cases.
-	public static void init(boolean isClient) {
+	public static void init() {
 		RUConfigHandler.loadConfigs();
-		registerConfig("regions_unexplored/client", "Client", RuClientConfig.class, isClient);
-		registerConfig("regions_unexplored/common", "Common", RuCommonConfig.class, isClient);
 
 		RUBiomes.init();
 		RUBlocks.init();
@@ -43,6 +34,7 @@ public class RegionsUnexplored {
 		RUParticleTypes.init();
 		RUProcessorConditionTypes.init();
 		RURootPlacerTypes.init();
+		RURuleSources.init();
 		RUSoundEvents.init();
 		RUTreeDecoratorTypes.init();
 		RUTrunkPlacerTypes.init();
@@ -68,13 +60,5 @@ public class RegionsUnexplored {
 
 	public static <T> ResourceKey<T> key(ResourceKey<? extends Registry<T>> key, String name) {
 		return ResourceKey.create(key, id(name));
-	}
-
-	private static void registerConfig(String filePath, String displayName, Class<? extends Config> configClass, boolean isClient) {
-		ConfigManager manager = ConfigManager.of(filePath, configClass);
-		if (isClient) {
-			ConfigScreenRegistry.register(filePath, manager, displayName);
-		}
-		LOGGER.debug("Registered config '{}' with GUI system as '{}'", filePath, displayName);
 	}
 }

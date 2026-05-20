@@ -85,7 +85,7 @@ public class RULithostitched {
                     );
                 }
                 // Toggled
-                else if (target.canReplace.isPresent() && target.parameters.isPresent()) {
+                else if (target.canReplace.isPresent()) {
                     ParameterBuilder parameters = target.getParameters();
 	                target.group.ifPresent(g -> parameters.region(RURegions.key(g)));
                     

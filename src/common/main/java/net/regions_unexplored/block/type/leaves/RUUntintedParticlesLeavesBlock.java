@@ -9,7 +9,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.regions_unexplored.block.BlockFactory;
-import net.regions_unexplored.config.RuClientConfig;
+import net.regions_unexplored.config.RUConfigHandler;
 
 import java.util.function.Supplier;
 
@@ -33,9 +33,8 @@ public class RUUntintedParticlesLeavesBlock extends LeavesBlock {
         BlockState belowState = level.getBlockState(below);
 
         if (!level.isClientSide) return;
-        if (random.nextFloat() >= PARTICLE_CHANCE) return;
+        if (random.nextFloat() >= (PARTICLE_CHANCE * RUConfigHandler.CLIENT.particleRates.leaves)) return;
         if (isFaceFull(belowState.getCollisionShape(level, below), Direction.UP)) return;
-        if (!RuClientConfig.LEAVES_PARTICLES.get()) return;
 
         spawnLeavesParticle(level, pos, random);
     }

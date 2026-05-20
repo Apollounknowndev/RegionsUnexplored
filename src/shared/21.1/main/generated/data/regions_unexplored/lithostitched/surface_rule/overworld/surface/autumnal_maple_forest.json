@@ -45,11 +45,24 @@
         ]
       },
       "then_run": {
-        "type": "minecraft:block",
-        "result_state": {
-          "Name": "regions_unexplored:silt_podzol",
-          "Properties": {
-            "snowy": "false"
+        "type": "regions_unexplored:config",
+        "key": "custom_dirts",
+        "on_disabled": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "minecraft:podzol",
+            "Properties": {
+              "snowy": "false"
+            }
+          }
+        },
+        "on_enabled": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "regions_unexplored:silt_podzol",
+            "Properties": {
+              "snowy": "false"
+            }
           }
         }
       }

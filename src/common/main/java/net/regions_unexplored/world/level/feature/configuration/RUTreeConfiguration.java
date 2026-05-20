@@ -8,6 +8,8 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.regions_unexplored.config.RUConfigHandler;
+import net.regions_unexplored.config.state.common.RUCommonConfig;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +26,10 @@ public record RUTreeConfiguration(BlockStateProvider trunkProvider, BlockStatePr
 
     public RUTreeConfiguration(BlockStateProvider log, BlockStateProvider leaves, BlockStateProvider branch, int minSize, int sizeVar) {
         this(log, leaves, branch, List.of(), minSize, sizeVar);
+    }
+    
+    public BlockStateProvider branchProvider() {
+        return RUConfigHandler.COMMON.getBranchMode() == RUCommonConfig.Misc.BranchMode.PLACE_BRANCHES ? this.branchProvider : this.trunkProvider;
     }
 }
 

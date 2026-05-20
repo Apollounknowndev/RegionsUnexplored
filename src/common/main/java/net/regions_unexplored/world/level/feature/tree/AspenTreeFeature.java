@@ -12,10 +12,12 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.regions_unexplored.block.type.wood.BranchBlock;
+import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.tag.*;
 import net.regions_unexplored.world.level.block.wood.AspenLogBlock;
@@ -84,7 +86,8 @@ public class AspenTreeFeature extends Feature<RUTreeConfiguration> {
                 placeLog(level, logPositions, pos.north(), randomSource, treeConfiguration, Direction.Axis.Z);
             }
             else {
-                level.setBlock(pos.north(), treeConfiguration.branchProvider().getState(randomSource, pos).setValue(BranchBlock.FACING, Direction.NORTH), 2);
+                if (RUConfigHandler.COMMON.getBranchMode().cannotPlace()) return true;
+                level.setBlock(pos.north(), treeConfiguration.branchProvider().getState(randomSource, pos).trySetValue(BlockStateProperties.AXIS, Direction.Axis.Z).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), 2);
                 if(randomSource.nextInt(2)==0){
                     placeLeavesBlock(level, leafPositions, pos.north().above(), randomSource, treeConfiguration);
                     placeLeavesBlock(level, leafPositions, pos.north().north(), randomSource, treeConfiguration);
@@ -99,7 +102,8 @@ public class AspenTreeFeature extends Feature<RUTreeConfiguration> {
                 placeLog(level, logPositions, pos.south(), randomSource, treeConfiguration, Direction.Axis.Z);
             }
             else {
-                level.setBlock(pos.south(), treeConfiguration.branchProvider().getState(randomSource, pos).setValue(BranchBlock.FACING, Direction.SOUTH), 2);
+                if (RUConfigHandler.COMMON.getBranchMode().cannotPlace()) return true;
+                level.setBlock(pos.south(), treeConfiguration.branchProvider().getState(randomSource, pos).trySetValue(BlockStateProperties.AXIS, Direction.Axis.Z).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), 2);
                 if(randomSource.nextInt(2)==0){
                     placeLeavesBlock(level, leafPositions, pos.south().above(), randomSource, treeConfiguration);
                     placeLeavesBlock(level, leafPositions, pos.south().south(), randomSource, treeConfiguration);
@@ -113,7 +117,8 @@ public class AspenTreeFeature extends Feature<RUTreeConfiguration> {
                 placeLog(level, logPositions, pos.east(), randomSource, treeConfiguration, Direction.Axis.X);
             }
             else {
-                level.setBlock(pos.east(), treeConfiguration.branchProvider().getState(randomSource, pos).setValue(BranchBlock.FACING, Direction.EAST), 2);
+                if (RUConfigHandler.COMMON.getBranchMode().cannotPlace()) return true;
+                level.setBlock(pos.east(), treeConfiguration.branchProvider().getState(randomSource, pos).trySetValue(BlockStateProperties.AXIS, Direction.Axis.X).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), 2);
                 if(randomSource.nextInt(2)==0){
                     placeLeavesBlock(level, leafPositions, pos.east().above(), randomSource, treeConfiguration);
                     placeLeavesBlock(level, leafPositions, pos.east().east(), randomSource, treeConfiguration);
@@ -127,7 +132,8 @@ public class AspenTreeFeature extends Feature<RUTreeConfiguration> {
                 placeLog(level, logPositions, pos.west(), randomSource, treeConfiguration, Direction.Axis.X);
             }
             else {
-                level.setBlock(pos.west(), treeConfiguration.branchProvider().getState(randomSource, pos).setValue(BranchBlock.FACING, Direction.WEST), 2);
+                if (RUConfigHandler.COMMON.getBranchMode().cannotPlace()) return true;
+                level.setBlock(pos.west(), treeConfiguration.branchProvider().getState(randomSource, pos).trySetValue(BlockStateProperties.AXIS, Direction.Axis.X).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), 2);
                 if(randomSource.nextInt(2)==0){
                     placeLeavesBlock(level, leafPositions, pos.west().above(), randomSource, treeConfiguration);
                     placeLeavesBlock(level, leafPositions, pos.west().west(), randomSource, treeConfiguration);

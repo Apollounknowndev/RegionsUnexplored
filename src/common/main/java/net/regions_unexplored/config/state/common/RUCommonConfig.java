@@ -11,6 +11,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.config.json5.CommentedMapCodec;
 import net.regions_unexplored.config.state.common.BiomeTarget.DoubleRange;
 import net.regions_unexplored.registry.data.RUBiomes;
@@ -27,7 +28,7 @@ import static net.regions_unexplored.config.state.common.BiomeTarget.*;
 public class RUCommonConfig {
 	public static final RUCommonConfig DEFAULT = new RUCommonConfig(BiomeGroups.DEFAULT_GROUPS, BiomePlacements.DEFAULT_PLACEMENTS, Misc.DEFAULT_MISC);
 	public static final Codec<RUCommonConfig> CODEC = RecordCodecBuilder.create(i -> i.group(
-		CommentedMapCodec.commented(BiomeGroups.CODEC.fieldOf("biome_groups"), "biome_groups", "Biome groups allows several biomes of similar styles to more consistently spawn adjacent to one another.").forGetter(c -> c.biomeGroups),
+		CommentedMapCodec.commented(BiomeGroups.CODEC, "biome_groups", "Biome groups allows several biomes of similar styles to more consistently spawn adjacent to one another.").forGetter(c -> c.biomeGroups),
 		BiomePlacements.CODEC.fieldOf("biome_placements").forGetter(c -> c.biomePlacements),
 		Misc.CODEC.fieldOf("misc").forGetter(c -> c.misc)
 	).apply(i, RUCommonConfig::new));
@@ -44,6 +45,17 @@ public class RUCommonConfig {
 	
 	public Misc.BranchMode getBranchMode() {
 		return this.misc.branchMode;
+	}
+	
+	public boolean test(String key) {
+		return switch (key) {
+			case "custom_dirts" -> this.misc.customDirts;
+			case "painted_planks" -> this.misc.paintedPlanks;
+			default -> {
+				RegionsUnexplored.LOGGER.error("Unknown key in config predicate:  {}", key);
+				yield false;
+			}
+		};
 	}
 	
 	public static class BiomeGroups {
@@ -195,18 +207,24 @@ public class RUCommonConfig {
 	}
 	
 	public static class Misc {
-		public static final Misc DEFAULT_MISC = new Misc(BranchMode.PLACE_BRANCHES, true);
+		public static final Misc DEFAULT_MISC = new Misc(BranchMode.PLACE_BRANCHES, true, false, false);
 		public static final Codec<Misc> CODEC = RecordCodecBuilder.create(i -> i.group(
 			CommentedMapCodec.commented(BranchMode.CODEC, "branch_mode", "\"place_branches\" = place RU's dedicated branch blocks, \"place_logs\" = place log blocks, \"dont_place\" = don't place any branches").orElse(BranchMode.PLACE_BRANCHES).forGetter(m -> m.branchMode),
-			CommentedMapCodec.commented(Codec.BOOL, "custom_dirts", "Controls the Peat and Silt dirt block family generation").orElse(true).forGetter(m -> m.customDirts)
+			CommentedMapCodec.commented(Codec.BOOL, "custom_dirts", "Controls the Peat and Silt dirt block family generation").orElse(true).forGetter(m -> m.customDirts),
+			CommentedMapCodec.commented(Codec.BOOL, "small_oak_trees", "Oak trees with thin fence-like log blocks will generate in some forests").orElse(false).forGetter(m -> m.smallOakTrees),
+			CommentedMapCodec.commented(Codec.BOOL, "painted_planks", "Re-enables the recipes of the legacy Painted Plank blocks").orElse(false).forGetter(m -> m.paintedPlanks)
 		).apply(i, Misc::new));
 		
 		public BranchMode branchMode;
 		public boolean customDirts;
+		public boolean smallOakTrees;
+		public boolean paintedPlanks;
 		
-		public Misc(BranchMode branchMode, boolean customDirts) {
+		public Misc(BranchMode branchMode, boolean customDirts, boolean smallOakTrees, boolean paintedPlanks) {
 			this.branchMode = branchMode;
 			this.customDirts = customDirts;
+			this.smallOakTrees = smallOakTrees;
+			this.paintedPlanks = paintedPlanks;
 		}
 		
 		

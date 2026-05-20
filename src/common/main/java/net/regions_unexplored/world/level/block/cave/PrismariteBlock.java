@@ -2,7 +2,6 @@ package net.regions_unexplored.world.level.block.cave;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -14,8 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.regions_unexplored.client.color.RuColors;
-import net.regions_unexplored.config.RuClientConfig;
+import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.registry.RUParticleTypes;
 
 public class PrismariteBlock extends BushBlock {
@@ -49,7 +47,7 @@ public class PrismariteBlock extends BushBlock {
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (random.nextFloat() >= 0.05 * RuClientConfig.PRISMARITE_SPARKLE_RATE.get()) return;
+        if (random.nextFloat() >= (0.05 * RUConfigHandler.CLIENT.particleRates.prismarite)) return;
 
         int plantX = pos.getX();
         int plantY = pos.getY();

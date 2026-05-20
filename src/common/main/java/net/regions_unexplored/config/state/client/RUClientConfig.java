@@ -7,8 +7,8 @@ import net.regions_unexplored.config.json5.CommentedMapCodec;
 public class RUClientConfig {
 	public static final RUClientConfig DEFAULT = new RUClientConfig();
 	public static final Codec<RUClientConfig> CODEC = RecordCodecBuilder.create(i -> i.group(
-		CommentedMapCodec.commented(ParticleRates.CODEC.fieldOf("particle_rates"), "particle_rates", "Controls the spawn rate of various particles. Default value for all is 1.").forGetter(c -> c.particleRates),
-		CommentedMapCodec.commented(EucalyptusColors.CODEC.fieldOf("eucalyptus_colors"), "eucalyptus_colors", "Controls the colors of the rainbow Eucalyptus logs").forGetter(c -> c.eucalyptusColors)
+		CommentedMapCodec.commented(ParticleRates.CODEC, "particle_rates", "Controls the spawn rate of various particles. Default value for all is 1.").forGetter(c -> c.particleRates),
+		CommentedMapCodec.commented(EucalyptusColors.CODEC, "eucalyptus_colors", "Controls the colors of the rainbow Eucalyptus logs").forGetter(c -> c.eucalyptusColors)
 	).apply(i, RUClientConfig::new));
 	
 	public ParticleRates particleRates = new ParticleRates();

@@ -6,6 +6,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -63,16 +64,16 @@ public class MediumJoshuaTreeFeature extends Feature<NoneFeatureConfiguration> {
 
     public boolean placeLeaves(LevelAccessor level, BlockPos pos) {
         if(level.getBlockState(pos.north()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.north())){
-            level.setBlock(pos.north(), RUBlocks.JOSHUA_NATURAL_SET.getBranch().defaultBlockState().setValue(BranchBlock.FACING, Direction.NORTH), 2);
+            level.setBlock(pos.north(), RUBlocks.JOSHUA_NATURAL_SET.getBranch().defaultBlockState().trySetValue(BlockStateProperties.AXIS, Direction.Axis.Z).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), 2);
         }
         if(level.getBlockState(pos.south()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.south())){
-            level.setBlock(pos.south(), RUBlocks.JOSHUA_NATURAL_SET.getBranch().defaultBlockState().setValue(BranchBlock.FACING, Direction.SOUTH), 2);
+            level.setBlock(pos.south(), RUBlocks.JOSHUA_NATURAL_SET.getBranch().defaultBlockState().trySetValue(BlockStateProperties.AXIS, Direction.Axis.Z).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), 2);
         }
         if(level.getBlockState(pos.east()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.east())){
-            level.setBlock(pos.east(), RUBlocks.JOSHUA_NATURAL_SET.getBranch().defaultBlockState().setValue(BranchBlock.FACING, Direction.EAST), 2);
+            level.setBlock(pos.east(), RUBlocks.JOSHUA_NATURAL_SET.getBranch().defaultBlockState().trySetValue(BlockStateProperties.AXIS, Direction.Axis.X).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), 2);
         }
         if(level.getBlockState(pos.west()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.west())){
-            level.setBlock(pos.west(), RUBlocks.JOSHUA_NATURAL_SET.getBranch().defaultBlockState().setValue(BranchBlock.FACING, Direction.WEST), 2);
+            level.setBlock(pos.west(), RUBlocks.JOSHUA_NATURAL_SET.getBranch().defaultBlockState().trySetValue(BlockStateProperties.AXIS, Direction.Axis.X).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), 2);
         }
         if(level.getBlockState(pos.above()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.above())){
             level.setBlock(pos.above(), RUBlocks.JOSHUA_NATURAL_SET.getLeaves().defaultBlockState().setValue(JoshuaLeavesBlock.NATURAL, true).setValue(JoshuaLeavesBlock.HALF, DoubleBlockHalf.LOWER), 2);

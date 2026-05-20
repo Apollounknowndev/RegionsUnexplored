@@ -45,9 +45,19 @@
         ]
       },
       "then_run": {
-        "type": "minecraft:block",
-        "result_state": {
-          "Name": "regions_unexplored:silt_coarse_dirt"
+        "type": "regions_unexplored:config",
+        "key": "custom_dirts",
+        "on_disabled": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "minecraft:coarse_dirt"
+          }
+        },
+        "on_enabled": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "regions_unexplored:silt_coarse_dirt"
+          }
         }
       }
     }

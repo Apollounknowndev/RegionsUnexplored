@@ -15,6 +15,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.registry.tag.RUBiomeTags;
+import net.regions_unexplored.worldgen.processorcondition.ConfigCondition;
 import net.regions_unexplored.worldgen.processorcondition.MatchingBiomesCondition;
 
 import java.util.List;
@@ -29,7 +30,10 @@ public class RUProcessorListBootstrap {
         context.register(VILLAGE_PATH_FIX, new StructureProcessorList(List.of(
             LithostitchedProcessors.condition(
                 new RandomSettings(RandomMode.PER_BLOCK),
-                new MatchingBiomesCondition(surfaceSilt),
+                LithostitchedProcessorConditions.allOf(
+                    new MatchingBiomesCondition(surfaceSilt),
+                    new ConfigCondition("custom_dirts")
+                ),
                 LithostitchedProcessors.blockSwap(Map.of(
                     id(Blocks.GRASS_BLOCK), id(RUBlocks.SILT_GRASS_BLOCK.get()),
                     id(Blocks.DIRT_PATH), id(RUBlocks.SILT_DIRT_PATH.get())
@@ -37,7 +41,10 @@ public class RUProcessorListBootstrap {
             ),
             LithostitchedProcessors.condition(
                 new RandomSettings(RandomMode.PER_BLOCK),
-                new MatchingBiomesCondition(surfacePeat),
+                LithostitchedProcessorConditions.allOf(
+                    new MatchingBiomesCondition(surfacePeat),
+                    new ConfigCondition("custom_dirts")
+                ),
                 LithostitchedProcessors.blockSwap(Map.of(
                     id(Blocks.GRASS_BLOCK), id(RUBlocks.PEAT_GRASS_BLOCK.get()),
                     id(Blocks.DIRT_PATH), id(RUBlocks.PEAT_DIRT_PATH.get())

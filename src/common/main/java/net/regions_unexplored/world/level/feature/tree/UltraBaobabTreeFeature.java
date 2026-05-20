@@ -12,9 +12,11 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.regions_unexplored.block.type.wood.BranchBlock;
+import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.tag.*;
 import net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration;
@@ -249,6 +251,7 @@ public class UltraBaobabTreeFeature extends Feature<RUTreeConfiguration> {
     }
 
     public void placeBranchDecorator(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+        if (RUConfigHandler.COMMON.getBranchMode().cannotPlace()) return;
         Random random = new Random();
         placeNorthBranch(level, pos, randomSource, treeConfiguration);
         placeSouthBranch(level, pos, randomSource, treeConfiguration);
@@ -258,7 +261,7 @@ public class UltraBaobabTreeFeature extends Feature<RUTreeConfiguration> {
     public void placeNorthBranch(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         level.setBlock(pos, treeConfiguration.trunkProvider().getState(randomSource, pos), 2);
         if(level.getBlockState(pos.north()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.north())){
-            level.setBlock(pos.north(), treeConfiguration.branchProvider().getState(randomSource, pos.north()).setValue(BranchBlock.FACING, Direction.NORTH), 2);
+            level.setBlock(pos.north(), treeConfiguration.branchProvider().getState(randomSource, pos.north()).trySetValue(BlockStateProperties.AXIS, Direction.Axis.Z).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), 2);
         }
         if(level.getBlockState(pos.north().above()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.north().above())){
             level.setBlock(pos.north().above(), treeConfiguration.foliageProvider().getState(randomSource, pos.north().above()).setValue(LeavesBlock.DISTANCE, 1), 2);
@@ -277,7 +280,7 @@ public class UltraBaobabTreeFeature extends Feature<RUTreeConfiguration> {
     public void placeSouthBranch(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         level.setBlock(pos, treeConfiguration.trunkProvider().getState(randomSource, pos), 2);
         if(level.getBlockState(pos.south()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.south())){
-            level.setBlock(pos.south(), treeConfiguration.branchProvider().getState(randomSource, pos.south()).setValue(BranchBlock.FACING, Direction.SOUTH), 2);
+            level.setBlock(pos.south(), treeConfiguration.branchProvider().getState(randomSource, pos.south()).trySetValue(BlockStateProperties.AXIS, Direction.Axis.Z).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), 2);
         }
         if(level.getBlockState(pos.south().above()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.south().above())){
             level.setBlock(pos.south().above(), treeConfiguration.foliageProvider().getState(randomSource, pos.south().above()).setValue(LeavesBlock.DISTANCE, 1), 2);
@@ -296,7 +299,7 @@ public class UltraBaobabTreeFeature extends Feature<RUTreeConfiguration> {
     public void placeEastBranch(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         level.setBlock(pos, treeConfiguration.trunkProvider().getState(randomSource, pos), 2);
         if(level.getBlockState(pos.east()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.east())){
-            level.setBlock(pos.east(), treeConfiguration.branchProvider().getState(randomSource, pos.east()).setValue(BranchBlock.FACING, Direction.EAST), 2);
+            level.setBlock(pos.east(), treeConfiguration.branchProvider().getState(randomSource, pos.east()).trySetValue(BlockStateProperties.AXIS, Direction.Axis.X).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), 2);
         }
         if(level.getBlockState(pos.east().above()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.east().above())){
             level.setBlock(pos.east().above(), treeConfiguration.foliageProvider().getState(randomSource, pos.east().above()).setValue(LeavesBlock.DISTANCE, 1), 2);
@@ -315,7 +318,7 @@ public class UltraBaobabTreeFeature extends Feature<RUTreeConfiguration> {
     public void placeWestBranch(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         level.setBlock(pos, treeConfiguration.trunkProvider().getState(randomSource, pos), 2);
         if(level.getBlockState(pos.west()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.west())){
-            level.setBlock(pos.west(), treeConfiguration.branchProvider().getState(randomSource, pos.west()).setValue(BranchBlock.FACING, Direction.WEST), 2);
+            level.setBlock(pos.west(), treeConfiguration.branchProvider().getState(randomSource, pos.west()).trySetValue(BlockStateProperties.AXIS, Direction.Axis.X).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), 2);
         }
         if(level.getBlockState(pos.west().above()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.west().above())){
             level.setBlock(pos.west().above(), treeConfiguration.foliageProvider().getState(randomSource, pos.west().above()).setValue(LeavesBlock.DISTANCE, 1), 2);
