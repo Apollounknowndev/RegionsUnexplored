@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // 1.21.1	2026-05-20T00:39:58.5755762	Registries
 =======
 // 1.21.1	2026-05-19T22:57:32.568689414	Registries
 >>>>>>> 75a06940 (Implement CarvedLimitedPoolFeature(s) for marsh biomes)
+=======
+// 1.21.1	2026-05-20T00:00:19.037048261	Registries
+>>>>>>> 25a7a5d7 (Fix (some) issues with previous commit)
 7160b581d0e9c894f25f3d6f26a93cd78c42e0cd data/regions_unexplored/damage_type/dorcel.json
 d22fdc0aeef6a23fc29b12a9ebabe7e22aea59c4 data/regions_unexplored/damage_type/dusk_trap.json
 800dcf2ecc9287397f08a76b8cecca7c2f2222fd data/regions_unexplored/lithostitched/surface_rule/overworld.json
@@ -40,7 +44,7 @@ b8e0b619e2379a770a69a1646f264bf8a5aaffb5 data/regions_unexplored/lithostitched/s
 011bed9b34a1426a6ab80f97ea12389b0fa2e672 data/regions_unexplored/lithostitched/surface_rule/overworld/surface_and_under_surface/common/sand.json
 88dc7879bd2d326df5e06b851dcf0ec7bf8578ee data/regions_unexplored/lithostitched/surface_rule/overworld/surface_and_under_surface/common/snow.json
 cc9f2b62d0af75766e858193a8afb06001617d58 data/regions_unexplored/lithostitched/surface_rule/overworld/surface_and_under_surface/joshua_desert.json
-082fb70e569c9809f9a4e0aee9cdcadc9fc7bba2 data/regions_unexplored/lithostitched/surface_rule/overworld/surface_and_under_surface/marsh.json
+23af437a173b542f6a21d4eb76c07ef859da9339 data/regions_unexplored/lithostitched/surface_rule/overworld/surface_and_under_surface/marsh.json
 23befa63739500936ff70453b1ad6782db80baa2 data/regions_unexplored/lithostitched/surface_rule/overworld/surface_and_under_surface/mountains.json
 76be63f815547c75bf9541fd0d2845e717b50dcc data/regions_unexplored/lithostitched/surface_rule/overworld/surface_and_under_surface/muddy_river.json
 0fea3816e44d9ae64e095784de3708f342ba11e1 data/regions_unexplored/lithostitched/surface_rule/overworld/surface_and_under_surface/outback.json
@@ -687,9 +691,9 @@ f45ae1832cfa258c08feb38f81de881e70938f46 data/regions_unexplored/worldgen/placed
 88856a4d3848112340823bb4b24f28492a804946 data/regions_unexplored/worldgen/placed_feature/special/large_pointed_redstone.json
 a366e2ff448a089e252b285375e75cd520c19648 data/regions_unexplored/worldgen/placed_feature/special/lava_fall.json
 f608e4c6f3db87cff855d2921c85d8ef2deefe70 data/regions_unexplored/worldgen/placed_feature/special/magnolias.json
-bd5067bb96e187ea49b0d19194d832686b598574 data/regions_unexplored/worldgen/placed_feature/special/marsh.json
+f1663a14aedc752b84811c96e1c084704f5f4ec8 data/regions_unexplored/worldgen/placed_feature/special/marsh.json
 27757fe3be82e0c92d7f9e60345bd60a6447c5df data/regions_unexplored/worldgen/placed_feature/special/moss_patch_with_water.json
-a8d8a998397b3d388e50d799771a7d1eee8f4e18 data/regions_unexplored/worldgen/placed_feature/special/moss_patch_with_water_dense.json
+43d9773015dfbcf01aae84d635e6f7d26d683657 data/regions_unexplored/worldgen/placed_feature/special/moss_patch_with_water_dense.json
 9cae2d5f840319c3b6780a0a1f07fa3ca1f950a4 data/regions_unexplored/worldgen/placed_feature/special/moss_patch_with_water_sparse.json
 f6dfea3fa34f8401402381bf043a95510fd4a43b data/regions_unexplored/worldgen/placed_feature/special/ore_redstone_large.json
 8c80c29ed38d086835fbff211533f4ce4a11a2ca data/regions_unexplored/worldgen/placed_feature/special/overworld_lava_delta.json
