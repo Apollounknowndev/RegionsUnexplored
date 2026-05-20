@@ -38,9 +38,9 @@ public class BiomeTarget {
 		ResourceKey.codec(Registries.DIMENSION).lenientOptionalFieldOf("dimension", Level.OVERWORLD).forGetter(t -> t.dimension),
 		Codec.STRING.lenientOptionalFieldOf("group").forGetter(t -> t.group),
 		Codec.BOOL.fieldOf("enabled").forGetter(t -> t.enabled.orElse(false)),
-		commented(ExtraCodecs.NON_NEGATIVE_INT.lenientOptionalFieldOf("weight"), "weight", "By default, all other biomes have a weight of 100.").forGetter(t -> t.weight),
+		lenientOptionalCommented(ExtraCodecs.NON_NEGATIVE_INT, "weight", "By default, all other biomes have a weight of 100.").forGetter(t -> t.weight),
 		ResourceKey.codec(Registries.BIOME).listOf().lenientOptionalFieldOf("can_replace").forGetter(t -> t.canReplace),
-		commented(Codec.unboundedMap(ClimateParameter.CODEC, DoubleRange.CODEC).lenientOptionalFieldOf("parameters"), "parameters", "Advanced feature! Edit this with caution.").forGetter(t -> t.parameters)
+		lenientOptionalCommented(Codec.unboundedMap(ClimateParameter.CODEC, DoubleRange.CODEC), "parameters", "Advanced feature! Edit this with caution.").forGetter(t -> t.parameters)
 	).apply(i, BiomeTarget::new));
 	
 	public static final Codec<BiomeTarget> CODEC = Codec.either(SPECIAL_CODEC, FULL_CODEC).xmap(

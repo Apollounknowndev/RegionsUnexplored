@@ -1,6 +1,33 @@
 {
     "pack": {
-        "description": "${mod_name}",
-        "pack_format": 8
+        "description": "",
+        "pack_format": 48
+    },
+    "fabric:overlays": {
+        "entries": [
+            {
+                "directory": "overlay.painted_planks",
+                "condition": {
+                    "condition": "regions_unexplored:config",
+                    "key": "painted_planks"
+                }
+            }
+        ]
+    },
+    "neoforge:overlays": {
+        "entries": [
+            {
+                "directory": "overlay.painted_planks",
+                "formats": [1, 999],
+                "min_format": 1,
+                "max_format": 999,
+                "neoforge:conditions": [
+                    {
+                        "type": "regions_unexplored:config",
+                        "key": "painted_planks"
+                    }
+                ]
+            }
+        ]
     }
 }

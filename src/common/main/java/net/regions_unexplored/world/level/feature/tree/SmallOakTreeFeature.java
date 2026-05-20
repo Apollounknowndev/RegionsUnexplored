@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.regions_unexplored.block.type.wood.BranchBlock;
+import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.registry.tag.*;
 import net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration;
 
@@ -25,6 +26,7 @@ public class SmallOakTreeFeature extends Feature<RUTreeConfiguration> {
     }
 
     public boolean place(FeaturePlaceContext<RUTreeConfiguration> context) {
+        if (!RUConfigHandler.COMMON.misc.smallOakTrees) return false;
         RUTreeConfiguration treeConfiguration = context.config();
         BlockPos pos = context.origin();
         RandomSource randomSource = context.random();

@@ -1,7 +1,6 @@
 package net.regions_unexplored;
 
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -10,12 +9,13 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.regions_unexplored.client.RegionsUnexploredClient;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.regions_unexplored.platform.Registrar;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.registry.RUItems;
@@ -33,15 +33,16 @@ public class RegionsUnexploredNeo {
     public static final List<Consumer<EntityAttributeCreationEvent>> ENTITY_ATTRIBUTES = new ArrayList<>();
 
     public RegionsUnexploredNeo(ModContainer container) {
+        RegionsUnexplored.init();
+        Registrar.register(NeoForgeRegistries.CONDITION_SERIALIZERS, "config", () -> RUConfigCondition.CODEC);
+        
         IEventBus bus = container.getEventBus();
-
-        bus.addListener(this::commonSetup);
+	    bus.addListener(this::commonSetup);
         bus.addListener(this::clientSetup);
         bus.addListener(this::setupBlockEntities);
         bus.addListener(this::registerSpawnPlacements);
         bus.addListener(this::registerDefaultAttributes);
 
-        RegionsUnexplored.init(FMLEnvironment.dist.isClient());
 
         REGISTER_CACHE.values().forEach(deferredRegister -> deferredRegister.register(bus));
 

@@ -6,9 +6,7 @@ import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.biome.Biome;
 import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.config.state.client.RUClientConfig;
 import net.regions_unexplored.config.state.common.BiomeTarget;
@@ -40,9 +38,11 @@ public interface ConfigListBuilder {
         this.addDouble("saturation", 0, 1, 0.05, value -> client.eucalyptusColors.saturation = value, client.eucalyptusColors.saturation, 0.5);
         this.addDouble("brightness", 0, 1, 0.05, value -> client.eucalyptusColors.brightness = value, client.eucalyptusColors.brightness, 0.8);
         
-        this.addCategory("misc_worldgen_settings", font);
+        this.addCategory("misc", font);
         this.addEnum("branch_mode", value -> common.misc.branchMode = value, common.misc.branchMode, BranchMode.values(), BranchMode.PLACE_BRANCHES);
         this.addBoolean("custom_dirts", value -> common.misc.customDirts = value, common.misc.customDirts, true);
+        this.addBoolean("small_oak_trees", value -> common.misc.smallOakTrees = value, common.misc.smallOakTrees, false);
+        this.addBoolean("painted_planks", value -> common.misc.paintedPlanks = value, common.misc.paintedPlanks, false);
         
         
         StringWidget biomePlacements = this.addCategory("biome_placements", font);

@@ -21,6 +21,7 @@ import net.regions_unexplored.registry.data.RUBiomes;
 import net.regions_unexplored.registry.data.RUNoises;
 import net.regions_unexplored.registry.data.RUSurfaceRules;
 import net.regions_unexplored.registry.tag.RUBiomeTags;
+import net.regions_unexplored.worldgen.rulesource.ConfigRuleSource;
 
 import java.util.function.Supplier;
 
@@ -319,7 +320,7 @@ public class RUSurfaceRuleBootstrap {
     }
     
     private static RuleSource configSelector(Supplier<Block> ruBlock, Block vanillaBlock) {
-        return block(ruBlock.get());
+        return new ConfigRuleSource("custom_dirts", block(ruBlock), block(vanillaBlock));
     }
     
     private static RuleSource waterSelector(Block aboveWater, Block underWater) {

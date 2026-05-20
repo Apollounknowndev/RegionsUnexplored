@@ -9,7 +9,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.regions_unexplored.config.RuClientConfig;
+import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.registry.RUParticleTypes;
 
 public class PrismariteDoubleBlock extends DoublePlantBlock {
@@ -31,7 +31,7 @@ public class PrismariteDoubleBlock extends DoublePlantBlock {
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (random.nextFloat() >= 0.1 * RuClientConfig.PRISMARITE_SPARKLE_RATE.get()) return;
+        if (random.nextFloat() >= 0.1 * (0.1 * RUConfigHandler.CLIENT.particleRates.prismarite)) return;
 
         int plantX = pos.getX();
         int plantY = pos.getY();

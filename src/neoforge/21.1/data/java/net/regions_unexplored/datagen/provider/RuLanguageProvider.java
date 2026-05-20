@@ -137,19 +137,25 @@ public class RuLanguageProvider extends LanguageProvider {
         }
         
         this.add("config.regions_unexplored.default", "Default: ");
+        
         addCategory("particle_rates");
         addOption("leaves", "Multiplier of falling leaf/needle particle spawn rates.");
         addOption("prismarite", "Multiplier of prismarite sparkle particle spawn rates.");
+        
         addCategory("eucalyptus_colors");
         addOption("transition_size", "The size of a rainbow color band in Eucalyptus logs. Bigger value = bigger distance between colors.");
         addOption("saturation", "The saturation of the rainbow colors.");
         addOption("brightness", "The brightness of the rainbow colors.");
-        addCategory("misc_worldgen_settings");
+        
+        addCategory("misc");
         addOption("branch_mode");
         addOption("branch_mode.place_branches", "Place RU's dedicated branch blocks on some trees.");
         addOption("branch_mode.place_logs", "Place log blocks in place of branch blocks on some trees.");
         addOption("branch_mode.dont_place", "Don't place any branches on trees that would usually have dedicated branch blocks.");
-        addOption("custom_dirts", "Peat and Silt dirt block families will generate in some RU biomes");
+        addOption("custom_dirts", "Peat and Silt dirt block families will generate in some RU biomes.");
+        addOption("small_oak_trees", "Oak trees with thin fence-like log blocks will generate in some forests.");
+        addOption("painted_planks", "Re-enables the recipes of the legacy Painted Plank blocks.");
+        
         addCategory("biome_placements");
     }
     

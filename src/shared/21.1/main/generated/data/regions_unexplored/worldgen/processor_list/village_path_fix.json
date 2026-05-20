@@ -3,8 +3,17 @@
     {
       "else": [],
       "if_true": {
-        "type": "regions_unexplored:matching_biomes",
-        "biomes": "#regions_unexplored:surface/silt"
+        "type": "lithostitched:all_of",
+        "conditions": [
+          {
+            "type": "regions_unexplored:matching_biomes",
+            "biomes": "#regions_unexplored:surface/silt"
+          },
+          {
+            "type": "regions_unexplored:config",
+            "key": "custom_dirts"
+          }
+        ]
       },
       "processor_type": "lithostitched:condition",
       "random_mode": {
@@ -24,8 +33,17 @@
     {
       "else": [],
       "if_true": {
-        "type": "regions_unexplored:matching_biomes",
-        "biomes": "#regions_unexplored:surface/peat"
+        "type": "lithostitched:all_of",
+        "conditions": [
+          {
+            "type": "regions_unexplored:matching_biomes",
+            "biomes": "#regions_unexplored:surface/peat"
+          },
+          {
+            "type": "regions_unexplored:config",
+            "key": "custom_dirts"
+          }
+        ]
       },
       "processor_type": "lithostitched:condition",
       "random_mode": {
