@@ -32,7 +32,7 @@ public class SliderWidget extends AbstractWidget {
     private boolean canChangeValue;
     protected boolean displayInt;
 
-    public SliderWidget(double min, double max, double step, String name, Consumer<Double> action, double value, boolean displayInt, double base) {
+    public SliderWidget(double min, double max, double step, String name, Consumer<Double> action, double value, boolean displayInt) {
         super(0, 0, 0, 0, CommonComponents.EMPTY);
         this.min = min;
         this.max = max;
@@ -42,17 +42,7 @@ public class SliderWidget extends AbstractWidget {
         this.value = value;
         this.delta = valueToDelta();
         this.displayInt = displayInt;
-
-        /*MutableComponent text = Component.empty();
-        text.append(Component.translatable(this.name + ".tooltip"));
-        text.append(CommonComponents.NEW_LINE);
-        text.append(Component.translatable("config.regions_unexplored.default"));
-        if (this.displayInt) {
-            text.append("§e" + (int) base);
-        } else {
-            text.append("§e" + base);
-        }
-        this.setTooltip(Tooltip.create(text));*/
+        
         this.updateMessage();
     }
 
@@ -111,10 +101,11 @@ public class SliderWidget extends AbstractWidget {
             return true;
         } else {
             if (this.canChangeValue) {
-                boolean flag = keyCode == 263;
-                if (flag || keyCode == 262) {
-                    float f = flag ? -1.0F : 1.0F;
-                    this.setValue(this.delta + (double)(f / (float)(this.width - 8)));
+                boolean left = keyCode == 263;
+                boolean right = keyCode == 262;
+                if (left || right) {
+                    float direction = left ? -1.0F : 1.0F;
+                    this.setValue(this.delta + direction / (this.width - 8));
                     return true;
                 }
             }
@@ -124,15 +115,15 @@ public class SliderWidget extends AbstractWidget {
     }
 
     private void setValueFromMouse(double mouseX) {
-        this.setValue((mouseX - (double)(this.getX() + 4)) / (double)(this.width - 8));
+        this.setValue((mouseX - (this.getX() + 4)) / (this.width - 8));
     }
 
     private void setValue(double value) {
-        double d0 = this.delta;
+        double oldDelta = this.delta;
         this.delta = Mth.clamp(value, 0.0, 1.0);
         this.value = deltaToValue();
 
-        if (d0 != this.delta) {
+        if (oldDelta != this.delta) {
             this.action.accept(this.value);
         }
 
@@ -162,9 +153,9 @@ public class SliderWidget extends AbstractWidget {
 
     private void updateMessage() {
         if (this.displayInt) {
-            this.setMessage(Component.literal(this.name + ": " + (int) this.value));
+            this.setMessage(Component.translatable(this.name).append(": " + (int) this.value));
         } else {
-            this.setMessage(Component.literal(this.name + ": " + this.value));
+            this.setMessage(Component.translatable(this.name).append(": " + this.value));
         }
     }
 }

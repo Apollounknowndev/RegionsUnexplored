@@ -133,7 +133,10 @@ cloche {
             modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-21.1")
         }
 
-        data()
+        data {
+            legacyClasspath("de.marhali:json5-java:3.0.0")
+        }
+
         datagenDirectory = file("src/shared/21.1/main/generated")
 
         runs {

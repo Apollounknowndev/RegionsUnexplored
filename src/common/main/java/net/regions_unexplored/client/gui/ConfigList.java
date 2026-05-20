@@ -7,7 +7,9 @@ import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
 import net.minecraft.client.gui.narration.NarratableEntry;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.StringRepresentable;
 import net.regions_unexplored.client.gui.widget.SliderWidget;
 
 import java.util.ArrayList;
@@ -15,40 +17,75 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ConfigList extends ContainerObjectSelectionList<ConfigList.BaseEntry> implements ConfigListBuilder {
+    private static final Component DEFAULT = Component.translatable("config.regions_unexplored.default");
+    
     private DoubleEntry lastDouble = null;
     
     public ConfigList(Minecraft minecraft, int width, RUConfigScreen parent) {
         super(minecraft, width, parent.layout.getContentHeight(), parent.layout.getHeaderHeight(), 25);
     }
-
-    public void addCategory(String name, Font font) {
-        this.addSingle(new StringWidget(Component.literal(name), font));
+    
+    public static Tooltip tooltip(String name, Object base) {
+        return Tooltip.create(Component.translatable(option(name) + ".tooltip").append(CommonComponents.NEW_LINE).append(DEFAULT).append("§e" + base));
+    }
+    
+    public static String text(String suffix) {
+        return "config.regions_unexplored." + suffix;
+    }
+    
+    public static String category(String suffix) {
+        return text("category." + suffix);
+    }
+    
+    public static String option(String suffix) {
+        return text("option." + suffix);
     }
 
+    public StringWidget addCategory(String name, Font font) {
+	    StringWidget widget = new StringWidget(Component.translatable(category(name)), font).alignCenter();
+        this.addEntry(widget);
+        return widget;
+    }
+    
+    @Override
+    public <T extends StringRepresentable> void addEnum(String name, Consumer<T> setter, T getter, T[] values, T defaultValue) {
+        CycleButton.Builder<T> button = CycleButton.<T>builder(t -> Component.literal(t.getSerializedName()))
+            .withTooltip(v -> tooltip(name + "." + v.getSerializedName(), defaultValue.getSerializedName()))
+            .withValues(values)
+            .withInitialValue(getter);
+        this.addEntry(button.create(Component.translatable(option(name)), (__, value) -> setter.accept(value)));
+    }
+    
     public void addBoolean(String name, Consumer<Boolean> setter, boolean value, boolean base) {
         CycleButton.Builder<Boolean> button = CycleButton.onOffBuilder(value);
-        this.addSingle(button.create(Component.literal(name), (__, bool) -> setter.accept(bool)));
+        button.withTooltip(v -> tooltip(name, base));
+        
+        this.addEntry(button.create(Component.translatable(option(name)), (__, bool) -> setter.accept(bool)));
     }
 
     public void addInteger(String name, double min, double max, double step, Consumer<Integer> action, double value, double base) {
-        this.addSingle(new SliderWidget(min, max, step, name, newValue -> action.accept(newValue.intValue()), value, true, base));
+        SliderWidget widget = new SliderWidget(min, max, step, "config.regions_unexplored.option." + name, newValue -> action.accept(newValue.intValue()), value, true);
+        widget.setTooltip(tooltip(name, base));
+        this.addEntry(widget);
     }
 
     public void addDouble(String name, double min, double max, double step, Consumer<Double> action, double value, double base) {
-        this.addSingle(new SliderWidget(min, max, step, name, action, value, false, base));
+        SliderWidget widget = new SliderWidget(min, max, step, "config.regions_unexplored.option." + name, action, value, false);
+        widget.setTooltip(tooltip(name, base));
+        this.addEntry(widget);
     }
     
     public void addSmallBoolean(String name, Consumer<Boolean> setter, boolean value, boolean base) {
         CycleButton.Builder<Boolean> button = CycleButton.onOffBuilder(value);
-        this.addDouble(button.create(Component.literal(name), (__, bool) -> setter.accept(bool)));
+        this.addDoubleEntry(button.create(Component.translatable(name), (__, bool) -> setter.accept(bool)));
     }
 
-    public void addSingle(AbstractWidget widget) {
+    public void addEntry(AbstractWidget widget) {
         lastDouble = null;
         this.addEntry(new SingleEntry(widget));
     }
     
-    public void addDouble(AbstractWidget widget) {
+    public void addDoubleEntry(AbstractWidget widget) {
         if (this.lastDouble == null) {
             this.lastDouble = new DoubleEntry(widget);
             this.addEntry(this.lastDouble);

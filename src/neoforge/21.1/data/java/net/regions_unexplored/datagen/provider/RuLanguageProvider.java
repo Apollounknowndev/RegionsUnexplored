@@ -135,8 +135,38 @@ public class RuLanguageProvider extends LanguageProvider {
             }
             this.add(biome, name);
         }
+        
+        this.add("config.regions_unexplored.default", "Default: ");
+        addCategory("particle_rates");
+        addOption("leaves", "Multiplier of falling leaf/needle particle spawn rates.");
+        addOption("prismarite", "Multiplier of prismarite sparkle particle spawn rates.");
+        addCategory("eucalyptus_colors");
+        addOption("transition_size", "The size of a rainbow color band in Eucalyptus logs. Bigger value = bigger distance between colors.");
+        addOption("saturation", "The saturation of the rainbow colors.");
+        addOption("brightness", "The brightness of the rainbow colors.");
+        addCategory("misc_worldgen_settings");
+        addOption("branch_mode");
+        addOption("branch_mode.place_branches", "Place RU's dedicated branch blocks on some trees.");
+        addOption("branch_mode.place_logs", "Place log blocks in place of branch blocks on some trees.");
+        addOption("branch_mode.dont_place", "Don't place any branches on trees that would usually have dedicated branch blocks.");
+        addOption("custom_dirts", "Peat and Silt dirt block families will generate in some RU biomes");
+        addCategory("biome_placements");
     }
-
+    
+    private void addCategory(String key) {
+        this.add("config.regions_unexplored.category." + key, capitalizeString(key).replace("_", " "));
+    }
+    
+    private void addOption(String key) {
+        this.add("config.regions_unexplored.option." + key, capitalizeString(key).replace("_", " "));
+    }
+    
+    private void addOption(String key, String comment) {
+        this.addOption(key);
+        this.add("config.regions_unexplored.option." + key + ".tooltip", comment);
+    }
+    
+    
     /**
      * A method to capitalize a string and remove anything what's between it.
      * <a href="https://stackoverflow.com/questions/1892765/how-to-capitalize-the-first-character-of-each-word-in-a-string">Source</a>
