@@ -29,6 +29,7 @@
   },
   "features": [
     [
+      "regions_unexplored:special/carved_limited_pool",
       "regions_unexplored:special/marsh",
       "regions_unexplored:special/moss_patch_with_water_dense"
     ],

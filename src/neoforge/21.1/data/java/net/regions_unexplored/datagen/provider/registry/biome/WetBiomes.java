@@ -188,6 +188,7 @@ public class WetBiomes {
         BiomeGenerationSettings.Builder builder = baseSwampGeneration(featureGetter, carverGetter, true, true);
 
         //add RU features
+        builder.addFeature(GenerationStep.Decoration.RAW_GENERATION, RuMiscOverworldPlacements.SPECIAL_CARVED_LIMITED_POOL);
         builder.addFeature(Decoration.RAW_GENERATION, RuMiscOverworldPlacements.SPECIAL_MARSH);
         builder.addFeature(Decoration.RAW_GENERATION, RuMiscOverworldPlacements.SPECIAL_MOSS_PATCH_WITH_WATER_DENSE);
 

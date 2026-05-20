@@ -106,6 +106,7 @@ public class RUSurfaceRuleBootstrap {
                 DIRT
             ), RUBiomes.ALPHA_GROVE),
             biome(context, prefix, ifTrue(belowY(64), sandOrSandstoneIfCeiling), RUBiomes.TROPICS),
+            biome(context, prefix, ifTrue(not(noiseAbove(Noises.SURFACE, -0.675D)), MUD), RUBiomes.MARSH), // setup for CarvedLimitedPoolFeature
             biome(context, prefix, configSelector(RUBlocks.PEAT_MUD, Blocks.MUD), RUBiomes.MUDDY_RIVER),
             biomes(context, prefix + "/common/gravel", gravelOrStoneIfCeiling, RUBiomes.COLD_RIVER, RUBiomes.GRAVEL_BEACH),
             biomes(context, prefix + "/common/sand", sandOrSandstoneIfCeiling, RUBiomes.ROCKY_REEF, RUBiomes.TROPICAL_RIVER, RUBiomes.GRASSY_BEACH)
@@ -188,6 +189,7 @@ public class RUSurfaceRuleBootstrap {
                 ifTrue(noiseAbove(RUNoises.SURFACE_MEDIUM, 0.3), block(RUBlocks.ASH)),
                 block(RUBlocks.ASHEN_DIRT)
             ), RUBiomes.ASHEN_WOODLAND),
+
             biome(context, prefix, ifTrue(
                 allOf(belowY(64), noiseAbove(Noises.SWAMP, 0)),
                 configSelector(RUBlocks.PEAT_MUD, Blocks.MUD)

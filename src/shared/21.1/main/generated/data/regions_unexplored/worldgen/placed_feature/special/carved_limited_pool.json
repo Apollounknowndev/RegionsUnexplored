@@ -1,0 +1,8 @@
+{
+  "feature": "regions_unexplored:special/carved_limited_pool",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
