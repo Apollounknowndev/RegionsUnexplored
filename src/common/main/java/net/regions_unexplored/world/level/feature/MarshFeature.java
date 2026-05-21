@@ -8,6 +8,7 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -54,6 +55,10 @@ public class MarshFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     public void placeBlocks(LevelAccessor level, BlockPos pos) {
+        // Kludge to not place when there's mud, thus avoiding the bottoms of CarvedLimitedPools
+        if (level.getBlockState(level.getHeightmapPos(Heightmap.Types.OCEAN_FLOOR, pos).below()).is(Blocks.MUD) && level.isWaterAt(pos))
+            return;
+        // previous rest of the method
         Random random = new Random();
         int chance = random.nextInt(5);
         int chance_grass = random.nextInt(4);
