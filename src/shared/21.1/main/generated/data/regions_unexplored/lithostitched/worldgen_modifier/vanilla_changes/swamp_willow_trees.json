@@ -1,7 +1,7 @@
 {
   "type": "lithostitched:add_features",
   "biomes": "minecraft:swamp",
-  "features": "regions_unexplored:vanilla_changes/tree_group/swamp",
+  "features": "regions_unexplored:vanilla_changes/swamp_trees",
   "predicate": {
     "type": "regions_unexplored:config",
     "key": "vanilla_changes/swamp_willow_trees"

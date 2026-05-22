@@ -1,0 +1,10 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": "minecraft:taiga",
+  "features": "regions_unexplored:vanilla_changes/taiga_purple_coneflowers",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/taiga_purple_coneflowers"
+  },
+  "step": "vegetal_decoration"
+}

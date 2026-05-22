@@ -3,7 +3,6 @@ package net.regions_unexplored.config.state.common;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.UnboundedMapCodec;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -26,24 +25,29 @@ import java.util.stream.Collectors;
 
 import static dev.worldgen.lithostitched.api.worldgen.biomeinjector.BiomeInjector.ClimateParameter.*;
 import static java.util.Map.entry;
+import static net.regions_unexplored.config.json5.CommentedMapCodec.commented;
 import static net.regions_unexplored.config.json5.CommentedMapCodec.optionalCommented;
 import static net.regions_unexplored.config.state.common.BiomeTarget.*;
 
 public class RUCommonConfig {
-	public static final RUCommonConfig DEFAULT = new RUCommonConfig(BiomeGroups.DEFAULT, BiomePlacements.DEFAULT, Misc.DEFAULT, VanillaChanges.DEFAULT);
+	public static final int CURRENT_VERSION = 1;
+	public static final RUCommonConfig DEFAULT = new RUCommonConfig(CURRENT_VERSION, BiomeGroups.DEFAULT, BiomePlacements.DEFAULT, Misc.DEFAULT, VanillaChanges.DEFAULT);
 	public static final Codec<RUCommonConfig> CODEC = RecordCodecBuilder.create(i -> i.group(
+		commented(Codec.INT, "config_version", "Don't touch this!").orElse(CURRENT_VERSION).forGetter(c -> c.configVersion),
 		optionalCommented(BiomeGroups.CODEC, BiomeGroups.DEFAULT, "biome_groups", "Biome groups allows several biomes of similar styles to more consistently spawn adjacent to one another.").forGetter(c -> c.biomeGroups),
 		BiomePlacements.CODEC.fieldOf("biome_placements").orElse(BiomePlacements.DEFAULT).forGetter(c -> c.biomePlacements),
 		Misc.CODEC.fieldOf("misc").orElse(Misc.DEFAULT).forGetter(c -> c.misc),
 		VanillaChanges.CODEC.fieldOf("vanilla_changes").orElse(VanillaChanges.DEFAULT).forGetter(c -> c.vanillaChanges)
 	).apply(i, RUCommonConfig::new));
 	
+	public int configVersion;
 	public BiomeGroups biomeGroups;
 	public BiomePlacements biomePlacements;
 	public Misc misc;
 	public VanillaChanges vanillaChanges;
 	
-	public RUCommonConfig(BiomeGroups biomeGroups, BiomePlacements biomePlacements, Misc misc, VanillaChanges vanillaChanges) {
+	public RUCommonConfig(int configVersion, BiomeGroups biomeGroups, BiomePlacements biomePlacements, Misc misc, VanillaChanges vanillaChanges) {
+		this.configVersion = configVersion;
 		this.biomeGroups = biomeGroups;
 		this.biomePlacements = biomePlacements;
 		this.misc = misc;
@@ -56,7 +60,7 @@ public class RUCommonConfig {
 	
 	public boolean test(String key) {
 		if (key.startsWith("vanilla_changes/")) {
-			return this.vanillaChanges.toggles.get(key.substring(16));
+			return this.vanillaChanges.toggles.getOrDefault(key.substring(16), false);
 		}
 		return switch (key) {
 			case "custom_dirts" -> this.misc.customDirts;
@@ -150,7 +154,7 @@ public class RUCommonConfig {
 			entry(RUBiomes.MAPLE_FOREST, BiomeTarget.ofGroupToggle("forests", Biomes.FOREST, Map.of(
 				TEMPERATURE, DoubleRange.between(-0.1, 0.2)
 			))),
-			entry(RUBiomes.DECIDUOUS_FOREST, BiomeTarget.ofGroupToggle("forests", Biomes.FOREST, Map.of(
+			entry(RUBiomes.OLD_GROWTH_FOREST, BiomeTarget.ofGroupToggle("forests", Biomes.FOREST, Map.of(
 				TEMPERATURE, DoubleRange.above(0.2)
 			))),
 			entry(RUBiomes.AUTUMNAL_MAPLE_FOREST, ofWeighted(50, Biomes.BIRCH_FOREST)),
@@ -207,12 +211,22 @@ public class RUCommonConfig {
 				HUMIDITY, DoubleRange.below(-0.35)
 			)))
 		));
-		public static final Codec<BiomePlacements> CODEC = Codec.unboundedMap(ResourceKey.codec(Registries.BIOME), BiomeTarget.CODEC).xmap(BiomePlacements::new, g -> g.placements);
+		public static final Codec<BiomePlacements> CODEC = Codec.unboundedMap(ResourceKey.codec(Registries.BIOME), BiomeTarget.CODEC).xmap(BiomePlacements::create, g -> g.placements);
 		
 		public Map<ResourceKey<Biome>, BiomeTarget> placements;
 		
 		public BiomePlacements(Map<ResourceKey<Biome>, BiomeTarget> placements) {
 			this.placements = new HashMap<>(placements);
+		}
+		
+		public static BiomePlacements create(Map<ResourceKey<Biome>, BiomeTarget> basePlacements) {
+			BiomePlacements placements = new BiomePlacements(basePlacements);
+			for (var entry : DEFAULT.placements.entrySet()) {
+				if (!placements.placements.containsKey(entry.getKey())) {
+					placements.placements.put(entry.getKey(), entry.getValue());
+				}
+			}
+			return placements;
 		}
 	}
 	
@@ -268,12 +282,23 @@ public class RUCommonConfig {
 	
 	public static class VanillaChanges {
 		public static final Map<String, String> TOGGLES = Map.ofEntries(
-			entry("birch_aspen_trees", "Birch trees will spawn with Aspen shaping,"),
-			entry("common_shrubs", "Shrubs spawn in a variety of biomes,"),
-			entry("common_tall_flowers", "Biomes that spawn tall flower patches will also spawn some RU tall flowers,"),
-			entry("mangrove_flowering_lilies", "Flowering Lily Pads spawn in Mangrove Swamps,"),
-			entry("swamp_cattails", "Cattails spawn in Swamp and Mangrove Swamps,"),
-			entry("swamp_willow_trees", "Swamps generate with rooted Willow and Oak trees,")
+			entry("badlands_saguaros", "Saguaro Cactis will generate in Badlands and Woodland Badlands."),
+			entry("badlands_steppe_grass", "Steppe Grass will generate in all Badlands."),
+			entry("basalt_deltas_ash_vents", "Ash Vents will generate in Basalt Deltas."),
+			entry("beach_palm_trees", "Palm trees will generate in Beaches in warm areas"),
+			entry("birch_aspen_trees", "Birch trees will generate with Aspen shaping."),
+			entry("birch_orange_coneflowers", "Orange Coneflower patches will generate in Birch Forests."),
+			entry("common_grass_sprouts", "Grass Sprouts will generate alongside Short Grass in most biomes."),
+			entry("common_shrubs", "Shrubs will generate in a variety of biomes."),
+			entry("desert_sandy_grass", "Sandy Grass will generate in Deserts."),
+			entry("forest_flowers", "RU's tall flowers will generate in forested biomes."),
+			entry("mangrove_flowering_lilies", "Flowering Lily Pads will generate in Mangrove Swamps."),
+			entry("plains_bushes", "Small bushes will generate in Plains"),
+			entry("savanna_bushes", "Small bushes will generate in Savannas"),
+			entry("swamp_cattails", "Cattails will generate in Swamp and Mangrove Swamps."),
+			entry("swamp_willow_trees", "Swamps will generate with rooted Willow and Oak trees."),
+			entry("taiga_pine_trees", "Pine trees will generate with Pine wood blocks in all Taigas."),
+			entry("taiga_purple_coneflowers", "Purple Coneflower patches will generate in Taigas.")
 		);
 		public static final VanillaChanges DEFAULT = new VanillaChanges(TOGGLES.keySet().stream().collect(Collectors.toMap(key -> key, value -> true)));
 		public static final Codec<VanillaChanges> CODEC = new CommentedUnboundedMapCodec<>(Codec.STRING, Codec.BOOL, TOGGLES).xmap(VanillaChanges::new, v -> v.toggles);
@@ -282,6 +307,11 @@ public class RUCommonConfig {
 		
 		public VanillaChanges(Map<String, Boolean> toggles) {
 			this.toggles = new HashMap<>(toggles);
+			for (String key : toggles.keySet()) {
+				if (!TOGGLES.containsKey(key)) {
+					this.toggles.remove(key);
+				}
+			}
 			for (var entry : TOGGLES.entrySet()) {
 				if (!this.toggles.containsKey(entry.getKey())) {
 					this.toggles.put(entry.getKey(), true);

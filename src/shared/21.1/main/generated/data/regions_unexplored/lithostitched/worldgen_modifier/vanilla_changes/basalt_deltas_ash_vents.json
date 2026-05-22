@@ -1,0 +1,10 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": "minecraft:basalt_deltas",
+  "features": "regions_unexplored:vanilla_changes/basalt_deltas_ash_vents",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/basalt_deltas_ash_vents"
+  },
+  "step": "vegetal_decoration"
+}

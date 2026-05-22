@@ -36,6 +36,23 @@ public interface RUItems {
         consumer.accept(id("mauve_shrub"), id("lavender_wisteria_shrub"));
         consumer.accept(id("mauve_leaves"), id("lavender_wisteria_leaves"));
         consumer.accept(id("mauve_sapling"), id("lavender_wisteria_sapling"));
+        consumer.accept(id("mauve_log"), id("wisteria_log"));
+        consumer.accept(id("mauve_wood"), id("wisteria_wood"));
+        consumer.accept(id("stripped_mauve_log"), id("stripped_wisteria_log"));
+        consumer.accept(id("stripped_mauve_wood"), id("stripped_wisteria_wood"));
+        consumer.accept(id("mauve_planks"), id("wisteria_planks"));
+        consumer.accept(id("mauve_stairs"), id("wisteria_stairs"));
+        consumer.accept(id("mauve_slab"), id("wisteria_slab"));
+        consumer.accept(id("mauve_fence"), id("wisteria_fence"));
+        consumer.accept(id("mauve_fence_gate"), id("wisteria_fence_gate"));
+        consumer.accept(id("mauve_door"), id("wisteria_door"));
+        consumer.accept(id("mauve_trapdoor"), id("wisteria_trapdoor"));
+        consumer.accept(id("mauve_pressure_plate"), id("wisteria_pressure_plate"));
+        consumer.accept(id("mauve_button"), id("wisteria_button"));
+        consumer.accept(id("mauve_sign"), id("wisteria_sign"));
+        consumer.accept(id("mauve_hanging_sign"), id("wisteria_hanging_sign"));
+        consumer.accept(id("mauve_boat"), id("wisteria_boat"));
+        consumer.accept(id("mauve_chest_boat"), id("wisteria_chest_boat"));
     }
 
     static void init() {

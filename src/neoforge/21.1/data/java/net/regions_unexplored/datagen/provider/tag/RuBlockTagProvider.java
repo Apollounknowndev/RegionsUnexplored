@@ -1,12 +1,8 @@
 package net.regions_unexplored.datagen.provider.tag;
 
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
@@ -530,7 +526,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.KAPOK_WOOD_SET.getLog())
             .add(RUBlocks.LARCH_WOOD_SET.getLog())
             .add(RUBlocks.MAPLE_WOOD_SET.getLog())
-            .add(RUBlocks.MAUVE_WOOD_SET.getLog())
+            .add(RUBlocks.WISTERIA_WOOD_SET.getLog())
             .add(RUBlocks.PALM_WOOD_SET.getLog())
             .add(RUBlocks.PINE_WOOD_SET.getLog())
             .add(RUBlocks.REDWOOD_WOOD_SET.getLog())
@@ -918,10 +914,10 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.MAPLE_WOOD_SET.getStrippedWood())
         ;
         this.tag(RUBlockTags.MAUVE_LOGS)
-            .add(RUBlocks.MAUVE_WOOD_SET.getLog())
-            .add(RUBlocks.MAUVE_WOOD_SET.getStrippedLog())
-            .add(RUBlocks.MAUVE_WOOD_SET.getWood())
-            .add(RUBlocks.MAUVE_WOOD_SET.getStrippedWood())
+            .add(RUBlocks.WISTERIA_WOOD_SET.getLog())
+            .add(RUBlocks.WISTERIA_WOOD_SET.getStrippedLog())
+            .add(RUBlocks.WISTERIA_WOOD_SET.getWood())
+            .add(RUBlocks.WISTERIA_WOOD_SET.getStrippedWood())
         ;
         this.tag(RUBlockTags.PALM_LOGS)
             .add(RUBlocks.PALM_WOOD_SET.getLog())
@@ -1181,7 +1177,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
                 .add(RUBlocks.LARCH_WOOD_SET.getStrippedLog())
                 .add(RUBlocks.MAGNOLIA_WOOD_SET.getStrippedLog())
                 .add(RUBlocks.MAPLE_WOOD_SET.getStrippedLog())
-                .add(RUBlocks.MAUVE_WOOD_SET.getStrippedLog())
+                .add(RUBlocks.WISTERIA_WOOD_SET.getStrippedLog())
                 .add(RUBlocks.PALM_WOOD_SET.getStrippedLog())
                 .add(RUBlocks.PINE_WOOD_SET.getStrippedLog())
                 .add(RUBlocks.PINK_BIOSHROOM_WOOD_SET.getStrippedLog())
@@ -1205,7 +1201,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
                 .add(RUBlocks.LARCH_WOOD_SET.getStrippedWood())
                 .add(RUBlocks.MAGNOLIA_WOOD_SET.getStrippedWood())
                 .add(RUBlocks.MAPLE_WOOD_SET.getStrippedWood())
-                .add(RUBlocks.MAUVE_WOOD_SET.getStrippedWood())
+                .add(RUBlocks.WISTERIA_WOOD_SET.getStrippedWood())
                 .add(RUBlocks.PALM_WOOD_SET.getStrippedWood())
                 .add(RUBlocks.PINE_WOOD_SET.getStrippedWood())
                 .add(RUBlocks.PINK_BIOSHROOM_WOOD_SET.getStrippedWood())

@@ -1,6 +1,8 @@
 package net.regions_unexplored.datagen.provider.registry.placed_feature;
 
+import dev.worldgen.lithostitched.api.worldgen.placementcondition.LithostitchedPlacementConditions;
 import dev.worldgen.lithostitched.api.worldgen.placementmodifier.LithostitchedPlacementModifiers;
+import dev.worldgen.lithostitched.api.worldgen.util.NoiseRouterTarget;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
@@ -10,13 +12,15 @@ import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.valueproviders.ClampedInt;
-import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.util.InclusiveRange;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap.Types;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
+import net.regions_unexplored.datagen.provider.registry.configured_feature.RuAquaticFeatures;
 import net.regions_unexplored.datagen.provider.registry.util.RUFeatureUtils;
 import net.regions_unexplored.datagen.provider.registry.configured_feature.RuVegetationFeatures;
 import net.regions_unexplored.datagen.provider.registry.RUPlacedFeatureBootstrap;
@@ -67,7 +71,7 @@ public class RuVegetationPlacements {
     public static final ResourceKey<PlacedFeature> PATCH_SANDY_GRASS_DENSE = patch("sandy_grass_dense");
     public static final ResourceKey<PlacedFeature> PATCH_DESERT_SHRUB_ON_GRASS = patch("desert_shrub_on_grass");
     public static final ResourceKey<PlacedFeature> PATCH_DESERT_SHRUB_ON_SAND = patch("desert_shrub_on_sand");
-    public static final ResourceKey<PlacedFeature> PATCH_STEPPE_SHRUB_ON_SAND = patch("steppe_shrub_on_sand");
+    public static final ResourceKey<PlacedFeature> PATCH_STEPPE_SHRUB_ON_SAND = patch("steppe_grass_on_sand");
     
     public static final ResourceKey<PlacedFeature> PATCH_GRASSES_STEPPE = patch("grasses_steppe");
     public static final ResourceKey<PlacedFeature> PATCH_REDSTONE_BUD = patch("redstone_bud");
@@ -280,7 +284,6 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.PATCH_CACTUS_DENSE, patchCactus, placement(0.33f, Types.MOTION_BLOCKING));
         register(context, RuVegetationPlacements.SINGLE_BARREL_CACTUS, placement().heightmap(Types.WORLD_SURFACE_WG).filter(BlockPredicate.ONLY_IN_AIR_PREDICATE));
         register(context, RuVegetationPlacements.PATCH_FLOWERING_LILY_PAD, placement(4, Types.WORLD_SURFACE_WG));
-        register(context, VANILLA_MANGROVE_FLOWERING_LILIES, placement(2, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.SPECIAL_GIANT_LILY, placement(3, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_DROPLEAF, placementCave(100, Direction.UP).notInStructure());
         register(context, RuVegetationPlacements.PATCH_DUCKWEED,
@@ -289,5 +292,19 @@ public class RuVegetationPlacements {
             PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
             BiomeFilter.biome()
         );
+        
+        register(context, VANILLA_BADLANDS_SAGUAROS, getter.getOrThrow(RUConfiguredFeatures.TREE_SAGUARO_CACTUS), placement(0.02f, Types.OCEAN_FLOOR).filter(RUBlocks.SAGUARO_CACTUS_NATURAL_SET.getSapling()));
+        register(context, VANILLA_BADLANDS_STEPPE_GRASS, placement(0.5f, Types.MOTION_BLOCKING));
+        register(context, VANILLA_BASALT_DELTAS_ASH_VENTS, placementNether(6).add(RUFeatureUtils.airAndBlocksBelow(Blocks.BASALT)).add(RandomOffsetPlacement.vertical(ConstantInt.of(-1))));
+        register(context, VANILLA_BEACH_PALM_TREES, getter.getOrThrow(RUConfiguredFeatures.TREE_PALM), placementTree(0.1f, RUBlocks.PALM_NATURAL_SET).add(LithostitchedPlacementModifiers.condition(LithostitchedPlacementConditions.sampleNoiseRouter(NoiseRouterTarget.TEMPERATURE, new InclusiveRange<>(0.2, 0.55)))));
+        register(context, VANILLA_BIRCH_ORANGE_CONEFLOWERS, placement(0.05f, Types.OCEAN_FLOOR_WG).notSubmerged());
+        register(context, VANILLA_DESERT_SANDY_GRASS, getter.getOrThrow(RuVegetationFeatures.PATCH_SANDY_GRASS), placement(0.33f, Types.MOTION_BLOCKING));
+        register(context, VANILLA_FOREST_FLOWERS, placement(0.05f, Types.MOTION_BLOCKING));
+        register(context, VANILLA_MANGROVE_FLOWERING_LILIES, placement(2, Types.WORLD_SURFACE_WG));
+        register(context, VANILLA_PLAINS_BUSHES, getter.getOrThrow(RUConfiguredFeatures.TREE_OAK_SHRUB_SMALL), placement(0.2f, Types.OCEAN_FLOOR));
+        register(context, VANILLA_SAVANNA_BUSHES, placement(1, Types.OCEAN_FLOOR));
+        register(context, VANILLA_SWAMP_CATTAILS, getter.getOrThrow(RuAquaticFeatures.PATCH_CATTAIL), placement().count(0.5f).atHeight(VerticalAnchor.absolute(62)));
+        register(context, VANILLA_SWAMP_TREES, placement(2, Types.OCEAN_FLOOR).maxWaterDepth(2).filter(Blocks.OAK_SAPLING));
+        register(context, VANILLA_TAIGA_PURPLE_CONEFLOWERS, placement(0.05f, Types.OCEAN_FLOOR_WG).notSubmerged());
     }
 }

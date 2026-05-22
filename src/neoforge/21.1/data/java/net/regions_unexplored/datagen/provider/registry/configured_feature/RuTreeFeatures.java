@@ -3,18 +3,10 @@ package net.regions_unexplored.datagen.provider.registry.configured_feature;
 import com.google.common.collect.ImmutableList;
 import dev.worldgen.lithostitched.api.util.WeightedList;
 import dev.worldgen.lithostitched.api.worldgen.feature.LithostitchedFeatures;
-import dev.worldgen.lithostitched.api.worldgen.placementcondition.LithostitchedPlacementConditions;
-import dev.worldgen.lithostitched.api.worldgen.placementmodifier.LithostitchedPlacementModifiers;
-import dev.worldgen.lithostitched.api.worldgen.stateprovider.LithostitchedStateProviders;
-import dev.worldgen.lithostitched.worldgen.feature.config.CompositeConfig;
-import dev.worldgen.lithostitched.worldgen.feature.config.WeightedSelectorConfig;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.*;
@@ -40,10 +32,8 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.*;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.set.WoodSet;
-import net.regions_unexplored.datagen.provider.registry.util.RUFeatureUtils;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUFeatureTypes;
-import net.regions_unexplored.registry.data.RUBiomes;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
 import net.regions_unexplored.worldgen.foliageplacer.*;
 import net.regions_unexplored.worldgen.rootplacer.MagnoliaRootPlacer;
@@ -315,9 +305,9 @@ public class RuTreeFeatures {
            .add(direct(bigOrangeMaple))
        .build()));
 
-       register(context, TREE_MAUVE_OAK_BEE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(RUBlocks.MAUVE_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(5, 2, 0), simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(List.of(new BeehiveDecorator(1f))).ignoreVines().build());
-       register(context, TREE_MAUVE_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(RUBlocks.MAUVE_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(5, 2, 0), simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(List.of(new BeehiveDecorator(0.25f))).ignoreVines().build());
-       register(context, TREE_BIG_MAUVE_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(RUBlocks.MAUVE_WOOD_SET.getLog().defaultBlockState()), new FancyTrunkPlacer(8, 11, 0), simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().build());
+       register(context, TREE_MAUVE_OAK_BEE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(RUBlocks.WISTERIA_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(5, 2, 0), simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(List.of(new BeehiveDecorator(1f))).ignoreVines().build());
+       register(context, TREE_MAUVE_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(RUBlocks.WISTERIA_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(5, 2, 0), simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(List.of(new BeehiveDecorator(0.25f))).ignoreVines().build());
+       register(context, TREE_BIG_MAUVE_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(RUBlocks.WISTERIA_WOOD_SET.getLog().defaultBlockState()), new FancyTrunkPlacer(8, 11, 0), simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().build());
 
        register(context, TREE_OAK_WITH_FLOWERS, RUFeatureTypes.ASPEN_TREE.get(), new RUTreeConfiguration(simple(Blocks.OAK_LOG.defaultBlockState()), new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.OAK_LEAVES.defaultBlockState(), 3).add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves().defaultBlockState(), 1)), simple(RUBlocks.OAK_NATURAL_SET.getBranch().defaultBlockState()), 5, 5));
        
@@ -354,7 +344,7 @@ public class RuTreeFeatures {
            .add(direct(bigAppleOak), 2)
            .add(direct(bigOak), 1)
        );
-       registerSelector(context, TREE_GROUP_DECIDUOUS_FOREST, builder -> builder
+       registerSelector(context, TREE_GROUP_OLD_GROWTH_FOREST, builder -> builder
            .add(direct(bigOak), 4)
            .add(direct(smallOak), 4)
            .add(direct(tallOak), 2)
@@ -378,14 +368,20 @@ public class RuTreeFeatures {
        
         registerSelector(context, TREE_GROUP_OLD_GROWTH_BOREAL_TAIGA, builder -> builder
             .add(direct(larchLarge), 7)
-            .add(direct(goldenLarchLarge), 1)
+            .add(direct(larch), 3)
+            .add(direct(larchPine), 2)
+            .add(direct(goldenLarchLarge), 2)
+            .add(direct(goldenLarch), 1)
             .add(direct(birchAspen), 1)
             .add(direct(oakBush), 1)
         );
         
        registerSelector(context, TREE_GROUP_OLD_GROWTH_GOLDEN_BOREAL_TAIGA, builder -> builder
            .add(direct(goldenLarchLarge), 7)
-           .add(direct(larchLarge), 1)
+           .add(direct(goldenLarch), 3)
+           .add(direct(goldenLarchPine), 2)
+           .add(direct(larchLarge), 2)
+           .add(direct(larch), 1)
            .add(direct(birchAspen), 1)
            .add(direct(oakBush), 1)
        );
@@ -415,6 +411,11 @@ public class RuTreeFeatures {
        var palm = register(context, TREE_PALM, RUFeatureTypes.PALM_TREE.get(), new RUTreeConfiguration(simple(RUBlocks.PALM_WOOD_SET.getLog().defaultBlockState()), simple(RUBlocks.PALM_NATURAL_SET.getLeaves().defaultBlockState()), simple(RUBlocks.PALM_NATURAL_SET.getBranch().defaultBlockState()), 8, 5));
        var palmTall = register(context, TREE_TALL_PALM, RUFeatureTypes.PALM_TREE.get(), new RUTreeConfiguration(simple(RUBlocks.PALM_WOOD_SET.getLog().defaultBlockState()), simple(RUBlocks.PALM_NATURAL_SET.getLeaves().defaultBlockState()), simple(RUBlocks.PALM_NATURAL_SET.getBranch().defaultBlockState()), 12, 5));
        var palmShrub = register(context, TREE_PALM_SHRUB, RUFeatureTypes.PALM_TREE.get(), new RUTreeConfiguration(simple(RUBlocks.PALM_WOOD_SET.getLog().defaultBlockState()), simple(RUBlocks.PALM_NATURAL_SET.getLeaves().defaultBlockState()), simple(RUBlocks.PALM_NATURAL_SET.getBranch().defaultBlockState()), 2, 1));
+       
+       registerSelector(context, TREE_GROUP_GRASSY_BEACH, builder -> builder
+           .add(direct(palm), 2)
+           .add(direct(palmTall), 1)
+       );
        
        registerSelector(context, TREE_GROUP_RAINFOREST, builder -> builder
            .add(direct(palmTall), 4)
@@ -724,7 +725,7 @@ public class RuTreeFeatures {
            .add(direct(oakBush), 1)
        );
        
-       BlockStateProvider wisteriaLog = simple(Blocks.CHERRY_LOG);
+       BlockStateProvider wisteriaLog = simple(RUBlocks.WISTERIA_WOOD_SET.getLog());
        var wisteriaSky = register(context, TREE_WISTERIA_SKY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
            wisteriaLog,
            new MagnoliaTrunkPlacer(UniformInt.of(2, 5), UniformInt.of(4, 5), UniformInt.of(2, 3)),
@@ -808,30 +809,6 @@ public class RuTreeFeatures {
            .add(direct(wisteriaLargeLavender), 4)
            .add(direct(wisteriaLargeSalmon), 4)
        );
-       
-       registerPlaced(context, TREE_GROUP_SWAMP, LithostitchedFeatures.COMPOSITE, new CompositeConfig(
-           HolderSet.direct(
-               direct(Holder.direct(new ConfiguredFeature<>(LithostitchedFeatures.WEIGHTED_SELECTOR, new WeightedSelectorConfig(
-                   WeightedList.<Holder<PlacedFeature>>builder().add(direct(willowSwamp), 2).add(direct(oakSwamp), 3).build()
-               )))),
-               Holder.direct(new PlacedFeature(
-                   Holder.direct(new ConfiguredFeature<>(
-                       Feature.SIMPLE_BLOCK,
-                       new SimpleBlockConfiguration(LithostitchedStateProviders.randomBlock(RUBlocks.GREEN_BIOSHROOM.get(), RUBlocks.BLUE_BIOSHROOM.get()))
-                   )),
-                   List.of(
-                       RarityFilter.onAverageOnceEvery(2),
-                       LithostitchedPlacementModifiers.offset(UniformInt.of(-1, 1), UniformInt.of(2, 3), UniformInt.of(-1, 1)),
-                       RUFeatureUtils.airAndBlocksBelow(Blocks.OAK_LOG, RUBlocks.WILLOW_WOOD_SET.getLog()),
-                       LithostitchedPlacementModifiers.condition(LithostitchedPlacementConditions.offset(
-                            LithostitchedPlacementConditions.inBiome(context.lookup(Registries.BIOME).getOrThrow(RUBiomes.BIOSHROOM_CAVES)),
-                            BlockPos.ZERO.below(64)
-                       ))
-                   )
-               ))
-           ),
-           CompositeConfig.Type.CANCEL_ON_FAILURE
-       ));
     }
 
     private static BlockStateProvider log(WoodSet wood) {

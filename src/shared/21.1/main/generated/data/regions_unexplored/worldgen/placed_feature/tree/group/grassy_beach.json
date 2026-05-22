@@ -1,0 +1,44 @@
+{
+  "feature": "regions_unexplored:tree/group/grassy_beach",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 5
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:surface_water_depth_filter",
+      "max_water_depth": 0
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "regions_unexplored:palm_sapling",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
+    },
+    {
+      "type": "lithostitched:condition",
+      "condition": {
+        "type": "lithostitched:sample_noise_router",
+        "max_inclusive": 0.55,
+        "min_inclusive": 0.2,
+        "target": "temperature"
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

@@ -28,9 +28,9 @@ public class RuCactusSaplingBlock extends SaplingBlock implements BonemealableBl
     }
 
     @Override
-    public boolean canSurvive(BlockState state, LevelReader level, BlockPos p_51030_) {
-        BlockPos blockpos = p_51030_.below();
-        return mayPlaceOn(level.getBlockState(blockpos), level, blockpos);
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockPos belowPos = pos.below();
+        return mayPlaceOn(level.getBlockState(belowPos), level, belowPos);
     }
 
     @Override

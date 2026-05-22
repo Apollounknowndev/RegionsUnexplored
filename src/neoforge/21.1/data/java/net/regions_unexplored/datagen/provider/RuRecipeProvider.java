@@ -241,7 +241,7 @@ public class RuRecipeProvider extends RecipeProvider implements IConditionBuilde
         branchFromLog(consumer, RUBlocks.LARCH_NATURAL_SET.getBranch(), RUBlocks.LARCH_WOOD_SET.getLog());
         branchFromLog(consumer, RUBlocks.MANGROVE_NATURAL_SET.getBranch(), Blocks.MANGROVE_LOG);
         branchFromLog(consumer, RUBlocks.MAPLE_NATURAL_SET.getBranch(), RUBlocks.MAPLE_WOOD_SET.getLog());
-        branchFromLog(consumer, RUBlocks.WISTERIA_NATURAL_SET.getBranch(), RUBlocks.MAUVE_WOOD_SET.getLog());
+        branchFromLog(consumer, RUBlocks.WISTERIA_NATURAL_SET.getBranch(), RUBlocks.WISTERIA_WOOD_SET.getLog());
         branchFromLog(consumer, RUBlocks.OAK_NATURAL_SET.getBranch(), Blocks.OAK_LOG);
         branchFromLog(consumer, RUBlocks.PALM_NATURAL_SET.getBranch(), RUBlocks.PALM_WOOD_SET.getLog());
         branchFromLog(consumer, RUBlocks.PINE_NATURAL_SET.getBranch(), RUBlocks.PINE_WOOD_SET.getLog());

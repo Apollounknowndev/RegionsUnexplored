@@ -22,13 +22,13 @@ public class RuBlockSetType {
     public static final BlockSetType LARCH = register("larch");
     public static final BlockSetType MAGNOLIA = register("magnolia");
     public static final BlockSetType MAPLE = register("maple");
-    public static final BlockSetType MAUVE = register("mauve");
     public static final BlockSetType PALM = register("palm");
     public static final BlockSetType PINE = register("pine");
     public static final BlockSetType PINK_BIOSHROOM = register("pink_bioshroom");
     public static final BlockSetType REDWOOD = register("redwood", RUSoundEvents.REDWOOD_SET);
     public static final BlockSetType SOCOTRA = register("socotra");
     public static final BlockSetType WILLOW = register("willow");
+    public static final BlockSetType WISTERIA = register("wisteria");
     public static final BlockSetType YELLOW_BIOSHROOM = register("yellow_bioshroom");
 
     private static BlockSetType register(String name) {

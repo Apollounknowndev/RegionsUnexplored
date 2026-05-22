@@ -1,6 +1,5 @@
 package net.regions_unexplored.datagen.provider.registry.configured_feature;
 
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -36,7 +35,7 @@ public class RUShrubFeatures {
         group(CHALK_CLIFFS, 0.25f, FLOWERING_NATURAL_SET),
         group(COLD_BOREAL_TAIGA, 0.25f, LARCH_NATURAL_SET),
         group(REMOVED_COLD_DECIDUOUS_FOREST, 0.25f, SPRUCE_NATURAL_SET),
-        group(DECIDUOUS_FOREST, 0.25f, OAK_NATURAL_SET),
+        group(OLD_GROWTH_FOREST, 0.25f, OAK_NATURAL_SET),
         group(DRY_BUSHLAND, 0.25f, entry(SOCOTRA_NATURAL_SET, 3), entry(ACACIA_NATURAL_SET, 1)),
         group(EUCALYPTUS_FOREST, 0.25f, EUCALYPTUS_NATURAL_SET),
         group(FEN, 0.25f, entry(PINE_NATURAL_SET, 3), entry(DEAD_PINE_NATURAL_SET, 2)),

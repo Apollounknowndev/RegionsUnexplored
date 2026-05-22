@@ -21,7 +21,7 @@ public interface ConfigListBuilder {
     StringWidget addCategory(String name, Font font);
     <T extends StringRepresentable> void addEnum(String name, Consumer<T> setter, T getter, T[] values, T defaultValue);
     void addBoolean(String name, Consumer<Boolean> setter, boolean getter, boolean defaultValue);
-    void addSmallBoolean(String name, Consumer<Boolean> setter, boolean getter, boolean defaultValue);
+    void addSmallBoolean(String name, Consumer<Boolean> setter, boolean getter, boolean defaultValue, boolean hasTooltip);
     void addInteger(String name, double min, double max, double step, Consumer<Integer> setter, double getter, double defaultValue);
     void addDouble(String name, double min, double max, double step, Consumer<Double> setter, double getter, double defaultValue);
     void addEntry(AbstractWidget widget);
@@ -53,13 +53,13 @@ public interface ConfigListBuilder {
         
         for (var group : common.biomePlacements.placements.entrySet().stream().sorted(Comparator.comparing(entry -> entry.getKey().identifier().getPath())).toList()) {
             BiomeTarget target = group.getValue();
-            this.addSmallBoolean(group.getKey().identifier().toLanguageKey("biome"), target::setCanGenerate, target.canGenerate(), true);
+            this.addSmallBoolean(group.getKey().identifier().toLanguageKey("biome"), target::setCanGenerate, target.canGenerate(), true, false);
         }
         
         StringWidget vanillaChanges = this.addCategory("vanilla_changes", font);
         for (var toggle : common.vanillaChanges.toggles.entrySet().stream().sorted(Map.Entry.comparingByKey()).toList()) {
             String key = toggle.getKey();
-            this.addBoolean(key, bool -> common.vanillaChanges.toggles.put(key, bool), common.vanillaChanges.toggles.get(key), true);
+            this.addSmallBoolean(key, bool -> common.vanillaChanges.toggles.put(key, bool), common.vanillaChanges.toggles.get(key), true, true);
         }
     }
 }

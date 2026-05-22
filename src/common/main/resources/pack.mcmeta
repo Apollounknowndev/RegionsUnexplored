@@ -13,17 +13,24 @@
                 }
             },
             {
-                "directory": "overlay.aspen_birch_trees",
+                "directory": "overlay.birch_aspen_trees",
                 "condition": {
                     "condition": "regions_unexplored:config",
-                    "key": "vanilla_changes/aspen_birch_trees"
+                    "key": "vanilla_changes/birch_aspen_trees"
                 }
             },
             {
-                "directory": "overlay.aspen_birch_trees",
+                "directory": "overlay.common_grass_sprouts",
                 "condition": {
                     "condition": "regions_unexplored:config",
-                    "key": "vanilla_changes/common_tall_flowers"
+                    "key": "vanilla_changes/common_grass_sprouts"
+                }
+            },
+            {
+                "directory": "overlay.taiga_pine_trees",
+                "condition": {
+                    "condition": "regions_unexplored:config",
+                    "key": "vanilla_changes/taiga_pine_trees"
                 }
             }
         ]
@@ -43,26 +50,38 @@
                 ]
             },
             {
-                "directory": "overlay.aspen_birch_trees",
+                "directory": "overlay.birch_aspen_trees",
                 "formats": [1, 999],
                 "min_format": 1,
                 "max_format": 999,
                 "neoforge:conditions": [
                     {
                         "type": "regions_unexplored:config",
-                        "key": "vanilla_changes/aspen_birch_trees"
+                        "key": "vanilla_changes/birch_aspen_trees"
                     }
                 ]
             },
             {
-                "directory": "overlay.aspen_birch_trees",
+                "directory": "overlay.common_grass_sprouts",
                 "formats": [1, 999],
                 "min_format": 1,
                 "max_format": 999,
                 "neoforge:conditions": [
                     {
                         "type": "regions_unexplored:config",
-                        "key": "vanilla_changes/common_tall_flowers"
+                        "key": "vanilla_changes/common_grass_sprouts"
+                    }
+                ]
+            },
+            {
+                "directory": "overlay.taiga_pine_trees",
+                "formats": [1, 999],
+                "min_format": 1,
+                "max_format": 999,
+                "neoforge:conditions": [
+                    {
+                        "type": "regions_unexplored:config",
+                        "key": "vanilla_changes/taiga_pine_trees"
                     }
                 ]
             }

@@ -84,7 +84,7 @@ public class RuBoat extends Boat {
         LARCH("larch", () -> RUBlocks.LARCH_WOOD_SET),
         MAGNOLIA("magnolia", () -> RUBlocks.MAGNOLIA_WOOD_SET),
         MAPLE("maple", () -> RUBlocks.MAPLE_WOOD_SET),
-        MAUVE("mauve", () -> RUBlocks.MAUVE_WOOD_SET),
+        MAUVE("mauve", () -> RUBlocks.WISTERIA_WOOD_SET),
         PALM("palm", () -> RUBlocks.PALM_WOOD_SET),
         PINE("pine", () -> RUBlocks.PINE_WOOD_SET),
         REDWOOD("redwood", () -> RUBlocks.REDWOOD_WOOD_SET),

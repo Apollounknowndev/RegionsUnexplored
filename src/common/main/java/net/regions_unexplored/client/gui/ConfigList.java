@@ -75,9 +75,12 @@ public class ConfigList extends ContainerObjectSelectionList<ConfigList.BaseEntr
         this.addEntry(widget);
     }
     
-    public void addSmallBoolean(String name, Consumer<Boolean> setter, boolean value, boolean base) {
+    public void addSmallBoolean(String name, Consumer<Boolean> setter, boolean value, boolean base, boolean hasTooltip) {
         CycleButton.Builder<Boolean> button = CycleButton.onOffBuilder(value);
-        this.addDoubleEntry(button.create(Component.translatable(name), (__, bool) -> setter.accept(bool)));
+        if (hasTooltip) {
+            button.withTooltip(bool -> tooltip(name, base));
+        }
+        this.addDoubleEntry(button.create(Component.translatable(hasTooltip ? option(name) : name), (__, bool) -> setter.accept(bool)));
     }
 
     public void addEntry(AbstractWidget widget) {

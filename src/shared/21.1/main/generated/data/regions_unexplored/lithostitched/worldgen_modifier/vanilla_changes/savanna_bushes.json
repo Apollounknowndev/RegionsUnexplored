@@ -1,0 +1,13 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": [
+    "minecraft:savanna",
+    "minecraft:savanna_plateau"
+  ],
+  "features": "regions_unexplored:vanilla_changes/savanna_bushes",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/savanna_bushes"
+  },
+  "step": "vegetal_decoration"
+}

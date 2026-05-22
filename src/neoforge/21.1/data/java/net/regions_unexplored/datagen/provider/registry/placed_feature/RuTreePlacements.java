@@ -1,6 +1,8 @@
 package net.regions_unexplored.datagen.provider.registry.placed_feature;
 
+import dev.worldgen.lithostitched.api.worldgen.placementcondition.LithostitchedPlacementConditions;
 import dev.worldgen.lithostitched.api.worldgen.placementmodifier.LithostitchedPlacementModifiers;
+import dev.worldgen.lithostitched.api.worldgen.util.NoiseRouterTarget;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
@@ -9,6 +11,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.InclusiveRange;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap.Types;
@@ -45,13 +48,13 @@ public class RuTreePlacements {
     public static final ResourceKey<PlacedFeature> TREE_GROUP_CHALK_CLIFFS = group("chalk_river");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_COLD_BOREAL_TAIGA = group("cold_boreal_taiga");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_COLD_DECIDUOUS_FOREST = group("cold_deciduous_forest");
-    public static final ResourceKey<PlacedFeature> TREE_GROUP_DECIDUOUS_FOREST = group("deciduous_forest");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_DRY_BUSHLAND = group("dry_bushland");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_EUCALYPTUS_FOREST = group("eucalyptus_forest");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_FEN = group("fen");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_FROZEN_PINE_TAIGA = group("frozen_pine_taiga");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_FUNGAL_FEN = group("fungal_fen");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_GRASSLAND = group("grassland");
+    public static final ResourceKey<PlacedFeature> TREE_GROUP_GRASSY_BEACH = group("grassy_beach");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_HIGHLAND_FIELDS = group("highland_fields");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_ICY_HEIGHTS = group("icy_heights");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_JOSHUA_DESERT = group("joshua_desert");
@@ -61,6 +64,7 @@ public class RuTreePlacements {
     public static final ResourceKey<PlacedFeature> TREE_GROUP_MOUNTAINS = group("mountains");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_OLD_GROWTH_BAYOU = group("old_growth_bayou");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_OLD_GROWTH_BOREAL_TAIGA = group("old_growth_boreal_taiga");
+    public static final ResourceKey<PlacedFeature> TREE_GROUP_OLD_GROWTH_FOREST = group("old_growth_forest");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_OLD_GROWTH_GOLDEN_BOREAL_TAIGA = group("old_growth_golden_boreal_taiga");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_ORCHARD = group("orchard");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_OUTBACK = group("outback");
@@ -89,8 +93,6 @@ public class RuTreePlacements {
     public static final ResourceKey<PlacedFeature> TREE_GROUP_WINDSWEPT_MAPLE_FOREST = group("windswept_maple_forest");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_WILLOW_FOREST = group("willow_forest");
     public static final ResourceKey<PlacedFeature> TREE_GROUP_WISTERIA_GROVE = group("wisteria_grove");
-    
-    public static final ResourceKey<PlacedFeature> TREE_GROUP_SWAMP = vanillaGroup("swamp");
 
     public static final ResourceKey<PlacedFeature> ICE_SPIRE = key("ice_spire");
     
@@ -195,9 +197,10 @@ public class RuTreePlacements {
         
         register(context, RuTreePlacements.TREE_GROUP_ORCHARD, placementTree(3, Blocks.OAK_SAPLING));
         register(context, RuTreePlacements.TREE_GROUP_COLD_DECIDUOUS_FOREST, placementSnowyTree(10, Blocks.OAK_SAPLING));
-        register(context, RuTreePlacements.TREE_GROUP_DECIDUOUS_FOREST, placementTree(10, Blocks.OAK_SAPLING));
+        register(context, RuTreePlacements.TREE_GROUP_OLD_GROWTH_FOREST, placementTree(10, Blocks.OAK_SAPLING));
         register(context, RuTreePlacements.TREE_GROUP_ARID_MOUNTAINS, placementTree(1, Blocks.GRASS_BLOCK));
         register(context, RuTreePlacements.TREE_GROUP_GRASSLAND, placementTree(1, Blocks.OAK_SAPLING));
+        register(context, RuTreePlacements.TREE_GROUP_GRASSY_BEACH, placementTree(0.2f, RUBlocks.PALM_NATURAL_SET).add(LithostitchedPlacementModifiers.condition(LithostitchedPlacementConditions.sampleNoiseRouter(NoiseRouterTarget.TEMPERATURE, new InclusiveRange<>(0.2, 0.55)))));
         
         register(context, RuTreePlacements.TREE_GROUP_CHALK_CLIFFS, placementTree(1, Blocks.OAK_SAPLING));
         register(context, RuTreePlacements.TREE_GROUP_TROPICAL_RIVER, placement(1, Types.OCEAN_FLOOR).notSubmerged().filter(RUBlocks.PALM_NATURAL_SET.getSapling()));
@@ -316,8 +319,6 @@ public class RuTreePlacements {
         register(context, TREE_GROUP_SHRUBLAND, placementTree(4, Blocks.OAK_SAPLING));
         register(context, TREE_GROUP_WILLOW_FOREST, placementTree(4, RUBlocks.WILLOW_NATURAL_SET));
         register(context, TREE_GROUP_WISTERIA_GROVE, surfaceSpread(3, Types.OCEAN_FLOOR, Blocks.CHERRY_SAPLING));
-        
-        register(context, TREE_GROUP_SWAMP, placement(2, Types.OCEAN_FLOOR).maxWaterDepth(2).filter(Blocks.OAK_SAPLING));
     }
 
     protected static PlacementModifier treeDensity(int slope, int offset) {

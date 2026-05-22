@@ -241,22 +241,6 @@
       },
       "trigger": "minecraft:location"
     },
-    "deciduous_forest": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:deciduous_forest"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
     "dry_bushland": {
       "conditions": {
         "player": [
@@ -561,22 +545,6 @@
       },
       "trigger": "minecraft:location"
     },
-    "mountains": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "location": {
-                "biomes": "regions_unexplored:mountains"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    },
     "muddy_river": {
       "conditions": {
         "player": [
@@ -634,6 +602,22 @@
             "predicate": {
               "location": {
                 "biomes": "regions_unexplored:old_growth_boreal_taiga"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "old_growth_forest": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "regions_unexplored:old_growth_forest"
               }
             }
           }
@@ -1103,9 +1087,6 @@
       "cold_river"
     ],
     [
-      "deciduous_forest"
-    ],
-    [
       "dry_bushland"
     ],
     [
@@ -1173,6 +1154,9 @@
     ],
     [
       "old_growth_boreal_taiga"
+    ],
+    [
+      "old_growth_forest"
     ],
     [
       "old_growth_golden_boreal_taiga"
@@ -1248,9 +1232,6 @@
     ],
     [
       "wisteria_grove"
-    ],
-    [
-      "mountains"
     ]
   ],
   "sends_telemetry_event": true

@@ -157,9 +157,9 @@ public class RUSurfaceRuleBootstrap {
                 )
             ), RUBiomes.MAPLE_FOREST),
             biome(context, prefix, sequence(
-                ifTrue(noiseAbove(0.2), COARSE_DIRT),
-                ifTrue(noiseAbove(-0.12), PODZOL)
-            ), RUBiomes.DECIDUOUS_FOREST),
+                ifTrue(noiseAbove(RUNoises.SHIELD, 0.4), COARSE_DIRT),
+                ifTrue(noiseAbove(RUNoises.SHIELD, 0.2), PODZOL)
+            ), RUBiomes.OLD_GROWTH_FOREST),
             biome(context, prefix, sequence(
                 ifTrue(noiseAbove(0.2), configSelector(RUBlocks.PEAT_COARSE_DIRT, Blocks.COARSE_DIRT)),
                 ifTrue(noiseAbove(-0.12), configSelector(RUBlocks.PEAT_PODZOL, Blocks.PODZOL))

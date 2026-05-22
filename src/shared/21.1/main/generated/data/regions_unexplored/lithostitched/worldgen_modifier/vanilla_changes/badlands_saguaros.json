@@ -1,0 +1,13 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": [
+    "minecraft:badlands",
+    "minecraft:wooded_badlands"
+  ],
+  "features": "regions_unexplored:vanilla_changes/badlands_saguaros",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/badlands_saguaros"
+  },
+  "step": "vegetal_decoration"
+}

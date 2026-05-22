@@ -1,0 +1,18 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/acacia_shrub",
+          "placement": []
+        },
+        "weight": 2
+      },
+      {
+        "feature": "regions_unexplored:tree/oak_shrub_small",
+        "placement": []
+      }
+    ]
+  }
+}

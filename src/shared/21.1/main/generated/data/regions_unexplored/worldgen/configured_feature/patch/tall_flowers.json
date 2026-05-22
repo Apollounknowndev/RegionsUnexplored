@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:simple_random_selector",
+  "type": "lithostitched:weighted_selector",
   "config": {
     "features": [
       {
@@ -220,7 +220,7 @@
       },
       {
         "feature": {
-          "type": "minecraft:no_bonemeal_flower",
+          "type": "minecraft:random_patch",
           "config": {
             "feature": {
               "feature": {

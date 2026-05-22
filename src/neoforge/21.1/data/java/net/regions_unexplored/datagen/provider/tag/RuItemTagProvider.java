@@ -310,10 +310,10 @@ public class RuItemTagProvider extends ItemTagsProvider {
                 .add(RUBlocks.MAPLE_WOOD_SET.getStrippedWood().asItem())
         ;
         this.tag(RUItemTags.MAUVE_LOGS)
-                .add(RUBlocks.MAUVE_WOOD_SET.getLog().asItem())
-                .add(RUBlocks.MAUVE_WOOD_SET.getStrippedLog().asItem())
-                .add(RUBlocks.MAUVE_WOOD_SET.getWood().asItem())
-                .add(RUBlocks.MAUVE_WOOD_SET.getStrippedWood().asItem())
+                .add(RUBlocks.WISTERIA_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.WISTERIA_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.WISTERIA_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.WISTERIA_WOOD_SET.getStrippedWood().asItem())
         ;
         this.tag(RUItemTags.PALM_LOGS)
                 .add(RUBlocks.PALM_WOOD_SET.getLog().asItem())

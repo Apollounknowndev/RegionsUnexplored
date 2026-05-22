@@ -4,10 +4,7 @@
     "regions_unexplored:flower_fields",
     "regions_unexplored:clover_plains",
     "regions_unexplored:prairie",
-    "regions_unexplored:willow_forest",
     "regions_unexplored:highland_fields",
-    "regions_unexplored:deciduous_forest",
-    "regions_unexplored:rocky_meadow",
-    "regions_unexplored:eucalyptus_forest"
+    "regions_unexplored:rocky_meadow"
   ]
 }

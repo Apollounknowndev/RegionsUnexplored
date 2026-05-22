@@ -4,7 +4,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -14,7 +13,6 @@ import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.type.leaves.HangingVinesBlock;
 import net.regions_unexplored.registry.RUBlocks;
-import net.regions_unexplored.world.level.block.plant.tall.ShrubBlock;
 
 import java.util.function.UnaryOperator;
 
@@ -34,7 +32,7 @@ public class RUBlockModelProvider extends BlockStateProvider {
 		registerTemplate("branch");
 		registerTemplate("hanging_vines");
 		
-		fullBranch(RUBlocks.WISTERIA_NATURAL_SET, RUBlocks.MAUVE_WOOD_SET.getLog());
+		fullBranch(RUBlocks.WISTERIA_NATURAL_SET, RUBlocks.WISTERIA_WOOD_SET.getLog());
 		
 		for (NaturalSet set : RUBlocks.NATURAL_SETS) {
 			if (set.getShrub() != null) fullShrub(set.getShrub());

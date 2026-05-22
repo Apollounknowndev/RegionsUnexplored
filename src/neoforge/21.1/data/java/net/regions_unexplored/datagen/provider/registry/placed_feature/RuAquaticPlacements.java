@@ -35,7 +35,6 @@ public class RuAquaticPlacements {
 
         register(context, RuAquaticPlacements.PATCH_CATTAIL_DENSE, patchCattail, placement().count(noiseCount(-3, 2, 3)).atHeight(VerticalAnchor.absolute(62)));
         register(context, RuAquaticPlacements.PATCH_CATTAIL, patchCattail, placement().count(3).atHeight(VerticalAnchor.absolute(62), VerticalAnchor.absolute(63)));
-        register(context, VANILLA_SWAMP_CATTAILS, patchCattail, placement().count(0.5f).atHeight(VerticalAnchor.absolute(62)));
 
         register(context, RuAquaticPlacements.SPECIAL_TALL_HYACINTH_STOCK, NoiseBasedCountPlacement.of(20, 80.0D, 0.3D), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
         register(context, RuAquaticPlacements.SPECIAL_HYACINTH_PLANTS,  InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, CountPlacement.of(80), BiomeFilter.biome());

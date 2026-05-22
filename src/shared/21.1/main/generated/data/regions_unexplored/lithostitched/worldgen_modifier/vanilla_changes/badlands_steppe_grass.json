@@ -1,0 +1,14 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": [
+    "minecraft:badlands",
+    "minecraft:eroded_badlands",
+    "minecraft:wooded_badlands"
+  ],
+  "features": "regions_unexplored:vanilla_changes/badlands_steppe_grass",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/badlands_steppe_grass"
+  },
+  "step": "vegetal_decoration"
+}

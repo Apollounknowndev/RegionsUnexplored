@@ -1,0 +1,13 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": [
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest"
+  ],
+  "features": "regions_unexplored:vanilla_changes/birch_orange_coneflowers",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/birch_orange_coneflowers"
+  },
+  "step": "vegetal_decoration"
+}

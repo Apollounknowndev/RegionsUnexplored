@@ -86,6 +86,7 @@ public class CoastalBiomes {
 
         //add features
         BiomeGenerationSettings.Builder builder = baseCoastGeneration(featureGetter, carverGetter);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuTreePlacements.TREE_GROUP_GRASSY_BEACH);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SANDY_GRASS_DENSE);
 
         //add mob spawns

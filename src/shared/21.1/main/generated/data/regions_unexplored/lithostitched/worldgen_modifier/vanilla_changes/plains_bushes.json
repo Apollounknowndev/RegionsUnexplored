@@ -1,0 +1,13 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": [
+    "minecraft:plains",
+    "minecraft:sunflower_plains"
+  ],
+  "features": "regions_unexplored:vanilla_changes/plains_bushes",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/plains_bushes"
+  },
+  "step": "vegetal_decoration"
+}

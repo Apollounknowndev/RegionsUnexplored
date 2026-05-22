@@ -1,0 +1,10 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": "minecraft:beach",
+  "features": "regions_unexplored:vanilla_changes/beach_palm_trees",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/beach_palm_trees"
+  },
+  "step": "vegetal_decoration"
+}

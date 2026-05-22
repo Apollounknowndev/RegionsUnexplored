@@ -27,7 +27,6 @@ import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.data.RUBiomes;
 import net.regions_unexplored.registry.RUItems;
-import net.regions_unexplored.registry.tag.RUBiomeTags;
 
 import java.util.List;
 import java.util.Optional;
@@ -243,7 +242,7 @@ public class RuAdvancementProvider extends AdvancementProvider {
                     .addCriterion("larch_log", InventoryChangeTrigger.TriggerInstance.hasItems(RUBlocks.LARCH_WOOD_SET.getLog().asItem()))
                     .addCriterion("magnolia_log", InventoryChangeTrigger.TriggerInstance.hasItems(RUBlocks.MAGNOLIA_WOOD_SET.getLog().asItem()))
                     .addCriterion("maple_log", InventoryChangeTrigger.TriggerInstance.hasItems(RUBlocks.MAPLE_WOOD_SET.getLog().asItem()))
-                    .addCriterion("mauve_log", InventoryChangeTrigger.TriggerInstance.hasItems(RUBlocks.MAUVE_WOOD_SET.getLog().asItem()))
+                    .addCriterion("mauve_log", InventoryChangeTrigger.TriggerInstance.hasItems(RUBlocks.WISTERIA_WOOD_SET.getLog().asItem()))
                     .addCriterion("palm_log", InventoryChangeTrigger.TriggerInstance.hasItems(RUBlocks.PALM_WOOD_SET.getLog().asItem()))
                     .addCriterion("pine_log", InventoryChangeTrigger.TriggerInstance.hasItems(RUBlocks.PINE_WOOD_SET.getLog().asItem()))
                     .addCriterion("redwood_log", InventoryChangeTrigger.TriggerInstance.hasItems(RUBlocks.REDWOOD_WOOD_SET.getLog().asItem()))

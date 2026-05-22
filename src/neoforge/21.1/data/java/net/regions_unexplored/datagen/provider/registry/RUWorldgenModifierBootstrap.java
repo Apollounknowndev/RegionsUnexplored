@@ -10,7 +10,6 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.ProcessorLists;
-import net.minecraft.data.worldgen.placement.AquaticPlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
@@ -21,8 +20,6 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.datagen.provider.registry.configured_feature.RUShrubFeatures;
-import net.regions_unexplored.datagen.provider.registry.configured_feature.RuTreeFeatures;
-import net.regions_unexplored.datagen.provider.registry.placed_feature.RuAquaticPlacements;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuTreePlacements;
 import net.regions_unexplored.lithostitched.ConfigPredicate;
 import net.regions_unexplored.registry.data.RUPlacedFeatures;
@@ -47,13 +44,21 @@ public class RUWorldgenModifierBootstrap {
             )
         );
         
-        addVanilla(context, "swamp_cattails", RUPlacedFeatures.VANILLA_SWAMP_CATTAILS, Biomes.SWAMP, Biomes.MANGROVE_SWAMP);
-        
+        addVanilla(context, "badlands_saguaros", RUPlacedFeatures.VANILLA_BADLANDS_SAGUAROS, Biomes.BADLANDS, Biomes.WOODED_BADLANDS);
+        addVanilla(context, "badlands_steppe_grass", RUPlacedFeatures.VANILLA_BADLANDS_STEPPE_GRASS, Biomes.BADLANDS, Biomes.ERODED_BADLANDS, Biomes.WOODED_BADLANDS);
+        addVanilla(context, "basalt_deltas_ash_vents", RUPlacedFeatures.VANILLA_BASALT_DELTAS_ASH_VENTS, Biomes.BASALT_DELTAS);
+        addVanilla(context, "beach_palm_trees", RUPlacedFeatures.VANILLA_BEACH_PALM_TREES, Biomes.BEACH);
+        addVanilla(context, "birch_orange_coneflowers", RUPlacedFeatures.VANILLA_BIRCH_ORANGE_CONEFLOWERS, Biomes.BIRCH_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST);
+        addVanilla(context, "desert_sandy_grass", RUPlacedFeatures.VANILLA_DESERT_SANDY_GRASS, Biomes.DESERT);
+        addVanilla(context, "forest_flowers", RUPlacedFeatures.VANILLA_FOREST_FLOWERS, Biomes.FOREST, Biomes.FLOWER_FOREST, Biomes.BIRCH_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.DARK_FOREST);
+        addVanilla(context, "plains_bushes", RUPlacedFeatures.VANILLA_PLAINS_BUSHES, Biomes.PLAINS, Biomes.SUNFLOWER_PLAINS);
+        addVanilla(context, "savanna_bushes", RUPlacedFeatures.VANILLA_SAVANNA_BUSHES, Biomes.SAVANNA, Biomes.SAVANNA_PLATEAU);
         addVanilla(context, "mangrove_flowering_lilies", RUPlacedFeatures.VANILLA_MANGROVE_FLOWERING_LILIES, Biomes.MANGROVE_SWAMP);
         removeVanilla(context, "remove_mangrove_lily_pads", "mangrove_flowering_lilies", VegetationPlacements.PATCH_WATERLILY, Biomes.MANGROVE_SWAMP);
-        
-        addVanilla(context, "swamp_willow_trees", RuTreePlacements.TREE_GROUP_SWAMP, Biomes.SWAMP);
+        addVanilla(context, "swamp_cattails", RUPlacedFeatures.VANILLA_SWAMP_CATTAILS, Biomes.SWAMP, Biomes.MANGROVE_SWAMP);
+        addVanilla(context, "swamp_willow_trees", RUPlacedFeatures.VANILLA_SWAMP_TREES, Biomes.SWAMP);
         removeVanilla(context, "remove_swamp_trees", "swamp_willow_trees", VegetationPlacements.TREES_SWAMP, Biomes.SWAMP);
+        addVanilla(context, "taiga_purple_coneflowers", RUPlacedFeatures.VANILLA_TAIGA_PURPLE_CONEFLOWERS, Biomes.TAIGA);
         
         for (var entry : RUShrubFeatures.MAP.entrySet()) {
             ResourceKey<Biome> biome = entry.getKey();

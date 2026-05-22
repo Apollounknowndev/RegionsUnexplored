@@ -396,13 +396,13 @@ public interface RUBlocks {
     WoodSet LARCH_WOOD_SET = WoodSet.simple("larch", RuWoodTypes.LARCH, SoundType.WOOD, MapColor.WOOD, MapColor.WOOD, false);
     WoodSet MAGNOLIA_WOOD_SET = WoodSet.simple("magnolia", RuWoodTypes.MAGNOLIA, SoundType.CHERRY_WOOD, MapColor.TERRACOTTA_PINK, MapColor.STONE, false);
     WoodSet MAPLE_WOOD_SET = WoodSet.simple("maple", RuWoodTypes.MAPLE, SoundType.WOOD, MapColor.WOOD, MapColor.WOOD, false);
-    WoodSet MAUVE_WOOD_SET = WoodSet.simple("mauve", RuWoodTypes.MAUVE, SoundType.CHERRY_WOOD, MapColor.TERRACOTTA_PURPLE, MapColor.PODZOL, false);
     WoodSet PALM_WOOD_SET = WoodSet.simple("palm", RuWoodTypes.PALM, SoundType.BAMBOO_WOOD, MapColor.WOOD, MapColor.WOOD, false);
     WoodSet PINE_WOOD_SET = WoodSet.simple("pine", RuWoodTypes.PINE, SoundType.BAMBOO_WOOD, MapColor.WOOD, MapColor.WOOD, false, PineLogBlock::new, true);
     WoodSet REDWOOD_WOOD_SET = WoodSet.simple("redwood", RuWoodTypes.REDWOOD, RUSoundEvents.REDWOOD_SET.baseType(), MapColor.TERRACOTTA_RED, MapColor.TERRACOTTA_RED, false);
     WoodSet SILVER_BIRCH_WOOD_SET = WoodSet.onlyLogs("silver_birch", SoundType.WOOD, MapColor.SAND, MapColor.QUARTZ, false, AspenLogBlock::new);
     WoodSet SOCOTRA_WOOD_SET = WoodSet.simple("socotra", RuWoodTypes.SOCOTRA, SoundType.CHERRY_WOOD, MapColor.TERRACOTTA_ORANGE, MapColor.TERRACOTTA_ORANGE, false);
     WoodSet WILLOW_WOOD_SET = WoodSet.simple("willow", RuWoodTypes.WILLOW, SoundType.WOOD, MapColor.WOOD, MapColor.WOOD, false);
+    WoodSet WISTERIA_WOOD_SET = WoodSet.simple("wisteria", RuWoodTypes.WISTERIA, SoundType.CHERRY_WOOD, MapColor.TERRACOTTA_PURPLE, MapColor.PODZOL, false);
 
     WoodSet PINK_BIOSHROOM_WOOD_SET = WoodSet.bioshroom("pink_bioshroom", RuWoodTypes.PINK_BIOSHROOM, SoundType.NETHER_WOOD, MapColor.COLOR_PINK, false);
     WoodSet YELLOW_BIOSHROOM_WOOD_SET = WoodSet.bioshroom("yellow_bioshroom", RuWoodTypes.YELLOW_BIOSHROOM, SoundType.NETHER_WOOD, MapColor.COLOR_YELLOW, true);
@@ -517,6 +517,23 @@ public interface RUBlocks {
         consumer.accept(id("mauve_leaves"), id("lavender_wisteria_leaves"));
         consumer.accept(id("mauve_sapling"), id("lavender_wisteria_sapling"));
         consumer.accept(id("potted_mauve_sapling"), id("potted_lavender_wisteria_sapling"));
+        consumer.accept(id("mauve_log"), id("wisteria_log"));
+        consumer.accept(id("mauve_wood"), id("wisteria_wood"));
+        consumer.accept(id("stripped_mauve_log"), id("stripped_wisteria_log"));
+        consumer.accept(id("stripped_mauve_wood"), id("stripped_wisteria_wood"));
+        consumer.accept(id("mauve_planks"), id("wisteria_planks"));
+        consumer.accept(id("mauve_stairs"), id("wisteria_stairs"));
+        consumer.accept(id("mauve_slab"), id("wisteria_slab"));
+        consumer.accept(id("mauve_fence"), id("wisteria_fence"));
+        consumer.accept(id("mauve_fence_gate"), id("wisteria_fence_gate"));
+        consumer.accept(id("mauve_door"), id("wisteria_door"));
+        consumer.accept(id("mauve_trapdoor"), id("wisteria_trapdoor"));
+        consumer.accept(id("mauve_pressure_plate"), id("wisteria_pressure_plate"));
+        consumer.accept(id("mauve_button"), id("wisteria_button"));
+        consumer.accept(id("mauve_sign"), id("wisteria_sign"));
+        consumer.accept(id("mauve_wall_sign"), id("wisteria_wall_sign"));
+        consumer.accept(id("mauve_hanging_sign"), id("wisteria_hanging_sign"));
+        consumer.accept(id("mauve_hanging_wall_sign"), id("wisteria_hanging_wall_sign"));
     }
 
     static void init() {

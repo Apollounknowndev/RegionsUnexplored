@@ -23,7 +23,7 @@ public class RuWoodTypes {
     public static WoodType LARCH = register("larch", RuBlockSetType.LARCH);
     public static WoodType MAGNOLIA = register("magnolia", RuBlockSetType.MAGNOLIA);
     public static WoodType MAPLE = register("maple", RuBlockSetType.MAPLE);
-    public static WoodType MAUVE = register("mauve", RuBlockSetType.MAUVE);
+    public static WoodType WISTERIA = register("wisteria", RuBlockSetType.WISTERIA);
     public static WoodType PALM = register("palm", RuBlockSetType.PALM);
     public static WoodType PINE = register("pine", RuBlockSetType.PINE);
     public static WoodType PINK_BIOSHROOM = register("pink_bioshroom", RuBlockSetType.PINK_BIOSHROOM);

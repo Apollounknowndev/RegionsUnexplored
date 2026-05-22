@@ -1,7 +1,14 @@
 package net.regions_unexplored.datagen.provider.registry.configured_feature;
 
+import dev.worldgen.lithostitched.api.util.WeightedList;
+import dev.worldgen.lithostitched.api.worldgen.feature.LithostitchedFeatures;
+import dev.worldgen.lithostitched.api.worldgen.placementcondition.LithostitchedPlacementConditions;
+import dev.worldgen.lithostitched.api.worldgen.placementmodifier.LithostitchedPlacementModifiers;
 import dev.worldgen.lithostitched.api.worldgen.stateprovider.LithostitchedStateProviders;
+import dev.worldgen.lithostitched.worldgen.feature.config.CompositeConfig;
+import dev.worldgen.lithostitched.worldgen.feature.config.WeightedSelectorConfig;
 import net.minecraft.core.*;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -25,6 +32,8 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.regions_unexplored.datagen.provider.registry.util.RUFeatureUtils;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUFeatureTypes;
+import net.regions_unexplored.registry.data.RUBiomes;
+import net.regions_unexplored.registry.data.RUConfiguredFeatures;
 import net.regions_unexplored.registry.data.RUPlacedFeatures;
 import net.regions_unexplored.registry.tag.RUBlockTags;
 import net.regions_unexplored.worldgen.stateprovider.RandomizedGroundCoverStateProvider;
@@ -56,6 +65,8 @@ public class RuVegetationFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_ELEPHANT_EAR = patch("elephant_ear");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+        var features = context.lookup(Registries.CONFIGURED_FEATURE);
+        
         SimpleWeightedRandomList.Builder<BlockState> duskMelon = SimpleWeightedRandomList.builder();
         duskMelon.add(RUBlocks.DUSKMELON.get().defaultBlockState().setValue(DuskmelonBlock.AGE, 1), 3).add(RUBlocks.DUSKMELON.get().defaultBlockState().setValue(DuskmelonBlock.AGE, 2), 2);
 
@@ -68,15 +79,16 @@ public class RuVegetationFeatures {
         ));
         //---------------------FEATURES---------------------//
         //SIMPLE_RANDOM_SELECTOR
-        registerPlaced(context, PATCH_TALL_FLOWERS, Feature.SIMPLE_RANDOM_SELECTOR, new SimpleRandomFeatureConfiguration(HolderSet.direct(
-            PlacementUtils.inlinePlaced(Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, simple(RUBlocks.TASSEL.get()))),
-            PlacementUtils.inlinePlaced(Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(RUBlocks.DAY_LILY.get())))),
-            PlacementUtils.inlinePlaced(Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(RUBlocks.MEADOW_SAGE.get())))),
-            PlacementUtils.inlinePlaced(Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.LILAC)))),
-            PlacementUtils.inlinePlaced(Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.ROSE_BUSH)))),
-            PlacementUtils.inlinePlaced(Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.PEONY)))),
-            PlacementUtils.inlinePlaced(Feature.NO_BONEMEAL_FLOWER, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.LILY_OF_THE_VALLEY))))
-        )));
+        
+        registerSelector(context, PATCH_TALL_FLOWERS, builder -> builder
+            .add(simplePatch(RUBlocks.TASSEL.get()))
+            .add(simplePatch(RUBlocks.DAY_LILY.get()))
+            .add(simplePatch(RUBlocks.MEADOW_SAGE.get()))
+            .add(simplePatch(Blocks.LILAC))
+            .add(simplePatch(Blocks.ROSE_BUSH))
+            .add(simplePatch(Blocks.PEONY))
+            .add(simplePatch(Blocks.LILY_OF_THE_VALLEY))
+        );
         //SIMPLE_BLOCK
         registerPlaced(context, SINGLE_ASTER, Feature.SIMPLE_BLOCK, simple(RUBlocks.ASTER.get()));
         registerPlaced(context, SINGLE_CORPSE_FLOWER, Feature.SIMPLE_BLOCK, simple(RUBlocks.CORPSE_FLOWER.get()));
@@ -143,8 +155,8 @@ public class RuVegetationFeatures {
         register(context, PATCH_SANDY_GRASS, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.SANDY_GRASS.get()), 64));
         registerPlaced(context, PATCH_STEPPE_GRASS, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.STEPPE_GRASS.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.DIRT)));
         registerPlaced(context, PATCH_DESERT_SHRUB_ON_GRASS, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.SMALL_DESERT_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.DIRT)));
-        registerPlaced(context, PATCH_DESERT_SHRUB_ON_SAND, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.SMALL_DESERT_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.SAND)));
-        registerPlaced(context, PATCH_STEPPE_SHRUB_ON_SAND, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.DEAD_STEPPE_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.SAND)));
+        var smallDesertShrub = registerPlaced(context, PATCH_DESERT_SHRUB_ON_SAND, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.SMALL_DESERT_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.SAND)));
+        var deadSteppeShrub = registerPlaced(context, PATCH_STEPPE_SHRUB_ON_SAND, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.DEAD_STEPPE_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.SAND)));
 
         register(context, PATCH_BARLEY, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.BARLEY.get()), 144));
         registerPlaced(context, PATCH_BLADED_GRASS, Feature.RANDOM_PATCH, randomPatch(weightedStates(pair(RUBlocks.BLADED_GRASS.get(), 4), pair(RUBlocks.BLADED_TALL_GRASS.get()), pair(Blocks.SHORT_GRASS, 4)), 64));
@@ -290,11 +302,6 @@ public class RuVegetationFeatures {
         var floweringLilySmall = registerPlaced(context, PATCH_FLOWERING_LILY_PAD, Feature.RANDOM_PATCH, randomPatch(RUBlocks.FLOWERING_LILY_PAD, 10, 7, 3));
         var floweringLilyGiant = registerPlaced(context, SPECIAL_GIANT_LILY, RUFeatureTypes.GIANT_LILY.get(), FeatureConfiguration.NONE);
         
-        registerSelector(context, RUPlacedFeatures.VANILLA_MANGROVE_FLOWERING_LILIES, builder -> builder
-            .add(direct(floweringLilySmall), 4)
-            .add(direct(floweringLilyGiant), 1)
-        );
-        
         registerPlaced(context, PATCH_DROPLEAF, Feature.RANDOM_PATCH, new RandomPatchConfiguration(16, 4, 2,
             PlacementUtils.inlinePlaced(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
                 List.of(
@@ -304,6 +311,57 @@ public class RuVegetationFeatures {
             ),
             BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.hasSturdyFace(Vec3i.ZERO.above(), Direction.DOWN), BlockPredicate.matchesTag(BlockTags.AIR))))));
         registerPlaced(context, PATCH_DUCKWEED, Feature.RANDOM_PATCH, randomPatch(RUBlocks.DUCKWEED, 24, 4, 0));
+        
+        
+        
+        registerSelector(context, RUPlacedFeatures.VANILLA_BADLANDS_STEPPE_GRASS, builder -> builder
+            .add(direct(smallDesertShrub))
+            .add(direct(deadSteppeShrub))
+        );
+        registerPlaced(context, RUPlacedFeatures.VANILLA_BASALT_DELTAS_ASH_VENTS, Feature.SIMPLE_BLOCK, simple(RUBlocks.ASH_VENT.get()));
+        registerSelector(context, RUPlacedFeatures.VANILLA_FOREST_FLOWERS, builder -> builder
+            .add(simplePatch(RUBlocks.TASSEL.get()))
+            .add(simplePatch(RUBlocks.DAY_LILY.get()))
+            .add(simplePatch(RUBlocks.MEADOW_SAGE.get()))
+        );
+        registerPlaced(context, RUPlacedFeatures.VANILLA_BIRCH_ORANGE_CONEFLOWERS, Feature.FLOWER, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, RandomizedGroundCoverStateProvider.asConfig(RUBlocks.ORANGE_CONEFLOWER)));
+        registerSelector(context, RUPlacedFeatures.VANILLA_SAVANNA_BUSHES, builder -> builder
+            .add(direct(features.getOrThrow(TREE_ACACIA_SHRUB)), 2)
+            .add(direct(features.getOrThrow(TREE_OAK_SHRUB_SMALL)), 1)
+        );
+        registerSelector(context, RUPlacedFeatures.VANILLA_MANGROVE_FLOWERING_LILIES, builder -> builder
+            .add(direct(floweringLilySmall), 4)
+            .add(direct(floweringLilyGiant), 1)
+        );
+        
+        registerPlaced(context, RUPlacedFeatures.VANILLA_SWAMP_TREES, LithostitchedFeatures.COMPOSITE, new CompositeConfig(
+            HolderSet.direct(
+                direct(Holder.direct(new ConfiguredFeature<>(LithostitchedFeatures.WEIGHTED_SELECTOR, new WeightedSelectorConfig(
+                    WeightedList.<Holder<PlacedFeature>>builder().add(direct(features.getOrThrow(TREE_WILLOW_SWAMP)), 2).add(direct(features.getOrThrow(TREE_OAK_SWAMP)), 3).build()
+                )))),
+                Holder.direct(new PlacedFeature(
+                    Holder.direct(new ConfiguredFeature<>(
+                        Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(LithostitchedStateProviders.randomBlock(RUBlocks.GREEN_BIOSHROOM.get(), RUBlocks.BLUE_BIOSHROOM.get()))
+                    )),
+                    List.of(
+                        RarityFilter.onAverageOnceEvery(2),
+                        LithostitchedPlacementModifiers.offset(UniformInt.of(-1, 1), UniformInt.of(2, 3), UniformInt.of(-1, 1)),
+                        RUFeatureUtils.airAndBlocksBelow(Blocks.OAK_LOG, RUBlocks.WILLOW_WOOD_SET.getLog()),
+                        LithostitchedPlacementModifiers.condition(LithostitchedPlacementConditions.offset(
+                            LithostitchedPlacementConditions.inBiome(context.lookup(Registries.BIOME).getOrThrow(RUBiomes.BIOSHROOM_CAVES)),
+                            BlockPos.ZERO.below(64)
+                        ))
+                    )
+                ))
+            ),
+            CompositeConfig.Type.CANCEL_ON_FAILURE
+        ));
+        registerPlaced(context, RUPlacedFeatures.VANILLA_TAIGA_PURPLE_CONEFLOWERS, Feature.FLOWER, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, RandomizedGroundCoverStateProvider.asConfig(RUBlocks.PURPLE_CONEFLOWER)));
+    }
+    
+    private static Holder<PlacedFeature> simplePatch(Block block) {
+        return PlacementUtils.inlinePlaced(Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, simple(block)));
     }
     
     private static SimpleBlockConfiguration simple(Block block) {

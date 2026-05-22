@@ -1,0 +1,15 @@
+{
+  "type": "lithostitched:weighted_selector",
+  "config": {
+    "features": [
+      {
+        "feature": "regions_unexplored:patch/desert_shrub_on_sand",
+        "placement": []
+      },
+      {
+        "feature": "regions_unexplored:patch/steppe_grass_on_sand",
+        "placement": []
+      }
+    ]
+  }
+}

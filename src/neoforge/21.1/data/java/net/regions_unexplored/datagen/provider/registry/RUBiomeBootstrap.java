@@ -20,7 +20,8 @@ public class RUBiomeBootstrap {
         register(context, RUBiomes.AUTUMNAL_MAPLE_FOREST, ForestBiomes.autumnalMapleForest(featuresGetter, carversGetter));
         register(context, RUBiomes.BAMBOO_FOREST, ForestBiomes.bambooForest(featuresGetter, carversGetter));
         register(context, RUBiomes.MAGNOLIA_WOODLAND, ForestBiomes.magnoliaHighlands(featuresGetter, carversGetter));
-        register(context, RUBiomes.DECIDUOUS_FOREST, ForestBiomes.deciduousForest(featuresGetter, carversGetter));
+        register(context, RUBiomes.OLD_GROWTH_FOREST, ForestBiomes.oldGrowthForest(featuresGetter, carversGetter));
+        register(context, RUBiomes.REMOVED_DECIDUOUS_FOREST, ForestBiomes.oldGrowthForest(featuresGetter, carversGetter));
         register(context, RUBiomes.MAPLE_FOREST, ForestBiomes.mapleForest(featuresGetter, carversGetter));
         register(context, RUBiomes.ORCHARD, ForestBiomes.orchard(featuresGetter, carversGetter));
         register(context, RUBiomes.SILVER_BIRCH_FOREST, ForestBiomes.silverBirchForest(featuresGetter, carversGetter));

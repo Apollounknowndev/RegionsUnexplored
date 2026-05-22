@@ -31,7 +31,6 @@ public interface RUBiomes {
     ResourceKey<Biome> CLOVER_PLAINS = key("clover_plains");
     ResourceKey<Biome> COLD_BOREAL_TAIGA = key("cold_boreal_taiga");
     ResourceKey<Biome> COLD_RIVER = key("cold_river");
-    ResourceKey<Biome> DECIDUOUS_FOREST = key("deciduous_forest");
     ResourceKey<Biome> DRY_BUSHLAND = key("dry_bushland");
     ResourceKey<Biome> EUCALYPTUS_FOREST = key("eucalyptus_forest");
     ResourceKey<Biome> FEN = key("fen");
@@ -55,6 +54,7 @@ public interface RUBiomes {
     ResourceKey<Biome> MYCOTOXIC_UNDERGROWTH = key("mycotoxic_undergrowth", NETHER_BIOMES);
     ResourceKey<Biome> OLD_GROWTH_BAYOU = key("old_growth_bayou");
     ResourceKey<Biome> OLD_GROWTH_BOREAL_TAIGA = key("old_growth_boreal_taiga");
+    ResourceKey<Biome> OLD_GROWTH_FOREST = key("old_growth_forest");
     ResourceKey<Biome> OLD_GROWTH_GOLDEN_BOREAL_TAIGA = key("old_growth_golden_boreal_taiga");
     ResourceKey<Biome> ORCHARD = key("orchard");
     ResourceKey<Biome> OUTBACK = key("outback");
@@ -88,10 +88,11 @@ public interface RUBiomes {
     ResourceKey<Biome> REMOVED_ARID_MOUNTAINS = key("arid_mountains", REMOVED_BIOMES);
     ResourceKey<Biome> REMOVED_BARLEY_FIELDS = key("barley_fields", REMOVED_BIOMES);
     ResourceKey<Biome> REMOVED_COLD_DECIDUOUS_FOREST = key("cold_deciduous_forest", REMOVED_BIOMES);
+    ResourceKey<Biome> REMOVED_DECIDUOUS_FOREST = key("deciduous_forest", REMOVED_BIOMES);
     ResourceKey<Biome> REMOVED_FROZEN_TUNDRA = key("frozen_tundra", REMOVED_BIOMES);
     ResourceKey<Biome> REMOVED_GOLDEN_BOREAL_TAIGA = key("golden_boreal_taiga", REMOVED_BIOMES);
     ResourceKey<Biome> REMOVED_MAUVE_HILLS = key("mauve_hills", REMOVED_BIOMES);
-    ResourceKey<Biome> REMOVED_MOUNTAINS = key("mountains");
+    ResourceKey<Biome> REMOVED_MOUNTAINS = key("mountains", REMOVED_BIOMES);
     ResourceKey<Biome> REMOVED_PUMPKIN_FIELDS = key("pumpkin_fields", REMOVED_BIOMES);
     ResourceKey<Biome> REMOVED_REDSTONE_ABYSS = key("redstone_abyss", REMOVED_BIOMES, NETHER_BIOMES);
     ResourceKey<Biome> REMOVED_ROCKY_MEADOW = key("rocky_meadow", REMOVED_BIOMES);
@@ -116,7 +117,7 @@ public interface RUBiomes {
         putVillagerBiome(AUTUMNAL_MAPLE_FOREST, VillagerType.PLAINS);
         putVillagerBiome(BAMBOO_FOREST, VillagerType.JUNGLE);
         putVillagerBiome(MAGNOLIA_WOODLAND, VillagerType.PLAINS);
-        putVillagerBiome(DECIDUOUS_FOREST, VillagerType.PLAINS);
+        putVillagerBiome(REMOVED_DECIDUOUS_FOREST, VillagerType.PLAINS);
         putVillagerBiome(MAPLE_FOREST, VillagerType.TAIGA);
         putVillagerBiome(REMOVED_MAUVE_HILLS, VillagerType.PLAINS);
         putVillagerBiome(ORCHARD, VillagerType.PLAINS);

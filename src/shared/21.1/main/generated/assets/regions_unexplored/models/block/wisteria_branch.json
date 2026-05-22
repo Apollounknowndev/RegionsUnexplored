@@ -2,6 +2,6 @@
   "parent": "regions_unexplored:block/template/branch",
   "textures": {
     "branch": "regions_unexplored:block/wisteria_branch",
-    "log": "regions_unexplored:block/mauve_log"
+    "log": "regions_unexplored:block/wisteria_log"
   }
 }

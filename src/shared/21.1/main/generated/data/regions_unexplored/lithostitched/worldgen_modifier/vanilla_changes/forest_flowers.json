@@ -1,0 +1,16 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": [
+    "minecraft:forest",
+    "minecraft:flower_forest",
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:dark_forest"
+  ],
+  "features": "regions_unexplored:vanilla_changes/forest_flowers",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/forest_flowers"
+  },
+  "step": "vegetal_decoration"
+}

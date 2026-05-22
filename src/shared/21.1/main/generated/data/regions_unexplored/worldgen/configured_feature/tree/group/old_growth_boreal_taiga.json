@@ -10,7 +10,28 @@
         "weight": 7
       },
       {
-        "feature": "regions_unexplored:tree/larch_golden_large",
+        "data": {
+          "feature": "regions_unexplored:tree/larch",
+          "placement": []
+        },
+        "weight": 3
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/larch_pine",
+          "placement": []
+        },
+        "weight": 2
+      },
+      {
+        "data": {
+          "feature": "regions_unexplored:tree/larch_golden_large",
+          "placement": []
+        },
+        "weight": 2
+      },
+      {
+        "feature": "regions_unexplored:tree/larch_golden",
         "placement": []
       },
       {
