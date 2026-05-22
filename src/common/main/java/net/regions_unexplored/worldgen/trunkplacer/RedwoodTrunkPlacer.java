@@ -9,12 +9,14 @@ import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.TreeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer.FoliageAttachment;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
+import net.regions_unexplored.registry.tag.RUBlockTags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,5 +116,10 @@ public class RedwoodTrunkPlacer extends RUTrunkPlacer {
             }
             return;
         }
+    }
+    
+    @Override
+    protected boolean validTreePos(final LevelSimulatedReader level, final BlockPos pos) {
+        return TreeFeature.validTreePos(level, pos) || level.isStateAtPosition(pos, state -> state.is(BlockTags.LOGS) || state.is(RUBlockTags.BRANCHES));
     }
 }

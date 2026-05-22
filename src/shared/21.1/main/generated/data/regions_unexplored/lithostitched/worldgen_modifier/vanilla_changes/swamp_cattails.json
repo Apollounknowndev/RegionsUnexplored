@@ -1,0 +1,13 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": [
+    "minecraft:swamp",
+    "minecraft:mangrove_swamp"
+  ],
+  "features": "regions_unexplored:vanilla_changes/swamp_cattails",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/swamp_cattails"
+  },
+  "step": "vegetal_decoration"
+}

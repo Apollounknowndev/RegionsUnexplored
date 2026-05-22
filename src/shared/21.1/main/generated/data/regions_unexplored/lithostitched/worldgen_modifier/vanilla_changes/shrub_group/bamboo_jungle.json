@@ -1,0 +1,10 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": "minecraft:bamboo_jungle",
+  "features": "regions_unexplored:vanilla_changes/shrub_group/bamboo_jungle",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/common_shrubs"
+  },
+  "step": "vegetal_decoration"
+}

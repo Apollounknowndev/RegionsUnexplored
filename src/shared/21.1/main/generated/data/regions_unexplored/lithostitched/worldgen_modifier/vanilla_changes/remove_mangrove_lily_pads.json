@@ -1,0 +1,10 @@
+{
+  "type": "lithostitched:remove_features",
+  "biomes": "minecraft:mangrove_swamp",
+  "features": "minecraft:patch_waterlily",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/mangrove_flowering_lilies"
+  },
+  "step": "vegetal_decoration"
+}

@@ -2,27 +2,11 @@
   "values": [
     "#minecraft:sand",
     {
-      "id": "#c:sandstone",
+      "id": "#c:sandstone/blocks",
       "required": false
     },
     {
-      "id": "#c:sand",
-      "required": false
-    },
-    {
-      "id": "#c:red_sand",
-      "required": false
-    },
-    {
-      "id": "#c:sand/red",
-      "required": false
-    },
-    {
-      "id": "#c:red_sandstone",
-      "required": false
-    },
-    {
-      "id": "#c:sandstone/red",
+      "id": "#c:sands",
       "required": false
     }
   ]

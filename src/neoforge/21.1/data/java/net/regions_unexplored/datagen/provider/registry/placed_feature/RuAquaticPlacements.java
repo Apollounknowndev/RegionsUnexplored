@@ -6,19 +6,15 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.datagen.provider.registry.configured_feature.RuAquaticFeatures;
-import net.regions_unexplored.registry.data.RUConfiguredFeatures;
 
 import static net.regions_unexplored.registry.data.RUPlacedFeatures.*;
 import static net.regions_unexplored.datagen.provider.registry.util.RUFeatureUtils.*;
-
-import java.util.List;
 
 public class RuAquaticPlacements {
     public static final ResourceKey<PlacedFeature> PATCH_CATTAIL = patch("cattail");
@@ -39,6 +35,7 @@ public class RuAquaticPlacements {
 
         register(context, RuAquaticPlacements.PATCH_CATTAIL_DENSE, patchCattail, placement().count(noiseCount(-3, 2, 3)).atHeight(VerticalAnchor.absolute(62)));
         register(context, RuAquaticPlacements.PATCH_CATTAIL, patchCattail, placement().count(3).atHeight(VerticalAnchor.absolute(62), VerticalAnchor.absolute(63)));
+        register(context, VANILLA_SWAMP_CATTAILS, patchCattail, placement().count(0.5f).atHeight(VerticalAnchor.absolute(62)));
 
         register(context, RuAquaticPlacements.SPECIAL_TALL_HYACINTH_STOCK, NoiseBasedCountPlacement.of(20, 80.0D, 0.3D), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
         register(context, RuAquaticPlacements.SPECIAL_HYACINTH_PLANTS,  InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, CountPlacement.of(80), BiomeFilter.biome());

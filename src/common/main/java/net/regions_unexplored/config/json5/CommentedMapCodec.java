@@ -20,12 +20,12 @@ public class CommentedMapCodec<A> extends MapCodec<A> {
 		return commented(delegate.fieldOf(key), key, comment);
 	}
 	
-	public static <A> CommentedMapCodec<Optional<A>> optionalCommented(Codec<A> delegate, String key, String comment) {
-		return commented(delegate.optionalFieldOf(key), key, comment);
+	public static <A> CommentedMapCodec<A> optionalCommented(Codec<A> delegate, A fallback, String key, String comment) {
+		return commented(delegate.fieldOf(key).orElse(fallback), key, comment);
 	}
 	
 	public static <A> CommentedMapCodec<Optional<A>> lenientOptionalCommented(Codec<A> delegate, String key, String comment) {
-		return commented(delegate.optionalFieldOf(key), key, comment);
+		return commented(delegate.lenientOptionalFieldOf(key), key, comment);
 	}
 	
 	public static <A> CommentedMapCodec<A> commented(MapCodec<A> delegate, String key, String comment) {

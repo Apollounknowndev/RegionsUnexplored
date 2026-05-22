@@ -9,6 +9,7 @@ public interface RUBlockTags {
    TagKey<Block> SUPPORTS_ASHEN_GRASS = key("supports_ashen_grass");
    TagKey<Block> SUPPORTS_GRASS_SPROUTS = key("supports_grass_sprouts");
    TagKey<Block> SUPPORTS_SHRUBS = key("supports_shrubs");
+   TagKey<Block> SUPPORTS_BRANCHES = key("supports_branches");
 
    TagKey<Block> REPLACEABLE_BY_PEAT_DIRT = key("replaceable_by_peat_dirt");
    TagKey<Block> REPLACEABLE_BY_SILT_DIRT = key("replaceable_by_silt_dirt");
@@ -20,7 +21,6 @@ public interface RUBlockTags {
    TagKey<Block> SILT_ALL = key("silt/all");
    TagKey<Block> SILT_SUBSTRATE = key("silt/substrate");
 
-   TagKey<Block> BRANCHES_CAN_SURVIVE_ON = key("branches_can_survive_on");
    TagKey<Block> BRIM_PLANT_CAN_SURVIVE_ON = key("brim_plant_can_survive_on");
    TagKey<Block> CATTAIL_CAN_SURVIVE_ON = key("cattail_can_survive_on");
    TagKey<Block> SANDY_PLANT_CAN_SURVIVE_ON = key("sandy_plant_can_survive_on");
@@ -28,7 +28,6 @@ public interface RUBlockTags {
    TagKey<Block> BIOSHROOM_GROW_BLOCK = key("bioshroom_grow_block");
    TagKey<Block> REPLACEABLE_BLOCKS = key("replaceable_blocks");
    TagKey<Block> PRISMARITE_CRYSTALS = key("prismarite_crystals");
-   TagKey<Block> SNOWBELLE = key("snowbelle");
    TagKey<Block> GRASS = key("grass");
    TagKey<Block> SHRUBS = key("shrubs");
    TagKey<Block> TREE_GRASS_REPLACEABLES = key("tree_grass_replaceables");

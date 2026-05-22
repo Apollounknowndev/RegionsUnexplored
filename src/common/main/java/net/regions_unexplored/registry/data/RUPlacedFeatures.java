@@ -6,13 +6,24 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.regions_unexplored.RegionsUnexplored;
 
 public interface RUPlacedFeatures {
-    ResourceKey<PlacedFeature> BONEMEAL_ALPHA_GRASS = key("bonemeal/grass/alpha");
-    ResourceKey<PlacedFeature> BONEMEAL_ARGILLITE_GRASS = key("bonemeal/grass/argillite");
-    ResourceKey<PlacedFeature> BONEMEAL_CHALK_GRASS = key("bonemeal/grass/chalk");
-    ResourceKey<PlacedFeature> BONEMEAL_DEEPSLATE_GRASS = key("bonemeal/grass/deepslate");
-    ResourceKey<PlacedFeature> BONEMEAL_PEAT_GRASS = key("bonemeal/grass/peat");
-    ResourceKey<PlacedFeature> BONEMEAL_SILT_GRASS = key("bonemeal/grass/silt");
-    ResourceKey<PlacedFeature> BONEMEAL_STONE_GRASS = key("bonemeal/grass/stone");
+    ResourceKey<PlacedFeature> BONEMEAL_ALPHA_GRASS = bonemeal("alpha");
+    ResourceKey<PlacedFeature> BONEMEAL_ARGILLITE_GRASS = bonemeal("argillite");
+    ResourceKey<PlacedFeature> BONEMEAL_CHALK_GRASS = bonemeal("chalk");
+    ResourceKey<PlacedFeature> BONEMEAL_DEEPSLATE_GRASS = bonemeal("deepslate");
+    ResourceKey<PlacedFeature> BONEMEAL_PEAT_GRASS = bonemeal("peat");
+    ResourceKey<PlacedFeature> BONEMEAL_SILT_GRASS = bonemeal("silt");
+    ResourceKey<PlacedFeature> BONEMEAL_STONE_GRASS = bonemeal("stone");
+    
+    ResourceKey<PlacedFeature> VANILLA_SWAMP_CATTAILS = vanilla("swamp_cattails");
+    ResourceKey<PlacedFeature> VANILLA_MANGROVE_FLOWERING_LILIES = vanilla("mangrove_flowering_lilies");
+    
+    static ResourceKey<PlacedFeature> bonemeal(String name) {
+        return key("bonemeal/grass/" + name);
+    }
+    
+    static ResourceKey<PlacedFeature> vanilla(String name) {
+        return key("vanilla_changes/" + name);
+    }
     
     static ResourceKey<PlacedFeature> patch(String name) {
         return key("patch/" + name);

@@ -1,0 +1,10 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": "minecraft:old_growth_pine_taiga",
+  "features": "regions_unexplored:vanilla_changes/shrub_group/old_growth_pine_taiga",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/common_shrubs"
+  },
+  "step": "vegetal_decoration"
+}

@@ -1,0 +1,109 @@
+{
+  "type": "lithostitched:composite",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "lithostitched:weighted_selector",
+          "config": {
+            "features": [
+              {
+                "data": {
+                  "feature": "regions_unexplored:tree/willow_swamp",
+                  "placement": []
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "feature": "regions_unexplored:tree/oak_swamp",
+                  "placement": []
+                },
+                "weight": 3
+              }
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:simple_block",
+          "config": {
+            "to_place": {
+              "type": "lithostitched:random_block",
+              "blocks": [
+                "regions_unexplored:green_bioshroom",
+                "regions_unexplored:blue_bioshroom"
+              ]
+            }
+          }
+        },
+        "placement": [
+          {
+            "type": "minecraft:rarity_filter",
+            "chance": 2
+          },
+          {
+            "type": "lithostitched:offset",
+            "x_offset": {
+              "type": "minecraft:uniform",
+              "max_inclusive": 1,
+              "min_inclusive": -1
+            },
+            "y_offset": {
+              "type": "minecraft:uniform",
+              "max_inclusive": 3,
+              "min_inclusive": 2
+            },
+            "z_offset": {
+              "type": "minecraft:uniform",
+              "max_inclusive": 1,
+              "min_inclusive": -1
+            }
+          },
+          {
+            "type": "minecraft:block_predicate_filter",
+            "predicate": {
+              "type": "minecraft:all_of",
+              "predicates": [
+                {
+                  "type": "minecraft:matching_blocks",
+                  "blocks": "minecraft:air"
+                },
+                {
+                  "type": "minecraft:matching_blocks",
+                  "blocks": [
+                    "minecraft:oak_log",
+                    "regions_unexplored:willow_log"
+                  ],
+                  "offset": [
+                    0,
+                    -1,
+                    0
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "lithostitched:condition",
+            "condition": {
+              "type": "lithostitched:offset",
+              "condition": {
+                "type": "lithostitched:in_biome",
+                "biomes": "regions_unexplored:bioshroom_caves"
+              },
+              "offset": [
+                0,
+                -64,
+                0
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "placement_type": "cancel_on_failure"
+  }
+}

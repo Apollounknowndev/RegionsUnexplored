@@ -34,6 +34,7 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_BLACKWOOD = tree("big_blackwood");
     ResourceKey<ConfiguredFeature<?,?>> TREE_GIANT_BLACKWOOD = tree("giant_blackwood");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIRCH_ASPEN = tree("birch_aspen");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_BIRCH_ASPEN_2 = tree("birch_aspen_2");
     ResourceKey<ConfiguredFeature<?,?>> TREE_COBALT = key("nether/tree/cobalt");
     ResourceKey<ConfiguredFeature<?,?>> TREE_TALL_DARK_OAK = tree("tall_dark_oak");
     ResourceKey<ConfiguredFeature<?,?>> TREE_MAGNOLIA = tree("magnolia");
@@ -82,6 +83,7 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_WITH_BRANCH = tree("oak_with_branch");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_WITH_FLOWERS = tree("oak_with_flowers");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK = tree("oak");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_SWAMP = tree("oak_swamp");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_TALL = tree("oak_tall");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_OAK = tree("big_oak");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_SHRUB_SMALL = tree("oak_shrub_small");
@@ -121,7 +123,7 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_REDWOOD_EMERGENT = tree("redwood_emergent");
     ResourceKey<ConfiguredFeature<?,?>> TREE_WILLOW = tree("willow");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_WILLOW = tree("big_willow");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_WILLOW_VINES = tree("willow_vines");
+    ResourceKey<ConfiguredFeature<?,?>> TREE_WILLOW_SWAMP = tree("willow_swamp");
     ResourceKey<ConfiguredFeature<?,?>> TREE_WISTERIA_SKY = tree("wisteria_sky");
     ResourceKey<ConfiguredFeature<?,?>> TREE_WISTERIA_LAVENDER = tree("wisteria_lavender");
     ResourceKey<ConfiguredFeature<?,?>> TREE_WISTERIA_SALMON = tree("wisteria_salmon");

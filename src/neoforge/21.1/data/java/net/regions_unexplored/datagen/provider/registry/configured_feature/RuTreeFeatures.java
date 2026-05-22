@@ -3,11 +3,18 @@ package net.regions_unexplored.datagen.provider.registry.configured_feature;
 import com.google.common.collect.ImmutableList;
 import dev.worldgen.lithostitched.api.util.WeightedList;
 import dev.worldgen.lithostitched.api.worldgen.feature.LithostitchedFeatures;
+import dev.worldgen.lithostitched.api.worldgen.placementcondition.LithostitchedPlacementConditions;
+import dev.worldgen.lithostitched.api.worldgen.placementmodifier.LithostitchedPlacementModifiers;
 import dev.worldgen.lithostitched.api.worldgen.stateprovider.LithostitchedStateProviders;
+import dev.worldgen.lithostitched.worldgen.feature.config.CompositeConfig;
+import dev.worldgen.lithostitched.worldgen.feature.config.WeightedSelectorConfig;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Vec3i;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.*;
@@ -25,23 +32,22 @@ import net.minecraft.world.level.levelgen.feature.featuresize.ThreeLayersFeature
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.*;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
-import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.SurfaceRelativeThresholdFilter;
+import net.minecraft.world.level.levelgen.placement.*;
 import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.set.WoodSet;
+import net.regions_unexplored.datagen.provider.registry.util.RUFeatureUtils;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUFeatureTypes;
+import net.regions_unexplored.registry.data.RUBiomes;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
 import net.regions_unexplored.worldgen.foliageplacer.*;
 import net.regions_unexplored.worldgen.rootplacer.MagnoliaRootPlacer;
+import net.regions_unexplored.worldgen.rootplacer.WillowRootPlacer;
 import net.regions_unexplored.worldgen.treedecorator.*;
 import net.regions_unexplored.block.type.leaves.AppleLeavesBlock;
 import net.regions_unexplored.world.level.block.wood.BambooLogBlock;
@@ -53,7 +59,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider.simple;
@@ -166,6 +171,13 @@ public class RuTreeFeatures {
        );
        
        var birchAspen = register(context, TREE_BIRCH_ASPEN, RUFeatureTypes.ASPEN_TREE.get(), new RUTreeConfiguration(simple(Blocks.BIRCH_LOG.defaultBlockState()), simple(Blocks.BIRCH_LEAVES.defaultBlockState()), simple(RUBlocks.BIRCH_NATURAL_SET.getBranch().defaultBlockState()), 4, 3));
+       var birchAspen2 = register(context, TREE_BIRCH_ASPEN_2, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           simple(Blocks.BIRCH_LOG),
+           new AspenTrunkPlacer(BiasedToBottomInt.of(6, 11), 0.5f),
+           simple(Blocks.BIRCH_LEAVES),
+           new AspenFoliagePlacer(),
+           new TwoLayersFeatureSize(1, 0, 1)
+       ).decorators(List.of(new BeehiveDecorator(0.5f), new RandomBranchDecorator(0.1f, RUBlocks.BIRCH_NATURAL_SET.getBranch(), Blocks.BIRCH_LOG, 4, Optional.empty()))).build());
 
 
 
@@ -301,15 +313,6 @@ public class RuTreeFeatures {
            .add(direct(silverBirch), 2)
            .add(direct(bigRedMaple))
            .add(direct(bigOrangeMaple))
-       .build()));
-       registerPlaced(context, TREE_GROUP_PUMPKIN_FIELDS, LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(WeightedList.<Holder<PlacedFeature>>builder()
-           .add(direct(bigMaple), 3)
-           .add(direct(bigRedMaple), 3)
-           .add(direct(bigOrangeMaple), 3)
-           .add(direct(maple), 2)
-           .add(direct(redMaple), 2)
-           .add(direct(orangeMaple), 2)
-           .add(direct(silverBirch), 2)
        .build()));
 
        register(context, TREE_MAUVE_OAK_BEE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(RUBlocks.MAUVE_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(5, 2, 0), simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(List.of(new BeehiveDecorator(1f))).ignoreVines().build());
@@ -679,25 +682,45 @@ public class RuTreeFeatures {
        
 
        var willow = register(context, TREE_WILLOW, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-           simple(RUBlocks.WILLOW_WOOD_SET.getLog().defaultBlockState()),
+           log(RUBlocks.WILLOW_WOOD_SET),
            new StraightTrunkPlacer(8, 2, 0),
-           simple(RUBlocks.WILLOW_NATURAL_SET.getLeaves().defaultBlockState()),
+           leaves(RUBlocks.WILLOW_NATURAL_SET),
            new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3),
+           WillowRootPlacer.create(RUBlocks.WILLOW_WOOD_SET, 0.5f),
            new TwoLayersFeatureSize(1, 0, 1)
-       ).decorators(ImmutableList.of(WillowTrunkDecorator.of(0.5f))).build());
+       ).build());
+       
        var willowBig = register(context, TREE_BIG_WILLOW, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-           simple(RUBlocks.WILLOW_WOOD_SET.getLog().defaultBlockState()),
+           log(RUBlocks.WILLOW_WOOD_SET),
            new FancyTrunkPlacer(9, 9, 0),
-           simple(RUBlocks.WILLOW_NATURAL_SET.getLeaves().defaultBlockState()),
+           leaves(RUBlocks.WILLOW_NATURAL_SET),
            new WillowFoliagePlacer(0.25F),
+           WillowRootPlacer.create(RUBlocks.WILLOW_WOOD_SET, 0.5f),
            new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))
-       ).ignoreVines().decorators(ImmutableList.of(WillowTrunkDecorator.of(0.5f))).build());
-       var willowVines = register(context, TREE_WILLOW_VINES, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(RUBlocks.WILLOW_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(8, 2, 0), simple(RUBlocks.WILLOW_NATURAL_SET.getLeaves().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(ImmutableList.of(new LeaveVineDecorator(0.25f), WillowTrunkDecorator.of(1))).build());
+       ).ignoreVines().build());
+       
+       var willowSwamp = register(context, TREE_WILLOW_SWAMP, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           log(RUBlocks.WILLOW_WOOD_SET),
+           new StraightTrunkPlacer(7, 2, 1),
+           leaves(RUBlocks.WILLOW_NATURAL_SET),
+           new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3),
+           WillowRootPlacer.create(RUBlocks.WILLOW_WOOD_SET, 1),
+           new TwoLayersFeatureSize(1, 0, 1)
+       ).decorators(ImmutableList.of(new LeaveVineDecorator(0.25f))).build());
+        
+        var oakSwamp = register(context, TREE_OAK_SWAMP, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+            BlockStateProvider.simple(Blocks.OAK_LOG),
+            new StraightTrunkPlacer(7, 2, 1),
+            BlockStateProvider.simple(Blocks.OAK_LEAVES),
+            new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3),
+            WillowRootPlacer.create(Blocks.OAK_LOG, 0.5f),
+            new TwoLayersFeatureSize(1, 0, 1)
+        ).decorators(ImmutableList.of(new LeaveVineDecorator(0.25f))).build());
        
        
        registerSelector(context, TREE_GROUP_BAYOU, builder -> builder
            .add(direct(cypress), 2)
-           .add(direct(willowVines), 2)
+           .add(direct(willowSwamp), 2)
            .add(direct(oakBush), 1)
        );
        
@@ -771,11 +794,10 @@ public class RuTreeFeatures {
        )).build());
        
        registerSelector(context, TREE_GROUP_WILLOW_FOREST, builder -> builder
-           .add(direct(willow), 1)
+           .add(direct(willow), 5)
            .add(direct(willowBig), 3)
-           .add(direct(smallOak), 2)
-           .add(direct(oakBush), 1)
-           .add(direct(blueMagnolia), 2)
+           .add(direct(smallOak), 1)
+           .add(direct(blueMagnolia), 1)
        );
        
        registerSelector(context, TREE_GROUP_WISTERIA_GROVE, builder -> builder
@@ -786,6 +808,30 @@ public class RuTreeFeatures {
            .add(direct(wisteriaLargeLavender), 4)
            .add(direct(wisteriaLargeSalmon), 4)
        );
+       
+       registerPlaced(context, TREE_GROUP_SWAMP, LithostitchedFeatures.COMPOSITE, new CompositeConfig(
+           HolderSet.direct(
+               direct(Holder.direct(new ConfiguredFeature<>(LithostitchedFeatures.WEIGHTED_SELECTOR, new WeightedSelectorConfig(
+                   WeightedList.<Holder<PlacedFeature>>builder().add(direct(willowSwamp), 2).add(direct(oakSwamp), 3).build()
+               )))),
+               Holder.direct(new PlacedFeature(
+                   Holder.direct(new ConfiguredFeature<>(
+                       Feature.SIMPLE_BLOCK,
+                       new SimpleBlockConfiguration(LithostitchedStateProviders.randomBlock(RUBlocks.GREEN_BIOSHROOM.get(), RUBlocks.BLUE_BIOSHROOM.get()))
+                   )),
+                   List.of(
+                       RarityFilter.onAverageOnceEvery(2),
+                       LithostitchedPlacementModifiers.offset(UniformInt.of(-1, 1), UniformInt.of(2, 3), UniformInt.of(-1, 1)),
+                       RUFeatureUtils.airAndBlocksBelow(Blocks.OAK_LOG, RUBlocks.WILLOW_WOOD_SET.getLog()),
+                       LithostitchedPlacementModifiers.condition(LithostitchedPlacementConditions.offset(
+                            LithostitchedPlacementConditions.inBiome(context.lookup(Registries.BIOME).getOrThrow(RUBiomes.BIOSHROOM_CAVES)),
+                            BlockPos.ZERO.below(64)
+                       ))
+                   )
+               ))
+           ),
+           CompositeConfig.Type.CANCEL_ON_FAILURE
+       ));
     }
 
     private static BlockStateProvider log(WoodSet wood) {

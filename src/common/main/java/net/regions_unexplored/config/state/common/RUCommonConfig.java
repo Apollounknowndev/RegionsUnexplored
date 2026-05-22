@@ -3,6 +3,7 @@ package net.regions_unexplored.config.state.common;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.UnboundedMapCodec;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.config.json5.CommentedMapCodec;
+import net.regions_unexplored.config.json5.CommentedUnboundedMapCodec;
 import net.regions_unexplored.config.state.common.BiomeTarget.DoubleRange;
 import net.regions_unexplored.registry.data.RUBiomes;
 import org.jetbrains.annotations.NotNull;
@@ -20,27 +22,32 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static dev.worldgen.lithostitched.api.worldgen.biomeinjector.BiomeInjector.ClimateParameter.*;
 import static java.util.Map.entry;
+import static net.regions_unexplored.config.json5.CommentedMapCodec.optionalCommented;
 import static net.regions_unexplored.config.state.common.BiomeTarget.*;
 
 public class RUCommonConfig {
-	public static final RUCommonConfig DEFAULT = new RUCommonConfig(BiomeGroups.DEFAULT_GROUPS, BiomePlacements.DEFAULT_PLACEMENTS, Misc.DEFAULT_MISC);
+	public static final RUCommonConfig DEFAULT = new RUCommonConfig(BiomeGroups.DEFAULT, BiomePlacements.DEFAULT, Misc.DEFAULT, VanillaChanges.DEFAULT);
 	public static final Codec<RUCommonConfig> CODEC = RecordCodecBuilder.create(i -> i.group(
-		CommentedMapCodec.commented(BiomeGroups.CODEC, "biome_groups", "Biome groups allows several biomes of similar styles to more consistently spawn adjacent to one another.").forGetter(c -> c.biomeGroups),
-		BiomePlacements.CODEC.fieldOf("biome_placements").forGetter(c -> c.biomePlacements),
-		Misc.CODEC.fieldOf("misc").forGetter(c -> c.misc)
+		optionalCommented(BiomeGroups.CODEC, BiomeGroups.DEFAULT, "biome_groups", "Biome groups allows several biomes of similar styles to more consistently spawn adjacent to one another.").forGetter(c -> c.biomeGroups),
+		BiomePlacements.CODEC.fieldOf("biome_placements").orElse(BiomePlacements.DEFAULT).forGetter(c -> c.biomePlacements),
+		Misc.CODEC.fieldOf("misc").orElse(Misc.DEFAULT).forGetter(c -> c.misc),
+		VanillaChanges.CODEC.fieldOf("vanilla_changes").orElse(VanillaChanges.DEFAULT).forGetter(c -> c.vanillaChanges)
 	).apply(i, RUCommonConfig::new));
 	
 	public BiomeGroups biomeGroups;
 	public BiomePlacements biomePlacements;
 	public Misc misc;
+	public VanillaChanges vanillaChanges;
 	
-	public RUCommonConfig(BiomeGroups biomeGroups, BiomePlacements biomePlacements, Misc misc) {
+	public RUCommonConfig(BiomeGroups biomeGroups, BiomePlacements biomePlacements, Misc misc, VanillaChanges vanillaChanges) {
 		this.biomeGroups = biomeGroups;
 		this.biomePlacements = biomePlacements;
 		this.misc = misc;
+		this.vanillaChanges = vanillaChanges;
 	}
 	
 	public Misc.BranchMode getBranchMode() {
@@ -48,6 +55,9 @@ public class RUCommonConfig {
 	}
 	
 	public boolean test(String key) {
+		if (key.startsWith("vanilla_changes/")) {
+			return this.vanillaChanges.toggles.get(key.substring(16));
+		}
 		return switch (key) {
 			case "custom_dirts" -> this.misc.customDirts;
 			case "painted_planks" -> this.misc.paintedPlanks;
@@ -59,7 +69,7 @@ public class RUCommonConfig {
 	}
 	
 	public static class BiomeGroups {
-		private static final BiomeGroups DEFAULT_GROUPS = new BiomeGroups(Map.of(
+		private static final BiomeGroups DEFAULT = new BiomeGroups(Map.of(
 			"rivers", ofWeighted(60, Biomes.RIVER),
 			"swamps", ofWeighted(100, Biomes.SWAMP),
 			"plains", ofWeighted(100, Biomes.PLAINS),
@@ -80,7 +90,7 @@ public class RUCommonConfig {
 	}
 	
 	public static class BiomePlacements {
-		private static final BiomePlacements DEFAULT_PLACEMENTS = new BiomePlacements(Map.<ResourceKey<Biome>, BiomeTarget>ofEntries(
+		private static final BiomePlacements DEFAULT = new BiomePlacements(Map.<ResourceKey<Biome>, BiomeTarget>ofEntries(
 			entry(RUBiomes.ALPHA_GROVE, ofWeighted(20, Biomes.MUSHROOM_FIELDS)),
 			entry(RUBiomes.ASHEN_WOODLAND, ofWeighted(20, Biomes.MUSHROOM_FIELDS)),
 			entry(RUBiomes.TROPICS, ofWeighted(20, Biomes.MUSHROOM_FIELDS)),
@@ -99,19 +109,19 @@ public class RUCommonConfig {
 				HUMIDITY, DoubleRange.above(0.3),
 				EROSION, DoubleRange.above(0.15)
 			))),
-			entry(RUBiomes.FEN, BiomeTarget.ofGroupToggle("swamp", Biomes.SWAMP, Map.of(
+			entry(RUBiomes.FEN, BiomeTarget.ofGroupToggle("swamps", Biomes.SWAMP, Map.of(
 				TEMPERATURE, DoubleRange.between(-0.45, -0.1),
 				HUMIDITY, DoubleRange.above(-0.35)
 			))),
-			entry(RUBiomes.FUNGAL_FEN, BiomeTarget.ofGroupToggle("swamp", Biomes.SWAMP, Map.of(
+			entry(RUBiomes.FUNGAL_FEN, BiomeTarget.ofGroupToggle("swamps", Biomes.SWAMP, Map.of(
 				TEMPERATURE, DoubleRange.between(-0.45, -0.1),
 				HUMIDITY, DoubleRange.below(-0.35)
 			))),
-			entry(RUBiomes.BAYOU, BiomeTarget.ofGroupToggle("swamp", Biomes.SWAMP, Map.of(
+			entry(RUBiomes.BAYOU, BiomeTarget.ofGroupToggle("swamps", Biomes.SWAMP, Map.of(
 				TEMPERATURE, DoubleRange.between(-0.1, 0.2),
 				HUMIDITY, DoubleRange.below(3)
 			))),
-			entry(RUBiomes.OLD_GROWTH_BAYOU, BiomeTarget.ofGroupToggle("swamp", Biomes.SWAMP, Map.of(
+			entry(RUBiomes.OLD_GROWTH_BAYOU, BiomeTarget.ofGroupToggle("swamps", Biomes.SWAMP, Map.of(
 				TEMPERATURE, DoubleRange.between(-0.1, 0.2),
 				HUMIDITY, DoubleRange.above(3)
 			))),
@@ -207,12 +217,12 @@ public class RUCommonConfig {
 	}
 	
 	public static class Misc {
-		public static final Misc DEFAULT_MISC = new Misc(BranchMode.PLACE_BRANCHES, true, false, false);
+		public static final Misc DEFAULT = new Misc(BranchMode.PLACE_BRANCHES, true, false, false);
 		public static final Codec<Misc> CODEC = RecordCodecBuilder.create(i -> i.group(
-			CommentedMapCodec.commented(BranchMode.CODEC, "branch_mode", "\"place_branches\" = place RU's dedicated branch blocks, \"place_logs\" = place log blocks, \"dont_place\" = don't place any branches").orElse(BranchMode.PLACE_BRANCHES).forGetter(m -> m.branchMode),
-			CommentedMapCodec.commented(Codec.BOOL, "custom_dirts", "Controls the Peat and Silt dirt block family generation").orElse(true).forGetter(m -> m.customDirts),
-			CommentedMapCodec.commented(Codec.BOOL, "small_oak_trees", "Oak trees with thin fence-like log blocks will generate in some forests").orElse(false).forGetter(m -> m.smallOakTrees),
-			CommentedMapCodec.commented(Codec.BOOL, "painted_planks", "Re-enables the recipes of the legacy Painted Plank blocks").orElse(false).forGetter(m -> m.paintedPlanks)
+			CommentedMapCodec.optionalCommented(BranchMode.CODEC, BranchMode.PLACE_BRANCHES, "branch_mode", "\"place_branches\" = place RU's dedicated branch blocks, \"place_logs\" = place log blocks, \"dont_place\" = don't place any branches").orElse(BranchMode.PLACE_BRANCHES).forGetter(m -> m.branchMode),
+			CommentedMapCodec.optionalCommented(Codec.BOOL, true, "custom_dirts", "Controls the Peat and Silt dirt block family generation").orElse(true).forGetter(m -> m.customDirts),
+			CommentedMapCodec.optionalCommented(Codec.BOOL, false, "small_oak_trees", "Oak trees with thin fence-like log blocks will generate in some forests").orElse(false).forGetter(m -> m.smallOakTrees),
+			CommentedMapCodec.optionalCommented(Codec.BOOL, false, "painted_planks", "Re-enables the recipes of the legacy Painted Plank blocks").orElse(false).forGetter(m -> m.paintedPlanks)
 		).apply(i, Misc::new));
 		
 		public BranchMode branchMode;
@@ -252,6 +262,30 @@ public class RUCommonConfig {
 			@NotNull
 			public String getSerializedName() {
 				return this.name;
+			}
+		}
+	}
+	
+	public static class VanillaChanges {
+		public static final Map<String, String> TOGGLES = Map.ofEntries(
+			entry("birch_aspen_trees", "Birch trees will spawn with Aspen shaping,"),
+			entry("common_shrubs", "Shrubs spawn in a variety of biomes,"),
+			entry("common_tall_flowers", "Biomes that spawn tall flower patches will also spawn some RU tall flowers,"),
+			entry("mangrove_flowering_lilies", "Flowering Lily Pads spawn in Mangrove Swamps,"),
+			entry("swamp_cattails", "Cattails spawn in Swamp and Mangrove Swamps,"),
+			entry("swamp_willow_trees", "Swamps generate with rooted Willow and Oak trees,")
+		);
+		public static final VanillaChanges DEFAULT = new VanillaChanges(TOGGLES.keySet().stream().collect(Collectors.toMap(key -> key, value -> true)));
+		public static final Codec<VanillaChanges> CODEC = new CommentedUnboundedMapCodec<>(Codec.STRING, Codec.BOOL, TOGGLES).xmap(VanillaChanges::new, v -> v.toggles);
+		
+		public Map<String, Boolean> toggles;
+		
+		public VanillaChanges(Map<String, Boolean> toggles) {
+			this.toggles = new HashMap<>(toggles);
+			for (var entry : TOGGLES.entrySet()) {
+				if (!this.toggles.containsKey(entry.getKey())) {
+					this.toggles.put(entry.getKey(), true);
+				}
 			}
 		}
 	}

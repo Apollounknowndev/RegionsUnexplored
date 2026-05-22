@@ -9,6 +9,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.regions_unexplored.RegionsUnexplored;
+import net.regions_unexplored.config.state.common.RUCommonConfig;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUItems;
 import net.regions_unexplored.registry.data.RUBiomes;
@@ -157,6 +158,11 @@ public class RuLanguageProvider extends LanguageProvider {
         addOption("painted_planks", "Re-enables the recipes of the legacy Painted Plank blocks.");
         
         addCategory("biome_placements");
+        
+        addCategory("vanilla_changes");
+        for (var entry : RUCommonConfig.VanillaChanges.TOGGLES.entrySet()) {
+            addOption(entry.getKey(), entry.getValue());
+        }
     }
     
     private void addCategory(String key) {

@@ -84,8 +84,8 @@
       "minecraft:patch_large_fern",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "regions_unexplored:tree/sparse_redwoods_primary",
-      "regions_unexplored:tree/sparse_redwoods_secondary",
+      "regions_unexplored:tree/group/sparse_redwoods_primary",
+      "regions_unexplored:tree/group/sparse_redwoods_secondary",
       "regions_unexplored:shrub/group/sparse_redwoods",
       "regions_unexplored:patch/salmonberry_bush",
       "regions_unexplored:patch/fern_redwoods"

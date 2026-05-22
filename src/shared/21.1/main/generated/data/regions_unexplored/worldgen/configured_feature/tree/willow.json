@@ -1,12 +1,7 @@
 {
   "type": "minecraft:tree",
   "config": {
-    "decorators": [
-      {
-        "type": "regions_unexplored:willow",
-        "chance": 0.5
-      }
-    ],
+    "decorators": [],
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
@@ -37,6 +32,24 @@
       "limit": 1,
       "lower_size": 0,
       "upper_size": 1
+    },
+    "root_placer": {
+      "type": "regions_unexplored:willow",
+      "chance": 0.5,
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 3,
+        "min_inclusive": 2
+      },
+      "root_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "regions_unexplored:willow_log",
+          "Properties": {
+            "axis": "y"
+          }
+        }
+      }
     },
     "trunk_placer": {
       "type": "minecraft:straight_trunk_placer",

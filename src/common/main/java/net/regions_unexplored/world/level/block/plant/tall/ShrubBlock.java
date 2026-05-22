@@ -9,23 +9,11 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.regions_unexplored.registry.tag.*;
 
 public class ShrubBlock extends DoublePlantBlock {
-
     public ShrubBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
     }
-
-    @Override
-    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        if (state.getValue(HALF) != DoubleBlockHalf.UPPER) {
-            BlockPos blockpos = pos.below();
-            return this.mayPlaceOn(level.getBlockState(blockpos), level, blockpos);
-        } else {
-            BlockState blockstate = level.getBlockState(pos.below());
-            return blockstate.is(this) && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER;
-        }
-    }
-
+    
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
         return state.is(RUBlockTags.SUPPORTS_SHRUBS);

@@ -280,6 +280,7 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.PATCH_CACTUS_DENSE, patchCactus, placement(0.33f, Types.MOTION_BLOCKING));
         register(context, RuVegetationPlacements.SINGLE_BARREL_CACTUS, placement().heightmap(Types.WORLD_SURFACE_WG).filter(BlockPredicate.ONLY_IN_AIR_PREDICATE));
         register(context, RuVegetationPlacements.PATCH_FLOWERING_LILY_PAD, placement(4, Types.WORLD_SURFACE_WG));
+        register(context, VANILLA_MANGROVE_FLOWERING_LILIES, placement(2, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.SPECIAL_GIANT_LILY, placement(3, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_DROPLEAF, placementCave(100, Direction.UP).notInStructure());
         register(context, RuVegetationPlacements.PATCH_DUCKWEED,

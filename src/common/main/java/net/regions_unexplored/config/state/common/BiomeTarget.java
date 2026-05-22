@@ -18,6 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.levelgen.DensityFunction;
+import net.regions_unexplored.config.json5.CommentedMapCodec;
 import net.regions_unexplored.registry.data.RUBiomes;
 import net.regions_unexplored.registry.data.RUDensityFunctions;
 
@@ -38,9 +39,9 @@ public class BiomeTarget {
 		ResourceKey.codec(Registries.DIMENSION).lenientOptionalFieldOf("dimension", Level.OVERWORLD).forGetter(t -> t.dimension),
 		Codec.STRING.lenientOptionalFieldOf("group").forGetter(t -> t.group),
 		Codec.BOOL.fieldOf("enabled").forGetter(t -> t.enabled.orElse(false)),
-		lenientOptionalCommented(ExtraCodecs.NON_NEGATIVE_INT, "weight", "By default, all other biomes have a weight of 100.").forGetter(t -> t.weight),
+		CommentedMapCodec.lenientOptionalCommented(ExtraCodecs.NON_NEGATIVE_INT, "weight", "By default, all other biomes have a weight of 100.").forGetter(t -> t.weight),
 		ResourceKey.codec(Registries.BIOME).listOf().lenientOptionalFieldOf("can_replace").forGetter(t -> t.canReplace),
-		lenientOptionalCommented(Codec.unboundedMap(ClimateParameter.CODEC, DoubleRange.CODEC), "parameters", "Advanced feature! Edit this with caution.").forGetter(t -> t.parameters)
+		CommentedMapCodec.lenientOptionalCommented(Codec.unboundedMap(ClimateParameter.CODEC, DoubleRange.CODEC), "parameters", "Advanced feature! Edit this with caution.").forGetter(t -> t.parameters)
 	).apply(i, BiomeTarget::new));
 	
 	public static final Codec<BiomeTarget> CODEC = Codec.either(SPECIAL_CODEC, FULL_CODEC).xmap(

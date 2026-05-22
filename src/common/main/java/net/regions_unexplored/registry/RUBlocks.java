@@ -147,7 +147,7 @@ public interface RUBlocks {
     NaturalSet CHERRY_NATURAL_SET = NaturalSet.create("cherry").withBranch().withShrub();
     NaturalSet DARK_OAK_NATURAL_SET = NaturalSet.create("dark_oak").withBranch().withShrub();
     NaturalSet JUNGLE_NATURAL_SET = NaturalSet.create("jungle").withBranch().withShrub();
-    NaturalSet MANGROVE_NATURAL_SET = NaturalSet.create("mangrove").withBranch().withShrub();
+    NaturalSet MANGROVE_NATURAL_SET = NaturalSet.create("mangrove").withBranch().withShrub(MangroveShrubBlock::new);
     NaturalSet OAK_NATURAL_SET = NaturalSet.create("oak").withBranch().withShrub();
     //public static final NaturalSet PALE_OAK_NATURAL_SET = NaturalSet.create("pale_oak").createBranch().createShrub();
     NaturalSet SPRUCE_NATURAL_SET = NaturalSet.create("spruce").withBranch().withShrub();

@@ -3,8 +3,11 @@
   "config": {
     "features": [
       {
-        "feature": "regions_unexplored:tree/willow",
-        "placement": []
+        "data": {
+          "feature": "regions_unexplored:tree/willow",
+          "placement": []
+        },
+        "weight": 5
       },
       {
         "data": {
@@ -14,22 +17,12 @@
         "weight": 3
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/small_oak",
-          "placement": []
-        },
-        "weight": 2
-      },
-      {
-        "feature": "regions_unexplored:tree/oak_bush",
+        "feature": "regions_unexplored:tree/small_oak",
         "placement": []
       },
       {
-        "data": {
-          "feature": "regions_unexplored:tree/blue_magnolia",
-          "placement": []
-        },
-        "weight": 2
+        "feature": "regions_unexplored:tree/blue_magnolia",
+        "placement": []
       }
     ]
   }

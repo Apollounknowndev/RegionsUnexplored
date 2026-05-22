@@ -825,6 +825,7 @@
   "config.regions_unexplored.category.particle_rates": "Particle Rates",
   "config.regions_unexplored.category.particles": "Particles",
   "config.regions_unexplored.category.regions": "Regions",
+  "config.regions_unexplored.category.vanilla_changes": "Vanilla Changes",
   "config.regions_unexplored.category.worldgen_surface_rules": "Worldgen Surface Rules",
   "config.regions_unexplored.default": "Default: ",
   "config.regions_unexplored.option.branch_mode": "Branch Mode",

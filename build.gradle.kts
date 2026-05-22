@@ -21,7 +21,7 @@ repositories {
 }
 
 group = "net.regions_unexplored"
-version = "0.6+indev+phase2"
+version = "0.6+indev"
 val lithostitchedVersion = "1.7.7"
 
 cloche {
@@ -84,6 +84,7 @@ cloche {
         dependencies {
             fabricApi("0.116.8")
 
+            include("de.marhali:json5-java:3.0.0")
             include("com.electronwill.night-config:core:3.8.3")
             include("com.electronwill.night-config:toml:3.8.3")
 
@@ -130,6 +131,7 @@ cloche {
 
         dependencies {
             legacyClasspath("de.marhali:json5-java:3.0.0")
+            include("de.marhali:json5-java:3.0.0")
             modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-21.1")
         }
 

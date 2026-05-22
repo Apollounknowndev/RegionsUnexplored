@@ -56,7 +56,7 @@ public class BranchBlock extends BushBlock {
 
     @Override
     public boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
-        return state.is(RUBlockTags.BRANCHES_CAN_SURVIVE_ON);
+        return state.is(RUBlockTags.SUPPORTS_BRANCHES) && state.isCollisionShapeFullBlock(getter, pos);
     }
 
     @Override

@@ -25,6 +25,7 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.regions_unexplored.datagen.provider.registry.util.RUFeatureUtils;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUFeatureTypes;
+import net.regions_unexplored.registry.data.RUPlacedFeatures;
 import net.regions_unexplored.registry.tag.RUBlockTags;
 import net.regions_unexplored.worldgen.stateprovider.RandomizedGroundCoverStateProvider;
 import net.regions_unexplored.world.level.block.plant.food.DuskmelonBlock;
@@ -286,8 +287,14 @@ public class RuVegetationFeatures {
             .add(direct(pinkBioshroomPatch), 1)
         );
         //OTHER
-        registerPlaced(context, PATCH_FLOWERING_LILY_PAD, Feature.RANDOM_PATCH, randomPatch(RUBlocks.FLOWERING_LILY_PAD, 10, 7, 3));
-        registerPlaced(context, SPECIAL_GIANT_LILY, RUFeatureTypes.GIANT_LILY.get(), FeatureConfiguration.NONE);
+        var floweringLilySmall = registerPlaced(context, PATCH_FLOWERING_LILY_PAD, Feature.RANDOM_PATCH, randomPatch(RUBlocks.FLOWERING_LILY_PAD, 10, 7, 3));
+        var floweringLilyGiant = registerPlaced(context, SPECIAL_GIANT_LILY, RUFeatureTypes.GIANT_LILY.get(), FeatureConfiguration.NONE);
+        
+        registerSelector(context, RUPlacedFeatures.VANILLA_MANGROVE_FLOWERING_LILIES, builder -> builder
+            .add(direct(floweringLilySmall), 4)
+            .add(direct(floweringLilyGiant), 1)
+        );
+        
         registerPlaced(context, PATCH_DROPLEAF, Feature.RANDOM_PATCH, new RandomPatchConfiguration(16, 4, 2,
             PlacementUtils.inlinePlaced(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
                 List.of(

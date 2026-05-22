@@ -11,6 +11,20 @@
                     "condition": "regions_unexplored:config",
                     "key": "painted_planks"
                 }
+            },
+            {
+                "directory": "overlay.aspen_birch_trees",
+                "condition": {
+                    "condition": "regions_unexplored:config",
+                    "key": "vanilla_changes/aspen_birch_trees"
+                }
+            },
+            {
+                "directory": "overlay.aspen_birch_trees",
+                "condition": {
+                    "condition": "regions_unexplored:config",
+                    "key": "vanilla_changes/common_tall_flowers"
+                }
             }
         ]
     },
@@ -25,6 +39,30 @@
                     {
                         "type": "regions_unexplored:config",
                         "key": "painted_planks"
+                    }
+                ]
+            },
+            {
+                "directory": "overlay.aspen_birch_trees",
+                "formats": [1, 999],
+                "min_format": 1,
+                "max_format": 999,
+                "neoforge:conditions": [
+                    {
+                        "type": "regions_unexplored:config",
+                        "key": "vanilla_changes/aspen_birch_trees"
+                    }
+                ]
+            },
+            {
+                "directory": "overlay.aspen_birch_trees",
+                "formats": [1, 999],
+                "min_format": 1,
+                "max_format": 999,
+                "neoforge:conditions": [
+                    {
+                        "type": "regions_unexplored:config",
+                        "key": "vanilla_changes/common_tall_flowers"
                     }
                 ]
             }
