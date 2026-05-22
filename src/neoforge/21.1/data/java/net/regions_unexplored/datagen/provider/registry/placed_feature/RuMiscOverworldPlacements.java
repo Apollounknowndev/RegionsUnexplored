@@ -2,6 +2,7 @@ package net.regions_unexplored.datagen.provider.registry.placed_feature;
 
 import dev.worldgen.lithostitched.api.worldgen.blockpredicate.LithostitchedBlockPredicates;
 import dev.worldgen.lithostitched.api.worldgen.placementmodifier.LithostitchedPlacementModifiers;
+import dev.worldgen.lithostitched.impl.predicate.NotPredicate;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -58,6 +59,7 @@ public class RuMiscOverworldPlacements {
     public static final ResourceKey<PlacedFeature> SPECIAL_MOSS_PATCH_WITH_WATER = key("special/moss_patch_with_water");
     public static final ResourceKey<PlacedFeature> SPECIAL_MOSS_PATCH_WITH_WATER_SPARSE = key("special/moss_patch_with_water_sparse");
     public static final ResourceKey<PlacedFeature> SPECIAL_MARSH = key("special/marsh");
+    public static final ResourceKey<PlacedFeature> SPECIAL_CARVED_LIMITED_POOL = key("special/carved_limited_pool");
     public static final ResourceKey<PlacedFeature> SPECIAL_WATER_EDGE = key("special/water_edge");
     public static final ResourceKey<PlacedFeature> SPECIAL_ICICLE_UP = key("special/icicle_up");
     public static final ResourceKey<PlacedFeature> PATCH_SILT_PODZOL_PUMPKINS = patch("silt_podzol_pumpkins");
@@ -109,10 +111,11 @@ public class RuMiscOverworldPlacements {
         
         register(context, RuMiscOverworldPlacements.SPECIAL_BASALT_BLOB, CountOnEveryLayerPlacement.of(4), BiomeFilter.biome());
 
-        register(context, RuMiscOverworldPlacements.SPECIAL_MOSS_PATCH_WITH_WATER_DENSE, mossPatchWithWater, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1)), BiomeFilter.biome());
+        register(context, RuMiscOverworldPlacements.SPECIAL_MOSS_PATCH_WITH_WATER_DENSE, mossPatchWithWater, CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1)), BlockPredicateFilter.forPredicate(BlockPredicate.not(BlockPredicate.matchesBlocks(Blocks.MUD))), BiomeFilter.biome());
         register(context, RuMiscOverworldPlacements.SPECIAL_MOSS_PATCH_WITH_WATER, mossPatchWithWater, RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1)), BiomeFilter.biome());
         register(context, RuMiscOverworldPlacements.SPECIAL_MOSS_PATCH_WITH_WATER_SPARSE, mossPatchWithWater, RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1)), BiomeFilter.biome());
-        register(context, RuMiscOverworldPlacements.SPECIAL_MARSH, CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+        register(context, RuMiscOverworldPlacements.SPECIAL_MARSH, CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BlockPredicateFilter.forPredicate(BlockPredicate.not(BlockPredicate.matchesBlocks(Blocks.MUD))), BiomeFilter.biome());
+        register(context, RuMiscOverworldPlacements.SPECIAL_CARVED_LIMITED_POOL, BiomeFilter.biome());
         register(context, RuMiscOverworldPlacements.SPECIAL_WATER_EDGE, CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,  BiomeFilter.biome());
         register(context, RuMiscOverworldPlacements.SPECIAL_ICICLE_UP, CountPlacement.of(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BlockPredicateFilter.forPredicate(RUPlacedFeatureBootstrap.onSnowPredicate), BiomeFilter.biome()) ;
         register(context, RuMiscOverworldPlacements.PATCH_SILT_PODZOL_PUMPKINS, placement(0.5f, Types.MOTION_BLOCKING));

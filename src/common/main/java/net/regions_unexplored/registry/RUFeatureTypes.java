@@ -11,8 +11,10 @@ import net.regions_unexplored.world.level.feature.bioshroom.*;
 import net.regions_unexplored.world.level.feature.configuration.*;
 import net.regions_unexplored.world.level.feature.tree.*;
 import net.regions_unexplored.world.level.feature.tree.nether.*;
+import net.regions_unexplored.worldgen.feature.CarvedLimitedPoolFeature;
 import net.regions_unexplored.worldgen.feature.RUFallenTreeFeature;
 import net.regions_unexplored.worldgen.feature.RURockFeature;
+import net.regions_unexplored.worldgen.feature.config.CarvedLimitedPoolFeatureConfig;
 import net.regions_unexplored.worldgen.feature.config.FallenTreeConfig;
 import net.regions_unexplored.worldgen.feature.config.RockFeatureConfig;
 
@@ -72,6 +74,7 @@ public interface RUFeatureTypes {
     // 0.6+ features
     Supplier<Feature<RockFeatureConfig>> ROCK = register("rock", new RURockFeature());
     Supplier<Feature<FallenTreeConfig>> FALLEN_TREE = register("fallen_tree", new RUFallenTreeFeature());
+    Supplier<Feature<CarvedLimitedPoolFeatureConfig>> CARVED_LIMITED_POOL = register("carved_limited_pool", new CarvedLimitedPoolFeature(CarvedLimitedPoolFeatureConfig.CODEC));
 
     private static <FC extends FeatureConfiguration> Supplier<Feature<FC>> register(String name, Feature<FC> feature) {
         return Registrar.register(BuiltInRegistries.FEATURE, name, () -> feature);

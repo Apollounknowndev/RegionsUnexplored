@@ -1,0 +1,30 @@
+{
+  "type": "regions_unexplored:carved_limited_pool",
+  "config": {
+    "depth": 3,
+    "pool_allowed": {
+      "type": "minecraft:matching_blocks",
+      "blocks": "minecraft:mud"
+    },
+    "slope": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
+    },
+    "slopeDepth": 4,
+    "slopeTop": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:grass_block",
+        "Properties": {
+          "snowy": "false"
+        }
+      }
+    },
+    "wall_allowed": {
+      "type": "minecraft:matching_blocks",
+      "blocks": "minecraft:mud"
+    }
+  }
+}

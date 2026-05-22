@@ -28,16 +28,15 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStatePr
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
-import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuMiscOverworldPlacements;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUFeatureTypes;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
-import net.regions_unexplored.world.level.block.other.AshBlock;
 import net.regions_unexplored.world.level.block.wood.AspenLogBlock;
 import net.regions_unexplored.world.level.feature.configuration.PointedRedstoneClusterConfiguration;
 import net.regions_unexplored.world.level.feature.configuration.PointedRedstoneConfiguration;
+import net.regions_unexplored.worldgen.feature.config.CarvedLimitedPoolFeatureConfig;
 import net.regions_unexplored.worldgen.feature.config.FallenTreeConfig;
 import net.regions_unexplored.worldgen.feature.config.RockFeatureConfig;
 import net.regions_unexplored.worldgen.treedecorator.AttachedToLogsDecorator;
@@ -163,6 +162,7 @@ public class RuMiscOverworldFeatures {
         register(context, SPECIAL_MOSS_PATCH_WITH_WATER, Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(BlockTags.LUSH_GROUND_REPLACEABLE, simple(Blocks.MOSS_BLOCK), PlacementUtils.inlinePlaced(holderGetter.getOrThrow(RuVegetationFeatures.PATCH_SHORT_GRASS)), CaveSurface.FLOOR, ConstantInt.of(3), 0.8F, 5, 0.1F, UniformInt.of(4, 7), 0.7F));
         registerPlaced(context, SPECIAL_MARSH, RUFeatureTypes.MARSH.get(), FeatureConfiguration.NONE);
         registerPlaced(context, SPECIAL_WATER_EDGE, RUFeatureTypes.WATER_EDGE.get(), FeatureConfiguration.NONE);
+        registerPlaced(context, SPECIAL_CARVED_LIMITED_POOL, RUFeatureTypes.CARVED_LIMITED_POOL.get(), new CarvedLimitedPoolFeatureConfig(3, ConstantInt.of(4), BlockPredicate.matchesBlocks(Blocks.MUD), BlockPredicate.matchesBlocks(Blocks.MUD), BlockStateProvider.simple(Blocks.DIRT), BlockStateProvider.simple(Blocks.GRASS_BLOCK)));
         registerPlaced(context, SPECIAL_ICICLE_UP, RUFeatureTypes.ICICLE_UP.get(), FeatureConfiguration.NONE);
         registerPlaced(context, PATCH_SILT_PODZOL_PUMPKINS, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
             new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
