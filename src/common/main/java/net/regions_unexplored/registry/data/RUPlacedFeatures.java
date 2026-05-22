@@ -21,9 +21,13 @@ public interface RUPlacedFeatures {
     ResourceKey<PlacedFeature> VANILLA_BIRCH_ORANGE_CONEFLOWERS = vanilla("birch_orange_coneflowers");
     ResourceKey<PlacedFeature> VANILLA_DESERT_SANDY_GRASS = vanilla("desert_sandy_grass");
     ResourceKey<PlacedFeature> VANILLA_FOREST_FLOWERS = vanilla("forest_flowers");
+    ResourceKey<PlacedFeature> VANILLA_JUNGLE_BAMBOO_TREES = vanilla("jungle_bamboo_trees");
+    ResourceKey<PlacedFeature> VANILLA_JUNGLE_ELEPHANT_EARS = vanilla("jungle_elephant_ears");
+    ResourceKey<PlacedFeature> VANILLA_JUNGLE_HIBISCUSES = vanilla("jungle_hibiscuses");
     ResourceKey<PlacedFeature> VANILLA_MANGROVE_FLOWERING_LILIES = vanilla("mangrove_flowering_lilies");
     ResourceKey<PlacedFeature> VANILLA_PLAINS_BUSHES = vanilla("plains_bushes");
     ResourceKey<PlacedFeature> VANILLA_SAVANNA_BUSHES = vanilla("savanna_bushes");
+    ResourceKey<PlacedFeature> VANILLA_SNOWY_FROZEN_GRASS = vanilla("snowy_frozen_grass");
     ResourceKey<PlacedFeature> VANILLA_SWAMP_CATTAILS = vanilla("swamp_cattails");
     ResourceKey<PlacedFeature> VANILLA_SWAMP_TREES = vanilla("swamp_trees");
     ResourceKey<PlacedFeature> VANILLA_TAIGA_PURPLE_CONEFLOWERS = vanilla("taiga_purple_coneflowers");

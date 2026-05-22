@@ -17,14 +17,13 @@ public class RuCactusSaplingBlock extends SaplingBlock implements BonemealableBl
 
     public RuCactusSaplingBlock(TreeGrower treeGrower, Properties properties) {
         super(treeGrower, properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, Integer.valueOf(0)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, 0));
     }
 
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource randomSource) {
-        if ((level.getMaxLocalRawBrightness(pos.above()) >= 9 && randomSource.nextInt(7) == 0)&&(!(level.getBlockState(pos.below()).is(Blocks.CACTUS)||level.getBlockState(pos.below()).is(RUBlocks.SAGUARO_CACTUS.get())))) {
+        if ((level.getMaxLocalRawBrightness(pos.above()) >= 9 && randomSource.nextInt(7) == 0) && level.getBlockState(pos.below()).is(BlockTags.SAND)) {
             this.advanceTree(level, pos, state, randomSource);
         }
-
     }
 
     @Override
@@ -35,7 +34,7 @@ public class RuCactusSaplingBlock extends SaplingBlock implements BonemealableBl
 
     @Override
     public boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
-        return state.is(BlockTags.SAND) || state.is(BlockTags.DIRT) || state.is(Blocks.FARMLAND)|| state.is(RUBlocks.SAGUARO_CACTUS.get())|| state.is(Blocks.CACTUS);
+        return state.is(BlockTags.SAND) || state.is(RUBlocks.SAGUARO_CACTUS.get())|| state.is(Blocks.CACTUS);
     }
 }
 

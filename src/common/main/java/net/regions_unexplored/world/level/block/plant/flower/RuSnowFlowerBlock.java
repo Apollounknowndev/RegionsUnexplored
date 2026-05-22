@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.tag.*;
 
 public class RuSnowFlowerBlock extends FlowerBlock {
@@ -33,12 +32,12 @@ public class RuSnowFlowerBlock extends FlowerBlock {
     protected boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
         if(state.is(Blocks.SNOW)){
             if (state.getValue(SnowLayerBlock.LAYERS) == 8){
-                return state.is(RUBlockTags.SNOW_PLANT_CAN_SURVIVE_ON);
+                return state.is(RUBlockTags.SUPPORTS_FROZEN_GRASS);
             }
             else{
                 return false;
             }
         }
-        return state.is(BlockTags.DIRT) || state.is(RUBlockTags.SNOW_PLANT_CAN_SURVIVE_ON);
+        return state.is(BlockTags.DIRT) || state.is(RUBlockTags.SUPPORTS_FROZEN_GRASS);
     }
 }

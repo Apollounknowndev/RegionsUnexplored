@@ -1,4 +1,4 @@
-// 1.21.1	2026-05-22T16:27:44.0637065	Tags for minecraft:block mod id regions_unexplored
+// 1.21.1	2026-05-22T17:04:38.5602885	Tags for minecraft:block mod id regions_unexplored
 ea8b8f6b2f430d03e607eca76aae3d7cc7490153 data/c/tags/block/fences/wooden.json
 98584abed8bda97702f8e7eb6abe15be7ed61c1b data/c/tags/block/fence_gates/wooden.json
 fbd3b5574bd57030107ab08e4b239ea1520ad7e1 data/c/tags/block/glass_blocks.json
@@ -125,11 +125,11 @@ fae265555d643e9506ce4e013d9065e2ee26da1d data/regions_unexplored/tags/block/sand
 7f484a9da71adb81b82eb844d1268aaccab8d113 data/regions_unexplored/tags/block/shrubs.json
 6cd10c9b9adba00696c036d72a25a074c1ce0c15 data/regions_unexplored/tags/block/silt/all.json
 997208d68ea1f9ddf56fce28cac74845e9b0649e data/regions_unexplored/tags/block/silt/substrate.json
-45b84718284ec8d0a55cec33592469bdd56812e8 data/regions_unexplored/tags/block/snow_plant_can_survive_on.json
 79ea432d1fc4280e19dd780dde88f36fd705e846 data/regions_unexplored/tags/block/socotra_logs.json
-9a140dbcf4cd94a208d4a8999ba7b55602b674bb data/regions_unexplored/tags/block/supports_ashen_grass.json
-b147fcff5c0b4d72df1cb7809b063b2562180832 data/regions_unexplored/tags/block/supports_branches.json
-b4d6cc1ac24f3fc08875cceaee957c7e11173c12 data/regions_unexplored/tags/block/supports_grass_sprouts.json
-69c396cb051bbe9a130e6979b67065e5041b179d data/regions_unexplored/tags/block/supports_shrubs.json
+9a140dbcf4cd94a208d4a8999ba7b55602b674bb data/regions_unexplored/tags/block/supports/ashen_grass.json
+b147fcff5c0b4d72df1cb7809b063b2562180832 data/regions_unexplored/tags/block/supports/branches.json
+82b41e6597cfdee11aab89aa502190326d426377 data/regions_unexplored/tags/block/supports/frozen_grass.json
+b4d6cc1ac24f3fc08875cceaee957c7e11173c12 data/regions_unexplored/tags/block/supports/grass_sprouts.json
+69c396cb051bbe9a130e6979b67065e5041b179d data/regions_unexplored/tags/block/supports/shrubs.json
 ed1edeb3c82000dbb812130de9ffa1e3acbc3167 data/regions_unexplored/tags/block/willow_logs.json
 a30f857e667b61591cb10407147dab747f179cd1 data/regions_unexplored/tags/block/yellow_bioshroom_logs.json

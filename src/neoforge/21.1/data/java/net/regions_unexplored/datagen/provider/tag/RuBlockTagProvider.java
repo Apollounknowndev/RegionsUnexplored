@@ -982,8 +982,9 @@ public class RuBlockTagProvider extends BlockTagsProvider {
         this.tag(RUBlockTags.SUPPORTS_SHRUBS)
             .addTag(BlockTags.DIRT)
         ;
-        this.tag(RUBlockTags.SNOW_PLANT_CAN_SURVIVE_ON)
+        this.tag(RUBlockTags.SUPPORTS_FROZEN_GRASS)
             .addTag(BlockTags.SNOW)
+            .addTag(BlockTags.DIRT)
         ;
         this.tag(RUBlockTags.SUPPORTS_ASHEN_GRASS)
             .addTag(BackportedBlockTags.SUPPORTS_VEGETATION)

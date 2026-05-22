@@ -13,11 +13,11 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.registry.tag.*;
 
-public class RuSnowyPlantBlock extends BushBlock {
+public class FrozenGrassBlock extends BushBlock {
     protected static final float AABB_OFFSET = 6.0F;
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
-    public static final MapCodec<? extends RuSnowyPlantBlock> CODEC = simpleCodec(RuSnowyPlantBlock::new);
-    public RuSnowyPlantBlock(Properties properties) {
+    public static final MapCodec<? extends FrozenGrassBlock> CODEC = simpleCodec(FrozenGrassBlock::new);
+    public FrozenGrassBlock(Properties properties) {
         super(properties);
     }
 
@@ -32,21 +32,13 @@ public class RuSnowyPlantBlock extends BushBlock {
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        BlockPos blockpos = pos.below();
-
-        return this.mayPlaceOn(level.getBlockState(blockpos), level, blockpos);
+        BlockPos belowPos = pos.below();
+        return this.mayPlaceOn(level.getBlockState(belowPos), level, belowPos);
     }
 
     @Override
     public boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
-        if(state.is(Blocks.SNOW)){
-            if (state.getValue(SnowLayerBlock.LAYERS) == 8){
-                return state.is(RUBlockTags.SNOW_PLANT_CAN_SURVIVE_ON);
-            }
-            else{
-                return false;
-            }
-        }
-        return state.is(RUBlockTags.SNOW_PLANT_CAN_SURVIVE_ON);
+        if (state.is(Blocks.SNOW) && state.getValue(SnowLayerBlock.LAYERS) < 8) return false;
+        return state.is(RUBlockTags.SUPPORTS_FROZEN_GRASS);
     }
 }

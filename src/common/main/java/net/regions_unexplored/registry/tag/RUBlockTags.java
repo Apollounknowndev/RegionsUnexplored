@@ -6,10 +6,11 @@ import net.minecraft.tags.TagKey;
 import net.regions_unexplored.RegionsUnexplored;
 
 public interface RUBlockTags {
-   TagKey<Block> SUPPORTS_ASHEN_GRASS = key("supports_ashen_grass");
-   TagKey<Block> SUPPORTS_GRASS_SPROUTS = key("supports_grass_sprouts");
-   TagKey<Block> SUPPORTS_SHRUBS = key("supports_shrubs");
-   TagKey<Block> SUPPORTS_BRANCHES = key("supports_branches");
+   TagKey<Block> SUPPORTS_ASHEN_GRASS = key("supports/ashen_grass");
+   TagKey<Block> SUPPORTS_GRASS_SPROUTS = key("supports/grass_sprouts");
+   TagKey<Block> SUPPORTS_SHRUBS = key("supports/shrubs");
+   TagKey<Block> SUPPORTS_BRANCHES = key("supports/branches");
+   TagKey<Block> SUPPORTS_FROZEN_GRASS = key("supports/frozen_grass");
 
    TagKey<Block> REPLACEABLE_BY_PEAT_DIRT = key("replaceable_by_peat_dirt");
    TagKey<Block> REPLACEABLE_BY_SILT_DIRT = key("replaceable_by_silt_dirt");
@@ -24,7 +25,6 @@ public interface RUBlockTags {
    TagKey<Block> BRIM_PLANT_CAN_SURVIVE_ON = key("brim_plant_can_survive_on");
    TagKey<Block> CATTAIL_CAN_SURVIVE_ON = key("cattail_can_survive_on");
    TagKey<Block> SANDY_PLANT_CAN_SURVIVE_ON = key("sandy_plant_can_survive_on");
-   TagKey<Block> SNOW_PLANT_CAN_SURVIVE_ON = key("snow_plant_can_survive_on");
    TagKey<Block> BIOSHROOM_GROW_BLOCK = key("bioshroom_grow_block");
    TagKey<Block> REPLACEABLE_BLOCKS = key("replaceable_blocks");
    TagKey<Block> PRISMARITE_CRYSTALS = key("prismarite_crystals");

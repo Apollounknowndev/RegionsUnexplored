@@ -1,0 +1,15 @@
+{
+  "type": "lithostitched:add_features",
+  "biomes": [
+    "minecraft:grove",
+    "minecraft:ice_spikes",
+    "minecraft:snowy_plains",
+    "minecraft:snowy_taiga"
+  ],
+  "features": "regions_unexplored:vanilla_changes/snowy_frozen_grass",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/snowy_frozen_grass"
+  },
+  "step": "vegetal_decoration"
+}

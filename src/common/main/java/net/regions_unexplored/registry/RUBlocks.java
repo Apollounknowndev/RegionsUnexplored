@@ -80,7 +80,7 @@ public interface RUBlocks {
     /*-----------------PLANTS-----------------*/
     //GRASS_BLOCKS
     Supplier<Block> DEAD_STEPPE_SHRUB = register("dead_steppe_shrub", p -> new DeadShrubBlock(p.pushReaction(PushReaction.DESTROY).ignitedByLava().replaceable().mapColor(MapColor.WOOD).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
-    Supplier<Block> FROZEN_GRASS = register("frozen_grass", RuSnowyPlantBlock::new, Blocks.SHORT_GRASS);
+    Supplier<Block> FROZEN_GRASS = register("frozen_grass", FrozenGrassBlock::new, Blocks.SHORT_GRASS);
     Supplier<Block> SANDY_GRASS = register("sandy_grass", RuSandyPlantBlock::new, Blocks.SHORT_GRASS);
     Supplier<Block> SMALL_DESERT_SHRUB = register("small_desert_shrub", DeadShrubBlock::new, Blocks.DEAD_BUSH);
     Supplier<Block> STEPPE_GRASS = register("steppe_grass", p -> new RuPlantBlock(p.pushReaction(PushReaction.DESTROY).ignitedByLava().replaceable().noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)));
@@ -533,7 +533,7 @@ public interface RUBlocks {
         consumer.accept(id("mauve_sign"), id("wisteria_sign"));
         consumer.accept(id("mauve_wall_sign"), id("wisteria_wall_sign"));
         consumer.accept(id("mauve_hanging_sign"), id("wisteria_hanging_sign"));
-        consumer.accept(id("mauve_hanging_wall_sign"), id("wisteria_hanging_wall_sign"));
+        consumer.accept(id("mauve_wall_hanging_sign"), id("wisteria_wall_hanging_sign"));
     }
 
     static void init() {

@@ -1,9 +1,9 @@
 {
-  "feature": "regions_unexplored:tree/group/highland_fields",
+  "feature": "regions_unexplored:tree/bamboo",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 30
+      "chance": 10
     },
     {
       "type": "minecraft:in_square"
@@ -21,7 +21,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "regions_unexplored:pine_sapling",
+          "Name": "regions_unexplored:bamboo_sapling",
           "Properties": {
             "stage": "0"
           }

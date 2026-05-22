@@ -218,14 +218,7 @@ public class RuTreePlacements {
             )),
             BiomeFilter.biome()
         );
-        register(context, RuTreePlacements.TREE_GROUP_HIGHLAND_FIELDS,
-            rarityFilter(64),
-            inSquare(),
-            notSubmerged(),
-            PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
-            BlockPredicateFilter.forPredicate(saplingWouldSurvive(RUBlocks.PINE_NATURAL_SET)),
-            BiomeFilter.biome()
-        );
+        register(context, RuTreePlacements.TREE_GROUP_HIGHLAND_FIELDS, placementTree(0.033f, RUBlocks.PINE_NATURAL_SET));
         register(context, RuTreePlacements.TREE_GROUP_MOUNTAINS, placementTree(13, RUBlocks.PINE_NATURAL_SET));
         register(context, RuTreePlacements.TREE_GROUP_PINE_SLOPES, placementTree(11, RUBlocks.PINE_NATURAL_SET));
         register(context, RuTreePlacements.TREE_GROUP_PINE_TAIGA_SECONDARY, placementTree(2, RUBlocks.PINE_NATURAL_SET).filter(RUPlacedFeatureBootstrap.onGrassBlockPredicate));
