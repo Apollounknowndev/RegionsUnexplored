@@ -178,10 +178,11 @@ public class WetBiomes {
 
     public static Biome marsh(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.9f)
-            .waterColor(-12092489)
-            .waterFogColor(-13677218)
-            .foliageColorOverride(-8339092)
-            .grassColorOverride(-8536223)
+            .waterColor(0x477bb7)
+            .waterFogColor(0x2f4d5e)
+            .foliageColorOverride(0x80c16c)
+            .grassColorModifier(BiomeSpecialEffects.GrassColorModifier.SWAMP)
+            .grassColorOverride(0x7dbf61)
             .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SWAMP));
 
         //add features

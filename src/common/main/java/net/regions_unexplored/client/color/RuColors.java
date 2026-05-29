@@ -86,13 +86,18 @@ public class RuColors {
                 RUBlocks.ENCHANTED_BIRCH_LEAF_LITTER.get()
         );
         
-        TintHelper.tintBlocks((state, getter, pos, index) -> 0x81cff9, RUBlocks.SKY_WISTERIA_NATURAL_SET.getLeaves());
-        TintHelper.tintBlocks((state, getter, pos, index) -> 0xc394ef, RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves());
-        TintHelper.tintBlocks((state, getter, pos, index) -> 0xffa3ad, RUBlocks.SALMON_WISTERIA_NATURAL_SET.getLeaves());
-        
-        TintHelper.tintBlocks((state, getter, pos, index) -> index == 0 ? 0x81cff9 : -1, RUBlocks.SKY_WISTERIA_NATURAL_SET.getVines());
-        TintHelper.tintBlocks((state, getter, pos, index) -> index == 0 ? 0xc394ef : -1, RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getVines());
-        TintHelper.tintBlocks((state, getter, pos, index) -> index == 0 ? 0xffa3ad : -1, RUBlocks.SALMON_WISTERIA_NATURAL_SET.getVines());
+        TintHelper.tintBlocks((state, getter, pos, index) -> 0x81cff9,
+            RUBlocks.SKY_WISTERIA_NATURAL_SET.getLeaves(),
+            RUBlocks.SKY_WISTERIA_NATURAL_SET.getVines()
+        );
+        TintHelper.tintBlocks((state, getter, pos, index) -> 0xc394ef,
+            RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves(),
+            RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getVines()
+        );
+        TintHelper.tintBlocks((state, getter, pos, index) -> 0xffa3ad,
+            RUBlocks.SALMON_WISTERIA_NATURAL_SET.getLeaves(),
+            RUBlocks.SALMON_WISTERIA_NATURAL_SET.getVines()
+        );
     }
 
 

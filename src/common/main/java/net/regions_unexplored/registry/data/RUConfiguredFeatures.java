@@ -77,9 +77,6 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_RED_MAPLE = tree("big_red_maple");
     ResourceKey<ConfiguredFeature<?,?>> TREE_ORANGE_MAPLE = tree("orange_maple");
     ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_ORANGE_MAPLE = tree("big_orange_maple");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_MAUVE_OAK_BEE = tree("mauve_oak_bee");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_MAUVE_OAK = tree("mauve_oak");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_BIG_MAUVE_OAK = tree("big_mauve_oak");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_WITH_BRANCH = tree("oak_with_branch");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK_WITH_FLOWERS = tree("oak_with_flowers");
     ResourceKey<ConfiguredFeature<?,?>> TREE_OAK = tree("oak");

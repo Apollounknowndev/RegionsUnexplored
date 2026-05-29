@@ -11,23 +11,24 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorTy
 import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.type.leaves.HangingVinesBlock;
 
-public class HangingLeavesDecorator extends TreeDecorator {
-	public static final MapCodec<HangingLeavesDecorator> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
-		BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(HangingLeavesDecorator::block),
-		Codec.floatRange(0, 1).fieldOf("probability").forGetter(HangingLeavesDecorator::probability)
-	).apply(i, HangingLeavesDecorator::new));
-	public static final TreeDecoratorType<HangingLeavesDecorator> TYPE = new TreeDecoratorType<>(CODEC);
+public class HangingVinesDecorator extends TreeDecorator {
+	public static final MapCodec<HangingVinesDecorator> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
+		BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(HangingVinesDecorator::block),
+		Codec.floatRange(0, 1).fieldOf("probability").forGetter(HangingVinesDecorator::probability)
+	).apply(i, HangingVinesDecorator::new));
+	public static final TreeDecoratorType<HangingVinesDecorator> TYPE = new TreeDecoratorType<>(CODEC);
+	public static final float CONTINUE_EXTENSION_CHANCE = 0.4f;
 	
 	private final HangingVinesBlock block;
 	private final float probability;
 	
-	public static HangingLeavesDecorator create(NaturalSet set, float probability) {
-		return new HangingLeavesDecorator(set.getVines(), probability);
+	public static HangingVinesDecorator create(NaturalSet set, float probability) {
+		return new HangingVinesDecorator(set.getVines(), probability);
 	}
 	
-	public HangingLeavesDecorator(Block block, float probability) {
+	public HangingVinesDecorator(Block block, float probability) {
 		if (!(block instanceof HangingVinesBlock hangingLeaves)) {
-			throw new IllegalArgumentException("`hanging_leaves` tree decorator requires instance of HangingLeavesBlock, got: " + block.getClass().getSimpleName());
+			throw new IllegalArgumentException("`hanging_leaves` tree decorator requires instance of HangingVinesBlock, got: " + block.getClass().getSimpleName());
 		}
 		this.block = hangingLeaves;
 		this.probability = probability;
@@ -47,7 +48,7 @@ public class HangingLeavesDecorator extends TreeDecorator {
 			if (this.probability > context.random().nextFloat()) {
 				BlockPos pos = leafPos.below();
 				if (context.isAir(pos)) {
-					while (context.isAir(pos.below()) && !(context.random().nextFloat() < 0.5)) {
+					while (context.isAir(pos.below()) && context.random().nextFloat() > CONTINUE_EXTENSION_CHANCE) {
 						context.setBlock(pos, this.block.defaultBlockState().setValue(HangingVinesBlock.TIP, false));
 						pos = pos.below();
 					}

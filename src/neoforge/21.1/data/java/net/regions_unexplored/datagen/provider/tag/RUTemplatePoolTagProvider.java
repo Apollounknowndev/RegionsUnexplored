@@ -22,7 +22,7 @@ public class RUTemplatePoolTagProvider extends TagsProvider<StructureTemplatePoo
     @Override
     @SuppressWarnings(value = "all")
     public void addTags(HolderLookup.Provider provider) {
-        this.tag(LithostitchedTemplatePoolTags.TRIAL_SPAWNER_MELLE)
+        this.tag(LithostitchedTemplatePoolTags.TRIAL_SPAWNER_MELEE)
             .add(TRIAL_CHAMBERS_ASHEN);
     }
 }

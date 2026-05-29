@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_bamboo_log": {
+    "has_prismarite_cluster": {
       "conditions": {
         "items": [
           {
-            "items": "#regions_unexplored:bamboo_logs"
+            "items": "regions_unexplored:prismarite_cluster"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bamboo"
+        "recipe": "regions_unexplored:iridescent_ring"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_bamboo_log"
+      "has_prismarite_cluster"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bamboo"
+      "regions_unexplored:iridescent_ring"
     ]
   }
 }

@@ -47,6 +47,7 @@ public class RegionsUnexplored {
 		//CompostableBlocks.setup();
 		FlammableBlocks.setup();
 		
+		RUBlocks.initPostRegistryFreeze();
 		RUEntityTypes.initPostRegistryFreeze();
 	}
 

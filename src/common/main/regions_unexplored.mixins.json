@@ -11,9 +11,9 @@
     "BiomeMixin",
     "CropPlacerMixin",
     "EatBlockGoalMixin",
-    "LocalPlayerMixin",
     "NetherrackBlockMixin",
     "TrunkPlacerDirtMixin",
+    "VillagerProfessionAccessor",
     "WorldCarverMixin"
   ],
   "server": [],

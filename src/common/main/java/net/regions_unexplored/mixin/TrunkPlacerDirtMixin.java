@@ -17,12 +17,15 @@ import java.util.function.BiConsumer;
 
 @Mixin(TrunkPlacer.class)
 public abstract class TrunkPlacerDirtMixin {
-    @Inject(at=@At("HEAD"), method = "setDirtAt(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;)V")
+    @Inject(
+        method = "setDirtAt(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;)V",
+        at = @At("HEAD")
+    )
     private static void regions_unexplored$setDirtAt(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> dirt, RandomSource random, BlockPos pos, TreeConfiguration configuration, CallbackInfo ci) {
-        if ((TrunkPlacerDirtUtil.isForestGrass(level, pos))) {
+        if ((TrunkPlacerDirtUtil.isPeatDirt(level, pos))) {
             dirt.accept(pos, RUBlocks.PEAT_DIRT.get().defaultBlockState());
         }
-        if ((TrunkPlacerDirtUtil.isPlainsGrass(level, pos))) {
+        if ((TrunkPlacerDirtUtil.isSiltDirt(level, pos))) {
             dirt.accept(pos, RUBlocks.SILT_DIRT.get().defaultBlockState());
         }
         if ((TrunkPlacerDirtUtil.isAlphaGrass(level, pos))) {

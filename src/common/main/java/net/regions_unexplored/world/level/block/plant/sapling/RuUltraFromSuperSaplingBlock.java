@@ -52,7 +52,6 @@ public class RuUltraFromSuperSaplingBlock extends BushBlock implements Bonemeala
 
     @Override
     public void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
-//        if (!serverLevel.isAreaLoaded(blockPos, 1)) return;
         if (serverLevel.getMaxLocalRawBrightness(blockPos.above()) >= 9 && randomSource.nextInt(7) == 0) {
             this.advanceTree(serverLevel, blockPos, blockState, randomSource);
         }

@@ -309,7 +309,7 @@ public class RuItemTagProvider extends ItemTagsProvider {
                 .add(RUBlocks.MAPLE_WOOD_SET.getWood().asItem())
                 .add(RUBlocks.MAPLE_WOOD_SET.getStrippedWood().asItem())
         ;
-        this.tag(RUItemTags.MAUVE_LOGS)
+        this.tag(RUItemTags.WISTERIA_LOGS)
                 .add(RUBlocks.WISTERIA_WOOD_SET.getLog().asItem())
                 .add(RUBlocks.WISTERIA_WOOD_SET.getStrippedLog().asItem())
                 .add(RUBlocks.WISTERIA_WOOD_SET.getWood().asItem())

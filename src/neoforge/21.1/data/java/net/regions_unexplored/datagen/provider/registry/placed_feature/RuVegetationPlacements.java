@@ -144,17 +144,13 @@ public class RuVegetationPlacements {
         
         register(context, RuVegetationPlacements.PATCH_BAMBOO_FLOWERS, placement(0.2f, Types.MOTION_BLOCKING));
         register(context, RuVegetationPlacements.PATCH_SNOWY_FLOWERS, placement(0.1f, Types.MOTION_BLOCKING));
-        register(context, RuVegetationPlacements.SINGLE_BLACKWOOD_BIOSHROOMS,
-            count(5),
-            inSquare(),
-            notSubmerged(),
-            HeightmapPlacement.onHeightmap(Types.OCEAN_FLOOR_WG),
-            SurfaceRelativeThresholdFilter.of(Types.OCEAN_FLOOR, Integer.MIN_VALUE, -16),
-            BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+        register(context, RuVegetationPlacements.SINGLE_BLACKWOOD_BIOSHROOMS, placement(0.25f, Types.OCEAN_FLOOR_WG)
+            .notSubmerged()
+            .add(SurfaceRelativeThresholdFilter.of(Types.OCEAN_FLOOR, Integer.MIN_VALUE, -16))
+            .filter(BlockPredicate.allOf(
                 BlockPredicate.wouldSurvive(RUBlocks.BLUE_BIOSHROOM.get().defaultBlockState(), Vec3i.ZERO),
                 BlockPredicate.ONLY_IN_AIR_PREDICATE
-            )),
-            BiomeFilter.biome()
+            ))
         );
         //GRASS
         register(context, RuVegetationPlacements.PATCH_SHORT_GRASS_CAVES, patchGrass, placementCave(150, Direction.DOWN));
@@ -188,7 +184,7 @@ public class RuVegetationPlacements {
             BiomeFilter.biome()
         );
         
-        register(context, RuVegetationPlacements.PATCH_FLOWERS_WISTERIA_GROVE, surfaceSpread(2, Types.MOTION_BLOCKING_NO_LEAVES));
+        register(context, RuVegetationPlacements.PATCH_FLOWERS_WISTERIA_GROVE, surfaceSpread(0.5, Types.MOTION_BLOCKING_NO_LEAVES));
         
         register(context, RuVegetationPlacements.PATCH_SHORT_GRASS_SPARSE, patchGrass, surfaceSpread(2, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_SHORT_GRASS, patchGrass, surfaceSpread(4, Types.WORLD_SURFACE_WG));
@@ -292,10 +288,10 @@ public class RuVegetationPlacements {
         register(context, VANILLA_FOREST_FLOWERS, placement(0.025f, Types.MOTION_BLOCKING));
         register(context, VANILLA_JUNGLE_BAMBOO_TREES, getter.getOrThrow(RUConfiguredFeatures.TREE_BAMBOO), placementTree(0.1f, RUBlocks.BAMBOO_NATURAL_SET));
         register(context, VANILLA_JUNGLE_ELEPHANT_EARS, getter.getOrThrow(RuVegetationFeatures.PATCH_ELEPHANT_EAR), placement(0.5f, Types.WORLD_SURFACE_WG));
-        register(context, VANILLA_JUNGLE_HIBISCUSES, getter.getOrThrow(RUConfiguredFeatures.fromPlaced(PATCH_HIBISCUS)),placement(0.2f, Types.WORLD_SURFACE_WG));
+        register(context, VANILLA_JUNGLE_HIBISCUSES, getter.getOrThrow(RUConfiguredFeatures.fromPlaced(PATCH_HIBISCUS)), placement(0.2f, Types.WORLD_SURFACE_WG));
         register(context, VANILLA_MANGROVE_FLOWERING_LILIES, placement(2, Types.WORLD_SURFACE_WG));
-        register(context, VANILLA_PLAINS_BUSHES, getter.getOrThrow(RUConfiguredFeatures.TREE_OAK_SHRUB_SMALL), placement(0.2f, Types.OCEAN_FLOOR));
-        register(context, VANILLA_SAVANNA_BUSHES, placement(1, Types.OCEAN_FLOOR));
+        register(context, VANILLA_PLAINS_BUSHES, getter.getOrThrow(RUConfiguredFeatures.TREE_OAK_SHRUB_SMALL), placementTree(0.2f, Blocks.OAK_SAPLING));
+        register(context, VANILLA_SAVANNA_BUSHES, placementTree(1, Blocks.ACACIA_SAPLING));
         register(context, VANILLA_SNOWY_FROZEN_GRASS, getter.getOrThrow(RUConfiguredFeatures.fromPlaced(PATCH_FROZEN_GRASS)), placement(1, Types.WORLD_SURFACE_WG));
         register(context, VANILLA_SWAMP_CATTAILS, getter.getOrThrow(RuAquaticFeatures.PATCH_CATTAIL), placement().count(0.5f).atHeight(VerticalAnchor.absolute(62)));
         register(context, VANILLA_SWAMP_TREES, placement(2, Types.OCEAN_FLOOR).maxWaterDepth(2).filter(Blocks.OAK_SAPLING));

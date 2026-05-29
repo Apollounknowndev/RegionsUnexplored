@@ -1,4 +1,4 @@
-// 1.21.1	2026-05-22T16:27:44.0678104	Tags for minecraft:item mod id regions_unexplored
+// 1.21.1	2026-05-28T20:20:25.9037521	Tags for minecraft:item mod id regions_unexplored
 ea8b8f6b2f430d03e607eca76aae3d7cc7490153 data/c/tags/item/fences/wooden.json
 98584abed8bda97702f8e7eb6abe15be7ed61c1b data/c/tags/item/fence_gates/wooden.json
 e76db328747695a5123be2071120c7457aea0d6e data/c/tags/item/foods/fruit.json
@@ -64,7 +64,6 @@ b80440c23d00bc9266a6d6e1072130bbe7e47b54 data/regions_unexplored/tags/item/larch
 1cfa87749ad67495869f1b3d881cdf2d20c9b9e5 data/regions_unexplored/tags/item/logs.json
 097cbfebd53f94f513e8e6c783e44e00fdd9385d data/regions_unexplored/tags/item/magnolia_logs.json
 cc9f68f8f8188f9bd378cf90a07d557dde9ce4f9 data/regions_unexplored/tags/item/maple_logs.json
-59535e3c216b6039f410cd031690445aa5be56ab data/regions_unexplored/tags/item/mauve_logs.json
 bad9e0deb4c1548ac1165e6f47f1042270900ee7 data/regions_unexplored/tags/item/palm_logs.json
 595b1a9d926005f2bcb6fd5fa5531fbfa5cf4a3a data/regions_unexplored/tags/item/pine_logs.json
 65067910cc94375d05668858f2a9bfd23af682e6 data/regions_unexplored/tags/item/pink_bioshroom_logs.json
@@ -74,4 +73,5 @@ bad9e0deb4c1548ac1165e6f47f1042270900ee7 data/regions_unexplored/tags/item/palm_
 4193c918dee233fc211852bcce561c70095aeb6b data/regions_unexplored/tags/item/snowbelle.json
 79ea432d1fc4280e19dd780dde88f36fd705e846 data/regions_unexplored/tags/item/socotra_logs.json
 ed1edeb3c82000dbb812130de9ffa1e3acbc3167 data/regions_unexplored/tags/item/willow_logs.json
+59535e3c216b6039f410cd031690445aa5be56ab data/regions_unexplored/tags/item/wisteria_logs.json
 a30f857e667b61591cb10407147dab747f179cd1 data/regions_unexplored/tags/item/yellow_bioshroom_logs.json

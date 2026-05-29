@@ -21,8 +21,9 @@ repositories {
 }
 
 group = "net.regions_unexplored"
-version = "0.6+indev"
-val lithostitchedVersion = "1.7.7"
+version = "0.6"
+val lithostitchedVersion = "1.7.9"
+val wikifulVersion = "0.3.1"
 
 cloche {
     metadata {
@@ -36,9 +37,11 @@ cloche {
         issues = "https://github.com/UHQ-GAMES-MODS/RegionsUnexplored/issues"
         sources = "https://github.com/UHQ-GAMES-MODS/RegionsUnexplored"
 
-        author("UHQ_Games")
-        author("KirboSoftware")
         author("Apollo")
+        author("UHQ_Games")
+        contributor("KelloVerra (Texture Artist)")
+        contributor("KirboSoftware")
+        contributor("voidsongdragonfly")
     }
 
     common {
@@ -90,6 +93,7 @@ cloche {
 
             modRuntimeOnly("maven.modrinth:world-preview:qc0AtV3T")
             modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-fabric-21.1")
+            modImplementation("maven.modrinth:wikiful:$wikifulVersion-fabric-1.21.1")
 
             modImplementation("com.terraformersmc:modmenu:11.0.3")
         }

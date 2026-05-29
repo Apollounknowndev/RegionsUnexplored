@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "P": {
+      "item": "regions_unexplored:prismarite_cluster"
+    }
+  },
+  "pattern": [
+    " P ",
+    "G G",
+    " G "
+  ],
+  "result": {
+    "count": 1,
+    "id": "regions_unexplored:iridescent_ring"
+  }
+}

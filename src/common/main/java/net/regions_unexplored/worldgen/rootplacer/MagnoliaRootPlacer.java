@@ -22,6 +22,7 @@ import java.util.function.UnaryOperator;
 public class MagnoliaRootPlacer extends RootPlacer {
 	public static final MapCodec<MagnoliaRootPlacer> CODEC = RecordCodecBuilder.mapCodec(i -> rootPlacerParts(i).apply(i, MagnoliaRootPlacer::new));
 	public static final RootPlacerType<MagnoliaRootPlacer> TYPE = new RootPlacerType<>(CODEC);
+	private static final int MAX_ROOT_LENGTH = 6;
 	
 	public MagnoliaRootPlacer(IntProvider trunkOffsetY, BlockStateProvider rootProvider, Optional<AboveRootPlacement> aboveRootPlacement) {
 		super(trunkOffsetY, rootProvider, aboveRootPlacement);
@@ -40,14 +41,16 @@ public class MagnoliaRootPlacer extends RootPlacer {
 		
 		BlockPos.MutableBlockPos pos = trunkOrigin.relative(rootDirection).mutable();
 		rootPositions.put(pos.immutable(), s -> s.trySetValue(RotatedPillarBlock.AXIS, rootDirection.getAxis()));
-		while (this.canPlaceRoot(level, pos)) {
+		for (int i = 0; i < MAX_ROOT_LENGTH; i++) {
+			if (!this.canPlaceRoot(level, pos)) break;
 			pos.move(Direction.DOWN);
 			rootPositions.put(pos.immutable(), s -> s);
 		}
 		
 		pos = trunkOrigin.relative(rootDirection.getClockWise()).relative(rootDirection.getOpposite()).mutable();
 		rootPositions.put(pos.immutable(), s -> s);
-		while (this.canPlaceRoot(level, pos)) {
+		for (int i = 0; i < MAX_ROOT_LENGTH; i++) {
+			if (!this.canPlaceRoot(level, pos)) break;
 			pos.move(Direction.DOWN);
 			rootPositions.put(pos.immutable(), s -> s);
 		}

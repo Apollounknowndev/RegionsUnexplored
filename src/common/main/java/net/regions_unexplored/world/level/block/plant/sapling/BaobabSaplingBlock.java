@@ -19,24 +19,23 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.block.sapling.RuUltraFromMegaTreeGrower;
 
-public class RuUltraFromMegaSaplingBlock extends BushBlock implements BonemealableBlock {
+public class BaobabSaplingBlock extends BushBlock implements BonemealableBlock {
 
-    public static final MapCodec<RuUltraFromMegaSaplingBlock> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
-        return instance.group(RuUltraFromMegaTreeGrower.CODEC.fieldOf("tree").forGetter((ultraSaplingBlock) -> {
-            return ultraSaplingBlock.treeGrower;
-        }), propertiesCodec()).apply(instance, RuUltraFromMegaSaplingBlock::new);
-    });
+    public static final MapCodec<BaobabSaplingBlock> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
+        RuUltraFromMegaTreeGrower.CODEC.fieldOf("tree").forGetter(b -> b.treeGrower),
+        propertiesCodec()
+    ).apply(i, BaobabSaplingBlock::new));
 
     public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
     protected static final float AABB_OFFSET = 6.0F;
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
     protected final RuUltraFromMegaTreeGrower treeGrower;
 
-    public MapCodec<? extends RuUltraFromMegaSaplingBlock> codec() {
+    public MapCodec<? extends BaobabSaplingBlock> codec() {
         return CODEC;
     }
 
-    public RuUltraFromMegaSaplingBlock(RuUltraFromMegaTreeGrower treeGrower, Properties properties) {
+    public BaobabSaplingBlock(RuUltraFromMegaTreeGrower treeGrower, Properties properties) {
         super(properties);
         this.treeGrower = treeGrower;
         this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, Integer.valueOf(0)));

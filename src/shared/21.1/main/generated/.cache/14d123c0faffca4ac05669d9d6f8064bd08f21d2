@@ -1,4 +1,4 @@
-// 1.21.1	2026-05-22T17:04:38.5602885	Tags for minecraft:block mod id regions_unexplored
+// 1.21.1	2026-05-28T20:20:25.9016165	Tags for minecraft:block mod id regions_unexplored
 ea8b8f6b2f430d03e607eca76aae3d7cc7490153 data/c/tags/block/fences/wooden.json
 98584abed8bda97702f8e7eb6abe15be7ed61c1b data/c/tags/block/fence_gates/wooden.json
 fbd3b5574bd57030107ab08e4b239ea1520ad7e1 data/c/tags/block/glass_blocks.json
@@ -41,7 +41,7 @@ c4bf46aa5158748c8dac7d9bb1a478951e35bc19 data/minecraft/tags/block/infiniburn_ov
 3d6edb89019e02f0ea60442e142c457a0179fd2b data/minecraft/tags/block/inside_step_sound_blocks.json
 61f0e6b377923bb6ddeb7c13509e62dc21aa636e data/minecraft/tags/block/leaves.json
 c95c48f7f02e110d75aa593f55ddd2ccac780c1b data/minecraft/tags/block/logs.json
-55a0894bc126d841a7e0db8f5846a3c0311cc83d data/minecraft/tags/block/logs_that_burn.json
+3a86aa69fea45f0216d7ff886ee487e53fcae70d data/minecraft/tags/block/logs_that_burn.json
 4df567e2c152a3325acd0907b34a48ac2afaa26b data/minecraft/tags/block/mangrove_logs_can_grow_through.json
 4df567e2c152a3325acd0907b34a48ac2afaa26b data/minecraft/tags/block/mangrove_roots_can_grow_through.json
 d9653f34b5be7b09f4247bc832d5f8eaaeb41259 data/minecraft/tags/block/mineable/axe.json
@@ -85,6 +85,7 @@ ab2eeeda57b8067f0e40b774e11a1e38e2b14cf5 data/minecraft/tags/block/wooden_pressu
 0e27d2244233e0e7cabbb68dc2b6362526a144fe data/minecraft/tags/block/wooden_slabs.json
 59d8bf3a1fa308fc4c4306bad33a1e9c09ded614 data/minecraft/tags/block/wooden_stairs.json
 4127e9ecaa0b714c61474a92ca5b589189ec2d21 data/minecraft/tags/block/wooden_trapdoors.json
+290567e9f2cc2c3c765244cc99cb009af2d0fac5 data/neoforge/tags/block/villager_farmlands.json
 66370ed2ea085b66c6f757e54d3e7c86b58b4f7a data/regions_unexplored/tags/block/alpha_logs.json
 7a4dec34e932546179edd4bac8a97db6f52f9b07 data/regions_unexplored/tags/block/ash.json
 90f09119f93ff3ce271235f78d540f91522828a5 data/regions_unexplored/tags/block/bamboo_logs.json
@@ -110,7 +111,6 @@ cfa21f84ebdcb69008792bb52248b17096d51e21 data/regions_unexplored/tags/block/josh
 b80440c23d00bc9266a6d6e1072130bbe7e47b54 data/regions_unexplored/tags/block/larch_logs.json
 097cbfebd53f94f513e8e6c783e44e00fdd9385d data/regions_unexplored/tags/block/magnolia_logs.json
 cc9f68f8f8188f9bd378cf90a07d557dde9ce4f9 data/regions_unexplored/tags/block/maple_logs.json
-59535e3c216b6039f410cd031690445aa5be56ab data/regions_unexplored/tags/block/mauve_logs.json
 bad9e0deb4c1548ac1165e6f47f1042270900ee7 data/regions_unexplored/tags/block/palm_logs.json
 09b8ca6ce2a84cb36aad9b34d193863f7c0a78d9 data/regions_unexplored/tags/block/peat/all.json
 689ad88e2b7b320dac85edce1b5ff2cc375a8afe data/regions_unexplored/tags/block/peat/substrate.json
@@ -132,4 +132,5 @@ b147fcff5c0b4d72df1cb7809b063b2562180832 data/regions_unexplored/tags/block/supp
 b4d6cc1ac24f3fc08875cceaee957c7e11173c12 data/regions_unexplored/tags/block/supports/grass_sprouts.json
 69c396cb051bbe9a130e6979b67065e5041b179d data/regions_unexplored/tags/block/supports/shrubs.json
 ed1edeb3c82000dbb812130de9ffa1e3acbc3167 data/regions_unexplored/tags/block/willow_logs.json
+59535e3c216b6039f410cd031690445aa5be56ab data/regions_unexplored/tags/block/wisteria_logs.json
 a30f857e667b61591cb10407147dab747f179cd1 data/regions_unexplored/tags/block/yellow_bioshroom_logs.json

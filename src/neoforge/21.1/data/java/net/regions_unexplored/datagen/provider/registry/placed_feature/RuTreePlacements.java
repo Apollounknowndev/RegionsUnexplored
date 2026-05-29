@@ -157,7 +157,7 @@ public class RuTreePlacements {
         
         register(context, TREE_GROUP_BLACKWOOD_TAIGA_PRIMARY, surfaceSpread(24, Types.OCEAN_FLOOR, RUBlocks.BLACKWOOD_NATURAL_SET.getSapling()));
         register(context, TREE_GROUP_BLACKWOOD_TAIGA_SECONDARY, surfaceSpread(36, Types.OCEAN_FLOOR, RUBlocks.BLACKWOOD_NATURAL_SET.getSapling()));
-        register(context, TREE_GROUP_BLACKWOOD_TAIGA_TERTIARY, surfaceSpread(48, Types.OCEAN_FLOOR));
+        register(context, TREE_GROUP_BLACKWOOD_TAIGA_TERTIARY, surfaceSpread(36, Types.OCEAN_FLOOR));
         
         register(context, RuTreePlacements.TREE_GROUP_OLD_GROWTH_BAYOU, placement(4, Types.OCEAN_FLOOR).maxWaterDepth(2).filter(RUBlocks.CYPRESS_NATURAL_SET.getSapling()));
         register(context, RuTreePlacements.TREE_GROUP_BAYOU, placement(4, Types.OCEAN_FLOOR).maxWaterDepth(2).filter(RUBlocks.CYPRESS_NATURAL_SET.getSapling()));
