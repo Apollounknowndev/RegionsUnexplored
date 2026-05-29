@@ -47,7 +47,24 @@ public class RuRecipeProvider extends RecipeProvider implements IConditionBuilde
     @Override
     protected void buildRecipes(RecipeOutput consumer) {
         /*-----------------CAVE_BLOCKS_DONE-----------------*/
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, RUBlocks.PRISMOSS.get(), 1).define('#', Blocks.STONE).define('X', RUBlocks.PRISMOSS_SPROUT.get()).pattern("X").pattern("#").group("prismoss").unlockedBy("has_stone", has(Blocks.STONE)).save(consumer);
+        
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RUItems.IRIDESCENT_RING.get(), 1)
+            .define('P', RUBlocks.PRISMARITE_CLUSTER.get())
+            .define('G', Items.GOLD_INGOT)
+            .pattern(" P ")
+            .pattern("G G")
+            .pattern(" G ")
+            .unlockedBy("has_prismarite_cluster", has(RUBlocks.PRISMARITE_CLUSTER.get()))
+            .save(consumer);
+        
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, RUBlocks.PRISMOSS.get(), 1)
+            .define('#', Blocks.STONE)
+            .define('X', RUBlocks.PRISMOSS_SPROUT.get())
+            .pattern("X")
+            .pattern("#")
+            .group("prismoss")
+            .unlockedBy("has_stone", has(Blocks.STONE))
+            .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, RUBlocks.DEEPSLATE_PRISMOSS.get(), 1).define('#', Blocks.DEEPSLATE).define('X', RUBlocks.PRISMOSS_SPROUT.get()).pattern("X").pattern("#").group("prismoss").unlockedBy("has_deepslate", has(Blocks.DEEPSLATE)).save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RUBlocks.HANGING_PRISMARITE.get(), 1).define('#', RUBlocks.PRISMARITE_CLUSTER.get()).pattern("#").pattern("#").pattern("#").group("prismarite").unlockedBy("has_prismarite", has(RUBlocks.PRISMARITE_CLUSTER.get())).save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RUBlocks.LARGE_PRISMARITE_CLUSTER.get(), 1).define('#', RUBlocks.PRISMARITE_CLUSTER.get()).pattern("#").pattern("#").group("prismarite").unlockedBy("has_prismarite", has(RUBlocks.PRISMARITE_CLUSTER.get())).save(consumer);
@@ -311,8 +328,8 @@ public class RuRecipeProvider extends RecipeProvider implements IConditionBuilde
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, RUBlocks.ASH.get(), 1).define('#', Items.GUNPOWDER).pattern("##").pattern("##").group("ash").unlockedBy("has_gunpowder", has(Items.GUNPOWDER)).save(consumer);
 
         /*-----------------WOOD_TYPES-----------------*/
-        planksFromLogs(consumer, Blocks.BAMBOO_PLANKS, RUItemTags.BAMBOO_LOGS, 4);
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.BAMBOO, 1).define('#', RUItemTags.BAMBOO_LOGS).pattern("#").pattern("#").group("bamboo").unlockedBy("has_bamboo_log", has(RUItemTags.BAMBOO_LOGS)).save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Blocks.BAMBOO_PLANKS, 4).requires(RUItemTags.BAMBOO_LOGS).group("planks").unlockedBy("has_logs", has(RUItemTags.BAMBOO_LOGS)).save(consumer, "regions_unexplored:bamboo_planks");
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.BAMBOO, 1).define('#', RUItemTags.BAMBOO_LOGS).pattern("#").pattern("#").group("bamboo").unlockedBy("has_bamboo_log", has(RUItemTags.BAMBOO_LOGS)).save(consumer, "regions_unexplored:bamboo");
         //ALPHA_BLOCKS
         woodenFence(consumer, Items.OAK_FENCE, RUBlocks.ALPHA_WOOD_SET.getPlanks());
         woodenDoor(consumer, Items.OAK_DOOR, RUBlocks.ALPHA_WOOD_SET.getPlanks());

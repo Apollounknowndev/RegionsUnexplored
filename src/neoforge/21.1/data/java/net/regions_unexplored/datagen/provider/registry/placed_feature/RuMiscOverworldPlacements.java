@@ -118,7 +118,7 @@ public class RuMiscOverworldPlacements {
         register(context, RuMiscOverworldPlacements.SPECIAL_CARVED_LIMITED_POOL, BiomeFilter.biome());
         register(context, RuMiscOverworldPlacements.SPECIAL_WATER_EDGE, CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,  BiomeFilter.biome());
         register(context, RuMiscOverworldPlacements.SPECIAL_ICICLE_UP, CountPlacement.of(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BlockPredicateFilter.forPredicate(RUPlacedFeatureBootstrap.onSnowPredicate), BiomeFilter.biome()) ;
-        register(context, RuMiscOverworldPlacements.PATCH_SILT_PODZOL_PUMPKINS, placement(0.5f, Types.MOTION_BLOCKING));
+        register(context, RuMiscOverworldPlacements.PATCH_SILT_PODZOL_PUMPKINS, placement(2f, Types.MOTION_BLOCKING));
 
         register(context, RuMiscOverworldPlacements.ROCK_GROUP_ICY_HEIGHTS, surfaceSpread(1, Types.WORLD_SURFACE_WG));
         register(context, RuMiscOverworldPlacements.ROCK_GROUP_HIGHLAND_FIELDS, surfaceSpread(1, Types.WORLD_SURFACE_WG));

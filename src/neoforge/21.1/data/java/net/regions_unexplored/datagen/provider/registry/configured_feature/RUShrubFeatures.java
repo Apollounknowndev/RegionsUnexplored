@@ -66,7 +66,7 @@ public class RUShrubFeatures {
         group(TROPICS, 0.25f, entry(JUNGLE_NATURAL_SET, 1), entry(PALM_NATURAL_SET, 1)),
         group(WILLOW_FOREST, 0.25f, entry(WILLOW_NATURAL_SET, 3), entry(BLUE_MAGNOLIA_NATURAL_SET, 1)),
         group(WINDSWEPT_MAPLE_FOREST, 0.1f, entry(OAK_NATURAL_SET, 3), entry(BIRCH_NATURAL_SET, 2)),
-        group(WISTERIA_GROVE, 0.25f, entry(SKY_WISTERIA_NATURAL_SET, 1), entry(LAVENDER_WISTERIA_NATURAL_SET, 1), entry(SALMON_WISTERIA_NATURAL_SET, 1)),
+        group(WISTERIA_GROVE, 0.5f, entry(SKY_WISTERIA_NATURAL_SET, 1), entry(LAVENDER_WISTERIA_NATURAL_SET, 1), entry(SALMON_WISTERIA_NATURAL_SET, 1)),
         
         group(Biomes.MANGROVE_SWAMP, 1, MANGROVE_NATURAL_SET),
         group(Biomes.FOREST, 0.25f, entry(OAK_NATURAL_SET, 2), entry(BIRCH_NATURAL_SET, 1)),

@@ -1,7 +1,9 @@
 package net.regions_unexplored.registry;
 
+import com.google.common.collect.ImmutableSet;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -21,6 +23,7 @@ import net.regions_unexplored.block.type.leaves.*;
 import net.regions_unexplored.block.type.misc.PrismaglassBlock;
 import net.regions_unexplored.client.color.RuColors;
 import net.regions_unexplored.item.RUItemUtils;
+import net.regions_unexplored.mixin.VillagerProfessionAccessor;
 import net.regions_unexplored.registry.data.RUBlockIds;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
 import net.regions_unexplored.registry.data.RUPlacedFeatures;
@@ -165,7 +168,7 @@ public interface RUBlocks {
         .withSapling(RUTreeGrowers.BAMBOO);
     NaturalSet BAOBAB_NATURAL_SET = NaturalSet.create("baobab")
         .withBranch().withShrub().withLeaves()
-        .withSapling(p -> new RuUltraFromMegaSaplingBlock(RUTreeGrowers.BAOBAB, p));
+        .withSapling(p -> new BaobabSaplingBlock(RUTreeGrowers.BAOBAB, p));
     NaturalSet BLACKWOOD_NATURAL_SET = NaturalSet.create("blackwood", false)
         .withBranch().withShrub()
         .withLeaves(MapColor.TERRACOTTA_GREEN, pine(0x273c16))
@@ -537,5 +540,16 @@ public interface RUBlocks {
     }
 
     static void init() {
+    
+    }
+    
+    static void initPostRegistryFreeze() {
+        ((VillagerProfessionAccessor) (Object) VillagerProfession.FARMER).regionsUnexplored$setSecondaryPoi(
+            ImmutableSet.<Block>builder()
+                .addAll(VillagerProfession.FARMER.secondaryPoi())
+                .add(PEAT_FARMLAND.get())
+                .add(SILT_FARMLAND.get())
+                .build()
+        );
     }
 }

@@ -31,13 +31,13 @@ public interface RUItemTags {
    TagKey<Item> LARCH_LOGS = key("larch_logs");
    TagKey<Item> MAGNOLIA_LOGS = key("magnolia_logs");
    TagKey<Item> MAPLE_LOGS = key("maple_logs");
-   TagKey<Item> MAUVE_LOGS = key("mauve_logs");
    TagKey<Item> PALM_LOGS = key("palm_logs");
    TagKey<Item> PINE_LOGS = key("pine_logs");
    TagKey<Item> PINK_BIOSHROOM_LOGS = key("pink_bioshroom_logs");
    TagKey<Item> REDWOOD_LOGS = key("redwood_logs");
    TagKey<Item> SOCOTRA_LOGS = key("socotra_logs");
    TagKey<Item> WILLOW_LOGS = key("willow_logs");
+   TagKey<Item> WISTERIA_LOGS = key("wisteria_logs");
    TagKey<Item> YELLOW_BIOSHROOM_LOGS = key("yellow_bioshroom_logs");
 
    static TagKey<Item> key(String name) {

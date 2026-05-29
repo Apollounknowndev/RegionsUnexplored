@@ -12,15 +12,15 @@ import static java.util.Optional.of;
 import static net.regions_unexplored.registry.data.RUConfiguredFeatures.*;
 
 public interface RUTreeGrowers {
-    TreeGrower ASHEN = new TreeGrower("ashen", empty(), of(TREE_ASHEN), empty());
-    TreeGrower ALPHA_OAK = new TreeGrower("alpha_oak", empty(), of(TREE_ALPHA_OAK), empty());
-    TreeGrower APPLE_OAK = new TreeGrower("apple_oak", 0.2F, empty(), empty(), of(TREE_APPLE_OAK), of(TREE_BIG_APPLE_OAK), empty(), empty());
+    TreeGrower ASHEN = create("ashen", TREE_ASHEN);
+    TreeGrower ALPHA_OAK = create("alpha_oak", TREE_ALPHA_OAK);
+    TreeGrower APPLE_OAK = create("apple_oak", 0.2F, TREE_APPLE_OAK, TREE_BIG_APPLE_OAK);
 
-    TreeGrower BLUE_BIOSHROOM = new TreeGrower("blue_bioshroom", empty(), of(TREE_GIANT_BLUE_BIOSHROOM), empty());
-    TreeGrower GREEN_BIOSHROOM = new TreeGrower("green_bioshroom", empty(), of(TREE_GIANT_GREEN_BIOSHROOM), empty());
-    TreeGrower PINK_BIOSHROOM = new TreeGrower("pink_bioshroom", empty(), of(TREE_GIANT_PINK_BIOSHROOM), empty());
-    TreeGrower YELLOW_BIOSHROOM = new TreeGrower("yellow_bioshroom", empty(), of(TREE_YELLOW_BIOSHROOM_LARGE), empty());
-    TreeGrower BAMBOO = new TreeGrower("bamboo", empty(), of(TREE_BAMBOO), empty());
+    TreeGrower BLUE_BIOSHROOM = create("blue_bioshroom", TREE_GIANT_BLUE_BIOSHROOM);
+    TreeGrower GREEN_BIOSHROOM = create("green_bioshroom", TREE_GIANT_GREEN_BIOSHROOM);
+    TreeGrower PINK_BIOSHROOM = create("pink_bioshroom", TREE_GIANT_PINK_BIOSHROOM);
+    TreeGrower YELLOW_BIOSHROOM = create("yellow_bioshroom", TREE_YELLOW_BIOSHROOM_LARGE);
+    TreeGrower BAMBOO = create("bamboo", TREE_BAMBOO);
     RuUltraFromMegaTreeGrower BAOBAB = new RuUltraFromMegaTreeGrower("baobab", of(TREE_ULTRA_BAOBAB), of(TREE_MEGA_BAOBAB), empty(), empty());
     TreeGrower BLACKWOOD = new TreeGrower("blackwood", 0.1F, of(TREE_GIANT_BLACKWOOD), empty(), of(TREE_BIG_BLACKWOOD), of(TREE_BLACKWOOD), empty(), empty());
     TreeGrower SAGUARO_CACTUS = new TreeGrower("saguaro_cactus", empty(), of(TREE_SAGUARO_CACTUS), empty());
@@ -48,15 +48,30 @@ public interface RUTreeGrowers {
     TreeGrower BLUE_MAGNOLIA = new TreeGrower("blue_magnolia", 0.1F, empty(), empty(), of(TREE_BLUE_MAGNOLIA), of(TREE_BIG_BLUE_MAGNOLIA), empty(), empty());
     RuUltraFromSuperTreeGrower KAPOK = new RuUltraFromSuperTreeGrower("kapok", empty(), of(TREE_KAPOK), empty(), empty());
     RuUltraFromSuperTreeGrower REDWOOD = new RuUltraFromSuperTreeGrower("redwood", of(TREE_REDWOOD_LARGE), of(TREE_REDWOOD_MEDIUM), of(TREE_REDWOOD_SMALL), empty());
-    TreeGrower PALM = new TreeGrower("palm", 0.1F, empty(), empty(), of(TREE_PALM), of(TREE_TALL_PALM), empty(), empty());
-    TreeGrower PINE = new TreeGrower("pine", 0.1F, empty(), empty(), of(TREE_PINE), of(TREE_STRIPPED_PINE), of(TREE_PINE_TALL), of(TREE_STRIPPED_PINE_MOUNTAIN));
-    TreeGrower SKY_WISTERIA = createSimple("sky_wisteria", 0.1F, TREE_WISTERIA_SKY, TREE_WISTERIA_LARGE_SKY);
-    TreeGrower LAVENDER_WISTERIA = createSimple("lavender_wisteria", 0.1F, TREE_WISTERIA_LAVENDER, TREE_WISTERIA_LARGE_LAVENDER);
-    TreeGrower SALMON_WISTERIA = createSimple("salmon_wisteria", 0.1F, TREE_WISTERIA_SALMON, TREE_WISTERIA_LARGE_SALMON);
+    TreeGrower PALM = create("palm", TREE_PALM, TREE_TALL_PALM);
+    TreeGrower PINE = create("pine", TREE_PINE, TREE_PINE_TALL);
+    TreeGrower SKY_WISTERIA = create("sky_wisteria", TREE_WISTERIA_SKY, TREE_WISTERIA_LARGE_SKY);
+    TreeGrower LAVENDER_WISTERIA = create("lavender_wisteria", TREE_WISTERIA_LAVENDER, TREE_WISTERIA_LARGE_LAVENDER);
+    TreeGrower SALMON_WISTERIA = create("salmon_wisteria", TREE_WISTERIA_SALMON, TREE_WISTERIA_LARGE_SALMON);
     
-    static TreeGrower createSimple(
+    static TreeGrower create(
         final String name,
-        final float secondaryChance,
+        final ResourceKey<ConfiguredFeature<?, ?>> tree
+    ) {
+        return new TreeGrower(name, 0.0f, Optional.empty(), Optional.empty(), Optional.of(tree), Optional.empty(), Optional.empty(), Optional.empty());
+    }
+    
+    static TreeGrower create(
+        final String name,
+        final ResourceKey<ConfiguredFeature<?, ?>> tree,
+        final ResourceKey<ConfiguredFeature<?, ?>> secondaryTree
+    ) {
+        return create(name, 0.1f, tree, secondaryTree);
+    }
+    
+    static TreeGrower create(
+        final String name,
+        float secondaryChance,
         final ResourceKey<ConfiguredFeature<?, ?>> tree,
         final ResourceKey<ConfiguredFeature<?, ?>> secondaryTree
     ) {

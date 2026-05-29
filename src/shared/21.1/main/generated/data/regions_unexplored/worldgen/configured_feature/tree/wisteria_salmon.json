@@ -3,9 +3,9 @@
   "config": {
     "decorators": [
       {
-        "type": "regions_unexplored:hanging_leaves",
+        "type": "regions_unexplored:hanging_vines",
         "block": "regions_unexplored:salmon_wisteria_vines",
-        "probability": 0.15
+        "probability": 0.3
       },
       {
         "type": "minecraft:beehive",

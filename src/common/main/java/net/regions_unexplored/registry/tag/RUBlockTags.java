@@ -50,13 +50,13 @@ public interface RUBlockTags {
    TagKey<Block> LARCH_LOGS = key("larch_logs");
    TagKey<Block> MAGNOLIA_LOGS = key("magnolia_logs");
    TagKey<Block> MAPLE_LOGS = key("maple_logs");
-   TagKey<Block> MAUVE_LOGS = key("mauve_logs");
    TagKey<Block> PALM_LOGS = key("palm_logs");
    TagKey<Block> PINE_LOGS = key("pine_logs");
    TagKey<Block> PINK_BIOSHROOM_LOGS = key("pink_bioshroom_logs");
    TagKey<Block> REDWOOD_LOGS = key("redwood_logs");
    TagKey<Block> SOCOTRA_LOGS = key("socotra_logs");
    TagKey<Block> WILLOW_LOGS = key("willow_logs");
+   TagKey<Block> WISTERIA_LOGS = key("wisteria_logs");
    TagKey<Block> YELLOW_BIOSHROOM_LOGS = key("yellow_bioshroom_logs");
    TagKey<Block> CROP_PLANTABLE_BLOCKS = key("crop_plantable_blocks");
 

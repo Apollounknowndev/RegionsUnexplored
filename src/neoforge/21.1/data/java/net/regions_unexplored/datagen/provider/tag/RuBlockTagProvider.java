@@ -27,6 +27,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
     @Override
     public void addTags(HolderLookup.Provider provider) {
         addCommonTags(provider);
+        addNeoforgeTags(provider);
         addVanillaTags(provider);
         addBackportedTags(provider);
         addRUTags(provider);
@@ -455,7 +456,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .addTag(RUBlockTags.LARCH_LOGS)
             .addTag(RUBlockTags.MAGNOLIA_LOGS)
             .addTag(RUBlockTags.MAPLE_LOGS)
-            .addTag(RUBlockTags.MAUVE_LOGS)
+            .addTag(RUBlockTags.WISTERIA_LOGS)
             .addTag(RUBlockTags.PALM_LOGS)
             .addTag(RUBlockTags.PINE_LOGS)
             .addTag(RUBlockTags.PINK_BIOSHROOM_LOGS)
@@ -913,7 +914,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.MAPLE_WOOD_SET.getWood())
             .add(RUBlocks.MAPLE_WOOD_SET.getStrippedWood())
         ;
-        this.tag(RUBlockTags.MAUVE_LOGS)
+        this.tag(RUBlockTags.WISTERIA_LOGS)
             .add(RUBlocks.WISTERIA_WOOD_SET.getLog())
             .add(RUBlocks.WISTERIA_WOOD_SET.getStrippedLog())
             .add(RUBlocks.WISTERIA_WOOD_SET.getWood())
@@ -1210,5 +1211,12 @@ public class RuBlockTagProvider extends BlockTagsProvider {
                 .add(RUBlocks.SOCOTRA_WOOD_SET.getStrippedWood())
                 .add(RUBlocks.WILLOW_WOOD_SET.getStrippedWood())
                 .add(RUBlocks.YELLOW_BIOSHROOM_WOOD_SET.getStrippedWood());
+    }
+    
+    public void addNeoforgeTags(HolderLookup.Provider provider) {
+        this.tag(Tags.Blocks.VILLAGER_FARMLANDS)
+            .add(RUBlocks.PEAT_FARMLAND.get())
+            .add(RUBlocks.SILT_FARMLAND.get())
+        ;
     }
 }

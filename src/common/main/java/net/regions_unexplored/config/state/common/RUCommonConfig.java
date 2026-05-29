@@ -145,8 +145,8 @@ public class RUCommonConfig {
 			entry(RUBiomes.GRASSLAND, BiomeTarget.ofGroupToggle("plains", Biomes.PLAINS, Map.of(
 				TEMPERATURE, DoubleRange.above(0.2)
 			))),
-			entry(RUBiomes.HIGHLAND_FIELDS, ofWeighted(50, Biomes.MEADOW)),
-			entry(RUBiomes.WISTERIA_GROVE, ofWeighted(50, Biomes.MEADOW)),
+			entry(RUBiomes.HIGHLAND_FIELDS, ofWeighted(70, Biomes.MEADOW)),
+			entry(RUBiomes.WISTERIA_GROVE, ofWeighted(30, Biomes.MEADOW)),
 			entry(RUBiomes.MAGNOLIA_WOODLAND, ofWeighted(50, Biomes.CHERRY_GROVE)),
 			entry(RUBiomes.WILLOW_FOREST, BiomeTarget.ofGroupToggle("forests", Biomes.FOREST, Map.of(
 				TEMPERATURE, DoubleRange.below(-0.1)

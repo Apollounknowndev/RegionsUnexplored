@@ -16,6 +16,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Optional;
 
 public class RUConfigHandler {
@@ -24,6 +25,14 @@ public class RUConfigHandler {
 	
 	public static RUCommonConfig COMMON = RUCommonConfig.DEFAULT;
 	private static final Path COMMON_PATH = ConfigHelper.getConfigDirectory().resolve("common.json");
+	
+	private static final List<String> LEGACY_CONFIG_NAMES = List.of(
+		"client.toml",
+		"common.toml",
+		"regions_unexplored-common.toml",
+		"regions_unexplored-primary-region.toml",
+		"regions_unexplored-secondary-region.toml"
+	);
 	
 	public static void loadConfigs() {
 		try {
@@ -34,6 +43,14 @@ public class RUConfigHandler {
 		
 		RUConfigHandler.loadClient();
 		RUConfigHandler.loadCommon();
+		
+		for (String legacyConfigName : LEGACY_CONFIG_NAMES) {
+			try {
+				Files.deleteIfExists(ConfigHelper.getConfigDirectory().resolve(legacyConfigName));
+			} catch (IOException ignored) {
+			
+			}
+		}
 	}
 	
 	public static void loadClient() {

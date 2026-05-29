@@ -1,9 +1,6 @@
 package net.regions_unexplored.block.type.dirt;
 
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -22,53 +19,18 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.regions_unexplored.block.RUBlockUtils;
 
 import javax.annotation.Nullable;
 
-public class RUFarmlandBlock extends Block {
+public class RUFarmlandBlock extends FarmBlock {
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE;
-    private static final VoxelShape SHAPE = RUBlockUtils.column(16.0, 0.0, 15.0);
-    public static final MapCodec<RUFarmlandBlock> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
-        ResourceKey.codec(Registries.BLOCK).fieldOf("base_block").forGetter(block -> block.baseBlock),
-        propertiesCodec()
-    ).apply(i, RUFarmlandBlock::new));
     
     private final ResourceKey<Block> baseBlock;
-    
-    @Override
-    public MapCodec<RUFarmlandBlock> codec() {
-        return CODEC;
-    }
     
     public RUFarmlandBlock(ResourceKey<Block> baseBlock, Properties properties) {
         super(properties);
         this.baseBlock = baseBlock;
         this.registerDefaultState(this.stateDefinition.any().setValue(MOISTURE, 0));
-    }
-    
-    @Override
-    protected BlockState updateShape(
-        BlockState state,
-        Direction directionToNeighbour,
-        BlockState neighbourState,
-        LevelAccessor level,
-        BlockPos pos,
-        BlockPos neighbourPos
-    ) {
-        if (directionToNeighbour == Direction.UP && !state.canSurvive(level, pos)) {
-            level.scheduleTick(pos, this, 1);
-        }
-        
-        return super.updateShape(state, directionToNeighbour, neighbourState, level, pos, neighbourPos);
-    }
-        
-    @Override
-    protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        BlockState aboveState = level.getBlockState(pos.above());
-        return !aboveState.isSolid() || shouldMaintainFarmland(level, pos);
     }
         
     @Override
@@ -80,19 +42,9 @@ public class RUFarmlandBlock extends Block {
     }
         
     @Override
-    protected boolean useShapeForLightOcclusion(BlockState state) {
-        return true;
-    }
-        
-    @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return SHAPE;
-    }
-        
-    @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!state.canSurvive(level, pos)) {
-            turnToDirt(null, state, level, pos);
+            turnToDirt(this.getBaseBlock(level), null, state, level, pos);
         }
     }
         
@@ -103,7 +55,7 @@ public class RUFarmlandBlock extends Block {
             if (moisture > 0) {
                 level.setBlock(pos, state.setValue(MOISTURE, moisture - 1), 2);
             } else if (!shouldMaintainFarmland(level, pos)) {
-                turnToDirt(null, state, level, pos);
+                turnToDirt(this.getBaseBlock(level), null, state, level, pos);
             }
         } else if (moisture < 7) {
             level.setBlock(pos, state.setValue(MOISTURE, 7), 2);
@@ -123,12 +75,12 @@ public class RUFarmlandBlock extends Block {
         super.fallOn(level, state, pos, entity, fallDistance);
     }
         
-    public void turnToDirt(@Nullable Entity sourceEntity, BlockState state, Level level, BlockPos pos) {
-        BlockState newState = pushEntitiesUp(state, this.getBaseBlock(level), level, pos);
+    public static void turnToDirt(BlockState baseBlock, @Nullable Entity sourceEntity, BlockState state, Level level, BlockPos pos) {
+        BlockState newState = pushEntitiesUp(state, baseBlock, level, pos);
         level.setBlockAndUpdate(pos, newState);
         level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));
     }
-        
+    
     private static boolean shouldMaintainFarmland(BlockGetter level, BlockPos pos) {
         return level.getBlockState(pos.above()).is(BlockTags.MAINTAINS_FARMLAND);
     }
