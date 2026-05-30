@@ -36,6 +36,11 @@ public interface RUItems {
         consumer.accept(id("mauve_shrub"), id("lavender_wisteria_shrub"));
         consumer.accept(id("mauve_leaves"), id("lavender_wisteria_leaves"));
         consumer.accept(id("mauve_sapling"), id("lavender_wisteria_sapling"));
+        
+        consumer.accept(id("enchanted_birch_shrub"), id("sky_wisteria_shrub"));
+        consumer.accept(id("enchanted_birch_leaves"), id("sky_wisteria_leaves"));
+        consumer.accept(id("enchanted_birch_sapling"), id("sky_wisteria_sapling"));
+        
         consumer.accept(id("mauve_log"), id("wisteria_log"));
         consumer.accept(id("mauve_wood"), id("wisteria_wood"));
         consumer.accept(id("stripped_mauve_log"), id("stripped_wisteria_log"));

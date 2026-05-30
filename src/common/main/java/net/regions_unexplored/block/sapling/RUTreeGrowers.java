@@ -38,7 +38,6 @@ public interface RUTreeGrowers {
     TreeGrower BRIMWOOD = new TreeGrower("brimwood", 0.25F, empty(), empty(), of(TREE_BRIM_WILLOW), of(TREE_TALL_BRIM_WILLOW), empty(), empty());
     TreeGrower COBALT = new TreeGrower("cobalt", empty(), of(TREE_COBALT), empty());
     TreeGrower SILVER_BIRCH = new TreeGrower("silver_birch", 0.25F, empty(), empty(), of(TREE_SILVER_BIRCH), of(TREE_SILVER_BIRCH_TALL), empty(), empty());
-    TreeGrower ENCHANTED_BIRCH = new TreeGrower("enchanted_birch", 0.25F, empty(), empty(), of(TREE_ENCHANTED_BIRCH), of(TREE_ENCHANTED_BIRCH_TALL), empty(), empty());
     TreeGrower SMALL_OAK = new TreeGrower("small_oak", empty(), of(TREE_SMALL_OAK), empty());
     TreeGrower SOCOTRA = new TreeGrower("socotra", 0.1F, empty(), empty(), of(TREE_LARGE_SOCOTRA), of(TREE_SMALL_SOCOTRA), empty(), empty());
     TreeGrower WILLOW = new TreeGrower("willow", 0.1F, empty(), empty(), of(TREE_WILLOW), of(TREE_BIG_WILLOW), empty(), empty());

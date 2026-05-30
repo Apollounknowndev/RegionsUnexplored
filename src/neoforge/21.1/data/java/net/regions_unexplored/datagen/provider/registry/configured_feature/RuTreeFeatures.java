@@ -546,10 +546,7 @@ public class RuTreeFeatures {
        registerPlaced(context, TREE_GROUP_SAGUARO_DESERT, LithostitchedFeatures.PLACED, LithostitchedFeatures.placed(direct(saguaroCactus)));
        
        register(context, TREE_ICE_SPIRE, RUFeatureTypes.SPIRE.get(), new RUTreeConfiguration(simple(Blocks.PACKED_ICE.defaultBlockState()), simple(Blocks.ICE.defaultBlockState()), simple(Blocks.BLUE_ICE), 14, 9));
-
-       register(context, TREE_ENCHANTED_BIRCH, RUFeatureTypes.ASPEN_TREE.get(), new RUTreeConfiguration(simple(RUBlocks.SILVER_BIRCH_WOOD_SET.getLog().defaultBlockState()), simple(RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getLeaves().defaultBlockState()), simple(RUBlocks.SILVER_BIRCH_NATURAL_SET.getBranch().defaultBlockState()), List.of(PlaceOnGroundDecorator.leafLitter(RUBlocks.ENCHANTED_BIRCH_LEAF_LITTER.get(), 96)), 4, 4));
-       register(context, TREE_ENCHANTED_BIRCH_TALL, RUFeatureTypes.ASPEN_TREE.get(), new RUTreeConfiguration(simple(RUBlocks.SILVER_BIRCH_WOOD_SET.getLog().defaultBlockState()), simple(RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getLeaves().defaultBlockState()), simple(RUBlocks.SILVER_BIRCH_NATURAL_SET.getBranch().defaultBlockState()), List.of(PlaceOnGroundDecorator.leafLitter(RUBlocks.ENCHANTED_BIRCH_LEAF_LITTER.get(), 96)), 5, 5));
-
+       
        var spruceTall = register(context, TREE_SPRUCE_TALL, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(Blocks.SPRUCE_LOG.defaultBlockState()), new StraightTrunkPlacer(13, 2, 2), simple(Blocks.SPRUCE_LEAVES.defaultBlockState()), new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(2, 2), UniformInt.of(5, 5)), new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build());
        var spruceShrub = register(context, TREE_SPRUCE_SHRUB, RUFeatureTypes.TREE_SHRUB.get(), new RUTreeConfiguration(simple(Blocks.SPRUCE_LOG.defaultBlockState()), simple(Blocks.SPRUCE_LEAVES.defaultBlockState()), simple(RUBlocks.OAK_NATURAL_SET.getBranch().defaultBlockState()), 1, 0));
        
@@ -765,7 +762,7 @@ public class RuTreeFeatures {
        ).ignoreVines().decorators(List.of(
            HangingVinesDecorator.create(RUBlocks.SKY_WISTERIA_NATURAL_SET, 0.4f),
            new BeehiveDecorator(0.002f),
-           RandomBranchDecorator.create(0.1f, RUBlocks.CHERRY_NATURAL_SET, Blocks.CHERRY_LOG, 3, simple(RUBlocks.SKY_WISTERIA_NATURAL_SET.getLeaves()))
+           RandomBranchDecorator.create(0.1f, RUBlocks.WISTERIA_NATURAL_SET, RUBlocks.WISTERIA_WOOD_SET, 3, simple(RUBlocks.SKY_WISTERIA_NATURAL_SET.getLeaves()))
        )).build());
        var wisteriaLargeLavender = register(context, TREE_WISTERIA_LARGE_LAVENDER, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
            wisteriaLog,
@@ -776,7 +773,7 @@ public class RuTreeFeatures {
        ).ignoreVines().decorators(List.of(
            HangingVinesDecorator.create(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET, 0.4f),
            new BeehiveDecorator(0.002f),
-           RandomBranchDecorator.create(0.1f, RUBlocks.CHERRY_NATURAL_SET, Blocks.CHERRY_LOG, 3, simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves()))
+           RandomBranchDecorator.create(0.1f, RUBlocks.WISTERIA_NATURAL_SET, RUBlocks.WISTERIA_WOOD_SET, 3, simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves()))
        )).build());
        var wisteriaLargeSalmon = register(context, TREE_WISTERIA_LARGE_SALMON, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
            wisteriaLog,
@@ -787,7 +784,7 @@ public class RuTreeFeatures {
        ).ignoreVines().decorators(List.of(
            HangingVinesDecorator.create(RUBlocks.SALMON_WISTERIA_NATURAL_SET, 0.4f),
            new BeehiveDecorator(0.002f),
-           RandomBranchDecorator.create(0.1f, RUBlocks.CHERRY_NATURAL_SET, Blocks.CHERRY_LOG, 3, simple(RUBlocks.SALMON_WISTERIA_NATURAL_SET.getLeaves()))
+           RandomBranchDecorator.create(0.1f, RUBlocks.WISTERIA_NATURAL_SET, RUBlocks.WISTERIA_WOOD_SET, 3, simple(RUBlocks.SALMON_WISTERIA_NATURAL_SET.getLeaves()))
        )).build());
        
        registerSelector(context, TREE_GROUP_WILLOW_FOREST, builder -> builder

@@ -814,7 +814,6 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.PALM_NATURAL_SET.getShrub())
             .add(RUBlocks.PINE_NATURAL_SET.getShrub())
             .add(RUBlocks.REDWOOD_NATURAL_SET.getShrub())
-            .add(RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getShrub())
             .add(RUBlocks.SILVER_BIRCH_NATURAL_SET.getShrub())
             .add(RUBlocks.SOCOTRA_NATURAL_SET.getShrub())
             .add(RUBlocks.SPRUCE_NATURAL_SET.getShrub())

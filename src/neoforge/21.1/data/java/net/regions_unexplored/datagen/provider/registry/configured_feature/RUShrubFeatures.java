@@ -109,11 +109,17 @@ public class RUShrubFeatures {
     
     public static void bootstrapPlaced(BootstrapContext<PlacedFeature> context) {
         for (ShrubGroup group : MAP.values()) {
-            BlockPredicate predicate = BlockPredicate.matchesTag(RUBlockTags.REPLACEABLE_BLOCKS);
+            PlacementBuilder builder = placement(group.count(), Heightmap.Types.OCEAN_FLOOR_WG);
+            
+            BlockPredicate replaceable = BlockPredicate.matchesTag(RUBlockTags.REPLACEABLE_BLOCKS);
             if (group.biome.equals(Biomes.MANGROVE_SWAMP)) {
-                predicate = BlockPredicate.anyOf(predicate, BlockPredicate.matchesBlocks(Blocks.WATER));
+                builder.filter(BlockPredicate.anyOf(replaceable, BlockPredicate.matchesBlocks(Blocks.WATER)));
+            } else {
+                builder.filter(replaceable);
+                builder.notSubmerged();
             }
-            register(context, group.placed(), placement(group.count(), Heightmap.Types.OCEAN_FLOOR_WG).filter(predicate).filter(group.getFirstSet().getShrub()));
+            
+            register(context, group.placed(), builder.filter(group.getFirstSet().getShrub()));
         }
     }
     

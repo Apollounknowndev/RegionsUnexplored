@@ -29,7 +29,7 @@ cloche {
     metadata {
         modId = "regions_unexplored"
         name = "Regions Unexplored"
-        description = "Regions Unexplored is a mod that aims to add new content to the overworld and nether. Currently, adds almost 70 new biomes!"
+        description = "A stack of new biomes spread across the Overworld and Nether!"
         license = "All Rights Reserved"
         icon = "pack.png"
 
@@ -93,7 +93,7 @@ cloche {
 
             modRuntimeOnly("maven.modrinth:world-preview:qc0AtV3T")
             modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-fabric-21.1")
-            modImplementation("maven.modrinth:wikiful:$wikifulVersion-fabric-1.21.1")
+            //modImplementation("maven.modrinth:wikiful:$wikifulVersion-fabric-1.21.1")
 
             modImplementation("com.terraformersmc:modmenu:11.0.3")
         }

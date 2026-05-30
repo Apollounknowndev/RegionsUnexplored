@@ -82,7 +82,6 @@ public class RuColors {
         );
 
         TintHelper.tintBlocks((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? getEnchantedAspenColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor(),
-                RUBlocks.ENCHANTED_BIRCH_NATURAL_SET.getLeaves(),
                 RUBlocks.ENCHANTED_BIRCH_LEAF_LITTER.get()
         );
         

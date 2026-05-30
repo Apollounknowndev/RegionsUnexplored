@@ -4,7 +4,7 @@
   "group": "shrubs",
   "key": {
     "#": {
-      "item": "regions_unexplored:enchanted_birch_sapling"
+      "item": "regions_unexplored:lavender_wisteria_sapling"
     }
   },
   "pattern": [
@@ -13,6 +13,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "regions_unexplored:enchanted_birch_shrub"
+    "id": "regions_unexplored:lavender_wisteria_shrub"
   }
 }

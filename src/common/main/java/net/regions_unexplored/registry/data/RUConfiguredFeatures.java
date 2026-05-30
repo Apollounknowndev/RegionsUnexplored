@@ -107,8 +107,6 @@ public interface RUConfiguredFeatures {
     ResourceKey<ConfiguredFeature<?,?>> TREE_ICE_SPIRE = tree("ice_spire");
     ResourceKey<ConfiguredFeature<?,?>> TREE_SILVER_BIRCH = tree("silver_birch");
     ResourceKey<ConfiguredFeature<?,?>> TREE_SILVER_BIRCH_TALL = tree("silver_birch_tall");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_ENCHANTED_BIRCH = tree("enchanted_birch");
-    ResourceKey<ConfiguredFeature<?,?>> TREE_ENCHANTED_BIRCH_TALL = tree("enchanted_birch_tall");
     ResourceKey<ConfiguredFeature<?,?>> TREE_SPRUCE_TALL = tree("spruce_tall");
     ResourceKey<ConfiguredFeature<?,?>> TREE_SPRUCE_SHRUB = tree("spruce_shrub");
     ResourceKey<ConfiguredFeature<?,?>> TREE_SMALL_OAK = tree("small_oak");

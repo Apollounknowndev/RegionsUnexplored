@@ -228,15 +228,6 @@
     "regions_unexplored:enchanted_birch_leaf_litter": {
       "chance": 0.1
     },
-    "regions_unexplored:enchanted_birch_leaves": {
-      "chance": 0.3
-    },
-    "regions_unexplored:enchanted_birch_sapling": {
-      "chance": 0.3
-    },
-    "regions_unexplored:enchanted_birch_shrub": {
-      "chance": 0.65
-    },
     "regions_unexplored:eucalyptus_branch": {
       "chance": 0.3
     },

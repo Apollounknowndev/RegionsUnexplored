@@ -152,7 +152,7 @@ public interface RUBlocks {
     NaturalSet JUNGLE_NATURAL_SET = NaturalSet.create("jungle").withBranch().withShrub();
     NaturalSet MANGROVE_NATURAL_SET = NaturalSet.create("mangrove").withBranch().withShrub(MangroveShrubBlock::new);
     NaturalSet OAK_NATURAL_SET = NaturalSet.create("oak").withBranch().withShrub();
-    //public static final NaturalSet PALE_OAK_NATURAL_SET = NaturalSet.create("pale_oak").createBranch().createShrub();
+    //NaturalSet PALE_OAK_NATURAL_SET = NaturalSet.create("pale_oak").withBranch().withShrub();
     NaturalSet SPRUCE_NATURAL_SET = NaturalSet.create("spruce").withBranch().withShrub();
 
     /* MODDED */
@@ -193,10 +193,6 @@ public interface RUBlocks {
         .withBranch().withShrub()
         .withLeaves(MapColor.TERRACOTTA_GRAY, standard(TintGetter.constant(0x654630)))
         .withSapling(RUTreeGrowers.DEAD);
-    NaturalSet ENCHANTED_BIRCH_NATURAL_SET = NaturalSet.create("enchanted_birch")
-        .withShrub()
-        .withLeaves(MapColor.COLOR_LIGHT_BLUE)
-        .withSapling(RUTreeGrowers.ENCHANTED_BIRCH);
     NaturalSet EUCALYPTUS_NATURAL_SET = NaturalSet.create("eucalyptus")
         .withBranch().withShrub().withLeaves(large(TintGetter.defaultDarken(0.8f)))
         .withSapling(RUTreeGrowers.EUCALYPTUS);
@@ -520,6 +516,12 @@ public interface RUBlocks {
         consumer.accept(id("mauve_leaves"), id("lavender_wisteria_leaves"));
         consumer.accept(id("mauve_sapling"), id("lavender_wisteria_sapling"));
         consumer.accept(id("potted_mauve_sapling"), id("potted_lavender_wisteria_sapling"));
+        
+        consumer.accept(id("enchanted_birch_shrub"), id("sky_wisteria_shrub"));
+        consumer.accept(id("enchanted_birch_leaves"), id("sky_wisteria_leaves"));
+        consumer.accept(id("enchanted_birch_sapling"), id("sky_wisteria_sapling"));
+        consumer.accept(id("potted_enchanted_birch_sapling"), id("potted_sky_wisteria_sapling"));
+        
         consumer.accept(id("mauve_log"), id("wisteria_log"));
         consumer.accept(id("mauve_wood"), id("wisteria_wood"));
         consumer.accept(id("stripped_mauve_log"), id("stripped_wisteria_log"));
