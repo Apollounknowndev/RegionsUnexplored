@@ -132,7 +132,7 @@ This is the first major update for the mod developed by me, Apollo. This update 
     - Other changes that I've forgotten at this point. This update took months, I don't remember everything I did.
 """
 UPLOAD_VERSIONS = [
-    ("fabric", "21.1"),
+    #("fabric", "21.1"),
     ("neoforge", "21.1"),
 ]
 

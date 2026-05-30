@@ -28,11 +28,10 @@ public interface RUEntityTypes {
     }
 
     static void init() {
-
+        EntityHelper.registerPlacement(ASHEN, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        EntityHelper.registerAttributes(ASHEN, Zombie::createAttributes);
     }
     
     static void initPostRegistryFreeze() {
-        EntityHelper.registerPlacement(ASHEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        EntityHelper.registerAttributes(ASHEN.get(), Zombie.createAttributes());
     }
 }
