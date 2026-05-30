@@ -34,8 +34,8 @@ cloche {
         icon = "pack.png"
 
         url = "https://modrinth.com/mod/regions-unexplored"
-        issues = "https://github.com/UHQ-GAMES-MODS/RegionsUnexplored/issues"
-        sources = "https://github.com/UHQ-GAMES-MODS/RegionsUnexplored"
+        issues = "https://github.com/Apollounknowndev/RegionsUnexplored/issues"
+        sources = "https://github.com/Apollounknowndev/RegionsUnexplored"
 
         author("Apollo")
         author("UHQ_Games")

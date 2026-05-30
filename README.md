@@ -1,6 +1,6 @@
 # Regions Unexplored
 
-Regions Unexplored is a biome mod that overhauls the overworld in many ways. With 70+ new biomes and a plethora of new blocks and items, there's plenty of unique regions out there waiting for you to explore them!
+Regions Unexplored is a biome mod that adds a full stack of new biomes spread across the Overworld and Nether!
 
 ## Supported Versions/Loaders
 
