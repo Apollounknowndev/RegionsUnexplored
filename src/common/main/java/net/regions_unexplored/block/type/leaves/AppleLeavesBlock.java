@@ -84,7 +84,7 @@ public class AppleLeavesBlock extends RUTintedParticlesLeavesBlock implements Bo
             BlockState blockstate = blockState.setValue(AGE, 0);
             level.setBlock(blockPos, blockstate, 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, blockstate));
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            return ItemInteractionResult.sidedSuccess(level.isClientSide());
         } else {
             return super.useItemOn(itemStack, blockState, level, blockPos, player, interactionHand, blockHitResult);
         }

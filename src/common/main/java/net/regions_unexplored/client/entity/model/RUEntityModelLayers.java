@@ -6,7 +6,7 @@ import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.client.entity.renderer.AshenRenderer;
-import net.regions_unexplored.platform.RenderHelper;
+import net.regions_unexplored.module.platform.RenderHelper;
 
 public interface RUEntityModelLayers {
 	ModelLayerLocation ASHEN_MAIN = model("ashen", "main");

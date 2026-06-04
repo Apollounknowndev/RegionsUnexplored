@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
-import net.regions_unexplored.platform.Registrar;
+import net.regions_unexplored.module.platform.Registrar;
 import net.regions_unexplored.world.level.feature.*;
 import net.regions_unexplored.world.level.feature.bioshroom.*;
 import net.regions_unexplored.world.level.feature.configuration.*;

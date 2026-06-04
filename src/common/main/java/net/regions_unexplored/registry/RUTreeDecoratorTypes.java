@@ -3,7 +3,7 @@ package net.regions_unexplored.registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
-import net.regions_unexplored.platform.Registrar;
+import net.regions_unexplored.module.platform.Registrar;
 import net.regions_unexplored.worldgen.treedecorator.*;
 
 import java.util.function.Supplier;

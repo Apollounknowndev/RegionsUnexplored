@@ -66,7 +66,7 @@ public class RuBoatItem extends Item {
                 if (!level.noCollision(boat, boat.getBoundingBox())) {
                     return InteractionResultHolder.fail(itemStack);
                 } else {
-                    if (!level.isClientSide) {
+                    if (!level.isClientSide()) {
                         level.addFreshEntity(boat);
                         level.gameEvent(player, GameEvent.ENTITY_PLACE, hitResult.getLocation());
                         if (!player.getAbilities().instabuild) {

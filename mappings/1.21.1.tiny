@@ -2,3 +2,21 @@ tiny	2	0	official	named
 c	akq	net/minecraft/resources/ResourceKey
 	m	()Lakr;	a	identifier
 c	akr	net/minecraft/resources/Identifier
+c	bsb	net/minecraft/world/effect/MobEffects
+	f	Ljm;	a	SPEED
+	f	Ljm;	b	SLOWNESS
+	f	Ljm;	c	HASTE
+	f	Ljm;	d	MINING_FATIGUE
+	f	Ljm;	f	INSTANT_HEALTH
+	f	Ljm;	h	JUMP_BOOST
+	f	Ljm;	i	NAUSEA
+c	ckw	net/minecraft/world/entity/monster/zombie/Zombie
+c	ckw$a	net/minecraft/world/entity/monster/zombie/Zombie$ZombieAttackTurtleEggGoal
+c	ckw$b	net/minecraft/world/entity/monster/zombie/Zombie$ZombieGroupData
+c	dgh	net/minecraft/world/level/block/VegetationBlock
+c	div	net/minecraft/world/level/block/FarmlandBlock
+c	dnj	net/minecraft/world/level/block/SnowyBlock
+c	dtb	net/minecraft/world/level/block/state/BlockBehaviour
+c	dtb$d	net/minecraft/world/level/block/state/BlockBehaviour$Properties
+	m	()Ldtb$d;	b	noCollision
+	m	()Ldtb$d;	B	postProcess

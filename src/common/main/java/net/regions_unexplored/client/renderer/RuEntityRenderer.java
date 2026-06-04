@@ -6,7 +6,7 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.regions_unexplored.registry.RUEntityTypes;
 import net.regions_unexplored.entity.client.RuBoatRenderer;
 import net.regions_unexplored.entity.custom.RuBoat;
-import net.regions_unexplored.platform.RenderHelper;
+import net.regions_unexplored.module.platform.RenderHelper;
 
 public class RuEntityRenderer {
     public static void renderBoat(){

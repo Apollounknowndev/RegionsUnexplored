@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class GroundCoverBlock extends BushBlock implements BonemealableBlock {
+public class GroundCoverBlock extends VegetationBlock implements BonemealableBlock {
    public static final int MIN_FLOWERS = 1;
    public static final int MAX_FLOWERS = 4;
    public static final MapCodec<? extends GroundCoverBlock> CODEC = simpleCodec(GroundCoverBlock::new);
@@ -32,7 +32,7 @@ public class GroundCoverBlock extends BushBlock implements BonemealableBlock {
    }
 
    @Override
-   protected MapCodec<? extends BushBlock> codec() {
+   protected MapCodec<? extends VegetationBlock> codec() {
       return CODEC;
    }
 

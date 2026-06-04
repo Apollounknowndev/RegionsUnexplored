@@ -4,7 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.levelgen.SurfaceRules.RuleSource;
-import net.regions_unexplored.platform.Registrar;
+import net.regions_unexplored.module.platform.Registrar;
 import net.regions_unexplored.worldgen.rulesource.ConfigRuleSource;
 
 import java.util.function.Supplier;

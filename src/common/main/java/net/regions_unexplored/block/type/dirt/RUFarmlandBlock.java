@@ -13,6 +13,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -22,7 +24,7 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 
 import javax.annotation.Nullable;
 
-public class RUFarmlandBlock extends FarmBlock {
+public class RUFarmlandBlock extends FarmlandBlock {
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE;
     
     private final ResourceKey<Block> baseBlock;
@@ -96,7 +98,7 @@ public class RUFarmlandBlock extends FarmBlock {
     }
     
     protected BlockState getBaseBlock(Level level) {
-        return level.registryAccess().registryOrThrow(Registries.BLOCK).getOrThrow(this.baseBlock).defaultBlockState();
+        return level.registryAccess().lookupOrThrow(Registries.BLOCK).getOrThrow(this.baseBlock).value().defaultBlockState();
     }
         
     @Override

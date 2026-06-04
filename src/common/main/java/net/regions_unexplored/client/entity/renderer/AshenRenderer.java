@@ -7,7 +7,7 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ZombieRenderer;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.client.entity.model.RUEntityModelLayers;
 import net.regions_unexplored.client.entity.renderer.layer.AshenEyesLayer;
@@ -21,7 +21,7 @@ public class AshenRenderer extends ZombieRenderer {
 	}
 	
 	@Override
-	public Identifier getTextureLocation(Zombie $$0) {
+	public Identifier getTextureLocation(Zombie zombie) {
 		return BASE_LOCATION;
 	}
 	

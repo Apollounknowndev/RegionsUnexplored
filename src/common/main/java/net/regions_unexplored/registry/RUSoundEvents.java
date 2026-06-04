@@ -4,7 +4,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.level.block.SoundType;
 import net.regions_unexplored.RegionsUnexplored;
-import net.regions_unexplored.platform.Registrar;
+import net.regions_unexplored.module.platform.Registrar;
 import net.regions_unexplored.sound.SoundTypeHelper;
 import net.regions_unexplored.sound.WoodSoundSet;
 

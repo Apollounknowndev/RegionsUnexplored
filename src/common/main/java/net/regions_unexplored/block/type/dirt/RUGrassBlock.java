@@ -26,6 +26,7 @@ import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -35,7 +36,7 @@ import net.regions_unexplored.world.level.block.RUBlockActions;
 
 import javax.annotation.Nullable;
 
-public class RUGrassBlock extends SnowyDirtBlock implements BonemealableBlock {
+public class RUGrassBlock extends SnowyBlock implements BonemealableBlock {
 	private final Supplier<Block> baseBlock;
 	private final Optional<Supplier<Block>> pathBlock;
 	private final Optional<Supplier<Block>> farmlandBlock;
@@ -62,11 +63,11 @@ public class RUGrassBlock extends SnowyDirtBlock implements BonemealableBlock {
 		}
 		
 		if (stack.getItem() instanceof ShovelItem && updateBlock(this.pathBlock, SoundEvents.SHOVEL_FLATTEN, stack, level, pos, player, hand)) {
-			return ItemInteractionResult.sidedSuccess(level.isClientSide);
+			return ItemInteractionResult.sidedSuccess(level.isClientSide());
 		}
 		
 		if (stack.getItem() instanceof HoeItem && updateBlock(this.farmlandBlock, SoundEvents.HOE_TILL, stack, level, pos, player, hand)) {
-			return ItemInteractionResult.sidedSuccess(level.isClientSide);
+			return ItemInteractionResult.sidedSuccess(level.isClientSide());
 		}
 		
 		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
@@ -86,7 +87,7 @@ public class RUGrassBlock extends SnowyDirtBlock implements BonemealableBlock {
 	}
 	
 	private static boolean playerHasShieldUseIntent(Player player, InteractionHand hand) {
-		return hand.equals(InteractionHand.MAIN_HAND) && player.getOffhandItem().is(Items.SHIELD) && !player.isSecondaryUseActive();
+		return hand.equals(InteractionHand.MAIN_HAND) && player.getOffhandItem().is(holder -> holder.value().equals(Items.SHIELD)) && !player.isSecondaryUseActive();
 	}
 	
 	@Override

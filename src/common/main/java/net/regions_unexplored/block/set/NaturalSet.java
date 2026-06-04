@@ -9,6 +9,7 @@ import net.regions_unexplored.block.BlockFactory;
 import net.regions_unexplored.block.type.leaves.HangingVinesBlock;
 import net.regions_unexplored.block.type.wood.BeardBlock;
 import net.regions_unexplored.block.type.wood.BranchBlock;
+import net.regions_unexplored.module.version.VersionBlockHelper;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.sapling.RUTreeGrowers;
 import net.regions_unexplored.block.RUBlockUtils;
@@ -22,7 +23,7 @@ import java.util.function.UnaryOperator;
 
 public class NaturalSet {
     private static final UnaryOperator<BlockBehaviour.Properties> BRANCH_PROPERTIES = p -> p.noOcclusion().sound(SoundType.MANGROVE_ROOTS).strength(1.0F, 1.5F).dynamicShape();
-    private static final UnaryOperator<BlockBehaviour.Properties> SHRUB_PROPERTIES = p -> p.pushReaction(PushReaction.DESTROY).noCollission().instabreak().sound(SoundType.AZALEA).offsetType(BlockBehaviour.OffsetType.XZ);
+    private static final UnaryOperator<BlockBehaviour.Properties> SHRUB_PROPERTIES = p -> p.pushReaction(PushReaction.DESTROY).noCollision().instabreak().sound(SoundType.AZALEA).offsetType(BlockBehaviour.OffsetType.XZ);
     public final String name;
     public final boolean fireproof;
     protected Supplier<Block> branch;
@@ -47,7 +48,7 @@ public class NaturalSet {
 
     public static NaturalSet ashen() {
         NaturalSet set = NaturalSet.create("ashen").withLeaves(MapColor.COLOR_LIGHT_GRAY, RUTintedParticlesLeavesBlock.small(RUTintedParticlesLeavesBlock.TintGetter.constant(0x767470))).withSapling(RUTreeGrowers.ASHEN);
-        set.shrub = RUBlockUtils.register("ashen_shrub", p -> new ShrubBlock(SHRUB_PROPERTIES.apply(p).sound(SoundType.ROOTED_DIRT).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
+        set.shrub = RUBlockUtils.register("ashen_shrub", p -> new ShrubBlock(SHRUB_PROPERTIES.apply(VersionBlockHelper.postProcessed(p)).sound(SoundType.ROOTED_DIRT).emissiveRendering((bs, br, bp) -> true)));
         return set;
     }
 
@@ -104,7 +105,7 @@ public class NaturalSet {
     
     public NaturalSet withVines(MapColor color) {
         this.vines = RUBlockUtils.register(this.name + "_vines", p -> new HangingVinesBlock(
-            p.ignitedByLava().mapColor(color).noCollission().sound(SoundType.MOSS_CARPET).pushReaction(PushReaction.DESTROY))
+            p.ignitedByLava().mapColor(color).noCollision().sound(SoundType.MOSS_CARPET).pushReaction(PushReaction.DESTROY))
         );
         return this;
     }

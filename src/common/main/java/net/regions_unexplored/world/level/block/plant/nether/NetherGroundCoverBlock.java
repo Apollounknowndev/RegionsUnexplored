@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class NetherGroundCoverBlock extends BushBlock {
+public class NetherGroundCoverBlock extends VegetationBlock {
    public static final MapCodec<?extends NetherGroundCoverBlock> CODEC = simpleCodec(NetherGroundCoverBlock::new);
    public static final int MIN_FLOWERS = 1;
    public static final int MAX_FLOWERS = 4;
@@ -34,7 +34,7 @@ public class NetherGroundCoverBlock extends BushBlock {
    }
 
    @Override
-   protected MapCodec<? extends BushBlock> codec() {
+   protected MapCodec<? extends VegetationBlock> codec() {
       return CODEC;
    }
 

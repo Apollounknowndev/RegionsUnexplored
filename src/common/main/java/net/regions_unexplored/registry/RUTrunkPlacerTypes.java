@@ -3,7 +3,7 @@ package net.regions_unexplored.registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
-import net.regions_unexplored.platform.Registrar;
+import net.regions_unexplored.module.platform.Registrar;
 import net.regions_unexplored.worldgen.trunkplacer.*;
 
 import java.util.function.Supplier;

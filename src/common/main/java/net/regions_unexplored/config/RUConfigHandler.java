@@ -9,7 +9,7 @@ import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.config.json5.Json5Ops;
 import net.regions_unexplored.config.state.client.RUClientConfig;
 import net.regions_unexplored.config.state.common.RUCommonConfig;
-import net.regions_unexplored.platform.ConfigHelper;
+import net.regions_unexplored.module.platform.ConfigHelper;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

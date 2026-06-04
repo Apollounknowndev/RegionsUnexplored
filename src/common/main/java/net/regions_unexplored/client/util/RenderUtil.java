@@ -2,7 +2,7 @@ package net.regions_unexplored.client.util;
 
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
-import net.regions_unexplored.platform.RenderHelper;
+import net.regions_unexplored.module.platform.RenderHelper;
 
 public class RenderUtil {
 

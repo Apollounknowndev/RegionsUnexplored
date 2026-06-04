@@ -16,7 +16,7 @@ import net.regions_unexplored.registry.RUBlocks;
 
 import static net.minecraft.world.level.block.DoublePlantBlock.copyWaterloggedFrom;
 
-public class RuPlantBlock extends BushBlock implements BonemealableBlock {
+public class RuPlantBlock extends VegetationBlock implements BonemealableBlock {
     public static final MapCodec<? extends RuPlantBlock> CODEC = simpleCodec(RuPlantBlock::new);
     protected static final float AABB_OFFSET = 6.0F;
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
@@ -26,7 +26,7 @@ public class RuPlantBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    protected MapCodec<? extends BushBlock> codec() {
+    protected MapCodec<? extends VegetationBlock> codec() {
         return CODEC;
     }
 

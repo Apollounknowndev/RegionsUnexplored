@@ -16,7 +16,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -27,7 +27,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.registry.RUItems;
 
-public class DuskmelonBlock extends BushBlock implements BonemealableBlock {
+public class DuskmelonBlock extends VegetationBlock implements BonemealableBlock {
    public static final MapCodec<? extends DuskmelonBlock> CODEC = simpleCodec(DuskmelonBlock::new);
    private static final float HURT_SPEED_THRESHOLD = 0.003F;
    public static final int MAX_AGE = 2;
@@ -41,7 +41,7 @@ public class DuskmelonBlock extends BushBlock implements BonemealableBlock {
    }
 
    @Override
-   protected MapCodec<? extends BushBlock> codec() {
+   protected MapCodec<? extends VegetationBlock> codec() {
       return CODEC;
    }
 
@@ -83,7 +83,7 @@ public class DuskmelonBlock extends BushBlock implements BonemealableBlock {
          BlockState blockstate = blockState.setValue(AGE, 0);
          level.setBlock(blockPos, blockstate, 2);
          level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, blockstate));
-         return ItemInteractionResult.sidedSuccess(level.isClientSide);
+         return ItemInteractionResult.sidedSuccess(level.isClientSide());
       } else {
          return super.useItemOn(stack, blockState, level, blockPos, player, interactionHand, blockHitResult);
       }

@@ -4,7 +4,7 @@ import net.minecraft.client.model.ZombieModel;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;
-import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.regions_unexplored.RegionsUnexplored;
 
 public class AshenEyesLayer<T extends Zombie, M extends ZombieModel<T>> extends EyesLayer<T, M> {

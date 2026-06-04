@@ -27,7 +27,7 @@ import net.regions_unexplored.world.level.block.state.properties.RuBlockStatePro
 
 import static net.minecraft.world.level.block.DoublePlantBlock.copyWaterloggedFrom;
 
-public class RuSandyPlantBlock extends BushBlock implements BonemealableBlock {
+public class RuSandyPlantBlock extends VegetationBlock implements BonemealableBlock {
     public static final MapCodec<? extends RuSandyPlantBlock> CODEC = simpleCodec(RuSandyPlantBlock::new);
     public static final BooleanProperty IS_RED = RuBlockStateProperties.IS_RED;
     protected static final float AABB_OFFSET = 6.0F;
@@ -39,7 +39,7 @@ public class RuSandyPlantBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    protected MapCodec<? extends BushBlock> codec() {
+    protected MapCodec<? extends VegetationBlock> codec() {
         return CODEC;
     }
 

@@ -5,7 +5,7 @@ import net.regions_unexplored.client.particle.spore.GroundSporeParticle;
 import net.regions_unexplored.client.particle.spore.FloatingSporeParticle;
 import net.regions_unexplored.registry.RUParticleTypes;
 
-import static net.regions_unexplored.platform.ParticleRegistry.register;
+import static net.regions_unexplored.module.platform.ParticleRegistry.register;
 
 public interface RUParticleProviders {
     static void init() {

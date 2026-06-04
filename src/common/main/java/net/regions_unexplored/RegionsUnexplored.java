@@ -18,7 +18,6 @@ public class RegionsUnexplored {
 	public static final String MOD_ID = "regions_unexplored";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	// We do this because terrablender might load before us or after us, so this catches both cases.
 	public static void init() {
 		RUConfigHandler.loadConfigs();
 

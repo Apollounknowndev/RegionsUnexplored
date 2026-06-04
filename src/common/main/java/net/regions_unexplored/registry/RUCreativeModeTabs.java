@@ -11,7 +11,7 @@ import net.msrandom.multiplatform.annotations.Expect;
 import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.set.WoodSet;
-import net.regions_unexplored.platform.Registrar;
+import net.regions_unexplored.module.platform.Registrar;
 
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;

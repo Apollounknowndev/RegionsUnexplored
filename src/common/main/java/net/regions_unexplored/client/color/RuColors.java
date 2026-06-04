@@ -9,7 +9,7 @@ import net.minecraft.world.level.GrassColor;
 import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.config.state.client.RUClientConfig.EucalyptusColors;
 import net.regions_unexplored.registry.RUBlocks;
-import net.regions_unexplored.platform.TintHelper;
+import net.regions_unexplored.module.platform.TintHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;

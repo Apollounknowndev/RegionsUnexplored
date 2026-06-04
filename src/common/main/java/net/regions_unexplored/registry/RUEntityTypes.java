@@ -2,13 +2,13 @@ package net.regions_unexplored.registry;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.regions_unexplored.entity.ashen.Ashen;
 import net.regions_unexplored.entity.custom.RuBoat;
 import net.regions_unexplored.entity.custom.RuChestBoat;
-import net.regions_unexplored.platform.EntityHelper;
-import net.regions_unexplored.platform.Registrar;
+import net.regions_unexplored.module.platform.EntityHelper;
+import net.regions_unexplored.module.platform.Registrar;
 
 import java.util.function.Supplier;
 

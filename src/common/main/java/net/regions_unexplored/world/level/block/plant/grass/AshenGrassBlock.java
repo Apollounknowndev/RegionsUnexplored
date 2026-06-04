@@ -8,7 +8,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -18,7 +18,7 @@ import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.tag.*;
 import net.regions_unexplored.world.level.block.state.properties.RuBlockStateProperties;
 
-public class AshenGrassBlock extends BushBlock {
+public class AshenGrassBlock extends VegetationBlock {
     public static final MapCodec<? extends AshenGrassBlock> CODEC = simpleCodec(AshenGrassBlock::new);
     public static final BooleanProperty SMOULDERING = RuBlockStateProperties.SMOULDERING;
     protected static final float AABB_OFFSET = 6.0F;
@@ -30,7 +30,7 @@ public class AshenGrassBlock extends BushBlock {
     }
 
     @Override
-    protected MapCodec<? extends BushBlock> codec() {
+    protected MapCodec<? extends VegetationBlock> codec() {
         return CODEC;
     }
 

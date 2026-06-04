@@ -15,7 +15,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.regions_unexplored.platform.Registrar;
+import net.regions_unexplored.module.platform.Registrar;
 import net.regions_unexplored.item.RUItemUtils;
 import org.jetbrains.annotations.Nullable;
 
@@ -75,32 +75,32 @@ public class RUBlockUtils {
     }
 
     public static PressurePlateBlock pressurePlate(BlockBehaviour.Properties properties, MapColor colour, SoundType sound, BlockSetType blockSetType, boolean fireproof) {
-        applyProperties(properties, 0.5f, 0.5f, sound, fireproof, colour).noCollission();
+        applyProperties(properties, 0.5f, 0.5f, sound, fireproof, colour).noCollision();
         return new PressurePlateBlock(blockSetType, properties);
     }
 
     public static ButtonBlock button(BlockBehaviour.Properties properties, SoundType sound, BlockSetType blockSetType) {
-        applyProperties(properties, 0.5f, 0.5f, sound, true, null).noCollission();
+        applyProperties(properties, 0.5f, 0.5f, sound, true, null).noCollision();
         return new ButtonBlock(blockSetType, 30, properties);
     }
 
     public static StandingSignBlock sign(BlockBehaviour.Properties properties, SoundType sound, WoodType woodType, boolean fireproof) {
-        applyProperties(properties, 1, 1, sound, fireproof, null).noCollission();
+        applyProperties(properties, 1, 1, sound, fireproof, null).noCollision();
         return new StandingSignBlock(woodType, properties);
     }
 
     public static WallSignBlock wallSign(BlockBehaviour.Properties properties, SoundType sound, Block standingSign, WoodType woodType, boolean fireproof) {
-        applyProperties(properties, 1, 1, sound, fireproof, null).noCollission().dropsLike(standingSign);
+        applyProperties(properties, 1, 1, sound, fireproof, null).noCollision().dropsLike(standingSign);
         return new WallSignBlock(woodType, properties);
     }
 
     public static CeilingHangingSignBlock hangingSign(BlockBehaviour.Properties properties, MapColor color, SoundType sound, WoodType woodType, boolean fireproof) {
-        applyProperties(properties, 1, 1, sound, fireproof, color).noCollission().forceSolidOn();
+        applyProperties(properties, 1, 1, sound, fireproof, color).noCollision().forceSolidOn();
         return new CeilingHangingSignBlock(woodType, properties);
     }
 
     public static WallHangingSignBlock wallHangingSign(BlockBehaviour.Properties properties, MapColor color, SoundType sound, Block hangingSign, WoodType woodType, boolean fireproof) {
-        applyProperties(properties, 1, 1, sound, fireproof, color).noCollission().dropsLike(hangingSign).forceSolidOn();
+        applyProperties(properties, 1, 1, sound, fireproof, color).noCollision().dropsLike(hangingSign).forceSolidOn();
         return new WallHangingSignBlock(woodType, properties);
     }
 

@@ -4,9 +4,7 @@
   "package": "net.regions_unexplored.mixin",
   "compatibilityLevel": "JAVA_21",
   "refmap": "${mod_id}.refmap.json",
-  "mixins": [
-    "NeoCropPlacerMixin"
-  ],
+  "mixins": [],
   "client": [],
   "server": [],
   "injectors": {

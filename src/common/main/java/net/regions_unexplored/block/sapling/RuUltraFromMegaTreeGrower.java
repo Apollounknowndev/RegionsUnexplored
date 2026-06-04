@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.regions_unexplored.module.version.VersionHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
@@ -88,15 +89,13 @@ public final class RuUltraFromMegaTreeGrower {
     }
 
     public boolean growTree(ServerLevel level, ChunkGenerator generator, BlockPos pos, BlockState state, RandomSource random) {
-
-        ResourceKey<ConfiguredFeature<?, ?>> resourcekey = this.getConfiguredUltraFeature(random);
-        if (resourcekey != null) {
-            Holder<ConfiguredFeature<?, ?>> holder = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(resourcekey).orElse(null);
-            if (holder != null) {
+        ResourceKey<ConfiguredFeature<?, ?>> ultraKey = this.getConfiguredUltraFeature(random);
+        if (ultraKey != null) {
+            ConfiguredFeature<?, ?> feature = VersionHelper.registry(level.registryAccess(), Registries.CONFIGURED_FEATURE).getOptional(ultraKey).orElse(null);
+            if (feature != null) {
                 for(int i = 1; i >= -1; --i) {
                     for(int j = 1; j >= -1; --j) {
                         if (isThreeBlockSapling(state, level, pos, i, j)) {
-                            ConfiguredFeature<?, ?> configuredfeature = holder.value();
                             BlockState blockstate = Blocks.AIR.defaultBlockState();
                             level.setBlock(pos.offset(i, 0, j), blockstate, 4);
                             level.setBlock(pos.offset(i, 0, j+1), blockstate, 4);
@@ -107,7 +106,7 @@ public final class RuUltraFromMegaTreeGrower {
                             level.setBlock(pos.offset(i+1, 0, j-1), blockstate, 4);
                             level.setBlock(pos.offset(i-1, 0, j+1), blockstate, 4);
                             level.setBlock(pos.offset(i-1, 0, j-1), blockstate, 4);
-                            if (configuredfeature.place(level, generator, random, pos.offset(i, 0, j))) {
+                            if (feature.place(level, generator, random, pos.offset(i, 0, j))) {
                                 return true;
                             }
 
@@ -126,23 +125,20 @@ public final class RuUltraFromMegaTreeGrower {
                 }
             }
         }
-
-
-
-        ResourceKey<ConfiguredFeature<?, ?>> resourcekey1 = this.getConfiguredMegaFeature(random);
-        if (resourcekey1 != null) {
-            Holder<ConfiguredFeature<?, ?>> holder = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(resourcekey1).orElse((Holder.Reference<ConfiguredFeature<?, ?>>)null);
-            if (holder != null) {
+        
+        ResourceKey<ConfiguredFeature<?, ?>> megaKey = this.getConfiguredMegaFeature(random);
+        if (megaKey != null) {
+            ConfiguredFeature<?, ?> feature = VersionHelper.registry(level.registryAccess(), Registries.CONFIGURED_FEATURE).getOptional(megaKey).orElse(null);
+            if (feature != null) {
                 for(int i = 0; i >= -1; --i) {
                     for(int j = 0; j >= -1; --j) {
                         if (isTwoBlockSapling(state, level, pos, i, j)) {
-                            ConfiguredFeature<?, ?> configuredfeature = holder.value();
                             BlockState blockstate = Blocks.AIR.defaultBlockState();
                             level.setBlock(pos.offset(i, 0, j), blockstate, 4);
                             level.setBlock(pos.offset(i + 1, 0, j), blockstate, 4);
                             level.setBlock(pos.offset(i, 0, j + 1), blockstate, 4);
                             level.setBlock(pos.offset(i + 1, 0, j + 1), blockstate, 4);
-                            if (configuredfeature.place(level, generator, random, pos.offset(i, 0, j))) {
+                            if (feature.place(level, generator, random, pos.offset(i, 0, j))) {
                                 return true;
                             }
 
@@ -157,18 +153,17 @@ public final class RuUltraFromMegaTreeGrower {
             }
         }
 
-        ResourceKey<ConfiguredFeature<?, ?>> resourcekey2 = this.getConfiguredFeature(random, this.hasFlowers(level, pos));
-        if (resourcekey2 == null) {
+        ResourceKey<ConfiguredFeature<?, ?>> key = this.getConfiguredFeature(random, this.hasFlowers(level, pos));
+        if (key == null) {
             return false;
         } else {
-            Holder<ConfiguredFeature<?, ?>> holder1 = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(resourcekey2).orElse((Holder.Reference<ConfiguredFeature<?, ?>>)null);
-            if (holder1 == null) {
+            ConfiguredFeature<?, ?> feature = VersionHelper.registry(level.registryAccess(), Registries.CONFIGURED_FEATURE).getOptional(key).orElse(null);
+            if (feature == null) {
                 return false;
             } else {
-                ConfiguredFeature<?, ?> configuredfeature1 = holder1.value();
                 BlockState blockstate1 = level.getFluidState(pos).createLegacyBlock();
                 level.setBlock(pos, blockstate1, 4);
-                if (configuredfeature1.place(level, generator, random, pos)) {
+                if (feature.place(level, generator, random, pos)) {
                     if (level.getBlockState(pos) == blockstate1) {
                         level.sendBlockUpdated(pos, state, blockstate1, 2);
                     }

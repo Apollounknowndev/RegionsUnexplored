@@ -64,7 +64,7 @@ public class RUTintedParticlesLeavesBlock extends LeavesBlock {
         BlockPos below = pos.below();
         BlockState belowState = level.getBlockState(below);
 
-        if (!level.isClientSide) return;
+        if (!level.isClientSide()) return;
         if (random.nextFloat() >= (this.particleChance * RUConfigHandler.CLIENT.particleRates.leaves)) return;
         if (isFaceFull(belowState.getCollisionShape(level, below), Direction.UP)) return;
         

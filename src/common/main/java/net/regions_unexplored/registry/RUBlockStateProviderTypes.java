@@ -3,7 +3,7 @@ package net.regions_unexplored.registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
-import net.regions_unexplored.platform.Registrar;
+import net.regions_unexplored.module.platform.Registrar;
 import net.regions_unexplored.worldgen.stateprovider.RandomizedGroundCoverStateProvider;
 
 import java.util.function.Supplier;

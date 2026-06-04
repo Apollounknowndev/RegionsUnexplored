@@ -113,7 +113,7 @@ public class SmallOakLogBlock extends Block implements SimpleWaterloggedBlock{
             level.setBlock(pos, newBlockState, 11);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newBlockState));
             stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(interactionHand));
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            return ItemInteractionResult.sidedSuccess(level.isClientSide());
         }
         else{
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
