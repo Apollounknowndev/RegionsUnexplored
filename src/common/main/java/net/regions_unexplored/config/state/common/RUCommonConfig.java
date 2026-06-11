@@ -210,17 +210,29 @@ public class RUCommonConfig {
 			entry(RUBiomes.BAOBAB_SAVANNA, ofToggle(List.of(Biomes.SAVANNA, Biomes.SAVANNA_PLATEAU), Map.of(
 				HUMIDITY, DoubleRange.below(-0.35)
 			)))
-		));
-		public static final Codec<BiomePlacements> CODEC = Codec.unboundedMap(ResourceKey.codec(Registries.BIOME), BiomeTarget.CODEC).xmap(BiomePlacements::create, g -> g.placements);
+		), 1);
+		public static final Codec<BiomePlacements> CODEC = Codec.withAlternative(
+			RecordCodecBuilder.create(i -> i.group(
+				Codec.unboundedMap(ResourceKey.codec(Registries.BIOME), BiomeTarget.CODEC).fieldOf("placements").forGetter(g -> g.placements),
+				CommentedMapCodec.optionalCommented(Codec.FLOAT, 1f, "weight_multiplier", "Multiplies the weighting of most biomes in the layout. Higher value = more RU biomes.").forGetter(g -> g.weightMultiplier)
+			).apply(i, BiomePlacements::create)),
+			Codec.unboundedMap(ResourceKey.codec(Registries.BIOME), BiomeTarget.CODEC).xmap(BiomePlacements::create, g -> g.placements)
+		);
 		
 		public Map<ResourceKey<Biome>, BiomeTarget> placements;
+		public float weightMultiplier;
 		
-		public BiomePlacements(Map<ResourceKey<Biome>, BiomeTarget> placements) {
+		public BiomePlacements(Map<ResourceKey<Biome>, BiomeTarget> placements, float weightMultiplier) {
 			this.placements = new HashMap<>(placements);
+			this.weightMultiplier = weightMultiplier;
 		}
 		
 		public static BiomePlacements create(Map<ResourceKey<Biome>, BiomeTarget> basePlacements) {
-			BiomePlacements placements = new BiomePlacements(basePlacements);
+			return create(basePlacements, 1);
+		}
+		
+		public static BiomePlacements create(Map<ResourceKey<Biome>, BiomeTarget> basePlacements, float weightMultiplier) {
+			BiomePlacements placements = new BiomePlacements(basePlacements, weightMultiplier);
 			for (var entry : DEFAULT.placements.entrySet()) {
 				if (!placements.placements.containsKey(entry.getKey())) {
 					placements.placements.put(entry.getKey(), entry.getValue());

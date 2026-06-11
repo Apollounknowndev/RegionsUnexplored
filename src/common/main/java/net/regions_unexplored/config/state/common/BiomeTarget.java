@@ -18,6 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.levelgen.DensityFunction;
+import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.config.json5.CommentedMapCodec;
 import net.regions_unexplored.registry.data.RUBiomes;
 import net.regions_unexplored.registry.data.RUDensityFunctions;
@@ -53,7 +54,7 @@ public class BiomeTarget {
 	public Optional<String> group = Optional.empty();
 	public Optional<Boolean> specialEnabled = Optional.empty();
 	public Optional<Boolean> enabled = Optional.empty();
-	public Optional<Integer> weight = Optional.empty();
+	private Optional<Integer> weight = Optional.empty();
 	public Integer baseWeight = null;
 	public Optional<List<ResourceKey<Biome>>> canReplace = Optional.empty();
 	public Optional<Map<ClimateParameter, DoubleRange>> parameters = Optional.empty();
@@ -76,6 +77,10 @@ public class BiomeTarget {
 		weight.ifPresent(i -> this.baseWeight = i);
 		this.canReplace = canReplace;
 		this.parameters = parameters;
+	}
+	
+	public Optional<Integer> getWeight() {
+		return this.weight.map(w -> (int) (w * RUConfigHandler.COMMON.biomePlacements.weightMultiplier));
 	}
 	
 	public static BiomeTarget ofSpecial() {

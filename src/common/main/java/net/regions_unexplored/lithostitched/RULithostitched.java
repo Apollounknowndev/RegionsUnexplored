@@ -77,7 +77,7 @@ public class RULithostitched {
                 if (!target.canGenerate()) continue;
                 
                 // Weighted
-                if (target.weight.orElse(0) > 0 && target.canReplace.isPresent()) {
+                if (target.getWeight().orElse(0) > 0 && target.canReplace.isPresent()) {
                     injector = BiomeInjector.builder(target.dimension).replacePartially(
                         BiomeTarget.getTargets(registry, target.canReplace.get()),
                         registry.getHolderOrThrow(biome),
@@ -108,7 +108,7 @@ public class RULithostitched {
     }
     
     private static void addRegion(RegionConsumer consumer, Registry<Biome> registry, String name, BiomeTarget target) {
-        int weight = target.weight.orElse(0);
+        int weight = target.getWeight().orElse(0);
         if (weight <= 0 || target.canReplace.isEmpty()) return;
         consumer.accept(
             RURegions.key(name),

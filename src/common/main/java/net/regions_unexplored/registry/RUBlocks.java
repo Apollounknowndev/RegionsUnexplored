@@ -136,7 +136,7 @@ public interface RUBlocks {
     Supplier<Block> SILVER_BIRCH_LEAF_LITTER = register("silver_birch_leaf_litter", p -> new RULeafLitterBlock(p.pushReaction(PushReaction.DESTROY).replaceable().ignitedByLava().noCollision().sound(RUSoundEvents.LEAF_LITTER)));
     Supplier<Block> ENCHANTED_BIRCH_LEAF_LITTER = register("enchanted_birch_leaf_litter", p -> new RULeafLitterBlock(p.pushReaction(PushReaction.DESTROY).replaceable().ignitedByLava().noCollision().sound(RUSoundEvents.LEAF_LITTER)));
     //TALL_PLANTS
-    Supplier<Block> MEADOW_SAGE = RUBlockUtils.registerNoItem("meadow_sage", RuDoublePlantBlock::new, Blocks.ROSE_BUSH);
+    Supplier<Block> MEADOW_SAGE = RUBlockUtils.registerNoItem("meadow_sage", RuDoubleFlowerBlock::new, Blocks.ROSE_BUSH);
     Supplier<Block> BARLEY = register("barley", RuDoublePlantBlock::new, Blocks.SUNFLOWER);
     Supplier<Block> CATTAIL = register("cattail", CattailBlock::new, Blocks.SUNFLOWER);
     Supplier<Block> TASSEL = register("tassel", RuDoubleFlowerBlock::new, Blocks.SUNFLOWER);

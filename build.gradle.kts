@@ -21,7 +21,7 @@ repositories {
 }
 
 group = "net.regions_unexplored"
-version = "0.6"
+version = "0.6.1"
 val lithostitchedVersion = "1.7.9"
 val wikifulVersion = "0.3.1"
 

@@ -14,21 +14,17 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.rootplacers.AboveRootPlacement;
 import net.minecraft.world.level.levelgen.feature.rootplacers.RootPlacer;
 import net.minecraft.world.level.levelgen.feature.rootplacers.RootPlacerType;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.set.WoodSet;
-import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.tag.RUBlockTags;
 
 import java.util.*;
 import java.util.function.BiConsumer;
-import java.util.function.UnaryOperator;
 
 public class WillowRootPlacer extends RootPlacer {
 	public static final MapCodec<WillowRootPlacer> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
@@ -38,6 +34,7 @@ public class WillowRootPlacer extends RootPlacer {
 		AboveRootPlacement.CODEC.optionalFieldOf("above_root_placement").forGetter(c -> c.aboveRootPlacement)
 	).apply(i, WillowRootPlacer::new));
 	public static final RootPlacerType<WillowRootPlacer> TYPE = new RootPlacerType<>(CODEC);
+	private static final int MAX_ROOT_LENGTH = 6;
 	
 	private final IntProvider height;
 	private final float chance;
@@ -69,11 +66,11 @@ public class WillowRootPlacer extends RootPlacer {
 		for (Direction direction : Direction.Plane.HORIZONTAL) {
 			MutableBlockPos pos = trunkOrigin.relative(direction).above(this.height.sample(random) - 1).mutable();
 			rootPositions.add(pos.immutable());
-			while (this.canPlaceRoot(level, pos)) {
+			for (int i = 0; i < MAX_ROOT_LENGTH; i++) {
 				pos.move(Direction.DOWN);
 				rootPositions.add(pos.immutable());
+				if (!this.canPlaceRoot(level, pos.above())) break;
 			}
-			rootPositions.add(pos.below().immutable());
 		}
 		
 		for (var rootPos : rootPositions) {
