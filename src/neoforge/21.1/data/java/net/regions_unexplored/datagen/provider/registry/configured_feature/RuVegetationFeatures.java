@@ -33,13 +33,12 @@ import net.regions_unexplored.datagen.provider.registry.util.RUFeatureUtils;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUFeatureTypes;
 import net.regions_unexplored.registry.data.RUBiomes;
-import net.regions_unexplored.registry.data.RUConfiguredFeatures;
 import net.regions_unexplored.registry.data.RUPlacedFeatures;
 import net.regions_unexplored.registry.tag.RUBlockTags;
 import net.regions_unexplored.worldgen.stateprovider.RandomizedGroundCoverStateProvider;
-import net.regions_unexplored.world.level.block.plant.food.DuskmelonBlock;
-import net.regions_unexplored.world.level.block.plant.food.SalmonBerryBushBlock;
-import net.regions_unexplored.world.level.block.plant.grass.AshenGrassBlock;
+import net.regions_unexplored.block.type.food.DuskmelonBlock;
+import net.regions_unexplored.block.type.food.SalmonBerryBushBlock;
+import net.regions_unexplored.block.type.grass.AshenGrassBlock;
 
 import java.util.List;
 
@@ -153,10 +152,9 @@ public class RuVegetationFeatures {
         
         register(context, PATCH_SHORT_GRASS, Feature.RANDOM_PATCH, randomPatch(weightedStates(pair(Blocks.SHORT_GRASS), pair(RUBlocks.GRASS_SPROUTS.get())), 64));
         register(context, PATCH_SANDY_GRASS, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.SANDY_GRASS.get()), 64));
-        registerPlaced(context, PATCH_STEPPE_GRASS, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.STEPPE_GRASS.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.DIRT)));
-        registerPlaced(context, PATCH_DESERT_SHRUB_ON_GRASS, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.SMALL_DESERT_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.DIRT)));
-        var smallDesertShrub = registerPlaced(context, PATCH_DESERT_SHRUB_ON_SAND, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.SMALL_DESERT_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.SAND)));
-        var deadSteppeShrub = registerPlaced(context, PATCH_STEPPE_SHRUB_ON_SAND, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.DEAD_STEPPE_SHRUB.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.SAND)));
+        registerPlaced(context, PATCH_DESERT_SHRUB_ON_GRASS, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.SHORT_DEAD_GRASS.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.DIRT)));
+        var smallDesertShrub = registerPlaced(context, PATCH_DESERT_SHRUB_ON_SAND, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.SHORT_DEAD_GRASS.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.SAND)));
+        var deadSteppeShrub = registerPlaced(context, PATCH_STEPPE_SHRUB_ON_SAND, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.TALL_DEAD_GRASS.get()), 64, BlockPredicate.matchesTag(Vec3i.ZERO.below(), BlockTags.SAND)));
 
         register(context, PATCH_BARLEY, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.BARLEY.get()), 144));
         registerPlaced(context, PATCH_BLADED_GRASS, Feature.RANDOM_PATCH, randomPatch(weightedStates(pair(RUBlocks.BLADED_GRASS.get(), 4), pair(RUBlocks.BLADED_TALL_GRASS.get()), pair(Blocks.SHORT_GRASS, 4)), 64));
@@ -180,17 +178,12 @@ public class RuVegetationFeatures {
             new NormalNoise.NoiseParameters(-2, 1),
             1,
             List.of(
-                state(RUBlocks.STEPPE_GRASS),
                 state(Blocks.SHORT_GRASS),
                 state(RUBlocks.GRASS_SPROUTS),
-                state(RUBlocks.DEAD_STEPPE_SHRUB),
-                state(RUBlocks.SMALL_DESERT_SHRUB)
+                state(RUBlocks.TALL_DEAD_GRASS),
+                state(RUBlocks.SHORT_DEAD_GRASS)
             )
         ), 32));
-        randomPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
-            .add(RUBlocks.STEPPE_GRASS.get().defaultBlockState(), 10).add(RUBlocks.STEPPE_SHRUB.get().defaultBlockState(), 10)
-            .add(RUBlocks.SMALL_DESERT_SHRUB.get().defaultBlockState(), 1).add(RUBlocks.STEPPE_TALL_GRASS.get().defaultBlockState(), 1)
-            .add(RUBlocks.DEAD_STEPPE_SHRUB.get().defaultBlockState(), 10)), 32);
         registerPlaced(context, PATCH_FROZEN_GRASS, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.FROZEN_GRASS.get().defaultBlockState()), 32));
         registerPlaced(context, PATCH_GRASS_SPROUTS, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.GRASS_SPROUTS.get().defaultBlockState()), 32));
         register(context, PATCH_TALL_GRASS, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(Blocks.TALL_GRASS.defaultBlockState()), 32));

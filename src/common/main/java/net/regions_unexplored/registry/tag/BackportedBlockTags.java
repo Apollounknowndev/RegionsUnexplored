@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.Block;
 public interface BackportedBlockTags {
     TagKey<Block> SUPPORTS_VEGETATION = key("supports_vegetation");
     TagKey<Block> SUPPORTS_CROPS = key("supports_crops");
+    TagKey<Block> SPELEOTHEMS = key("speleothems");
 
     private static TagKey<Block> key(String name) {
         return TagKey.create(Registries.BLOCK, Identifier.withDefaultNamespace(name));

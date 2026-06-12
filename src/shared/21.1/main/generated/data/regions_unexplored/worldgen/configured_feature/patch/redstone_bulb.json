@@ -8,7 +8,11 @@
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "regions_unexplored:redstone_bulb"
+              "Name": "regions_unexplored:redstone_bulb",
+              "Properties": {
+                "facing": "up",
+                "waterlogged": "false"
+              }
             }
           }
         }

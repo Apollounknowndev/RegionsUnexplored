@@ -11,7 +11,7 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.tag.*;
-import net.regions_unexplored.world.level.block.plant.tall.CattailBlock;
+import net.regions_unexplored.block.type.aquatic.CattailBlock;
 
 import java.util.Random;
 

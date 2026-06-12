@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
-import net.regions_unexplored.world.level.block.plant.flower.GroundCoverBlock;
+import net.regions_unexplored.block.type.base.BonemealableSegmentedBlock;
 
 import java.util.function.Supplier;
 
@@ -25,7 +25,7 @@ public class RandomizedGroundCoverStateProvider extends BlockStateProvider {
 	
 	public RandomizedGroundCoverStateProvider(Block block) {
 		BlockState state = block.defaultBlockState();
-		if (!(state.hasProperty(GroundCoverBlock.FACING) && state.hasProperty(GroundCoverBlock.AMOUNT))) {
+		if (!(state.hasProperty(BonemealableSegmentedBlock.FACING) && state.hasProperty(BonemealableSegmentedBlock.AMOUNT))) {
 			throw new IllegalStateException("randomized_ground_cover state provider requires a block with FACING and AMOUNT properties");
 		}
 		this.block = block;
@@ -47,7 +47,7 @@ public class RandomizedGroundCoverStateProvider extends BlockStateProvider {
 	@Override
 	public BlockState getState(RandomSource random, BlockPos pos) {
 		return this.block.defaultBlockState()
-			.setValue(GroundCoverBlock.AMOUNT, random.nextIntBetweenInclusive(1, 4))
-			.setValue(GroundCoverBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(random));
+			.setValue(BonemealableSegmentedBlock.AMOUNT, random.nextIntBetweenInclusive(1, 4))
+			.setValue(BonemealableSegmentedBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(random));
 	}
 }

@@ -73,7 +73,7 @@ cloche {
     }
 
     /*val sharedNew = common("shared:26.1") {
-        //mixins.from(file("src/shared/21.1/main/regions_unexplored.21.1.mixins.json"))
+        //mixins.from(file("src/shared/26.1/main/regions_unexplored.26.1.mixins.json"))
     }*/
 
     fabric("fabric:21.1") {

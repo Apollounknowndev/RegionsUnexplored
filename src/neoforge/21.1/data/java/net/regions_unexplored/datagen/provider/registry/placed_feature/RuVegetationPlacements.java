@@ -66,7 +66,6 @@ public class RuVegetationPlacements {
     
     public static final ResourceKey<PlacedFeature> PATCH_TALL_GRASS = patch("tall_grass");
     
-    public static final ResourceKey<PlacedFeature> PATCH_STEPPE_GRASS = patch("steppe_grass");
     public static final ResourceKey<PlacedFeature> PATCH_SANDY_GRASS_SPARSE = patch("sandy_grass_sparse");
     public static final ResourceKey<PlacedFeature> PATCH_SANDY_GRASS_DENSE = patch("sandy_grass_dense");
     public static final ResourceKey<PlacedFeature> PATCH_DESERT_SHRUB_ON_GRASS = patch("desert_shrub_on_grass");
@@ -190,7 +189,6 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.PATCH_SHORT_GRASS, patchGrass, surfaceSpread(4, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_SHORT_GRASS_DENSE, patchGrass, surfaceSpread(8, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_TALL_GRASS, patchTallGrass, surfaceSpread(2, Types.WORLD_SURFACE_WG));
-        register(context, RuVegetationPlacements.PATCH_STEPPE_GRASS, surfaceSpread(2, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_SANDY_GRASS_SPARSE, patchSandyGrass, surfaceSpread(0.33, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_SANDY_GRASS_DENSE, patchSandyGrass, surfaceSpread(2, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.PATCH_DESERT_SHRUB_ON_GRASS, surfaceSpread(2, Types.WORLD_SURFACE_WG));

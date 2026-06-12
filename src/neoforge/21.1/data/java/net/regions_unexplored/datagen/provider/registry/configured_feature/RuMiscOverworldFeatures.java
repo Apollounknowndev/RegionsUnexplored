@@ -33,7 +33,7 @@ import net.regions_unexplored.datagen.provider.registry.placed_feature.RuMiscOve
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUFeatureTypes;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
-import net.regions_unexplored.world.level.block.wood.AspenLogBlock;
+import net.regions_unexplored.block.type.wood.AspenLogBlock;
 import net.regions_unexplored.world.level.feature.configuration.PointedRedstoneClusterConfiguration;
 import net.regions_unexplored.world.level.feature.configuration.PointedRedstoneConfiguration;
 import net.regions_unexplored.worldgen.feature.config.CarvedLimitedPoolFeatureConfig;

@@ -24,7 +24,7 @@ public class RuBlockCropCutouts {
                 RUBlocks.DEEPSLATE_PRISMOSS.get(),
                 RUBlocks.PRISMOSS_SPROUT.get(),
                 //REDSTONE_BLOCKS
-                RUBlocks.POINTED_REDSTONE.get(),
+                RUBlocks.REDSTONE_SPIKE.get(),
                 RUBlocks.REDSTONE_BUD.get(),
                 RUBlocks.REDSTONE_BULB.get(),
                 //OTHER_CAVE_BLOCKS
@@ -41,17 +41,14 @@ public class RuBlockCropCutouts {
                 RUBlocks.DUSKTRAP.get(),
                 /*-----------------PLANTS-----------------*/
                 //GRASS_BLOCKS
-                RUBlocks.DEAD_STEPPE_SHRUB.get(),
+                RUBlocks.TALL_DEAD_GRASS.get(),
                 RUBlocks.FROZEN_GRASS.get(),
                 RUBlocks.SANDY_GRASS.get(),
-                RUBlocks.SMALL_DESERT_SHRUB.get(),
-                RUBlocks.STEPPE_GRASS.get(),
-                RUBlocks.STEPPE_SHRUB.get(),
+                RUBlocks.SHORT_DEAD_GRASS.get(),
                 RUBlocks.GRASS_SPROUTS.get(),
                 //TALL_GRASS_BLOCKS
                 RUBlocks.ELEPHANT_EAR.get(),
                 RUBlocks.SANDY_TALL_GRASS.get(),
-                RUBlocks.STEPPE_TALL_GRASS.get(),
                 RUBlocks.WINDSWEPT_GRASS.get(),
                 //FLOWERS
                 RUBlocks.ALPHA_DANDELION.get(),

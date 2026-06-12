@@ -24,9 +24,6 @@
             "slow_scale": 0.7,
             "states": [
               {
-                "Name": "regions_unexplored:steppe_grass"
-              },
-              {
                 "Name": "minecraft:short_grass"
               },
               {

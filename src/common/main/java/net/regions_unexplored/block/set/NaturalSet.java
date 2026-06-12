@@ -7,6 +7,10 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.regions_unexplored.block.BlockFactory;
 import net.regions_unexplored.block.type.leaves.HangingVinesBlock;
+import net.regions_unexplored.block.type.sapling.CactusSaplingBlock;
+import net.regions_unexplored.block.type.sapling.CobaltSaplingBlock;
+import net.regions_unexplored.block.type.sapling.RUSaplingBlock;
+import net.regions_unexplored.block.type.sapling.RUTreeGrower;
 import net.regions_unexplored.block.type.wood.BeardBlock;
 import net.regions_unexplored.block.type.wood.BranchBlock;
 import net.regions_unexplored.module.version.VersionBlockHelper;
@@ -14,9 +18,7 @@ import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.sapling.RUTreeGrowers;
 import net.regions_unexplored.block.RUBlockUtils;
 import net.regions_unexplored.block.type.leaves.RUTintedParticlesLeavesBlock;
-import net.regions_unexplored.world.level.block.plant.sapling.RuCactusSaplingBlock;
-import net.regions_unexplored.world.level.block.plant.sapling.RuNetherSaplingBlock;
-import net.regions_unexplored.world.level.block.plant.tall.ShrubBlock;
+import net.regions_unexplored.block.type.shrub.ShrubBlock;
 
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -41,7 +43,7 @@ public class NaturalSet {
 
     public static NaturalSet saguaroCactus() {
         NaturalSet set = NaturalSet.create("saguaro_cactus");
-        set.sapling = RUBlockUtils.register("saguaro_cactus_flower", p -> new RuCactusSaplingBlock(RUTreeGrowers.SAGUARO_CACTUS, p), Blocks.OAK_SAPLING);
+        set.sapling = RUBlockUtils.register("saguaro_cactus_flower", p -> new CactusSaplingBlock(RUTreeGrowers.SAGUARO_CACTUS, p), Blocks.OAK_SAPLING);
         set.pottedSapling = RUBlockUtils.registerNoItem("potted_saguaro_cactus_flower", p -> new FlowerPotBlock(set.sapling.get(), p), Blocks.POTTED_OAK_SAPLING);
         return set;
     }
@@ -55,7 +57,7 @@ public class NaturalSet {
     public static NaturalSet cobalt() {
         NaturalSet set = NaturalSet.create("cobalt");
         set.leaves = RUBlockUtils.register("cobalt_webbing", p -> RUBlockUtils.leaves(p, MapColor.COLOR_BLUE, true, LeavesBlock::new));
-        set.withSapling(p -> new RuNetherSaplingBlock(RUTreeGrowers.COBALT, p.sound(SoundType.NETHER_SPROUTS)));
+        set.withSapling(p -> new CobaltSaplingBlock(RUTreeGrowers.COBALT, p.sound(SoundType.NETHER_SPROUTS)));
         return set;
     }
 
@@ -90,10 +92,6 @@ public class NaturalSet {
         return withLeaves(MapColor.PLANT, RUTintedParticlesLeavesBlock.standard());
     }
 
-    public NaturalSet withLeaves(MapColor color) {
-        return withLeaves(color, RUTintedParticlesLeavesBlock.standard());
-    }
-
     public NaturalSet withLeaves(BlockFactory<?> factory) {
         return withLeaves(MapColor.PLANT, factory);
     }
@@ -112,6 +110,10 @@ public class NaturalSet {
 
     public NaturalSet withSapling(TreeGrower grower) {
         return withSapling(p -> new SaplingBlock(grower, p));
+    }
+    
+    public NaturalSet withSapling(RUTreeGrower grower) {
+        return withSapling(p -> new RUSaplingBlock(grower, p));
     }
 
     public NaturalSet withSapling(BlockFactory<Block> factory) {

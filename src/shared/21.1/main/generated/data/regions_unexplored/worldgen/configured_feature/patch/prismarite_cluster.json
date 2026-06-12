@@ -19,7 +19,11 @@
               },
               {
                 "data": {
-                  "Name": "regions_unexplored:prismarite_cluster"
+                  "Name": "regions_unexplored:prismarite_cluster",
+                  "Properties": {
+                    "facing": "up",
+                    "waterlogged": "false"
+                  }
                 },
                 "weight": 5
               }

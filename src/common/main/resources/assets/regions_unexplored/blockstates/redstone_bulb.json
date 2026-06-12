@@ -1,7 +1,30 @@
 {
   "variants": {
-    "": {
+    "facing=down": {
+      "model": "regions_unexplored:block/redstone_bulb",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "regions_unexplored:block/redstone_bulb",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "regions_unexplored:block/redstone_bulb",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "regions_unexplored:block/redstone_bulb",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
       "model": "regions_unexplored:block/redstone_bulb"
+    },
+    "facing=west": {
+      "model": "regions_unexplored:block/redstone_bulb",
+      "x": 90,
+      "y": 270
     }
   }
 }

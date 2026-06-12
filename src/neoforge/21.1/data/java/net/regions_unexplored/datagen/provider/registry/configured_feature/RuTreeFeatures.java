@@ -40,7 +40,7 @@ import net.regions_unexplored.worldgen.rootplacer.MagnoliaRootPlacer;
 import net.regions_unexplored.worldgen.rootplacer.WillowRootPlacer;
 import net.regions_unexplored.worldgen.treedecorator.*;
 import net.regions_unexplored.block.type.leaves.AppleLeavesBlock;
-import net.regions_unexplored.world.level.block.wood.BambooLogBlock;
+import net.regions_unexplored.block.type.wood.BambooLogBlock;
 import net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration;
 import net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration;
 import net.regions_unexplored.worldgen.trunkplacer.*;

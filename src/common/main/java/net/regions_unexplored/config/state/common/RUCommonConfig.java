@@ -3,6 +3,7 @@ package net.regions_unexplored.config.state.common;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.worldgen.lithostitched.api.worldgen.biomeinjector.BiomeInjector;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -12,6 +13,7 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.regions_unexplored.RegionsUnexplored;
+import net.regions_unexplored.block.RUBlockUtils;
 import net.regions_unexplored.config.json5.CommentedMapCodec;
 import net.regions_unexplored.config.json5.CommentedUnboundedMapCodec;
 import net.regions_unexplored.config.state.common.BiomeTarget.DoubleRange;
@@ -30,7 +32,7 @@ import static net.regions_unexplored.config.json5.CommentedMapCodec.optionalComm
 import static net.regions_unexplored.config.state.common.BiomeTarget.*;
 
 public class RUCommonConfig {
-	public static final int CURRENT_VERSION = 1;
+	public static final int CURRENT_VERSION = 2;
 	public static final RUCommonConfig DEFAULT = new RUCommonConfig(CURRENT_VERSION, BiomeGroups.DEFAULT, BiomePlacements.DEFAULT, Misc.DEFAULT, VanillaChanges.DEFAULT);
 	public static final Codec<RUCommonConfig> CODEC = RecordCodecBuilder.create(i -> i.group(
 		commented(Codec.INT, "config_version", "Don't touch this!").orElse(CURRENT_VERSION).forGetter(c -> c.configVersion),
@@ -52,6 +54,22 @@ public class RUCommonConfig {
 		this.biomePlacements = biomePlacements;
 		this.misc = misc;
 		this.vanillaChanges = vanillaChanges;
+		this.upgradeConfig();
+	}
+	
+	private void upgradeConfig() {
+		if (this.configVersion == 1) {
+			Map<ResourceKey<Biome>, BiomeTarget> placements = this.biomePlacements.placements;
+			if (placements.containsKey(RUBiomes.OLD_GROWTH_BAYOU)) {
+				BiomeTarget target = placements.get(RUBiomes.OLD_GROWTH_BAYOU);
+				target.parameters.ifPresent(parameters -> parameters.put(HUMIDITY, DoubleRange.above(0.3)));
+			}
+			if (placements.containsKey(RUBiomes.BAYOU)) {
+				BiomeTarget target = placements.get(RUBiomes.BAYOU);
+				target.parameters.ifPresent(parameters -> parameters.put(HUMIDITY, DoubleRange.below(0.3)));
+			}
+			this.configVersion = 2;
+		}
 	}
 	
 	public Misc.BranchMode getBranchMode() {
@@ -123,11 +141,11 @@ public class RUCommonConfig {
 			))),
 			entry(RUBiomes.BAYOU, BiomeTarget.ofGroupToggle("swamps", Biomes.SWAMP, Map.of(
 				TEMPERATURE, DoubleRange.between(-0.1, 0.2),
-				HUMIDITY, DoubleRange.below(3)
+				HUMIDITY, DoubleRange.below(0.3)
 			))),
 			entry(RUBiomes.OLD_GROWTH_BAYOU, BiomeTarget.ofGroupToggle("swamps", Biomes.SWAMP, Map.of(
 				TEMPERATURE, DoubleRange.between(-0.1, 0.2),
-				HUMIDITY, DoubleRange.above(3)
+				HUMIDITY, DoubleRange.above(0.3)
 			))),
 			entry(RUBiomes.MARSH, ofWeighted(50, Biomes.SWAMP)),
 			entry(RUBiomes.TUNDRA, ofWeighted(100, Biomes.SNOWY_PLAINS, Map.of(

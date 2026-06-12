@@ -2,7 +2,6 @@
   "values": [
     "regions_unexplored:icicle",
     "regions_unexplored:ash_vent",
-    "regions_unexplored:blackstone_cluster",
     "regions_unexplored:brimsprout_nylium",
     "regions_unexplored:chalk",
     "regions_unexplored:chalk_grass_block",
@@ -23,7 +22,7 @@
     "regions_unexplored:mossy_stone",
     "regions_unexplored:argillite",
     "regions_unexplored:mycotoxic_moss",
-    "regions_unexplored:pointed_redstone",
+    "regions_unexplored:redstone_spike",
     "regions_unexplored:polished_chalk",
     "regions_unexplored:polished_chalk_slab",
     "regions_unexplored:polished_chalk_stairs",

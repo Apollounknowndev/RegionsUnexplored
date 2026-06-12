@@ -63,7 +63,6 @@ public class RuNetherFeatures {
         registerPlaced(context, PATCH_GLISTER_BULB, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(RUBlocks.GLISTER_BULB.get().defaultBlockState())));
         
         registerPlaced(context, PATCH_HANGING_EARLIGHT, RUFeatureTypes.HANGING_EARLIGHT.get(), FeatureConfiguration.NONE);
-        registerPlaced(context, PATCH_BLACKSTONE_CLUSTER, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.BLACKSTONE_CLUSTER.get().defaultBlockState()), 16));
         registerPlaced(context, PATCH_COBALT_EARLIGHT, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.COBALT_EARLIGHT.get().defaultBlockState()), 6));
         registerPlaced(context, TALL_COBALT_EARLIGHT, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(RUBlocks.TALL_COBALT_EARLIGHT.get().defaultBlockState())));
         registerPlaced(context, PATCH_COBALT_ROOTS, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.COBALT_ROOTS.get().defaultBlockState()), 32));

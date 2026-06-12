@@ -5,7 +5,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.NetherrackBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.regions_unexplored.world.level.block.nether.RuNyliumBlock;
+import net.regions_unexplored.block.type.nether.RUNyliumBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,7 +19,7 @@ public abstract class NetherrackBlockMixin {
         boolean isSet=false;
         for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-1, -1, -1), pos.offset(1, 1, 1))) {
             BlockState blockstate = level.getBlockState(blockpos);
-            if(blockstate.getBlock() instanceof RuNyliumBlock){
+            if(blockstate.getBlock() instanceof RUNyliumBlock){
                 if(isSet){
                     if(randomSource.nextInt(2)==0){
                         level.setBlock(pos, blockstate, 3);

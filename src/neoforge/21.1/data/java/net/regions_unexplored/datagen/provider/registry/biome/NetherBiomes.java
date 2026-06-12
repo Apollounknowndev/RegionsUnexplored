@@ -54,7 +54,6 @@ public class NetherBiomes {
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_COBALT_ROOTS);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_COBALT_EARLIGHT);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.TALL_COBALT_EARLIGHT);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_BLACKSTONE_CLUSTER);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, RuNetherPlacements.PATCH_HANGING_EARLIGHT);
 
 

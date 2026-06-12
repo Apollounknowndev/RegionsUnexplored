@@ -13,8 +13,8 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.tag.*;
-import net.regions_unexplored.world.level.block.plant.aquatic.TallHyacinthStockBlock;
-import net.regions_unexplored.world.level.block.state.properties.TallHyacinthStockShape;
+import net.regions_unexplored.block.type.aquatic.TallHyacinthStockBlock;
+import net.regions_unexplored.block.properties.type.TallHyacinthStockShape;
 import net.regions_unexplored.world.level.feature.configuration.HyacinthStockConfiguration;
 
 import java.util.Random;
@@ -60,18 +60,18 @@ public class HyacinthStockFeature extends Feature<HyacinthStockConfiguration> {
             level.setBlock(pos, stockConfiguration.stockProvider.getState(randomSource, pos), 2);
         }
         if(level.getBlockState(pos.below())== RUBlocks.TALL_HYACINTH_STOCK.get().defaultBlockState()){
-            level.setBlock(pos, stockConfiguration.stockProvider.getState(randomSource, pos).setValue(TallHyacinthStockBlock.SHAPE, TallHyacinthStockShape.TIP), 2);
-            level.setBlock(pos.below(), stockConfiguration.stockProvider.getState(randomSource, pos.below()).setValue(TallHyacinthStockBlock.SHAPE, TallHyacinthStockShape.BASE_FRUSTUM), 2);
+            level.setBlock(pos, stockConfiguration.stockProvider.getState(randomSource, pos).setValue(TallHyacinthStockBlock.TALL_HYACINTH_STOCK_SHAPE, TallHyacinthStockShape.TIP), 2);
+            level.setBlock(pos.below(), stockConfiguration.stockProvider.getState(randomSource, pos.below()).setValue(TallHyacinthStockBlock.TALL_HYACINTH_STOCK_SHAPE, TallHyacinthStockShape.BASE_FRUSTUM), 2);
         }
-        if(level.getBlockState(pos.below().below())== RUBlocks.TALL_HYACINTH_STOCK.get().defaultBlockState().setValue(TallHyacinthStockBlock.SHAPE, TallHyacinthStockShape.BASE_FRUSTUM)){
-            level.setBlock(pos, stockConfiguration.stockProvider.getState(randomSource, pos).setValue(TallHyacinthStockBlock.SHAPE, TallHyacinthStockShape.TIP), 2);
-            level.setBlock(pos.below(), stockConfiguration.stockProvider.getState(randomSource, pos.below()).setValue(TallHyacinthStockBlock.SHAPE, TallHyacinthStockShape.FRUSTUM), 2);
-            level.setBlock(pos.below().below(), stockConfiguration.stockProvider.getState(randomSource, pos.below().below()).setValue(TallHyacinthStockBlock.SHAPE, TallHyacinthStockShape.BASE), 2);
+        if(level.getBlockState(pos.below().below())== RUBlocks.TALL_HYACINTH_STOCK.get().defaultBlockState().setValue(TallHyacinthStockBlock.TALL_HYACINTH_STOCK_SHAPE, TallHyacinthStockShape.BASE_FRUSTUM)){
+            level.setBlock(pos, stockConfiguration.stockProvider.getState(randomSource, pos).setValue(TallHyacinthStockBlock.TALL_HYACINTH_STOCK_SHAPE, TallHyacinthStockShape.TIP), 2);
+            level.setBlock(pos.below(), stockConfiguration.stockProvider.getState(randomSource, pos.below()).setValue(TallHyacinthStockBlock.TALL_HYACINTH_STOCK_SHAPE, TallHyacinthStockShape.FRUSTUM), 2);
+            level.setBlock(pos.below().below(), stockConfiguration.stockProvider.getState(randomSource, pos.below().below()).setValue(TallHyacinthStockBlock.TALL_HYACINTH_STOCK_SHAPE, TallHyacinthStockShape.BASE), 2);
         }
-        if(level.getBlockState(pos.below().below())== RUBlocks.TALL_HYACINTH_STOCK.get().defaultBlockState().setValue(TallHyacinthStockBlock.SHAPE, TallHyacinthStockShape.FRUSTUM)){
-            level.setBlock(pos, stockConfiguration.stockProvider.getState(randomSource, pos).setValue(TallHyacinthStockBlock.SHAPE, TallHyacinthStockShape.TIP), 2);
-            level.setBlock(pos.below(), stockConfiguration.stockProvider.getState(randomSource, pos.below()).setValue(TallHyacinthStockBlock.SHAPE, TallHyacinthStockShape.FRUSTUM), 2);
-            level.setBlock(pos.below().below(), stockConfiguration.stockProvider.getState(randomSource, pos.below().below()).setValue(TallHyacinthStockBlock.SHAPE, TallHyacinthStockShape.MIDDLE), 2);
+        if(level.getBlockState(pos.below().below())== RUBlocks.TALL_HYACINTH_STOCK.get().defaultBlockState().setValue(TallHyacinthStockBlock.TALL_HYACINTH_STOCK_SHAPE, TallHyacinthStockShape.FRUSTUM)){
+            level.setBlock(pos, stockConfiguration.stockProvider.getState(randomSource, pos).setValue(TallHyacinthStockBlock.TALL_HYACINTH_STOCK_SHAPE, TallHyacinthStockShape.TIP), 2);
+            level.setBlock(pos.below(), stockConfiguration.stockProvider.getState(randomSource, pos.below()).setValue(TallHyacinthStockBlock.TALL_HYACINTH_STOCK_SHAPE, TallHyacinthStockShape.FRUSTUM), 2);
+            level.setBlock(pos.below().below(), stockConfiguration.stockProvider.getState(randomSource, pos.below().below()).setValue(TallHyacinthStockBlock.TALL_HYACINTH_STOCK_SHAPE, TallHyacinthStockShape.MIDDLE), 2);
         }
         return true;
     }

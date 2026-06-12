@@ -23,7 +23,6 @@ public class RuColors {
                 RUBlocks.ARGILLITE_GRASS_BLOCK.get(),
                 RUBlocks.DEEPSLATE_GRASS_BLOCK.get(),
                 RUBlocks.CHALK_GRASS_BLOCK.get(),
-                RUBlocks.STEPPE_GRASS.get(),
                 RUBlocks.GRASS_SPROUTS.get(),
                 RUBlocks.ORANGE_CONEFLOWER.get(),
                 RUBlocks.PURPLE_CONEFLOWER.get(),
@@ -35,8 +34,6 @@ public class RuColors {
                 RUBlocks.BLADED_TALL_GRASS.get()
         );
         TintHelper.tintBlocks((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageFoliageColor(blockAndTintGetter, blockPos) : FoliageColor.get(0.5D, 1.0D),
-                RUBlocks.STEPPE_SHRUB.get(),
-                RUBlocks.STEPPE_TALL_GRASS.get(),
                 RUBlocks.ELEPHANT_EAR.get(),
                 RUBlocks.BAOBAB_NATURAL_SET.getLeaves(),
                 RUBlocks.MAGNOLIA_NATURAL_SET.getLeaves(),
@@ -108,7 +105,6 @@ public class RuColors {
                 RUBlocks.ARGILLITE_GRASS_BLOCK.get(),
                 RUBlocks.DEEPSLATE_GRASS_BLOCK.get(),
                 RUBlocks.CHALK_GRASS_BLOCK.get(),
-                RUBlocks.STEPPE_GRASS.get(),
                 RUBlocks.GRASS_SPROUTS.get(),
                 RUBlocks.BLADED_GRASS.get(),
                 RUBlocks.CLOVER.get(),
@@ -116,8 +112,6 @@ public class RuColors {
         );
 
         TintHelper.tintItems((itemStack, i) -> FoliageColor.get(0.5D, 1.0D),
-                RUBlocks.STEPPE_SHRUB.get(),
-                RUBlocks.STEPPE_TALL_GRASS.get(),
                 RUBlocks.ELEPHANT_EAR.get(),
                 RUBlocks.BAOBAB_NATURAL_SET.getLeaves(),
                 RUBlocks.MAGNOLIA_NATURAL_SET.getLeaves(),

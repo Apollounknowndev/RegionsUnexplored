@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.RUBlockUtils;
-import net.regions_unexplored.world.level.block.wood.MagmaLogBlock;
+import net.regions_unexplored.block.type.wood.MagmaLogBlock;
 
 import java.util.ArrayList;
 import java.util.List;

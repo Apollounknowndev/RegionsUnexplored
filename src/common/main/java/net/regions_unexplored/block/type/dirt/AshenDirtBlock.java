@@ -12,10 +12,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.regions_unexplored.registry.RUBlocks;
-import net.regions_unexplored.world.level.block.state.properties.RuBlockStateProperties;
+import net.regions_unexplored.block.properties.RUBlockProperties;
 
 public class AshenDirtBlock extends Block {
-    public static final BooleanProperty SMOULDERING = RuBlockStateProperties.SMOULDERING;
+    public static final BooleanProperty SMOULDERING = RUBlockProperties.SMOULDERING;
 
     public AshenDirtBlock(Properties properties) {
         super(properties);

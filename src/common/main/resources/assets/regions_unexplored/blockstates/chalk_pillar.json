@@ -1,7 +1,7 @@
 {
   "variants": {
     "axis=x": {
-      "model": "regions_unexplored:block/chalk_pillar",
+      "model": "regions_unexplored:block/chalk_pillar_horizontal",
       "x": 90,
       "y": 90
     },
@@ -9,7 +9,7 @@
       "model": "regions_unexplored:block/chalk_pillar"
     },
     "axis=z": {
-      "model": "regions_unexplored:block/chalk_pillar",
+      "model": "regions_unexplored:block/chalk_pillar_horizontal",
       "x": 90
     }
   }

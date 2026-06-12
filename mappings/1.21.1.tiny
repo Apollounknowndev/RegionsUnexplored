@@ -16,6 +16,7 @@ c	ckw$b	net/minecraft/world/entity/monster/zombie/Zombie$ZombieGroupData
 c	dgh	net/minecraft/world/level/block/VegetationBlock
 c	div	net/minecraft/world/level/block/FarmlandBlock
 c	dnj	net/minecraft/world/level/block/SnowyBlock
+c	dpc	net/minecraft/world/level/block/LilyPadBlock
 c	dtb	net/minecraft/world/level/block/state/BlockBehaviour
 c	dtb$d	net/minecraft/world/level/block/state/BlockBehaviour$Properties
 	m	()Ldtb$d;	b	noCollision

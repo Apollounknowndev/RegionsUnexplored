@@ -1,0 +1,22 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "top": "regions_unexplored:block/chalk_pillar_top",
+    "side": "regions_unexplored:block/chalk_pillar",
+    "particle": "#side"
+  },
+  "elements": [
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "texture": "#top", "cullface": "down" },
+        "up":    { "texture": "#top", "uv": [ 16, 16, 0, 0 ], "cullface": "up" },
+        "north": { "texture": "#side", "cullface": "north" },
+        "south": { "texture": "#side", "cullface": "south" },
+        "west":  { "texture": "#side", "uv": [ 16, 0, 0, 16 ], "cullface": "west" },
+        "east":  { "texture": "#side", "cullface": "east" }
+      }
+    }
+  ]
+}

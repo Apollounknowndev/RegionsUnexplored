@@ -19,13 +19,13 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.block.RUBlockUtils;
-import net.regions_unexplored.world.level.block.state.properties.RuBlockStateProperties;
+import net.regions_unexplored.block.properties.RUBlockProperties;
 
 public class HangingVinesBlock extends Block implements BonemealableBlock {
 	public static final MapCodec<HangingVinesBlock> CODEC = simpleCodec(HangingVinesBlock::new);
 	private static final VoxelShape SHAPE_BASE = RUBlockUtils.column(14.0, 0.0, 16.0);
 	private static final VoxelShape SHAPE_TIP = RUBlockUtils.column(14.0, 6.0, 16.0);
-	public static final BooleanProperty TIP = RuBlockStateProperties.TIP;
+	public static final BooleanProperty TIP = RUBlockProperties.TIP;
 	
 	@Override
 	public MapCodec<HangingVinesBlock> codec() {

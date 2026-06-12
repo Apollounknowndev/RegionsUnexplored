@@ -23,6 +23,7 @@ import net.regions_unexplored.config.json5.CommentedMapCodec;
 import net.regions_unexplored.registry.data.RUBiomes;
 import net.regions_unexplored.registry.data.RUDensityFunctions;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -76,7 +77,7 @@ public class BiomeTarget {
 		this.weight = weight;
 		weight.ifPresent(i -> this.baseWeight = i);
 		this.canReplace = canReplace;
-		this.parameters = parameters;
+		this.parameters = parameters.map(HashMap::new);
 	}
 	
 	public Optional<Integer> getWeight() {

@@ -18,11 +18,11 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.regions_unexplored.world.level.block.state.properties.RuBlockStateProperties;
+import net.regions_unexplored.block.properties.RUBlockProperties;
 import org.jetbrains.annotations.Nullable;
 
 public class JoshuaLeavesBlock extends DoublePlantBlock implements SimpleWaterloggedBlock {
-    public static final BooleanProperty NATURAL = RuBlockStateProperties.NATURAL;
+    public static final BooleanProperty NATURAL = RUBlockProperties.NATURAL;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public JoshuaLeavesBlock(Properties properties) {

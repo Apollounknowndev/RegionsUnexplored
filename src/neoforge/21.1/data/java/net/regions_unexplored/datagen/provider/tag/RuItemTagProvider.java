@@ -195,8 +195,6 @@ public class RuItemTagProvider extends ItemTagsProvider {
         this.tag(RUItemTags.GRASS)
                 .add(RUBlocks.FROZEN_GRASS.get().asItem())
                 .add(RUBlocks.SANDY_GRASS.get().asItem())
-                .add(RUBlocks.STEPPE_GRASS.get().asItem())
-                .add(RUBlocks.STEPPE_SHRUB.get().asItem())
                 .add(RUBlocks.GRASS_SPROUTS.get().asItem())
                 .add(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "short_grass")))
                 .add(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "fern")))

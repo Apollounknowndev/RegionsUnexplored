@@ -15,11 +15,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.regions_unexplored.block.type.wood.BranchBlock;
 import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.tag.*;
-import net.regions_unexplored.world.level.block.wood.PineLogBlock;
+import net.regions_unexplored.block.type.wood.PineLogBlock;
 import net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration;
 
 import java.util.Random;

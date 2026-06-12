@@ -72,10 +72,7 @@
         "then_run": {
           "type": "minecraft:block",
           "result_state": {
-            "Name": "regions_unexplored:ash",
-            "Properties": {
-              "has_gravity": "true"
-            }
+            "Name": "regions_unexplored:ash"
           }
         }
       },

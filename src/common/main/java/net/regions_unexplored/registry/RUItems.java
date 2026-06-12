@@ -21,6 +21,12 @@ public interface RUItems {
     Supplier<Item> IRIDESCENT_RING = RUItemUtils.register("iridescent_ring", IridescentRingItem::new);
 
     static void applyAliases(BiConsumer<Identifier, Identifier> consumer) {
+        consumer.accept(id("pointed_redstone"), id("redstone_spike"));
+        consumer.accept(id("blackstone_cluster"), Identifier.withDefaultNamespace("air"));
+        consumer.accept(id("steppe_grass"), Identifier.withDefaultNamespace("short_grass"));
+        consumer.accept(id("steppe_shrub"), Identifier.withDefaultNamespace("short_grass"));
+        consumer.accept(id("steppe_tall_grass"), Identifier.withDefaultNamespace("tall_grass"));
+        
         consumer.accept(id("medium_grass"), id("grass_sprouts"));
         consumer.accept(id("stone_bud"), id("grass_sprouts"));
         

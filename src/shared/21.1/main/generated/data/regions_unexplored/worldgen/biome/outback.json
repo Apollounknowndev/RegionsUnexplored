@@ -96,8 +96,7 @@
       "regions_unexplored:patch/mallow",
       "regions_unexplored:patch/desert_shrub_on_sand",
       "regions_unexplored:patch/steppe_grass_on_sand",
-      "regions_unexplored:patch/short_grass",
-      "regions_unexplored:patch/steppe_grass"
+      "regions_unexplored:patch/short_grass"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -1,4 +1,4 @@
-// 1.21.1	2026-05-29T20:15:56.0071025	Tags for minecraft:block mod id regions_unexplored
+// 1.21.1	2026-06-12T07:05:56.0976792	Tags for minecraft:block mod id regions_unexplored
 ea8b8f6b2f430d03e607eca76aae3d7cc7490153 data/c/tags/block/fences/wooden.json
 98584abed8bda97702f8e7eb6abe15be7ed61c1b data/c/tags/block/fence_gates/wooden.json
 fbd3b5574bd57030107ab08e4b239ea1520ad7e1 data/c/tags/block/glass_blocks.json
@@ -18,7 +18,7 @@ ebcf7881dcf42cb3d8c8b5c2e92ebf16fd9d7284 data/minecraft/tags/block/axolotls_spaw
 97f41cb82157199dc7c5cf445da6a766663cb647 data/minecraft/tags/block/birch_logs.json
 81f5e63f6e2825682a3c500f029f3900997c1635 data/minecraft/tags/block/ceiling_hanging_signs.json
 066e0dd0337506623e2c75472a614193d962b6d6 data/minecraft/tags/block/climbable.json
-ebd7e9d7e0fab2869593c9f9c247945d7e61e2b9 data/minecraft/tags/block/combination_step_sound_blocks.json
+69c6847b104e7676022e5e22588b60f57b6704c7 data/minecraft/tags/block/combination_step_sound_blocks.json
 aed2d5c4edbfff92c5c4482aacc9d45f85eaae1a data/minecraft/tags/block/convertable_to_mud.json
 ba46759feb6064dab9e10929c1506fa73ab3f527 data/minecraft/tags/block/crystal_sound_blocks.json
 2c5344dd6032f6c89bc6940d502b395e8a0315de data/minecraft/tags/block/dirt.json
@@ -44,9 +44,9 @@ c95c48f7f02e110d75aa593f55ddd2ccac780c1b data/minecraft/tags/block/logs.json
 3a86aa69fea45f0216d7ff886ee487e53fcae70d data/minecraft/tags/block/logs_that_burn.json
 4df567e2c152a3325acd0907b34a48ac2afaa26b data/minecraft/tags/block/mangrove_logs_can_grow_through.json
 4df567e2c152a3325acd0907b34a48ac2afaa26b data/minecraft/tags/block/mangrove_roots_can_grow_through.json
-d9653f34b5be7b09f4247bc832d5f8eaaeb41259 data/minecraft/tags/block/mineable/axe.json
+58039e20c79045e1cbd8f488de5d604bb3819548 data/minecraft/tags/block/mineable/axe.json
 350bf73424093eb829f90d794672e32d208a63b2 data/minecraft/tags/block/mineable/hoe.json
-928047a351fa79b430d364e523ce23b2b25f9628 data/minecraft/tags/block/mineable/pickaxe.json
+e375fad23999ae660901b079873d0f03c0b3f7b4 data/minecraft/tags/block/mineable/pickaxe.json
 ca9cd6acb745fe8f4f2b799f2c3d052990ac4413 data/minecraft/tags/block/mineable/shovel.json
 10d234ca9ece9037b01fe5a6bba75797317140dd data/minecraft/tags/block/mooshrooms_spawnable_on.json
 fd5b59a05916cd6b52b920517543c68da1e6b5e9 data/minecraft/tags/block/mushroom_grow_block.json
@@ -58,16 +58,18 @@ e525dce519521ffa483578397a6c13a57c5e24d1 data/minecraft/tags/block/oak_logs.json
 3ba09d5092fa23740d80147a98cbf90b5a3e2928 data/minecraft/tags/block/parrots_spawnable_on.json
 9220355c8c8047d3c5fc5f2b45bcf28b568b9b0b data/minecraft/tags/block/planks.json
 383dc10b54bd34839335cce24fa62c6ff592028c data/minecraft/tags/block/rabbits_spawnable_on.json
-97e4d6ca9ce4b9527a03645ad97ef184208426bc data/minecraft/tags/block/replaceable.json
-200b6efa9bba8f1feac0be28c5829e20b42cb8ce data/minecraft/tags/block/replaceable_by_trees.json
+86633bcb0abe7a5b6bb673e733374454f67f6881 data/minecraft/tags/block/replaceable.json
+7ce50dc81e066413c1d763a865d69288c764d80e data/minecraft/tags/block/replaceable_by_trees.json
 e1261cc158cab3ad35f9e8a56d65942e12c77a2b data/minecraft/tags/block/saplings.json
 8ec272c54edc1df8941d6e1e627a2c3f2bce813d data/minecraft/tags/block/slabs.json
 7a4dec34e932546179edd4bac8a97db6f52f9b07 data/minecraft/tags/block/small_dripleaf_placeable.json
 f9ec98e2d89f62e2cd0419d2e2a6c092f2afd28c data/minecraft/tags/block/small_flowers.json
 e66784e2aab07f25408ee5347aa6acaf325e458c data/minecraft/tags/block/snaps_goat_horn.json
 4c1b39d965ae9ecb8ab1302c12fe3f9069d7ac09 data/minecraft/tags/block/snow_layer_can_survive_on.json
+dc3f86f7ed86fcdacec857504f03f4a2eba9a83a data/minecraft/tags/block/speleothems.json
 af2dfa084f3d25041f6b875fce7a4f4fd1d0316a data/minecraft/tags/block/stairs.json
 61bb5bf01df693c0fd75b985ca46c738cc93cb20 data/minecraft/tags/block/standing_signs.json
+3e82d14a284bcc9df393591d7610398a9905505e data/minecraft/tags/block/stone_ore_replaceables.json
 76dc5aa0bf39731321e076068f5cfddb6cab366c data/minecraft/tags/block/strider_warm_blocks.json
 91298092263229c22ed59f780495f30405f23e44 data/minecraft/tags/block/supports_crops.json
 3432c166d1f6c722101d3f66a0d49a4322c4d95f data/minecraft/tags/block/supports_vegetation.json
@@ -95,7 +97,6 @@ c693fa708394f8561ff1109d81f834e9cdde37ca data/regions_unexplored/tags/block/baob
 fd1bddddb4832270f41b8cd2eded40abbef982d4 data/regions_unexplored/tags/block/blue_bioshroom_logs.json
 b4cc5620a8f43a8ab0f6643a4cdca52ef4858658 data/regions_unexplored/tags/block/branches.json
 5a75e1875ada5e1d8c5f2dc11f93ba338797e7f9 data/regions_unexplored/tags/block/brimwood_logs.json
-6e1a8ea1d8a2c20b42102b1ce3fbc1b7e3858088 data/regions_unexplored/tags/block/brim_plant_can_survive_on.json
 adfa45d9d26dbf014552adba23eeede475f07fd0 data/regions_unexplored/tags/block/cattail_can_survive_on.json
 3ef13a80b10875c208d82232b0d103cb571c2354 data/regions_unexplored/tags/block/cobalt_logs.json
 290567e9f2cc2c3c765244cc99cb009af2d0fac5 data/regions_unexplored/tags/block/crop_plantable_blocks.json
@@ -103,7 +104,7 @@ a80909545cb6695cf2660332dfda8d54445f8172 data/regions_unexplored/tags/block/cypr
 f5252ff413c0acb9c0670b12e04c37e02f241c0b data/regions_unexplored/tags/block/dead_logs.json
 51a3712f63b06aba0b220844b47a3a3716a1bbf2 data/regions_unexplored/tags/block/dirt_and_podzol.json
 99c78e980701f3d7791da998970f8544c6dd5fa8 data/regions_unexplored/tags/block/eucalyptus_logs.json
-992027cfca33e7a2eed6bf4aa1102d9ec1e82c5f data/regions_unexplored/tags/block/grass.json
+aac84cf748a26aafe7989d926eaf8e704569f71c data/regions_unexplored/tags/block/grass.json
 32834a3e3670826ecf10e70a13c2651a6dabf028 data/regions_unexplored/tags/block/green_bioshroom_logs.json
 2bffd30417102a5f9ed949145df8150284d795d3 data/regions_unexplored/tags/block/hyacinth_blooms.json
 cfa21f84ebdcb69008792bb52248b17096d51e21 data/regions_unexplored/tags/block/joshua_logs.json
@@ -121,7 +122,6 @@ bad9e0deb4c1548ac1165e6f47f1042270900ee7 data/regions_unexplored/tags/block/palm
 93f8e7e675369851996dbe670d4eb50403044f97 data/regions_unexplored/tags/block/replaceable_blocks.json
 1f4dce6589341da3e1bfe928b4636fe41d16f976 data/regions_unexplored/tags/block/replaceable_by_peat_dirt.json
 e19b880744eef3885511d6773d84bcdb7fc961f6 data/regions_unexplored/tags/block/replaceable_by_silt_dirt.json
-fae265555d643e9506ce4e013d9065e2ee26da1d data/regions_unexplored/tags/block/sandy_plant_can_survive_on.json
 8df623c37629c5bcd7aa79b4fe3afadc9f72ffcd data/regions_unexplored/tags/block/shrubs.json
 6cd10c9b9adba00696c036d72a25a074c1ce0c15 data/regions_unexplored/tags/block/silt/all.json
 997208d68ea1f9ddf56fce28cac74845e9b0649e data/regions_unexplored/tags/block/silt/substrate.json
@@ -130,6 +130,10 @@ fae265555d643e9506ce4e013d9065e2ee26da1d data/regions_unexplored/tags/block/sand
 b147fcff5c0b4d72df1cb7809b063b2562180832 data/regions_unexplored/tags/block/supports/branches.json
 82b41e6597cfdee11aab89aa502190326d426377 data/regions_unexplored/tags/block/supports/frozen_grass.json
 b4d6cc1ac24f3fc08875cceaee957c7e11173c12 data/regions_unexplored/tags/block/supports/grass_sprouts.json
+6e1a8ea1d8a2c20b42102b1ce3fbc1b7e3858088 data/regions_unexplored/tags/block/supports/infernal_plant.json
+4c1b247889cde9f5497dc95761f88a2dbe1f3de4 data/regions_unexplored/tags/block/supports/nether_plants.json
+90193945e0f25c4de556472968c1a0180461ce0e data/regions_unexplored/tags/block/supports/red_sandy_plants.json
+fae265555d643e9506ce4e013d9065e2ee26da1d data/regions_unexplored/tags/block/supports/sandy_plants.json
 69c396cb051bbe9a130e6979b67065e5041b179d data/regions_unexplored/tags/block/supports/shrubs.json
 ed1edeb3c82000dbb812130de9ffa1e3acbc3167 data/regions_unexplored/tags/block/willow_logs.json
 59535e3c216b6039f410cd031690445aa5be56ab data/regions_unexplored/tags/block/wisteria_logs.json

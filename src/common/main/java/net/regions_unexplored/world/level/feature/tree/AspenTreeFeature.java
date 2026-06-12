@@ -16,11 +16,10 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
-import net.regions_unexplored.block.type.wood.BranchBlock;
 import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.tag.*;
-import net.regions_unexplored.world.level.block.wood.AspenLogBlock;
+import net.regions_unexplored.block.type.wood.AspenLogBlock;
 import net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration;
 
 import java.util.HashSet;

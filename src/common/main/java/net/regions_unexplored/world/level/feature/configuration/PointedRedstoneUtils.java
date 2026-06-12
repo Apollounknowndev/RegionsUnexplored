@@ -9,8 +9,8 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DripstoneThickness;
+import net.regions_unexplored.block.type.base.SpeleothemBlock;
 import net.regions_unexplored.registry.RUBlocks;
-import net.regions_unexplored.world.level.block.cave.PointedRedstoneBlock;
 
 import java.util.function.Consumer;
 
@@ -80,8 +80,8 @@ public class PointedRedstoneUtils {
         if (isRedstoneBase(level.getBlockState(pos.relative(direction.getOpposite())))) {
             BlockPos.MutableBlockPos pos1 = pos.mutable();
             buildBaseToTipColumn(direction, i, bool, (p_190846_) -> {
-                if (p_190846_.is(RUBlocks.POINTED_REDSTONE.get())) {
-                    p_190846_ = p_190846_.setValue(PointedRedstoneBlock.WATERLOGGED, Boolean.valueOf(level.isWaterAt(pos1)));
+                if (p_190846_.is(RUBlocks.REDSTONE_SPIKE.get())) {
+                    p_190846_ = p_190846_.setValue(SpeleothemBlock.WATERLOGGED, Boolean.valueOf(level.isWaterAt(pos1)));
                 }
 
                 level.setBlock(pos1, p_190846_, 2);
@@ -101,7 +101,7 @@ public class PointedRedstoneUtils {
     }
 
     public static BlockState createPointedRedstone(Direction direction, DripstoneThickness thickness) {
-        return RUBlocks.POINTED_REDSTONE.get().defaultBlockState().setValue(PointedRedstoneBlock.TIP_DIRECTION, direction).setValue(PointedRedstoneBlock.THICKNESS, thickness);
+        return RUBlocks.REDSTONE_SPIKE.get().defaultBlockState().setValue(SpeleothemBlock.TIP_DIRECTION, direction).setValue(SpeleothemBlock.THICKNESS, thickness);
     }
 
     public static boolean isRedstoneBaseOrLava(BlockState state) {

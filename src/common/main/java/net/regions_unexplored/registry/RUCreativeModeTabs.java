@@ -35,7 +35,7 @@ public interface RUCreativeModeTabs {
             //REDSTONE_BLOCKS
             output.accept(RUBlocks.REDSTONE_BUD.get().asItem());
             output.accept(RUBlocks.REDSTONE_BULB.get().asItem());
-            output.accept(RUBlocks.POINTED_REDSTONE.get().asItem());
+            output.accept(RUBlocks.REDSTONE_SPIKE.get().asItem());
             output.accept(RUBlocks.RAW_REDSTONE_BLOCK.get().asItem());
             //ANCIENT_DELTA
             output.accept(RUBlocks.CORPSE_FLOWER.get().asItem());
@@ -51,12 +51,10 @@ public interface RUCreativeModeTabs {
             //GRASS_BLOCKS
             output.accept(RUBlocks.ASHEN_GRASS.get().asItem());
             output.accept(RUBlocks.BLADED_GRASS.get().asItem());
-            output.accept(RUBlocks.DEAD_STEPPE_SHRUB.get().asItem());
+            output.accept(RUBlocks.TALL_DEAD_GRASS.get().asItem());
             output.accept(RUBlocks.FROZEN_GRASS.get().asItem());
             output.accept(RUBlocks.SANDY_GRASS.get().asItem());
-            output.accept(RUBlocks.SMALL_DESERT_SHRUB.get().asItem());
-            output.accept(RUBlocks.STEPPE_GRASS.get().asItem());
-            output.accept(RUBlocks.STEPPE_SHRUB.get().asItem());
+            output.accept(RUBlocks.SHORT_DEAD_GRASS.get().asItem());
             output.accept(RUBlocks.GRASS_SPROUTS.get().asItem());
 
             output.accept(RUBlocks.BRIMSPROUT.get().asItem());
@@ -68,7 +66,6 @@ public interface RUCreativeModeTabs {
             output.accept(RUBlocks.BLADED_TALL_GRASS.get().asItem());
             output.accept(RUBlocks.ELEPHANT_EAR.get().asItem());
             output.accept(RUBlocks.SANDY_TALL_GRASS.get().asItem());
-            output.accept(RUBlocks.STEPPE_TALL_GRASS.get().asItem());
             output.accept(RUBlocks.WINDSWEPT_GRASS.get().asItem());
 
             output.accept(RUBlocks.CLOVER.get().asItem());
@@ -231,8 +228,6 @@ public interface RUCreativeModeTabs {
             //STONES
             output.accept(RUBlocks.ARGILLITE_GRASS_BLOCK.get().asItem());
             output.accept(RUBlocks.ARGILLITE.get().asItem());
-
-            output.accept(RUBlocks.BLACKSTONE_CLUSTER.get().asItem());
 
             output.accept(RUBlocks.COBALT_OBSIDIAN.get().asItem());
 

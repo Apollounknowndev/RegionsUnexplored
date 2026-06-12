@@ -38,7 +38,6 @@ public class RuNetherPlacements {
     public static final ResourceKey<PlacedFeature> TREE_GROUP_BLACKSTONE_BASIN = nether("tree/blackstone_basin");
     public static final ResourceKey<PlacedFeature> PATCH_HANGING_EARLIGHT = nether("patch/hanging_earlight");
     public static final ResourceKey<PlacedFeature> PATCH_COBALT_ROOTS = nether("patch/cobalt_roots");
-    public static final ResourceKey<PlacedFeature> PATCH_BLACKSTONE_CLUSTER = nether("patch/blackstone_cluster");
     public static final ResourceKey<PlacedFeature> PATCH_COBALT_EARLIGHT = nether("patch/cobalt_earlight");
     public static final ResourceKey<PlacedFeature> TALL_COBALT_EARLIGHT = nether("tall_cobalt_earlight");
     public static final ResourceKey<PlacedFeature> OBSIDIAN_SPIRE = nether("obsidian_spire");
@@ -74,7 +73,6 @@ public class RuNetherPlacements {
 
         register(context, RuNetherPlacements.PATCH_HANGING_EARLIGHT, CountPlacement.of(225), inSquare(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
         register(context, RuNetherPlacements.PATCH_COBALT_ROOTS, placementNether(8));
-        register(context, RuNetherPlacements.PATCH_BLACKSTONE_CLUSTER, placementNether(4).filter(BlockPredicate.matchesBlocks(Vec3i.ZERO.below(), Blocks.BLACKSTONE)));
         register(context, RuNetherPlacements.PATCH_COBALT_EARLIGHT, placementNether(3));
         register(context, RuNetherPlacements.TALL_COBALT_EARLIGHT, placementNether(3));
         register(context, RuNetherPlacements.OBSIDIAN_SPIRE, CountPlacement.of(155), inSquare(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());

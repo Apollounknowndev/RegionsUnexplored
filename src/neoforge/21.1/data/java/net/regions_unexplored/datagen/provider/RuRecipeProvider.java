@@ -81,8 +81,8 @@ public class RuRecipeProvider extends RecipeProvider implements IConditionBuilde
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, RUBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM.get(), 1).define('#', Blocks.DEEPSLATE).define('X', TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", "mushrooms"))).pattern("X").pattern("#").group("viridescent_nylium").unlockedBy("has_deepslate", has(Blocks.DEEPSLATE)).unlockedBy("has_mushroom", has(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", "mushrooms")))).save(consumer);
 
         /*-----------------PLANTS-----------------*/
-        oneToOne(consumer, Items.BROWN_DYE, RUBlocks.DEAD_STEPPE_SHRUB.get(), "brown_dye");
-        oneToOne(consumer, Items.BROWN_DYE, RUBlocks.SMALL_DESERT_SHRUB.get(), "brown_dye");
+        oneToOne(consumer, Items.BROWN_DYE, RUBlocks.TALL_DEAD_GRASS.get(), "brown_dye");
+        oneToOne(consumer, Items.BROWN_DYE, RUBlocks.SHORT_DEAD_GRASS.get(), "brown_dye");
 
 
         oneToOne(consumer, Items.YELLOW_DYE, RUBlocks.ALPHA_DANDELION.get(), "yellow_dye");
@@ -378,8 +378,6 @@ public class RuRecipeProvider extends RecipeProvider implements IConditionBuilde
 
         /*-----------------NETHER_BLOCKS-----------------*/
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, RUBlocks.BLACKSTONE_CLUSTER.get(), 2).define('#', Blocks.BLACKSTONE).pattern("##").pattern("##").group("blackstone").unlockedBy("has_blackstone", has(Blocks.BLACKSTONE)).save(consumer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.BLACKSTONE, 1).define('#', RUBlocks.BLACKSTONE_CLUSTER.get()).pattern("##").group("blackstone").unlockedBy("has_blackstone_cluster", has(RUBlocks.BLACKSTONE_CLUSTER.get())).save(consumer, RegionsUnexplored.id(getConversionRecipeName(Blocks.BLACKSTONE, RUBlocks.BLACKSTONE_CLUSTER.get())));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, RUBlocks.OVERGROWN_BONE_BLOCK.get(), 1).requires(Blocks.BONE_BLOCK).requires(RUBlocks.GLISTERING_NYLIUM.get()).group("overgrown_bone_block").unlockedBy("has_glistering_nylium", has(RUBlocks.GLISTERING_NYLIUM.get())).unlockedBy("has_bone_block", has(Blocks.BONE_BLOCK)).save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 9).requires(RUBlocks.OVERGROWN_BONE_BLOCK.get()).group("bone_meal").unlockedBy("has_overgrown_bone_block", has(RUBlocks.OVERGROWN_BONE_BLOCK.get())).save(consumer , RegionsUnexplored.id(getConversionRecipeName(Items.BONE_MEAL, RUBlocks.OVERGROWN_BONE_BLOCK.get())));
     }

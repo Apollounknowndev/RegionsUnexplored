@@ -197,7 +197,6 @@ public class AridBiomes {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_DESERT_SHRUB_ON_SAND);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_STEPPE_SHRUB_ON_SAND);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_STEPPE_GRASS);
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseDesertSpawning(true);

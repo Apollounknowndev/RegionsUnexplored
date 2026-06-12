@@ -15,11 +15,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.regions_unexplored.block.type.wood.BranchBlock;
+import net.regions_unexplored.block.type.base.RUGrowingPlantHeadBlock;
 import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.tag.*;
-import net.regions_unexplored.world.level.block.plant.other.SpanishMossBlock;
 import net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration;
 
 import java.util.Random;
@@ -454,7 +453,7 @@ public class GiantCypressTreeFeature extends Feature<RUTreeConfiguration> {
         for(int i = 0; i<=size; i++){
             if(level.getBlockState(place).isAir()){
                 if(i==size){
-                    level.setBlock(place, RUBlocks.SPANISH_MOSS.get().defaultBlockState().setValue(SpanishMossBlock.AGE, 25), 2);
+                    level.setBlock(place, RUBlocks.SPANISH_MOSS.get().defaultBlockState().setValue(RUGrowingPlantHeadBlock.AGE, 25), 2);
                 }
                 else {
                     level.setBlock(place, RUBlocks.SPANISH_MOSS_PLANT.get().defaultBlockState(), 2);
@@ -463,7 +462,7 @@ public class GiantCypressTreeFeature extends Feature<RUTreeConfiguration> {
             }
             else{
                 if(i!=0){
-                    level.setBlock(place.above(), RUBlocks.SPANISH_MOSS.get().defaultBlockState().setValue(SpanishMossBlock.AGE, 25), 2);
+                    level.setBlock(place.above(), RUBlocks.SPANISH_MOSS.get().defaultBlockState().setValue(RUGrowingPlantHeadBlock.AGE, 25), 2);
                 }
                 break;
             }

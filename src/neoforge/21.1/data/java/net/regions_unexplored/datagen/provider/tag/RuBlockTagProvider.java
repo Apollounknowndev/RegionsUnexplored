@@ -95,17 +95,14 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.MEADOW_SAGE.get())
             .add(RUBlocks.BARLEY.get())
             .add(RUBlocks.CATTAIL.get())
-            .add(RUBlocks.DEAD_STEPPE_SHRUB.get())
+            .add(RUBlocks.TALL_DEAD_GRASS.get())
             .add(RUBlocks.ELEPHANT_EAR.get())
             .add(RUBlocks.CORPSE_FLOWER.get())
             .add(RUBlocks.FROZEN_GRASS.get())
             .add(RUBlocks.BLADED_GRASS.get())
             .add(RUBlocks.SANDY_GRASS.get())
             .add(RUBlocks.SANDY_TALL_GRASS.get())
-            .add(RUBlocks.SMALL_DESERT_SHRUB.get())
-            .add(RUBlocks.STEPPE_GRASS.get())
-            .add(RUBlocks.STEPPE_SHRUB.get())
-            .add(RUBlocks.STEPPE_TALL_GRASS.get())
+            .add(RUBlocks.SHORT_DEAD_GRASS.get())
             .add(RUBlocks.BLADED_TALL_GRASS.get())
             .add(RUBlocks.GRASS_SPROUTS.get())
             .add(RUBlocks.TASSEL.get())
@@ -152,7 +149,6 @@ public class RuBlockTagProvider extends BlockTagsProvider {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .add(RUBlocks.ICICLE.get())
             .add(RUBlocks.ASH_VENT.get())
-            .add(RUBlocks.BLACKSTONE_CLUSTER.get())
             .add(RUBlocks.BRIMSPROUT_NYLIUM.get())
             .add(RUBlocks.CHALK.get())
             .add(RUBlocks.CHALK_GRASS_BLOCK.get())
@@ -173,7 +169,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.MOSSY_STONE.get())
             .add(RUBlocks.ARGILLITE.get())
             .add(RUBlocks.MYCOTOXIC_NYLIUM.get())
-            .add(RUBlocks.POINTED_REDSTONE.get())
+            .add(RUBlocks.REDSTONE_SPIKE.get())
             .add(RUBlocks.POLISHED_CHALK.get())
             .add(RUBlocks.POLISHED_CHALK_SLAB.get())
             .add(RUBlocks.POLISHED_CHALK_STAIRS.get())
@@ -430,7 +426,6 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.ORANGE_MAPLE_LEAF_LITTER.get())
         ;
         this.tag(BlockTags.COMBINATION_STEP_SOUND_BLOCKS)
-            .add(RUBlocks.STEPPE_TALL_GRASS.get())
             .add(RUBlocks.WINDSWEPT_GRASS.get())
             .add(RUBlocks.BLADED_TALL_GRASS.get())
             .add(RUBlocks.MEADOW_SAGE.get())
@@ -549,15 +544,12 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.ALPHA_GRASS_BLOCK.get())
         ;
         this.tag(BlockTags.REPLACEABLE)
-            .add(RUBlocks.DEAD_STEPPE_SHRUB.get())
+            .add(RUBlocks.TALL_DEAD_GRASS.get())
             .add(RUBlocks.FROZEN_GRASS.get())
             .add(RUBlocks.BLADED_GRASS.get())
             .add(RUBlocks.SANDY_GRASS.get())
             .add(RUBlocks.SANDY_TALL_GRASS.get())
-            .add(RUBlocks.SMALL_DESERT_SHRUB.get())
-            .add(RUBlocks.STEPPE_GRASS.get())
-            .add(RUBlocks.STEPPE_SHRUB.get())
-            .add(RUBlocks.STEPPE_TALL_GRASS.get())
+            .add(RUBlocks.SHORT_DEAD_GRASS.get())
             .add(RUBlocks.BLADED_TALL_GRASS.get())
             .add(RUBlocks.CLOVER.get())
             .add(RUBlocks.MAPLE_LEAF_LITTER.get())
@@ -575,7 +567,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.MEADOW_SAGE.get())
             .add(RUBlocks.BARLEY.get())
             .add(RUBlocks.CATTAIL.get())
-            .add(RUBlocks.DEAD_STEPPE_SHRUB.get())
+            .add(RUBlocks.TALL_DEAD_GRASS.get())
             .add(RUBlocks.CLOVER.get())
             .add(RUBlocks.MAPLE_LEAF_LITTER.get())
             .add(RUBlocks.ORANGE_MAPLE_LEAF_LITTER.get())
@@ -588,10 +580,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.BLADED_GRASS.get())
             .add(RUBlocks.SANDY_GRASS.get())
             .add(RUBlocks.SANDY_TALL_GRASS.get())
-            .add(RUBlocks.SMALL_DESERT_SHRUB.get())
-            .add(RUBlocks.STEPPE_GRASS.get())
-            .add(RUBlocks.STEPPE_SHRUB.get())
-            .add(RUBlocks.STEPPE_TALL_GRASS.get())
+            .add(RUBlocks.SHORT_DEAD_GRASS.get())
             .add(RUBlocks.BLADED_TALL_GRASS.get())
             .add(RUBlocks.KAPOK_VINES.get())
             .add(RUBlocks.KAPOK_VINES_PLANT.get())
@@ -694,7 +683,9 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.PEAT_PODZOL.get())
             .add(RUBlocks.SILT_PODZOL.get())
         ;
-
+        this.tag(BlockTags.STONE_ORE_REPLACEABLES)
+            .add(RUBlocks.MOSSY_STONE.get())
+        ;
     }
 
     public void addBackportedTags(HolderLookup.Provider provider) {
@@ -704,6 +695,11 @@ public class RuBlockTagProvider extends BlockTagsProvider {
         this.tag(BackportedBlockTags.SUPPORTS_VEGETATION)
             .addTag(BlockTags.DIRT)
             .add(Blocks.FARMLAND)
+        ;
+        this.tag(BackportedBlockTags.SPELEOTHEMS)
+            .add(Blocks.POINTED_DRIPSTONE)
+            .add(RUBlocks.REDSTONE_SPIKE.get())
+            .add(RUBlocks.ICICLE.get())
         ;
     }
 
@@ -964,7 +960,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
         this.tag(RUBlockTags.SUPPORTS_BRANCHES)
             .addTag(BlockTags.LOGS)
         ;
-        this.tag(RUBlockTags.BRIM_PLANT_CAN_SURVIVE_ON)
+        this.tag(RUBlockTags.SUPPORTS_INFERNAL_PLANT)
             .addTag(BlockTags.DIRT)
             .addTag(BlockTags.NYLIUM)
         ;
@@ -974,7 +970,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(Blocks.CLAY)
             .add(Blocks.GRAVEL)
         ;
-        this.tag(RUBlockTags.SANDY_PLANT_CAN_SURVIVE_ON)
+        this.tag(RUBlockTags.SUPPORTS_SANDY_PLANTS)
             .addTag(BlockTags.SAND)
             .addOptionalTag(Tags.Blocks.SANDSTONE_BLOCKS)
             .addOptionalTag(Tags.Blocks.SANDS)
@@ -1013,6 +1009,15 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .addOptionalTag(Tags.Blocks.GRAVELS)
             .addOptionalTag(Tags.Blocks.STONES)
         ;
+        this.tag(RUBlockTags.SUPPORTS_NETHER_PLANTS)
+            .addTag(BlockTags.NYLIUM)
+            .add(Blocks.SOUL_SOIL)
+            .add(Blocks.BLACKSTONE)
+        ;
+        this.tag(RUBlockTags.SUPPORTS_RED_SANDY_PLANTS)
+            .addTag(Tags.Blocks.SANDS_RED)
+            .addTag(Tags.Blocks.SANDSTONE_RED_BLOCKS)
+        ;
 
         this.tag(RUBlockTags.REPLACEABLE_BY_PEAT_DIRT)
             .add(RUBlocks.PEAT_GRASS_BLOCK.get())
@@ -1048,8 +1053,6 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.FROZEN_GRASS.get())
             .add(RUBlocks.BLADED_GRASS.get())
             .add(RUBlocks.SANDY_GRASS.get())
-            .add(RUBlocks.STEPPE_GRASS.get())
-            .add(RUBlocks.STEPPE_SHRUB.get())
             .add(RUBlocks.GRASS_SPROUTS.get())
             .add(Blocks.SHORT_GRASS)
             .add(Blocks.FERN)
@@ -1105,7 +1108,7 @@ public class RuBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.GREEN_BIOSHROOM.get())
             .add(RUBlocks.MYCOTOXIC_DAISY.get())
             .add(RUBlocks.PINK_BIOSHROOM.get())
-            .add(RUBlocks.SMALL_DESERT_SHRUB.get())
+            .add(RUBlocks.SHORT_DEAD_GRASS.get())
             .add(RUBlocks.SPANISH_MOSS.get())
             .add(RUBlocks.SPANISH_MOSS_PLANT.get())
             .add(RUBlocks.KAPOK_VINES.get())

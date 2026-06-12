@@ -38,7 +38,7 @@ import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.registry.RUItems;
-import net.regions_unexplored.world.level.block.plant.food.SalmonBerryBushBlock;
+import net.regions_unexplored.block.type.food.SalmonBerryBushBlock;
 
 import java.util.Map;
 import java.util.Set;
@@ -73,7 +73,7 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(RUBlocks.PRISMARITE_CLUSTER.get());
         add(RUBlocks.PRISMOSS_SPROUT.get(), RuBlockLootTableProvider::createShearsOnlyDrop);
         //REDSTONE_BLOCKS
-        dropSelf(RUBlocks.POINTED_REDSTONE.get());
+        dropSelf(RUBlocks.REDSTONE_SPIKE.get());
         dropSelf(RUBlocks.RAW_REDSTONE_BLOCK.get());
         add(RUBlocks.REDSTONE_BUD.get(), (block) -> createSilkTouchDispatchTable(block, this.applyExplosionDecay(block, LootItem.lootTableItem(Items.REDSTONE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))));
         dropSelf(RUBlocks.REDSTONE_BULB.get());
@@ -93,18 +93,15 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
         add(RUBlocks.DUSKTRAP.get(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         /*-----------------PLANTS-----------------*/
         //GRASS_BLOCKS
-        dropSelf(RUBlocks.DEAD_STEPPE_SHRUB.get());
+        dropSelf(RUBlocks.TALL_DEAD_GRASS.get());
         add(RUBlocks.ASHEN_GRASS.get(), this::createGrassDrops);
         add(RUBlocks.FROZEN_GRASS.get(), this::createGrassDrops);
         add(RUBlocks.SANDY_GRASS.get(), this::createGrassDrops);
-        add(RUBlocks.SMALL_DESERT_SHRUB.get(), RuBlockLootTableProvider::createShearsOnlyDrop);
-        add(RUBlocks.STEPPE_GRASS.get(), this::createGrassDrops);
-        add(RUBlocks.STEPPE_SHRUB.get(), this::createGrassDrops);
+        add(RUBlocks.SHORT_DEAD_GRASS.get(), RuBlockLootTableProvider::createShearsOnlyDrop);
         add(RUBlocks.GRASS_SPROUTS.get(), this::createGrassDrops);
         //TALL_GRASS_BLOCKS
         add(RUBlocks.ELEPHANT_EAR.get(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         add(RUBlocks.SANDY_TALL_GRASS.get(), (block) -> createDoublePlantWithSeedDrops(block, RUBlocks.SANDY_GRASS.get()));
-        add(RUBlocks.STEPPE_TALL_GRASS.get(), (block) -> createDoublePlantWithSeedDrops(block, RUBlocks.STEPPE_GRASS.get()));
         add(RUBlocks.WINDSWEPT_GRASS.get(), this::createDoublePlantWithSeedDropsNoGrass);
         //FLOWERS
         dropSelf(RUBlocks.ALPHA_DANDELION.get());
@@ -379,7 +376,6 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
 
         /*-----------------NETHER_BLOCKS-----------------*/
         //NETHER_STONES
-        dropSelf(RUBlocks.BLACKSTONE_CLUSTER.get());
         add(RUBlocks.OVERGROWN_BONE_BLOCK.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BONE_BLOCK));
         //BRIMSPROUT_BLOCKS
         add(RUBlocks.BRIMSPROUT_NYLIUM.get(), (block) -> createSingleItemTableWithSilkTouch(block, Blocks.NETHERRACK));
