@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-12T11:57:32.6525051	Registries
+// 1.21.1	2026-06-13T12:58:40.7446681	Registries
 7160b581d0e9c894f25f3d6f26a93cd78c42e0cd data/regions_unexplored/damage_type/dorcel.json
 d22fdc0aeef6a23fc29b12a9ebabe7e22aea59c4 data/regions_unexplored/damage_type/dusk_trap.json
 800dcf2ecc9287397f08a76b8cecca7c2f2222fd data/regions_unexplored/lithostitched/surface_rule/overworld.json
@@ -567,7 +567,7 @@ cf7e9c9b883d1c34205e2f2e1c6b6ef101c8015f data/regions_unexplored/worldgen/placed
 69f6f8c4420d51f6e143151a40c2ffb541038b64 data/regions_unexplored/worldgen/placed_feature/nether/dorcel.json
 3a7d5d4bbd693027109f9f222a844a97351ea399 data/regions_unexplored/worldgen/placed_feature/nether/glistering_meadow_rock.json
 dfc41270333f73599e9dd34e2286d9ccd1dd4011 data/regions_unexplored/worldgen/placed_feature/nether/large_pointed_redstone.json
-17e3e73dcf053a44060ab99a6d9b59778aa3c164 data/regions_unexplored/worldgen/placed_feature/nether/obsidian_spire.json
+ce5a959dd39fa5490e6c7a7a607bedd64494366b data/regions_unexplored/worldgen/placed_feature/nether/obsidian_spire.json
 48dd9d40a1d39c3256e74f366c7b457f7a24467d data/regions_unexplored/worldgen/placed_feature/nether/patch/brimsprout.json
 c84843eecc7431bd769d3c51c438e0717508472a data/regions_unexplored/worldgen/placed_feature/nether/patch/cobalt_earlight.json
 efb994b910c455842a38cac8aef69d5b321a7ac4 data/regions_unexplored/worldgen/placed_feature/nether/patch/cobalt_roots.json

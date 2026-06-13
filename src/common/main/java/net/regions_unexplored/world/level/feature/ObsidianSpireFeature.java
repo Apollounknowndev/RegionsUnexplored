@@ -20,7 +20,7 @@ public class ObsidianSpireFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
         BlockPos pos = context.origin();
         WorldGenLevel level = context.level();
-        if(level.getBlockState(pos.below()).getBlock()!= RUBlocks.COBALT_NYLIUM){
+        if(level.getBlockState(pos.below()).is(RUBlocks.COBALT_NYLIUM.get())) {
             return false;
         }
         if (level.isEmptyBlock(pos) && !level.isEmptyBlock(pos.below())) {

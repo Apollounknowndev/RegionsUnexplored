@@ -7,7 +7,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 import net.regions_unexplored.block.type.aquatic.GiantLilyPadBlock;
 
 public class GiantLilyPadFeature extends Feature<NoneFeatureConfiguration> {
-
     public GiantLilyPadFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
     }

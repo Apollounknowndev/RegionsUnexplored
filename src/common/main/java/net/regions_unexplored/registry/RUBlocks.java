@@ -427,27 +427,27 @@ public interface RUBlocks {
     Supplier<Block> BRIMSPROUT_NYLIUM = register("brimsprout_nylium", p -> new RUNyliumBlock(p.mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.SCULK_SENSOR), RUConfiguredFeatures.BONEMEAL_BRIMSPROUT_NYLIUM));
     Supplier<Block> BRIMSPROUT = register("brimsprout", p -> new BrimsproutBlock(p.replaceable().noCollision().instabreak().sound(SoundType.SCULK).offsetType(OffsetType.XYZ)));
     //COBALT_BLOCKS
-    Supplier<Block> COBALT_EARLIGHT = register("cobalt_earlight", p -> new NetherPlantBlock(postProcessed(p).replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS).offsetType(OffsetType.XZ).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 9)));
+    Supplier<Block> COBALT_EARLIGHT = register("cobalt_earlight", p -> new NetherPlantBlock(12, postProcessed(p).replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS).offsetType(OffsetType.XZ).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 9)));
     Supplier<Block> TALL_COBALT_EARLIGHT = register("tall_cobalt_earlight", p -> new NetherDoublePlantBlock(postProcessed(p).noCollision().instabreak().sound(SoundType.GRASS).offsetType(OffsetType.XZ).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 13)));
     Supplier<Block> COBALT_NYLIUM = register("cobalt_nylium", p -> new BlackstoneNyliumBlock(p.mapColor(MapColor.COLOR_BLUE).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NYLIUM), RUConfiguredFeatures.BONEMEAL_COBALT_NYLIUM));
     Supplier<Block> COBALT_OBSIDIAN = register("cobalt_obsidian", p -> new CobaltObsidianBlock(p.mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
-    Supplier<Block> COBALT_ROOTS = register("cobalt_roots", p -> new NetherPlantBlock(p.replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS).offsetType(OffsetType.XYZ)));
+    Supplier<Block> COBALT_ROOTS = register("cobalt_roots", p -> new NetherPlantBlock(6, p.replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS).offsetType(OffsetType.XZ)));
     Supplier<Block> HANGING_EARLIGHT = RUBlockUtils.registerNoItem("hanging_earlight", p -> new RUGrowingPlantHeadBlock(RUBlockIds.HANGING_EARLIGHT_PLANT, 8, 1, postProcessed(p).mapColor(MapColor.COLOR_BLUE).randomTicks().noCollision().instabreak().sound(SoundType.WEEPING_VINES).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 14)));
     Supplier<Block> HANGING_EARLIGHT_PLANT = RUBlockUtils.registerNoItem("hanging_earlight_plant", p -> new RUGrowingPlantBodyBlock(RUBlockIds.HANGING_EARLIGHT, 8, p.mapColor(MapColor.COLOR_BLUE).noCollision().instabreak().sound(SoundType.WEEPING_VINES)));
     //GLISTERING_BLOCKS
     Supplier<Block> GLISTERING_IVY = register("glistering_ivy", p -> new RUGrowingPlantHeadBlock(RUBlockIds.GLISTERING_IVY_PLANT, 14, 1, postProcessed(p).mapColor(MapColor.COLOR_LIGHT_BLUE).randomTicks().noCollision().instabreak().sound(SoundType.WEEPING_VINES).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 15)));
     Supplier<Block> GLISTERING_IVY_PLANT = RUBlockUtils.registerNoItem("glistering_ivy_plant", p -> new RUGrowingPlantBodyBlock(RUBlockIds.GLISTERING_IVY, 8, p.mapColor(MapColor.COLOR_LIGHT_BLUE).noCollision().instabreak().sound(SoundType.WEEPING_VINES)));
     Supplier<Block> GLISTERING_NYLIUM = register("glistering_nylium", p -> new RUNyliumBlock(p.mapColor(MapColor.COLOR_PINK).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NYLIUM), RUConfiguredFeatures.BONEMEAL_GLISTERING_NYLIUM));
-    Supplier<Block> GLISTERING_SPROUT = register("glistering_sprout", p -> new NetherPlantBlock(p.replaceable().noCollision().instabreak().sound(SoundType.TWISTING_VINES).offsetType(OffsetType.XZ)));
-    Supplier<Block> GLISTERING_FERN = register("glistering_fern", NetherPlantBlock::new, GLISTERING_SPROUT);
-    Supplier<Block> GLISTERING_BLOOM = register("glistering_bloom", NetherPlantBlock::new, GLISTERING_SPROUT);
+    Supplier<Block> GLISTERING_SPROUT = register("glistering_sprout", p -> new NetherPlantBlock(12, p.replaceable().noCollision().instabreak().sound(SoundType.TWISTING_VINES).offsetType(OffsetType.XZ)));
+    Supplier<Block> GLISTERING_FERN = register("glistering_fern", p -> new NetherPlantBlock(12, p), GLISTERING_SPROUT);
+    Supplier<Block> GLISTERING_BLOOM = register("glistering_bloom", p -> new NetherPlantBlock(12, p), GLISTERING_SPROUT);
     Supplier<Block> GLISTERING_WART = register("glistering_wart", p -> new Block(p.mapColor(MapColor.COLOR_PINK).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NYLIUM)));
     Supplier<Block> GLISTER_BULB = register("glister_bulb", p -> new NetherDoublePlantBlock(postProcessed(p).replaceable().noCollision().instabreak().sound(SoundType.NETHER_WART).offsetType(OffsetType.XZ).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 13)));
     Supplier<Block> GLISTER_SPIRE = register("glister_spire", p -> new NetherDoublePlantBlock(postProcessed(p).replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS).offsetType(OffsetType.XZ).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 5)));
     //MYCOTOXIC_BLOCKS
     Supplier<Block> MYCOTOXIC_MUSHROOMS = register("mycotoxic_mushrooms", p -> new NetherGroundCoverBlock(postProcessed(p).pushReaction(PushReaction.DESTROY).noCollision().sound(SoundType.SHROOMLIGHT).emissiveRendering((bs, br, bp) -> true).lightLevel((state) -> 3 + 3 * state.getValue(NetherGroundCoverBlock.AMOUNT))));
     Supplier<Block> MYCOTOXIC_DAISY = register("mycotoxic_daisy", p -> new NetherDoublePlantBlock(postProcessed(p).replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS).offsetType(OffsetType.XYZ).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 4)));
-    Supplier<Block> MYCOTOXIC_GRASS = register("mycotoxic_grass", p -> new NetherPlantBlock(p.replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS).offsetType(OffsetType.XYZ)));
+    Supplier<Block> MYCOTOXIC_GRASS = register("mycotoxic_grass", p -> new NetherPlantBlock(6, p.replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS).offsetType(OffsetType.XYZ)));
     Supplier<Block> MYCOTOXIC_NYLIUM = register("mycotoxic_moss", p -> new RUNyliumBlock(p.mapColor(MapColor.COLOR_YELLOW).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NYLIUM), RUConfiguredFeatures.BONEMEAL_MYCOTOXIC_NYLIUM));
     /*-----------------POTTED_PLANTS-----------------*/
     //POTTED_FLOWERS

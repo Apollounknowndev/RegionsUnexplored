@@ -75,7 +75,7 @@ public class RuNetherPlacements {
         register(context, RuNetherPlacements.PATCH_COBALT_ROOTS, placementNether(8));
         register(context, RuNetherPlacements.PATCH_COBALT_EARLIGHT, placementNether(3));
         register(context, RuNetherPlacements.TALL_COBALT_EARLIGHT, placementNether(3));
-        register(context, RuNetherPlacements.OBSIDIAN_SPIRE, CountPlacement.of(155), inSquare(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
+        register(context, RuNetherPlacements.OBSIDIAN_SPIRE, placementNether(1));
         register(context, RuNetherPlacements.TREE_GROUP_BLACKSTONE_BASIN, placementNether(1).filter(RUBlocks.COBALT_EARLIGHT.get()));
 
         register(context, RuNetherPlacements.POINTED_REDSTONE, CountPlacement.of(UniformInt.of(192, 256)), inSquare(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, CountPlacement.of(UniformInt.of(1, 5)), RandomOffsetPlacement.of(ClampedNormalInt.of(0.0F, 3.0F, -10, 10), ClampedNormalInt.of(0.0F, 0.6F, -2, 2)), BiomeFilter.biome());
