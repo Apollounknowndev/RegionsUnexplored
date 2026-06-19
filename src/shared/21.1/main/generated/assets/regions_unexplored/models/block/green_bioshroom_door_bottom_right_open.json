@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right_open",
+  "textures": {
+    "bottom": "regions_unexplored:block/green_bioshroom_door_bottom",
+    "top": "regions_unexplored:block/green_bioshroom_door_top"
+  }
+}

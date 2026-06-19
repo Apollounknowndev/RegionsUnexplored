@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "regions_unexplored:block/polished_chalk",
-    "particle": "regions_unexplored:block/polished_chalk"
-  }
-}

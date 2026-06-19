@@ -1,4 +1,4 @@
-// 1.21.1	2026-05-22T03:50:35.4639924	Tags for minecraft:worldgen/biome mod id regions_unexplored
+// 1.21.1	2026-06-14T04:23:02.6029498	Tags for minecraft:worldgen/biome mod id regions_unexplored
 8d156d72ef8a23249d1b4daacebeae371ee9e1da data/c/tags/worldgen/biome/has_wolf_variant/ashen.json
 3f4edc8db4b1d27358677fe8a8ddd2ea645e6671 data/c/tags/worldgen/biome/has_wolf_variant/black.json
 678b5589cab20b0eb152dda5986bf246674305fb data/c/tags/worldgen/biome/has_wolf_variant/chestnut.json
@@ -72,7 +72,7 @@ fd111a9bd39d55b083e204c0f0832821238772c5 data/minecraft/tags/worldgen/biome/has_
 5eea38b3e6c517b1c8b2c3d08f925f0fd1e150ea data/minecraft/tags/worldgen/biome/has_structure/village_savanna.json
 01f5aca0c0fd7680980371eebbbef9a3d35dd8b3 data/minecraft/tags/worldgen/biome/has_structure/village_snowy.json
 1c832ed8bd6f4c97ac56c57f41319b633283cb12 data/minecraft/tags/worldgen/biome/has_structure/village_taiga.json
-247a3c4309781c2a674d0a6791295d4bd5ef79fa data/minecraft/tags/worldgen/biome/has_structure/woodland_mansion.json
+55ceae72c4c3c73434ebb5c9bb712384ecc294bc data/minecraft/tags/worldgen/biome/has_structure/woodland_mansion.json
 4d2193d10993acb8f9f9fb8de48db96200ef1e21 data/minecraft/tags/worldgen/biome/increased_fire_burnout.json
 12af21a23ff991b3830257c396f8b3495a472ada data/minecraft/tags/worldgen/biome/is_badlands.json
 c89421d3928c74673e88884419c4a34967a746b3 data/minecraft/tags/worldgen/biome/is_beach.json

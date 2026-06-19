@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/flower_pot_cross",
+  "parent": "regions_unexplored:block/template/flower_pot",
   "textures": {
     "plant": "regions_unexplored:block/sky_wisteria_sapling"
   }

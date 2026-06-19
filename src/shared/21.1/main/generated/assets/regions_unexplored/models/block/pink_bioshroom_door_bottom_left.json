@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "textures": {
+    "bottom": "regions_unexplored:block/pink_bioshroom_door_bottom",
+    "top": "regions_unexplored:block/pink_bioshroom_door_top"
+  }
+}

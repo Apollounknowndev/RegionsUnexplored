@@ -6,8 +6,9 @@
         "type": "lithostitched:all_of",
         "conditions": [
           {
-            "type": "regions_unexplored:matching_biomes",
-            "biomes": "#regions_unexplored:surface/silt"
+            "type": "lithostitched:matching_biomes",
+            "biomes": "#regions_unexplored:surface/silt",
+            "position": "piece"
           },
           {
             "type": "regions_unexplored:config",
@@ -36,8 +37,9 @@
         "type": "lithostitched:all_of",
         "conditions": [
           {
-            "type": "regions_unexplored:matching_biomes",
-            "biomes": "#regions_unexplored:surface/peat"
+            "type": "lithostitched:matching_biomes",
+            "biomes": "#regions_unexplored:surface/peat",
+            "position": "piece"
           },
           {
             "type": "regions_unexplored:config",

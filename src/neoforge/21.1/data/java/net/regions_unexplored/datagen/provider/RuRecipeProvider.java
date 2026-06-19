@@ -20,6 +20,8 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.regions_unexplored.RegionsUnexplored;
@@ -369,10 +371,10 @@ public class RuRecipeProvider extends RecipeProvider implements IConditionBuilde
         //for (Map.Entry<DyeColor, Block> entry : RUBlocks.PAINTED_PLANKS.getMap().entrySet()) {
         //    paintedPlanks(consumer, entry.getValue(), TagKey.create(Registries.ITEM, cId("dyes/" + entry.getKey().getName())));
         //}
-        for (Map.Entry<DyeColor, Block> entry : RUBlocks.PAINTED_STAIRS.getMap().entrySet()) {
+        for (Map.Entry<DyeColor, StairBlock> entry : RUBlocks.PAINTED_STAIRS.getMap().entrySet()) {
             paintedStairs(consumer, entry.getValue(), RUBlocks.PAINTED_PLANKS.getMap().get(entry.getKey()));
         }
-        for (Map.Entry<DyeColor, Block> entry : RUBlocks.PAINTED_SLABS.getMap().entrySet()) {
+        for (Map.Entry<DyeColor, SlabBlock> entry : RUBlocks.PAINTED_SLABS.getMap().entrySet()) {
             paintedSlab(consumer, entry.getValue(), RUBlocks.PAINTED_PLANKS.getMap().get(entry.getKey()));
         }
 

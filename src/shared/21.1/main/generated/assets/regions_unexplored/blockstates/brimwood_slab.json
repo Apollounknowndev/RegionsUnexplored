@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "regions_unexplored:block/brimwood_slab_bottom"
+    },
+    "type=double": {
+      "model": "regions_unexplored:block/brimwood_slab_double"
+    },
+    "type=top": {
+      "model": "regions_unexplored:block/brimwood_slab_top"
+    }
+  }
+}

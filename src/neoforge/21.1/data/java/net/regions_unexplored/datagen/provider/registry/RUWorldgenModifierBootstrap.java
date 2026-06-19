@@ -3,6 +3,7 @@ package net.regions_unexplored.datagen.provider.registry;
 import dev.worldgen.lithostitched.api.registry.LithostitchedRegistries;
 import dev.worldgen.lithostitched.api.util.InjectionType;
 import dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier;
+import dev.worldgen.lithostitched.api.worldgen.processor.LithostitchedProcessorLists;
 import dev.worldgen.lithostitched.api.worldgen.processor.LithostitchedProcessors;
 import dev.worldgen.lithostitched.api.worldgen.surface.LithostitchedSurfaceRules;
 import net.minecraft.core.HolderGetter;
@@ -20,7 +21,6 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.datagen.provider.registry.configured_feature.RUShrubFeatures;
-import net.regions_unexplored.datagen.provider.registry.placed_feature.RuTreePlacements;
 import net.regions_unexplored.lithostitched.ConfigPredicate;
 import net.regions_unexplored.registry.data.RUPlacedFeatures;
 import net.regions_unexplored.registry.data.RUProcessorLists;
@@ -41,6 +41,14 @@ public class RUWorldgenModifierBootstrap {
             WorldgenModifier.builder().addProcessorListProcessors(
                 HolderSet.direct(registry::getOrThrow, ProcessorLists.STREET_PLAINS, ProcessorLists.STREET_SAVANNA, ProcessorLists.STREET_SNOWY_OR_TAIGA),
                 LithostitchedProcessors.reference(registry.getOrThrow(RUProcessorLists.VILLAGE_PATH_FIX))
+            )
+        );
+        
+        context.register(
+            key("structure_repalette/mansion"),
+            WorldgenModifier.builder().addProcessorListProcessors(
+                registry.getOrThrow(LithostitchedProcessorLists.WOODLAND_MANSION),
+                LithostitchedProcessors.reference(registry.getOrThrow(RUProcessorLists.REPALETTE_WOODLAND_MANSION))
             )
         );
         

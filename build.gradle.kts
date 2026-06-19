@@ -22,8 +22,11 @@ repositories {
 
 group = "net.regions_unexplored"
 version = "0.6.1"
-val lithostitchedVersion = "1.7.9"
-val wikifulVersion = "0.3.1"
+// Required dependencies
+val lithostitchedVersion = "1.7.10+beta3"
+
+// Optional dependencies
+val wikifulVersion = "0.3.2"
 
 cloche {
     metadata {
@@ -97,7 +100,7 @@ cloche {
 
             modRuntimeOnly("maven.modrinth:world-preview:qc0AtV3T")
             modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-fabric-21.1")
-            //modImplementation("maven.modrinth:wikiful:$wikifulVersion-fabric-1.21.1")
+            modImplementation("maven.modrinth:wikiful:$wikifulVersion-fabric-21.1")
 
             modImplementation("com.terraformersmc:modmenu:11.0.3")
         }
@@ -184,6 +187,7 @@ cloche {
             legacyClasspath("de.marhali:json5-java:3.0.0")
             include("de.marhali:json5-java:3.0.0")
             modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-21.1")
+            modImplementation("maven.modrinth:wikiful:$wikifulVersion-neoforge-21.1")
         }
 
         data {

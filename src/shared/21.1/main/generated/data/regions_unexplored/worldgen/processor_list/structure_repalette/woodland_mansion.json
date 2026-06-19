@@ -1,0 +1,63 @@
+{
+  "processors": [
+    {
+      "else": [],
+      "if_true": {
+        "type": "lithostitched:matching_biomes",
+        "biomes": [
+          "regions_unexplored:redwoods",
+          "regions_unexplored:sparse_redwoods"
+        ],
+        "position": "structure_start"
+      },
+      "processor_type": "lithostitched:condition",
+      "random_mode": {
+        "mode": "per_block",
+        "name": "lithostitched:default"
+      },
+      "then": [
+        {
+          "blocks": {
+            "minecraft:dark_oak_door": "regions_unexplored:redwood_door",
+            "minecraft:dark_oak_fence": "regions_unexplored:redwood_fence",
+            "minecraft:dark_oak_fence_gate": "regions_unexplored:redwood_fence_gate",
+            "minecraft:dark_oak_leaves": "regions_unexplored:redwood_leaves",
+            "minecraft:dark_oak_log": "regions_unexplored:stripped_redwood_log",
+            "minecraft:dark_oak_planks": "regions_unexplored:redwood_planks",
+            "minecraft:dark_oak_sapling": "regions_unexplored:redwood_sapling",
+            "minecraft:dark_oak_stairs": "regions_unexplored:redwood_stairs"
+          },
+          "processor_type": "lithostitched:block_swap"
+        }
+      ]
+    },
+    {
+      "else": [],
+      "if_true": {
+        "type": "lithostitched:matching_biomes",
+        "biomes": "regions_unexplored:blackwood_taiga",
+        "position": "structure_start"
+      },
+      "processor_type": "lithostitched:condition",
+      "random_mode": {
+        "mode": "per_block",
+        "name": "lithostitched:default"
+      },
+      "then": [
+        {
+          "blocks": {
+            "minecraft:dark_oak_door": "regions_unexplored:blackwood_door",
+            "minecraft:dark_oak_fence": "regions_unexplored:blackwood_fence",
+            "minecraft:dark_oak_fence_gate": "regions_unexplored:blackwood_fence_gate",
+            "minecraft:dark_oak_leaves": "regions_unexplored:blackwood_leaves",
+            "minecraft:dark_oak_log": "regions_unexplored:stripped_blackwood_log",
+            "minecraft:dark_oak_planks": "regions_unexplored:blackwood_planks",
+            "minecraft:dark_oak_sapling": "regions_unexplored:blackwood_sapling",
+            "minecraft:dark_oak_stairs": "regions_unexplored:blackwood_stairs"
+          },
+          "processor_type": "lithostitched:block_swap"
+        }
+      ]
+    }
+  ]
+}

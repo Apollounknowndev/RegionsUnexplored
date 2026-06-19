@@ -1,0 +1,10 @@
+{
+  "type": "lithostitched:add_processor_list_processors",
+  "processor_lists": "lithostitched:woodland_mansion",
+  "processors": [
+    {
+      "processor_lists": "regions_unexplored:structure_repalette/woodland_mansion",
+      "processor_type": "lithostitched:reference"
+    }
+  ]
+}

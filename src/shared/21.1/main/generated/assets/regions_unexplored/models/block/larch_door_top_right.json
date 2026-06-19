@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_right",
+  "textures": {
+    "bottom": "regions_unexplored:block/larch_door_bottom",
+    "top": "regions_unexplored:block/larch_door_top"
+  }
+}

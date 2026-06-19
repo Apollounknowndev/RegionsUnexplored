@@ -2,8 +2,11 @@ package net.regions_unexplored.datagen.provider.registry;
 
 import dev.worldgen.lithostitched.api.worldgen.processor.LithostitchedProcessors;
 import dev.worldgen.lithostitched.api.worldgen.processor.RandomSettings;
+import dev.worldgen.lithostitched.api.worldgen.processor.enums.ProcessorPosition;
 import dev.worldgen.lithostitched.api.worldgen.processor.enums.RandomMode;
 import dev.worldgen.lithostitched.api.worldgen.processorcondition.LithostitchedProcessorConditions;
+import dev.worldgen.lithostitched.worldgen.processor.condition.MatchingBiomes;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -14,9 +17,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.set.WoodSet;
+import net.regions_unexplored.registry.data.RUBiomes;
 import net.regions_unexplored.registry.tag.RUBiomeTags;
 import net.regions_unexplored.worldgen.processorcondition.ConfigCondition;
-import net.regions_unexplored.worldgen.processorcondition.MatchingBiomesCondition;
 
 import java.util.List;
 import java.util.Map;
@@ -25,13 +28,15 @@ import static net.regions_unexplored.registry.data.RUProcessorLists.*;
 
 public class RUProcessorListBootstrap {
     public static void bootstrap(BootstrapContext<StructureProcessorList> context) {
-        HolderSet<Biome> surfaceSilt = context.lookup(Registries.BIOME).getOrThrow(RUBiomeTags.SURFACE_SILT);
-        HolderSet<Biome> surfacePeat = context.lookup(Registries.BIOME).getOrThrow(RUBiomeTags.SURFACE_PEAT);
+	    HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
+        
+        HolderSet<Biome> surfaceSilt = biomes.getOrThrow(RUBiomeTags.SURFACE_SILT);
+        HolderSet<Biome> surfacePeat = biomes.getOrThrow(RUBiomeTags.SURFACE_PEAT);
         context.register(VILLAGE_PATH_FIX, new StructureProcessorList(List.of(
             LithostitchedProcessors.condition(
                 new RandomSettings(RandomMode.PER_BLOCK),
                 LithostitchedProcessorConditions.allOf(
-                    new MatchingBiomesCondition(surfaceSilt),
+                    new MatchingBiomes(surfaceSilt, ProcessorPosition.PIECE),
                     new ConfigCondition("custom_dirts")
                 ),
                 LithostitchedProcessors.blockSwap(Map.of(
@@ -42,12 +47,45 @@ public class RUProcessorListBootstrap {
             LithostitchedProcessors.condition(
                 new RandomSettings(RandomMode.PER_BLOCK),
                 LithostitchedProcessorConditions.allOf(
-                    new MatchingBiomesCondition(surfacePeat),
+                    new MatchingBiomes(surfacePeat, ProcessorPosition.PIECE),
                     new ConfigCondition("custom_dirts")
                 ),
                 LithostitchedProcessors.blockSwap(Map.of(
                     id(Blocks.GRASS_BLOCK), id(RUBlocks.PEAT_GRASS_BLOCK.get()),
                     id(Blocks.DIRT_PATH), id(RUBlocks.PEAT_DIRT_PATH.get())
+                ))
+            )
+        )));
+        
+        HolderSet<Biome> redwoods = HolderSet.direct(biomes::getOrThrow, RUBiomes.REDWOODS, RUBiomes.SPARSE_REDWOODS);
+        HolderSet<Biome> blackwoodTaiga = HolderSet.direct(biomes::getOrThrow, RUBiomes.BLACKWOOD_TAIGA);
+        context.register(REPALETTE_WOODLAND_MANSION, new StructureProcessorList(List.of(
+            LithostitchedProcessors.condition(
+                new RandomSettings(RandomMode.PER_BLOCK),
+                new MatchingBiomes(redwoods, ProcessorPosition.STRUCTURE_START),
+                LithostitchedProcessors.blockSwap(Map.of(
+                    id(Blocks.DARK_OAK_DOOR), id(RUBlocks.REDWOOD_WOOD_SET.getDoor()),
+                    id(Blocks.DARK_OAK_FENCE), id(RUBlocks.REDWOOD_WOOD_SET.getFence()),
+                    id(Blocks.DARK_OAK_FENCE_GATE), id(RUBlocks.REDWOOD_WOOD_SET.getFenceGate()),
+                    id(Blocks.DARK_OAK_LEAVES), id(RUBlocks.REDWOOD_NATURAL_SET.getLeaves()),
+                    id(Blocks.DARK_OAK_LOG), id(RUBlocks.REDWOOD_WOOD_SET.getStrippedLog()),
+                    id(Blocks.DARK_OAK_PLANKS), id(RUBlocks.REDWOOD_WOOD_SET.getPlanks()),
+                    id(Blocks.DARK_OAK_SAPLING), id(RUBlocks.REDWOOD_NATURAL_SET.getSapling()),
+                    id(Blocks.DARK_OAK_STAIRS), id(RUBlocks.REDWOOD_WOOD_SET.getStairs())
+                ))
+            ),
+            LithostitchedProcessors.condition(
+                new RandomSettings(RandomMode.PER_BLOCK),
+                new MatchingBiomes(blackwoodTaiga, ProcessorPosition.STRUCTURE_START),
+                LithostitchedProcessors.blockSwap(Map.of(
+                    id(Blocks.DARK_OAK_DOOR), id(RUBlocks.BLACKWOOD_WOOD_SET.getDoor()),
+                    id(Blocks.DARK_OAK_FENCE), id(RUBlocks.BLACKWOOD_WOOD_SET.getFence()),
+                    id(Blocks.DARK_OAK_FENCE_GATE), id(RUBlocks.BLACKWOOD_WOOD_SET.getFenceGate()),
+                    id(Blocks.DARK_OAK_LEAVES), id(RUBlocks.BLACKWOOD_NATURAL_SET.getLeaves()),
+                    id(Blocks.DARK_OAK_LOG), id(RUBlocks.BLACKWOOD_WOOD_SET.getStrippedLog()),
+                    id(Blocks.DARK_OAK_PLANKS), id(RUBlocks.BLACKWOOD_WOOD_SET.getPlanks()),
+                    id(Blocks.DARK_OAK_SAPLING), id(RUBlocks.BLACKWOOD_NATURAL_SET.getSapling()),
+                    id(Blocks.DARK_OAK_STAIRS), id(RUBlocks.BLACKWOOD_WOOD_SET.getStairs())
                 ))
             )
         )));

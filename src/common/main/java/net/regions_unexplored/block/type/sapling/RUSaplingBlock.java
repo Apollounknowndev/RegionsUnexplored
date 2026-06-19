@@ -18,7 +18,6 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.block.RUBlockUtils;
-import net.regions_unexplored.block.sapling.RuUltraFromSuperTreeGrower;
 
 public class RUSaplingBlock extends VegetationBlock implements BonemealableBlock {
     public static final MapCodec<RUSaplingBlock> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(

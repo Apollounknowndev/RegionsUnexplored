@@ -1,8 +1,0 @@
-{
-  "parent": "block/template_orientable_trapdoor_open",
-  "textures": {
-    "texture": "regions_unexplored:block/wisteria_trapdoor",
-    "particle": "regions_unexplored:block/wisteria_trapdoor"
-  },
-  "render_type": "cutout"
-}

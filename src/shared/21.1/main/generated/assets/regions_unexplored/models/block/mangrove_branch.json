@@ -1,0 +1,7 @@
+{
+  "parent": "regions_unexplored:block/template/branch",
+  "textures": {
+    "branch": "regions_unexplored:block/mangrove_branch",
+    "log": "minecraft:block/mangrove_log"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "regions_unexplored:block/template/branch",
+  "textures": {
+    "branch": "regions_unexplored:block/socotra_branch",
+    "log": "regions_unexplored:block/socotra_log"
+  }
+}

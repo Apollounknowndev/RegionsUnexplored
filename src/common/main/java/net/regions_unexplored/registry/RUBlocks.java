@@ -53,6 +53,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 import static net.regions_unexplored.RegionsUnexplored.id;
 import static net.regions_unexplored.block.RUBlockUtils.*;
@@ -354,17 +355,22 @@ public interface RUBlocks {
 
     /*-----------------STONE_BLOCKS-----------------*/
     //CHALKS
-    Supplier<Block> CHALK = register("chalk", p -> new Block(p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).strength(0.5f).requiresCorrectToolForDrops()));
+    UnaryOperator<Properties> CHALK_PROPERTIES = p -> p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).strength(0.5f).requiresCorrectToolForDrops();
+    
+    Supplier<Block> CHALK = register("chalk", p -> new Block(CHALK_PROPERTIES.apply(p)));
+    Supplier<SlabBlock> CHALK_SLAB = register("chalk_slab", p -> new SlabBlock(CHALK_PROPERTIES.apply(p)));
+    Supplier<StairBlock> CHALK_STAIRS = register("chalk_stairs", p -> new StairBlock(CHALK.get().defaultBlockState(), CHALK_PROPERTIES.apply(p)));
+    
+    Supplier<Block> POLISHED_CHALK = register("polished_chalk", p -> new Block(CHALK_PROPERTIES.apply(p)));
+    Supplier<SlabBlock> POLISHED_CHALK_SLAB = register("polished_chalk_slab", p -> new SlabBlock(CHALK_PROPERTIES.apply(p)));
+    Supplier<StairBlock> POLISHED_CHALK_STAIRS = register("polished_chalk_stairs", p -> new StairBlock(CHALK.get().defaultBlockState(), CHALK_PROPERTIES.apply(p)));
+    
+    Supplier<Block> CHALK_BRICKS = register("chalk_bricks", p -> new Block(CHALK_PROPERTIES.apply(p)));
+    Supplier<SlabBlock> CHALK_BRICK_SLAB = register("chalk_brick_slab", p -> new SlabBlock(CHALK_PROPERTIES.apply(p)));
+    Supplier<StairBlock> CHALK_BRICK_STAIRS = register("chalk_brick_stairs", p -> new StairBlock(CHALK.get().defaultBlockState(), CHALK_PROPERTIES.apply(p)));
+    
     Supplier<Block> CHALK_GRASS_BLOCK = register("chalk_grass_block", p -> RUGrassBlock.simple(CHALK, RUPlacedFeatures.BONEMEAL_CHALK_GRASS, p.mapColor(MapColor.GRASS).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).randomTicks().strength(0.6f).requiresCorrectToolForDrops()));
-    Supplier<Block> CHALK_BRICKS = register("chalk_bricks", p -> new Block(p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).strength(0.6f).requiresCorrectToolForDrops()));
-    Supplier<Block> CHALK_BRICK_SLAB = register("chalk_brick_slab", p -> new SlabBlock(p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).strength(0.6f).requiresCorrectToolForDrops()));
-    Supplier<Block> CHALK_BRICK_STAIRS = register("chalk_brick_stairs", p -> new StairBlock(CHALK.get().defaultBlockState(), p), CHALK_BRICKS);
-    Supplier<Block> CHALK_PILLAR = register("chalk_pillar", p -> new RotatedPillarBlock(p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).strength(0.6f).requiresCorrectToolForDrops()));
-    Supplier<Block> CHALK_SLAB = register("chalk_slab", p -> new SlabBlock(p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).strength(0.5f).requiresCorrectToolForDrops()));
-    Supplier<Block> CHALK_STAIRS = register("chalk_stairs", p -> new StairBlock(CHALK.get().defaultBlockState(), p), CHALK);
-    Supplier<Block> POLISHED_CHALK = register("polished_chalk", p -> new Block(p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).strength(0.5f).requiresCorrectToolForDrops()));
-    Supplier<Block> POLISHED_CHALK_SLAB = register("polished_chalk_slab", p -> new SlabBlock(p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.TUFF).strength(0.5f).requiresCorrectToolForDrops()));
-    Supplier<Block> POLISHED_CHALK_STAIRS = register("polished_chalk_stairs", p -> new StairBlock(CHALK.get().defaultBlockState(), p), POLISHED_CHALK);
+    Supplier<Block> CHALK_PILLAR = register("chalk_pillar", p -> new RotatedPillarBlock(CHALK_PROPERTIES.apply(p)));
     //STONES
     Supplier<Block> MOSSY_STONE = register("mossy_stone", Block::new, Blocks.STONE);
 
@@ -416,9 +422,9 @@ public interface RUBlocks {
 
     /*-----------------PAINTED PLANKS-----------------*/
     //PLANKS
-    ColoredSet PAINTED_PLANKS = new ColoredSet(color -> register(color.getName() + "_painted_planks", p -> RUBlockUtils.planks(p, color.getMapColor(), SoundType.WOOD, false)));
-    ColoredSet PAINTED_STAIRS = new ColoredSet(color -> register(color.getName() + "_painted_stairs", p -> RUBlockUtils.stairs(p, color.getMapColor(), SoundType.WOOD, false)));
-    ColoredSet PAINTED_SLABS = new ColoredSet(color -> register(color.getName() + "_painted_slab", p -> RUBlockUtils.slab(p, color.getMapColor(), SoundType.WOOD, false)));
+    ColoredSet<Block> PAINTED_PLANKS = new ColoredSet<>(color -> register(color.getName() + "_painted_planks", p -> RUBlockUtils.planks(p, color.getMapColor(), SoundType.WOOD, false)));
+    ColoredSet<StairBlock> PAINTED_STAIRS = new ColoredSet<>(color -> register(color.getName() + "_painted_stairs", p -> RUBlockUtils.stairs(p, color.getMapColor(), SoundType.WOOD, false)));
+    ColoredSet<SlabBlock> PAINTED_SLABS = new ColoredSet<>(color -> register(color.getName() + "_painted_slab", p -> RUBlockUtils.slab(p, color.getMapColor(), SoundType.WOOD, false)));
 
     /*-----------------NETHER_BLOCKS-----------------*/
     //NETHER_STONES
@@ -499,8 +505,8 @@ public interface RUBlocks {
     Supplier<Block> POTTED_BARREL_CACTUS = RUBlockUtils.registerNoItem("potted_barrel_cactus", p -> new FlowerPotBlock(BARREL_CACTUS.get(), p), Blocks.POTTED_CACTUS);
     Supplier<Block> POTTED_CAVE_HYSSOP = RUBlockUtils.registerNoItem("potted_cave_hyssop", p -> new FlowerPotBlock(CAVE_HYSSOP.get(), p), Blocks.POTTED_ALLIUM);
     //SNOWBELLES
-    ColoredSet SNOWBELLES = new ColoredSet(color -> register(color.getName() + "_snowbelle", p -> new LargeFlowerBlock(MobEffects.SLOWNESS, 10, p), Blocks.DANDELION));
-    ColoredSet POTTED_SNOWBELLES = new ColoredSet(color -> RUBlockUtils.registerNoItem("potted_" + color.getName() + "_snowbelle", p -> new FlowerPotBlock(SNOWBELLES.getMap().get(color), p), Blocks.POTTED_ALLIUM));
+    ColoredSet<Block> SNOWBELLES = new ColoredSet<>(color -> register(color.getName() + "_snowbelle", p -> new LargeFlowerBlock(MobEffects.SLOWNESS, 10, p), Blocks.DANDELION));
+    ColoredSet<Block> POTTED_SNOWBELLES = new ColoredSet<>(color -> RUBlockUtils.registerNoItem("potted_" + color.getName() + "_snowbelle", p -> new FlowerPotBlock(SNOWBELLES.getMap().get(color), p), Blocks.POTTED_ALLIUM));
 
     static void applyAliases(BiConsumer<Identifier, Identifier> consumer) {
         consumer.accept(id("pointed_redstone"), id("redstone_spike"));

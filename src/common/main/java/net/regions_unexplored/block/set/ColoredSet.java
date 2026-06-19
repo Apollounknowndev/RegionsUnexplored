@@ -9,25 +9,25 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public final class ColoredSet {
-    private final Supplier<Block> white;
-    private final Supplier<Block> lightGray;
-    private final Supplier<Block> gray;
-    private final Supplier<Block> black;
-    private final Supplier<Block> brown;
-    private final Supplier<Block> red;
-    private final Supplier<Block> orange;
-    private final Supplier<Block> yellow;
-    private final Supplier<Block> lime;
-    private final Supplier<Block> green;
-    private final Supplier<Block> lightBlue;
-    private final Supplier<Block> cyan;
-    private final Supplier<Block> blue;
-    private final Supplier<Block> purple;
-    private final Supplier<Block> magenta;
-    private final Supplier<Block> pink;
+public class ColoredSet<T extends Block> {
+    private final Supplier<T> white;
+    private final Supplier<T> lightGray;
+    private final Supplier<T> gray;
+    private final Supplier<T> black;
+    private final Supplier<T> brown;
+    private final Supplier<T> red;
+    private final Supplier<T> orange;
+    private final Supplier<T> yellow;
+    private final Supplier<T> lime;
+    private final Supplier<T> green;
+    private final Supplier<T> lightBlue;
+    private final Supplier<T> cyan;
+    private final Supplier<T> blue;
+    private final Supplier<T> purple;
+    private final Supplier<T> magenta;
+    private final Supplier<T> pink;
 
-    public ColoredSet(Function<DyeColor, Supplier<Block>> factory) {
+    public ColoredSet(Function<DyeColor, Supplier<T>> factory) {
         this.white = factory.apply(DyeColor.WHITE);
         this.lightGray = factory.apply(DyeColor.LIGHT_GRAY);
         this.gray = factory.apply(DyeColor.GRAY);
@@ -46,8 +46,8 @@ public final class ColoredSet {
         this.pink = factory.apply(DyeColor.PINK);
     }
 
-    public ArrayList<Block> getAll() {
-        ArrayList<Block> blocks = new ArrayList<>();
+    public ArrayList<T> getAll() {
+        ArrayList<T> blocks = new ArrayList<>();
         blocks.add(white.get());
         blocks.add(lightGray.get());
         blocks.add(gray.get());
@@ -67,8 +67,8 @@ public final class ColoredSet {
         return blocks;
     }
 
-    public Map<DyeColor, Block> getMap() {
-        Map<DyeColor, Block> map = new EnumMap<>(DyeColor.class);
+    public Map<DyeColor, T> getMap() {
+        Map<DyeColor, T> map = new EnumMap<>(DyeColor.class);
         map.put(DyeColor.WHITE, white.get());
         map.put(DyeColor.LIGHT_GRAY, lightGray.get());
         map.put(DyeColor.GRAY, gray.get());
@@ -87,68 +87,89 @@ public final class ColoredSet {
         map.put(DyeColor.PINK, pink.get());
         return map;
     }
-
-    public Supplier<Block> getWhite() {
+    
+    public Block getByColor(DyeColor color) {
+        return switch (color) {
+            case DyeColor.WHITE -> white.get();
+            case DyeColor.LIGHT_GRAY -> lightGray.get();
+            case DyeColor.GRAY -> gray.get();
+            case DyeColor.BLACK -> black.get();
+            case DyeColor.BROWN -> brown.get();
+            case DyeColor.RED -> red.get();
+            case DyeColor.ORANGE -> orange.get();
+            case DyeColor.YELLOW -> yellow.get();
+            case DyeColor.LIME -> lime.get();
+            case DyeColor.GREEN -> green.get();
+            case DyeColor.LIGHT_BLUE -> lightBlue.get();
+            case DyeColor.CYAN -> cyan.get();
+            case DyeColor.BLUE -> blue.get();
+            case DyeColor.PURPLE -> purple.get();
+            case DyeColor.MAGENTA -> magenta.get();
+            case DyeColor.PINK -> pink.get();
+        };
+    }
+    
+    public Supplier<T> getWhite() {
         return white;
     }
 
-    public Supplier<Block> getLightGray() {
+    public Supplier<T> getLightGray() {
         return lightGray;
     }
 
-    public Supplier<Block> getGray() {
+    public Supplier<T> getGray() {
         return gray;
     }
 
-    public Supplier<Block> getBlack() {
+    public Supplier<T> getBlack() {
         return black;
     }
 
-    public Supplier<Block> getBrown() {
+    public Supplier<T> getBrown() {
         return brown;
     }
 
-    public Supplier<Block> getRed() {
+    public Supplier<T> getRed() {
         return red;
     }
 
-    public Supplier<Block> getOrange() {
+    public Supplier<T> getOrange() {
         return orange;
     }
 
-    public Supplier<Block> getYellow() {
+    public Supplier<T> getYellow() {
         return yellow;
     }
 
-    public Supplier<Block> getLime() {
+    public Supplier<T> getLime() {
         return lime;
     }
 
-    public Supplier<Block> getGreen() {
+    public Supplier<T> getGreen() {
         return green;
     }
 
-    public Supplier<Block> getLightBlue() {
+    public Supplier<T> getLightBlue() {
         return lightBlue;
     }
 
-    public Supplier<Block> getCyan() {
+    public Supplier<T> getCyan() {
         return cyan;
     }
 
-    public Supplier<Block> getBlue() {
+    public Supplier<T> getBlue() {
         return blue;
     }
 
-    public Supplier<Block> getPurple() {
+    public Supplier<T> getPurple() {
         return purple;
     }
 
-    public Supplier<Block> getMagenta() {
+    public Supplier<T> getMagenta() {
         return magenta;
     }
 
-    public Supplier<Block> getPink() {
+    public Supplier<T> getPink() {
         return pink;
     }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "regions_unexplored:block/brimwood_planks"
+  }
+}

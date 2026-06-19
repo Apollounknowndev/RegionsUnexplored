@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "regions_unexplored:block/meadow_sage_lower"
+    },
+    "half=upper": {
+      "model": "regions_unexplored:block/meadow_sage_upper"
+    }
+  }
+}

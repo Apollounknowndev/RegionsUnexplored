@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "regions_unexplored:block/frozen_grass",
-    "particle": "regions_unexplored:block/frozen_grass"
-  },
-  "render_type": "cutout"
-}

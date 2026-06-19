@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "regions_unexplored:block/bleeding_heart",
-    "particle": "regions_unexplored:block/bleeding_heart"
-  },
-  "render_type": "cutout"
-}

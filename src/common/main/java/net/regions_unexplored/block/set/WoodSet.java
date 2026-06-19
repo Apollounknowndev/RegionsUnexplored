@@ -4,10 +4,7 @@ import net.minecraft.world.item.HangingSignItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
@@ -31,18 +28,18 @@ public class WoodSet {
     protected Supplier<Block> strippedLog;
     protected Supplier<Block> strippedWood;
     protected Supplier<Block> planks;
-    protected Supplier<Block> stairs;
-    protected Supplier<Block> slab;
-    protected Supplier<Block> fence;
-    protected Supplier<Block> fenceGate;
-    protected Supplier<Block> door;
-    protected Supplier<Block> trapdoor;
-    protected Supplier<Block> pressurePlate;
-    protected Supplier<Block> button;
-    protected Supplier<Block> sign;
-    protected Supplier<Block> wallSign;
-    protected Supplier<Block> hangingSign;
-    protected Supplier<Block> wallHangingSign;
+    protected Supplier<StairBlock> stairs;
+    protected Supplier<SlabBlock> slab;
+    protected Supplier<FenceBlock> fence;
+    protected Supplier<FenceGateBlock> fenceGate;
+    protected Supplier<DoorBlock> door;
+    protected Supplier<TrapDoorBlock> trapdoor;
+    protected Supplier<PressurePlateBlock> pressurePlate;
+    protected Supplier<ButtonBlock> button;
+    protected Supplier<StandingSignBlock> sign;
+    protected Supplier<WallSignBlock> wallSign;
+    protected Supplier<CeilingHangingSignBlock> hangingSign;
+    protected Supplier<WallHangingSignBlock> wallHangingSign;
 
     protected Supplier<Item> itemSign;
     protected Supplier<Item> itemHangingSign;
@@ -143,51 +140,51 @@ public class WoodSet {
         return planks != null ? planks.get() : null;
     }
 
-    public Block getStairs() {
+    public StairBlock getStairs() {
         return stairs != null ? stairs.get() : null;
     }
 
-    public Block getSlab() {
+    public SlabBlock getSlab() {
         return slab != null ? slab.get() : null;
     }
 
-    public Block getFence() {
+    public FenceBlock getFence() {
         return fence != null ? fence.get() : null;
     }
 
-    public Block getFenceGate() {
+    public FenceGateBlock getFenceGate() {
         return fenceGate != null ? fenceGate.get() : null;
     }
 
-    public Block getDoor() {
+    public DoorBlock getDoor() {
         return door != null ? door.get() : null;
     }
 
-    public Block getTrapdoor() {
+    public TrapDoorBlock getTrapdoor() {
         return trapdoor != null ? trapdoor.get() : null;
     }
 
-    public Block getPressurePlate() {
+    public PressurePlateBlock getPressurePlate() {
         return pressurePlate != null ? pressurePlate.get() : null;
     }
 
-    public Block getButton() {
+    public ButtonBlock getButton() {
         return button != null ? button.get() : null;
     }
 
-    public Block getSign() {
+    public StandingSignBlock getSign() {
         return sign != null ? sign.get() : null;
     }
 
-    public Block getWallSign() {
+    public WallSignBlock getWallSign() {
         return wallSign != null ? wallSign.get() : null;
     }
 
-    public Block getHangingSign() {
+    public CeilingHangingSignBlock getHangingSign() {
         return hangingSign != null ? hangingSign.get() : null;
     }
 
-    public Block getWallHangingSign() {
+    public WallHangingSignBlock getWallHangingSign() {
         return wallHangingSign != null ? wallHangingSign.get() : null;
     }
 

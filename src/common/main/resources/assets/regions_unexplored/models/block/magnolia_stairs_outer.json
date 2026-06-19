@@ -1,8 +1,0 @@
-{
-  "parent": "block/outer_stairs",
-  "textures": {
-    "bottom": "regions_unexplored:block/magnolia_planks",
-    "top": "regions_unexplored:block/magnolia_planks",
-    "side": "regions_unexplored:block/magnolia_planks"
-  }
-}

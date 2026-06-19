@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "regions_unexplored:block/stripped_joshua_log_top",
+    "side": "regions_unexplored:block/stripped_joshua_log"
+  }
+}

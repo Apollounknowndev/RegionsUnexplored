@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right",
+  "textures": {
+    "bottom": "regions_unexplored:block/cobalt_door_bottom",
+    "top": "regions_unexplored:block/cobalt_door_top"
+  }
+}

@@ -1,9 +1,0 @@
-{
-  "parent": "regions_unexplored:block/branch",
-  "textures": {
-    "log": "block/spruce_log",
-    "branch": "regions_unexplored:block/spruce_branch",
-    "particle": "block/spruce_log"
-  },
-  "render_type": "cutout"
-}

@@ -496,8 +496,9 @@ public class RuBiomeTagProvider extends BiomeTagsProvider {
                 .add(TUNDRA)
         ;
         this.tag(BiomeTags.HAS_WOODLAND_MANSION)
-                .add(BLACKWOOD_TAIGA)
-                .add(REDWOODS)
+            .add(BLACKWOOD_TAIGA)
+            .add(REDWOODS)
+            .add(SPARSE_REDWOODS)
         ;
     }
 

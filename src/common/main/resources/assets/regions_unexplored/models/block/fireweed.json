@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "regions_unexplored:block/fireweed",
-    "particle": "regions_unexplored:block/fireweed"
-  },
-  "render_type": "cutout"
-}
