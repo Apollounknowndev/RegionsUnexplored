@@ -30,7 +30,7 @@ cloche {
         modId = "regions_unexplored"
         name = "Regions Unexplored"
         description = "A stack of new biomes spread across the Overworld and Nether!"
-        license = "All Rights Reserved"
+        license = "MIT"
         icon = "pack.png"
 
         url = "https://modrinth.com/mod/regions-unexplored"
