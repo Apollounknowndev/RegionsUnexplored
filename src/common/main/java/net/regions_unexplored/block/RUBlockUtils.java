@@ -149,6 +149,10 @@ public class RUBlockUtils {
         if (!fireproof) properties.ignitedByLava();
         return factory.apply(properties);
     }
+    
+    public static BlockBehaviour.Properties postProcessed(BlockBehaviour.Properties properties) {
+        return properties.hasPostProcess((state, getter, pos) -> true);
+    }
 
 
     //Boolean states

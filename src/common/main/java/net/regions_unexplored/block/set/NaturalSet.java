@@ -13,7 +13,6 @@ import net.regions_unexplored.block.type.sapling.RUSaplingBlock;
 import net.regions_unexplored.block.type.sapling.RUTreeGrower;
 import net.regions_unexplored.block.type.wood.BeardBlock;
 import net.regions_unexplored.block.type.wood.BranchBlock;
-import net.regions_unexplored.module.version.VersionBlockHelper;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.sapling.RUTreeGrowers;
 import net.regions_unexplored.block.RUBlockUtils;
@@ -22,6 +21,8 @@ import net.regions_unexplored.block.type.shrub.ShrubBlock;
 
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
+
+import static net.regions_unexplored.block.RUBlockUtils.postProcessed;
 
 public class NaturalSet {
     private static final UnaryOperator<BlockBehaviour.Properties> BRANCH_PROPERTIES = p -> p.noOcclusion().sound(SoundType.MANGROVE_ROOTS).strength(1.0F, 1.5F).dynamicShape();
@@ -50,7 +51,7 @@ public class NaturalSet {
 
     public static NaturalSet ashen() {
         NaturalSet set = NaturalSet.create("ashen").withLeaves(MapColor.COLOR_LIGHT_GRAY, RUTintedParticlesLeavesBlock.small(RUTintedParticlesLeavesBlock.TintGetter.constant(0x767470))).withSapling(RUTreeGrowers.ASHEN);
-        set.shrub = RUBlockUtils.register("ashen_shrub", p -> new ShrubBlock(SHRUB_PROPERTIES.apply(VersionBlockHelper.postProcessed(p)).sound(SoundType.ROOTED_DIRT).emissiveRendering((bs, br, bp) -> true)));
+        set.shrub = RUBlockUtils.register("ashen_shrub", p -> new ShrubBlock(SHRUB_PROPERTIES.apply(postProcessed(p)).sound(SoundType.ROOTED_DIRT).emissiveRendering((bs, br, bp) -> true)));
         return set;
     }
 
