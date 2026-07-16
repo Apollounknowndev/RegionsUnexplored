@@ -24,7 +24,7 @@ public abstract class BeaconBlockEntityMixin {
 	)
 	private static int applyPrismaglassColor(DyeColor color, Operation<Integer> operation, Level level, BlockPos pos, @Local(ordinal = 0) Block block) {
 		if (block instanceof PrismaglassBlock) {
-			return RuColors.getRainbowColor(pos.getX(), pos.getZ() + level.getGameTime() / 8f);
+			return RuColors.getRainbowColor(pos.getX(), pos.getZ() + level.getGameTime() / 8f, 0.8f);
 		}
 		return operation.call(color);
 	}

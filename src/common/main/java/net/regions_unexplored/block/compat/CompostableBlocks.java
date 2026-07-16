@@ -52,12 +52,14 @@ public class CompostableBlocks {
         COMPOSTABLES.put(RUBlocks.TALL_DEAD_GRASS.get(), 0.3F);
         COMPOSTABLES.put(RUBlocks.FROZEN_GRASS.get(), 0.3F);
         COMPOSTABLES.put(RUBlocks.SANDY_GRASS.get(), 0.3F);
+        COMPOSTABLES.put(RUBlocks.RED_SANDY_GRASS.get(), 0.3F);
         COMPOSTABLES.put(RUBlocks.SHORT_DEAD_GRASS.get(), 0.3F);
         COMPOSTABLES.put(RUBlocks.GRASS_SPROUTS.get(), 0.3F);
 
         // Tall grass (0.5F)
         COMPOSTABLES.put(RUBlocks.ELEPHANT_EAR.get(), 0.5F);
-        COMPOSTABLES.put(RUBlocks.SANDY_TALL_GRASS.get(), 0.5F);
+        COMPOSTABLES.put(RUBlocks.TALL_SANDY_GRASS.get(), 0.5F);
+        COMPOSTABLES.put(RUBlocks.TALL_RED_SANDY_GRASS.get(), 0.5F);
         COMPOSTABLES.put(RUBlocks.WINDSWEPT_GRASS.get(), 0.5F);
 
         // Flowers (0.4F)
@@ -105,7 +107,6 @@ public class CompostableBlocks {
         COMPOSTABLES.put(RUBlocks.RED_MAPLE_LEAF_LITTER.get(), 0.1F);
         COMPOSTABLES.put(RUBlocks.ORANGE_MAPLE_LEAF_LITTER.get(), 0.1F);
         COMPOSTABLES.put(RUBlocks.SILVER_BIRCH_LEAF_LITTER.get(), 0.1F);
-        COMPOSTABLES.put(RUBlocks.ENCHANTED_BIRCH_LEAF_LITTER.get(), 0.1F);
 
         // Tall plants (0.6F)
         COMPOSTABLES.put(RUBlocks.MEADOW_SAGE.get(), 0.6F);

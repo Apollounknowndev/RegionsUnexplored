@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "regions_unexplored:block/glister_spire_top",
-    "particle": "regions_unexplored:block/glister_spire_top"
-  },
-  "render_type": "cutout"
-}

@@ -10,6 +10,7 @@ import net.regions_unexplored.item.type.IridescentRingItem;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
+import static net.minecraft.resources.Identifier.withDefaultNamespace;
 import static net.regions_unexplored.RegionsUnexplored.id;
 import static net.regions_unexplored.item.RUItemUtils.food;
 
@@ -21,11 +22,15 @@ public interface RUItems {
     Supplier<Item> IRIDESCENT_RING = RUItemUtils.register("iridescent_ring", IridescentRingItem::new);
 
     static void applyAliases(BiConsumer<Identifier, Identifier> consumer) {
+        consumer.accept(id("mycotoxic_moss"), id("mycotoxic_nylium"));
+        consumer.accept(id("blackstone_cluster"), withDefaultNamespace("air"));
+        
         consumer.accept(id("pointed_redstone"), id("redstone_spike"));
-        consumer.accept(id("blackstone_cluster"), Identifier.withDefaultNamespace("air"));
-        consumer.accept(id("steppe_grass"), Identifier.withDefaultNamespace("short_grass"));
-        consumer.accept(id("steppe_shrub"), Identifier.withDefaultNamespace("short_grass"));
-        consumer.accept(id("steppe_tall_grass"), Identifier.withDefaultNamespace("tall_grass"));
+        
+        consumer.accept(id("steppe_grass"), withDefaultNamespace("short_grass"));
+        consumer.accept(id("steppe_shrub"), withDefaultNamespace("short_grass"));
+        consumer.accept(id("steppe_tall_grass"), withDefaultNamespace("tall_grass"));
+        consumer.accept(id("small_oak_leaves"), withDefaultNamespace("oak_leaves"));
         
         consumer.accept(id("medium_grass"), id("grass_sprouts"));
         consumer.accept(id("stone_bud"), id("grass_sprouts"));
@@ -36,7 +41,8 @@ public interface RUItems {
         consumer.accept(id("red_maple_leaf_pile"), id("red_maple_leaf_litter"));
         consumer.accept(id("orange_maple_leaf_pile"), id("orange_maple_leaf_litter"));
         consumer.accept(id("silver_birch_leaf_pile"), id("silver_birch_leaf_litter"));
-        consumer.accept(id("enchanted_birch_leaf_pile"), id("enchanted_birch_leaf_litter"));
+        consumer.accept(id("enchanted_birch_leaf_pile"), withDefaultNamespace("air"));
+        consumer.accept(id("enchanted_birch_leaf_litter"), withDefaultNamespace("air"));
         
         consumer.accept(id("mauve_branch"), id("wisteria_branch"));
         consumer.accept(id("mauve_shrub"), id("lavender_wisteria_shrub"));

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "minecraft:block/bone_block_top",
+    "side": "regions_unexplored:block/overgrown_bone_block_side",
+    "top": "regions_unexplored:block/glistering_wart"
+  }
+}

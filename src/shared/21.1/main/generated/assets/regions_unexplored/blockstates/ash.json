@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "regions_unexplored:block/ash"
+      },
+      {
+        "model": "regions_unexplored:block/ash_mirrored"
+      }
+    ]
+  }
+}

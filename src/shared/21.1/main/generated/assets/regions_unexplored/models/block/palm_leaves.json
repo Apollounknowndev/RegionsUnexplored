@@ -1,0 +1,7 @@
+{
+  "parent": "regions_unexplored:block/template/leaves_top_bottom",
+  "textures": {
+    "side": "regions_unexplored:block/palm_leaves_side",
+    "top": "regions_unexplored:block/palm_leaves_top"
+  }
+}

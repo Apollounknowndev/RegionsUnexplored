@@ -8,10 +8,7 @@
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "regions_unexplored:sandy_grass",
-              "Properties": {
-                "is_red": "false"
-              }
+              "Name": "regions_unexplored:short_sandy_grass"
             }
           }
         }

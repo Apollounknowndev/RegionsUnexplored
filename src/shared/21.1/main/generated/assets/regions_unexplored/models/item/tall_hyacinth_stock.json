@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "regions_unexplored:block/tall_hyacinth_stock_tip"
+  }
+}

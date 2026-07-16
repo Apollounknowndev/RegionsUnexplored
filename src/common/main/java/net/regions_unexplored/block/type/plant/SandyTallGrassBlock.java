@@ -17,11 +17,9 @@ import net.regions_unexplored.block.properties.RUBlockProperties;
 import org.jetbrains.annotations.Nullable;
 
 public class SandyTallGrassBlock extends DoublePlantBlock {
-    public static final BooleanProperty IS_RED = RUBlockProperties.IS_RED;
-
     public SandyTallGrassBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(IS_RED, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
     }
 
     @Override
@@ -31,14 +29,14 @@ public class SandyTallGrassBlock extends DoublePlantBlock {
     
     @Override
     protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
-        builder.add(HALF, IS_RED);
+        builder.add(HALF);
     }
 
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
         BlockPos abovePos = pos.above();
         boolean red = level.getBlockState(pos.below()).is(RUBlockTags.SUPPORTS_RED_SANDY_PLANTS);
-        level.setBlock(abovePos, copyWaterloggedFrom(level, abovePos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER).setValue(IS_RED, red)), 3);
+        level.setBlock(abovePos, copyWaterloggedFrom(level, abovePos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER)), 3);
     }
 
     @Nullable
@@ -46,8 +44,7 @@ public class SandyTallGrassBlock extends DoublePlantBlock {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
         if (pos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(pos.above()).canBeReplaced()) {
-            boolean red = level.getBlockState(pos.below()).is(RUBlockTags.SUPPORTS_RED_SANDY_PLANTS);
-            return this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER).setValue(IS_RED, red);
+            return this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER);
         }
         return super.getStateForPlacement(context);
     }

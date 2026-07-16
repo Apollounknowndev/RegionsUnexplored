@@ -30,10 +30,10 @@
                 "Name": "regions_unexplored:grass_sprouts"
               },
               {
-                "Name": "regions_unexplored:dead_steppe_shrub"
+                "Name": "regions_unexplored:tall_dead_grass"
               },
               {
-                "Name": "regions_unexplored:small_desert_shrub"
+                "Name": "regions_unexplored:short_dead_grass"
               }
             ],
             "variety": [

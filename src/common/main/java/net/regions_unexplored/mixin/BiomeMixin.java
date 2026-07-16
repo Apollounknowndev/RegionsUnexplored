@@ -8,6 +8,7 @@ import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
+@SuppressWarnings("all")
 @Mixin(Biome.class)
 public class BiomeMixin {
 	@ModifyReturnValue(

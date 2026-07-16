@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "regions_unexplored:block/green_snowbelle",
-    "particle": "regions_unexplored:block/green_snowbelle"
-  },
-  "render_type": "cutout"
-}

@@ -1,7 +1,0 @@
-{
-  "parent": "regions_unexplored:block/redstone_spike",
-  "textures": {
-    "cross": "regions_unexplored:block/redstone_spike_down_base"
-  },
-  "render_type": "cutout"
-}

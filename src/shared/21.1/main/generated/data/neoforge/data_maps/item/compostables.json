@@ -204,9 +204,6 @@
     "regions_unexplored:dead_shrub": {
       "chance": 0.65
     },
-    "regions_unexplored:dead_steppe_shrub": {
-      "chance": 0.3
-    },
     "regions_unexplored:dorcel": {
       "chance": 0.4
     },
@@ -224,9 +221,6 @@
     },
     "regions_unexplored:elephant_ear": {
       "chance": 0.5
-    },
-    "regions_unexplored:enchanted_birch_leaf_litter": {
-      "chance": 0.1
     },
     "regions_unexplored:eucalyptus_branch": {
       "chance": 0.3
@@ -552,11 +546,14 @@
     "regions_unexplored:salmonberry": {
       "chance": 0.25
     },
-    "regions_unexplored:sandy_grass": {
+    "regions_unexplored:short_dead_grass": {
       "chance": 0.3
     },
-    "regions_unexplored:sandy_tall_grass": {
-      "chance": 0.5
+    "regions_unexplored:short_red_sandy_grass": {
+      "chance": 0.3
+    },
+    "regions_unexplored:short_sandy_grass": {
+      "chance": 0.3
     },
     "regions_unexplored:silver_birch_branch": {
       "chance": 0.3
@@ -581,12 +578,6 @@
     },
     "regions_unexplored:sky_wisteria_shrub": {
       "chance": 0.65
-    },
-    "regions_unexplored:small_desert_shrub": {
-      "chance": 0.3
-    },
-    "regions_unexplored:small_oak_leaves": {
-      "chance": 0.3
     },
     "regions_unexplored:small_oak_sapling": {
       "chance": 0.3
@@ -618,11 +609,20 @@
     "regions_unexplored:tall_cobalt_earlight": {
       "chance": 0.35
     },
+    "regions_unexplored:tall_dead_grass": {
+      "chance": 0.3
+    },
     "regions_unexplored:tall_green_bioshroom": {
       "chance": 0.65
     },
     "regions_unexplored:tall_pink_bioshroom": {
       "chance": 0.65
+    },
+    "regions_unexplored:tall_red_sandy_grass": {
+      "chance": 0.5
+    },
+    "regions_unexplored:tall_sandy_grass": {
+      "chance": 0.5
     },
     "regions_unexplored:tall_yellow_bioshroom": {
       "chance": 0.65

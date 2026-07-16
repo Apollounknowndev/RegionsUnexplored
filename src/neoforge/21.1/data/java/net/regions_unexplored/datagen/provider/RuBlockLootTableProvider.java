@@ -97,11 +97,13 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
         add(RUBlocks.ASHEN_GRASS.get(), this::createGrassDrops);
         add(RUBlocks.FROZEN_GRASS.get(), this::createGrassDrops);
         add(RUBlocks.SANDY_GRASS.get(), this::createGrassDrops);
+        add(RUBlocks.RED_SANDY_GRASS.get(), this::createGrassDrops);
         add(RUBlocks.SHORT_DEAD_GRASS.get(), RuBlockLootTableProvider::createShearsOnlyDrop);
         add(RUBlocks.GRASS_SPROUTS.get(), this::createGrassDrops);
         //TALL_GRASS_BLOCKS
         add(RUBlocks.ELEPHANT_EAR.get(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        add(RUBlocks.SANDY_TALL_GRASS.get(), (block) -> createDoublePlantWithSeedDrops(block, RUBlocks.SANDY_GRASS.get()));
+        add(RUBlocks.TALL_SANDY_GRASS.get(), (block) -> createDoublePlantWithSeedDrops(block, RUBlocks.SANDY_GRASS.get()));
+        add(RUBlocks.TALL_RED_SANDY_GRASS.get(), (block) -> createDoublePlantWithSeedDrops(block, RUBlocks.RED_SANDY_GRASS.get()));
         add(RUBlocks.WINDSWEPT_GRASS.get(), this::createDoublePlantWithSeedDropsNoGrass);
         //FLOWERS
         dropSelf(RUBlocks.ALPHA_DANDELION.get());
@@ -144,7 +146,6 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
         add(RUBlocks.RED_MAPLE_LEAF_LITTER.get(), this::createPetalsDrops);
         add(RUBlocks.ORANGE_MAPLE_LEAF_LITTER.get(), this::createPetalsDrops);
         add(RUBlocks.SILVER_BIRCH_LEAF_LITTER.get(), this::createPetalsDrops);
-        add(RUBlocks.ENCHANTED_BIRCH_LEAF_LITTER.get(), this::createPetalsDrops);
         //TALL_PLANTS
         add(RUBlocks.MEADOW_SAGE.get(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         add(RUBlocks.BARLEY.get(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
@@ -199,8 +200,6 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
         add(RUBlocks.POTTED_PURPLE_LUPINE.get(), createPotFlowerItemTable(RUBlocks.PURPLE_LUPINE.get()));
         add(RUBlocks.POTTED_RED_LUPINE.get(), createPotFlowerItemTable(RUBlocks.RED_LUPINE.get()));
         add(RUBlocks.POTTED_YELLOW_LUPINE.get(), createPotFlowerItemTable(RUBlocks.YELLOW_LUPINE.get()));
-        add(RUBlocks.POTTED_ORANGE_CONEFLOWER.get(), createPotFlowerItemTable(RUBlocks.ORANGE_CONEFLOWER.get()));
-        add(RUBlocks.POTTED_PURPLE_CONEFLOWER.get(), createPotFlowerItemTable(RUBlocks.PURPLE_CONEFLOWER.get()));
         for (Map.Entry<DyeColor, Block> entry : RUBlocks.POTTED_SNOWBELLES.getMap().entrySet()) {
             add(entry.getValue(), createPotFlowerItemTable(RUBlocks.SNOWBELLES.getMap().get(entry.getKey())));
         }
@@ -211,17 +210,12 @@ public class RuBlockLootTableProvider extends BlockLootSubProvider {
         add(RUBlocks.POTTED_DUSKTRAP.get(), createPotFlowerItemTable(RUBlocks.DUSKTRAP.get()));
         add(RUBlocks.POTTED_CORPSE_FLOWER.get(), createPotFlowerItemTable(RUBlocks.CORPSE_FLOWER.get()));
         add(RUBlocks.POTTED_COBALT_EARLIGHT.get(), createPotFlowerItemTable(RUBlocks.COBALT_EARLIGHT.get()));
-        add(RUBlocks.POTTED_TALL_COBALT_EARLIGHT.get(), createPotFlowerItemTable(RUBlocks.TALL_COBALT_EARLIGHT.get()));
         add(RUBlocks.POTTED_MYCOTOXIC_DAISY.get(), createPotFlowerItemTable(RUBlocks.MYCOTOXIC_DAISY.get()));
         add(RUBlocks.POTTED_GLISTER_SPIRE.get(), createPotFlowerItemTable(RUBlocks.GLISTER_SPIRE.get()));
         add(RUBlocks.POTTED_BLUE_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.BLUE_BIOSHROOM.get()));
         add(RUBlocks.POTTED_GREEN_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.GREEN_BIOSHROOM.get()));
         add(RUBlocks.POTTED_PINK_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.PINK_BIOSHROOM.get()));
         add(RUBlocks.POTTED_YELLOW_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.YELLOW_BIOSHROOM.get()));
-        add(RUBlocks.POTTED_TALL_BLUE_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.TALL_BLUE_BIOSHROOM.get()));
-        add(RUBlocks.POTTED_TALL_GREEN_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.TALL_GREEN_BIOSHROOM.get()));
-        add(RUBlocks.POTTED_TALL_PINK_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.TALL_PINK_BIOSHROOM.get()));
-        add(RUBlocks.POTTED_TALL_YELLOW_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.TALL_YELLOW_BIOSHROOM.get()));
 
         /*-----------------PLANT_BLOCKS-----------------*/
         //MUSHROOMS

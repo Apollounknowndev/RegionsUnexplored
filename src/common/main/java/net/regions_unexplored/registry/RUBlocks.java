@@ -55,6 +55,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
+import static net.minecraft.resources.Identifier.withDefaultNamespace;
 import static net.regions_unexplored.RegionsUnexplored.id;
 import static net.regions_unexplored.block.RUBlockUtils.*;
 import static net.regions_unexplored.block.type.leaves.RUTintedParticlesLeavesBlock.*;
@@ -91,14 +92,16 @@ public interface RUBlocks {
     Supplier<Block> DUSKTRAP = register("dusktrap", p -> new DusktrapBlock(p.mapColor(MapColor.COLOR_CYAN).noCollision().strength(0.3f).sound(SoundType.TWISTING_VINES)));
     /*-----------------PLANTS-----------------*/
     //GRASS_BLOCKS
-    Supplier<Block> SHORT_DEAD_GRASS = register("small_desert_shrub", p -> new DeadGrassBlock(9, p), Blocks.DEAD_BUSH);
-    Supplier<Block> TALL_DEAD_GRASS = register("dead_steppe_shrub", p -> new DeadGrassBlock(13, p.pushReaction(PushReaction.DESTROY).ignitedByLava().replaceable().mapColor(MapColor.WOOD).noCollision().instabreak().sound(SoundType.GRASS).offsetType(OffsetType.XZ)));
+    Supplier<Block> SHORT_DEAD_GRASS = register("short_dead_grass", p -> new DeadGrassBlock(9, p), Blocks.DEAD_BUSH);
+    Supplier<Block> TALL_DEAD_GRASS = register("tall_dead_grass", p -> new DeadGrassBlock(13, p.pushReaction(PushReaction.DESTROY).ignitedByLava().replaceable().mapColor(MapColor.WOOD).noCollision().instabreak().sound(SoundType.GRASS).offsetType(OffsetType.XZ)));
     Supplier<Block> FROZEN_GRASS = register("frozen_grass", FrozenGrassBlock::new, Blocks.SHORT_GRASS);
-    Supplier<Block> SANDY_GRASS = register("sandy_grass", SandyGrassBlock::new, Blocks.SHORT_GRASS);
+    Supplier<Block> SANDY_GRASS = register("short_sandy_grass", p -> new SandyGrassBlock(RUBlockIds.TALL_SANDY_GRASS, p), Blocks.SHORT_GRASS);
+    Supplier<Block> RED_SANDY_GRASS = register("short_red_sandy_grass", p -> new SandyGrassBlock(RUBlockIds.TALL_RED_SANDY_GRASS, p), Blocks.SHORT_GRASS);
     Supplier<Block> GRASS_SPROUTS = register("grass_sprouts", GrassSproutsBlock::new, Blocks.SHORT_GRASS);
     //TALL_GRASS_BLOCKS
     Supplier<Block> ELEPHANT_EAR = register("elephant_ear", ElephantEarBlock::new, Blocks.TALL_GRASS);
-    Supplier<Block> SANDY_TALL_GRASS = register("sandy_tall_grass", SandyTallGrassBlock::new, Blocks.TALL_GRASS);
+    Supplier<Block> TALL_SANDY_GRASS = register("tall_sandy_grass", SandyTallGrassBlock::new, Blocks.TALL_GRASS);
+    Supplier<Block> TALL_RED_SANDY_GRASS = register("tall_red_sandy_grass", SandyTallGrassBlock::new, Blocks.TALL_GRASS);
     Supplier<Block> WINDSWEPT_GRASS = register("windswept_grass", p -> new DoublePlantBlock(p.sound(RUSoundEvents.TALL_GRASS)), Blocks.TALL_GRASS);
     //FLOWERS
     Supplier<Block> ALPHA_DANDELION = register("alpha_dandelion", p -> new FlowerBlock(MobEffects.JUMP_BOOST, 5, p), Blocks.DANDELION);
@@ -138,7 +141,6 @@ public interface RUBlocks {
     Supplier<Block> RED_MAPLE_LEAF_LITTER = register("red_maple_leaf_litter", p -> new RULeafLitterBlock(p.pushReaction(PushReaction.DESTROY).replaceable().ignitedByLava().noCollision().sound(RUSoundEvents.LEAF_LITTER)));
     Supplier<Block> ORANGE_MAPLE_LEAF_LITTER = register("orange_maple_leaf_litter", p -> new RULeafLitterBlock(p.pushReaction(PushReaction.DESTROY).replaceable().ignitedByLava().noCollision().sound(RUSoundEvents.LEAF_LITTER)));
     Supplier<Block> SILVER_BIRCH_LEAF_LITTER = register("silver_birch_leaf_litter", p -> new RULeafLitterBlock(p.pushReaction(PushReaction.DESTROY).replaceable().ignitedByLava().noCollision().sound(RUSoundEvents.LEAF_LITTER)));
-    Supplier<Block> ENCHANTED_BIRCH_LEAF_LITTER = register("enchanted_birch_leaf_litter", p -> new RULeafLitterBlock(p.pushReaction(PushReaction.DESTROY).replaceable().ignitedByLava().noCollision().sound(RUSoundEvents.LEAF_LITTER)));
     //TALL_PLANTS
     Supplier<Block> MEADOW_SAGE = RUBlockUtils.registerNoItem("meadow_sage", TallFlowerBlock::new, Blocks.ROSE_BUSH);
     Supplier<Block> BARLEY = register("barley", p -> new DoublePlantBlock(p.sound(RUSoundEvents.TALL_GRASS)), Blocks.SUNFLOWER);
@@ -253,7 +255,6 @@ public interface RUBlocks {
         .withLeaves(standard(RuColors::getAspenColor))
         .withSapling(RUTreeGrowers.SILVER_BIRCH);
     NaturalSet SMALL_OAK_NATURAL_SET = NaturalSet.create("small_oak")
-        .withLeaves()
         .withSapling(RUTreeGrowers.SMALL_OAK);
     NaturalSet SOCOTRA_NATURAL_SET = NaturalSet.create("socotra")
         .withBranch().withShrub().withLeaves()
@@ -454,7 +455,7 @@ public interface RUBlocks {
     Supplier<Block> MYCOTOXIC_MUSHROOMS = register("mycotoxic_mushrooms", p -> new NetherGroundCoverBlock(postProcessed(p).pushReaction(PushReaction.DESTROY).noCollision().sound(SoundType.SHROOMLIGHT).emissiveRendering((bs, br, bp) -> true).lightLevel((state) -> 3 + 3 * state.getValue(NetherGroundCoverBlock.AMOUNT))));
     Supplier<Block> MYCOTOXIC_DAISY = register("mycotoxic_daisy", p -> new NetherDoublePlantBlock(postProcessed(p).replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS).offsetType(OffsetType.XYZ).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 4)));
     Supplier<Block> MYCOTOXIC_GRASS = register("mycotoxic_grass", p -> new NetherPlantBlock(6, p.replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS).offsetType(OffsetType.XYZ)));
-    Supplier<Block> MYCOTOXIC_NYLIUM = register("mycotoxic_moss", p -> new RUNyliumBlock(p.mapColor(MapColor.COLOR_YELLOW).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NYLIUM), RUConfiguredFeatures.BONEMEAL_MYCOTOXIC_NYLIUM));
+    Supplier<Block> MYCOTOXIC_NYLIUM = register("mycotoxic_nylium", p -> new RUNyliumBlock(p.mapColor(MapColor.COLOR_YELLOW).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NYLIUM), RUConfiguredFeatures.BONEMEAL_MYCOTOXIC_NYLIUM));
     /*-----------------POTTED_PLANTS-----------------*/
     //POTTED_FLOWERS
     Supplier<Block> POTTED_ALPHA_DANDELION = RUBlockUtils.registerNoItem("potted_alpha_dandelion", p -> new FlowerPotBlock(ALPHA_DANDELION.get(), p), Blocks.POTTED_ALLIUM);
@@ -476,56 +477,61 @@ public interface RUBlocks {
     Supplier<Block> POTTED_PURPLE_LUPINE = RUBlockUtils.registerNoItem("potted_purple_lupine", p -> new FlowerPotBlock(PURPLE_LUPINE.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_RED_LUPINE = RUBlockUtils.registerNoItem("potted_red_lupine", p -> new FlowerPotBlock(RED_LUPINE.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_TSUBAKI = RUBlockUtils.registerNoItem("potted_tsubaki", p -> new FlowerPotBlock(TSUBAKI.get(), p), Blocks.POTTED_ALLIUM);
-    Supplier<Block> POTTED_ORANGE_CONEFLOWER = RUBlockUtils.registerNoItem("potted_orange_coneflower", p -> new FlowerPotBlock(ORANGE_CONEFLOWER.get(), p), Blocks.POTTED_ALLIUM);
-    Supplier<Block> POTTED_PURPLE_CONEFLOWER = RUBlockUtils.registerNoItem("potted_purple_coneflower", p -> new FlowerPotBlock(PURPLE_CONEFLOWER.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_WARATAH = RUBlockUtils.registerNoItem("potted_waratah", p -> new FlowerPotBlock(WARATAH.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_WHITE_TRILLIUM = RUBlockUtils.registerNoItem("potted_white_trillium", p -> new FlowerPotBlock(WHITE_TRILLIUM.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_WILTING_TRILLIUM = RUBlockUtils.registerNoItem("potted_wilting_trillium", p -> new FlowerPotBlock(WILTING_TRILLIUM.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_YELLOW_LUPINE = RUBlockUtils.registerNoItem("potted_yellow_lupine", p -> new FlowerPotBlock(YELLOW_LUPINE.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_GLISTERING_BLOOM = RUBlockUtils.registerNoItem("potted_glistering_bloom", p -> new FlowerPotBlock(GLISTERING_BLOOM.get(), p), Blocks.POTTED_ALLIUM);
-    //OTHER_POTS
     Supplier<Block> POTTED_DAY_LILY = RUBlockUtils.registerNoItem("potted_day_lily", p -> new FlowerPotBlock(DAY_LILY.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_MEADOW_SAGE = RUBlockUtils.registerNoItem("potted_meadow_sage", p -> new FlowerPotBlock(MEADOW_SAGE.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_DUSKTRAP = RUBlockUtils.registerNoItem("potted_dusktrap", p -> new FlowerPotBlock(DUSKTRAP.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_CORPSE_FLOWER = RUBlockUtils.registerNoItem("potted_corpse_flower", p -> new FlowerPotBlock(CORPSE_FLOWER.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_COBALT_EARLIGHT = RUBlockUtils.registerNoItem("potted_cobalt_earlight", p -> new FlowerPotBlock(COBALT_EARLIGHT.get(), p.lightLevel(s -> 8)), Blocks.POTTED_ALLIUM);
-    Supplier<Block> POTTED_TALL_COBALT_EARLIGHT = RUBlockUtils.registerNoItem("potted_tall_cobalt_earlight", p -> new FlowerPotBlock(TALL_COBALT_EARLIGHT.get(), p.lightLevel(s -> 8)), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_MYCOTOXIC_DAISY = RUBlockUtils.registerNoItem("potted_mycotoxic_daisy", p -> new FlowerPotBlock(MYCOTOXIC_DAISY.get(), p.lightLevel(s -> 8)), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_GLISTER_SPIRE = RUBlockUtils.registerNoItem("potted_glister_spire", p -> new FlowerPotBlock(GLISTER_SPIRE.get(), p), Blocks.POTTED_ALLIUM);
-    //POTTED_MUSHROOMS
     Supplier<Block> POTTED_BLUE_BIOSHROOM = RUBlockUtils.registerNoItem("potted_blue_bioshroom", p -> new FlowerPotBlock(BLUE_BIOSHROOM.get(), p.lightLevel(s -> 10)), Blocks.POTTED_BROWN_MUSHROOM);
     Supplier<Block> POTTED_GREEN_BIOSHROOM = RUBlockUtils.registerNoItem("potted_green_bioshroom", p -> new FlowerPotBlock(GREEN_BIOSHROOM.get(), p.lightLevel(s -> 10)), Blocks.POTTED_BROWN_MUSHROOM);
     Supplier<Block> POTTED_PINK_BIOSHROOM = RUBlockUtils.registerNoItem("potted_pink_bioshroom", p -> new FlowerPotBlock(PINK_BIOSHROOM.get(), p.lightLevel(s -> 10)), Blocks.POTTED_BROWN_MUSHROOM);
     Supplier<Block> POTTED_YELLOW_BIOSHROOM = RUBlockUtils.registerNoItem("potted_yellow_bioshroom", p -> new FlowerPotBlock(YELLOW_BIOSHROOM.get(), p.lightLevel(s -> 10)), Blocks.POTTED_BROWN_MUSHROOM);
-    Supplier<Block> POTTED_TALL_BLUE_BIOSHROOM = RUBlockUtils.registerNoItem("potted_tall_blue_bioshroom", p -> new FlowerPotBlock(TALL_BLUE_BIOSHROOM.get(), p.lightLevel(s -> 10)), Blocks.POTTED_BROWN_MUSHROOM);
-    Supplier<Block> POTTED_TALL_GREEN_BIOSHROOM = RUBlockUtils.registerNoItem("potted_tall_green_bioshroom", p -> new FlowerPotBlock(TALL_GREEN_BIOSHROOM.get(), p.lightLevel(s -> 10)), Blocks.POTTED_BROWN_MUSHROOM);
-    Supplier<Block> POTTED_TALL_PINK_BIOSHROOM = RUBlockUtils.registerNoItem("potted_tall_pink_bioshroom", p -> new FlowerPotBlock(TALL_PINK_BIOSHROOM.get(), p.lightLevel(s -> 10)), Blocks.POTTED_BROWN_MUSHROOM);
-    Supplier<Block> POTTED_TALL_YELLOW_BIOSHROOM = RUBlockUtils.registerNoItem("potted_tall_yellow_bioshroom", p -> new FlowerPotBlock(TALL_YELLOW_BIOSHROOM.get(), p.lightLevel(s -> 10)), Blocks.POTTED_BROWN_MUSHROOM);
-    //OTHER_POTTED_PLANTS
     Supplier<Block> POTTED_BARREL_CACTUS = RUBlockUtils.registerNoItem("potted_barrel_cactus", p -> new FlowerPotBlock(BARREL_CACTUS.get(), p), Blocks.POTTED_CACTUS);
     Supplier<Block> POTTED_CAVE_HYSSOP = RUBlockUtils.registerNoItem("potted_cave_hyssop", p -> new FlowerPotBlock(CAVE_HYSSOP.get(), p), Blocks.POTTED_ALLIUM);
-    //SNOWBELLES
+    
     ColoredSet<Block> SNOWBELLES = new ColoredSet<>(color -> register(color.getName() + "_snowbelle", p -> new LargeFlowerBlock(MobEffects.SLOWNESS, 10, p), Blocks.DANDELION));
     ColoredSet<Block> POTTED_SNOWBELLES = new ColoredSet<>(color -> RUBlockUtils.registerNoItem("potted_" + color.getName() + "_snowbelle", p -> new FlowerPotBlock(SNOWBELLES.getMap().get(color), p), Blocks.POTTED_ALLIUM));
 
     static void applyAliases(BiConsumer<Identifier, Identifier> consumer) {
+        consumer.accept(id("mycotoxic_moss"), id("mycotoxic_nylium"));
+        consumer.accept(id("blackstone_cluster"), withDefaultNamespace("air"));
+        
         consumer.accept(id("pointed_redstone"), id("redstone_spike"));
-        consumer.accept(id("blackstone_cluster"), Identifier.withDefaultNamespace("air"));
-        consumer.accept(id("steppe_grass"), Identifier.withDefaultNamespace("short_grass"));
-        consumer.accept(id("steppe_shrub"), Identifier.withDefaultNamespace("short_grass"));
-        consumer.accept(id("steppe_tall_grass"), Identifier.withDefaultNamespace("tall_grass"));
+        
+        consumer.accept(id("steppe_grass"), withDefaultNamespace("short_grass"));
+        consumer.accept(id("steppe_shrub"), withDefaultNamespace("short_grass"));
+        consumer.accept(id("steppe_tall_grass"), withDefaultNamespace("tall_grass"));
+        consumer.accept(id("small_oak_leaves"), withDefaultNamespace("oak_leaves"));
+        consumer.accept(id("potted_orange_coneflower"), withDefaultNamespace("flower_pot"));
+        consumer.accept(id("potted_purple_coneflower"), withDefaultNamespace("flower_pot"));
         
         consumer.accept(id("medium_grass"), id("grass_sprouts"));
         consumer.accept(id("stone_bud"), id("grass_sprouts"));
         
+        consumer.accept(id("sandy_grass"), id("short_sandy_grass"));
+        consumer.accept(id("sandy_tall_grass"), id("tall_sandy_grass"));
         consumer.accept(id("cactus_flower"), id("saguaro_cactus_flower"));
         consumer.accept(id("potted_cactus_flower"), id("potted_saguaro_cactus_flower"));
+        
+        consumer.accept(id("potted_tall_cobalt_earlight"), id("potted_cobalt_earlight"));
+        consumer.accept(id("potted_tall_blue_bioshroom"), id("potted_blue_bioshroom"));
+        consumer.accept(id("potted_tall_green_bioshroom"), id("potted_green_bioshroom"));
+        consumer.accept(id("potted_tall_pink_bioshroom"), id("potted_pink_bioshroom"));
+        consumer.accept(id("potted_tall_yellow_bioshroom"), id("potted_yellow_bioshroom"));
         
         consumer.accept(id("maple_leaf_pile"), id("maple_leaf_litter"));
         consumer.accept(id("red_maple_leaf_pile"), id("red_maple_leaf_litter"));
         consumer.accept(id("orange_maple_leaf_pile"), id("orange_maple_leaf_litter"));
         consumer.accept(id("silver_birch_leaf_pile"), id("silver_birch_leaf_litter"));
-        consumer.accept(id("enchanted_birch_leaf_pile"), id("enchanted_birch_leaf_litter"));
+        consumer.accept(id("enchanted_birch_leaf_pile"), withDefaultNamespace("air"));
+        consumer.accept(id("enchanted_birch_leaf_litter"), withDefaultNamespace("air"));
         
         consumer.accept(id("mauve_branch"), id("wisteria_branch"));
         consumer.accept(id("mauve_shrub"), id("lavender_wisteria_shrub"));

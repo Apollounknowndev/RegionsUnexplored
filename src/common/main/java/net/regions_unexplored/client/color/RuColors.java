@@ -2,6 +2,7 @@ package net.regions_unexplored.client.color;
 
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.FoliageColor;
@@ -26,8 +27,6 @@ public class RuColors {
                 RUBlocks.GRASS_SPROUTS.get(),
                 RUBlocks.ORANGE_CONEFLOWER.get(),
                 RUBlocks.PURPLE_CONEFLOWER.get(),
-                RUBlocks.POTTED_ORANGE_CONEFLOWER.get(),
-                RUBlocks.POTTED_PURPLE_CONEFLOWER.get(),
                 RUBlocks.TASSEL.get(),
                 RUBlocks.CLOVER.get(),
                 RUBlocks.BLADED_GRASS.get(),
@@ -52,16 +51,20 @@ public class RuColors {
                 RUBlocks.SOCOTRA_NATURAL_SET.getLeaves(),
                 RUBlocks.KAPOK_NATURAL_SET.getLeaves(),
                 RUBlocks.KAPOK_VINES.get(),
-                RUBlocks.KAPOK_VINES_PLANT.get(),
-                RUBlocks.SMALL_OAK_NATURAL_SET.getLeaves()
+                RUBlocks.KAPOK_VINES_PLANT.get()
         );
-        TintHelper.tintBlocks((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? getRainbowColor(blockPos) : FoliageColor.getDefaultColor(),
-                RUBlocks.HANGING_PRISMARITE.get(),
-                RUBlocks.PRISMARITE_CLUSTER.get(),
-                RUBlocks.LARGE_PRISMARITE_CLUSTER.get(),
-                RUBlocks.PRISMOSS.get(),
-                RUBlocks.DEEPSLATE_PRISMOSS.get(),
-                RUBlocks.PRISMOSS_SPROUT.get()
+        TintHelper.tintBlocks((state, level, pos, i) -> {
+                if (pos == null) {
+                    pos = BlockPos.ZERO;
+                }
+                return getRainbowColor(pos, i == 1 ? 0.65f : 0.9f);
+            },
+            RUBlocks.HANGING_PRISMARITE.get(),
+            RUBlocks.PRISMARITE_CLUSTER.get(),
+            RUBlocks.LARGE_PRISMARITE_CLUSTER.get(),
+            RUBlocks.PRISMOSS.get(),
+            RUBlocks.DEEPSLATE_PRISMOSS.get(),
+            RUBlocks.PRISMOSS_SPROUT.get()
         );
 
         TintHelper.tintBlocks((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? getRainbowGlassColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor(),
@@ -76,10 +79,6 @@ public class RuColors {
         TintHelper.tintBlocks((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? getAspenColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor(),
                 RUBlocks.SILVER_BIRCH_NATURAL_SET.getLeaves(),
                 RUBlocks.SILVER_BIRCH_LEAF_LITTER.get()
-        );
-
-        TintHelper.tintBlocks((blockState, blockAndTintGetter, blockPos, i) -> blockAndTintGetter != null && blockPos != null ? getEnchantedAspenColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor(),
-                RUBlocks.ENCHANTED_BIRCH_LEAF_LITTER.get()
         );
         
         TintHelper.tintBlocks((state, getter, pos, index) -> 0x81cff9,
@@ -130,8 +129,7 @@ public class RuColors {
                 RUBlocks.SOCOTRA_NATURAL_SET.getLeaves(),
                 RUBlocks.KAPOK_NATURAL_SET.getLeaves(),
                 RUBlocks.KAPOK_VINES.get(),
-                RUBlocks.KAPOK_VINES_PLANT.get(),
-                RUBlocks.SMALL_OAK_NATURAL_SET.getLeaves()
+                RUBlocks.KAPOK_VINES_PLANT.get()
         );
         
         TintHelper.tintItems((stack, index) -> 0x81cff9, RUBlocks.SKY_WISTERIA_NATURAL_SET.getLeaves());
@@ -153,12 +151,12 @@ public class RuColors {
         return aspen.getRGB();
     }
 
-    public static int getRainbowColor(BlockPos pos) {
-        return getRainbowColor(pos.getX(), pos.getZ());
+    public static int getRainbowColor(BlockPos pos, float brightness) {
+        return getRainbowColor(pos.getX(), pos.getZ(), brightness);
     }
     
-    public static int getRainbowColor(float x, float z) {
-        Color rainbow = Color.getHSBColor((x + z) / 50.0F, 0.9F, 1.0F);
+    public static int getRainbowColor(float x, float z, float saturation) {
+        Color rainbow = Color.getHSBColor((x + z) / 50.0F, saturation, 1.0F);
         return rainbow.getRGB();
     }
 
@@ -179,7 +177,7 @@ public class RuColors {
 
 
     public static int getPrismariteSparkleColor(BlockPos pos) {
-        Color baseColor = new Color(getRainbowColor(pos));
+        Color baseColor = new Color(getRainbowColor(pos, 0.9f));
         int average = (baseColor.getRed() + baseColor.getGreen() + baseColor.getBlue()) / 3;
         return new Color(
             Math.min(255, baseColor.getRed() + average),

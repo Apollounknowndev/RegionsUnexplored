@@ -6,12 +6,15 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.ModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUItems;
+
+import java.util.function.Supplier;
 
 public class RUItemModelProvider extends ItemModelProvider {
     public RUItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -29,18 +32,99 @@ public class RUItemModelProvider extends ItemModelProvider {
                 itemGenerated(set.getChestBoat());
             }
         }
+        
+        // TODO: Finish block model datagen equivalents
+        itemBlock(RUBlocks.ALPHA_GRASS_BLOCK);
+        itemBlock(RUBlocks.ARGILLITE_GRASS_BLOCK);
+        itemBlock(RUBlocks.BAMBOO_LOG);
+        itemBlock(RUBlocks.BRIMWOOD_WOOD_SET::getLogMagma);
+        itemBlock(RUBlocks.CHALK_GRASS_BLOCK);
+        itemBlock(RUBlocks.CHALK_PILLAR);
+        itemBlock(RUBlocks.COBALT_OBSIDIAN);
+        itemBlock(RUBlocks.DEEPSLATE_GRASS_BLOCK);
+        itemBlock(RUBlocks.EUCALYPTUS_WOOD_SET::getLog);
+        itemBlock(RUBlocks.EUCALYPTUS_WOOD_SET::getWood);
+        itemBlock(RUBlocks.PEAT_DIRT_PATH);
+        itemBlock(RUBlocks.PEAT_FARMLAND);
+        itemBlock(RUBlocks.PEAT_GRASS_BLOCK);
+        itemBlock(RUBlocks.PEAT_PODZOL);
+        itemBlock(RUBlocks.RAW_REDSTONE_BLOCK);
+        itemBlock(RUBlocks.SAGUARO_CACTUS);
+        itemBlock(RUBlocks.SILT_DIRT_PATH);
+        itemBlock(RUBlocks.SILT_FARMLAND);
+        itemBlock(RUBlocks.SILT_GRASS_BLOCK);
+        itemBlock(RUBlocks.SILT_PODZOL);
+        itemBlock(RUBlocks.SMALL_OAK_LOG);
+        itemBlock(RUBlocks.STONE_GRASS_BLOCK);
+        itemBlock(RUBlocks.STRIPPED_BAMBOO_LOG);
+        itemBlock(RUBlocks.STRIPPED_SMALL_OAK_LOG);
+        itemBlock(RUBlocks.YELLOW_BIOSHROOM_BLOCK);
+        
+        itemGenerated(RUBlocks.BARLEY, "_top_1");
+        itemGenerated(RUBlocks.BLUE_MAGNOLIA_FLOWERS);
+        itemGenerated(RUBlocks.BRIMSPROUT, "_1");
+        itemGenerated(RUBlocks.CATTAIL.get().asItem());
+        itemGenerated(RUBlocks.CLOVER.get().asItem());
+        itemGenerated(RUBlocks.COBALT_ROOTS, "_1");
+        itemGenerated(RUBlocks.DUCKWEED.get().asItem());
+        itemGenerated(RUItems.DUSKMELON_SLICE.get());
+        itemGenerated(RUBlocks.DUSKTRAP, "_top_open");
+        itemGenerated(RUBlocks.ELEPHANT_EAR, "_leaf");
+        itemGenerated(RUBlocks.EUCALYPTUS_NATURAL_SET.getBranch().asItem());
+        itemGenerated(RUBlocks.FLOWERING_LILY_PAD.get().asItem());
+        itemGenerated(RUBlocks.GLISTER_BULB, "_head");
+        itemGenerated(RUBlocks.GLISTERING_FERN, "_leaf");
+        itemGenerated(RUBlocks.GLISTERING_IVY, "_plant_2");
+        itemGenerated(RUItems.HANGING_EARLIGHT_FRUIT.get());
+        itemGenerated(RUBlocks.HANGING_PRISMARITE.get().asItem());
+        itemGenerated(RUBlocks.HYACINTH_FLOWERS);
+        itemGenerated(RUBlocks.HYACINTH_LAMP.get().asItem());
+        itemGenerated(RUBlocks.JOSHUA_NATURAL_SET.getBranch().asItem());
+        itemGenerated(RUBlocks.JOSHUA_NATURAL_SET.getLeaves().asItem());
+        itemGenerated(RUBlocks.KAPOK_VINES, "_1");
+        itemGenerated(RUBlocks.MAPLE_LEAF_LITTER.get().asItem());
+        itemGenerated(RUBlocks.MYCOTOXIC_DAISY, "_top");
+        itemGenerated(RUBlocks.MYCOTOXIC_GRASS);
+        itemGenerated(RUBlocks.MYCOTOXIC_MUSHROOMS.get().asItem());
+        itemGenerated(RUBlocks.ORANGE_CONEFLOWER.get().asItem());
+        itemGenerated(RUBlocks.ORANGE_MAPLE_LEAF_LITTER.get().asItem());
+        itemGenerated(RUBlocks.PALM_NATURAL_SET.getBranch().asItem());
+        itemGenerated(RUBlocks.PINK_MAGNOLIA_FLOWERS);
+        itemGenerated(RUBlocks.PRISMOSS_SPROUT.get().asItem());
+        itemGenerated(RUBlocks.PURPLE_CONEFLOWER.get().asItem());
+        itemGenerated(RUBlocks.RED_MAPLE_LEAF_LITTER.get().asItem());
+        itemGenerated(RUBlocks.REDSTONE_BUD);
+        itemGenerated(RUBlocks.REDSTONE_BULB);
+        itemGenerated(RUItems.SALMONBERRY.get());
+        itemGenerated(RUBlocks.SILVER_BIRCH_LEAF_LITTER.get().asItem());
+        itemGenerated(RUBlocks.TALL_HYACINTH_STOCK, "_tip");
+        itemGenerated(RUBlocks.TASSEL.get().asItem());
+        itemGenerated(RUBlocks.WHITE_MAGNOLIA_FLOWERS);
     }
     
-    private void itemBlock(Block block) {
-        simpleBlockItem(block);
+    private void itemBlock(Supplier<Block> block) {
+        simpleBlockItem(block.get());
     }
     
     private void itemBlock(Identifier id) {
         simpleBlockItem(id);
     }
     
-    private void itemGenerated(ItemLike item) {
+    private <T extends Block> void itemGenerated(Supplier<T> block) {
+        itemGenerated(block, "");
+    }
+    
+    private <T extends Block> void itemGenerated(Supplier<T> block, String suffix) {
+        Identifier name = nameId(block.get());
+        this.getBuilder(name.toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", texturize(name.withSuffix(suffix), true));
+    }
+    
+    private void itemGenerated(Item item) {
         basicItem(item.asItem());
+    }
+    
+    private void itemGenerated(Identifier id) {
+        basicItem(id);
     }
     
     // TEXTURES
@@ -58,11 +142,11 @@ public class RUItemModelProvider extends ItemModelProvider {
     }
     
     private Identifier texturize(String texture) {
-        return texturize(RegionsUnexplored.id(texture));
+        return texturize(RegionsUnexplored.id(texture), false);
     }
     
-    private Identifier texturize(Identifier id) {
-        id = id.withPrefix("item/");
+    private Identifier texturize(Identifier id, boolean blockPrefix) {
+        id = id.withPrefix(blockPrefix ? "block/" : "item/");
         this.existingFileHelper.trackGenerated(id, ModelProvider.TEXTURE);
         return id;
     }

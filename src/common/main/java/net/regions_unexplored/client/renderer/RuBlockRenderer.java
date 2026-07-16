@@ -1,6 +1,5 @@
 package net.regions_unexplored.client.renderer;
 
-import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.client.renderer.block.RuBlockCropCutouts;
 import net.regions_unexplored.client.renderer.block.RuBlockTranslucency;
 

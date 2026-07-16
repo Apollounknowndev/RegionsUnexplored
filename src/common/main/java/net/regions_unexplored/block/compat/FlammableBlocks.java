@@ -25,11 +25,13 @@ public class FlammableBlocks {
         registerFlammableBlock(RUBlocks.TALL_DEAD_GRASS.get(), 60, 100);
         registerFlammableBlock(RUBlocks.FROZEN_GRASS.get(), 60, 100);
         registerFlammableBlock(RUBlocks.SANDY_GRASS.get(), 60, 100);
+        registerFlammableBlock(RUBlocks.RED_SANDY_GRASS.get(), 60, 100);
         registerFlammableBlock(RUBlocks.SHORT_DEAD_GRASS.get(), 60, 100);
         registerFlammableBlock(RUBlocks.GRASS_SPROUTS.get(), 60, 100);
         //TALL_GRASS_BLOCKS
         registerFlammableBlock(RUBlocks.ELEPHANT_EAR.get(), 60, 100);
-        registerFlammableBlock(RUBlocks.SANDY_TALL_GRASS.get(), 60, 100);
+        registerFlammableBlock(RUBlocks.TALL_SANDY_GRASS.get(), 60, 100);
+        registerFlammableBlock(RUBlocks.TALL_RED_SANDY_GRASS.get(), 60, 100);
         registerFlammableBlock(RUBlocks.WINDSWEPT_GRASS.get(), 60, 100);
         //FLOWERS
         registerFlammableBlock(RUBlocks.ALPHA_DANDELION.get(), 60, 100);
@@ -70,7 +72,6 @@ public class FlammableBlocks {
         registerFlammableBlock(RUBlocks.RED_MAPLE_LEAF_LITTER.get(), 60, 100);
         registerFlammableBlock(RUBlocks.ORANGE_MAPLE_LEAF_LITTER.get(), 60, 100);
         registerFlammableBlock(RUBlocks.SILVER_BIRCH_LEAF_LITTER.get(), 60, 100);
-        registerFlammableBlock(RUBlocks.ENCHANTED_BIRCH_LEAF_LITTER.get(), 60, 100);
         //TALL_PLANTS
         registerFlammableBlock(RUBlocks.MEADOW_SAGE.get(), 60, 100);
         registerFlammableBlock(RUBlocks.BARLEY.get(), 60, 100);

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_tall_dead_grass": {
+      "conditions": {
+        "items": [
+          {
+            "items": "regions_unexplored:tall_dead_grass"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "regions_unexplored:brown_dye_from_tall_dead_grass"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tall_dead_grass"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "regions_unexplored:brown_dye_from_tall_dead_grass"
+    ]
+  }
+}

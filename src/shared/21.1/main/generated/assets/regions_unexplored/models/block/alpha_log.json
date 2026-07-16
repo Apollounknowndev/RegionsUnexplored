@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "regions_unexplored:block/alpha_log_top",
+    "side": "regions_unexplored:block/alpha_log_side",
+    "top": "regions_unexplored:block/alpha_log_top"
+  }
+}

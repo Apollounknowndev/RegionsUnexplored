@@ -1,0 +1,6 @@
+{
+  "parent": "regions_unexplored:block/template/cube_all_tinted",
+  "textures": {
+    "all": "minecraft:block/white_stained_glass"
+  }
+}

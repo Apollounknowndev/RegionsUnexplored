@@ -1,0 +1,7 @@
+{
+  "parent": "regions_unexplored:block/template/speleothem",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "regions_unexplored:block/icicle_down_tip"
+  }
+}

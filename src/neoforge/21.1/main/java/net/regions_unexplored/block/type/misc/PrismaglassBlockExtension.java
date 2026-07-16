@@ -16,7 +16,7 @@ public class PrismaglassBlockExtension implements IBlockExtension {
 	@Override
 	public Integer getBeaconColorMultiplier(BlockState state, LevelReader levelReader, BlockPos pos, BlockPos beaconPos) {
 		if (levelReader instanceof Level level) {
-			return RuColors.getRainbowColor(pos.getX(), pos.getZ() + level.getGameTime() / 8f);
+			return RuColors.getRainbowColor(pos.getX(), pos.getZ() + level.getGameTime() / 8f, 0.8f);
 		}
 		return DyeColor.WHITE.getTextureDiffuseColor();
 	}

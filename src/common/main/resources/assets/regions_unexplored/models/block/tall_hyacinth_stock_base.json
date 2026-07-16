@@ -1,7 +1,7 @@
 {
   "parent": "regions_unexplored:block/hyacinth_bloom_base",
   "textures": {
-    "stock": "regions_unexplored:block/hyacinth_stock_tall_base",
+    "stock": "regions_unexplored:block/tall_hyacinth_stock_base",
     "particle": "regions_unexplored:block/hyacinth_petal",
     "flower": "regions_unexplored:block/hyacinth_petal",
     "base": "regions_unexplored:block/hyacinth_base"

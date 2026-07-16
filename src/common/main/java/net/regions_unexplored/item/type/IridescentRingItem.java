@@ -50,7 +50,7 @@ public class IridescentRingItem extends Item {
 		for (int i = 0; i < characters.length; i++) {
 			char character = characters[i];
 			name.append(
-				Component.literal(String.valueOf(character)).withColor(RuColors.getRainbowColor(0, i * step))
+				Component.literal(String.valueOf(character)).withColor(RuColors.getRainbowColor(0, i * step, 0.8f))
 			);
 		}
 		return name;

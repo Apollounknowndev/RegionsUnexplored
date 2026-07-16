@@ -18,6 +18,9 @@ public interface RUBlockIds {
     ResourceKey<Block> SPANISH_MOSS_PLANT = key("spanish_moss_plant");
     ResourceKey<Block> KAPOK_VINES = key("kapok_vines");
     ResourceKey<Block> KAPOK_VINES_PLANT = key("kapok_vines_plant");
+    
+    ResourceKey<Block> TALL_SANDY_GRASS = key("tall_sandy_grass");
+    ResourceKey<Block> TALL_RED_SANDY_GRASS = key("tall_red_sandy_grass");
 
     static ResourceKey<Block> key(String name) {
         return RegionsUnexplored.key(Registries.BLOCK, name);

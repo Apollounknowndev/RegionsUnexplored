@@ -54,6 +54,7 @@ public interface RUCreativeModeTabs {
             output.accept(RUBlocks.TALL_DEAD_GRASS.get().asItem());
             output.accept(RUBlocks.FROZEN_GRASS.get().asItem());
             output.accept(RUBlocks.SANDY_GRASS.get().asItem());
+            output.accept(RUBlocks.RED_SANDY_GRASS.get().asItem());
             output.accept(RUBlocks.SHORT_DEAD_GRASS.get().asItem());
             output.accept(RUBlocks.GRASS_SPROUTS.get().asItem());
 
@@ -65,7 +66,8 @@ public interface RUCreativeModeTabs {
 
             output.accept(RUBlocks.BLADED_TALL_GRASS.get().asItem());
             output.accept(RUBlocks.ELEPHANT_EAR.get().asItem());
-            output.accept(RUBlocks.SANDY_TALL_GRASS.get().asItem());
+            output.accept(RUBlocks.TALL_SANDY_GRASS.get().asItem());
+            output.accept(RUBlocks.TALL_RED_SANDY_GRASS.get().asItem());
             output.accept(RUBlocks.WINDSWEPT_GRASS.get().asItem());
 
             output.accept(RUBlocks.CLOVER.get().asItem());
@@ -111,7 +113,6 @@ public interface RUCreativeModeTabs {
             output.accept(RUBlocks.MAPLE_LEAF_LITTER.get().asItem());
             output.accept(RUBlocks.RED_MAPLE_LEAF_LITTER.get().asItem());
             output.accept(RUBlocks.ORANGE_MAPLE_LEAF_LITTER.get().asItem());
-            output.accept(RUBlocks.ENCHANTED_BIRCH_LEAF_LITTER.get().asItem());
             output.accept(RUBlocks.SILVER_BIRCH_LEAF_LITTER.get().asItem());
 
             //TALL_PLANTS

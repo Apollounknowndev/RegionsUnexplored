@@ -1,0 +1,7 @@
+{
+  "parent": "regions_unexplored:block/template/cube_bottom",
+  "textures": {
+    "bottom": "regions_unexplored:block/glowing_green_bioshroom_block",
+    "side": "regions_unexplored:block/green_bioshroom_block"
+  }
+}
