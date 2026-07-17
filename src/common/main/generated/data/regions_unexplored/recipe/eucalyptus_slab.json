@@ -3,9 +3,7 @@
   "category": "building",
   "group": "wooden_slab",
   "key": {
-    "#": {
-      "item": "regions_unexplored:eucalyptus_planks"
-    }
+    "#": "regions_unexplored:eucalyptus_planks"
   },
   "pattern": [
     "###"

@@ -1,0 +1,6 @@
+{
+  "parent": "cross",
+  "textures": {
+    "cross": "regions_unexplored:block/sky_wisteria_shrub_bottom"
+  }
+}

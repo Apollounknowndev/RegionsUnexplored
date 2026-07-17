@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_branches": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#regions_unexplored:branches"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:stick_from_branches"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_branches"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:stick_from_branches"
+    ]
+  }
+}

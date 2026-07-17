@@ -1,10 +1,7 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "regions_unexplored:chalk_bricks"
-  },
+  "ingredient": "regions_unexplored:chalk_bricks",
   "result": {
-    "count": 1,
     "id": "regions_unexplored:polished_chalk"
   }
 }

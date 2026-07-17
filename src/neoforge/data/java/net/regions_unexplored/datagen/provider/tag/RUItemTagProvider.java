@@ -1,0 +1,391 @@
+package net.regions_unexplored.datagen.provider.tag;
+
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
+import net.regions_unexplored.registry.RUBlocks;
+import net.regions_unexplored.block.set.NaturalSet;
+import net.regions_unexplored.block.set.WoodSet;
+import net.regions_unexplored.registry.tag.RUItemTags;
+import net.regions_unexplored.registry.RUItems;
+
+import java.util.concurrent.CompletableFuture;
+
+public class RUItemTagProvider extends IntrinsicHolderTagsProvider<Item> {
+    public RUItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, Registries.ITEM, registries, e -> e.builtInRegistryHolder().key());
+    }
+
+    @Override
+    public void addTags(HolderLookup.Provider provider) {
+        addCommonTags(provider);
+
+        this.tag(ItemTags.BAMBOO_BLOCKS).addTag(RUItemTags.BAMBOO_LOGS);
+        this.tag(ItemTags.BIRCH_LOGS).add(RUBlocks.SILVER_BIRCH_WOOD_SET.getLog().asItem());
+
+
+        var ruLogs = this.tag(RUItemTags.LOGS).add(RUBlocks.BAMBOO_LOG.get().asItem()).add(RUBlocks.SMALL_OAK_LOG.get().asItem());
+        var nonFlammableWood = this.tag(ItemTags.NON_FLAMMABLE_WOOD);
+        var logs = this.tag(ItemTags.LOGS);
+        var logsThatBurn = this.tag(ItemTags.LOGS_THAT_BURN);
+        var strippedLogs = this.tag(Tags.Items.STRIPPED_LOGS);
+        var strippedWoods = this.tag(Tags.Items.STRIPPED_WOODS);
+        var planks = this.tag(ItemTags.PLANKS);
+        var stairs = this.tag(ItemTags.WOODEN_STAIRS);
+        var slabs = this.tag(ItemTags.WOODEN_SLABS);
+        var fences = this.tag(ItemTags.WOODEN_FENCES);
+        var fenceGates = this.tag(ItemTags.FENCE_GATES);
+        var doors = this.tag(ItemTags.WOODEN_DOORS);
+        var trapdoors = this.tag(ItemTags.WOODEN_TRAPDOORS);
+        var buttons = this.tag(ItemTags.WOODEN_BUTTONS);
+        var pressurePlates = this.tag(ItemTags.WOODEN_PRESSURE_PLATES);
+        var signs = this.tag(ItemTags.SIGNS);
+        var hangingSigns = this.tag(ItemTags.HANGING_SIGNS);
+        var boats = this.tag(ItemTags.BOATS);
+        var chestBoats = this.tag(ItemTags.CHEST_BOATS);
+
+
+        for (WoodSet set : RUBlocks.WOOD_SETS) {
+            if (set.fireproof) {
+                set.getAllBlocks().forEach(nonFlammableWood::add);
+            }
+            if (set.getLog() != null) {
+                var tag = set.fireproof ? logs : logsThatBurn;
+                tag.add(set.getLog().asItem());
+                ruLogs.add(set.getLog().asItem());
+            }
+            if (set.getStrippedLog() != null) strippedLogs.add(set.getStrippedLog().asItem());
+            if (set.getStrippedWood() != null) strippedWoods.add(set.getStrippedWood().asItem());
+            if (set.getPlanks() != null) planks.add(set.getPlanks().asItem());
+            if (set.getStairs() != null) stairs.add(set.getStairs().asItem());
+            if (set.getSlab() != null) slabs.add(set.getSlab().asItem());
+            if (set.getFence() != null) fences.add(set.getFence().asItem());
+            if (set.getFenceGate() != null) fenceGates.add(set.getFenceGate().asItem());
+            if (set.getDoor() != null) doors.add(set.getDoor().asItem());
+            if (set.getTrapdoor() != null) trapdoors.add(set.getTrapdoor().asItem());
+            if (set.getButton() != null) buttons.add(set.getButton().asItem());
+            if (set.getPressurePlate() != null) pressurePlates.add(set.getPressurePlate().asItem());
+            if (set.getSign() != null) signs.add(set.getSign().asItem());
+            if (set.getHangingSign() != null) hangingSigns.add(set.getHangingSign().asItem());
+            if (set.getBoat() != null) boats.add(set.getBoat());
+            if (set.getChestBoat() != null) chestBoats.add(set.getChestBoat());
+        }
+        for (Block block : RUBlocks.PAINTED_PLANKS.getAll()) {
+            planks.add(block.asItem());
+        }
+        for (Block block : RUBlocks.PAINTED_STAIRS.getAll()) {
+            stairs.add(block.asItem());
+        }
+        for (Block block : RUBlocks.PAINTED_SLABS.getAll()) {
+            slabs.add(block.asItem());
+        }
+
+
+        var branches = this.tag(RUItemTags.BRANCHES);
+        var leaves = this.tag(ItemTags.LEAVES);
+        var saplings = this.tag(ItemTags.SAPLINGS);
+        var shrubs = this.tag(RUItemTags.SHRUBS);
+        
+        for (NaturalSet set : RUBlocks.NATURAL_SETS) {
+            if (set.getBranch() != null) branches.add(set.getBranch().asItem());
+            if (set.getLeaves() != null) leaves.add(set.getLeaves().asItem());
+            if (set.getSapling() != null) saplings.add(set.getSapling().asItem());
+            if (set.getShrub() != null) shrubs.add(set.getShrub().asItem());
+        }
+        
+        this.tag(ItemTags.DIRT)
+            .add(RUBlocks.ALPHA_GRASS_BLOCK.get().asItem())
+            .add(RUBlocks.ASHEN_DIRT.get().asItem())
+            .add(RUBlocks.CHALK_GRASS_BLOCK.get().asItem())
+            .add(RUBlocks.DEEPSLATE_GRASS_BLOCK.get().asItem())
+            .add(RUBlocks.DEEPSLATE_PRISMOSS.get().asItem())
+            .add(RUBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM.get().asItem())
+            .add(RUBlocks.PEAT_COARSE_DIRT.get().asItem())
+            .add(RUBlocks.PEAT_PODZOL.get().asItem())
+            .add(RUBlocks.PEAT_DIRT.get().asItem())
+            .add(RUBlocks.PEAT_DIRT_PATH.get().asItem())
+            .add(RUBlocks.PEAT_FARMLAND.get().asItem())
+            .add(RUBlocks.PEAT_GRASS_BLOCK.get().asItem())
+            .add(RUBlocks.PEAT_MUD.get().asItem())
+            .add(RUBlocks.SILT_COARSE_DIRT.get().asItem())
+            .add(RUBlocks.SILT_PODZOL.get().asItem())
+            .add(RUBlocks.SILT_DIRT.get().asItem())
+            .add(RUBlocks.SILT_DIRT_PATH.get().asItem())
+            .add(RUBlocks.SILT_FARMLAND.get().asItem())
+            .add(RUBlocks.SILT_GRASS_BLOCK.get().asItem())
+            .add(RUBlocks.SILT_MUD.get().asItem())
+            .add(RUBlocks.PRISMOSS.get().asItem())
+            .add(RUBlocks.STONE_GRASS_BLOCK.get().asItem())
+            .add(RUBlocks.ARGILLITE_GRASS_BLOCK.get().asItem())
+            .add(RUBlocks.VIRIDESCENT_NYLIUM.get().asItem());
+        this.tag(ItemTags.FLOWERS)
+            .add(RUBlocks.HYACINTH_FLOWERS.get().asItem())
+            .add(RUBlocks.ORANGE_CONEFLOWER.get().asItem())
+            .add(RUBlocks.PURPLE_CONEFLOWER.get().asItem())
+            .add(RUBlocks.BLUE_MAGNOLIA_FLOWERS.get().asItem())
+            .add(RUBlocks.PINK_MAGNOLIA_FLOWERS.get().asItem())
+            .add(RUBlocks.WHITE_MAGNOLIA_FLOWERS.get().asItem());
+        this.tag(ItemTags.FOX_FOOD).add(RUItems.SALMONBERRY.get().asItem());
+        this.tag(ItemTags.OAK_LOGS).add(RUBlocks.SMALL_OAK_LOG.get().asItem()).add(RUBlocks.STRIPPED_SMALL_OAK_LOG.get().asItem());
+        this.tag(ItemTags.REDSTONE_ORES).add(RUBlocks.RAW_REDSTONE_BLOCK.get().asItem());
+        var smallFlowers = this.tag(ItemTags.SMALL_FLOWERS)
+                .add(RUBlocks.ALPHA_DANDELION.get().asItem())
+                .add(RUBlocks.ALPHA_ROSE.get().asItem())
+                .add(RUBlocks.ASTER.get().asItem())
+                .add(RUBlocks.BLEEDING_HEART.get().asItem())
+                .add(RUBlocks.BLUE_LUPINE.get().asItem())
+                .add(RUBlocks.DAISY.get().asItem())
+                .add(RUBlocks.DORCEL.get().asItem())
+                .add(RUBlocks.FELICIA_DAISY.get().asItem())
+                .add(RUBlocks.FIREWEED.get().asItem())
+                .add(RUBlocks.GLISTERING_BLOOM.get().asItem())
+                .add(RUBlocks.HIBISCUS.get().asItem())
+                .add(RUBlocks.MALLOW.get().asItem())
+                .add(RUBlocks.HYSSOP.get().asItem())
+                .add(RUBlocks.PINK_LUPINE.get().asItem())
+                .add(RUBlocks.POPPY_BUSH.get().asItem())
+                .add(RUBlocks.SALMON_POPPY_BUSH.get().asItem())
+                .add(RUBlocks.PURPLE_LUPINE.get().asItem())
+                .add(RUBlocks.RED_LUPINE.get().asItem())
+                .add(RUBlocks.TSUBAKI.get().asItem())
+                .add(RUBlocks.WARATAH.get().asItem())
+                .add(RUBlocks.WHITE_TRILLIUM.get().asItem())
+                .add(RUBlocks.WILTING_TRILLIUM.get().asItem())
+                .add(RUBlocks.YELLOW_LUPINE.get().asItem());
+        var snowbelles = this.tag(RUItemTags.SNOWBELLE);
+        for (Block block : RUBlocks.SNOWBELLES.getAll()) {
+            smallFlowers.add(block.asItem());
+            snowbelles.add(block.asItem());
+        }
+        //this.tag(ItemTags.TALL_FLOWERS).add(RUBlocks.TASSEL.get().asItem()).add(RUBlocks.DAY_LILY.get().asItem());
+        this.tag(ItemTags.STAIRS).add(RUBlocks.CHALK_STAIRS.get().asItem()).add(RUBlocks.CHALK_BRICK_STAIRS.get().asItem()).add(RUBlocks.POLISHED_CHALK_STAIRS.get().asItem());
+        this.tag(ItemTags.SLABS).add(RUBlocks.CHALK_SLAB.get().asItem()).add(RUBlocks.CHALK_BRICK_SLAB.get().asItem()).add(RUBlocks.POLISHED_CHALK_SLAB.get().asItem());
+        this.tag(ItemTags.TRIM_MATERIALS).add(RUBlocks.PRISMARITE_CLUSTER.get().asItem());
+        this.tag(ItemTags.WART_BLOCKS)
+            .add(RUBlocks.GREEN_BIOSHROOM_BLOCK.get().asItem())
+            .add(RUBlocks.BLUE_BIOSHROOM_BLOCK.get().asItem())
+            .add(RUBlocks.PINK_BIOSHROOM_BLOCK.get().asItem())
+            .add(RUBlocks.YELLOW_BIOSHROOM_BLOCK.get().asItem())
+            .add(RUBlocks.GLOWING_GREEN_BIOSHROOM_BLOCK.get().asItem())
+            .add(RUBlocks.GLOWING_BLUE_BIOSHROOM_BLOCK.get().asItem())
+            .add(RUBlocks.GLOWING_PINK_BIOSHROOM_BLOCK.get().asItem())
+            .add(RUBlocks.GLOWING_YELLOW_BIOSHROOM_BLOCK.get().asItem());
+
+
+        this.tag(RUItemTags.HYACINTH_BLOOMS)
+                .add(RUBlocks.HYACINTH_BLOOM.get().asItem())
+                .add(RUBlocks.TALL_HYACINTH_STOCK.get().asItem())
+        ;
+        this.tag(RUItemTags.PRISMARITE_CRYSTALS)
+                .add(RUBlocks.PRISMARITE_CLUSTER.get().asItem())
+                .add(RUBlocks.LARGE_PRISMARITE_CLUSTER.get().asItem())
+                .add(RUBlocks.HANGING_PRISMARITE.get().asItem())
+        ;
+        this.tag(RUItemTags.GRASS)
+                .add(RUBlocks.FROZEN_GRASS.get().asItem())
+                .add(RUBlocks.SANDY_GRASS.get().asItem())
+                .add(RUBlocks.GRASS_SPROUTS.get().asItem())
+                .add(Blocks.SHORT_GRASS.asItem())
+                .add(Blocks.FERN.asItem())
+        ;
+        this.tag(RUItemTags.ASH)
+                .add(RUBlocks.ASH.get().asItem())
+                .add(RUBlocks.VOLCANIC_ASH.get().asItem())
+        ;
+        this.tag(RUItemTags.BIOSHROOMS)
+                .add(RUBlocks.BLUE_BIOSHROOM.get().asItem())
+                .add(RUBlocks.GREEN_BIOSHROOM.get().asItem())
+                .add(RUBlocks.PINK_BIOSHROOM.get().asItem())
+                .add(RUBlocks.YELLOW_BIOSHROOM.get().asItem())
+                .add(RUBlocks.TALL_BLUE_BIOSHROOM.get().asItem())
+                .add(RUBlocks.TALL_GREEN_BIOSHROOM.get().asItem())
+                .add(RUBlocks.TALL_PINK_BIOSHROOM.get().asItem())
+                .add(RUBlocks.TALL_YELLOW_BIOSHROOM.get().asItem())
+        ;
+        this.tag(RUItemTags.ALPHA_LOGS)
+            .add(RUBlocks.ALPHA_WOOD_SET.getLog().asItem())
+        ;
+        this.tag(RUItemTags.BAMBOO_LOGS)
+                .add(RUBlocks.BAMBOO_LOG.get().asItem())
+                .add(RUBlocks.STRIPPED_BAMBOO_LOG.get().asItem())
+        ;
+        this.tag(RUItemTags.BAOBAB_LOGS)
+                .add(RUBlocks.BAOBAB_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.BAOBAB_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.BAOBAB_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.BAOBAB_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.BRIMWOOD_LOGS)
+                .add(RUBlocks.BRIMWOOD_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.BRIMWOOD_WOOD_SET.getLogMagma().asItem())
+                .add(RUBlocks.BRIMWOOD_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.BRIMWOOD_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.BRIMWOOD_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.BLUE_BIOSHROOM_LOGS)
+                .add(RUBlocks.BLUE_BIOSHROOM_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.BLUE_BIOSHROOM_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.BLUE_BIOSHROOM_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.BLUE_BIOSHROOM_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.BLACKWOOD_LOGS)
+                .add(RUBlocks.BLACKWOOD_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.BLACKWOOD_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.BLACKWOOD_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.BLACKWOOD_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.COBALT_LOGS)
+                .add(RUBlocks.COBALT_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.COBALT_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.COBALT_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.COBALT_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.CYPRESS_LOGS)
+                .add(RUBlocks.CYPRESS_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.CYPRESS_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.CYPRESS_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.CYPRESS_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.DEAD_LOGS)
+                .add(RUBlocks.ASHEN_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.DEAD_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.DEAD_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.ASHEN_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.DEAD_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.DEAD_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.EUCALYPTUS_LOGS)
+                .add(RUBlocks.EUCALYPTUS_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.EUCALYPTUS_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.EUCALYPTUS_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.EUCALYPTUS_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.GREEN_BIOSHROOM_LOGS)
+                .add(RUBlocks.GREEN_BIOSHROOM_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.GREEN_BIOSHROOM_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.GREEN_BIOSHROOM_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.GREEN_BIOSHROOM_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.JOSHUA_LOGS)
+                .add(RUBlocks.JOSHUA_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.JOSHUA_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.JOSHUA_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.JOSHUA_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.KAPOK_LOGS)
+                .add(RUBlocks.KAPOK_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.KAPOK_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.KAPOK_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.KAPOK_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.LARCH_LOGS)
+                .add(RUBlocks.LARCH_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.LARCH_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.LARCH_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.LARCH_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.MAGNOLIA_LOGS)
+                .add(RUBlocks.MAGNOLIA_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.MAGNOLIA_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.MAGNOLIA_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.MAGNOLIA_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.MAPLE_LOGS)
+                .add(RUBlocks.MAPLE_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.MAPLE_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.MAPLE_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.MAPLE_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.WISTERIA_LOGS)
+                .add(RUBlocks.WISTERIA_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.WISTERIA_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.WISTERIA_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.WISTERIA_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.PALM_LOGS)
+                .add(RUBlocks.PALM_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.PALM_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.PALM_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.PALM_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.PINE_LOGS)
+                .add(RUBlocks.PINE_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.PINE_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.PINE_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.PINE_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.PINK_BIOSHROOM_LOGS)
+                .add(RUBlocks.PINK_BIOSHROOM_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.PINK_BIOSHROOM_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.PINK_BIOSHROOM_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.PINK_BIOSHROOM_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.REDWOOD_LOGS)
+                .add(RUBlocks.REDWOOD_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.REDWOOD_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.REDWOOD_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.REDWOOD_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.SOCOTRA_LOGS)
+                .add(RUBlocks.SOCOTRA_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.SOCOTRA_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.SOCOTRA_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.SOCOTRA_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.WILLOW_LOGS)
+                .add(RUBlocks.WILLOW_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.WILLOW_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.WILLOW_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.WILLOW_WOOD_SET.getStrippedWood().asItem())
+        ;
+        this.tag(RUItemTags.YELLOW_BIOSHROOM_LOGS)
+                .add(RUBlocks.YELLOW_BIOSHROOM_WOOD_SET.getLog().asItem())
+                .add(RUBlocks.YELLOW_BIOSHROOM_WOOD_SET.getStrippedLog().asItem())
+                .add(RUBlocks.YELLOW_BIOSHROOM_WOOD_SET.getWood().asItem())
+                .add(RUBlocks.YELLOW_BIOSHROOM_WOOD_SET.getStrippedWood().asItem())
+        ;
+    }
+
+    public void addCommonTags(HolderLookup.Provider provider) {
+        this.tag(Tags.Items.STORAGE_BLOCKS_BONE_MEAL).add(RUBlocks.OVERGROWN_BONE_BLOCK.get().asItem());
+        
+        var fenceGates = this.tag(Tags.Items.FENCE_GATES_WOODEN);
+        var fences = this.tag(Tags.Items.FENCES_WOODEN);
+        for (WoodSet set : RUBlocks.WOOD_SETS) {
+            if (set.getFenceGate() != null) fenceGates.add(set.getFenceGate().asItem());
+            if (set.getFence() != null) fences.add(set.getFence().asItem());
+        }
+        this.tag(Tags.Items.FOODS_FRUIT)
+            .add(RUItems.SALMONBERRY.get())
+            .add(RUItems.HANGING_EARLIGHT_FRUIT.get());
+        this.tag(Tags.Items.GEMS)
+            .addTag(RUItemTags.PRISMARITE_CRYSTALS);
+        this.tag(Tags.Items.GLASS_BLOCKS)
+            .add(RUBlocks.PRISMAGLASS.get().asItem());
+        this.tag(Tags.Items.MUSHROOMS)
+            .add(RUBlocks.BLUE_BIOSHROOM.get().asItem())
+            .add(RUBlocks.TALL_BLUE_BIOSHROOM.get().asItem())
+            .add(RUBlocks.GREEN_BIOSHROOM.get().asItem())
+            .add(RUBlocks.TALL_GREEN_BIOSHROOM.get().asItem())
+            .add(RUBlocks.PINK_BIOSHROOM.get().asItem())
+            .add(RUBlocks.TALL_PINK_BIOSHROOM.get().asItem())
+            .add(RUBlocks.YELLOW_BIOSHROOM.get().asItem())
+            .add(RUBlocks.TALL_YELLOW_BIOSHROOM.get().asItem())
+            .add(RUBlocks.MYCOTOXIC_MUSHROOMS.get().asItem());
+        this.tag(Tags.Items.STONES)
+            .add(RUBlocks.MOSSY_STONE.get().asItem())
+            .add(RUBlocks.ARGILLITE.get().asItem())
+            .add(RUBlocks.CHALK.get().asItem());
+        this.tag(Tags.Items.GRAVELS)
+            .add(RUBlocks.ASH.get().asItem())
+            .add(RUBlocks.VOLCANIC_ASH.get().asItem());
+        this.tag(Tags.Items.OBSIDIANS_CRYING)
+            .add(RUBlocks.COBALT_OBSIDIAN.get().asItem());
+    }
+}

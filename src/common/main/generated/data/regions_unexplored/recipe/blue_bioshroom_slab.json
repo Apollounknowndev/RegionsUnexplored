@@ -3,9 +3,7 @@
   "category": "building",
   "group": "wooden_slab",
   "key": {
-    "#": {
-      "item": "regions_unexplored:blue_bioshroom_planks"
-    }
+    "#": "regions_unexplored:blue_bioshroom_planks"
   },
   "pattern": [
     "###"

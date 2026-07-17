@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "wooden_fence",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "item": "regions_unexplored:cypress_planks"
-    }
+    "#": "minecraft:stick",
+    "W": "regions_unexplored:cypress_planks"
   },
   "pattern": [
     "W#W",

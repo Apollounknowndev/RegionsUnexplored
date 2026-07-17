@@ -1,31 +1,26 @@
 {
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
-    ]
+  "attributes": {
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "minecraft:music.overworld.old_growth_taiga"
+      }
+    },
+    "minecraft:visual/fog_color": "#aec99f",
+    "minecraft:visual/sky_color": "#aec99f",
+    "minecraft:visual/water_fog_color": "#717868"
   },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
   "downfall": 0.765,
   "effects": {
-    "fog_color": 11454879,
-    "foliage_color": 4347179,
-    "grass_color": 4089639,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "minecraft:music.overworld.old_growth_taiga"
-    },
-    "sky_color": 11454879,
-    "water_color": 3108258,
-    "water_fog_color": 4220035
+    "foliage_color": "#42552b",
+    "grass_color": "#3e6727",
+    "water_color": "#2f6da2"
   },
   "features": [
     [],
@@ -81,8 +76,9 @@
     [
       "minecraft:glow_lichen",
       "minecraft:patch_large_fern",
-      "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
+      "minecraft:patch_sugar_cane",
+      "minecraft:patch_firefly_bush_near_water",
       "minecraft:patch_berry_common",
       "regions_unexplored:tree/group/blackwood_taiga_primary",
       "regions_unexplored:tree/group/blackwood_taiga_secondary",

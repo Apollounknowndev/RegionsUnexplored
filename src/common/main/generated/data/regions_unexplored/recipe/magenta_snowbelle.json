@@ -3,15 +3,10 @@
   "category": "building",
   "group": "snowbelle",
   "ingredients": [
-    {
-      "tag": "c:dyes/magenta"
-    },
-    {
-      "tag": "regions_unexplored:snowbelle"
-    }
+    "#c:dyes/magenta",
+    "#regions_unexplored:snowbelle"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:magenta_snowbelle"
   }
 }

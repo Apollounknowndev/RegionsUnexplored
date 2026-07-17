@@ -3,12 +3,8 @@
   "category": "building",
   "group": "coarse_dirt",
   "key": {
-    "D": {
-      "item": "minecraft:dirt"
-    },
-    "G": {
-      "tag": "regions_unexplored:ash"
-    }
+    "D": "minecraft:dirt",
+    "G": "#regions_unexplored:ash"
   },
   "pattern": [
     "DG",

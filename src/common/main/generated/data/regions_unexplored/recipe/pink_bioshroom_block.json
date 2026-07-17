@@ -3,16 +3,13 @@
   "category": "building",
   "group": "bioshroom_blocks",
   "key": {
-    "#": {
-      "item": "regions_unexplored:pink_bioshroom"
-    }
+    "#": "regions_unexplored:pink_bioshroom"
   },
   "pattern": [
     "##",
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:pink_bioshroom_block"
   }
 }

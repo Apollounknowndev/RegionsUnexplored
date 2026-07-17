@@ -1,7 +1,6 @@
 {
-  "parent": "regions_unexplored:block/template/branch",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "branch": "regions_unexplored:block/socotra_branch",
-    "log": "regions_unexplored:block/socotra_log"
+    "layer0": "regions_unexplored:item/socotra_branch"
   }
 }

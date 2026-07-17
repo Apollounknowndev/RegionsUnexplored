@@ -1,0 +1,6 @@
+{
+  "parent": "cross",
+  "textures": {
+    "cross": "regions_unexplored:block/larch_shrub_bottom"
+  }
+}

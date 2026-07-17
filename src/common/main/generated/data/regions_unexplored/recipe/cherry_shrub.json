@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "shrubs",
   "key": {
-    "#": {
-      "item": "minecraft:cherry_sapling"
-    }
+    "#": "minecraft:cherry_sapling"
   },
   "pattern": [
     "#",
     "#"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:cherry_shrub"
   }
 }

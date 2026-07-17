@@ -1,7 +1,6 @@
 {
-  "parent": "regions_unexplored:block/template/branch",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "branch": "regions_unexplored:block/acacia_branch",
-    "log": "minecraft:block/acacia_log"
+    "layer0": "regions_unexplored:item/acacia_branch"
   }
 }

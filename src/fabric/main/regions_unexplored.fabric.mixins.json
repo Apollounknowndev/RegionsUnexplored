@@ -7,9 +7,7 @@
   "mixins": [
     "BeaconBlockEntityMixin"
   ],
-  "client": [
-    "client.TerrainParticleMixin"
-  ],
+  "client": [],
   "server": [],
   "injectors": {
     "defaultRequire": 1

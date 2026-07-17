@@ -1,16 +1,13 @@
 package net.regions_unexplored.registry;
 
-import com.google.common.collect.ImmutableSet;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.regions_unexplored.block.RUBlockUtils;
-import net.regions_unexplored.block.properties.RUBlockProperties;
 import net.regions_unexplored.block.sapling.RUTreeGrowers;
 import net.regions_unexplored.block.set.BrimwoodWoodSet;
 import net.regions_unexplored.block.set.ColoredSet;
@@ -43,7 +40,6 @@ import net.regions_unexplored.block.type.shrub.MangroveShrubBlock;
 import net.regions_unexplored.block.type.wood.*;
 import net.regions_unexplored.client.color.RUColors;
 import net.regions_unexplored.item.RUItemUtils;
-import net.regions_unexplored.mixin.VillagerProfessionAccessor;
 import net.regions_unexplored.registry.data.RUBlockIds;
 import net.regions_unexplored.registry.data.RUConfiguredFeatures;
 import net.regions_unexplored.registry.data.RUPlacedFeatures;
@@ -132,9 +128,9 @@ public interface RUBlocks {
     Supplier<Block> PURPLE_CONEFLOWER = register("purple_coneflower", p -> new BonemealableSegmentedBlock(p.pushReaction(PushReaction.DESTROY).ignitedByLava().noCollision().sound(SoundType.PINK_PETALS)));
     Supplier<Block> CLOVER = register("clover", p -> new BonemealableSegmentedBlock(p.pushReaction(PushReaction.DESTROY).replaceable().ignitedByLava().noCollision().sound(SoundType.PINK_PETALS)));
 
-    Supplier<MultifaceBlock> BLUE_MAGNOLIA_FLOWERS = register("blue_magnolia_flowers", p -> new GlowLichenBlock(p.pushReaction(PushReaction.DESTROY).ignitedByLava().replaceable().noCollision().strength(0.1F).sound(SoundType.GLOW_LICHEN)));
-    Supplier<MultifaceBlock> PINK_MAGNOLIA_FLOWERS = register("pink_magnolia_flowers", GlowLichenBlock::new, BLUE_MAGNOLIA_FLOWERS);
-    Supplier<MultifaceBlock> WHITE_MAGNOLIA_FLOWERS = register("white_magnolia_flowers", GlowLichenBlock::new, BLUE_MAGNOLIA_FLOWERS);
+    Supplier<MultifaceSpreadeableBlock> BLUE_MAGNOLIA_FLOWERS = register("blue_magnolia_flowers", p -> new GlowLichenBlock(p.pushReaction(PushReaction.DESTROY).ignitedByLava().replaceable().noCollision().strength(0.1F).sound(SoundType.GLOW_LICHEN)));
+    Supplier<MultifaceSpreadeableBlock> PINK_MAGNOLIA_FLOWERS = register("pink_magnolia_flowers", GlowLichenBlock::new, BLUE_MAGNOLIA_FLOWERS);
+    Supplier<MultifaceSpreadeableBlock> WHITE_MAGNOLIA_FLOWERS = register("white_magnolia_flowers", GlowLichenBlock::new, BLUE_MAGNOLIA_FLOWERS);
     //SNOWBELLE
 
     Supplier<Block> MAPLE_LEAF_LITTER = register("maple_leaf_litter", p -> new RULeafLitterBlock(p.pushReaction(PushReaction.DESTROY).replaceable().ignitedByLava().noCollision().sound(RUSoundEvents.LEAF_LITTER)));
@@ -379,7 +375,7 @@ public interface RUBlocks {
     //HYACINTH_BLOCKS
     Supplier<Block> HYACINTH_LAMP = register("hyacinth_lamp", p -> new HyacinthLampBlock(postProcessed(p).noOcclusion().instabreak().sound(SoundType.DECORATED_POT).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 14)));
     Supplier<Block> HYACINTH_BLOOM = register("hyacinth_bloom", p -> new SeagrassBlock(postProcessed(p).replaceable().noCollision().instabreak().sound(SoundType.WET_GRASS).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 9)));
-    Supplier<GlowLichenBlock> HYACINTH_FLOWERS = register("hyacinth_flowers", p -> new GlowLichenBlock(postProcessed(p).replaceable().mapColor(MapColor.GLOW_LICHEN).noCollision().strength(0.2F).sound(SoundType.GLOW_LICHEN).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 8)));
+    Supplier<MultifaceSpreadeableBlock> HYACINTH_FLOWERS = register("hyacinth_flowers", p -> new GlowLichenBlock(postProcessed(p).replaceable().mapColor(MapColor.GLOW_LICHEN).noCollision().strength(0.2F).sound(SoundType.GLOW_LICHEN).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 8)));
     Supplier<Block> TALL_HYACINTH_STOCK = register("tall_hyacinth_stock", p -> new TallHyacinthStockBlock(postProcessed(p).noCollision().instabreak().sound(SoundType.WET_GRASS).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 12)));
     //SMOULDERING_WOODLAND_BLOCKS
     Supplier<Block> ASHEN_DIRT = register("ashen_dirt", p -> new AshenDirtBlock(p.mapColor(MapColor.COLOR_GRAY).strength(0.5F).sound(SoundType.GRAVEL).randomTicks().lightLevel(state -> AshenDirtBlock.isSmouldering(state) ? 7 : 0)));

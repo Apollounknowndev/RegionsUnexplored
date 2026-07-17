@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cross": "regions_unexplored:block/silver_birch_shrub_bottom"
-  }
-}

@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "shrubs",
   "key": {
-    "#": {
-      "item": "regions_unexplored:flowering_sapling"
-    }
+    "#": "regions_unexplored:flowering_sapling"
   },
   "pattern": [
     "#",
     "#"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:flowering_shrub"
   }
 }

@@ -1,47 +1,75 @@
 {
-  "type": "minecraft:flower",
+  "type": "lithostitched:placed",
   "config": {
     "feature": {
-      "feature": {
-        "type": "minecraft:simple_block",
-        "config": {
-          "to_place": {
-            "type": "minecraft:weighted_state_provider",
-            "entries": [
-              {
-                "data": {
-                  "Name": "minecraft:azure_bluet"
+      "type": "lithostitched:placed",
+      "config": {
+        "feature": {
+          "type": "minecraft:simple_block",
+          "config": {
+            "to_place": {
+              "type": "minecraft:weighted_state_provider",
+              "entries": [
+                {
+                  "data": {
+                    "Name": "minecraft:azure_bluet"
+                  },
+                  "weight": 1
                 },
-                "weight": 1
-              },
-              {
-                "data": {
-                  "Name": "minecraft:oxeye_daisy"
+                {
+                  "data": {
+                    "Name": "minecraft:oxeye_daisy"
+                  },
+                  "weight": 1
                 },
-                "weight": 1
-              },
-              {
-                "data": {
-                  "Name": "regions_unexplored:felicia_daisy"
-                },
-                "weight": 2
-              }
-            ]
+                {
+                  "data": {
+                    "Name": "regions_unexplored:felicia_daisy"
+                  },
+                  "weight": 2
+                }
+              ]
+            }
           }
+        },
+        "placement": [
+          {
+            "type": "minecraft:block_predicate_filter",
+            "predicate": {
+              "type": "minecraft:matching_block_tag",
+              "tag": "minecraft:air"
+            }
+          }
+        ]
+      }
+    },
+    "placement": [
+      {
+        "type": "minecraft:count",
+        "count": 32
+      },
+      {
+        "type": "minecraft:random_offset",
+        "xz_spread": {
+          "type": "minecraft:trapezoid",
+          "max": 4,
+          "min": -4,
+          "plateau": 0
+        },
+        "y_spread": {
+          "type": "minecraft:trapezoid",
+          "max": 2,
+          "min": -2,
+          "plateau": 0
         }
       },
-      "placement": [
-        {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:air"
-          }
+      {
+        "type": "minecraft:block_predicate_filter",
+        "predicate": {
+          "type": "minecraft:matching_block_tag",
+          "tag": "minecraft:air"
         }
-      ]
-    },
-    "tries": 32,
-    "xz_spread": 4,
-    "y_spread": 2
+      }
+    ]
   }
 }

@@ -1,63 +1,77 @@
 {
-  "type": "minecraft:flower",
+  "type": "lithostitched:placed",
   "config": {
     "feature": {
-      "feature": {
-        "type": "minecraft:simple_block",
-        "config": {
-          "to_place": {
-            "type": "minecraft:noise_provider",
-            "noise": {
-              "amplitudes": [
-                2.0
-              ],
-              "firstOctave": -5
+      "type": "minecraft:simple_block",
+      "config": {
+        "to_place": {
+          "type": "minecraft:noise_provider",
+          "noise": {
+            "amplitudes": [
+              2.0
+            ],
+            "firstOctave": -5
+          },
+          "scale": 1.3,
+          "seed": 809256,
+          "states": [
+            {
+              "Name": "regions_unexplored:white_trillium"
             },
-            "scale": 1.3,
-            "seed": 809256,
-            "states": [
-              {
-                "Name": "regions_unexplored:white_trillium"
-              },
-              {
-                "Name": "minecraft:lily_of_the_valley"
-              },
-              {
-                "Name": "minecraft:dandelion"
-              }
-            ]
-          }
+            {
+              "Name": "minecraft:lily_of_the_valley"
+            },
+            {
+              "Name": "minecraft:dandelion"
+            }
+          ]
+        }
+      }
+    },
+    "placement": [
+      {
+        "type": "minecraft:count",
+        "count": 24
+      },
+      {
+        "type": "minecraft:random_offset",
+        "xz_spread": {
+          "type": "minecraft:trapezoid",
+          "max": 7,
+          "min": -7,
+          "plateau": 0
+        },
+        "y_spread": {
+          "type": "minecraft:trapezoid",
+          "max": 3,
+          "min": -3,
+          "plateau": 0
         }
       },
-      "placement": [
-        {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:all_of",
-            "predicates": [
-              {
-                "type": "minecraft:matching_blocks",
-                "blocks": "minecraft:air"
-              },
-              {
-                "type": "minecraft:not",
-                "predicate": {
-                  "type": "minecraft:matching_block_tag",
-                  "offset": [
-                    0,
-                    -1,
-                    0
-                  ],
-                  "tag": "regions_unexplored:dirt_and_podzol"
-                }
+      {
+        "type": "minecraft:block_predicate_filter",
+        "predicate": {
+          "type": "minecraft:all_of",
+          "predicates": [
+            {
+              "type": "minecraft:matching_block_tag",
+              "tag": "minecraft:air"
+            },
+            {
+              "type": "minecraft:not",
+              "predicate": {
+                "type": "minecraft:matching_block_tag",
+                "offset": [
+                  0,
+                  -1,
+                  0
+                ],
+                "tag": "regions_unexplored:dirt_and_podzol"
               }
-            ]
-          }
+            }
+          ]
         }
-      ]
-    },
-    "tries": 24,
-    "xz_spread": 7,
-    "y_spread": 3
+      }
+    ]
   }
 }

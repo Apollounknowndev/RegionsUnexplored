@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "multiface_flowers",
   "key": {
-    "#": {
-      "item": "regions_unexplored:white_magnolia_leaves"
-    }
+    "#": "regions_unexplored:white_magnolia_leaves"
   },
   "pattern": [
     "###"

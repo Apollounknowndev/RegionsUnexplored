@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "regions_unexplored:silver_birch_log"
-    }
+    "#": "regions_unexplored:silver_birch_log"
   },
   "pattern": [
     "##",

@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "shrubs",
   "key": {
-    "#": {
-      "item": "regions_unexplored:larch_sapling"
-    }
+    "#": "regions_unexplored:larch_sapling"
   },
   "pattern": [
     "#",
     "#"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:larch_shrub"
   }
 }

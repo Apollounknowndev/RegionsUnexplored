@@ -1,15 +1,15 @@
 {
   "variants": {
     "axis=x": {
-      "model": "regions_unexplored:block/ashen_log",
+      "model": "regions_unexplored:ashen_log",
       "x": 90,
       "y": 90
     },
     "axis=y": {
-      "model": "regions_unexplored:block/ashen_log"
+      "model": "regions_unexplored:ashen_log"
     },
     "axis=z": {
-      "model": "regions_unexplored:block/ashen_log",
+      "model": "regions_unexplored:ashen_log",
       "x": 90
     }
   }

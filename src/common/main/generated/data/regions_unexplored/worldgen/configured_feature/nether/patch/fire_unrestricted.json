@@ -1,49 +1,63 @@
 {
-  "type": "minecraft:random_patch",
+  "type": "lithostitched:placed",
   "config": {
     "feature": {
-      "feature": {
-        "type": "minecraft:simple_block",
-        "config": {
-          "to_place": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "minecraft:fire",
-              "Properties": {
-                "age": "0",
-                "east": "false",
-                "north": "false",
-                "south": "false",
-                "up": "false",
-                "west": "false"
-              }
+      "type": "minecraft:simple_block",
+      "config": {
+        "to_place": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:fire",
+            "Properties": {
+              "age": "0",
+              "east": "false",
+              "north": "false",
+              "south": "false",
+              "up": "false",
+              "west": "false"
             }
           }
         }
-      },
-      "placement": [
-        {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:all_of",
-            "predicates": [
-              {
-                "type": "minecraft:matching_blocks",
-                "blocks": "minecraft:air"
-              },
-              {
-                "type": "minecraft:would_survive",
-                "state": {
-                  "Name": "regions_unexplored:brimsprout"
-                }
-              }
-            ]
-          }
-        }
-      ]
+      }
     },
-    "tries": 12,
-    "xz_spread": 7,
-    "y_spread": 3
+    "placement": [
+      {
+        "type": "minecraft:count",
+        "count": 12
+      },
+      {
+        "type": "minecraft:random_offset",
+        "xz_spread": {
+          "type": "minecraft:trapezoid",
+          "max": 7,
+          "min": -7,
+          "plateau": 0
+        },
+        "y_spread": {
+          "type": "minecraft:trapezoid",
+          "max": 3,
+          "min": -3,
+          "plateau": 0
+        }
+      },
+      {
+        "type": "minecraft:block_predicate_filter",
+        "predicate": {
+          "type": "minecraft:all_of",
+          "predicates": [
+            {
+              "type": "minecraft:matching_block_tag",
+              "tag": "minecraft:air"
+            },
+            {
+              "type": "minecraft:would_survive",
+              "state": {
+                "Name": "regions_unexplored:brimsprout"
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 }

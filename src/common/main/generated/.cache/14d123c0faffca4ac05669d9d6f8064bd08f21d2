@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-16T08:37:13.6884434	Tags for minecraft:block mod id regions_unexplored
+// 26.1.2	2026-07-17T19:17:50.5309718	Tags for minecraft:block mod id regions_unexplored
 ea8b8f6b2f430d03e607eca76aae3d7cc7490153 data/c/tags/block/fences/wooden.json
 98584abed8bda97702f8e7eb6abe15be7ed61c1b data/c/tags/block/fence_gates/wooden.json
 fbd3b5574bd57030107ab08e4b239ea1520ad7e1 data/c/tags/block/glass_blocks.json
@@ -49,10 +49,10 @@ c95c48f7f02e110d75aa593f55ddd2ccac780c1b data/minecraft/tags/block/logs.json
 7c663161f21f59eead8d25e29e438a57f1783764 data/minecraft/tags/block/mineable/pickaxe.json
 ca9cd6acb745fe8f4f2b799f2c3d052990ac4413 data/minecraft/tags/block/mineable/shovel.json
 10d234ca9ece9037b01fe5a6bba75797317140dd data/minecraft/tags/block/mooshrooms_spawnable_on.json
-a27e7054a99fa10eb2354c3ac2f702a7c9db7dbb data/minecraft/tags/block/mushroom_grow_block.json
 9cdd939a688f285cefb44a7c3b0b24c1200ff4d0 data/minecraft/tags/block/needs_diamond_tool.json
 50fd989e28f0c322a7c71da5f445451f7a7c24dc data/minecraft/tags/block/nylium.json
 e525dce519521ffa483578397a6c13a57c5e24d1 data/minecraft/tags/block/oak_logs.json
+a27e7054a99fa10eb2354c3ac2f702a7c9db7dbb data/minecraft/tags/block/overrides_mushroom_light_requirement.json
 4b0f72febafc16da901b0f0c2e9718cfdfb6ebb1 data/minecraft/tags/block/overworld_carver_replaceables.json
 35682a435daf595b0d45efb8b7731023976e2597 data/minecraft/tags/block/overworld_natural_logs.json
 3ba09d5092fa23740d80147a98cbf90b5a3e2928 data/minecraft/tags/block/parrots_spawnable_on.json
@@ -62,18 +62,17 @@ e525dce519521ffa483578397a6c13a57c5e24d1 data/minecraft/tags/block/oak_logs.json
 a3787a9ae31d02c86bb84a413252481eddf692f9 data/minecraft/tags/block/replaceable_by_trees.json
 e1261cc158cab3ad35f9e8a56d65942e12c77a2b data/minecraft/tags/block/saplings.json
 8ec272c54edc1df8941d6e1e627a2c3f2bce813d data/minecraft/tags/block/slabs.json
-7a4dec34e932546179edd4bac8a97db6f52f9b07 data/minecraft/tags/block/small_dripleaf_placeable.json
 f9ec98e2d89f62e2cd0419d2e2a6c092f2afd28c data/minecraft/tags/block/small_flowers.json
 e66784e2aab07f25408ee5347aa6acaf325e458c data/minecraft/tags/block/snaps_goat_horn.json
-4c1b39d965ae9ecb8ab1302c12fe3f9069d7ac09 data/minecraft/tags/block/snow_layer_can_survive_on.json
 dc3f86f7ed86fcdacec857504f03f4a2eba9a83a data/minecraft/tags/block/speleothems.json
 af2dfa084f3d25041f6b875fce7a4f4fd1d0316a data/minecraft/tags/block/stairs.json
 61bb5bf01df693c0fd75b985ca46c738cc93cb20 data/minecraft/tags/block/standing_signs.json
 3e82d14a284bcc9df393591d7610398a9905505e data/minecraft/tags/block/stone_ore_replaceables.json
 76dc5aa0bf39731321e076068f5cfddb6cab366c data/minecraft/tags/block/strider_warm_blocks.json
 91298092263229c22ed59f780495f30405f23e44 data/minecraft/tags/block/supports_crops.json
+7a4dec34e932546179edd4bac8a97db6f52f9b07 data/minecraft/tags/block/supports_small_dripleaf.json
 3432c166d1f6c722101d3f66a0d49a4322c4d95f data/minecraft/tags/block/supports_vegetation.json
-3922dc1a15b5b54b682109b869e0f087b5bf3b2c data/minecraft/tags/block/tall_flowers.json
+4c1b39d965ae9ecb8ab1302c12fe3f9069d7ac09 data/minecraft/tags/block/support_override_snow_layer.json
 b8c8af302d208b5ef09a69b21a061039572dc4c6 data/minecraft/tags/block/valid_spawn.json
 792899d08b0e42684af3a79b2a939d052416acb8 data/minecraft/tags/block/wall_hanging_signs.json
 e8e8dbfa6d5dfb222eed30309ca45f75cb46e2f5 data/minecraft/tags/block/wall_post_override.json

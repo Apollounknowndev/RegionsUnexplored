@@ -1,37 +1,32 @@
 {
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
-    ]
+  "attributes": {
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "minecraft:music.overworld.dripstone_caves"
+      }
+    },
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "regions_unexplored:prismarite_sparkle"
+        },
+        "probability": 0.001
+      }
+    ],
+    "minecraft:visual/sky_color": "#77a8ff"
   },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
   "downfall": 0.9,
   "effects": {
-    "fog_color": 12638463,
-    "foliage_color": -16737793,
-    "grass_color": -6625354,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "minecraft:music.overworld.dripstone_caves"
-    },
-    "particle": {
-      "options": {
-        "type": "regions_unexplored:prismarite_sparkle"
-      },
-      "probability": 0.001
-    },
-    "sky_color": 7972607,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    "foliage_color": "#0099ff",
+    "grass_color": "#9ae7b6",
+    "water_color": "#3f76e4"
   },
   "features": [
     [],
@@ -92,8 +87,9 @@
       "minecraft:patch_grass_plain",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
+      "minecraft:patch_sugar_cane",
+      "minecraft:patch_firefly_bush_near_water",
       "regions_unexplored:patch/prismoss_sprout",
       "regions_unexplored:patch/cave_hyssop",
       "regions_unexplored:patch/prismarite_cluster",

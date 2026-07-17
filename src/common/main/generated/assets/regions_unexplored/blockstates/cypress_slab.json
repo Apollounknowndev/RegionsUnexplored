@@ -1,10 +1,10 @@
 {
   "variants": {
     "type=bottom": {
-      "model": "regions_unexplored:block/cypress_slab_bottom"
+      "model": "regions_unexplored:block/cypress_slab"
     },
     "type=double": {
-      "model": "regions_unexplored:block/cypress_slab_double"
+      "model": "regions_unexplored:cypress_slab_double"
     },
     "type=top": {
       "model": "regions_unexplored:block/cypress_slab_top"

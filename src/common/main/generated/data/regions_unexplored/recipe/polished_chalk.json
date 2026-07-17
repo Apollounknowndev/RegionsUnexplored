@@ -3,9 +3,7 @@
   "category": "building",
   "group": "chalk",
   "key": {
-    "#": {
-      "item": "regions_unexplored:chalk"
-    }
+    "#": "regions_unexplored:chalk"
   },
   "pattern": [
     "##",

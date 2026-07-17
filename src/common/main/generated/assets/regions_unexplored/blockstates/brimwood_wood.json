@@ -1,15 +1,15 @@
 {
   "variants": {
     "axis=x": {
-      "model": "regions_unexplored:block/brimwood_wood",
+      "model": "regions_unexplored:brimwood_wood",
       "x": 90,
       "y": 90
     },
     "axis=y": {
-      "model": "regions_unexplored:block/brimwood_wood"
+      "model": "regions_unexplored:brimwood_wood"
     },
     "axis=z": {
-      "model": "regions_unexplored:block/brimwood_wood",
+      "model": "regions_unexplored:brimwood_wood",
       "x": 90
     }
   }

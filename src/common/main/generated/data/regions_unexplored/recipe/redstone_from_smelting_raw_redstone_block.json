@@ -1,14 +1,11 @@
 {
   "type": "minecraft:smelting",
-  "category": "blocks",
+  "category": "misc",
   "cookingtime": 200,
   "experience": 0.7,
   "group": "redstone",
-  "ingredient": {
-    "item": "regions_unexplored:raw_redstone_block"
-  },
+  "ingredient": "regions_unexplored:raw_redstone_block",
   "result": {
-    "count": 1,
     "id": "minecraft:redstone"
   }
 }

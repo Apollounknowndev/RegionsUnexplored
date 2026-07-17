@@ -5,6 +5,8 @@ import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
@@ -22,19 +24,19 @@ public class AridBiomes {
     private static MobSpawnSettings.Builder baseSavannaSpawning(boolean hasExtraWolves) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.desertSpawns(spawnBuilder);
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.ARMADILLO, 10, 2, 3));
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, hasExtraWolves ? 8 : 4, 4, 8));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.ARMADILLO, 2, 3));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, hasExtraWolves ? 8 : 4, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 4, 8));
         return spawnBuilder;
     }
     
     private static MobSpawnSettings.Builder baseDesertSpawning(boolean hasArmadilloSpawns) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.HORSE, 1, 2, 6));
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.DONKEY, 1, 1, 2));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.HORSE, 2, 6));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.DONKEY, 1, 2));
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         if(hasArmadilloSpawns) {
-            spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.ARMADILLO, 6, 1, 2));
+            spawnBuilder.addSpawn(MobCategory.CREATURE, 6, new MobSpawnSettings.SpawnerData(EntityType.ARMADILLO, 1, 2));
             spawnBuilder.creatureGenerationProbability(0.03F);
         }
         return spawnBuilder;
@@ -50,7 +52,7 @@ public class AridBiomes {
         BiomeDefaultFeatures.addDefaultSoftDisks(builder);
         //add default flowers
         BiomeDefaultFeatures.addDefaultMushrooms(builder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder, true);
         return builder;
     }
     
@@ -76,14 +78,9 @@ public class AridBiomes {
 
     public static Biome baobabSavanna(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(calculateSkyColor(2F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-6636971)
-                .grassColorOverride(-4670891)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BADLANDS));
+            .waterColor(NORMAL_WATER_COLOR)
+            .foliageColorOverride(-6636971)
+            .grassColorOverride(-4670891);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseSavannaGeneration(featureGetter, carverGetter, true);
@@ -96,26 +93,19 @@ public class AridBiomes {
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseSavannaSpawning(true);
 
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(false)
-                .temperature(2f)
-                .downfall(0.35f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(2f, 0.35f, false)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_BADLANDS))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome dryBushland(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(calculateSkyColor(2F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-5060484)
-                .grassColorOverride(-3552115)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BADLANDS));
+            .waterColor(NORMAL_WATER_COLOR)
+            .foliageColorOverride(-5060484)
+            .grassColorOverride(-3552115);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseSavannaGeneration(featureGetter, carverGetter, false);
@@ -131,26 +121,19 @@ public class AridBiomes {
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseSavannaSpawning(true);
 
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(false)
-                .temperature(1.5f)
-                .downfall(0.0f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(1.5f, 0f, false)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_BADLANDS))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome joshuaDesert(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(calculateSkyColor(2F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-8409523)
-                .grassColorOverride(-5213)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DESERT));
+            .waterColor(NORMAL_WATER_COLOR)
+            .foliageColorOverride(0x7fae4d)
+            .grassColorOverride(0xffeba3);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseDesertGeneration(featureGetter, carverGetter, false);
@@ -166,26 +149,19 @@ public class AridBiomes {
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseDesertSpawning(true);
 
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(false)
-                .temperature(2f)
-                .downfall(0.0f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(2f, 0f, false)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DESERT))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome outback(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(calculateSkyColor(2F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-8016810)
-                .grassColorOverride(-4670891)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DESERT));
+            .waterColor(NORMAL_WATER_COLOR)
+            .foliageColorOverride(-8016810)
+            .grassColorOverride(-4670891);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseDesertGeneration(featureGetter, carverGetter, true);
@@ -200,13 +176,11 @@ public class AridBiomes {
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseDesertSpawning(true);
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 4, 4, 8));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 4, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 4, 8));
         spawnBuilder.creatureGenerationProbability(0.04F);
 
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(false)
-                .temperature(2f)
-                .downfall(0.0f)
+        return biomeBuilder(2f, 0f, false)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DESERT))
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(builder.build())
@@ -215,14 +189,9 @@ public class AridBiomes {
 
     public static Biome saguaroDesert(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(calculateSkyColor(2F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-6836695)
-                .grassColorOverride(-4212907)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DESERT));
+            .waterColor(NORMAL_WATER_COLOR)
+            .foliageColorOverride(-6836695)
+            .grassColorOverride(-4212907);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseDesertGeneration(featureGetter, carverGetter, true);
@@ -237,26 +206,19 @@ public class AridBiomes {
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseDesertSpawning(false);
 
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(false)
-                .temperature(2f)
-                .downfall(0f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(2f, 0f, false)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DESERT))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome steppe(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(calculateSkyColor(2F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-5589135)
-                .grassColorOverride(-5067675)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_STONY_PEAKS));
+            .waterColor(NORMAL_WATER_COLOR)
+            .foliageColorOverride(-5589135)
+            .grassColorOverride(-5067675);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseSavannaGeneration(featureGetter, carverGetter, false);
@@ -267,10 +229,8 @@ public class AridBiomes {
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseSavannaSpawning(false);
 
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(false)
-                .temperature(1.5f)
-                .downfall(0.15f)
+        return biomeBuilder(1.5f, 0.15f, false)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DESERT))
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(builder.build())

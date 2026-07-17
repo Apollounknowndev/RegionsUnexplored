@@ -1,10 +1,10 @@
 {
   "variants": {
     "smouldering=false": {
-      "model": "regions_unexplored:block/ashen_grass"
+      "model": "regions_unexplored:ashen_grass"
     },
     "smouldering=true": {
-      "model": "regions_unexplored:block/ashen_grass_smouldering"
+      "model": "regions_unexplored:ashen_grass_smouldering"
     }
   }
 }

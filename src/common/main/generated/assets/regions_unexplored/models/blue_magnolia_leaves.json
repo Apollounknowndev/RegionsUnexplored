@@ -1,0 +1,6 @@
+{
+  "parent": "leaves",
+  "textures": {
+    "all": "regions_unexplored:block/blue_magnolia_leaves"
+  }
+}

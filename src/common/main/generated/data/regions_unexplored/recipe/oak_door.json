@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "wooden_door",
   "key": {
-    "#": {
-      "item": "regions_unexplored:alpha_planks"
-    }
+    "#": "regions_unexplored:alpha_planks"
   },
   "pattern": [
     "##",

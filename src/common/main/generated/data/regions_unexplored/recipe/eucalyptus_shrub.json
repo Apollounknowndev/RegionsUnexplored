@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "shrubs",
   "key": {
-    "#": {
-      "item": "regions_unexplored:eucalyptus_sapling"
-    }
+    "#": "regions_unexplored:eucalyptus_sapling"
   },
   "pattern": [
     "#",
     "#"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:eucalyptus_shrub"
   }
 }

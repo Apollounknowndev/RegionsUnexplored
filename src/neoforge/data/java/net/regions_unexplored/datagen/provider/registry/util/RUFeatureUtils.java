@@ -5,16 +5,15 @@ import dev.worldgen.lithostitched.api.util.WeightedList;
 import dev.worldgen.lithostitched.api.worldgen.blockpredicate.LithostitchedBlockPredicates;
 import dev.worldgen.lithostitched.api.worldgen.feature.LithostitchedFeatures;
 import dev.worldgen.lithostitched.api.worldgen.placementmodifier.LithostitchedPlacementModifiers;
+import dev.worldgen.lithostitched.worldgen.feature.config.SimplePlacedConfig;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.WeightedListInt;
@@ -27,7 +26,6 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
@@ -115,16 +113,45 @@ public class RUFeatureUtils {
         return Holder.direct(new PlacedFeature(Holder.direct(feature), List.of()));
     }
     
-    public static RandomPatchConfiguration randomPatch(Supplier<Block> block, int tries, int radiusXZ, int radiusY) {
-        return new RandomPatchConfiguration(tries, radiusXZ, radiusY, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(block.get()))));
+    public static SimplePlacedConfig randomPatch(Supplier<Block> block, int tries, int radiusXZ, int radiusY) {
+        return randomPatch(BlockStateProvider.simple(block.get()), tries, radiusXZ, radiusY);
     }
     
-    public static RandomPatchConfiguration randomPatch(BlockStateProvider stateProvider, int count) {
-        return FeatureUtils.simpleRandomPatchConfiguration(count, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(stateProvider)));
+    public static SimplePlacedConfig randomPatch(BlockStateProvider stateProvider, int tries) {
+        return randomPatch(stateProvider, tries, 7, 3);
     }
     
-    public static RandomPatchConfiguration randomPatch(BlockStateProvider stateProvider, int count, BlockPredicate predicate) {
-        return FeatureUtils.simpleRandomPatchConfiguration(count, PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(stateProvider), BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, predicate)));
+    public static SimplePlacedConfig randomPatch(int tries, int radiusXZ, int radiusY, Holder<PlacedFeature> feature) {
+        return new SimplePlacedConfig(Holder.direct(new PlacedFeature(
+            Holder.direct(new ConfiguredFeature<>(LithostitchedFeatures.PLACED, new SimplePlacedConfig(feature))),
+            List.of(
+                CountPlacement.of(tries),
+                RandomOffsetPlacement.ofTriangle(radiusXZ, radiusY),
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
+            )
+        )));
+    }
+    
+    public static SimplePlacedConfig randomPatch(BlockStateProvider stateProvider, int tries, int radiusXZ, int radiusY) {
+        return new SimplePlacedConfig(Holder.direct(new PlacedFeature(
+            Holder.direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(stateProvider))),
+            List.of(
+                CountPlacement.of(tries),
+                RandomOffsetPlacement.ofTriangle(radiusXZ, radiusY),
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
+            )
+        )));
+    }
+    
+    public static SimplePlacedConfig randomPatch(BlockStateProvider stateProvider, int tries, BlockPredicate predicate) {
+        return new SimplePlacedConfig(Holder.direct(new PlacedFeature(
+            Holder.direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(stateProvider))),
+            List.of(
+                CountPlacement.of(tries),
+                RandomOffsetPlacement.ofTriangle(7, 3),
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, predicate))
+            )
+        )));
     }
     // Placement Modifiers
     
@@ -204,16 +231,16 @@ public class RUFeatureUtils {
 
     @SafeVarargs
     public static BlockStateProvider weightedStates(Pair<BlockState, Integer>... entries) {
-        SimpleWeightedRandomList.Builder<BlockState> builder = SimpleWeightedRandomList.builder();
+        net.minecraft.util.random.WeightedList.Builder<BlockState> builder = net.minecraft.util.random.WeightedList.builder();
         for (var pair : entries) {
             builder.add(pair.getFirst(), pair.getSecond());
         }
-        return new WeightedStateProvider(builder);
+        return new WeightedStateProvider(builder.build());
     }
 
     @SafeVarargs
     public static WeightedListInt weightedInts(Pair<Integer, Integer>... entries) {
-        SimpleWeightedRandomList.Builder<IntProvider> builder = SimpleWeightedRandomList.builder();
+        net.minecraft.util.random.WeightedList.Builder<IntProvider> builder = net.minecraft.util.random.WeightedList.builder();
         for (var pair : entries) {
             builder.add(ConstantInt.of(pair.getFirst()), pair.getSecond());
         }

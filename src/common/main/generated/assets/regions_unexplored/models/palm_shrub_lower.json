@@ -1,0 +1,6 @@
+{
+  "parent": "cross",
+  "textures": {
+    "cross": "regions_unexplored:block/palm_shrub_bottom"
+  }
+}

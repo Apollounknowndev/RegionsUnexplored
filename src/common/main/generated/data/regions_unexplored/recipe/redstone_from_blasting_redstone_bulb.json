@@ -1,14 +1,11 @@
 {
   "type": "minecraft:blasting",
-  "category": "blocks",
+  "category": "misc",
   "cookingtime": 100,
   "experience": 0.7,
   "group": "redstone",
-  "ingredient": {
-    "item": "regions_unexplored:redstone_bulb"
-  },
+  "ingredient": "regions_unexplored:redstone_bulb",
   "result": {
-    "count": 1,
     "id": "minecraft:redstone"
   }
 }

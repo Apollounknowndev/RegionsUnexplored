@@ -8,13 +8,10 @@
       "min_inclusive": 2
     },
     "state_provider": {
-      "fallback": {
-        "type": "minecraft:simple_state_provider",
-        "state": {
-          "Name": "minecraft:gravel"
-        }
-      },
-      "rules": []
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:gravel"
+      }
     },
     "target": {
       "type": "minecraft:matching_blocks",
@@ -22,9 +19,9 @@
         "minecraft:dirt",
         "regions_unexplored:peat_dirt",
         "regions_unexplored:silt_dirt",
+        "minecraft:grass_block",
         "regions_unexplored:peat_grass_block",
-        "regions_unexplored:silt_grass_block",
-        "minecraft:grass_block"
+        "regions_unexplored:silt_grass_block"
       ]
     }
   }

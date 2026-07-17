@@ -1,6 +1,5 @@
 {
-  "parent": "regions_unexplored:block/template/speleothem",
-  "render_type": "minecraft:cutout",
+  "parent": "minecraft:block/pointed_dripstone",
   "textures": {
     "cross": "regions_unexplored:block/redstone_spike_up_middle"
   }

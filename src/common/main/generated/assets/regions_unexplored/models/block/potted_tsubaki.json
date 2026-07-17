@@ -1,6 +1,6 @@
 {
-  "parent": "regions_unexplored:block/template/flower_pot",
+  "parent": "minecraft:block/flower_pot_cross",
   "textures": {
-    "plant": "regions_unexplored:block/potted_tsubaki"
+    "plant": "regions_unexplored:potted_tsubaki"
   }
 }

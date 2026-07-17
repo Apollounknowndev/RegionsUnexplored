@@ -9,6 +9,7 @@ import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.attribute.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
@@ -19,25 +20,22 @@ import net.regions_unexplored.datagen.provider.registry.placed_feature.RuVegetat
 import net.regions_unexplored.registry.RUParticleTypes;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuNetherPlacements;
 
+import java.util.List;
+import java.util.Optional;
+
+import static net.regions_unexplored.datagen.provider.registry.util.RUBiomeUtils.biomeBuilder;
+
 public class NetherBiomes {
 
     public static Biome blackstoneBasin(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(395547)
-                .fogColor(395547)
-                .waterColor(5463027)
-                .waterFogColor(395547)
-                .foliageColorOverride(5463027)
-                .grassColorOverride(5463027)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WARPED_SPORE, 0.02F))
-                .ambientLoopSound(SoundEvents.AMBIENT_CRIMSON_FOREST_LOOP)
-                .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2.0D))
-                .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_CRIMSON_FOREST_ADDITIONS, 0.0111D))
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_CRIMSON_FOREST));
+            .waterColor(5463027)
+            .foliageColorOverride(5463027)
+            .grassColorOverride(5463027);
 
         //add features
         BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        builder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
+        builder.addCarver(Carvers.NETHER_CAVE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.BLACKSTONE_BLOBS);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
@@ -59,38 +57,37 @@ public class NetherBiomes {
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder()
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIFIED_PIGLIN, 25, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITHER_SKELETON, 20, 1, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 1, 2))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 60, 1, 2));
+                .addSpawn(MobCategory.MONSTER, 25, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIFIED_PIGLIN, 4, 4))
+                .addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(EntityType.WITHER_SKELETON, 1, 4))
+                .addSpawn(MobCategory.MONSTER, 1, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 2))
+                .addSpawn(MobCategory.CREATURE, 60, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 1, 2));
 
-        return new Biome.BiomeBuilder()
-                .hasPrecipitation(false)
-                .temperature(2f)
-                .downfall(0f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(2, 0, false)
+            .setAttribute(EnvironmentAttributes.SKY_COLOR, 395547)
+            .setAttribute(EnvironmentAttributes.FOG_COLOR, 395547)
+            .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 395547)
+            .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
+                Optional.of(SoundEvents.AMBIENT_CRIMSON_FOREST_LOOP),
+                Optional.of(new AmbientMoodSettings(SoundEvents.AMBIENT_CRIMSON_FOREST_MOOD, 6000, 8, 2d)),
+                List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_CRIMSON_FOREST_ADDITIONS, 0.0111d))
+            ))
+            .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WARPED_SPORE, 0.02F)))
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_CRIMSON_FOREST))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome infernalHolt(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(3479565)
-                .fogColor(3479565)
-                .waterColor(3479565)
-                .waterFogColor(3479565)
-                .foliageColorOverride(7295817)
-                .grassColorOverride(7295817)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.03F))
-                .ambientLoopSound(SoundEvents.AMBIENT_BASALT_DELTAS_LOOP)
-                .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2.0D))
-                .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.0111D))
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS));
+            .waterColor(3479565)
+            .foliageColorOverride(7295817)
+            .grassColorOverride(7295817);
 
         //add features
         BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        builder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
+        builder.addCarver(Carvers.NETHER_CAVE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
@@ -110,38 +107,37 @@ public class NetherBiomes {
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder()
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIFIED_PIGLIN, 1, 2, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.HOGLIN, 9, 3, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 5, 3, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 60, 1, 2));
+                .addSpawn(MobCategory.MONSTER, 1, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIFIED_PIGLIN, 2, 4))
+                .addSpawn(MobCategory.MONSTER, 9, new MobSpawnSettings.SpawnerData(EntityType.HOGLIN, 3, 4))
+                .addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 3, 4))
+                .addSpawn(MobCategory.CREATURE, 60, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 1, 2));
 
-        return new Biome.BiomeBuilder()
-                .hasPrecipitation(false)
-                .temperature(2f)
-                .downfall(0f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(2, 0, false)
+            .setAttribute(EnvironmentAttributes.SKY_COLOR, 3479565)
+            .setAttribute(EnvironmentAttributes.FOG_COLOR, 3479565)
+            .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 3479565)
+            .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
+                Optional.of(SoundEvents.AMBIENT_BASALT_DELTAS_LOOP),
+                Optional.of(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2d)),
+                List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.0111d))
+            ))
+            .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.03F)))
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome glisteringMeadow(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(4328552)
-                .fogColor(4328552)
-                .waterColor(12058781)
-                .waterFogColor(12058781)
-                .foliageColorOverride(12058781)
-                .grassColorOverride(12058781)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WARPED_SPORE, 0.02F))
-                .ambientLoopSound(SoundEvents.AMBIENT_CRIMSON_FOREST_LOOP)
-                .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2.0D))
-                .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_CRIMSON_FOREST_ADDITIONS, 0.0111D))
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST));
+            .waterColor(12058781)
+            .foliageColorOverride(12058781)
+            .grassColorOverride(12058781);
 
         //add features
         BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        builder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
+        builder.addCarver(Carvers.NETHER_CAVE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
@@ -164,38 +160,37 @@ public class NetherBiomes {
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder()
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.GHAST, 5, 1, 1))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 40, 1, 2))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.HOGLIN, 5, 1, 3));
+                .addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.GHAST, 1, 1))
+                .addSpawn(MobCategory.MONSTER, 1, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 1))
+                .addSpawn(MobCategory.CREATURE, 40, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 1, 2))
+                .addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.HOGLIN, 1, 3));
 
-        return new Biome.BiomeBuilder()
-                .hasPrecipitation(false)
-                .temperature(2f)
-                .downfall(0f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(2, 0, false)
+            .setAttribute(EnvironmentAttributes.SKY_COLOR, 4328552)
+            .setAttribute(EnvironmentAttributes.FOG_COLOR, 4328552)
+            .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 12058781)
+            .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
+                Optional.of(SoundEvents.AMBIENT_CRIMSON_FOREST_LOOP),
+                Optional.of(new AmbientMoodSettings(SoundEvents.AMBIENT_CRIMSON_FOREST_MOOD, 6000, 8, 2d)),
+                List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_CRIMSON_FOREST_ADDITIONS, 0.0111d))
+            ))
+            .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WARPED_SPORE, 0.02F)))
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome mycotoxicUndergrowth(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(10717988)
-                .fogColor(10717988)
-                .waterColor(10717988)
-                .waterFogColor(10717988)
-                .foliageColorOverride(10717988)
-                .grassColorOverride(10717988)
-                .ambientParticle(new AmbientParticleSettings(RUParticleTypes.MYCOTOXIC_SPORE.get(), 0.01f))
-                .ambientLoopSound(SoundEvents.AMBIENT_WARPED_FOREST_LOOP)
-                .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2.0D))
-                .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, 0.0111D))
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST));
+            .waterColor(10717988)
+            .foliageColorOverride(10717988)
+            .grassColorOverride(10717988);
 
         //add features
         BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
-        builder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
+        builder.addCarver(Carvers.NETHER_CAVE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE_EXTRA);
@@ -214,33 +209,32 @@ public class NetherBiomes {
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder()
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIFIED_PIGLIN, 100, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 5, 3, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 60, 1, 2));
+                .addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIFIED_PIGLIN, 4, 4))
+                .addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 3, 4))
+                .addSpawn(MobCategory.CREATURE, 60, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 1, 2));
 
-        return new Biome.BiomeBuilder()
-                .hasPrecipitation(false)
-                .temperature(2f)
-                .downfall(0f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(2, 0, false)
+            .setAttribute(EnvironmentAttributes.SKY_COLOR, 10717988)
+            .setAttribute(EnvironmentAttributes.FOG_COLOR, 10717988)
+            .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 10717988)
+            .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
+                Optional.of(SoundEvents.AMBIENT_WARPED_FOREST_LOOP),
+                Optional.of(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2d)),
+                List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, 0.0111d))
+            ))
+            .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(RUParticleTypes.MYCOTOXIC_SPORE.get(), 0.01F)))
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome redstoneAbyss(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(5439488)
-                .fogColor(5439488)
-                .waterColor(10623252)
-                .waterFogColor(10623252)
-                .foliageColorOverride(10623252)
-                .grassColorOverride(10623252)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.CRIMSON_SPORE, 0.025F))
-                .ambientLoopSound(SoundEvents.AMBIENT_NETHER_WASTES_LOOP)
-                .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_NETHER_WASTES_MOOD, 6000, 8, 2.0D))
-                .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_NETHER_WASTES_ADDITIONS, 0.0111D))
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_NETHER_WASTES));
+            .waterColor(10623252)
+            .foliageColorOverride(10623252)
+            .grassColorOverride(10623252);
 
         //add features
         BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(featureGetter, carverGetter);
@@ -263,16 +257,23 @@ public class NetherBiomes {
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder()
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIFIED_PIGLIN, 100, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 60, 1, 2));
+                .addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIFIED_PIGLIN, 4, 4))
+                .addSpawn(MobCategory.CREATURE, 60, new MobSpawnSettings.SpawnerData(EntityType.STRIDER, 1, 2));
 
-        return new Biome.BiomeBuilder()
-                .hasPrecipitation(false)
-                .temperature(2f)
-                .downfall(0f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(2, 0, false)
+            .setAttribute(EnvironmentAttributes.SKY_COLOR, 5439488)
+            .setAttribute(EnvironmentAttributes.FOG_COLOR, 5439488)
+            .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 10623252)
+            .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
+                Optional.of(SoundEvents.AMBIENT_NETHER_WASTES_LOOP),
+                Optional.of(new AmbientMoodSettings(SoundEvents.AMBIENT_NETHER_WASTES_MOOD, 6000, 8, 2d)),
+                List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_NETHER_WASTES_ADDITIONS, 0.0111d))
+            ))
+            .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.CRIMSON_SPORE, 0.025F)))
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_NETHER_WASTES))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 }

@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "regions_unexplored:block/pink_bioshroom_stem",
-    "side": "regions_unexplored:block/pink_bioshroom_stem"
-  }
-}

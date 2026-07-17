@@ -1,56 +1,70 @@
 {
-  "type": "minecraft:random_patch",
+  "type": "lithostitched:placed",
   "config": {
     "feature": {
-      "feature": {
-        "type": "minecraft:simple_block",
-        "config": {
-          "to_place": {
-            "type": "minecraft:weighted_state_provider",
-            "entries": [
-              {
-                "data": {
-                  "Name": "minecraft:fern"
-                },
-                "weight": 5
+      "type": "minecraft:simple_block",
+      "config": {
+        "to_place": {
+          "type": "minecraft:weighted_state_provider",
+          "entries": [
+            {
+              "data": {
+                "Name": "minecraft:fern"
               },
-              {
-                "data": {
-                  "Name": "minecraft:large_fern",
-                  "Properties": {
-                    "half": "lower"
-                  }
-                },
-                "weight": 2
+              "weight": 5
+            },
+            {
+              "data": {
+                "Name": "minecraft:large_fern",
+                "Properties": {
+                  "half": "lower"
+                }
               },
-              {
-                "data": {
-                  "Name": "minecraft:short_grass"
-                },
-                "weight": 2
+              "weight": 2
+            },
+            {
+              "data": {
+                "Name": "minecraft:short_grass"
               },
-              {
-                "data": {
-                  "Name": "regions_unexplored:grass_sprouts"
-                },
-                "weight": 1
-              }
-            ]
-          }
+              "weight": 2
+            },
+            {
+              "data": {
+                "Name": "regions_unexplored:grass_sprouts"
+              },
+              "weight": 1
+            }
+          ]
+        }
+      }
+    },
+    "placement": [
+      {
+        "type": "minecraft:count",
+        "count": 128
+      },
+      {
+        "type": "minecraft:random_offset",
+        "xz_spread": {
+          "type": "minecraft:trapezoid",
+          "max": 7,
+          "min": -7,
+          "plateau": 0
+        },
+        "y_spread": {
+          "type": "minecraft:trapezoid",
+          "max": 3,
+          "min": -3,
+          "plateau": 0
         }
       },
-      "placement": [
-        {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:air"
-          }
+      {
+        "type": "minecraft:block_predicate_filter",
+        "predicate": {
+          "type": "minecraft:matching_block_tag",
+          "tag": "minecraft:air"
         }
-      ]
-    },
-    "tries": 128,
-    "xz_spread": 7,
-    "y_spread": 3
+      }
+    ]
   }
 }

@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "branches",
   "key": {
-    "#": {
-      "item": "minecraft:birch_log"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "minecraft:birch_log",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "#X"

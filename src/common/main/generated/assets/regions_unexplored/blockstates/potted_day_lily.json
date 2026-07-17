@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:block/potted_day_lily"
+      "model": "regions_unexplored:potted_day_lily"
     }
   }
 }

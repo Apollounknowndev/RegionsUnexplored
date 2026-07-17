@@ -1,0 +1,6 @@
+{
+  "parent": "cross",
+  "textures": {
+    "cross": "regions_unexplored:block/dead_shrub_bottom"
+  }
+}

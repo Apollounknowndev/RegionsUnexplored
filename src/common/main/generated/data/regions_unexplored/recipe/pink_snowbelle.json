@@ -3,15 +3,10 @@
   "category": "building",
   "group": "snowbelle",
   "ingredients": [
-    {
-      "tag": "c:dyes/pink"
-    },
-    {
-      "tag": "regions_unexplored:snowbelle"
-    }
+    "#c:dyes/pink",
+    "#regions_unexplored:snowbelle"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:pink_snowbelle"
   }
 }

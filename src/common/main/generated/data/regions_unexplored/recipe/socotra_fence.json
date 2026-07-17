@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "wooden_fence",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "item": "regions_unexplored:socotra_planks"
-    }
+    "#": "minecraft:stick",
+    "W": "regions_unexplored:socotra_planks"
   },
   "pattern": [
     "W#W",

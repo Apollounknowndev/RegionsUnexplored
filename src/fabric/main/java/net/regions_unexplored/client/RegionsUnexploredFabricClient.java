@@ -1,15 +1,19 @@
 package net.regions_unexplored.client;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
+import net.minecraft.world.level.block.Block;
 import net.regions_unexplored.client.color.RUColors;
 import net.regions_unexplored.client.particle.RUParticleProviders;
+
+import java.util.List;
 
 public class RegionsUnexploredFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         RegionsUnexploredClient.clientInit();
         RUParticleProviders.init();
-        RUColors.tintBlocks();
+        RUColors.tintBlocks((source, blocks) -> BlockColorRegistry.register(List.of(source), blocks.toArray(new Block[0])));
         RUColors.tintItems();
     }
 }

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "blue_dye",
+  "ingredients": [
+    "regions_unexplored:blue_lupine"
+  ],
+  "result": {
+    "id": "minecraft:blue_dye"
+  }
+}

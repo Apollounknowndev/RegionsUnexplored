@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "boat",
   "key": {
-    "#": {
-      "item": "regions_unexplored:kapok_planks"
-    }
+    "#": "regions_unexplored:kapok_planks"
   },
   "pattern": [
     "# #",
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:kapok_boat"
   }
 }

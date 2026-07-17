@@ -1,60 +1,74 @@
 {
-  "type": "minecraft:flower",
+  "type": "lithostitched:placed",
   "config": {
     "feature": {
-      "feature": {
-        "type": "minecraft:simple_block",
-        "config": {
-          "to_place": {
-            "type": "minecraft:dual_noise_provider",
-            "noise": {
-              "amplitudes": [
-                1.0
-              ],
-              "firstOctave": -2
-            },
-            "scale": 1.0,
-            "seed": 9987,
-            "slow_noise": {
-              "amplitudes": [
-                2.5
-              ],
-              "firstOctave": -6
-            },
-            "slow_scale": 0.7,
-            "states": [
-              {
-                "Name": "minecraft:short_grass"
-              },
-              {
-                "Name": "regions_unexplored:grass_sprouts"
-              },
-              {
-                "Name": "regions_unexplored:tall_dead_grass"
-              },
-              {
-                "Name": "regions_unexplored:short_dead_grass"
-              }
+      "type": "minecraft:simple_block",
+      "config": {
+        "to_place": {
+          "type": "minecraft:dual_noise_provider",
+          "noise": {
+            "amplitudes": [
+              1.0
             ],
-            "variety": [
-              2,
-              3
-            ]
-          }
+            "firstOctave": -2
+          },
+          "scale": 1.0,
+          "seed": 9987,
+          "slow_noise": {
+            "amplitudes": [
+              2.5
+            ],
+            "firstOctave": -6
+          },
+          "slow_scale": 0.7,
+          "states": [
+            {
+              "Name": "minecraft:short_grass"
+            },
+            {
+              "Name": "regions_unexplored:grass_sprouts"
+            },
+            {
+              "Name": "regions_unexplored:tall_dead_grass"
+            },
+            {
+              "Name": "regions_unexplored:short_dead_grass"
+            }
+          ],
+          "variety": [
+            2,
+            3
+          ]
+        }
+      }
+    },
+    "placement": [
+      {
+        "type": "minecraft:count",
+        "count": 32
+      },
+      {
+        "type": "minecraft:random_offset",
+        "xz_spread": {
+          "type": "minecraft:trapezoid",
+          "max": 7,
+          "min": -7,
+          "plateau": 0
+        },
+        "y_spread": {
+          "type": "minecraft:trapezoid",
+          "max": 3,
+          "min": -3,
+          "plateau": 0
         }
       },
-      "placement": [
-        {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:air"
-          }
+      {
+        "type": "minecraft:block_predicate_filter",
+        "predicate": {
+          "type": "minecraft:matching_block_tag",
+          "tag": "minecraft:air"
         }
-      ]
-    },
-    "tries": 32,
-    "xz_spread": 7,
-    "y_spread": 3
+      }
+    ]
   }
 }

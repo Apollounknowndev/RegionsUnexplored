@@ -3,15 +3,10 @@
   "category": "building",
   "group": "mossy",
   "ingredients": [
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:vine"
-    }
+    "minecraft:stone",
+    "minecraft:vine"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:mossy_stone"
   }
 }

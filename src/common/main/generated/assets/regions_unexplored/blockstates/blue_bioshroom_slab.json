@@ -1,10 +1,10 @@
 {
   "variants": {
     "type=bottom": {
-      "model": "regions_unexplored:block/blue_bioshroom_slab_bottom"
+      "model": "regions_unexplored:block/blue_bioshroom_slab"
     },
     "type=double": {
-      "model": "regions_unexplored:block/blue_bioshroom_slab_double"
+      "model": "regions_unexplored:blue_bioshroom_slab_double"
     },
     "type=top": {
       "model": "regions_unexplored:block/blue_bioshroom_slab_top"

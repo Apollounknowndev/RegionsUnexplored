@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "regions_unexplored:larch_logs"
-    }
+    "#regions_unexplored:larch_logs"
   ],
   "result": {
     "count": 4,

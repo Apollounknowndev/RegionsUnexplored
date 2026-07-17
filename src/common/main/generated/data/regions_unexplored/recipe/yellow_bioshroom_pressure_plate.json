@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "wooden_pressure_plate",
   "key": {
-    "#": {
-      "item": "regions_unexplored:yellow_bioshroom_planks"
-    }
+    "#": "regions_unexplored:yellow_bioshroom_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:yellow_bioshroom_pressure_plate"
   }
 }

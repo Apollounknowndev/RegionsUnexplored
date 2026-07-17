@@ -3,6 +3,8 @@ package net.regions_unexplored.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
@@ -14,6 +16,7 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.*;
+import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.module.platform.Registrar;
 import net.regions_unexplored.item.RUItemUtils;
 import org.jetbrains.annotations.Nullable;
@@ -135,7 +138,8 @@ public class RUBlockUtils {
     }
 
     public static <T extends Block> Supplier<T> register(String name, BlockFactory<T> factory, BiConsumer<String, Supplier<T>> itemCreator, @Nullable Supplier<T> copiedBlock) {
-        Supplier<T> block = Registrar.register(BuiltInRegistries.BLOCK, name, () -> factory.apply(createProperties(copiedBlock)));
+        ResourceKey<Block> key = RegionsUnexplored.key(Registries.BLOCK, name);
+        Supplier<T> block = Registrar.register(BuiltInRegistries.BLOCK, name, () -> factory.apply(createProperties(copiedBlock).setId(key)));
         itemCreator.accept(name, block);
         return block;
     }

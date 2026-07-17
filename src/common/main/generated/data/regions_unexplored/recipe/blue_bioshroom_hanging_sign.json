@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "hanging_sign",
   "key": {
-    "#": {
-      "item": "regions_unexplored:stripped_blue_bioshroom_stem"
-    },
-    "X": {
-      "item": "minecraft:chain"
-    }
+    "#": "regions_unexplored:stripped_blue_bioshroom_stem",
+    "X": "minecraft:iron_chain"
   },
   "pattern": [
     "X X",

@@ -1,38 +1,43 @@
 {
-  "carvers": {
-    "air": "minecraft:nether_cave"
+  "attributes": {
+    "minecraft:audio/ambient_sounds": {
+      "additions": {
+        "sound": "minecraft:ambient.soul_sand_valley.additions",
+        "tick_chance": 0.0111
+      },
+      "loop": "minecraft:ambient.basalt_deltas.loop",
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "minecraft:ambient.warped_forest.mood",
+        "tick_delay": 6000
+      }
+    },
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "minecraft:music.nether.basalt_deltas"
+      }
+    },
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:white_ash"
+        },
+        "probability": 0.03
+      }
+    ],
+    "minecraft:visual/fog_color": "#35180d",
+    "minecraft:visual/sky_color": "#35180d",
+    "minecraft:visual/water_fog_color": "#35180d"
   },
+  "carvers": "minecraft:nether_cave",
   "downfall": 0.0,
   "effects": {
-    "additions_sound": {
-      "sound": "minecraft:ambient.soul_sand_valley.additions",
-      "tick_chance": 0.0111
-    },
-    "ambient_sound": "minecraft:ambient.basalt_deltas.loop",
-    "fog_color": 3479565,
-    "foliage_color": 7295817,
-    "grass_color": 7295817,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.warped_forest.mood",
-      "tick_delay": 6000
-    },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "minecraft:music.nether.basalt_deltas"
-    },
-    "particle": {
-      "options": {
-        "type": "minecraft:white_ash"
-      },
-      "probability": 0.03
-    },
-    "sky_color": 3479565,
-    "water_color": 3479565,
-    "water_fog_color": 3479565
+    "foliage_color": "#6f5349",
+    "grass_color": "#6f5349",
+    "water_color": "#35180d"
   },
   "features": [
     [],

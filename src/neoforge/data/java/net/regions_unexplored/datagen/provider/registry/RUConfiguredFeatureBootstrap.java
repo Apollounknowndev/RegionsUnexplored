@@ -16,8 +16,4 @@ public class RUConfiguredFeatureBootstrap {
         RuTreeFeatures.bootstrap(context);
         RuVegetationFeatures.bootstrap(context);
     }
-
-    public static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {
-        return RegionsUnexplored.key(Registries.CONFIGURED_FEATURE, name);
-    }
 }

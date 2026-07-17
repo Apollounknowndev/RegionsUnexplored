@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "branches",
   "key": {
-    "#": {
-      "item": "regions_unexplored:socotra_log"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "regions_unexplored:socotra_log",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "#X"

@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "hanging_sign",
   "key": {
-    "#": {
-      "item": "regions_unexplored:alpha_planks"
-    },
-    "X": {
-      "item": "minecraft:chain"
-    }
+    "#": "regions_unexplored:alpha_planks",
+    "X": "minecraft:iron_chain"
   },
   "pattern": [
     "X X",

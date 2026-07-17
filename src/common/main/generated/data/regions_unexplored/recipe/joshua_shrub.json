@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "shrubs",
   "key": {
-    "#": {
-      "item": "regions_unexplored:joshua_sapling"
-    }
+    "#": "regions_unexplored:joshua_sapling"
   },
   "pattern": [
     "#",
     "#"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:joshua_shrub"
   }
 }

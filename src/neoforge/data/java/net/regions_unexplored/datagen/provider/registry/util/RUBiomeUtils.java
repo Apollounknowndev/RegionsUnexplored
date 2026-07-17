@@ -1,15 +1,11 @@
 package net.regions_unexplored.datagen.provider.registry.util;
 
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
-import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.util.Mth;
-import net.minecraft.world.level.biome.AmbientMoodSettings;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.regions_unexplored.datagen.provider.registry.placed_feature.RuNetherPlacements;
-import net.regions_unexplored.datagen.provider.registry.placed_feature.RuVegetationPlacements;
 
 public class RUBiomeUtils {
     public static final int NORMAL_WATER_COLOR = 4159204;
@@ -22,14 +18,8 @@ public class RUBiomeUtils {
         return Mth.hsvToRgb(0.62222224F - temp * 0.05F, 0.5F + temp * 0.1F, 1.0F);
     }
     
-    public static BiomeSpecialEffects.Builder effectBuilder(float temperature) {
-        return new BiomeSpecialEffects.Builder()
-            .skyColor(calculateSkyColor(temperature))
-            .fogColor(OVERWORLD_FOG_COLOR)
-            .waterColor(NORMAL_WATER_COLOR)
-            .waterFogColor(NORMAL_WATER_FOG_COLOR)
-            .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-        ;
+    public static BiomeSpecialEffects.Builder effectBuilder() {
+        return new BiomeSpecialEffects.Builder().waterColor(NORMAL_WATER_COLOR);
     }
     
     public static Biome.BiomeBuilder biomeBuilder(float temperature, float downfall) {
@@ -37,7 +27,11 @@ public class RUBiomeUtils {
     }
     
     public static Biome.BiomeBuilder biomeBuilder(float temperature, float downfall, boolean hasPrecipitation) {
-        return new Biome.BiomeBuilder().temperature(temperature).downfall(downfall).hasPrecipitation(hasPrecipitation);
+        return new Biome.BiomeBuilder()
+            .temperature(temperature)
+            .downfall(downfall)
+            .hasPrecipitation(hasPrecipitation)
+            .setAttribute(EnvironmentAttributes.SKY_COLOR, calculateSkyColor(temperature));
     }
     
     public static void globalOverworldGeneration(BiomeGenerationSettings.Builder builder) {

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "regions_unexplored:pine_log"
-    }
+    "#": "regions_unexplored:pine_log"
   },
   "pattern": [
     "##",

@@ -3,12 +3,8 @@
   "category": "building",
   "group": "stained_glass",
   "key": {
-    "#": {
-      "tag": "c:glass_blocks"
-    },
-    "X": {
-      "tag": "regions_unexplored:prismarite_crystals"
-    }
+    "#": "#c:glass_blocks",
+    "X": "#regions_unexplored:prismarite_crystals"
   },
   "pattern": [
     " X ",

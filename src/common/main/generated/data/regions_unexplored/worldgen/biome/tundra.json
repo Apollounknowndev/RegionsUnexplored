@@ -1,31 +1,24 @@
 {
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
-    ]
+  "attributes": {
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "minecraft:music.overworld.meadow"
+      }
+    },
+    "minecraft:visual/sky_color": "#829fff"
   },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
   "downfall": 0.0,
   "effects": {
-    "fog_color": 12638463,
-    "foliage_color": 11569232,
-    "grass_color": 12347986,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "minecraft:music.overworld.meadow"
-    },
-    "sky_color": 8364543,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    "foliage_color": "#b08850",
+    "grass_color": "#bc6a52",
+    "water_color": "#3f76e4"
   },
   "features": [
     [],
@@ -83,8 +76,9 @@
       "minecraft:glow_lichen",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
+      "minecraft:patch_sugar_cane",
+      "minecraft:patch_firefly_bush_near_water",
       "regions_unexplored:tree/group/tundra",
       "regions_unexplored:tree/group/tundra_bushes",
       "regions_unexplored:patch/flowers/tundra",

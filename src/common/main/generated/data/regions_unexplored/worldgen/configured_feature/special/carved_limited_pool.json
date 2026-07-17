@@ -12,7 +12,6 @@
         "Name": "minecraft:dirt"
       }
     },
-    "slopeDepth": 4,
     "slopeTop": {
       "type": "minecraft:simple_state_provider",
       "state": {
@@ -22,6 +21,7 @@
         }
       }
     },
+    "slope_depth": 4,
     "wall_allowed": {
       "type": "minecraft:matching_blocks",
       "blocks": "minecraft:mud"

@@ -3,12 +3,8 @@
   "category": "building",
   "group": "coarse_dirt",
   "key": {
-    "D": {
-      "item": "regions_unexplored:silt_dirt"
-    },
-    "G": {
-      "tag": "regions_unexplored:ash"
-    }
+    "D": "regions_unexplored:silt_dirt",
+    "G": "#regions_unexplored:ash"
   },
   "pattern": [
     "DG",

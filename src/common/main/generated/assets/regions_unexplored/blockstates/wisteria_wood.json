@@ -1,15 +1,15 @@
 {
   "variants": {
     "axis=x": {
-      "model": "regions_unexplored:block/wisteria_wood",
+      "model": "regions_unexplored:wisteria_wood",
       "x": 90,
       "y": 90
     },
     "axis=y": {
-      "model": "regions_unexplored:block/wisteria_wood"
+      "model": "regions_unexplored:wisteria_wood"
     },
     "axis=z": {
-      "model": "regions_unexplored:block/wisteria_wood",
+      "model": "regions_unexplored:wisteria_wood",
       "x": 90
     }
   }

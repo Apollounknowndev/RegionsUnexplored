@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "wooden_trapdoor",
   "key": {
-    "#": {
-      "item": "regions_unexplored:yellow_bioshroom_planks"
-    }
+    "#": "regions_unexplored:yellow_bioshroom_planks"
   },
   "pattern": [
     "###",

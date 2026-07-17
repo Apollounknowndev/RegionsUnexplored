@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "branches",
   "key": {
-    "#": {
-      "item": "minecraft:dark_oak_log"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "minecraft:dark_oak_log",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "#X"

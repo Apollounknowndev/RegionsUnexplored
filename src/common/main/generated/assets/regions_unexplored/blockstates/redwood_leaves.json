@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:block/redwood_leaves"
+      "model": "regions_unexplored:redwood_leaves"
     }
   }
 }

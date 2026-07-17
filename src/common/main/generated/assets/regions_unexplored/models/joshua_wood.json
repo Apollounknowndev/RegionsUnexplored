@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "regions_unexplored:block/joshua_log",
+    "side": "regions_unexplored:block/joshua_log"
+  }
+}

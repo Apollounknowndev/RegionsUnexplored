@@ -5,6 +5,9 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.attribute.AmbientParticle;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
@@ -17,19 +20,21 @@ import net.regions_unexplored.datagen.provider.registry.placed_feature.RuVegetat
 import net.regions_unexplored.registry.RUEntityTypes;
 import net.regions_unexplored.registry.RUParticleTypes;
 
+import java.util.List;
+
 import static net.regions_unexplored.datagen.provider.registry.util.RUBiomeUtils.*;
 
 public class CaveBiomes {
     private static MobSpawnSettings.Builder baseCaveSpawning() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.caveSpawns(spawnBuilder);
-        BiomeDefaultFeatures.monsters(spawnBuilder, 95, 5, 100, false);
+        BiomeDefaultFeatures.monsters(spawnBuilder, 95, 5, 0, 100, false);
 	    return spawnBuilder;
     }
     private static MobSpawnSettings.Builder baseLushCaveSpawning() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.AXOLOTLS, new MobSpawnSettings.SpawnerData(EntityType.AXOLOTL, 10, 4, 6));
-        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 25, 8, 8));
+        spawnBuilder.addSpawn(MobCategory.AXOLOTLS, 10, new MobSpawnSettings.SpawnerData(EntityType.AXOLOTL, 4, 6));
+        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, 25, new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 8, 8));
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         return spawnBuilder;
     }
@@ -42,7 +47,7 @@ public class CaveBiomes {
         BiomeDefaultFeatures.addDefaultSoftDisks(builder);
         BiomeDefaultFeatures.addPlainVegetation(builder);
         BiomeDefaultFeatures.addDefaultMushrooms(builder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder, true);
         return builder;
     }
     private static BiomeGenerationSettings.Builder baseLushCaveGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter, boolean addClay) {
@@ -55,20 +60,15 @@ public class CaveBiomes {
         }
         BiomeDefaultFeatures.addDefaultSoftDisks(builder);
         BiomeDefaultFeatures.addDefaultMushrooms(builder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder, true);
         return builder;
     }
 
     public static Biome ancientDelta(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(calculateSkyColor(0.7F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(-13369345)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-10118056)
-                .grassColorOverride(16318340)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES));
+            .waterColor(-13369345)
+            .foliageColorOverride(-10118056)
+            .grassColorOverride(16318340);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseLushCaveGeneration(featureGetter, carverGetter, true);
@@ -84,26 +84,19 @@ public class CaveBiomes {
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseLushCaveSpawning();
 
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(true)
-                .temperature(1.125f)
-                .downfall(0.8f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(1.125f, 0.8f, true)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome bioshroomCaves(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(calculateSkyColor(2F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-11093361)
-                .grassColorOverride(-11093410)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES));
+            .waterColor(NORMAL_WATER_COLOR)
+            .foliageColorOverride(-11093361)
+            .grassColorOverride(-11093410);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseLushCaveGeneration(featureGetter, carverGetter, false);
@@ -115,28 +108,20 @@ public class CaveBiomes {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_SHORT_GRASS_CAVES);
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseLushCaveSpawning();
-
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(true)
-                .temperature(1.25f)
-                .downfall(0.9f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        
+        return biomeBuilder(1.25f, 0.9f, true)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome prismachasm(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(calculateSkyColor(0.7F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-16737793)
-                .grassColorOverride(-6625354)
-                .ambientParticle(new AmbientParticleSettings(RUParticleTypes.PRISMARITE_SPARKLE.get(), 0.001f))
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES));
+            .waterColor(NORMAL_WATER_COLOR)
+            .foliageColorOverride(-16737793)
+            .grassColorOverride(-6625354);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseCaveGeneration(featureGetter, carverGetter);
@@ -150,11 +135,10 @@ public class CaveBiomes {
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseCaveSpawning();
-
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(true)
-                .temperature(0.925f)
-                .downfall(0.9f)
+        
+        return biomeBuilder(0.925f, 0.9f, true)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
+            .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(RUParticleTypes.PRISMARITE_SPARKLE.get(), 0.001f)))
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(builder.build())
@@ -163,14 +147,9 @@ public class CaveBiomes {
 
     public static Biome redstoneCaves(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(calculateSkyColor(0.7F))
-                .fogColor(OVERWORLD_FOG_COLOR)
-                .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
-                .foliageColorOverride(-6044317)
-                .grassColorOverride(-6044317)
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES));
+            .waterColor(NORMAL_WATER_COLOR)
+            .foliageColorOverride(-6044317)
+            .grassColorOverride(-6044317);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseCaveGeneration(featureGetter, carverGetter);
@@ -188,10 +167,8 @@ public class CaveBiomes {
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseCaveSpawning();
 
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(true)
-                .temperature(0.8f)
-                .downfall(0.7f)
+        return biomeBuilder(0.8f, 0.7f, true)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
                 .specialEffects(effectBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(builder.build())
@@ -200,15 +177,9 @@ public class CaveBiomes {
 
     public static Biome inferno(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-                .skyColor(calculateSkyColor(0.7F))
-                .fogColor(OVERWORLD_FOG_COLOR)
                 .waterColor(NORMAL_WATER_COLOR)
-                .waterFogColor(NORMAL_WATER_FOG_COLOR)
                 .foliageColorOverride(-8949914)
-                .grassColorOverride(-8621472)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.003F))
-                .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES));
+                .grassColorOverride(-8621472);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseCaveGeneration(featureGetter, carverGetter);
@@ -222,15 +193,14 @@ public class CaveBiomes {
 
         //add mob spawns
         MobSpawnSettings.Builder spawnBuilder = baseCaveSpawning()
-            .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(RUEntityTypes.ASHEN.get(), 100, 4, 4));
+            .addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(RUEntityTypes.ASHEN.get(), 4, 4));
 
-        return (new Biome.BiomeBuilder())
-                .hasPrecipitation(false)
-                .temperature(2f)
-                .downfall(0.0f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+        return biomeBuilder(2f, 0f, true)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
+            .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.003f)))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 }

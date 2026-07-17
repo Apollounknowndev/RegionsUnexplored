@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "regions_unexplored:baobab_logs"
-    }
+    "#regions_unexplored:baobab_logs"
   ],
   "result": {
     "count": 4,

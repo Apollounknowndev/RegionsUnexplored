@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "wooden_fence",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "item": "regions_unexplored:blue_bioshroom_planks"
-    }
+    "#": "minecraft:stick",
+    "W": "regions_unexplored:blue_bioshroom_planks"
   },
   "pattern": [
     "W#W",

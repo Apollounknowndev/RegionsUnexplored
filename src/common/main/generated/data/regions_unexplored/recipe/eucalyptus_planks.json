@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "regions_unexplored:eucalyptus_logs"
-    }
+    "#regions_unexplored:eucalyptus_logs"
   ],
   "result": {
     "count": 4,

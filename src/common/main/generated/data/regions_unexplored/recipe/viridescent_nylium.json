@@ -3,19 +3,14 @@
   "category": "building",
   "group": "viridescent_nylium",
   "key": {
-    "#": {
-      "item": "minecraft:stone"
-    },
-    "X": {
-      "tag": "c:mushrooms"
-    }
+    "#": "minecraft:stone",
+    "X": "#c:mushrooms"
   },
   "pattern": [
     "X",
     "#"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:viridescent_nylium"
   }
 }

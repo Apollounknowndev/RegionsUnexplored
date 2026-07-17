@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "regions_unexplored:block/stripped_green_bioshroom_stem_top",
+    "side": "regions_unexplored:block/stripped_green_bioshroom_stem"
+  }
+}

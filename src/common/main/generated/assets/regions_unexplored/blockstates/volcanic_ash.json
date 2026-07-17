@@ -1,12 +1,7 @@
 {
   "variants": {
-    "": [
-      {
-        "model": "regions_unexplored:block/volcanic_ash"
-      },
-      {
-        "model": "regions_unexplored:block/volcanic_ash_mirrored"
-      }
-    ]
+    "": {
+      "model": "regions_unexplored:block/volcanic_ash_mirrored"
+    }
   }
 }

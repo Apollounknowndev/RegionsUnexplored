@@ -1,31 +1,26 @@
 {
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
-    ]
+  "attributes": {
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "minecraft:music.overworld.swamp"
+      }
+    },
+    "minecraft:visual/fog_color": "#87ad82",
+    "minecraft:visual/sky_color": "#87ad82",
+    "minecraft:visual/water_fog_color": "#60894a"
   },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
   "downfall": 1.0,
   "effects": {
-    "fog_color": -1350062718,
-    "foliage_color": -9333940,
-    "grass_color": -8609196,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "minecraft:music.overworld.swamp"
-    },
-    "sky_color": -1350062718,
-    "water_color": -12354486,
-    "water_fog_color": -10450614
+    "foliage_color": "#71934c",
+    "grass_color": "#7ca254",
+    "water_color": "#437c4a"
   },
   "features": [
     [],
@@ -88,6 +83,8 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane_swamp",
       "minecraft:patch_pumpkin",
+      "minecraft:patch_firefly_bush_swamp",
+      "minecraft:patch_firefly_bush_near_water_swamp",
       "minecraft:seagrass_swamp",
       "regions_unexplored:tree/group/old_growth_bayou",
       "regions_unexplored:shrub/group/old_growth_bayou",

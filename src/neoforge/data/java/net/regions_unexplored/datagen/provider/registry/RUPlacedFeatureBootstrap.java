@@ -14,9 +14,9 @@ import net.regions_unexplored.registry.tag.*;
 public class RUPlacedFeatureBootstrap {
     public static final BlockPredicate onDirtPredicate = BlockPredicate.matchesTag(Vec3i.ZERO.below(), RUBlockTags.DIRT_AND_PODZOL);
     // TODO: Convert these into tags
-    public static final BlockPredicate onGrassBlockPredicate = BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.GRASS_BLOCK, RUBlocks.PEAT_GRASS_BLOCK.get(), RUBlocks.SILT_GRASS_BLOCK.get(), RUBlocks.STONE_GRASS_BLOCK.get(), RUBlocks.DEEPSLATE_GRASS_BLOCK.get());
-    public static final BlockPredicate onViridescentNyliumPredicate = BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), RUBlocks.VIRIDESCENT_NYLIUM.get(), RUBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM.get());
-    public static final BlockPredicate onSnowPredicate = BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.SNOW_BLOCK, Blocks.GRASS_BLOCK, RUBlocks.PEAT_GRASS_BLOCK.get(), RUBlocks.SILT_GRASS_BLOCK.get());
+    public static final BlockPredicate onGrassBlockPredicate = BlockPredicate.matchesBlocks(Vec3i.ZERO.below(), Blocks.GRASS_BLOCK, RUBlocks.PEAT_GRASS_BLOCK.get(), RUBlocks.SILT_GRASS_BLOCK.get(), RUBlocks.STONE_GRASS_BLOCK.get(), RUBlocks.DEEPSLATE_GRASS_BLOCK.get());
+    public static final BlockPredicate onViridescentNyliumPredicate = BlockPredicate.matchesBlocks(Vec3i.ZERO.below(), RUBlocks.VIRIDESCENT_NYLIUM.get(), RUBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM.get());
+    public static final BlockPredicate onSnowPredicate = BlockPredicate.matchesBlocks(Vec3i.ZERO.below(), Blocks.SNOW_BLOCK, Blocks.GRASS_BLOCK, RUBlocks.PEAT_GRASS_BLOCK.get(), RUBlocks.SILT_GRASS_BLOCK.get());
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         RuAquaticPlacements.bootstrap(context);

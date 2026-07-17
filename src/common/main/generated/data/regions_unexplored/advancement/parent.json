@@ -24,7 +24,6 @@
       "translate": "advancements.regions_unexplored.description"
     },
     "icon": {
-      "count": 1,
       "id": "regions_unexplored:eucalyptus_sapling"
     },
     "show_toast": false,

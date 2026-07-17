@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "branches",
   "key": {
-    "#": {
-      "item": "minecraft:mangrove_log"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "minecraft:mangrove_log",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "#X"

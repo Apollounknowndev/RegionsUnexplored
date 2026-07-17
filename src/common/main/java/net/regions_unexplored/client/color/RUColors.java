@@ -2,9 +2,11 @@ package net.regions_unexplored.client.color;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.client.color.block.BlockTintSources;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.Block;
 import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.config.state.client.RUClientConfig.EucalyptusColors;
 import net.regions_unexplored.registry.RUBlocks;
@@ -12,94 +14,109 @@ import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.List;
+import java.util.function.BiConsumer;
 
 public class RUColors {
-    public static void tintBlocks() {
-        BlockColors colors = Minecraft.getInstance().getBlockColors();
-        
-        colors.register(
-            List.of(BlockTintSources.grassBlock()),
-            RUBlocks.PEAT_GRASS_BLOCK.get(),
-            RUBlocks.SILT_GRASS_BLOCK.get(),
-            RUBlocks.STONE_GRASS_BLOCK.get(),
-            RUBlocks.ARGILLITE_GRASS_BLOCK.get(),
-            RUBlocks.DEEPSLATE_GRASS_BLOCK.get(),
-            RUBlocks.CHALK_GRASS_BLOCK.get(),
-            RUBlocks.GRASS_SPROUTS.get(),
-            RUBlocks.ORANGE_CONEFLOWER.get(),
-            RUBlocks.PURPLE_CONEFLOWER.get(),
-            RUBlocks.TASSEL.get(),
-            RUBlocks.CLOVER.get(),
-            RUBlocks.BLADED_GRASS.get(),
-            RUBlocks.BLADED_TALL_GRASS.get()
+    public static void tintBlocks(BiConsumer<BlockTintSource, List<Block>> consumer) {
+        consumer.accept(
+            BlockTintSources.grassBlock(),
+            List.of(
+                RUBlocks.PEAT_GRASS_BLOCK.get(),
+                RUBlocks.SILT_GRASS_BLOCK.get(),
+                RUBlocks.STONE_GRASS_BLOCK.get(),
+                RUBlocks.ARGILLITE_GRASS_BLOCK.get(),
+                RUBlocks.DEEPSLATE_GRASS_BLOCK.get(),
+                RUBlocks.CHALK_GRASS_BLOCK.get(),
+                RUBlocks.GRASS_SPROUTS.get(),
+                RUBlocks.ORANGE_CONEFLOWER.get(),
+                RUBlocks.PURPLE_CONEFLOWER.get(),
+                RUBlocks.TASSEL.get(),
+                RUBlocks.CLOVER.get(),
+                RUBlocks.BLADED_GRASS.get(),
+                RUBlocks.BLADED_TALL_GRASS.get()
+            )
         );
         
-        colors.register(
-            List.of(BlockTintSources.foliage()),
-            RUBlocks.ELEPHANT_EAR.get(),
-            RUBlocks.BAOBAB_NATURAL_SET.getLeaves(),
-            RUBlocks.MAGNOLIA_NATURAL_SET.getLeaves(),
-            RUBlocks.APPLE_OAK_NATURAL_SET.getLeaves(),
-            RUBlocks.FLOWERING_NATURAL_SET.getLeaves(),
-            RUBlocks.CYPRESS_NATURAL_SET.getLeaves(),
-            RUBlocks.EUCALYPTUS_NATURAL_SET.getLeaves(),
-            RUBlocks.PALM_NATURAL_SET.getLeaves(),
-            RUBlocks.JOSHUA_NATURAL_SET.getLeaves(),
-            RUBlocks.PINE_NATURAL_SET.getLeaves(),
-            RUBlocks.REDWOOD_NATURAL_SET.getLeaves(),
-            RUBlocks.WILLOW_NATURAL_SET.getLeaves(),
-            RUBlocks.MAPLE_NATURAL_SET.getLeaves(),
-            RUBlocks.MAPLE_LEAF_LITTER.get(),
-            RUBlocks.WINDSWEPT_GRASS.get(),
-            RUBlocks.SOCOTRA_NATURAL_SET.getLeaves(),
-            RUBlocks.KAPOK_NATURAL_SET.getLeaves(),
-            RUBlocks.KAPOK_VINES.get(),
-            RUBlocks.KAPOK_VINES_PLANT.get()
+        consumer.accept(
+            BlockTintSources.foliage(),
+            List.of(
+                RUBlocks.ELEPHANT_EAR.get(),
+                RUBlocks.BAOBAB_NATURAL_SET.getLeaves(),
+                RUBlocks.MAGNOLIA_NATURAL_SET.getLeaves(),
+                RUBlocks.APPLE_OAK_NATURAL_SET.getLeaves(),
+                RUBlocks.FLOWERING_NATURAL_SET.getLeaves(),
+                RUBlocks.CYPRESS_NATURAL_SET.getLeaves(),
+                RUBlocks.EUCALYPTUS_NATURAL_SET.getLeaves(),
+                RUBlocks.PALM_NATURAL_SET.getLeaves(),
+                RUBlocks.JOSHUA_NATURAL_SET.getLeaves(),
+                RUBlocks.PINE_NATURAL_SET.getLeaves(),
+                RUBlocks.REDWOOD_NATURAL_SET.getLeaves(),
+                RUBlocks.WILLOW_NATURAL_SET.getLeaves(),
+                RUBlocks.MAPLE_NATURAL_SET.getLeaves(),
+                RUBlocks.MAPLE_LEAF_LITTER.get(),
+                RUBlocks.WINDSWEPT_GRASS.get(),
+                RUBlocks.SOCOTRA_NATURAL_SET.getLeaves(),
+                RUBlocks.KAPOK_NATURAL_SET.getLeaves(),
+                RUBlocks.KAPOK_VINES.get(),
+                RUBlocks.KAPOK_VINES_PLANT.get()
+            )
         );
         
-        colors.register(
-            List.of(RUBlockTintSources.prismarite()),
-            RUBlocks.HANGING_PRISMARITE.get(),
-            RUBlocks.PRISMARITE_CLUSTER.get(),
-            RUBlocks.LARGE_PRISMARITE_CLUSTER.get(),
-            RUBlocks.PRISMOSS.get(),
-            RUBlocks.DEEPSLATE_PRISMOSS.get(),
-            RUBlocks.PRISMOSS_SPROUT.get()
+        consumer.accept(
+            RUBlockTintSources.prismarite(),
+            List.of(
+                RUBlocks.HANGING_PRISMARITE.get(),
+                RUBlocks.PRISMARITE_CLUSTER.get(),
+                RUBlocks.LARGE_PRISMARITE_CLUSTER.get(),
+                RUBlocks.PRISMOSS.get(),
+                RUBlocks.DEEPSLATE_PRISMOSS.get(),
+                RUBlocks.PRISMOSS_SPROUT.get()
+            )
         );
         
-        colors.register(
-            List.of(RUBlockTintSources.posBasedOrFoliage(RUColors::getRainbowGlassColor)),
-            RUBlocks.PRISMAGLASS.get()
+        consumer.accept(
+            RUBlockTintSources.posBasedOrFoliage(RUColors::getRainbowGlassColor),
+            List.of(RUBlocks.PRISMAGLASS.get())
         );
         
-        colors.register(
-            List.of(RUBlockTintSources.posBasedOrFoliage(RUColors::getRainbowGlassColor)),
-            RUBlocks.EUCALYPTUS_WOOD_SET.getLog(),
-            RUBlocks.EUCALYPTUS_WOOD_SET.getWood()
+        consumer.accept(
+            RUBlockTintSources.posBasedOrFoliage(RUColors::getRainbowGlassColor),
+            List.of(
+                RUBlocks.EUCALYPTUS_WOOD_SET.getLog(),
+                RUBlocks.EUCALYPTUS_WOOD_SET.getWood()
+            )
         );
         
-        colors.register(
-            List.of(RUBlockTintSources.posBasedOrFoliage(RUColors::getRainbowGlassColor)),
-            RUBlocks.SILVER_BIRCH_NATURAL_SET.getLeaves(),
-            RUBlocks.SILVER_BIRCH_LEAF_LITTER.get()
+        consumer.accept(
+            RUBlockTintSources.posBasedOrFoliage(RUColors::getRainbowGlassColor),
+            List.of(
+                RUBlocks.SILVER_BIRCH_NATURAL_SET.getLeaves(),
+                RUBlocks.SILVER_BIRCH_LEAF_LITTER.get()
+            )
         );
         
-        colors.register(
-            List.of(BlockTintSources.constant(0xff81cff9)),
-            RUBlocks.SKY_WISTERIA_NATURAL_SET.getLeaves(),
-            RUBlocks.SKY_WISTERIA_NATURAL_SET.getVines()
+        consumer.accept(
+            BlockTintSources.constant(0xff81cff9),
+            List.of(
+                RUBlocks.SKY_WISTERIA_NATURAL_SET.getLeaves(),
+                RUBlocks.SKY_WISTERIA_NATURAL_SET.getVines()
+            )
         );
         
-        colors.register(
-            List.of(BlockTintSources.constant(0xffc394ef)),
-            RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves(),
-            RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getVines()
+        consumer.accept(
+            BlockTintSources.constant(0xffc394ef),
+            List.of(
+                RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves(),
+                RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getVines()
+            )
         );
         
-        colors.register(
-            List.of(BlockTintSources.constant(0xffffa3ad)),
-            RUBlocks.SALMON_WISTERIA_NATURAL_SET.getLeaves(),
-            RUBlocks.SALMON_WISTERIA_NATURAL_SET.getVines()
+        consumer.accept(
+            BlockTintSources.constant(0xffffa3ad),
+            List.of(
+                RUBlocks.SALMON_WISTERIA_NATURAL_SET.getLeaves(),
+                RUBlocks.SALMON_WISTERIA_NATURAL_SET.getVines()
+            )
         );
     }
 

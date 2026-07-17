@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "wooden_sign",
   "key": {
-    "#": {
-      "item": "regions_unexplored:yellow_bioshroom_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "regions_unexplored:yellow_bioshroom_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

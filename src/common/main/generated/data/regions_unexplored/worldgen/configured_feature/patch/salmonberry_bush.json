@@ -1,54 +1,68 @@
 {
-  "type": "minecraft:random_patch",
+  "type": "lithostitched:placed",
   "config": {
     "feature": {
-      "feature": {
-        "type": "minecraft:simple_block",
-        "config": {
-          "to_place": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "regions_unexplored:salmonberry_bush",
-              "Properties": {
-                "age": "3"
-              }
+      "type": "minecraft:simple_block",
+      "config": {
+        "to_place": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "regions_unexplored:salmonberry_bush",
+            "Properties": {
+              "age": "3"
             }
           }
         }
-      },
-      "placement": [
-        {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:all_of",
-            "predicates": [
-              {
-                "type": "minecraft:matching_blocks",
-                "blocks": "minecraft:air"
-              },
-              {
-                "type": "minecraft:matching_blocks",
-                "blocks": [
-                  "minecraft:grass_block",
-                  "minecraft:podzol",
-                  "regions_unexplored:peat_grass_block",
-                  "regions_unexplored:silt_grass_block",
-                  "regions_unexplored:peat_podzol",
-                  "regions_unexplored:silt_podzol"
-                ],
-                "offset": [
-                  0,
-                  -1,
-                  0
-                ]
-              }
-            ]
-          }
-        }
-      ]
+      }
     },
-    "tries": 96,
-    "xz_spread": 7,
-    "y_spread": 3
+    "placement": [
+      {
+        "type": "minecraft:count",
+        "count": 127
+      },
+      {
+        "type": "minecraft:random_offset",
+        "xz_spread": {
+          "type": "minecraft:trapezoid",
+          "max": 7,
+          "min": -7,
+          "plateau": 0
+        },
+        "y_spread": {
+          "type": "minecraft:trapezoid",
+          "max": 3,
+          "min": -3,
+          "plateau": 0
+        }
+      },
+      {
+        "type": "minecraft:block_predicate_filter",
+        "predicate": {
+          "type": "minecraft:all_of",
+          "predicates": [
+            {
+              "type": "minecraft:matching_block_tag",
+              "tag": "minecraft:air"
+            },
+            {
+              "type": "minecraft:matching_blocks",
+              "blocks": [
+                "minecraft:grass_block",
+                "minecraft:podzol",
+                "regions_unexplored:peat_grass_block",
+                "regions_unexplored:silt_grass_block",
+                "regions_unexplored:peat_podzol",
+                "regions_unexplored:silt_podzol"
+              ],
+              "offset": [
+                0,
+                -1,
+                0
+              ]
+            }
+          ]
+        }
+      }
+    ]
   }
 }

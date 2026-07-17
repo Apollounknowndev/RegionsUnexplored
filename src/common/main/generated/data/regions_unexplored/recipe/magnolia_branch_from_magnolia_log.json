@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "branches",
   "key": {
-    "#": {
-      "item": "regions_unexplored:magnolia_log"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "regions_unexplored:magnolia_log",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "#X"

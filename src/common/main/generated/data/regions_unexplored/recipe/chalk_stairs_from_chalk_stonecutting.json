@@ -1,10 +1,7 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "regions_unexplored:chalk"
-  },
+  "ingredient": "regions_unexplored:chalk",
   "result": {
-    "count": 1,
     "id": "regions_unexplored:chalk_stairs"
   }
 }

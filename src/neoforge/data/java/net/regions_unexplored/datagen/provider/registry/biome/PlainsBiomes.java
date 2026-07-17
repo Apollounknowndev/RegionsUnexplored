@@ -4,6 +4,8 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
@@ -12,7 +14,6 @@ import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.regions_unexplored.datagen.provider.registry.configured_feature.RUShrubFeatures;
 import net.regions_unexplored.datagen.provider.registry.util.RUBiomeUtils;
-import net.regions_unexplored.datagen.provider.registry.placed_feature.RuMiscOverworldPlacements;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuTreePlacements;
 import net.regions_unexplored.datagen.provider.registry.placed_feature.RuVegetationPlacements;
 import net.regions_unexplored.registry.data.RUBiomes;
@@ -24,7 +25,7 @@ public class PlainsBiomes {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.plainsSpawns(spawnBuilder);
         if (hasWolfSpawns) {
-            spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 2, 4, 4));
+            spawnBuilder.addSpawn(MobCategory.CREATURE, 2, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 4, 4));
         }
         return spawnBuilder;
     }
@@ -35,15 +36,14 @@ public class PlainsBiomes {
         BiomeDefaultFeatures.addDefaultOres(builder);
         BiomeDefaultFeatures.addDefaultSoftDisks(builder);
         BiomeDefaultFeatures.addDefaultMushrooms(builder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder, true);
         return builder;
     }
 
     public static Biome flowerFields(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(1)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0x5db743)
-            .grassColorOverride(0x73c94b)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FLOWER_FOREST));
+            .grassColorOverride(0x73c94b);
 
         //add features
         BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
@@ -59,6 +59,7 @@ public class PlainsBiomes {
         MobSpawnSettings.Builder spawnBuilder = basePlainsSpawning(false);
 
         return biomeBuilder(0.975f, 0.8f)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_FLOWER_FOREST))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -66,10 +67,9 @@ public class PlainsBiomes {
     }
 
     public static Biome grassland(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.9f)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0x92bf54)
-            .grassColorOverride(0xa3c563)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
+            .grassColorOverride(0xa3c563);
 
         //add features
         BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
@@ -85,6 +85,7 @@ public class PlainsBiomes {
         MobSpawnSettings.Builder spawnBuilder = basePlainsSpawning(false);
 
         return biomeBuilder(0.85f, 0.45f)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_FOREST))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -92,10 +93,9 @@ public class PlainsBiomes {
     }
 
     public static Biome cloverPlains(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.7f)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0xa3c563)
-            .grassColorOverride(0xa3c563)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FLOWER_FOREST));
+            .grassColorOverride(0xa3c563);
 
         //add features
         BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
@@ -110,6 +110,7 @@ public class PlainsBiomes {
         MobSpawnSettings.Builder spawnBuilder = basePlainsSpawning(true);
 
         return biomeBuilder(1, 0.3f)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_FLOWER_FOREST))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -117,10 +118,9 @@ public class PlainsBiomes {
     }
 
     public static Biome poppyFields(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.7f)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0x73a538)
-            .grassColorOverride(0x84c445)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
+            .grassColorOverride(0x84c445);
 
         //add features
         BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
@@ -135,6 +135,7 @@ public class PlainsBiomes {
         MobSpawnSettings.Builder spawnBuilder = basePlainsSpawning(true);
 
         return biomeBuilder(0.7f, 0.5f)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_FOREST))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -142,10 +143,9 @@ public class PlainsBiomes {
     }
 
     public static Biome prairie(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.7f)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0x77b14d)
-            .grassColorOverride(0xd6d579)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
+            .grassColorOverride(0xd6d579);
 
         //add features
         BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
@@ -162,6 +162,7 @@ public class PlainsBiomes {
         MobSpawnSettings.Builder spawnBuilder = basePlainsSpawning(false);
 
         return biomeBuilder(0.75f, 0.7f)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_FOREST))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -169,10 +170,9 @@ public class PlainsBiomes {
     }
 
     public static Biome shrubland(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.7f)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0xff76af57)
-            .grassColorOverride(0xff9ab75b)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
+            .grassColorOverride(0xff9ab75b);
 
         //add features
         BiomeGenerationSettings.Builder builder = basePlainsGeneration(featureGetter, carverGetter);
@@ -189,6 +189,7 @@ public class PlainsBiomes {
         MobSpawnSettings.Builder spawnBuilder = basePlainsSpawning(true);
 
         return biomeBuilder(0.575f, 0.4f)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_FOREST))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())

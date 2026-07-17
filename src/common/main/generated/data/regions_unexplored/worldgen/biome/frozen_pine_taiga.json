@@ -1,31 +1,24 @@
 {
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
-    ]
+  "attributes": {
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "minecraft:music.overworld.grove"
+      }
+    },
+    "minecraft:visual/sky_color": "#839eff"
   },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
   "downfall": 0.6,
   "effects": {
-    "fog_color": 12638463,
-    "foliage_color": 6854744,
-    "grass_color": 6860132,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "minecraft:music.overworld.grove"
-    },
-    "sky_color": 8364543,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    "foliage_color": "#689858",
+    "grass_color": "#68ad64",
+    "water_color": "#3f76e4"
   },
   "features": [
     [],
@@ -81,8 +74,9 @@
     [
       "minecraft:glow_lichen",
       "minecraft:patch_large_fern",
-      "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
+      "minecraft:patch_sugar_cane",
+      "minecraft:patch_firefly_bush_near_water",
       "minecraft:patch_berry_common",
       "regions_unexplored:tree/group/frozen_pine_taiga",
       "regions_unexplored:tree/fallen/pine_on_dirt",

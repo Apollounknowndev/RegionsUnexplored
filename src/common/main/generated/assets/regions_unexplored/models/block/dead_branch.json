@@ -1,7 +1,6 @@
 {
-  "parent": "regions_unexplored:block/template/branch",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "branch": "regions_unexplored:block/dead_branch",
-    "log": "regions_unexplored:block/dead_log"
+    "layer0": "regions_unexplored:item/dead_branch"
   }
 }

@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "prismarite",
   "key": {
-    "#": {
-      "item": "regions_unexplored:prismarite_cluster"
-    }
+    "#": "regions_unexplored:prismarite_cluster"
   },
   "pattern": [
     "#",
     "#"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:large_prismarite_cluster"
   }
 }

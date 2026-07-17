@@ -1,31 +1,18 @@
 {
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
-    ]
+  "attributes": {
+    "minecraft:visual/sky_color": "#7aa5ff",
+    "minecraft:visual/water_fog_color": "#717868"
   },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
   "downfall": 0.7,
   "effects": {
-    "fog_color": 12638463,
-    "foliage_color": -7159980,
-    "grass_color": -6044317,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "minecraft:music.overworld.forest"
-    },
-    "sky_color": 7972607,
-    "water_color": -12619852,
-    "water_fog_color": 7436392
+    "foliage_color": "#92bf54",
+    "grass_color": "#a3c563",
+    "water_color": "#3f6fb4"
   },
   "features": [
     [],
@@ -79,8 +66,9 @@
       "minecraft:glow_lichen",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
+      "minecraft:patch_sugar_cane",
+      "minecraft:patch_firefly_bush_near_water",
       "minecraft:seagrass_river",
       "regions_unexplored:patch/cattail",
       "regions_unexplored:patch/tall_grass",

@@ -3,12 +3,8 @@
   "category": "building",
   "group": "bioshroom_blocks",
   "key": {
-    "#": {
-      "item": "regions_unexplored:green_bioshroom_block"
-    },
-    "X": {
-      "item": "minecraft:glowstone"
-    }
+    "#": "regions_unexplored:green_bioshroom_block",
+    "X": "minecraft:glowstone"
   },
   "pattern": [
     " # ",

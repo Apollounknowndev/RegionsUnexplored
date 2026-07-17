@@ -87,7 +87,6 @@
       "translate": "advancements.regions_unexplored.spelunker.description"
     },
     "icon": {
-      "count": 1,
       "id": "regions_unexplored:dropleaf"
     },
     "title": {

@@ -47,7 +47,6 @@
       "translate": "advancements.regions_unexplored.mycologist.description"
     },
     "icon": {
-      "count": 1,
       "id": "regions_unexplored:blue_bioshroom"
     },
     "title": {

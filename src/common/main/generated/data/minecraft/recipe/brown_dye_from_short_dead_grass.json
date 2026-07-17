@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "brown_dye",
+  "ingredients": [
+    "regions_unexplored:short_dead_grass"
+  ],
+  "result": {
+    "id": "minecraft:brown_dye"
+  }
+}

@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "boat",
   "key": {
-    "#": {
-      "item": "regions_unexplored:alpha_planks"
-    }
+    "#": "regions_unexplored:alpha_planks"
   },
   "pattern": [
     "# #",
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "minecraft:oak_boat"
   }
 }

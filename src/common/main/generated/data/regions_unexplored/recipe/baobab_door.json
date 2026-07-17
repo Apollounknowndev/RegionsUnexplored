@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "wooden_door",
   "key": {
-    "#": {
-      "item": "regions_unexplored:baobab_planks"
-    }
+    "#": "regions_unexplored:baobab_planks"
   },
   "pattern": [
     "##",

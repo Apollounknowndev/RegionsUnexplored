@@ -3,15 +3,10 @@
   "category": "misc",
   "group": "chest_boat",
   "ingredients": [
-    {
-      "item": "minecraft:chest"
-    },
-    {
-      "item": "regions_unexplored:joshua_boat"
-    }
+    "minecraft:chest",
+    "regions_unexplored:joshua_boat"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:joshua_chest_boat"
   }
 }

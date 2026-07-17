@@ -3,16 +3,13 @@
   "category": "building",
   "group": "bamboo",
   "key": {
-    "#": {
-      "tag": "regions_unexplored:bamboo_logs"
-    }
+    "#": "#regions_unexplored:bamboo_logs"
   },
   "pattern": [
     "#",
     "#"
   ],
   "result": {
-    "count": 1,
     "id": "minecraft:bamboo"
   }
 }

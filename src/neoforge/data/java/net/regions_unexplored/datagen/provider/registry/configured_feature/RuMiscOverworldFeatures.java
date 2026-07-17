@@ -7,13 +7,13 @@ import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.CaveFeatures;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.InclusiveRange;
-import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.*;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CarvedPumpkinBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,7 +23,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -70,6 +70,7 @@ public class RuMiscOverworldFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> holderGetter = context.lookup(Registries.CONFIGURED_FEATURE);
         RuleTest stoneOreTest = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateOreTest = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        HolderSet<Block> replaceables = context.lookup(Registries.BLOCK).getOrThrow(BlockTags.DRIPSTONE_REPLACEABLE);
         List<OreConfiguration.TargetBlockState> ORE_REDSTONE_TARGET_LIST = List.of(OreConfiguration.target(stoneOreTest, Blocks.REDSTONE_ORE.defaultBlockState()), OreConfiguration.target(deepslateOreTest, Blocks.DEEPSLATE_REDSTONE_ORE.defaultBlockState()));
 
         //---------------------FEATURES---------------------//
@@ -83,10 +84,10 @@ public class RuMiscOverworldFeatures {
         //CAVE_FEATURES
         registerPlaced(context, SPECIAL_POINTED_REDSTONE, Feature.SIMPLE_RANDOM_SELECTOR, new SimpleRandomFeatureConfiguration(HolderSet.direct(PlacementUtils.inlinePlaced(RUFeatureTypes.POINTED_REDSTONE.get(), new PointedRedstoneConfiguration(0.5F, 0.7F, 0.5F, 0.5F), EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1))), PlacementUtils.inlinePlaced(RUFeatureTypes.POINTED_REDSTONE.get(), new PointedRedstoneConfiguration(0.5F, 0.7F, 0.5F, 0.5F), EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(-1))))));
         registerPlaced(context, SPECIAL_LARGE_POINTED_REDSTONE, LithostitchedFeatures.LARGE_DRIPSTONE, LithostitchedFeatures.largeDripstone(simple(RUBlocks.RAW_REDSTONE_BLOCK.get()), context.lookup(Registries.BLOCK).getOrThrow(BlockTags.BASE_STONE_OVERWORLD), 30, UniformInt.of(1, 6), UniformFloat.of(0.4F, 2.0F), 0.33F, UniformFloat.of(0.3F, 0.9F), UniformFloat.of(0.4F, 1.0F), UniformFloat.of(0.0F, 0.3F), 4, 0.6F));
-        registerPlaced(context, SPECIAL_POINTED_REDSTONE_CLUSTER, RUFeatureTypes.POINTED_REDSTONE_CLUSTER.get(), new PointedRedstoneClusterConfiguration(12, UniformInt.of(3, 6), UniformInt.of(2, 8), 1, 3, UniformInt.of(2, 4), UniformFloat.of(0.3F, 0.7F), ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
+        registerPlaced(context, SPECIAL_POINTED_REDSTONE_CLUSTER, RUFeatureTypes.POINTED_REDSTONE_CLUSTER.get(), new PointedRedstoneClusterConfiguration(RUBlocks.RAW_REDSTONE_BLOCK.get().defaultBlockState(), RUBlocks.REDSTONE_SPIKE.get().defaultBlockState(), replaceables, 12, UniformInt.of(3, 6), UniformInt.of(2, 8), 1, 3, UniformInt.of(2, 4), UniformFloat.of(0.3F, 0.7F), ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
         registerPlaced(context, SPECIAL_ORE_REDSTONE_LARGE, Feature.ORE, new OreConfiguration(ORE_REDSTONE_TARGET_LIST, 20));
 
-        registerPlaced(context, PATCH_PRISMARITE_CLUSTER, Feature.RANDOM_PATCH, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.LARGE_PRISMARITE_CLUSTER.get().defaultBlockState(), 1).add(RUBlocks.PRISMARITE_CLUSTER.get().defaultBlockState(), 5)), 32));
+        registerPlaced(context, PATCH_PRISMARITE_CLUSTER, LithostitchedFeatures.PLACED, randomPatch(new WeightedStateProvider(WeightedList.<BlockState>builder().add(RUBlocks.LARGE_PRISMARITE_CLUSTER.get().defaultBlockState(), 1).add(RUBlocks.PRISMARITE_CLUSTER.get().defaultBlockState(), 5)), 32));
         registerPlaced(context, SPECIAL_HANGING_PRISMARITE_CLUSTER, RUFeatureTypes.HANGING_PRISMARITE.get(), FeatureConfiguration.NONE);
 
         registerPlaced(context, SPECIAL_CALCITE_POOL, Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(BlockTags.LUSH_GROUND_REPLACEABLE, simple(Blocks.CALCITE), PlacementUtils.inlinePlaced(holderGetter.getOrThrow(CaveFeatures.POINTED_DRIPSTONE)), CaveSurface.FLOOR, ConstantInt.of(3), 0.8F, 5, 0.1F, UniformInt.of(4, 7), 0.7F));
@@ -99,8 +100,8 @@ public class RuMiscOverworldFeatures {
             context.lookup(Registries.BLOCK).getOrThrow(BlockTags.BASE_STONE_OVERWORLD)
         ));
         registerPlaced(context, SPECIAL_INFERNO_LAVA_DELTA, Feature.DISK, new DiskConfiguration(
-            new RuleBasedBlockStateProvider(simple(Blocks.MAGMA_BLOCK), List.of(
-                new RuleBasedBlockStateProvider.Rule(
+            new RuleBasedStateProvider(simple(Blocks.MAGMA_BLOCK), List.of(
+                new RuleBasedStateProvider.Rule(
                     BlockPredicate.allOf(BlockPredicate.not(BlockPredicate.solid(Vec3i.ZERO.above())), LithostitchedBlockPredicates.randomChance(0.25f)),
                     simple(Blocks.LAVA)
                 )
@@ -119,7 +120,7 @@ public class RuMiscOverworldFeatures {
         
         
         
-        registerPlaced(context, PATCH_ASH_VENTS_INFERNO, Feature.RANDOM_PATCH, new RandomPatchConfiguration(144, 5, 1, Holder.direct(new PlacedFeature(
+        registerPlaced(context, PATCH_ASH_VENTS_INFERNO, LithostitchedFeatures.PLACED, randomPatch(144, 5, 1, Holder.direct(new PlacedFeature(
             Holder.direct(new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
                 List.of(new WeightedPlacedFeature(
                     inlinePlaced(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
@@ -130,7 +131,7 @@ public class RuMiscOverworldFeatures {
                 inlinePlaced(new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
                     List.of(
                         new BlockColumnConfiguration.Layer(UniformInt.of(0, 4), simple(Blocks.BASALT)),
-                        new BlockColumnConfiguration.Layer(new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder().add(ConstantInt.of(0), 9).add(ConstantInt.of(1), 1).build()), simple(RUBlocks.ASH_VENT.get()))
+                        new BlockColumnConfiguration.Layer(new WeightedListInt(WeightedList.<IntProvider>builder().add(ConstantInt.of(0), 9).add(ConstantInt.of(1), 1).build()), simple(RUBlocks.ASH_VENT.get()))
                     ),
                     Direction.UP,
                     BlockPredicate.allOf(
@@ -164,14 +165,17 @@ public class RuMiscOverworldFeatures {
         registerPlaced(context, SPECIAL_WATER_EDGE, RUFeatureTypes.WATER_EDGE.get(), FeatureConfiguration.NONE);
         registerPlaced(context, SPECIAL_CARVED_LIMITED_POOL, RUFeatureTypes.CARVED_LIMITED_POOL.get(), new CarvedLimitedPoolFeatureConfig(3, ConstantInt.of(4), BlockPredicate.matchesBlocks(Blocks.MUD), BlockPredicate.matchesBlocks(Blocks.MUD), BlockStateProvider.simple(Blocks.DIRT), BlockStateProvider.simple(Blocks.GRASS_BLOCK)));
         registerPlaced(context, SPECIAL_ICICLE_UP, RUFeatureTypes.ICICLE_UP.get(), FeatureConfiguration.NONE);
-        registerPlaced(context, PATCH_SILT_PODZOL_PUMPKINS, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
-            new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+        registerPlaced(context, PATCH_SILT_PODZOL_PUMPKINS, LithostitchedFeatures.PLACED, randomPatch(
+            new WeightedStateProvider(WeightedList.<BlockState>builder()
                 .add(Blocks.PUMPKIN.defaultBlockState(), 96)
                 .add(Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, Direction.NORTH), 1)
                 .add(Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, Direction.SOUTH), 1)
                 .add(Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, Direction.EAST), 1)
-                .add(Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, Direction.WEST), 1))
-        ), List.of(RUBlocks.SILT_PODZOL.get()), 16));
+                .add(Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, Direction.WEST), 1)
+            ),
+            16,
+            BlockPredicate.matchesBlocks(Vec3i.ZERO.below(), RUBlocks.SILT_PODZOL.get()))
+        );
         
         var rockCobblestone = register(context, ROCK_COBBLESTONE, RUFeatureTypes.ROCK.get(), RockFeatureConfig.create(Blocks.COBBLESTONE));
         var rockMixedCobblestone = register(context, ROCK_MIXED_COBBLESTONE, RUFeatureTypes.ROCK.get(),
@@ -212,9 +216,5 @@ public class RuMiscOverworldFeatures {
         );
 
         register(context, RUConfiguredFeatures.BONEMEAL_ALPHA_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simple(RUBlocks.ALPHA_ROSE.get())));
-    }
-
-    private static RandomPatchConfiguration grassPatch(BlockStateProvider stateProvider, int i) {
-        return FeatureUtils.simpleRandomPatchConfiguration(i, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(stateProvider)));
     }
 }

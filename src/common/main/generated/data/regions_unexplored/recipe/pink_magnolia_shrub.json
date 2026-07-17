@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "shrubs",
   "key": {
-    "#": {
-      "item": "regions_unexplored:pink_magnolia_sapling"
-    }
+    "#": "regions_unexplored:pink_magnolia_sapling"
   },
   "pattern": [
     "#",
     "#"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:pink_magnolia_shrub"
   }
 }

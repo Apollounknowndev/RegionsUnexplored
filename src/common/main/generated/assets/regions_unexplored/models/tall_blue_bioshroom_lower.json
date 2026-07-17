@@ -1,0 +1,6 @@
+{
+  "parent": "cross",
+  "textures": {
+    "cross": "regions_unexplored:block/tall_blue_bioshroom_bottom"
+  }
+}

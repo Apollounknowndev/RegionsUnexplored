@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:block/red_maple_leaves"
+      "model": "regions_unexplored:red_maple_leaves"
     }
   }
 }

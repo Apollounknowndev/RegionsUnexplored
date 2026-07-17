@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "redstone",
   "key": {
-    "#": {
-      "item": "minecraft:redstone"
-    }
+    "#": "minecraft:redstone"
   },
   "pattern": [
     "###"

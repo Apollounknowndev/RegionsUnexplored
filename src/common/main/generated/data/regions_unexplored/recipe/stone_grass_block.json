@@ -3,19 +3,14 @@
   "category": "building",
   "group": "stone_grass",
   "key": {
-    "#": {
-      "item": "minecraft:stone"
-    },
-    "X": {
-      "tag": "regions_unexplored:grass"
-    }
+    "#": "minecraft:stone",
+    "X": "#regions_unexplored:grass"
   },
   "pattern": [
     "X",
     "#"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:stone_grass_block"
   }
 }

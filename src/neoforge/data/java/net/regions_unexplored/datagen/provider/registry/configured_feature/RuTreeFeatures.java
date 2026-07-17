@@ -8,7 +8,7 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.core.Vec3i;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -63,8 +63,8 @@ public class RuTreeFeatures {
         var giantBlueBioshroom = register(context, TREE_GIANT_BLUE_BIOSHROOM, RUFeatureTypes.GIANT_BLUE_BIOSHROOM.get(), new GiantBioshroomConfiguration(simple(RUBlocks.BLUE_BIOSHROOM_WOOD_SET.getLog().defaultBlockState()), simple(RUBlocks.BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), simple(RUBlocks.GLOWING_BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), 7, 7));
         var giantGreenBioshroom = register(context, TREE_GIANT_GREEN_BIOSHROOM, RUFeatureTypes.GIANT_GREEN_BIOSHROOM.get(), new GiantBioshroomConfiguration(simple(RUBlocks.GREEN_BIOSHROOM_WOOD_SET.getLog().defaultBlockState()), simple(RUBlocks.GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), simple(RUBlocks.GLOWING_GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), 8, 5));
         var giantPinkBioshroom = register(context, TREE_GIANT_PINK_BIOSHROOM, RUFeatureTypes.GIANT_PINK_BIOSHROOM.get(), new GiantBioshroomConfiguration(simple(RUBlocks.PINK_BIOSHROOM_WOOD_SET.getLog().defaultBlockState()), simple(RUBlocks.PINK_BIOSHROOM_BLOCK.get().defaultBlockState()), simple(RUBlocks.GLOWING_PINK_BIOSHROOM_BLOCK.get().defaultBlockState()), 7, 8));
-        var giantBrownBioshroom = register(context, TREE_GIANT_BROWN_MUSHROOM, Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(simple(Blocks.BROWN_MUSHROOM_BLOCK.defaultBlockState().setValue(HugeMushroomBlock.UP, true).setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))), simple(Blocks.MUSHROOM_STEM.defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.valueOf(false)).setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))), 3));
-        var giantRedMushroom = register(context, TREE_GIANT_RED_MUSHROOM, Feature.HUGE_RED_MUSHROOM, new HugeMushroomFeatureConfiguration(simple(Blocks.RED_MUSHROOM_BLOCK.defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)), simple(Blocks.MUSHROOM_STEM.defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.valueOf(false)).setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))), 2));
+        var giantBrownBioshroom = register(context, TREE_GIANT_BROWN_MUSHROOM, Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(simple(Blocks.BROWN_MUSHROOM_BLOCK.defaultBlockState().setValue(HugeMushroomBlock.UP, true).setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))), simple(Blocks.MUSHROOM_STEM.defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.valueOf(false)).setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))), 3, BlockPredicate.matchesTag(BlockTags.HUGE_BROWN_MUSHROOM_CAN_PLACE_ON)));
+        var giantRedMushroom = register(context, TREE_GIANT_RED_MUSHROOM, Feature.HUGE_RED_MUSHROOM, new HugeMushroomFeatureConfiguration(simple(Blocks.RED_MUSHROOM_BLOCK.defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)), simple(Blocks.MUSHROOM_STEM.defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.valueOf(false)).setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))), 2, BlockPredicate.matchesTag(BlockTags.HUGE_RED_MUSHROOM_CAN_PLACE_ON)));
 
         registerSelector(context, TREE_GROUP_BIOSHROOM_CAVES, builder -> builder
             .add(direct(giantBlueBioshroom), 1)
@@ -80,10 +80,10 @@ public class RuTreeFeatures {
         
         register(context, TREE_ALPHA_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(RUBlocks.ALPHA_WOOD_SET.getLog().defaultBlockState()), new StraightTrunkPlacer(4, 2, 0), simple(RUBlocks.ALPHA_NATURAL_SET.getLeaves().defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build());
         
-        register(context, TREE_BAMBOO, RUFeatureTypes.BAMBOO_TREE.get(), new RUTreeConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RUBlocks.BAMBOO_LOG.get().defaultBlockState(), 1).add(RUBlocks.BAMBOO_LOG.get().defaultBlockState().setValue(BambooLogBlock.LEAVES, true), 2)), simple(RUBlocks.BAMBOO_NATURAL_SET.getLeaves().defaultBlockState()), simple(RUBlocks.OAK_NATURAL_SET.getBranch().defaultBlockState()), 12, 8));
+        register(context, TREE_BAMBOO, RUFeatureTypes.BAMBOO_TREE.get(), new RUTreeConfiguration(new WeightedStateProvider(net.minecraft.util.random.WeightedList.<BlockState>builder().add(RUBlocks.BAMBOO_LOG.get().defaultBlockState(), 1).add(RUBlocks.BAMBOO_LOG.get().defaultBlockState().setValue(BambooLogBlock.LEAVES, true), 2)), simple(RUBlocks.BAMBOO_NATURAL_SET.getLeaves().defaultBlockState()), simple(RUBlocks.OAK_NATURAL_SET.getBranch().defaultBlockState()), 12, 8));
         
-        register(context, TREE_FLOWERING_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(Blocks.OAK_LOG.defaultBlockState()),new StraightTrunkPlacer(4, 3, 0),new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.OAK_LEAVES.defaultBlockState(), 3).add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves().defaultBlockState(), 1)),new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build());
-        register(context, TREE_BIG_FLOWERING_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(Blocks.OAK_LOG.defaultBlockState()),new FancyTrunkPlacer(8, 11, 0),new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.OAK_LEAVES.defaultBlockState(), 3).add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves().defaultBlockState(), 1)),new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().build());
+        register(context, TREE_FLOWERING_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(Blocks.OAK_LOG.defaultBlockState()),new StraightTrunkPlacer(4, 3, 0),new WeightedStateProvider(net.minecraft.util.random.WeightedList.<BlockState>builder().add(Blocks.OAK_LEAVES.defaultBlockState(), 3).add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves().defaultBlockState(), 1)),new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build());
+        register(context, TREE_BIG_FLOWERING_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(Blocks.OAK_LOG.defaultBlockState()),new FancyTrunkPlacer(8, 11, 0),new WeightedStateProvider(net.minecraft.util.random.WeightedList.<BlockState>builder().add(Blocks.OAK_LEAVES.defaultBlockState(), 3).add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves().defaultBlockState(), 1)),new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().build());
         
         var appleOak = register(context, TREE_APPLE_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
             simple(Blocks.OAK_LOG),
@@ -195,7 +195,7 @@ public class RuTreeFeatures {
            direct(giantCypress)
        ));
 
-       register(context, TREE_CHERRY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(Blocks.CHERRY_LOG), new CherryTrunkPlacer(7, 1, 0, new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder().add(ConstantInt.of(1), 1).add(ConstantInt.of(2), 1).add(ConstantInt.of(3), 1).build()), UniformInt.of(2, 4), UniformInt.of(-4, -3), UniformInt.of(-1, 0)), simple(Blocks.CHERRY_LEAVES), new CherryFoliagePlacer(ConstantInt.of(4), ConstantInt.of(0), ConstantInt.of(5), 0.25F, 0.5F, 0.16666667F, 0.33333334F), new TwoLayersFeatureSize(1, 0, 2)).ignoreVines().build());
+       register(context, TREE_CHERRY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(Blocks.CHERRY_LOG), new CherryTrunkPlacer(7, 1, 0, new WeightedListInt(net.minecraft.util.random.WeightedList.<IntProvider>builder().add(ConstantInt.of(1), 1).add(ConstantInt.of(2), 1).add(ConstantInt.of(3), 1).build()), UniformInt.of(2, 4), UniformInt.of(-4, -3), UniformInt.of(-1, 0)), simple(Blocks.CHERRY_LEAVES), new CherryFoliagePlacer(ConstantInt.of(4), ConstantInt.of(0), ConstantInt.of(5), 0.25F, 0.5F, 0.16666667F, 0.33333334F), new TwoLayersFeatureSize(1, 0, 2)).ignoreVines().build());
 
        var deadBog = register(context, TREE_DEAD_BOG, RUFeatureTypes.DEAD_TREE.get(), new RUTreeConfiguration(simple(RUBlocks.DEAD_WOOD_SET.getLog().defaultBlockState()), simple(RUBlocks.DEAD_NATURAL_SET.getLeaves().defaultBlockState()), simple(RUBlocks.DEAD_NATURAL_SET.getBranch().defaultBlockState()), 6, 2));
 
@@ -305,14 +305,14 @@ public class RuTreeFeatures {
            .add(direct(bigOrangeMaple))
        .build()));
 
-       register(context, TREE_OAK_WITH_FLOWERS, RUFeatureTypes.ASPEN_TREE.get(), new RUTreeConfiguration(simple(Blocks.OAK_LOG.defaultBlockState()), new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.OAK_LEAVES.defaultBlockState(), 3).add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves().defaultBlockState(), 1)), simple(RUBlocks.OAK_NATURAL_SET.getBranch().defaultBlockState()), 5, 5));
+       register(context, TREE_OAK_WITH_FLOWERS, RUFeatureTypes.ASPEN_TREE.get(), new RUTreeConfiguration(simple(Blocks.OAK_LOG.defaultBlockState()), new WeightedStateProvider(net.minecraft.util.random.WeightedList.<BlockState>builder().add(Blocks.OAK_LEAVES.defaultBlockState(), 3).add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves().defaultBlockState(), 1)), simple(RUBlocks.OAK_NATURAL_SET.getBranch().defaultBlockState()), 5, 5));
        
        var oakWithBranch = register(context, TREE_OAK_WITH_BRANCH, Feature.TREE, mapleSmall(Blocks.OAK_LOG, Blocks.OAK_LEAVES, RUBlocks.OAK_NATURAL_SET.getBranch(), null));
        var oak = register(context, TREE_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(Blocks.OAK_LOG.defaultBlockState()), new StraightTrunkPlacer(5, 3, 0), simple(Blocks.OAK_LEAVES.defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(List.of(new BeehiveDecorator(0.005f))).ignoreVines().build());
        var tallOak = register(context, TREE_OAK_TALL, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(Blocks.OAK_LOG.defaultBlockState()), new StraightTrunkPlacer(6, 4, 0), simple(Blocks.OAK_LEAVES.defaultBlockState()), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).decorators(List.of(new BeehiveDecorator(0.005f))).ignoreVines().build());
        var bigOak = register(context, TREE_BIG_OAK, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(Blocks.OAK_LOG.defaultBlockState()), new FancyTrunkPlacer(7, 10, 0), simple(Blocks.OAK_LEAVES.defaultBlockState()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().build());
        var oakBush = register(context, TREE_OAK_BUSH, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(Blocks.OAK_LOG.defaultBlockState()), new StraightTrunkPlacer(1, 0, 0), simple(Blocks.OAK_LEAVES.defaultBlockState()), new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2), new TwoLayersFeatureSize(0, 0, 0)).build());
-       var oakBushWithFlowers = register(context, TREE_OAK_BUSH_WITH_FLOWERS, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(Blocks.OAK_LOG.defaultBlockState()), new StraightTrunkPlacer(1, 0, 0), new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.OAK_LEAVES.defaultBlockState(), 3).add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves().defaultBlockState(), 1)), new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2), new TwoLayersFeatureSize(0, 0, 0)).build());
+       var oakBushWithFlowers = register(context, TREE_OAK_BUSH_WITH_FLOWERS, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(simple(Blocks.OAK_LOG.defaultBlockState()), new StraightTrunkPlacer(1, 0, 0), new WeightedStateProvider(net.minecraft.util.random.WeightedList.<BlockState>builder().add(Blocks.OAK_LEAVES.defaultBlockState(), 3).add(RUBlocks.FLOWERING_NATURAL_SET.getLeaves().defaultBlockState(), 1)), new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2), new TwoLayersFeatureSize(0, 0, 0)).build());
        var smallOak = register(context, TREE_SMALL_OAK, RUFeatureTypes.SMALL_OAK_TREE.get(), new RUTreeConfiguration(simple(RUBlocks.SMALL_OAK_LOG.get()), simple(Blocks.OAK_LEAVES), simple(RUBlocks.OAK_NATURAL_SET.getBranch()), 5, 4));
        
        registerPlaced(context, TREE_GROUP_ARID_MOUNTAINS, LithostitchedFeatures.PLACED, LithostitchedFeatures.placed(direct(oakShrubSmall)));
@@ -401,7 +401,8 @@ public class RuTreeFeatures {
            simple(Blocks.JUNGLE_LEAVES),
            new MagnoliaFoliagePlacer(),
            Optional.of(new MagnoliaRootPlacer(ConstantInt.ZERO, simple(Blocks.JUNGLE_LOG), Optional.empty())),
-           new TwoLayersFeatureSize(1, 0, 1)
+           new TwoLayersFeatureSize(1, 0, 1),
+           TreeConfiguration.PLACE_BELOW_OVERWORLD_TRUNKS
        ).ignoreVines().build());
        
        var palm = register(context, TREE_PALM, RUFeatureTypes.PALM_TREE.get(), new RUTreeConfiguration(simple(RUBlocks.PALM_WOOD_SET.getLog().defaultBlockState()), simple(RUBlocks.PALM_NATURAL_SET.getLeaves().defaultBlockState()), simple(RUBlocks.PALM_NATURAL_SET.getBranch().defaultBlockState()), 8, 5));
@@ -681,7 +682,8 @@ public class RuTreeFeatures {
            leaves(RUBlocks.WILLOW_NATURAL_SET),
            new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3),
            WillowRootPlacer.create(RUBlocks.WILLOW_WOOD_SET, 0.5f),
-           new TwoLayersFeatureSize(1, 0, 1)
+           new TwoLayersFeatureSize(1, 0, 1),
+           TreeConfiguration.PLACE_BELOW_OVERWORLD_TRUNKS
        ).build());
        
        var willowBig = register(context, TREE_BIG_WILLOW, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -690,7 +692,8 @@ public class RuTreeFeatures {
            leaves(RUBlocks.WILLOW_NATURAL_SET),
            new WillowFoliagePlacer(0.25F),
            WillowRootPlacer.create(RUBlocks.WILLOW_WOOD_SET, 0.5f),
-           new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))
+           new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)),
+           TreeConfiguration.PLACE_BELOW_OVERWORLD_TRUNKS
        ).ignoreVines().build());
        
        var willowSwamp = register(context, TREE_WILLOW_SWAMP, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -699,7 +702,8 @@ public class RuTreeFeatures {
            leaves(RUBlocks.WILLOW_NATURAL_SET),
            new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3),
            WillowRootPlacer.create(RUBlocks.WILLOW_WOOD_SET, 1),
-           new TwoLayersFeatureSize(1, 0, 1)
+           new TwoLayersFeatureSize(1, 0, 1),
+           TreeConfiguration.PLACE_BELOW_OVERWORLD_TRUNKS
        ).decorators(ImmutableList.of(new LeaveVineDecorator(0.25f))).build());
         
         var oakSwamp = register(context, TREE_OAK_SWAMP, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -708,7 +712,8 @@ public class RuTreeFeatures {
             BlockStateProvider.simple(Blocks.OAK_LEAVES),
             new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3),
             WillowRootPlacer.create(Blocks.OAK_LOG, 0.5f),
-            new TwoLayersFeatureSize(1, 0, 1)
+            new TwoLayersFeatureSize(1, 0, 1),
+            TreeConfiguration.PLACE_BELOW_OVERWORLD_TRUNKS
         ).decorators(ImmutableList.of(new LeaveVineDecorator(0.25f))).build());
        
        
@@ -725,7 +730,8 @@ public class RuTreeFeatures {
            simple(RUBlocks.SKY_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()),
            new MagnoliaFoliagePlacer(),
            Optional.of(new MagnoliaRootPlacer(ConstantInt.ZERO, wisteriaLog, Optional.empty())),
-           new TwoLayersFeatureSize(1, 0, 1)
+           new TwoLayersFeatureSize(1, 0, 1),
+           TreeConfiguration.PLACE_BELOW_OVERWORLD_TRUNKS
        ).ignoreVines().decorators(List.of(
            HangingVinesDecorator.create(RUBlocks.SKY_WISTERIA_NATURAL_SET, 0.3f),
            new BeehiveDecorator(0.002f)
@@ -736,7 +742,8 @@ public class RuTreeFeatures {
            simple(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()),
            new MagnoliaFoliagePlacer(),
            Optional.of(new MagnoliaRootPlacer(ConstantInt.ZERO, wisteriaLog, Optional.empty())),
-           new TwoLayersFeatureSize(1, 0, 1)
+           new TwoLayersFeatureSize(1, 0, 1),
+           TreeConfiguration.PLACE_BELOW_OVERWORLD_TRUNKS
        ).ignoreVines().decorators(List.of(
            HangingVinesDecorator.create(RUBlocks.LAVENDER_WISTERIA_NATURAL_SET, 0.3f),
            new BeehiveDecorator(0.002f)
@@ -747,7 +754,8 @@ public class RuTreeFeatures {
            simple(RUBlocks.SALMON_WISTERIA_NATURAL_SET.getLeaves().defaultBlockState()),
            new MagnoliaFoliagePlacer(),
            Optional.of(new MagnoliaRootPlacer(ConstantInt.ZERO, wisteriaLog, Optional.empty())),
-           new TwoLayersFeatureSize(1, 0, 1)
+           new TwoLayersFeatureSize(1, 0, 1),
+           TreeConfiguration.PLACE_BELOW_OVERWORLD_TRUNKS
        ).ignoreVines().decorators(List.of(
            HangingVinesDecorator.create(RUBlocks.SALMON_WISTERIA_NATURAL_SET, 0.3f),
            new BeehiveDecorator(0.002f)

@@ -5,6 +5,8 @@ import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
@@ -24,7 +26,7 @@ public class TaigaBiomes {
     private static MobSpawnSettings.Builder baseTaigaSpawning() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 8, 4, 4)).addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 4, 2, 3)).addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 4, 4)).addSpawn(MobCategory.CREATURE, 4, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 2, 3)).addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.FOX, 2, 4));
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         return spawnBuilder;
     }
@@ -35,7 +37,7 @@ public class TaigaBiomes {
         BiomeDefaultFeatures.addFerns(builder);
         BiomeDefaultFeatures.addDefaultOres(builder);
         BiomeDefaultFeatures.addDefaultSoftDisks(builder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder, true);
         if(hasSweetBerries) {
             BiomeDefaultFeatures.addCommonBerryBushes(builder);
         }
@@ -44,14 +46,9 @@ public class TaigaBiomes {
 
     public static Biome blackwoodTaiga(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
         BiomeSpecialEffects.Builder effectBuilder = new BiomeSpecialEffects.Builder()
-            .skyColor(11454879)
-            .fogColor(11454879)
-            .waterColor(3108258)
-            .waterFogColor(4220035)
-            .foliageColorOverride(4347179)
-            .grassColorOverride(4089639)
-            .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA));
+            .waterColor(0x2f6da2)
+            .foliageColorOverride(0x42552b)
+            .grassColorOverride(0x3e6727);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseTaigaGeneration(featureGetter, carverGetter, true);
@@ -69,19 +66,21 @@ public class TaigaBiomes {
         MobSpawnSettings.Builder spawnBuilder = baseTaigaSpawning();
 
         return biomeBuilder(0.825f, 0.765f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+            .setAttribute(EnvironmentAttributes.SKY_COLOR, 0xaec99f)
+            .setAttribute(EnvironmentAttributes.FOG_COLOR, 0xaec99f)
+            .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x717868)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
     
     public static Biome borealTaiga(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.55f)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .waterColor(-12619852)
-            .waterFogColor(7436392)
             .foliageColorOverride(8103502)
-            .grassColorOverride(8957796)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA));
+            .grassColorOverride(8957796);
         
         //add features
         BiomeGenerationSettings.Builder builder = baseTaigaGeneration(featureGetter, carverGetter, true);
@@ -98,6 +97,8 @@ public class TaigaBiomes {
         MobSpawnSettings.Builder spawnBuilder = baseTaigaSpawning();
         
         return biomeBuilder(0.5f, 0.4f)
+            .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x717868)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -105,12 +106,10 @@ public class TaigaBiomes {
     }
 
     public static Biome oldGrowthBorealTaiga(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.55f)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .waterColor(-12619852)
-            .waterFogColor(7436392)
             .foliageColorOverride(8103502)
-            .grassColorOverride(8957796)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA));
+            .grassColorOverride(8957796);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseTaigaGeneration(featureGetter, carverGetter, true);
@@ -127,6 +126,8 @@ public class TaigaBiomes {
         MobSpawnSettings.Builder spawnBuilder = baseTaigaSpawning();
 
         return biomeBuilder(0.5f, 0.4f)
+            .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x717868)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -134,12 +135,10 @@ public class TaigaBiomes {
     }
 
     public static Biome oldGrowthGoldenBorealTaiga(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.65f)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .waterColor(-12619852)
-            .waterFogColor(7436392)
             .foliageColorOverride(12562512)
-            .grassColorOverride(10400607)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA));
+            .grassColorOverride(10400607);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseTaigaGeneration(featureGetter, carverGetter, true);
@@ -156,17 +155,18 @@ public class TaigaBiomes {
         MobSpawnSettings.Builder spawnBuilder = baseTaigaSpawning();
 
         return biomeBuilder(0.45f, 0.3f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+            .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x717868)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome pineTaiga(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.7f)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0x758646)
-            .grassColorOverride(0x84a75a)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA));
+            .grassColorOverride(0x84a75a);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseTaigaGeneration(featureGetter, carverGetter, true);
@@ -184,6 +184,7 @@ public class TaigaBiomes {
         MobSpawnSettings.Builder spawnBuilder = baseTaigaSpawning();
 
         return biomeBuilder(0.6f, 0.4f)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -191,10 +192,9 @@ public class TaigaBiomes {
     }
 
     public static Biome redwoods(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.8f)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0x7e9539)
-            .grassColorOverride(0x7b9f39)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA));
+            .grassColorOverride(0x7b9f39);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseTaigaGeneration(featureGetter, carverGetter, false);
@@ -213,17 +213,17 @@ public class TaigaBiomes {
         MobSpawnSettings.Builder spawnBuilder = baseTaigaSpawning();
 
         return biomeBuilder(1, 0.8f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 
     public static Biome sparseRedwoods(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0.8f)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0x7e9539)
-            .grassColorOverride(0x7b9f39)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA));
+            .grassColorOverride(0x7b9f39);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseTaigaGeneration(featureGetter, carverGetter, false);
@@ -241,9 +241,10 @@ public class TaigaBiomes {
         MobSpawnSettings.Builder spawnBuilder = baseTaigaSpawning();
 
         return biomeBuilder(1, 0.8f)
-                .specialEffects(effectBuilder.build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(builder.build())
-                .build();
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_OLD_GROWTH_TAIGA))
+            .specialEffects(effectBuilder.build())
+            .mobSpawnSettings(spawnBuilder.build())
+            .generationSettings(builder.build())
+            .build();
     }
 }

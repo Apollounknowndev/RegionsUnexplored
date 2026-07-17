@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:block/potted_corpse_flower"
+      "model": "regions_unexplored:potted_corpse_flower"
     }
   }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "regions_unexplored:wisteria_log"
-    }
+    "#": "regions_unexplored:wisteria_log"
   },
   "pattern": [
     "##",

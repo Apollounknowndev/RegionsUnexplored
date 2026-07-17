@@ -1,0 +1,6 @@
+{
+  "parent": "regions_unexplored:block/template/hanging_vines",
+  "textures": {
+    "cross": "regions_unexplored:block/wisteria_vines"
+  }
+}

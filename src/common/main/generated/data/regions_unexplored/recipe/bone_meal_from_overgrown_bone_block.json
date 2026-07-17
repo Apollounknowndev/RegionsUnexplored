@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "bone_meal",
   "ingredients": [
-    {
-      "item": "regions_unexplored:overgrown_bone_block"
-    }
+    "regions_unexplored:overgrown_bone_block"
   ],
   "result": {
     "count": 9,

@@ -2,7 +2,6 @@ package net.regions_unexplored.datagen.provider.registry.placed_feature;
 
 import dev.worldgen.lithostitched.api.worldgen.blockpredicate.LithostitchedBlockPredicates;
 import dev.worldgen.lithostitched.api.worldgen.placementmodifier.LithostitchedPlacementModifiers;
-import dev.worldgen.lithostitched.impl.predicate.NotPredicate;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -79,7 +78,7 @@ public class RuMiscOverworldPlacements {
         var fallenPine = getter.getOrThrow(RuMiscOverworldFeatures.FALLEN_PINE);
         var fallenSnowPine = getter.getOrThrow(RuMiscOverworldFeatures.FALLEN_SNOW_PINE);
         var mossPatchWithWater = getter.getOrThrow(RuMiscOverworldFeatures.SPECIAL_MOSS_PATCH_WITH_WATER);
-        var singlePieceOfGrass = getter.getOrThrow(VegetationFeatures.SINGLE_PIECE_OF_GRASS);
+        var singlePieceOfGrass = getter.getOrThrow(VegetationFeatures.GRASS);
 	    
 	    
 	    

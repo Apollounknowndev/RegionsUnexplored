@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "2.1.21"
-    id("earth.terrarium.cloche") version "0.19.0"
+    id("earth.terrarium.cloche") version "0.19.11"
 }
 
 repositories {
@@ -90,13 +90,13 @@ cloche {
         }
 
         data()
-        datagenDirectory = file("src/common/main/generated")
+        datagenClientDirectory = file("src/common/main/generated")
 
         includedClient()
         runs {
             client()
             server()
-            data()
+            clientData()
         }
 
         metadata {
@@ -121,32 +121,27 @@ cloche {
             legacyClasspath("de.marhali:json5-java:3.0.0")
             include("de.marhali:json5-java:3.0.0")
             modRuntimeOnly("maven.modrinth:world-preview-prime:2.0.0-neoforge-26.1")
-            modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-26.1")
-            modImplementation("maven.modrinth:wikiful:$wikifulVersion-neoforge-26.1")
+            modApi("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-26.1")
+            modApi("maven.modrinth:wikiful:$wikifulVersion-neoforge-26.1")
         }
+
 
         data {
             dependencies {
-                legacyClasspath("de.marhali:json5-java:3.0.0")
-                modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-26.1")
-                modImplementation("maven.modrinth:wikiful:$wikifulVersion-neoforge-26.1")
+
             }
         }
 
-        datagenDirectory = file("src/common/main/generated")
+        datagenClientDirectory = file("src/common/main/generated")
 
         runs {
             client()
             server()
-            data()
+            clientData()
         }
     }
 }
 
-tasks.named("runFabricData") {
-    enabled = false
-}
-
-tasks.named("runNeoforgeData") {
+tasks.named("runFabricClientData") {
     enabled = false
 }

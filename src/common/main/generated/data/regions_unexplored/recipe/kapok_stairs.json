@@ -3,9 +3,7 @@
   "category": "building",
   "group": "wooden_stairs",
   "key": {
-    "#": {
-      "item": "regions_unexplored:kapok_planks"
-    }
+    "#": "regions_unexplored:kapok_planks"
   },
   "pattern": [
     "#  ",

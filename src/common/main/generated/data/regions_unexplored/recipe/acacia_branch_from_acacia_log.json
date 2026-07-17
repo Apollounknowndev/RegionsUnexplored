@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "branches",
   "key": {
-    "#": {
-      "item": "minecraft:acacia_log"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "minecraft:acacia_log",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "#X"

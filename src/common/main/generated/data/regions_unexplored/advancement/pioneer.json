@@ -887,7 +887,6 @@
       "translate": "advancements.regions_unexplored.pioneer.description"
     },
     "icon": {
-      "count": 1,
       "id": "regions_unexplored:hibiscus"
     },
     "title": {

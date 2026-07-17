@@ -1,0 +1,6 @@
+{
+  "parent": "cross",
+  "textures": {
+    "cross": "regions_unexplored:block/blue_magnolia_shrub_bottom"
+  }
+}

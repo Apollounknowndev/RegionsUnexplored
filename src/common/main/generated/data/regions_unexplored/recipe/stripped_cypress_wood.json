@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "regions_unexplored:stripped_cypress_log"
-    }
+    "#": "regions_unexplored:stripped_cypress_log"
   },
   "pattern": [
     "##",

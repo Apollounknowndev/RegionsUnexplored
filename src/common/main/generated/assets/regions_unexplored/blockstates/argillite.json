@@ -1,12 +1,7 @@
 {
   "variants": {
-    "": [
-      {
-        "model": "regions_unexplored:block/argillite"
-      },
-      {
-        "model": "regions_unexplored:block/argillite_mirrored"
-      }
-    ]
+    "": {
+      "model": "regions_unexplored:block/argillite_mirrored"
+    }
   }
 }

@@ -1,5 +1,6 @@
 package net.regions_unexplored.datagen.provider.registry.configured_feature;
 
+import dev.worldgen.lithostitched.api.worldgen.feature.LithostitchedFeatures;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -9,6 +10,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.MultifaceBlock;
+import net.minecraft.world.level.block.MultifaceSpreadeableBlock;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -33,7 +35,7 @@ public class RuAquaticFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SPECIAL_WHITE_MAGNOLIA = RUConfiguredFeatures.key("special/white_magnolia");
     
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
-        register(context, PATCH_CATTAIL, Feature.RANDOM_PATCH, new RandomPatchConfiguration(24, 6, 0, PlacementUtils.inlinePlaced(Holder.direct(block(RUBlocks.CATTAIL.get())), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE))));
+        register(context, PATCH_CATTAIL, LithostitchedFeatures.PLACED, randomPatch(24, 6, 0, PlacementUtils.inlinePlaced(Holder.direct(block(RUBlocks.CATTAIL.get())), BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE))));
         
         registerPlaced(context, SPECIAL_TALL_HYACINTH_STOCK, RUFeatureTypes.TALL_HYACINTH_STOCK.get(), new HyacinthStockConfiguration(BlockStateProvider.simple(RUBlocks.TALL_HYACINTH_STOCK.get().defaultBlockState()), 1, 14));
         registerPlaced(context, SPECIAL_HYACINTH_PLANTS, RUFeatureTypes.HYACINTH_PLANTS.get(), new ProbabilityFeatureConfiguration(0.1F));
@@ -54,7 +56,7 @@ public class RuAquaticFeatures {
         );
     }
     
-    private static MultifaceGrowthConfiguration growth(MultifaceBlock block, HolderSet<Block> canPlaceOn) {
+    private static MultifaceGrowthConfiguration growth(MultifaceSpreadeableBlock block, HolderSet<Block> canPlaceOn) {
         return new MultifaceGrowthConfiguration(block, 20, false, true, true, 0.5f, canPlaceOn);
     }
 }

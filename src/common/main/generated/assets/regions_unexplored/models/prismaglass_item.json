@@ -1,0 +1,6 @@
+{
+  "parent": "cube_all",
+  "textures": {
+    "all": "regions_unexplored:item/prismaglass"
+  }
+}

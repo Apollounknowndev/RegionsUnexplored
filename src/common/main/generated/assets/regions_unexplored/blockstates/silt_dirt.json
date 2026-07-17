@@ -5,16 +5,15 @@
         "model": "regions_unexplored:block/silt_dirt"
       },
       {
-        "model": "regions_unexplored:block/silt_dirt",
-        "y": 90
+        "model": "regions_unexplored:block/silt_dirt_mirrored"
       },
       {
         "model": "regions_unexplored:block/silt_dirt",
         "y": 180
       },
       {
-        "model": "regions_unexplored:block/silt_dirt",
-        "y": 270
+        "model": "regions_unexplored:block/silt_dirt_mirrored",
+        "y": 180
       }
     ]
   }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "wooden_stairs",
   "key": {
-    "#": {
-      "item": "regions_unexplored:wisteria_planks"
-    }
+    "#": "regions_unexplored:wisteria_planks"
   },
   "pattern": [
     "#  ",

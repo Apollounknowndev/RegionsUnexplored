@@ -4,6 +4,8 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
@@ -22,12 +24,16 @@ import static net.regions_unexplored.datagen.provider.registry.util.RUBiomeUtils
 public class FrozenBiomes {
     private static MobSpawnSettings.Builder baseFrozenSpawning(boolean hasPolarBearSpawns, boolean hasWolfSpawns) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        if(hasWolfSpawns) spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 8, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 10, 2, 3));
-        if(hasPolarBearSpawns) spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.POLAR_BEAR, 1, 1, 2));
+        if (hasWolfSpawns) {
+	        spawnBuilder.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 4, 4));
+        }
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 2, 3));
+        if (hasPolarBearSpawns) {
+	        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.POLAR_BEAR, 1, 2));
+        }
         BiomeDefaultFeatures.caveSpawns(spawnBuilder);
-        BiomeDefaultFeatures.monsters(spawnBuilder, 95, 5, 20, false);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.STRAY, 80, 4, 4));
+        BiomeDefaultFeatures.monsters(spawnBuilder, 95, 5, 0, 20, false);
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 80, new MobSpawnSettings.SpawnerData(EntityType.STRAY, 4, 4));
         return spawnBuilder;
     }
 
@@ -37,7 +43,7 @@ public class FrozenBiomes {
         BiomeDefaultFeatures.addDefaultOres(builder);
         BiomeDefaultFeatures.addDefaultSoftDisks(builder);
         BiomeDefaultFeatures.addDefaultMushrooms(builder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder, true);
         return builder;
     }
     private static BiomeGenerationSettings.Builder baseFrozenTaigaGeneration(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
@@ -46,16 +52,15 @@ public class FrozenBiomes {
         BiomeDefaultFeatures.addFerns(builder);
         BiomeDefaultFeatures.addDefaultOres(builder);
         BiomeDefaultFeatures.addDefaultSoftDisks(builder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(builder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(builder, true);
         BiomeDefaultFeatures.addCommonBerryBushes(builder);
         return builder;
     }
 
     public static Biome coldBorealTaiga(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0x689858)
-            .grassColorOverride(0x68ad64)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_GROVE));
+            .grassColorOverride(0x68ad64);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseFrozenTaigaGeneration(featureGetter, carverGetter);
@@ -72,6 +77,7 @@ public class FrozenBiomes {
         MobSpawnSettings.Builder spawnBuilder = baseFrozenSpawning(false, true);
 
         return biomeBuilder(0f, 0.6f)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_GROVE))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -79,10 +85,9 @@ public class FrozenBiomes {
     }
 
     public static Biome coldDeciduousForest(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0x55ab84)
-            .grassColorOverride(0x66b9a4)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SNOWY_SLOPES));
+            .grassColorOverride(0x66b9a4);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseFrozenGeneration(featureGetter, carverGetter);
@@ -99,6 +104,7 @@ public class FrozenBiomes {
         MobSpawnSettings.Builder spawnBuilder = baseFrozenSpawning(false,true);
 
         return biomeBuilder(-1.5f, 0.8f)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_SNOWY_SLOPES))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -106,10 +112,9 @@ public class FrozenBiomes {
     }
 
     public static Biome frozenPineTaiga(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0x689858)
-            .grassColorOverride(0x68ad64)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_GROVE));
+            .grassColorOverride(0x68ad64);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseFrozenTaigaGeneration(featureGetter, carverGetter);
@@ -126,6 +131,7 @@ public class FrozenBiomes {
         MobSpawnSettings.Builder spawnBuilder = baseFrozenSpawning(false, true);
 
         return biomeBuilder(-0.5f, 0.6f)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_GROVE))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -133,10 +139,9 @@ public class FrozenBiomes {
     }
     
     public static Biome tundra(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0xb08850)
-            .grassColorOverride(0xbc6a52)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_MEADOW));
+            .grassColorOverride(0xbc6a52);
         
         //add features
         BiomeGenerationSettings.Builder builder = baseFrozenGeneration(featureGetter, carverGetter);
@@ -154,6 +159,7 @@ public class FrozenBiomes {
         MobSpawnSettings.Builder spawnBuilder = baseFrozenSpawning(false, false);
         
         return biomeBuilder(-0.3f, 0, false)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_MEADOW))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -161,10 +167,9 @@ public class FrozenBiomes {
     }
 
     public static Biome icyHeights(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0x68ba6f)
-            .grassColorOverride(0x75c48b)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FROZEN_PEAKS));
+            .grassColorOverride(0x75c48b);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseFrozenGeneration(featureGetter, carverGetter);
@@ -180,6 +185,7 @@ public class FrozenBiomes {
         MobSpawnSettings.Builder spawnBuilder = baseFrozenSpawning(false, true);
 
         return biomeBuilder(-1, 0.7f)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_FROZEN_PEAKS))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())
@@ -187,10 +193,9 @@ public class FrozenBiomes {
     }
 
     public static Biome spires(HolderGetter<PlacedFeature> featureGetter, HolderGetter<ConfiguredWorldCarver<?>> carverGetter) {
-        BiomeSpecialEffects.Builder effectBuilder = effectBuilder(0)
+        BiomeSpecialEffects.Builder effectBuilder = effectBuilder()
             .foliageColorOverride(0x56aa62)
-            .grassColorOverride(0x56aa70)
-            .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SNOWY_SLOPES));
+            .grassColorOverride(0x56aa70);
 
         //add features
         BiomeGenerationSettings.Builder builder = baseFrozenGeneration(featureGetter, carverGetter);
@@ -206,6 +211,7 @@ public class FrozenBiomes {
         MobSpawnSettings.Builder spawnBuilder = baseFrozenSpawning(true,false);
 
         return biomeBuilder(-2, 0.95f)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_SNOWY_SLOPES))
             .specialEffects(effectBuilder.build())
             .mobSpawnSettings(spawnBuilder.build())
             .generationSettings(builder.build())

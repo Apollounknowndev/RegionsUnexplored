@@ -3,19 +3,14 @@
   "category": "building",
   "group": "prismoss",
   "key": {
-    "#": {
-      "item": "minecraft:deepslate"
-    },
-    "X": {
-      "item": "regions_unexplored:prismoss_sprout"
-    }
+    "#": "minecraft:deepslate",
+    "X": "regions_unexplored:prismoss_sprout"
   },
   "pattern": [
     "X",
     "#"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:deepslate_prismoss"
   }
 }

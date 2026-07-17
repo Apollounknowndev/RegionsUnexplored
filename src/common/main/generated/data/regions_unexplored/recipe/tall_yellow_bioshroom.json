@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "bioshrooms",
   "key": {
-    "#": {
-      "item": "regions_unexplored:yellow_bioshroom"
-    }
+    "#": "regions_unexplored:yellow_bioshroom"
   },
   "pattern": [
     "#",
     "#"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:tall_yellow_bioshroom"
   }
 }

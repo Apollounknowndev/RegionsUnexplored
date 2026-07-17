@@ -1,10 +1,10 @@
 {
   "variants": {
     "half=lower": {
-      "model": "regions_unexplored:block/glister_spire_lower"
+      "model": "regions_unexplored:glister_spire_lower"
     },
     "half=upper": {
-      "model": "regions_unexplored:block/glister_spire_upper"
+      "model": "regions_unexplored:glister_spire_upper"
     }
   }
 }

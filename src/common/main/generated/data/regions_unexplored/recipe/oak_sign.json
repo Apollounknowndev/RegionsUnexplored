@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "wooden_sign",
   "key": {
-    "#": {
-      "item": "regions_unexplored:alpha_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "regions_unexplored:alpha_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "regions_unexplored:joshua_log"
-    }
+    "#": "regions_unexplored:joshua_log"
   },
   "pattern": [
     "##",

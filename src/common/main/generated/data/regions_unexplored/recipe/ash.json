@@ -3,16 +3,13 @@
   "category": "building",
   "group": "ash",
   "key": {
-    "#": {
-      "item": "minecraft:gunpowder"
-    }
+    "#": "minecraft:gunpowder"
   },
   "pattern": [
     "##",
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:ash"
   }
 }

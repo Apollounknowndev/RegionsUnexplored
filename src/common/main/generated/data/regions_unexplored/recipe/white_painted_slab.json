@@ -3,9 +3,7 @@
   "category": "building",
   "group": "painted_slab",
   "key": {
-    "#": {
-      "item": "regions_unexplored:white_painted_planks"
-    }
+    "#": "regions_unexplored:white_painted_planks"
   },
   "pattern": [
     "###"

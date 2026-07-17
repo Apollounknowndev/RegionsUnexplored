@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "boat",
   "key": {
-    "#": {
-      "item": "regions_unexplored:pine_planks"
-    }
+    "#": "regions_unexplored:pine_planks"
   },
   "pattern": [
     "# #",
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "regions_unexplored:pine_boat"
   }
 }

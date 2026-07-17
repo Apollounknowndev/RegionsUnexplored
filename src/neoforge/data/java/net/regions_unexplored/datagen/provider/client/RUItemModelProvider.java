@@ -1,14 +1,10 @@
 package net.regions_unexplored.datagen.provider.client;
 
-import net.minecraft.data.PackOutput;
+import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.client.model.generators.ModelProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.registry.RUBlocks;
@@ -16,15 +12,17 @@ import net.regions_unexplored.registry.RUItems;
 
 import java.util.function.Supplier;
 
-public class RUItemModelProvider extends ItemModelProvider {
-    public RUItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, RegionsUnexplored.MOD_ID, existingFileHelper);
+public class RUItemModelProvider {
+    private final BlockModelGenerators blockModels;
+    private final ItemModelGenerators itemModels;
+    
+    public RUItemModelProvider(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
+        this.blockModels = blockModels;
+        this.itemModels = itemModels;
     }
     
-    @Override
-    protected void registerModels() {
-        String ring = name(RUItems.IRIDESCENT_RING.get());
-        singleTexture(ring, template("ring"), "ring", texturize(ring));
+    protected void run() {
+        this.itemModels.declareCustomModelItem(RUItems.IRIDESCENT_RING.get());
         
         for (WoodSet set : RUBlocks.WOOD_SETS) {
             if (set.getBoat() != null) {
@@ -103,28 +101,19 @@ public class RUItemModelProvider extends ItemModelProvider {
     }
     
     private void itemBlock(Supplier<Block> block) {
-        simpleBlockItem(block.get());
-    }
-    
-    private void itemBlock(Identifier id) {
-        simpleBlockItem(id);
+        this.blockModels.registerSimpleItemModel(block.get(), nameId(block.get()));
     }
     
     private <T extends Block> void itemGenerated(Supplier<T> block) {
-        itemGenerated(block, "");
+        this.blockModels.registerSimpleFlatItemModel(block.get());
     }
     
     private <T extends Block> void itemGenerated(Supplier<T> block, String suffix) {
-        Identifier name = nameId(block.get());
-        this.getBuilder(name.toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", texturize(name.withSuffix(suffix), true));
+        this.blockModels.registerSimpleFlatItemModel(block.get(), suffix);
     }
     
     private void itemGenerated(Item item) {
-        basicItem(item.asItem());
-    }
-    
-    private void itemGenerated(Identifier id) {
-        basicItem(id);
+        this.blockModels.registerSimpleFlatItemModel(item);
     }
     
     // TEXTURES
@@ -147,7 +136,7 @@ public class RUItemModelProvider extends ItemModelProvider {
     
     private Identifier texturize(Identifier id, boolean blockPrefix) {
         id = id.withPrefix(blockPrefix ? "block/" : "item/");
-        this.existingFileHelper.trackGenerated(id, ModelProvider.TEXTURE);
+        //this.existingFileHelper.trackGenerated(id, ModelProvider.TEXTURE);
         return id;
     }
     
@@ -155,8 +144,8 @@ public class RUItemModelProvider extends ItemModelProvider {
     
     private Identifier template(String name) {
         Identifier id = RegionsUnexplored.id("item/template/" + name);
-        getBuilder(id.toString());
-        generatedModels.remove(id);
+        //getBuilder(id.toString());
+        //generatedModels.remove(id);
         return id;
     }
 }

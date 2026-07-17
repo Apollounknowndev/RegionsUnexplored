@@ -1,10 +1,10 @@
 {
   "variants": {
     "half=lower": {
-      "model": "regions_unexplored:block/corpse_flower_lower"
+      "model": "regions_unexplored:corpse_flower_lower"
     },
     "half=upper": {
-      "model": "regions_unexplored:block/corpse_flower_upper"
+      "model": "regions_unexplored:corpse_flower_upper"
     }
   }
 }

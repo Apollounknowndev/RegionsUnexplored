@@ -1,38 +1,43 @@
 {
-  "carvers": {
-    "air": "minecraft:nether_cave"
+  "attributes": {
+    "minecraft:audio/ambient_sounds": {
+      "additions": {
+        "sound": "minecraft:ambient.warped_forest.additions",
+        "tick_chance": 0.0111
+      },
+      "loop": "minecraft:ambient.warped_forest.loop",
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "minecraft:ambient.warped_forest.mood",
+        "tick_delay": 6000
+      }
+    },
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "minecraft:music.nether.warped_forest"
+      }
+    },
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "regions_unexplored:mycotoxic_spore"
+        },
+        "probability": 0.01
+      }
+    ],
+    "minecraft:visual/fog_color": "#a38b24",
+    "minecraft:visual/sky_color": "#a38b24",
+    "minecraft:visual/water_fog_color": "#a38b24"
   },
+  "carvers": "minecraft:nether_cave",
   "downfall": 0.0,
   "effects": {
-    "additions_sound": {
-      "sound": "minecraft:ambient.warped_forest.additions",
-      "tick_chance": 0.0111
-    },
-    "ambient_sound": "minecraft:ambient.warped_forest.loop",
-    "fog_color": 10717988,
-    "foliage_color": 10717988,
-    "grass_color": 10717988,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.warped_forest.mood",
-      "tick_delay": 6000
-    },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "minecraft:music.nether.warped_forest"
-    },
-    "particle": {
-      "options": {
-        "type": "regions_unexplored:mycotoxic_spore"
-      },
-      "probability": 0.01
-    },
-    "sky_color": 10717988,
-    "water_color": 10717988,
-    "water_fog_color": 10717988
+    "foliage_color": "#a38b24",
+    "grass_color": "#a38b24",
+    "water_color": "#a38b24"
   },
   "features": [
     [],

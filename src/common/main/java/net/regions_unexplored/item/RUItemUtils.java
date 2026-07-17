@@ -1,6 +1,8 @@
 package net.regions_unexplored.item;
 
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -8,6 +10,7 @@ import net.minecraft.world.item.PlaceOnWaterBlockItem;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.level.block.Block;
+import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.module.platform.Registrar;
 
 import java.util.function.Supplier;
@@ -15,7 +18,8 @@ import java.util.function.UnaryOperator;
 
 public class RUItemUtils {
     public static Supplier<Item> register(String name, ItemFactory factory) {
-        return Registrar.register(BuiltInRegistries.ITEM, name, () -> factory.apply(new Item.Properties()));
+        ResourceKey<Item> key = RegionsUnexplored.key(Registries.ITEM, name);
+        return Registrar.register(BuiltInRegistries.ITEM, name, () -> factory.apply(new Item.Properties().setId(key)));
     }
 
     public static <T extends Block> Supplier<Item> registerBlock(String name, Supplier<T> block) {

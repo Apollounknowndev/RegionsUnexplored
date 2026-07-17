@@ -3,11 +3,8 @@
   "category": "food",
   "cookingtime": 200,
   "experience": 0.35,
-  "ingredient": {
-    "item": "regions_unexplored:barley"
-  },
+  "ingredient": "regions_unexplored:barley",
   "result": {
-    "count": 1,
     "id": "minecraft:bread"
   }
 }

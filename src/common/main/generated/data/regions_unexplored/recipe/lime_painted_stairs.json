@@ -3,9 +3,7 @@
   "category": "building",
   "group": "painted_stairs",
   "key": {
-    "#": {
-      "item": "regions_unexplored:lime_painted_planks"
-    }
+    "#": "regions_unexplored:lime_painted_planks"
   },
   "pattern": [
     "#  ",

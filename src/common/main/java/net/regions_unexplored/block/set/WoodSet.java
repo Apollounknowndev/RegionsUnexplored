@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.regions_unexplored.block.BlockFactory;
+import net.regions_unexplored.item.type.RUBoatItem;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.block.RUBlockUtils;
 import net.regions_unexplored.item.RUItemUtils;
@@ -116,8 +117,8 @@ public class WoodSet {
     }
 
     protected void addBoats(String name) {
-        this.itemBoat = RUItemUtils.register(name + "_boat", p -> new BoatItem(RUEntityTypes.BOATS.get(this).get(), p.stacksTo(1)));
-        this.itemChestBoat = RUItemUtils.register(name + "_chest_boat", p -> new BoatItem(RUEntityTypes.BOATS.get(this).get(), p.stacksTo(1)));
+        this.itemBoat = RUItemUtils.register(name + "_boat", p -> new RUBoatItem<>(RUEntityTypes.BOATS.get(this), p.stacksTo(1)));
+        this.itemChestBoat = RUItemUtils.register(name + "_chest_boat", p -> new RUBoatItem<>(RUEntityTypes.BOATS.get(this), p.stacksTo(1)));
     }
 
     public Block getLog() {

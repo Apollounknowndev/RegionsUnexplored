@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "wooden_sign",
   "key": {
-    "#": {
-      "item": "regions_unexplored:larch_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "regions_unexplored:larch_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

@@ -1,10 +1,10 @@
 {
   "variants": {
     "type=bottom": {
-      "model": "regions_unexplored:block/lime_painted_slab_bottom"
+      "model": "regions_unexplored:block/lime_painted_slab"
     },
     "type=double": {
-      "model": "regions_unexplored:block/lime_painted_slab_double"
+      "model": "regions_unexplored:lime_painted_slab_double"
     },
     "type=top": {
       "model": "regions_unexplored:block/lime_painted_slab_top"

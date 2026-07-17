@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "wooden_door",
   "key": {
-    "#": {
-      "item": "regions_unexplored:eucalyptus_planks"
-    }
+    "#": "regions_unexplored:eucalyptus_planks"
   },
   "pattern": [
     "##",
