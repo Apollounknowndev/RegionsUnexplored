@@ -23,17 +23,14 @@ public class RUClientConfig {
 	
 	public static class ParticleRates {
 		public static final Codec<ParticleRates> CODEC = RecordCodecBuilder.create(i -> i.group(
-			Codec.doubleRange(0, 5).fieldOf("leaves").orElse(1.0).forGetter(r -> r.leaves),
 			Codec.doubleRange(0, 5).fieldOf("prismarite").orElse(1.0).forGetter(r -> r.prismarite)
 		).apply(i, ParticleRates::new));
 		
-		public double leaves = 1;
 		public double prismarite = 1;
 		
 		public ParticleRates() {}
 		
-		public ParticleRates(double leaves, double prismarite) {
-			this.leaves = leaves;
+		public ParticleRates(double prismarite) {
 			this.prismarite = prismarite;
 		}
 	}

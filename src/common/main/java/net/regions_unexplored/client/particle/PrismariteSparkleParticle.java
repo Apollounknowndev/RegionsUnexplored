@@ -4,7 +4,8 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.regions_unexplored.client.color.RuColors;
+import net.minecraft.util.RandomSource;
+import net.regions_unexplored.client.color.RUColors;
 
 public class PrismariteSparkleParticle extends SimpleAnimatedParticle {
     PrismariteSparkleParticle(ClientLevel level, double x, double y, double z, double xa, double ya, double za, SpriteSet sprites) {
@@ -30,10 +31,10 @@ public class PrismariteSparkleParticle extends SimpleAnimatedParticle {
             this.sprites = sprites;
         }
 
-        public Particle createParticle(SimpleParticleType options, ClientLevel level, double x, double y, double z, double xa, double ya, double za) {
+        public Particle createParticle(SimpleParticleType options, ClientLevel level, double x, double y, double z, double xa, double ya, double za, RandomSource random) {
             var particle = new PrismariteSparkleParticle(level, x, y, z, xa, ya, za, this.sprites);
             particle.setAlpha(0.99f);
-            int color = RuColors.getPrismariteSparkleColor(BlockPos.containing(x, y, z));
+            int color = RUColors.getPrismariteSparkleColor(BlockPos.containing(x, y, z));
             particle.setColor(color);
             return particle;
         }

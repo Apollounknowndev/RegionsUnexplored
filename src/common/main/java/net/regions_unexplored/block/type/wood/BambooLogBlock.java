@@ -9,8 +9,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -42,20 +41,14 @@ public class BambooLogBlock extends Block implements BonemealableBlock, SimpleWa
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.Y).setValue(LEAVES, false).setValue(WATERLOGGED, Boolean.valueOf(false)));
     }
-
+    
     @Override
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
+    protected boolean propagatesSkylightDown(final BlockState state) {
         return true;
     }
 
     @Override
-    public int getLightBlock(BlockState state, BlockGetter getter, BlockPos pos) {
-        return 0;
-    }
-
-    @Override
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-
         return switch (state.getValue(AXIS)) {
             case X -> box(0, 4, 4, 16, 12, 12);
             case Y -> box(4, 0, 4, 12, 16, 12);
@@ -110,9 +103,9 @@ public class BambooLogBlock extends Block implements BonemealableBlock, SimpleWa
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand interactionHand, BlockHitResult hitResult) {
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand interactionHand, BlockHitResult hitResult) {
         if (playerHasShieldUseIntent(player, interactionHand)) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            return InteractionResult.PASS;
         }
         else if (stack.getItem() instanceof AxeItem) {
             BlockState newBlockState = evaluateStrippedState(level, pos, player, state);
@@ -120,24 +113,28 @@ public class BambooLogBlock extends Block implements BonemealableBlock, SimpleWa
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, stack);
             }
 
-            level.setBlock(pos, newBlockState, 11);
+            if (!level.isClientSide()) {
+                level.setBlock(pos, newBlockState, 11);
                 level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newBlockState));
-                stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(interactionHand));
-                return ItemInteractionResult.sidedSuccess(level.isClientSide());
+                stack.hurtAndBreak(1, player, interactionHand);
+                return InteractionResult.SUCCESS_SERVER;
+            }
+            return InteractionResult.SUCCESS;
         }
         else if ((stack.getItem() instanceof HoeItem) && state.getValue(LEAVES)) {
             BlockState newBlockState = evaluateTilledState(level, pos, player, state);
             if (player instanceof ServerPlayer) {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, stack);
             }
-            level.setBlock(pos, newBlockState, 11);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newBlockState));
-            stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(interactionHand));
-            return ItemInteractionResult.sidedSuccess(level.isClientSide());
+            if (!level.isClientSide()) {
+                level.setBlock(pos, newBlockState, 11);
+                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newBlockState));
+                stack.hurtAndBreak(1, player, interactionHand);
+                return InteractionResult.SUCCESS_SERVER;
+            }
+            return InteractionResult.SUCCESS;
         }
-        else{
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        }
+        return InteractionResult.PASS;
     }
 
     private BlockState evaluateStrippedState(Level level, BlockPos pos, @Nullable Player player, BlockState state) {

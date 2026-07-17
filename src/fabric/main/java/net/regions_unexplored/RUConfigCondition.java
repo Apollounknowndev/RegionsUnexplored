@@ -6,6 +6,8 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditionType;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.resources.RegistryOps;
 import net.regions_unexplored.config.RUConfigHandler;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,7 +23,7 @@ public record RUConfigCondition(String key) implements ResourceCondition {
 	}
 	
 	@Override
-	public boolean test(@Nullable HolderLookup.Provider registries) {
+	public boolean test(RegistryOps.RegistryInfoLookup registries) {
 		return RUConfigHandler.COMMON.test(this.key);
 	}
 }

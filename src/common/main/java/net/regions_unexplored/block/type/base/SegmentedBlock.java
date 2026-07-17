@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -23,7 +23,7 @@ import java.util.function.BiFunction;
 
 public class SegmentedBlock extends VegetationBlock {
 	public static final MapCodec<? extends SegmentedBlock> CODEC = simpleCodec(SegmentedBlock::new);
-	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+	public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
 	public static final IntegerProperty AMOUNT = BlockStateProperties.FLOWER_AMOUNT;
 	private static final BiFunction<Direction, Integer, VoxelShape> SHAPE_BY_PROPERTIES = RUUtils.memoize((direction, amount) -> {
 		VoxelShape[] shapes = new VoxelShape[]{

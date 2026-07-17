@@ -27,10 +27,10 @@ public class MarshFeature extends Feature<NoneFeatureConfiguration> {
         placeBlob(level, pos);
         return true;
     }
-    public boolean placeBlob(LevelAccessor level, BlockPos pos) {
+    public boolean placeBlob(WorldGenLevel level, BlockPos pos) {
         Random random = new Random();
 
-        if (pos.getY() <= level.getMinBuildHeight() + 3) {
+        if (pos.getY() <= level.getMinY() + 3) {
             return false;
         } else {
             for(int l = 0; l < 3; ++l) {
@@ -54,7 +54,7 @@ public class MarshFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    public void placeBlocks(LevelAccessor level, BlockPos pos) {
+    public void placeBlocks(WorldGenLevel level, BlockPos pos) {
         // Kludge to not place when there's mud, thus avoiding the bottoms of CarvedLimitedPools
         if (level.getBlockState(level.getHeightmapPos(Heightmap.Types.OCEAN_FLOOR, pos).below()).is(Blocks.MUD) && level.isWaterAt(pos))
             return;

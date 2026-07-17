@@ -160,7 +160,7 @@ public class SeaRockFeature extends Feature<SeaRockConfiguration> {
             return p_66046_.getBlockState(p_66047_.below()).isAir()||p_66046_.getFluidState(p_66047_.below()).is(Fluids.WATER);
         }
 
-        private void smooth(LevelAccessor level, BlockPos p_66053_, int p_66054_, int p_66055_, boolean p_66056_, int p_66057_) {
+        private void smooth(WorldGenLevel level, BlockPos p_66053_, int p_66054_, int p_66055_, boolean p_66056_, int p_66057_) {
             int i = p_66056_ ? p_66057_ : p_66054_ / 2;
 
             for(int j = -i; j <= i; ++j) {

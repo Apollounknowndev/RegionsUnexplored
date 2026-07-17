@@ -8,6 +8,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -24,9 +25,9 @@ import java.util.function.BiConsumer;
 
 public class RedwoodTrunkPlacer extends RUTrunkPlacer {
     public static final MapCodec<RedwoodTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(i -> RedwoodTrunkPlacer.heightField(i).and(i.group(
-        IntProvider.NON_NEGATIVE_CODEC.listOf().fieldOf("branch_counts").forGetter(p -> p.branchCounts),
+        IntProviders.NON_NEGATIVE_CODEC.listOf().fieldOf("branch_counts").forGetter(p -> p.branchCounts),
         ExtraCodecs.POSITIVE_INT.fieldOf("branch_offset").forGetter(p -> p.branchOffset),
-        IntProvider.NON_NEGATIVE_CODEC.listOf(0, 4).fieldOf("base_trunk_heights").forGetter(p -> p.baseTrunkHeights)
+        IntProviders.NON_NEGATIVE_CODEC.listOf(0, 4).fieldOf("base_trunk_heights").forGetter(p -> p.baseTrunkHeights)
     )).apply(i, RedwoodTrunkPlacer::new));
     public static final TrunkPlacerType<RedwoodTrunkPlacer> TYPE = new TrunkPlacerType<>(CODEC);
 
@@ -45,9 +46,16 @@ public class RedwoodTrunkPlacer extends RUTrunkPlacer {
     protected TrunkPlacerType<?> type() {
         return TYPE;
     }
-
+    
     @Override
-    public List<FoliageAttachment> placeTrunk(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> trunkSetter, RandomSource random, int treeHeight, BlockPos origin, TreeConfiguration config) {
+    public List<FoliageAttachment> placeTrunk(
+        final WorldGenLevel level,
+        final BiConsumer<BlockPos, BlockState> trunkSetter,
+        final RandomSource random,
+        final int treeHeight,
+        final BlockPos origin,
+        final TreeConfiguration config
+    ) {
         List<FoliageAttachment> attachments = new ArrayList<>();
         // Base trunk
         placeLogColumn(level, trunkSetter, random, origin, treeHeight, config);
@@ -89,7 +97,7 @@ public class RedwoodTrunkPlacer extends RUTrunkPlacer {
         }
     }
 
-    private void placeBranch(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> trunkSetter, RandomSource random, int length, BlockPos pos, TreeConfiguration config, List<FoliageAttachment> foliageSetter) {
+    private void placeBranch(WorldGenLevel level, BiConsumer<BlockPos, BlockState> trunkSetter, RandomSource random, int length, BlockPos pos, TreeConfiguration config, List<FoliageAttachment> foliageSetter) {
         Direction.Axis axis = Direction.Plane.HORIZONTAL.getRandomAxis(random);
 
         for (Direction direction : Direction.Plane.HORIZONTAL) {
@@ -104,7 +112,7 @@ public class RedwoodTrunkPlacer extends RUTrunkPlacer {
         }
     }
 
-    private void placeLogColumn(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> trunkSetter, RandomSource random, BlockPos pos, int columnHeight, TreeConfiguration config) {
+    private void placeLogColumn(WorldGenLevel level, BiConsumer<BlockPos, BlockState> trunkSetter, RandomSource random, BlockPos pos, int columnHeight, TreeConfiguration config) {
         if (columnHeight == 0) return;
         RUTrunkPlacer.placeDirtBelow(level, trunkSetter, pos);
 
@@ -119,7 +127,7 @@ public class RedwoodTrunkPlacer extends RUTrunkPlacer {
     }
     
     @Override
-    protected boolean validTreePos(final LevelSimulatedReader level, final BlockPos pos) {
+    protected boolean validTreePos(WorldGenLevel level, final BlockPos pos) {
         return TreeFeature.validTreePos(level, pos) || level.isStateAtPosition(pos, state -> state.is(BlockTags.LOGS) || state.is(RUBlockTags.BRANCHES));
     }
 }

@@ -1,5 +1,6 @@
 package net.regions_unexplored.block.set;
 
+import net.minecraft.world.item.BoatItem;
 import net.minecraft.world.item.HangingSignItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SignItem;
@@ -10,10 +11,9 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.regions_unexplored.block.BlockFactory;
 import net.regions_unexplored.registry.RUBlocks;
-import net.regions_unexplored.entity.custom.RuBoat;
-import net.regions_unexplored.item.type.RuBoatItem;
 import net.regions_unexplored.block.RUBlockUtils;
 import net.regions_unexplored.item.RUItemUtils;
+import net.regions_unexplored.registry.RUEntityTypes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,13 +111,13 @@ public class WoodSet {
         this.wallSign = RUBlockUtils.registerNoItem(name + "_wall_sign", p -> RUBlockUtils.wallSign(p, sound, this.sign.get(), woodType, fireproof));
         this.hangingSign = RUBlockUtils.registerNoItem(name + "_hanging_sign", p -> RUBlockUtils.hangingSign(p, colour, sound, woodType, fireproof));
         this.wallHangingSign = RUBlockUtils.registerNoItem(name + "_wall_hanging_sign", p -> RUBlockUtils.wallHangingSign(p, colour, sound, this.hangingSign.get(), woodType, fireproof));
-        this.itemSign = RUItemUtils.register(name + "_sign", p -> new SignItem(p.stacksTo(16), this.sign.get(), this.wallSign.get()));
+        this.itemSign = RUItemUtils.register(name + "_sign", p -> new SignItem(this.sign.get(), this.wallSign.get(), p.stacksTo(16)));
         this.itemHangingSign = RUItemUtils.register(name + "_hanging_sign", p -> new HangingSignItem(this.hangingSign.get(), this.wallHangingSign.get(), p.stacksTo(16)));
     }
 
     protected void addBoats(String name) {
-        this.itemBoat = RUItemUtils.register(name + "_boat", p -> new RuBoatItem(false, RuBoat.ModelType.byName(name), p.stacksTo(1)));
-        this.itemChestBoat = RUItemUtils.register(name + "_chest_boat", p -> new RuBoatItem(true, RuBoat.ModelType.byName(name), p.stacksTo(1)));
+        this.itemBoat = RUItemUtils.register(name + "_boat", p -> new BoatItem(RUEntityTypes.BOATS.get(this).get(), p.stacksTo(1)));
+        this.itemChestBoat = RUItemUtils.register(name + "_chest_boat", p -> new BoatItem(RUEntityTypes.BOATS.get(this).get(), p.stacksTo(1)));
     }
 
     public Block getLog() {
@@ -194,6 +194,10 @@ public class WoodSet {
 
     public Item getChestBoat() {
         return itemChestBoat != null ? itemChestBoat.get() : null;
+    }
+    
+    public boolean hasBoats() {
+        return itemBoat != null;
     }
 
     public List<Item> getAllBlocks() {

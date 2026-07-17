@@ -34,22 +34,22 @@ public class RULithostitched {
                 WorldgenModifier.builder().addSurfaceRule(Level.NETHER, InjectionType.PREPEND, RUSurfaceRuleBuilder.nether())
             );
             
-            var biomes = registries.registryOrThrow(Registries.BIOME);
-            var features = registries.registryOrThrow(Registries.PLACED_FEATURE);
+            var biomes = registries.lookupOrThrow(Registries.BIOME);
+            var features = registries.lookupOrThrow(Registries.PLACED_FEATURE);
             consumer.accept(
                 RegionsUnexplored.id("inferno/no_water_springs"),
                 WorldgenModifier.builder().removeFeatures(
-                    biomes.getHolderOrThrow(RUBiomes.INFERNO),
-                    features.getHolderOrThrow(MiscOverworldPlacements.SPRING_WATER),
+                    biomes.getOrThrow(RUBiomes.INFERNO),
+                    features.getOrThrow(MiscOverworldPlacements.SPRING_WATER),
                     GenerationStep.Decoration.FLUID_SPRINGS
                 )
             );
             
-            var dfs = registries.registryOrThrow(Registries.DENSITY_FUNCTION);
+            var dfs = registries.lookupOrThrow(Registries.DENSITY_FUNCTION);
             consumer.accept(
                 RegionsUnexplored.id("inferno/no_aquifers"),
                 WorldgenModifier.builder().wrapNoiseRouter(Level.OVERWORLD, NoiseRouterTarget.FLUID_LEVEL_FLOODEDNESS, DensityFunctions.rangeChoice(
-                    dfs.getOrThrow(RUDensityFunctions.INFERNO_WEIGHT),
+                    dfs.getValueOrThrow(RUDensityFunctions.INFERNO_WEIGHT),
                     0.001,
                     64,
                     DensityFunctions.constant(0),
@@ -59,7 +59,7 @@ public class RULithostitched {
         });
 
         AddRegionsEvent.EVENT.register((registries, consumer) -> {
-	        Registry<Biome> registry = registries.registryOrThrow(Registries.BIOME);
+	        Registry<Biome> registry = registries.lookupOrThrow(Registries.BIOME);
             for (var entry : RUConfigHandler.COMMON.biomeGroups.groups.entrySet()) {
                 addRegion(consumer, registry, entry.getKey(), entry.getValue());
             }
@@ -69,7 +69,7 @@ public class RULithostitched {
         });
         
         AddBiomeInjectorsEvent.EVENT.register((registries, consumer) -> {
-            var registry = registries.registryOrThrow(Registries.BIOME);
+            var registry = registries.lookupOrThrow(Registries.BIOME);
             for (var entry : RUConfigHandler.COMMON.biomePlacements.placements.entrySet()) {
                 ResourceKey<Biome> biome = entry.getKey();
                 BiomeTarget target = entry.getValue();
@@ -80,7 +80,7 @@ public class RULithostitched {
                 if (target.getWeight().orElse(0) > 0 && target.canReplace.isPresent()) {
                     injector = BiomeInjector.builder(target.dimension).replacePartially(
                         BiomeTarget.getTargets(registry, target.canReplace.get()),
-                        registry.getHolderOrThrow(biome),
+                        registry.getOrThrow(biome),
                         target.getParameters().region(RURegions.key(biome))
                     );
                 }
@@ -91,13 +91,13 @@ public class RULithostitched {
                     
                     injector = BiomeInjector.builder(target.dimension).replacePartially(
                         BiomeTarget.getTargets(registry, target.canReplace.get()),
-                        registry.getHolderOrThrow(biome),
+                        registry.getOrThrow(biome),
                         parameters
                     );
                 }
                 // Special
                 else {
-                    injector = BiomeTarget.createSpecialInjector(registries, registry.getHolderOrThrow(biome), target);
+                    injector = BiomeTarget.createSpecialInjector(registries, registry.getOrThrow(biome), target);
                 }
                 
                 if (injector != null) {

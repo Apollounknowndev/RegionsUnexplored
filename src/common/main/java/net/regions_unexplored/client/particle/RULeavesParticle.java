@@ -2,12 +2,14 @@ package net.regions_unexplored.client.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("unused")
-public class RULeavesParticle extends TextureSheetParticle {
+public class RULeavesParticle extends SingleQuadParticle {
     private static final float ACCELERATION_SCALE = 0.0025f;
     private static final int INITIAL_LIFETIME = 300;
     private static final int CURVE_ENDPOINT_TIME = 300;
@@ -21,9 +23,8 @@ public class RULeavesParticle extends TextureSheetParticle {
     private final double zaFlowScale;
     private final double swirlPeriod;
 
-    protected RULeavesParticle(ClientLevel level, double x, double y, double z, SpriteSet sprites, float fallAcceleration, float sideAcceleration, boolean swirl, boolean flowAway, float scale, float startVelocity) {
-        super(level, x, y, z);
-        this.pickSprite(sprites);
+    protected RULeavesParticle(ClientLevel level, double x, double y, double z, TextureAtlasSprite sprite, float fallAcceleration, float sideAcceleration, boolean swirl, boolean flowAway, float scale, float startVelocity) {
+        super(level, x, y, z, sprite);
         float size;
         this.rotSpeed = (float)Math.toRadians(this.random.nextBoolean() ? -30.0 : 30.0);
         this.spinAcceleration = (float)Math.toRadians(this.random.nextBoolean() ? -5.0 : 5.0);
@@ -41,11 +42,8 @@ public class RULeavesParticle extends TextureSheetParticle {
         this.zaFlowScale = Math.sin(Math.toRadians(particleRandom * 60.0f)) * (double)this.windBig;
         this.swirlPeriod = Math.toRadians(1000.0f + particleRandom * 3000.0f);
     }
-
-    public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
-    }
-
+    
+    @Override
     public void tick() {
         this.xo = this.x;
         this.yo = this.y;
@@ -93,7 +91,12 @@ public class RULeavesParticle extends TextureSheetParticle {
         this.yd *= this.friction;
         this.zd *= this.friction;
     }
-
+    
+    @Override
+    protected Layer getLayer() {
+        return Layer.TRANSLUCENT;
+    }
+    
     public static class Provider<T extends ParticleOptions> implements ParticleProvider<T> {
         private final SpriteSet sprites;
         private final float fallAcceleration;
@@ -135,8 +138,8 @@ public class RULeavesParticle extends TextureSheetParticle {
 
         @Nullable
         @Override
-        public Particle createParticle(T options, ClientLevel level, double x, double y, double z, double xAux, double yAux, double zAux) {
-            Particle particle = new RULeavesParticle(level, x, y, z, this.sprites, this.fallAcceleration, this.sideAcceleration, this.swirl, this.flowAway, this.scale, this.startVelocity);
+        public Particle createParticle(T options, ClientLevel level, double x, double y, double z, double xa, double ya, double za, RandomSource random) {
+            RULeavesParticle particle = new RULeavesParticle(level, x, y, z, this.sprites.get(random), this.fallAcceleration, this.sideAcceleration, this.swirl, this.flowAway, this.scale, this.startVelocity);
             if (options instanceof ColorParticleOption colored) {
                 particle.setColor(colored.getRed(), colored.getGreen(), colored.getBlue());
             }

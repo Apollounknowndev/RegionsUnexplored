@@ -1,20 +1,17 @@
 plugins {
     kotlin("jvm") version "2.1.21"
-    id("earth.terrarium.cloche") version "0.19.10"
+    id("earth.terrarium.cloche") version "0.19.0"
 }
 
 repositories {
+    cloche.librariesMinecraft()
+    mavenCentral()
     cloche {
+        main()
         mavenNeoforgedMeta()
         mavenNeoforged()
-        mavenForge()
         mavenFabric()
-        mavenParchment()
-        librariesMinecraft()
-        main()
     }
-    mavenLocal()
-    mavenCentral()
     maven("https://api.modrinth.com/maven")
     maven("https://maven.terraformersmc.com/")
     maven("https://raw.githubusercontent.com/Fuzss/modresources/main/maven/")
@@ -24,7 +21,7 @@ group = "net.regions_unexplored"
 version = "0.6.1"
 
 // Required dependencies
-val lithostitchedVersion = "1.7.10+beta3"
+val lithostitchedVersion = "1.7.13"
 
 // Optional dependencies
 val wikifulVersion = "0.3.2"
@@ -57,7 +54,7 @@ cloche {
             implementation("de.marhali:json5-java:3.0.0")
             implementation("com.electronwill.night-config:core:3.8.3")
             implementation("com.electronwill.night-config:toml:3.8.3")
-            modCompileOnlyApi("maven.modrinth:lithostitched:1.6.5-neoforge-21.1")
+            modCompileOnlyApi("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-26.1")
         }
 
         data()
@@ -76,25 +73,20 @@ cloche {
         mixins.from(file("src/fabric/main/regions_unexplored.fabric.mixins.json"))
 
         loaderVersion = "0.19.2"
-        minecraftVersion = "1.21.1"
-
-        mappings {
-            official()
-            custom(project.dependencies.create(files("mappings/1.21.1.tiny")))
-        }
+        minecraftVersion = "26.1.2"
 
         dependencies {
-            fabricApi("0.116.8")
+            fabricApi("0.155.0")
 
             include("de.marhali:json5-java:3.0.0")
             include("com.electronwill.night-config:core:3.8.3")
             include("com.electronwill.night-config:toml:3.8.3")
 
-            modRuntimeOnly("maven.modrinth:world-preview:qc0AtV3T")
-            modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-fabric-21.1")
-            modImplementation("maven.modrinth:wikiful:$wikifulVersion-fabric-21.1")
+            modRuntimeOnly("maven.modrinth:world-preview-prime:2.0.0-fabric-26.1")
+            modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-fabric-26.1")
+            modImplementation("maven.modrinth:wikiful:$wikifulVersion-fabric-26.1")
 
-            modImplementation("com.terraformersmc:modmenu:11.0.3")
+            modImplementation("com.terraformersmc:modmenu:18.0.0")
         }
 
         data()
@@ -122,26 +114,22 @@ cloche {
 
     neoforge {
         mixins.from(file("src/neoforge/main/regions_unexplored.neoforge.mixins.json"))
-        loaderVersion = "21.1.218"
-        minecraftVersion = "1.21.1"
-
-        mappings {
-            official()
-            custom(project.dependencies.create(files("mappings/1.21.1.tiny")))
-        }
+        loaderVersion = "26.1.2.81"
+        minecraftVersion = "26.1.2"
 
         dependencies {
             legacyClasspath("de.marhali:json5-java:3.0.0")
             include("de.marhali:json5-java:3.0.0")
-            modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-21.1")
-            modImplementation("maven.modrinth:wikiful:$wikifulVersion-neoforge-21.1")
+            modRuntimeOnly("maven.modrinth:world-preview-prime:2.0.0-neoforge-26.1")
+            modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-26.1")
+            modImplementation("maven.modrinth:wikiful:$wikifulVersion-neoforge-26.1")
         }
 
         data {
             dependencies {
                 legacyClasspath("de.marhali:json5-java:3.0.0")
-                modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-21.1")
-                modImplementation("maven.modrinth:wikiful:$wikifulVersion-neoforge-21.1")
+                modImplementation("maven.modrinth:lithostitched:$lithostitchedVersion-neoforge-26.1")
+                modImplementation("maven.modrinth:wikiful:$wikifulVersion-neoforge-26.1")
             }
         }
 

@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 
+import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
@@ -29,7 +30,7 @@ public abstract class RUTrunkPlacer extends TrunkPlacer {
     }
 
     protected static <P extends RUTrunkPlacer> Products.P1<RecordCodecBuilder.Mu<P>, IntProvider> heightField(RecordCodecBuilder.Instance<P> instance) {
-        return instance.group(IntProvider.POSITIVE_CODEC.fieldOf("height").forGetter(placer -> placer.height));
+        return instance.group(IntProviders.POSITIVE_CODEC.fieldOf("height").forGetter(placer -> placer.height));
     }
 
     public int getTreeHeight(RandomSource random) {

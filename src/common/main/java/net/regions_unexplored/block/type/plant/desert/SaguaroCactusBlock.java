@@ -2,9 +2,11 @@ package net.regions_unexplored.block.type.plant.desert;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
@@ -23,15 +25,17 @@ public class SaguaroCactusBlock extends Block {
     protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
         builder.add(SHAPE);
     }
-
+    
     @Override
-    public BlockState updateShape(
+    protected BlockState updateShape(
         final BlockState state,
-        final Direction directionToNeighbour,
-        final BlockState neighbourState,
-        final LevelAccessor level,
+        final LevelReader level,
+        final ScheduledTickAccess ticks,
         final BlockPos pos,
-        final BlockPos neighbourPos
+        final Direction directionToNeighbour,
+        final BlockPos neighbourPos,
+        final BlockState neighbourState,
+        final RandomSource random
     ) {
         SaguaroCactusShape shape = state.getValue(SHAPE);
 
@@ -80,12 +84,12 @@ public class SaguaroCactusBlock extends Block {
         return state.setValue(SHAPE, shape);
     }
     
-    private boolean isCactus(LevelAccessor level, BlockPos pos, SaguaroCactusShape targetShape) {
+    private boolean isCactus(LevelReader level, BlockPos pos, SaguaroCactusShape targetShape) {
         var shape = level.getBlockState(pos).getOptionalValue(SHAPE);
         return shape.isPresent() && shape.get() == targetShape;
     }
     
-    private boolean isCactusAxisAligned(LevelAccessor level, BlockPos pos, Direction direction) {
+    private boolean isCactusAxisAligned(LevelReader level, BlockPos pos, Direction direction) {
         var shape = level.getBlockState(pos.relative(direction)).getOptionalValue(SHAPE);
         return shape.isPresent() && shape.get() == SaguaroCactusShape.getAxisAligned(direction.getAxis());
     }

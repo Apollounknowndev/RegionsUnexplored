@@ -1,9 +1,10 @@
 package net.regions_unexplored.block.compat;
 
-import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
+
+import net.fabricmc.fabric.api.registry.CompostableRegistry;
 
 public class CompostableBlocksFabric {
     public static void setup() {
-        CompostableBlocks.COMPOSTABLES.forEach(CompostingChanceRegistry.INSTANCE::add);
+        CompostableBlocks.COMPOSTABLES.forEach(CompostableRegistry.INSTANCE::add);
     }
 }

@@ -32,10 +32,10 @@ public class HangingPrismariteFeature extends Feature<NoneFeatureConfiguration> 
 
         return false;
     }
-    public boolean placeBlob(LevelAccessor level, BlockPos pos) {
+    public boolean placeBlob(WorldGenLevel level, BlockPos pos) {
         Random random = new Random();
 
-        if (pos.getY() <= level.getMinBuildHeight() + 3) {
+        if (pos.getY() <= level.getMinY() + 3) {
             return false;
         } else {
             for(int l = 0; l < 3; ++l) {
@@ -61,7 +61,7 @@ public class HangingPrismariteFeature extends Feature<NoneFeatureConfiguration> 
         }
     }
 
-    public boolean placePillar(LevelAccessor level, BlockPos pos) {
+    public boolean placePillar(WorldGenLevel level, BlockPos pos) {
         Random random = new Random();
 
         int size = random.nextInt(5)+1;

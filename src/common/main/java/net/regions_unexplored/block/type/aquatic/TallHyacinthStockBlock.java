@@ -6,12 +6,10 @@ import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlockContainer;
@@ -46,8 +44,7 @@ public class TallHyacinthStockBlock extends Block implements LiquidBlockContaine
     
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-        Vec3 offset = state.getOffset(getter, pos);
-        return SHAPE.move(offset.x, offset.y, offset.z);
+        return SHAPE.move(state.getOffset(pos));
     }
 
     @Override
@@ -69,7 +66,16 @@ public class TallHyacinthStockBlock extends Block implements LiquidBlockContaine
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction directionToNeighbour, BlockState neighbourState, LevelAccessor level, BlockPos pos, BlockPos neighbourPos) {
+    protected BlockState updateShape(
+        BlockState state,
+        LevelReader level,
+        ScheduledTickAccess ticks,
+        BlockPos pos,
+        Direction directionToNeighbour,
+        BlockPos neighbourPos,
+        BlockState neighbourState,
+        RandomSource random
+    ) {
         TallHyacinthStockShape shape = state.getValue(TALL_HYACINTH_STOCK_SHAPE);
         BlockState belowState = level.getBlockState(pos.below());
         BlockState aboveState = level.getBlockState(pos.above());
@@ -104,9 +110,8 @@ public class TallHyacinthStockBlock extends Block implements LiquidBlockContaine
         return Fluids.WATER.getSource(false);
     }
     
-    
     @Override
-    public boolean canPlaceLiquid(Player user, BlockGetter level, BlockPos pos, BlockState state, Fluid type) {
+    public boolean canPlaceLiquid(LivingEntity livingEntity, BlockGetter blockGetter, BlockPos blockPos, BlockState blockState, Fluid fluid) {
         return false;
     }
     

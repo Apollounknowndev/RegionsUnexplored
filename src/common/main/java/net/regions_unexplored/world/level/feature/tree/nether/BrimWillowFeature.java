@@ -110,7 +110,7 @@ public class BrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeBranches(LevelAccessor level, BlockPos pos) {
+    private void placeBranches(WorldGenLevel level, BlockPos pos) {
         //NORTH
         if(isReplaceable(level, pos.north())){
             if(isReplaceable(level, pos.north())){
@@ -177,7 +177,7 @@ public class BrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeSpine(LevelAccessor level, BlockPos pos) {
+    private void placeSpine(WorldGenLevel level, BlockPos pos) {
         //NORTH
         if(isReplaceable(level, pos.north())){
             placeBrimwoodLog(level, pos.north(), Direction.Axis.Z);
@@ -196,7 +196,7 @@ public class BrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeBrimwoodLog(LevelAccessor level, BlockPos pos, Direction.Axis axis){
+    private void placeBrimwoodLog(WorldGenLevel level, BlockPos pos, Direction.Axis axis){
         if(level.isOutsideBuildHeight(pos)){
             return;
         }
@@ -205,7 +205,7 @@ public class BrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeBrimwoodLeaves(LevelAccessor level, BlockPos pos){
+    private void placeBrimwoodLeaves(WorldGenLevel level, BlockPos pos){
         if(level.isOutsideBuildHeight(pos)){
             return;
         }
@@ -214,7 +214,7 @@ public class BrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeLeavesUpsideDown(LevelAccessor level, BlockPos pos) {
+    private void placeLeavesUpsideDown(WorldGenLevel level, BlockPos pos) {
         if (isReplaceable(level, pos)) {
             placeBrimwoodLeaves(level, pos);
         }
@@ -328,7 +328,7 @@ public class BrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void addVine(LevelAccessor level, BlockPos pos) {
+    private void addVine(WorldGenLevel level, BlockPos pos) {
         Random random = new Random();
         int size = random.nextInt(3);
         BlockPos place = pos.above();

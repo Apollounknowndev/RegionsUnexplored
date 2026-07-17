@@ -65,7 +65,7 @@ public class TreeShrubFeature extends Feature<RUTreeConfiguration> {
         return true;
     }
 
-    public boolean placeLog(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public boolean placeLog(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         Random random = new Random();
         if(level.isOutsideBuildHeight(pos)){
             return true;
@@ -83,7 +83,7 @@ public class TreeShrubFeature extends Feature<RUTreeConfiguration> {
             level.setBlock(pos, Blocks.DIRT.defaultBlockState(), 2);
         }
         else if(isReplaceable(level, pos)) {
-            level.setBlock(pos, treeConfiguration.trunkProvider().getState(randomSource, pos), 2);
+            level.setBlock(pos, treeConfiguration.trunkProvider().getState(level, randomSource, pos), 2);
         }
         else{
             return true;
@@ -104,7 +104,7 @@ public class TreeShrubFeature extends Feature<RUTreeConfiguration> {
         return true;
     }
 
-    public void placeRoot(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public void placeRoot(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         Random random = new Random();
         int rd = random.nextInt(2)+4;
         int i = 0;
@@ -124,7 +124,7 @@ public class TreeShrubFeature extends Feature<RUTreeConfiguration> {
             i++;
         }
     }
-    public void placeLeavesBlob(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public void placeLeavesBlob(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         placeLeavesBlock(level, pos, randomSource, treeConfiguration);
         placeLeavesBlock(level, pos.north(), randomSource, treeConfiguration);
         placeLeavesBlock(level, pos.south(), randomSource, treeConfiguration);
@@ -133,18 +133,18 @@ public class TreeShrubFeature extends Feature<RUTreeConfiguration> {
         placeLeavesBlock(level, pos.above(), randomSource, treeConfiguration);
     }
 
-    public boolean placeLeavesBlock(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public boolean placeLeavesBlock(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         Random random = new Random();
         if(level.isOutsideBuildHeight(pos)){
             return true;
         }
         if(level.getBlockState(pos).canBeReplaced()) {
-            level.setBlock(pos, treeConfiguration.foliageProvider().getState(randomSource, pos).setValue(LeavesBlock.DISTANCE, 1), 2);
+            level.setBlock(pos, treeConfiguration.foliageProvider().getState(level, randomSource, pos).setValue(LeavesBlock.DISTANCE, 1), 2);
         }
         return true;
     }
 
-    public boolean checkReplaceable(LevelAccessor level, BlockPos pos) {
+    public boolean checkReplaceable(WorldGenLevel level, BlockPos pos) {
         if(level.isOutsideBuildHeight(pos)){
             return false;
         }

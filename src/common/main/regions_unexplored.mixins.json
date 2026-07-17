@@ -12,7 +12,7 @@
     "CropPlacerMixin",
     "EatBlockGoalMixin",
     "NetherrackBlockMixin",
-    "TrunkPlacerDirtMixin",
+    "TreeConfigurationMixin",
     "VillagerProfessionAccessor",
     "WorldCarverMixin"
   ],

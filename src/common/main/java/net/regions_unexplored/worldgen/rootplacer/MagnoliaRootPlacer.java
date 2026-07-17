@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
@@ -34,7 +35,14 @@ public class MagnoliaRootPlacer extends RootPlacer {
 	}
 	
 	@Override
-	public boolean placeRoots(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> rootSetter, RandomSource random, BlockPos origin, BlockPos trunkOrigin, TreeConfiguration config) {
+	public boolean placeRoots(
+		final WorldGenLevel level,
+		final BiConsumer<BlockPos, BlockState> rootSetter,
+		final RandomSource random,
+		final BlockPos origin,
+		final BlockPos trunkOrigin,
+		final TreeConfiguration config
+	) {
 		Map<BlockPos, UnaryOperator<BlockState>> rootPositions = new HashMap<>();
 		
 		Direction rootDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);

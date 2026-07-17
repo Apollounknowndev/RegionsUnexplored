@@ -48,8 +48,7 @@ public class BioshroomBlock extends SaplingBlock implements SuspiciousEffectHold
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-        Vec3 vec3 = state.getOffset(getter, pos);
-        return SHAPE.move(vec3.x, vec3.y, vec3.z);
+        return SHAPE.move(state.getOffset(pos));
     }
 
     @Override

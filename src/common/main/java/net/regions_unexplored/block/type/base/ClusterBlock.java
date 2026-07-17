@@ -8,10 +8,12 @@ import java.util.Map;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
@@ -65,7 +67,7 @@ public class ClusterBlock extends Block implements SimpleWaterloggedBlock {
 		VoxelShape baseShape = this.shapes.get(facing);
 		if (facing != Direction.DOWN) return baseShape;
 		
-		Vec3 offset = state.getOffset(level, pos);
+		Vec3 offset = state.getOffset(pos);
 		return baseShape.move(
 			offset.x,
 			0,
@@ -83,17 +85,19 @@ public class ClusterBlock extends Block implements SimpleWaterloggedBlock {
 	@Override
 	protected BlockState updateShape(
 		final BlockState state,
-		final Direction directionToNeighbour,
-		final BlockState neighbourState,
-		final LevelAccessor level,
+		final LevelReader level,
+		final ScheduledTickAccess ticks,
 		final BlockPos pos,
-		final BlockPos neighbourPos
+		final Direction directionToNeighbour,
+		final BlockPos neighbourPos,
+		final BlockState neighbourState,
+		final RandomSource random
 	) {
 		if (state.getValue(WATERLOGGED)) {
-			level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+			ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 		}
 		
-		return directionToNeighbour == state.getValue(FACING).getOpposite() && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, directionToNeighbour, neighbourState, level, pos, neighbourPos);
+		return directionToNeighbour == state.getValue(FACING).getOpposite() && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
 	}
 	
 	@Override

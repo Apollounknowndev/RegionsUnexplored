@@ -2,10 +2,9 @@ package net.regions_unexplored.block.type.shrub;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -33,11 +32,20 @@ public class MangroveShrubBlock extends DoublePlantBlock implements SimpleWaterl
     }
     
     @Override
-    public BlockState updateShape(BlockState state, Direction directionToNeighbor, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+    protected BlockState updateShape(
+        final BlockState state,
+        final LevelReader level,
+        final ScheduledTickAccess ticks,
+        final BlockPos pos,
+        final Direction directionToNeighbour,
+        final BlockPos neighbourPos,
+        final BlockState neighbourState,
+        final RandomSource random
+    ) {
         if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        return super.updateShape(state, directionToNeighbor, neighborState, level, pos, neighborPos);
+        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
     }
 
     @Override
@@ -60,7 +68,7 @@ public class MangroveShrubBlock extends DoublePlantBlock implements SimpleWaterl
         BlockPos pos = context.getClickedPos();
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         Level level = context.getLevel();
-        if (pos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(pos.above()).canBeReplaced(context)) {
+        if (pos.getY() < level.getMaxY() - 1 && level.getBlockState(pos.above()).canBeReplaced(context)) {
             return this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(WATERLOGGED, fluid.getType() == Fluids.WATER);
         }
         return super.getStateForPlacement(context);

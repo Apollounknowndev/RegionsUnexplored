@@ -8,6 +8,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer.FoliageAttachment;
@@ -36,7 +37,14 @@ public class AspenTrunkPlacer extends RUTrunkPlacer {
     }
 
     @Override
-    public List<FoliageAttachment> placeTrunk(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> trunkSetter, RandomSource random, int treeHeight, BlockPos origin, TreeConfiguration config) {
+    public List<FoliageAttachment> placeTrunk(
+        final WorldGenLevel level,
+        final BiConsumer<BlockPos, BlockState> trunkSetter,
+        final RandomSource random,
+        final int treeHeight,
+        final BlockPos origin,
+        final TreeConfiguration config
+    ) {
         List<FoliageAttachment> attachments = new ArrayList<>();
         BlockPos.MutableBlockPos pos = origin.mutable();
         for (int y = 0; y < treeHeight; ++y) {

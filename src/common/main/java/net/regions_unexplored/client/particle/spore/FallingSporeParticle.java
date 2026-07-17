@@ -2,26 +2,27 @@ package net.regions_unexplored.client.particle.spore;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.particles.ColorParticleOption;
+import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.Nullable;
 
-public class FallingSporeParticle extends TextureSheetParticle {
+public class FallingSporeParticle extends SingleQuadParticle {
     private int ticksOnGround;
 
-    protected FallingSporeParticle(ClientLevel level, double x, double y, double z, SpriteSet sprites) {
-        super(level, x, y, z);
-        this.pickSprite(sprites);
+    protected FallingSporeParticle(ClientLevel level, double x, double y, double z, TextureAtlasSprite sprite) {
+        super(level, x, y, z, sprite);
         this.setSize(0.01F, 0.01F);
         this.gravity = 0.007F;
     }
-
+    
     @Override
-    public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+    protected Layer getLayer() {
+        return Layer.TRANSLUCENT;
     }
-
+    
     @Override
-    public int getLightColor(float color) {
+    public int getLightCoords(float a) {
         return 240;
     }
 
@@ -63,10 +64,9 @@ public class FallingSporeParticle extends TextureSheetParticle {
             this.sprites = sprites;
         }
 
-        @Nullable
         @Override
-        public Particle createParticle(ColorParticleOption option, ClientLevel level, double x, double y, double z, double xAux, double yAux, double zAux) {
-            var particle = new FallingSporeParticle(level, x, y, z, this.sprites);
+        public Particle createParticle(ColorParticleOption option, ClientLevel level, double x, double y, double z, double xa, double ya, double za, RandomSource random) {
+            var particle = new FallingSporeParticle(level, x, y, z, this.sprites.get(random));
             particle.setColor(option.getRed(), option.getGreen(), option.getBlue());
             return particle;
         }

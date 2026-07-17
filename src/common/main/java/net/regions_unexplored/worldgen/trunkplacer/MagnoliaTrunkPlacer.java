@@ -8,7 +8,9 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.TreeFeature;
@@ -22,8 +24,8 @@ import java.util.function.BiConsumer;
 
 public class MagnoliaTrunkPlacer extends RUTrunkPlacer {
     public static final MapCodec<MagnoliaTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(i -> MagnoliaTrunkPlacer.heightField(i).and(i.group(
-        IntProvider.POSITIVE_CODEC.fieldOf("primary_branch_length").forGetter(t -> t.primaryBranchLength),
-        IntProvider.POSITIVE_CODEC.fieldOf("secondary_branch_length").forGetter(t -> t.secondaryBranchLength)
+        IntProviders.POSITIVE_CODEC.fieldOf("primary_branch_length").forGetter(t -> t.primaryBranchLength),
+        IntProviders.POSITIVE_CODEC.fieldOf("secondary_branch_length").forGetter(t -> t.secondaryBranchLength)
     )).apply(i, MagnoliaTrunkPlacer::new));
     public static final TrunkPlacerType<MagnoliaTrunkPlacer> TYPE = new TrunkPlacerType<>(CODEC);
 
@@ -42,7 +44,14 @@ public class MagnoliaTrunkPlacer extends RUTrunkPlacer {
     }
 
     @Override
-    public List<FoliageAttachment> placeTrunk(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> trunkSetter, RandomSource random, int treeHeight, BlockPos origin, TreeConfiguration config) {
+    public List<FoliageAttachment> placeTrunk(
+        final WorldGenLevel level,
+        final BiConsumer<BlockPos, BlockState> trunkSetter,
+        final RandomSource random,
+        final int treeHeight,
+        final BlockPos origin,
+        final TreeConfiguration config
+    ) {
         List<FoliageAttachment> attachments = new ArrayList<>();
         // Middle
         for (int y = 0; y < treeHeight; ++y) {

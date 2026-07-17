@@ -2,7 +2,7 @@ package net.regions_unexplored.worldgen.feature;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.WeightedListInt;
@@ -12,7 +12,7 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.regions_unexplored.worldgen.feature.config.RockFeatureConfig;
 
 public class RURockFeature extends Feature<RockFeatureConfig> {
-    public static final IntProvider BLOB_Y_OFFSET = new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder()
+    public static final IntProvider BLOB_Y_OFFSET = new WeightedListInt(WeightedList.<IntProvider>builder()
         .add(ConstantInt.of(-1), 3)
         .add(ConstantInt.of(0),  3)
         .add(ConstantInt.of(1),  1)
@@ -36,7 +36,7 @@ public class RURockFeature extends Feature<RockFeatureConfig> {
             float tr = (float)(xr + yr + zr) * 0.333f + 0.5f;
             for (BlockPos blockPos : BlockPos.betweenClosed(origin.offset(-xr, -yr, -zr), origin.offset(xr, yr, zr))) {
                 if (!(blockPos.distSqr(origin) <= (double)(tr * tr))) continue;
-                level.setBlock(blockPos, config.stateProvider().getState(random, origin), 3);
+                level.setBlock(blockPos, config.stateProvider().getState(level, random, origin), 3);
             }
             origin = origin.offset(
                 config.blobOffsetXZ().sample(random),

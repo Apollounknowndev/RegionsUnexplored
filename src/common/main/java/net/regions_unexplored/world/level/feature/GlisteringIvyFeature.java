@@ -40,7 +40,7 @@ public class GlisteringIvyFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeRoofGlisteringWart(LevelAccessor level, RandomSource random, BlockPos pos) {
+    private void placeRoofGlisteringWart(WorldGenLevel level, RandomSource random, BlockPos pos) {
         level.setBlock(pos, RUBlocks.GLISTERING_WART.get().defaultBlockState(), 2);
         BlockPos.MutableBlockPos pos1 = new BlockPos.MutableBlockPos();
         BlockPos.MutableBlockPos pos2 = new BlockPos.MutableBlockPos();
@@ -69,7 +69,7 @@ public class GlisteringIvyFeature extends Feature<NoneFeatureConfiguration> {
 
     }
 
-    private void placeRoofGlisteringIvy(LevelAccessor level, RandomSource random, BlockPos pos) {
+    private void placeRoofGlisteringIvy(WorldGenLevel level, RandomSource random, BlockPos pos) {
         BlockPos.MutableBlockPos pos1 = new BlockPos.MutableBlockPos();
 
         for(int i = 0; i < 100; ++i) {
@@ -93,7 +93,7 @@ public class GlisteringIvyFeature extends Feature<NoneFeatureConfiguration> {
 
     }
 
-    public static void placeGlisteringIvyColumn(LevelAccessor level, RandomSource random, BlockPos.MutableBlockPos pos, int length, int low, int high) {
+    public static void placeGlisteringIvyColumn(WorldGenLevel level, RandomSource random, BlockPos.MutableBlockPos pos, int length, int low, int high) {
         for(int i = 0; i <= length; ++i) {
             if (level.isEmptyBlock(pos)) {
                 if (i == length || !level.isEmptyBlock(pos.below())) {

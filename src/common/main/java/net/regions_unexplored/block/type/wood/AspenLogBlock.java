@@ -4,8 +4,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -25,15 +28,17 @@ public class AspenLogBlock extends Block {
    
    @Override
    protected BlockState updateShape(
-       BlockState state,
-       Direction directionToNeighbour,
-       BlockState neighbourState,
-       LevelAccessor level,
-       BlockPos pos,
-       BlockPos neighbourPos
+       final BlockState state,
+       final LevelReader level,
+       final ScheduledTickAccess ticks,
+       final BlockPos pos,
+       final Direction directionToNeighbour,
+       final BlockPos neighbourPos,
+       final BlockState neighbourState,
+       final RandomSource random
    ) {
       boolean isBase = state.getValue(AXIS) == Axis.Y && level.getBlockState(pos.below()).is(BlockTags.DIRT);
-      return super.updateShape(state, directionToNeighbour, neighbourState, level, pos, neighbourPos).setValue(IS_BASE, isBase);
+      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random).setValue(IS_BASE, isBase);
    }
    
    @Override

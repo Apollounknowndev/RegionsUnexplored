@@ -37,6 +37,6 @@ public class DeadGrassBlock extends VegetationBlock {
     }
 
     protected boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
-        return state.is(BlockTags.DEAD_BUSH_MAY_PLACE_ON);
+        return state.is(BlockTags.SUPPORTS_DRY_VEGETATION);
     }
 }

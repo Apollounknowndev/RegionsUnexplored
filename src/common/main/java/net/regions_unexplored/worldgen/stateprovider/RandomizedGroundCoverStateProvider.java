@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
@@ -45,7 +46,7 @@ public class RandomizedGroundCoverStateProvider extends BlockStateProvider {
 	}
 	
 	@Override
-	public BlockState getState(RandomSource random, BlockPos pos) {
+	public BlockState getState(WorldGenLevel level, RandomSource random, BlockPos pos) {
 		return this.block.defaultBlockState()
 			.setValue(BonemealableSegmentedBlock.AMOUNT, random.nextIntBetweenInclusive(1, 4))
 			.setValue(BonemealableSegmentedBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(random));

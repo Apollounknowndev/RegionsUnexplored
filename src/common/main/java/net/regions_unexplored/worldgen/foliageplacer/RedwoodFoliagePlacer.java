@@ -5,7 +5,9 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
@@ -15,7 +17,7 @@ import net.regions_unexplored.worldgen.foliageplacer.RUFoliagePlacerUtils.Contex
 import static net.regions_unexplored.worldgen.foliageplacer.RUFoliagePlacerUtils.*;
 
 public class RedwoodFoliagePlacer extends BlobFoliagePlacer {
-    public static final MapCodec<RedwoodFoliagePlacer> CODEC = IntProvider.CODEC.fieldOf("offset").xmap(RedwoodFoliagePlacer::new, p -> p.offset);
+    public static final MapCodec<RedwoodFoliagePlacer> CODEC = IntProviders.CODEC.fieldOf("offset").xmap(RedwoodFoliagePlacer::new, p -> p.offset);
     public static final FoliagePlacerType<RedwoodFoliagePlacer> TYPE = new FoliagePlacerType<>(CODEC);
 
     public RedwoodFoliagePlacer(IntProvider offset) {
@@ -30,9 +32,20 @@ public class RedwoodFoliagePlacer extends BlobFoliagePlacer {
     protected FoliagePlacerType<?> type() {
         return TYPE;
     }
-
+    
+    
     @Override
-    protected void createFoliage(LevelSimulatedReader level, FoliagePlacer.FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, int treeHeight, FoliagePlacer.FoliageAttachment foliageAttachment, int foliageHeight, int leafRadius, int offset) {
+    protected void createFoliage(
+        final WorldGenLevel level,
+        final FoliageSetter foliageSetter,
+        final RandomSource random,
+        final TreeConfiguration config,
+        final int treeHeight,
+        final FoliageAttachment foliageAttachment,
+        final int foliageHeight,
+        final int leafRadius,
+        final int offset
+    ) {
         Context context = new Context(level, foliageSetter, random, config.foliageProvider, foliageAttachment.pos(), offset);
         placeDiamond(context, 1, -1, false);
         placeDiamond(context, 2, 0, false);

@@ -10,7 +10,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -30,6 +30,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.registry.RUBlocks;
 import net.regions_unexplored.registry.RUParticleTypes;
+import net.regions_unexplored.registry.data.RULootTables;
 
 import static net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider.simple;
 
@@ -47,10 +48,6 @@ public class AppleLeavesBlock extends RUTintedParticlesLeavesBlock implements Bo
                 .setValue(WATERLOGGED, false)
                 .setValue(AGE, 0)
         );
-    }
-
-    public boolean isRandomlyTicking(BlockState state) {
-        return state.getValue(AGE) <= 4;
     }
 
     @Override
@@ -71,22 +68,55 @@ public class AppleLeavesBlock extends RUTintedParticlesLeavesBlock implements Bo
             level.removeBlock(pos, false);
         }
     }
-
+    
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        int i = blockState.getValue(AGE);
-        boolean flag = i == 4;
-        if (!flag && player.getItemInHand(interactionHand).is(Items.BONE_MEAL)) {
-            return ItemInteractionResult.SUCCESS;
-        } else if (i > 3) {
-            popResourceFromFace(level, blockPos, blockHitResult.getDirection(), new ItemStack(Items.APPLE, 1));
-            level.playSound(null, blockPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
-            BlockState blockstate = blockState.setValue(AGE, 0);
-            level.setBlock(blockPos, blockstate, 2);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, blockstate));
-            return ItemInteractionResult.sidedSuccess(level.isClientSide());
+    protected void spawnFallingLeavesParticle(Level level, BlockPos blockPos, RandomSource randomSource) {
+    
+    }
+    
+    @Override
+    protected InteractionResult useItemOn(
+        final ItemStack itemStack,
+        final BlockState state,
+        final Level level,
+        final BlockPos pos,
+        final Player player,
+        final InteractionHand hand,
+        final BlockHitResult hitResult
+    ) {
+        int age = state.getValue(AGE);
+        boolean isMaxAge = age == 4;
+        return (!isMaxAge && itemStack.is(Items.BONE_MEAL)
+            ? InteractionResult.PASS
+            : super.useItemOn(itemStack, state, level, pos, player, hand, hitResult));
+    }
+    
+    @Override
+    protected InteractionResult useWithoutItem(
+        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
+    ) {
+        if (state.getValue(AGE) > 3) {
+            if (level instanceof ServerLevel serverLevel) {
+                Block.dropFromBlockInteractLootTable(
+                    serverLevel,
+                    RULootTables.HARVEST_APPLE_OAK_LEAVES,
+                    state,
+                    level.getBlockEntity(pos),
+                    null,
+                    player,
+                    (serverlvl, itemStack) -> Block.popResource(serverlvl, pos, itemStack)
+                );
+                serverLevel.playSound(
+                    null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + serverLevel.getRandom().nextFloat() * 0.4F
+                );
+                BlockState newState = state.setValue(AGE, 0);
+                serverLevel.setBlock(pos, newState, 2);
+                serverLevel.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
+            }
+            
+            return InteractionResult.SUCCESS;
         } else {
-            return super.useItemOn(itemStack, blockState, level, blockPos, player, interactionHand, blockHitResult);
+            return super.useWithoutItem(state, level, pos, player, hitResult);
         }
     }
 

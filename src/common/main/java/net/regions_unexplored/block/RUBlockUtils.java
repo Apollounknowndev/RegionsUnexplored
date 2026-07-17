@@ -89,7 +89,7 @@ public class RUBlockUtils {
     }
 
     public static WallSignBlock wallSign(BlockBehaviour.Properties properties, SoundType sound, Block standingSign, WoodType woodType, boolean fireproof) {
-        applyProperties(properties, 1, 1, sound, fireproof, null).noCollision().dropsLike(standingSign);
+        applyProperties(properties, 1, 1, sound, fireproof, null).noCollision().overrideLootTable(standingSign.getLootTable());
         return new WallSignBlock(woodType, properties);
     }
 
@@ -99,7 +99,7 @@ public class RUBlockUtils {
     }
 
     public static WallHangingSignBlock wallHangingSign(BlockBehaviour.Properties properties, MapColor color, SoundType sound, Block hangingSign, WoodType woodType, boolean fireproof) {
-        applyProperties(properties, 1, 1, sound, fireproof, color).noCollision().dropsLike(hangingSign).forceSolidOn();
+        applyProperties(properties, 1, 1, sound, fireproof, color).noCollision().overrideLootTable(hangingSign.getLootTable()).forceSolidOn();
         return new WallHangingSignBlock(woodType, properties);
     }
 
@@ -151,7 +151,7 @@ public class RUBlockUtils {
     }
     
     public static BlockBehaviour.Properties postProcessed(BlockBehaviour.Properties properties) {
-        return properties.hasPostProcess((state, getter, pos) -> true);
+        return properties.postProcess((state, getter, pos) -> pos);
     }
 
 

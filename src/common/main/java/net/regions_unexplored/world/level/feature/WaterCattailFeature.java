@@ -32,10 +32,10 @@ public class WaterCattailFeature extends Feature<NoneFeatureConfiguration> {
 
         return false;
     }
-    public boolean placeBlob(LevelAccessor level, BlockPos pos) {
+    public boolean placeBlob(WorldGenLevel level, BlockPos pos) {
         Random random = new Random();
 
-        if (pos.getY() <= level.getMinBuildHeight() + 3) {
+        if (pos.getY() <= level.getMinY() + 3) {
             return false;
         } else {
             for(int l = 0; l < 3; ++l) {
@@ -63,7 +63,7 @@ public class WaterCattailFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    public boolean placeCattail(LevelAccessor level, BlockPos pos) {
+    public boolean placeCattail(WorldGenLevel level, BlockPos pos) {
         if (level.getBlockState(pos.below()).is(RUBlockTags.CATTAIL_CAN_SURVIVE_ON)&&level.isWaterAt(pos)&&level.isEmptyBlock(pos.above())) {
             level.setBlock(pos, RUBlocks.CATTAIL.get().defaultBlockState().setValue(CattailBlock.HALF, DoubleBlockHalf.LOWER).setValue(CattailBlock.WATERLOGGED, true), 2);
             level.setBlock(pos.above(), RUBlocks.CATTAIL.get().defaultBlockState().setValue(CattailBlock.HALF, DoubleBlockHalf.UPPER).setValue(CattailBlock.WATERLOGGED, false), 2);

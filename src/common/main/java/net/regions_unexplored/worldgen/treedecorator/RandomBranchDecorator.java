@@ -108,7 +108,7 @@ public class RandomBranchDecorator extends TreeDecorator {
 
     private void placeLeaves(Context context, BlockPos pos) {
         if (context.isAir(pos)) {
-            context.setBlock(pos, this.leavesProvider.get().getState(context.random(), pos).trySetValue(LeavesBlock.DISTANCE, 1));
+            context.setBlock(pos, this.leavesProvider.get().getState(context.level(), context.random(), pos).trySetValue(LeavesBlock.DISTANCE, 1));
         }
     }
 

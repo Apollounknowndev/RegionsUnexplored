@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.worldgen.lithostitched.api.worldgen.stateprovider.LithostitchedStateProviders;
 import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,7 +34,7 @@ public record FallenTreeConfig(BlockStateProvider trunkProvider, IntProvider log
 	
 	public static final Codec<FallenTreeConfig> CODEC = RecordCodecBuilder.create(i -> i.group(
 		BlockStateProvider.CODEC.fieldOf("trunk_provider").forGetter(FallenTreeConfig::trunkProvider),
-		IntProvider.codec(0, 16).fieldOf("log_length").forGetter(FallenTreeConfig::logLength),
+		IntProviders.codec(0, 16).fieldOf("log_length").forGetter(FallenTreeConfig::logLength),
 		TreeDecorator.CODEC.listOf().fieldOf("stump_decorators").forGetter(FallenTreeConfig::stumpDecorators),
 		TreeDecorator.CODEC.listOf().fieldOf("log_decorators").forGetter(FallenTreeConfig::logDecorators)
 	).apply(i, FallenTreeConfig::new));

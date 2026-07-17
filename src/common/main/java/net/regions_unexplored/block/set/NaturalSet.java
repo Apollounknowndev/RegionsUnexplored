@@ -7,6 +7,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.regions_unexplored.block.BlockFactory;
 import net.regions_unexplored.block.type.leaves.HangingVinesBlock;
+import net.regions_unexplored.block.type.leaves.NoParticleLeavesBlock;
 import net.regions_unexplored.block.type.sapling.CactusSaplingBlock;
 import net.regions_unexplored.block.type.sapling.CobaltSaplingBlock;
 import net.regions_unexplored.block.type.sapling.RUSaplingBlock;
@@ -57,7 +58,7 @@ public class NaturalSet {
 
     public static NaturalSet cobalt() {
         NaturalSet set = NaturalSet.create("cobalt");
-        set.leaves = RUBlockUtils.register("cobalt_webbing", p -> RUBlockUtils.leaves(p, MapColor.COLOR_BLUE, true, LeavesBlock::new));
+        set.leaves = RUBlockUtils.register("cobalt_webbing", p -> RUBlockUtils.leaves(p, MapColor.COLOR_BLUE, true, NoParticleLeavesBlock::new));
         set.withSapling(p -> new CobaltSaplingBlock(RUTreeGrowers.COBALT, p.sound(SoundType.NETHER_SPROUTS)));
         return set;
     }

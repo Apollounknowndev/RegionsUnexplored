@@ -2,7 +2,7 @@ package net.regions_unexplored.registry.data;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.npc.VillagerType;
+import net.minecraft.world.entity.npc.villager.VillagerType;
 import net.minecraft.world.level.biome.Biome;
 import net.regions_unexplored.RegionsUnexplored;
 
@@ -108,8 +108,8 @@ public interface RUBiomes {
         return key;
     }
 
-    private static void putVillagerBiome(ResourceKey<Biome> key, VillagerType type) {
-        VillagerType.BY_BIOME.put(key, type);
+    private static void putVillagerBiome(ResourceKey<Biome> key, ResourceKey<VillagerType> type) {
+        //VillagerType.BY_BIOME.put(key, type);
     }
     
     static void init() {

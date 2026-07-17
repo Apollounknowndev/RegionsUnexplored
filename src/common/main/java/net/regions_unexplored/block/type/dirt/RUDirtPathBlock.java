@@ -10,10 +10,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -60,18 +57,20 @@ public class RUDirtPathBlock extends Block {
     
     @Override
     protected BlockState updateShape(
-        BlockState state,
-        Direction directionToNeighbour,
-        BlockState neighbourState,
-        LevelAccessor level,
-        BlockPos pos,
-        BlockPos neighbourPos
+        final BlockState state,
+        final LevelReader level,
+        final ScheduledTickAccess ticks,
+        final BlockPos pos,
+        final Direction directionToNeighbour,
+        final BlockPos neighbourPos,
+        final BlockState neighbourState,
+        final RandomSource random
     ) {
         if (directionToNeighbour == Direction.UP && !state.canSurvive(level, pos)) {
-            level.scheduleTick(pos, this, 1);
+            ticks.scheduleTick(pos, this, 1);
         }
         
-        return super.updateShape(state, directionToNeighbour, neighbourState, level, pos, neighbourPos);
+        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
     }
     
     @Override
@@ -102,6 +101,6 @@ public class RUDirtPathBlock extends Block {
     }
     
     protected BlockState getBaseBlock(Level level) {
-        return level.registryAccess().registryOrThrow(Registries.BLOCK).getOrThrow(this.baseBlock).defaultBlockState();
+        return level.registryAccess().lookupOrThrow(Registries.BLOCK).getValue(this.baseBlock).defaultBlockState();
     }
 }

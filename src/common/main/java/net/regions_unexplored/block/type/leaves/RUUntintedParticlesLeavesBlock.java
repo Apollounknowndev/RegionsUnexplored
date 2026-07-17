@@ -1,15 +1,13 @@
 package net.regions_unexplored.block.type.leaves;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LeavesBlock;
-import net.minecraft.world.level.block.state.BlockState;
 import net.regions_unexplored.block.BlockFactory;
-import net.regions_unexplored.config.RUConfigHandler;
 
 import java.util.function.Supplier;
 
@@ -19,27 +17,21 @@ public class RUUntintedParticlesLeavesBlock extends LeavesBlock {
     private final Supplier<SimpleParticleType> particle;
 
     public RUUntintedParticlesLeavesBlock(Properties properties, Supplier<SimpleParticleType> particle) {
-        super(properties);
+        super(PARTICLE_CHANCE, properties);
         this.particle = particle;
     }
 
     public static BlockFactory<RUUntintedParticlesLeavesBlock> of(Supplier<SimpleParticleType> type) {
         return p -> new RUUntintedParticlesLeavesBlock(p, type);
     }
-
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        super.animateTick(state, level, pos, random);
-        BlockPos below = pos.below();
-        BlockState belowState = level.getBlockState(below);
-
-        if (!level.isClientSide()) return;
-        if (random.nextFloat() >= (PARTICLE_CHANCE * RUConfigHandler.CLIENT.particleRates.leaves)) return;
-        if (isFaceFull(belowState.getCollisionShape(level, below), Direction.UP)) return;
-
-        spawnLeavesParticle(level, pos, random);
+    
+    @Override
+    public MapCodec<? extends LeavesBlock> codec() {
+        return null;
     }
-
-    protected void spawnLeavesParticle(Level level, BlockPos pos, RandomSource random) {
+    
+    @Override
+    protected void spawnFallingLeavesParticle(Level level, BlockPos pos, RandomSource random) {
         ParticleUtils.spawnParticleBelow(level, pos, random, this.particle.get());
     }
 }

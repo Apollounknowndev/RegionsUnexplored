@@ -40,7 +40,7 @@ public class RUGrowingPlantHeadBlock extends GrowingPlantHeadBlock {
 	
 	@Override
 	protected Block getBodyBlock() {
-		return BuiltInRegistries.BLOCK.get(this.bodyBlock);
+		return BuiltInRegistries.BLOCK.getValue(this.bodyBlock);
 	}
 	
 	@Override

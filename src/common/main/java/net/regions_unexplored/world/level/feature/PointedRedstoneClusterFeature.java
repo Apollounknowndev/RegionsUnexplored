@@ -8,7 +8,6 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.ClampedNormalFloat;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
@@ -36,11 +35,11 @@ public class PointedRedstoneClusterFeature extends Feature<PointedRedstoneCluste
         if (!PointedRedstoneUtils.isEmptyOrWater(level, pos)) {
             return false;
         } else {
-            int i = redstoneClusterConfiguration.height.sample(random);
-            float f = redstoneClusterConfiguration.wetness.sample(random);
-            float f1 = redstoneClusterConfiguration.density.sample(random);
-            int j = redstoneClusterConfiguration.radius.sample(random);
-            int k = redstoneClusterConfiguration.radius.sample(random);
+            int i = redstoneClusterConfiguration.height().sample(random);
+            float f = redstoneClusterConfiguration.wetness().sample(random);
+            float f1 = redstoneClusterConfiguration.density().sample(random);
+            int j = redstoneClusterConfiguration.radius().sample(random);
+            int k = redstoneClusterConfiguration.radius().sample(random);
 
             for(int l = -j; l <= j; ++l) {
                 for(int i1 = -k; i1 <= k; ++i1) {
@@ -55,7 +54,7 @@ public class PointedRedstoneClusterFeature extends Feature<PointedRedstoneCluste
     }
 
     private void placeColumn(WorldGenLevel level, RandomSource random, BlockPos pos, int i4, int i5, float v, double v1, int i6, float v2, PointedRedstoneClusterConfiguration redstoneClusterConfiguration) {
-        Optional<Column> optional = Column.scan(level, pos, redstoneClusterConfiguration.floorToCeilingSearchRange, PointedRedstoneUtils::isEmptyOrWater, PointedRedstoneUtils::isNeitherEmptyNorWater);
+        Optional<Column> optional = Column.scan(level, pos, redstoneClusterConfiguration.floorToCeilingSearchRange(), PointedRedstoneUtils::isEmptyOrWater, PointedRedstoneUtils::isNeitherEmptyNorWater);
         if (optional.isPresent()) {
             OptionalInt optionalInt = optional.get().getCeiling();
             OptionalInt optionalInt1 = optional.get().getFloor();
@@ -74,7 +73,7 @@ public class PointedRedstoneClusterFeature extends Feature<PointedRedstoneCluste
                 boolean flag1 = random.nextDouble() < v1;
                 int j;
                 if (optionalInt.isPresent() && flag1 && !this.isLava(level, pos.atY(optionalInt.getAsInt()))) {
-                    int k = redstoneClusterConfiguration.redstoneBlockLayerThickness.sample(random);
+                    int k = redstoneClusterConfiguration.speleothemBlockLayerThickness().sample(random);
                     this.replaceBlocksWithRedstoneBlocks(level, pos.atY(optionalInt.getAsInt()), k, Direction.UP);
                     int l;
                     if (optionalint2.isPresent()) {
@@ -91,10 +90,10 @@ public class PointedRedstoneClusterFeature extends Feature<PointedRedstoneCluste
                 boolean flag2 = random.nextDouble() < v1;
                 int i3;
                 if (optionalint2.isPresent() && flag2 && !this.isLava(level, pos.atY(optionalint2.getAsInt()))) {
-                    int i1 = redstoneClusterConfiguration.redstoneBlockLayerThickness.sample(random);
+                    int i1 = redstoneClusterConfiguration.speleothemBlockLayerThickness().sample(random);
                     this.replaceBlocksWithRedstoneBlocks(level, pos.atY(optionalint2.getAsInt()), i1, Direction.DOWN);
                     if (optionalInt.isPresent()) {
-                        i3 = Math.max(0, j + Mth.randomBetweenInclusive(random, -redstoneClusterConfiguration.maxStalagmiteStalactiteHeightDiff, redstoneClusterConfiguration.maxStalagmiteStalactiteHeightDiff));
+                        i3 = Math.max(0, j + Mth.randomBetweenInclusive(random, -redstoneClusterConfiguration.maxStalagmiteStalactiteHeightDiff(), redstoneClusterConfiguration.maxStalagmiteStalactiteHeightDiff()));
                     } else {
                         i3 = this.getRedstoneHeight(random, i4, i5, v2, i6, redstoneClusterConfiguration);
                     }
@@ -140,8 +139,8 @@ public class PointedRedstoneClusterFeature extends Feature<PointedRedstoneCluste
             return 0;
         } else {
             int i = Math.abs(i1) + Math.abs(i2);
-            float f = (float)Mth.clampedMap((double)i, 0.0D, (double)redstoneClusterConfiguration.maxDistanceFromCenterAffectingHeightBias, (double)i3 / 2.0D, 0.0D);
-            return (int)randomBetweenBiased(random, 0.0F, (float)i3, f, (float)redstoneClusterConfiguration.heightDeviation);
+            float f = (float)Mth.clampedMap((double)i, 0.0D, (double) redstoneClusterConfiguration.maxDistanceFromCenterAffectingHeightBias(), (double)i3 / 2.0D, 0.0D);
+            return (int)randomBetweenBiased(random, 0.0F, (float)i3, f, (float) redstoneClusterConfiguration.heightDeviation());
         }
     }
 
@@ -164,7 +163,7 @@ public class PointedRedstoneClusterFeature extends Feature<PointedRedstoneCluste
         }
     }
 
-    private boolean canBeAdjacentToWater(LevelAccessor level, BlockPos pos) {
+    private boolean canBeAdjacentToWater(WorldGenLevel level, BlockPos pos) {
         BlockState blockstate = level.getBlockState(pos);
         return blockstate.is(BlockTags.BASE_STONE_OVERWORLD) || blockstate.getFluidState().is(FluidTags.WATER);
     }
@@ -186,7 +185,7 @@ public class PointedRedstoneClusterFeature extends Feature<PointedRedstoneCluste
         int i = i1 - Math.abs(i3);
         int j = i2 - Math.abs(i4);
         int k = Math.min(i, j);
-        return (double)Mth.clampedMap((float)k, 0.0F, (float)redstoneClusterConfiguration.maxDistanceFromEdgeAffectingChanceOfRedstoneColumn, redstoneClusterConfiguration.chanceOfRedstoneColumnAtMaxDistanceFromCenter, 1.0F);
+        return Mth.clampedMap((float)k, 0.0F, (float) redstoneClusterConfiguration.maxDistanceFromEdgeAffectingChanceOfSpeleothem(), redstoneClusterConfiguration.chanceOfSpeleothemAtMaxDistanceFromCenter(), 1.0F);
     }
 
     private static float randomBetweenBiased(RandomSource random, float v, float v1, float v2, float v3) {

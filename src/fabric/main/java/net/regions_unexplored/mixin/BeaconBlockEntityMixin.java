@@ -9,7 +9,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BeaconBlockEntity;
 import net.regions_unexplored.block.type.misc.PrismaglassBlock;
-import net.regions_unexplored.client.color.RuColors;
+import net.regions_unexplored.client.color.RUColors;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -24,7 +24,7 @@ public abstract class BeaconBlockEntityMixin {
 	)
 	private static int applyPrismaglassColor(DyeColor color, Operation<Integer> operation, Level level, BlockPos pos, @Local(ordinal = 0) Block block) {
 		if (block instanceof PrismaglassBlock) {
-			return RuColors.getRainbowColor(pos.getX(), pos.getZ() + level.getGameTime() / 8f, 0.8f);
+			return RUColors.getRainbowColor(pos.getX(), pos.getZ() + level.getGameTime() / 8f, 0.8f);
 		}
 		return operation.call(color);
 	}

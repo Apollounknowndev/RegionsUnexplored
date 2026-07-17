@@ -1,35 +1,24 @@
 package net.regions_unexplored.block.type.dirt;
 
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.regions_unexplored.registry.RUBlocks;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
@@ -52,20 +41,28 @@ public class RUDirtBlock extends Block {
     }
     
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (!this.hasItemInteraction || playerHasShieldUseIntent(player, hand) || !level.getBlockState(pos.above()).isAir()) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            return InteractionResult.PASS;
         }
         
-        if (stack.getItem() instanceof ShovelItem && updateBlock(this.pathBlock, SoundEvents.SHOVEL_FLATTEN, stack, level, pos, player, hand)) {
-            return ItemInteractionResult.sidedSuccess(level.isClientSide());
+        if (stack.getItem() instanceof ShovelItem && this.pathBlock.isPresent()) {
+            if (!level.isClientSide()) {
+                updateBlock(this.pathBlock, SoundEvents.SHOVEL_FLATTEN, stack, level, pos, player, hand);
+                return InteractionResult.SUCCESS_SERVER;
+            }
+            return InteractionResult.SUCCESS;
         }
         
-        if (stack.getItem() instanceof HoeItem && updateBlock(this.farmlandBlock, SoundEvents.HOE_TILL, stack, level, pos, player, hand)) {
-            return ItemInteractionResult.sidedSuccess(level.isClientSide());
+        if (stack.getItem() instanceof HoeItem && this.farmlandBlock.isPresent()) {
+            if (!level.isClientSide()) {
+                updateBlock(this.farmlandBlock, SoundEvents.HOE_TILL, stack, level, pos, player, hand);
+                return InteractionResult.SUCCESS_SERVER;
+            }
+            return InteractionResult.SUCCESS;
         }
         
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return InteractionResult.PASS;
     }
     
     protected static boolean updateBlock(Optional<Supplier<Block>> block, SoundEvent sound, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand) {
@@ -77,7 +74,7 @@ public class RUDirtBlock extends Block {
         level.playSound(player, pos, sound, SoundSource.BLOCKS, 1.0F, 1.0F);
         level.setBlock(pos, state, 11);
         level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, state));
-        stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+        stack.hurtAndBreak(1, player, hand);
         return true;
     }
     

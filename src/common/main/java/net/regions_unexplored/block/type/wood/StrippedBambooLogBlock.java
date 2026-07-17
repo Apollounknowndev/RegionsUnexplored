@@ -29,13 +29,8 @@ public class StrippedBambooLogBlock extends Block implements SimpleWaterloggedBl
     }
 
     @Override
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
+    public boolean propagatesSkylightDown(BlockState state) {
         return true;
-    }
-
-    @Override
-    public int getLightBlock(BlockState state, BlockGetter getter, BlockPos pos) {
-        return 0;
     }
 
     @Override

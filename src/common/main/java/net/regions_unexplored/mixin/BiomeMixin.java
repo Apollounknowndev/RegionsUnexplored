@@ -26,7 +26,7 @@ public class BiomeMixin {
 	private int removeTundraSnow(int color, double x, double z) {
 		Biome $this = ((Biome)(Object)this);
 		BiomeSpecialEffects effects = $this.getSpecialEffects();
-		if (effects.getFoliageColorOverride().orElse(0) == 0x80c16c && effects.getGrassColorModifier().equals(BiomeSpecialEffects.GrassColorModifier.SWAMP)) {
+		if (effects.foliageColorOverride().orElse(0) == 0x80c16c && effects.grassColorModifier().equals(BiomeSpecialEffects.GrassColorModifier.SWAMP)) {
 			double groundValue = Biome.BIOME_INFO_NOISE.getValue(x * 0.01, z * 0.01, false);
 			return groundValue < -0.7 ? 0x63763c : groundValue < 0.3 ? 0x788745 : 0xa2a852;
 		}

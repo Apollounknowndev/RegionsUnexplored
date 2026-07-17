@@ -130,7 +130,7 @@ public class BiomeTarget {
 	}
 	
 	public static HolderSet<Biome> getTargets(Registry<Biome> registry, List<ResourceKey<Biome>> targets) {
-		return HolderSet.direct(targets.stream().map(registry::getHolder).filter(Optional::isPresent).map(Optional::get).toList());
+		return HolderSet.direct(targets.stream().map(registry::get).filter(Optional::isPresent).map(Optional::get).toList());
 	}
 	
 	public static BiomeInjector createSpecialInjector(RegistryAccess registries, Holder<Biome> biome, BiomeTarget target) {
@@ -164,10 +164,10 @@ public class BiomeTarget {
 			))));
 		}
 		if (biome.is(RUBiomes.INFERNO)) {
-			Registry<DensityFunction> dfs = registries.registryOrThrow(Registries.DENSITY_FUNCTION);
+			Registry<DensityFunction> dfs = registries.lookupOrThrow(Registries.DENSITY_FUNCTION);
 			return builder.forcePlacement(
 				biome,
-				ParameterBuilder.create().climateMin(DEPTH, 0.2).densityFunctionMin(dfs.getHolderOrThrow(RUDensityFunctions.INFERNO_WEIGHT), 0.001)
+				ParameterBuilder.create().climateMin(DEPTH, 0.2).densityFunctionMin(dfs.getOrThrow(RUDensityFunctions.INFERNO_WEIGHT), 0.001)
 			);
 		}
 		if (biome.is(RUBiomes.CHALK_CLIFFS)) {

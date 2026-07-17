@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -73,7 +74,9 @@ public class DusktrapBlock extends DoublePlantBlock {
     }
     
     @Override
-    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+    protected void entityInside(
+	    final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
+    ) {
         if (isEntityInside(level, pos, entity)) {
             if (!(entity instanceof ItemEntity)) {
                 entity.makeStuckInBlock(state, STUCK_SPEED);
@@ -126,7 +129,7 @@ public class DusktrapBlock extends DoublePlantBlock {
     
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.isSolidRender(level, pos);
+        return state.isSolidRender();
     }
     
     @Override

@@ -4,12 +4,13 @@ import com.google.common.collect.ImmutableSet;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.regions_unexplored.block.RUBlockUtils;
+import net.regions_unexplored.block.properties.RUBlockProperties;
 import net.regions_unexplored.block.sapling.RUTreeGrowers;
 import net.regions_unexplored.block.set.BrimwoodWoodSet;
 import net.regions_unexplored.block.set.ColoredSet;
@@ -40,7 +41,7 @@ import net.regions_unexplored.block.type.sapling.BrimwoodSaplingBlock;
 import net.regions_unexplored.block.type.shrub.BrimwoodShrubBlock;
 import net.regions_unexplored.block.type.shrub.MangroveShrubBlock;
 import net.regions_unexplored.block.type.wood.*;
-import net.regions_unexplored.client.color.RuColors;
+import net.regions_unexplored.client.color.RUColors;
 import net.regions_unexplored.item.RUItemUtils;
 import net.regions_unexplored.mixin.VillagerProfessionAccessor;
 import net.regions_unexplored.registry.data.RUBlockIds;
@@ -164,14 +165,14 @@ public interface RUBlocks {
 
     /* MODDED */
     NaturalSet ALPHA_NATURAL_SET = NaturalSet.create("alpha")
-        .withLeaves(LeavesBlock::new)
+        .withLeaves(NoParticleLeavesBlock::new)
         .withSapling(RUTreeGrowers.ALPHA_OAK);
     NaturalSet APPLE_OAK_NATURAL_SET = NaturalSet.create("apple_oak")
         .withLeaves(AppleLeavesBlock::new)
         .withSapling(RUTreeGrowers.APPLE_OAK);
     NaturalSet ASHEN_NATURAL_SET = NaturalSet.ashen();
     NaturalSet BAMBOO_NATURAL_SET = NaturalSet.create("bamboo")
-        .withLeaves(LeavesBlock::new)
+        .withLeaves(NoParticleLeavesBlock::new)
         .withSapling(RUTreeGrowers.BAMBOO);
     NaturalSet BAOBAB_NATURAL_SET = NaturalSet.create("baobab")
         .withBranch().withShrub().withLeaves()
@@ -251,7 +252,7 @@ public interface RUBlocks {
     NaturalSet SAGUARO_CACTUS_NATURAL_SET = NaturalSet.saguaroCactus();
     NaturalSet SILVER_BIRCH_NATURAL_SET = NaturalSet.create("silver_birch")
         .withBranch().withShrub()
-        .withLeaves(standard(RuColors::getAspenColor))
+        .withLeaves(standard((world, pos) -> RUColors.getAspenColor(pos)))
         .withSapling(RUTreeGrowers.SILVER_BIRCH);
     NaturalSet SMALL_OAK_NATURAL_SET = NaturalSet.create("small_oak")
         .withSapling(RUTreeGrowers.SMALL_OAK);
@@ -291,7 +292,7 @@ public interface RUBlocks {
     );
 
     //MUSHROOMS
-    Supplier<Block> BLUE_BIOSHROOM = register("blue_bioshroom", p -> new BioshroomBlock(RUTreeGrowers.BLUE_BIOSHROOM, MobEffects.POISON, 10, 0x8EE5FF, p.mapColor(MapColor.COLOR_LIGHT_BLUE).pushReaction(PushReaction.DESTROY).noCollision().instabreak().sound(SoundType.GRASS).offsetType(OffsetType.XZ).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 10)));
+    Supplier<Block> BLUE_BIOSHROOM = register("blue_bioshroom", p -> new BioshroomBlock(RUTreeGrowers.BLUE_BIOSHROOM, MobEffects.POISON, 10, 0x8EE5FF, postProcessed(p).mapColor(MapColor.COLOR_LIGHT_BLUE).pushReaction(PushReaction.DESTROY).noCollision().instabreak().sound(SoundType.GRASS).offsetType(OffsetType.XZ).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 10)));
     Supplier<Block> GREEN_BIOSHROOM = register("green_bioshroom", p -> new BioshroomBlock(RUTreeGrowers.GREEN_BIOSHROOM, MobEffects.POISON, 10, 0x97ED75, p.mapColor(MapColor.COLOR_LIGHT_GREEN)), BLUE_BIOSHROOM);
     Supplier<Block> PINK_BIOSHROOM = register("pink_bioshroom", p -> new BioshroomBlock(RUTreeGrowers.PINK_BIOSHROOM, MobEffects.POISON, 10, 0xFEA4EA, p.mapColor(MapColor.COLOR_PINK)), BLUE_BIOSHROOM);
     Supplier<Block> YELLOW_BIOSHROOM = register("yellow_bioshroom", p -> new BioshroomBlock(RUTreeGrowers.YELLOW_BIOSHROOM, MobEffects.POISON, 10, 0xEBD67C, p.mapColor(MapColor.COLOR_YELLOW)), BLUE_BIOSHROOM);
@@ -382,7 +383,7 @@ public interface RUBlocks {
     Supplier<Block> TALL_HYACINTH_STOCK = register("tall_hyacinth_stock", p -> new TallHyacinthStockBlock(postProcessed(p).noCollision().instabreak().sound(SoundType.WET_GRASS).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 12)));
     //SMOULDERING_WOODLAND_BLOCKS
     Supplier<Block> ASHEN_DIRT = register("ashen_dirt", p -> new AshenDirtBlock(p.mapColor(MapColor.COLOR_GRAY).strength(0.5F).sound(SoundType.GRAVEL).randomTicks().lightLevel(state -> AshenDirtBlock.isSmouldering(state) ? 7 : 0)));
-    Supplier<Block> ASHEN_GRASS = register("ashen_grass", p -> new AshenGrassBlock(p.pushReaction(PushReaction.DESTROY).replaceable().noCollision().instabreak().sound(SoundType.GRASS).offsetType(OffsetType.XYZ).hasPostProcess((bs, br, bp) -> AshenGrassBlock.isSmouldering(bs)).emissiveRendering((bs, br, bp) -> AshenGrassBlock.isSmouldering(bs)).lightLevel((bs) -> AshenGrassBlock.isSmouldering(bs) ? 5 : 0)));
+    Supplier<Block> ASHEN_GRASS = register("ashen_grass", p -> new AshenGrassBlock(postProcessed(p).pushReaction(PushReaction.DESTROY).replaceable().noCollision().instabreak().sound(SoundType.GRASS).offsetType(OffsetType.XYZ).emissiveRendering((bs, br, bp) -> AshenGrassBlock.isSmouldering(bs)).lightLevel((bs) -> AshenGrassBlock.isSmouldering(bs) ? 5 : 0)));
 
     /*-----------------OTHER_BLOCKS-----------------*/
     Supplier<Block> ASH = register("ash", p -> new ColoredFallingBlock(new ColorRGBA(0xff807c7b), p.mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.SNARE).strength(0.5F).sound(SoundType.GRAVEL).randomTicks()));
@@ -567,12 +568,12 @@ public interface RUBlocks {
     }
     
     static void initPostRegistryFreeze() {
-        ((VillagerProfessionAccessor) (Object) VillagerProfession.FARMER).regionsUnexplored$setSecondaryPoi(
+        /*((VillagerProfessionAccessor) (Object) VillagerProfession.FARMER).regionsUnexplored$setSecondaryPoi(
             ImmutableSet.<Block>builder()
-                .addAll(VillagerProfession.FARMER.secondaryPoi())
+                .addAll(VillagerProfession.FARMER.se())
                 .add(PEAT_FARMLAND.get())
                 .add(SILT_FARMLAND.get())
                 .build()
-        );
+        );*/
     }
 }

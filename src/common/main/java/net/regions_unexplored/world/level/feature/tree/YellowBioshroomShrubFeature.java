@@ -37,7 +37,7 @@ public class YellowBioshroomShrubFeature extends Feature<NoneFeatureConfiguratio
         return true;
     }
 
-    public void placeShrub(LevelAccessor level, BlockPos pos, RandomSource randomSource) {
+    public void placeShrub(WorldGenLevel level, BlockPos pos, RandomSource randomSource) {
         BlockPos.MutableBlockPos placePos = pos.mutable();
         placeLogBlock(level, placePos, randomSource, Direction.Axis.Y);
         placePos.move(Direction.UP);
@@ -51,7 +51,7 @@ public class YellowBioshroomShrubFeature extends Feature<NoneFeatureConfiguratio
     }
 
 
-    public void placeTop(LevelAccessor level, BlockPos pos, RandomSource randomSource) {
+    public void placeTop(WorldGenLevel level, BlockPos pos, RandomSource randomSource) {
         placeLeavesBlock(level, pos, randomSource);
         placeLeavesBlock(level, pos.north(), randomSource);
         placeLeavesBlock(level, pos.south(), randomSource);
@@ -64,7 +64,7 @@ public class YellowBioshroomShrubFeature extends Feature<NoneFeatureConfiguratio
     }
 
 
-    public void placeLogBlock(LevelAccessor level, BlockPos pos, RandomSource randomSource, Direction.Axis axis) {
+    public void placeLogBlock(WorldGenLevel level, BlockPos pos, RandomSource randomSource, Direction.Axis axis) {
         boolean isBase = false;
         if(level.getBlockState(pos.below()).is(BlockTags.DIRT)){
             isBase = true;
@@ -98,7 +98,7 @@ public class YellowBioshroomShrubFeature extends Feature<NoneFeatureConfiguratio
         }
     }
 
-    public void placeLeavesBlock(LevelAccessor level, BlockPos pos, RandomSource randomSource) {
+    public void placeLeavesBlock(WorldGenLevel level, BlockPos pos, RandomSource randomSource) {
         Random random = new Random();
         if(level.isOutsideBuildHeight(pos)){
             return;
@@ -108,7 +108,7 @@ public class YellowBioshroomShrubFeature extends Feature<NoneFeatureConfiguratio
         }
     }
 
-    public boolean checkReplaceable(LevelAccessor level, BlockPos pos) {
+    public boolean checkReplaceable(WorldGenLevel level, BlockPos pos) {
         if(level.isOutsideBuildHeight(pos)){
             return false;
         }

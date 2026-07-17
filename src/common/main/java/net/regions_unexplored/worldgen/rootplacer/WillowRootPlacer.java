@@ -10,8 +10,10 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,7 +30,7 @@ import java.util.function.BiConsumer;
 
 public class WillowRootPlacer extends RootPlacer {
 	public static final MapCodec<WillowRootPlacer> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
-		IntProvider.CODEC.fieldOf("height").forGetter(c -> c.height),
+		IntProviders.CODEC.fieldOf("height").forGetter(c -> c.height),
 		Codec.floatRange(0, 1).fieldOf("chance").forGetter(c -> c.chance),
 		BlockStateProvider.CODEC.fieldOf("root_provider").forGetter(c -> c.rootProvider),
 		AboveRootPlacement.CODEC.optionalFieldOf("above_root_placement").forGetter(c -> c.aboveRootPlacement)
@@ -59,7 +61,14 @@ public class WillowRootPlacer extends RootPlacer {
 	}
 	
 	@Override
-	public boolean placeRoots(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> rootSetter, RandomSource random, BlockPos origin, BlockPos trunkOrigin, TreeConfiguration config) {
+	public boolean placeRoots(
+		final WorldGenLevel level,
+		final BiConsumer<BlockPos, BlockState> rootSetter,
+		final RandomSource random,
+		final BlockPos origin,
+		final BlockPos trunkOrigin,
+		final TreeConfiguration config
+	) {
 		if (random.forkPositional().at(trunkOrigin).nextFloat() > this.chance) return true;
 		
 		List<BlockPos> rootPositions = new ArrayList<>();

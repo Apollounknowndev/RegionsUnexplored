@@ -38,7 +38,7 @@ public class CobaltShrubFeature extends Feature<NoneFeatureConfiguration> {
         return true;
     }
 
-    public void placeShrub(LevelAccessor level, BlockPos pos, RandomSource randomSource) {
+    public void placeShrub(WorldGenLevel level, BlockPos pos, RandomSource randomSource) {
         BlockPos.MutableBlockPos placePos = pos.mutable();
         int size = randomSource.nextInt(4);
         int dir = randomSource.nextInt(4);
@@ -99,7 +99,7 @@ public class CobaltShrubFeature extends Feature<NoneFeatureConfiguration> {
     }
 
 
-    public void placeTop(LevelAccessor level, BlockPos pos, RandomSource randomSource) {
+    public void placeTop(WorldGenLevel level, BlockPos pos, RandomSource randomSource) {
         placeLeavesBlock(level, pos.north(), randomSource);
         placeLeavesBlock(level, pos.south(), randomSource);
         placeLeavesBlock(level, pos.east(), randomSource);
@@ -117,7 +117,7 @@ public class CobaltShrubFeature extends Feature<NoneFeatureConfiguration> {
     }
 
 
-    public void placeLogBlock(LevelAccessor level, BlockPos pos, RandomSource randomSource, Direction.Axis axis) {
+    public void placeLogBlock(WorldGenLevel level, BlockPos pos, RandomSource randomSource, Direction.Axis axis) {
         boolean isBase = false;
         if(level.getBlockState(pos.below()).is(BlockTags.DIRT)){
             isBase = true;
@@ -151,7 +151,7 @@ public class CobaltShrubFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    public void placeLeavesBlock(LevelAccessor level, BlockPos pos, RandomSource randomSource) {
+    public void placeLeavesBlock(WorldGenLevel level, BlockPos pos, RandomSource randomSource) {
         Random random = new Random();
         if(level.isOutsideBuildHeight(pos)){
             return;
@@ -161,7 +161,7 @@ public class CobaltShrubFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    public boolean checkReplaceable(LevelAccessor level, BlockPos pos) {
+    public boolean checkReplaceable(WorldGenLevel level, BlockPos pos) {
         if(level.isOutsideBuildHeight(pos)){
             return false;
         }

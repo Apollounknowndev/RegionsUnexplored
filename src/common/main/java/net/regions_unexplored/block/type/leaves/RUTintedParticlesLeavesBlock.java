@@ -1,8 +1,9 @@
 package net.regions_unexplored.block.type.leaves;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.util.ParticleUtils;
@@ -11,7 +12,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.regions_unexplored.block.BlockFactory;
-import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.registry.RUParticleTypes;
 
 import java.util.function.BiFunction;
@@ -22,13 +22,16 @@ public class RUTintedParticlesLeavesBlock extends LeavesBlock {
 
     private final Supplier<ParticleType<ColorParticleOption>> particle;
     private final TintGetter tintGetter;
-    private final float particleChance;
 
     public RUTintedParticlesLeavesBlock(Properties properties, Supplier<ParticleType<ColorParticleOption>> particle, TintGetter getter, float particleChance) {
-        super(properties);
+        super(particleChance, properties);
         this.particle = particle;
         this.tintGetter = getter;
-        this.particleChance = particleChance;
+    }
+    
+    @Override
+    public MapCodec<? extends LeavesBlock> codec() {
+        return null;
     }
 
     public static BlockFactory<RUTintedParticlesLeavesBlock> small(TintGetter tint) {
@@ -58,26 +61,18 @@ public class RUTintedParticlesLeavesBlock extends LeavesBlock {
     public static BlockFactory<RUTintedParticlesLeavesBlock> standard(Supplier<ParticleType<ColorParticleOption>> type, TintGetter tint, float particleChance) {
         return p -> new RUTintedParticlesLeavesBlock(p, type, tint, particleChance);
     }
-
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        super.animateTick(state, level, pos, random);
-        BlockPos below = pos.below();
-        BlockState belowState = level.getBlockState(below);
-
-        if (!level.isClientSide()) return;
-        if (random.nextFloat() >= (this.particleChance * RUConfigHandler.CLIENT.particleRates.leaves)) return;
-        if (isFaceFull(belowState.getCollisionShape(level, below), Direction.UP)) return;
-        
-        spawnLeavesParticle(level, pos, random);
-    }
-
-    protected void spawnLeavesParticle(Level level, BlockPos pos, RandomSource random) {
-        ColorParticleOption particle = ColorParticleOption.create(this.particle.get(), this.tintGetter.apply(level, pos));
-        ParticleUtils.spawnParticleBelow(level, pos, random, particle);
+    
+    @Override
+    protected void spawnFallingLeavesParticle(Level level, BlockPos blockPos, RandomSource randomSource) {
+        ColorParticleOption particle = ColorParticleOption.create(this.particle.get(), this.tintGetter.apply(level, blockPos));
+        ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, particle);
     }
 
     public interface TintGetter extends BiFunction<Level, BlockPos, Integer> {
-        TintGetter DEFAULT = (level, pos) -> Minecraft.getInstance().getBlockColors().getColor(level.getBlockState(pos), level, pos, 0);
+        TintGetter DEFAULT = (level, pos) -> {
+            BlockState state = level.getBlockState(pos);
+            return Minecraft.getInstance().getBlockColors().getTintSource(state, 0).colorInWorld(state, (BlockAndTintGetter) level, pos);
+        };
 
         static TintGetter defaultDarken(float amount) {
             return (level, pos) -> {

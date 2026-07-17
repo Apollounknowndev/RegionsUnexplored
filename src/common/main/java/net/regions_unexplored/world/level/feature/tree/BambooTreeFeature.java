@@ -55,7 +55,7 @@ public class BambooTreeFeature extends Feature<RUTreeConfiguration> {
         return true;
     }
 
-    public void placeLog(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public void placeLog(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         Random random = new Random();
         if(level.isOutsideBuildHeight(pos)){
             return;
@@ -73,7 +73,7 @@ public class BambooTreeFeature extends Feature<RUTreeConfiguration> {
             level.setBlock(pos, Blocks.PODZOL.defaultBlockState(), 2);
         }
         else if(isReplaceable(level, pos)) {
-            level.setBlock(pos, treeConfiguration.trunkProvider().getState(randomSource, pos), 2);
+            level.setBlock(pos, treeConfiguration.trunkProvider().getState(level, randomSource, pos), 2);
         }
 
         if(level.getBlockState(pos.below()).is(RUBlocks.PEAT_GRASS_BLOCK.get())){
@@ -90,7 +90,7 @@ public class BambooTreeFeature extends Feature<RUTreeConfiguration> {
         }
     }
 
-    public void placeLeavesBlob(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public void placeLeavesBlob(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         BlockPos.MutableBlockPos pos1 = pos.below(3).mutable();
 
         placeLeavesBlock(level, pos1, randomSource, treeConfiguration);
@@ -201,18 +201,18 @@ public class BambooTreeFeature extends Feature<RUTreeConfiguration> {
         placeLeavesBlock(level, pos1.above(), randomSource, treeConfiguration);
     }
 
-    public boolean placeLeavesBlock(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public boolean placeLeavesBlock(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         Random random = new Random();
         if(level.isOutsideBuildHeight(pos)){
             return true;
         }
         if(level.getBlockState(pos).canBeReplaced()) {
-            level.setBlock(pos, treeConfiguration.foliageProvider().getState(randomSource, pos).setValue(LeavesBlock.DISTANCE, 1), 2);
+            level.setBlock(pos, treeConfiguration.foliageProvider().getState(level, randomSource, pos).setValue(LeavesBlock.DISTANCE, 1), 2);
         }
         return true;
     }
 
-    public boolean checkReplaceable(LevelAccessor level, BlockPos pos) {
+    public boolean checkReplaceable(WorldGenLevel level, BlockPos pos) {
         if(level.isOutsideBuildHeight(pos)){
             return false;
         }

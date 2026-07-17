@@ -52,7 +52,7 @@ public class GiantPinkBioshroomFeature extends Feature<GiantBioshroomConfigurati
         return true;
     }
 
-    public void placeBase(LevelAccessor level, BlockPos pos, RandomSource randomSource, GiantBioshroomConfiguration bioshroomConfiguration) {
+    public void placeBase(WorldGenLevel level, BlockPos pos, RandomSource randomSource, GiantBioshroomConfiguration bioshroomConfiguration) {
         Random random = new Random();
         int n = random.nextInt(5);
         int s = random.nextInt(5);
@@ -72,7 +72,7 @@ public class GiantPinkBioshroomFeature extends Feature<GiantBioshroomConfigurati
         }
     }
 
-    public void placeStemBlock(LevelAccessor level, BlockPos pos, RandomSource randomSource, GiantBioshroomConfiguration bioshroomConfiguration) {
+    public void placeStemBlock(WorldGenLevel level, BlockPos pos, RandomSource randomSource, GiantBioshroomConfiguration bioshroomConfiguration) {
 
         if(level.isOutsideBuildHeight(pos)){
             return;
@@ -99,7 +99,7 @@ public class GiantPinkBioshroomFeature extends Feature<GiantBioshroomConfigurati
             level.setBlock(pos, Blocks.DEEPSLATE.defaultBlockState(), 2);
         }
         else if(isReplaceable(level, pos)) {
-            level.setBlock(pos, bioshroomConfiguration.stemProvider.getState(randomSource, pos), 2);
+            level.setBlock(pos, bioshroomConfiguration.stemProvider.getState(level, randomSource, pos), 2);
         }
         else{
             return;
@@ -128,13 +128,13 @@ public class GiantPinkBioshroomFeature extends Feature<GiantBioshroomConfigurati
         }
     }
 
-    public void placeRoot(LevelAccessor level, BlockPos pos, RandomSource randomSource, GiantBioshroomConfiguration bioshroomConfiguration) {
+    public void placeRoot(WorldGenLevel level, BlockPos pos, RandomSource randomSource, GiantBioshroomConfiguration bioshroomConfiguration) {
         int rd = 2;
         int i = 0;
         BlockPos.MutableBlockPos placePos = pos.mutable();
         while(i<=rd){
             if(i>0){
-                if(!level.getBlockState(placePos.above()).is(bioshroomConfiguration.stemProvider.getState(randomSource, placePos.above()).getBlock())&&level.getBlockState(placePos).canBeReplaced()) {
+                if(!level.getBlockState(placePos.above()).is(bioshroomConfiguration.stemProvider.getState(level, randomSource, placePos.above()).getBlock())&&level.getBlockState(placePos).canBeReplaced()) {
                     return;
                 }
             }
@@ -144,7 +144,7 @@ public class GiantPinkBioshroomFeature extends Feature<GiantBioshroomConfigurati
         }
     }
 
-    public void placeCap(LevelAccessor level, BlockPos pos1, RandomSource randomSource, GiantBioshroomConfiguration bioshroomConfiguration) {
+    public void placeCap(WorldGenLevel level, BlockPos pos1, RandomSource randomSource, GiantBioshroomConfiguration bioshroomConfiguration) {
         Random random = new Random();
         BlockPos.MutableBlockPos pos = pos1.below().mutable();
 
@@ -197,20 +197,20 @@ public class GiantPinkBioshroomFeature extends Feature<GiantBioshroomConfigurati
         placeCapBlock(level,pos,randomSource,bioshroomConfiguration);
     }
 
-    public void placeCapBlock(LevelAccessor level, BlockPos pos, RandomSource randomSource, GiantBioshroomConfiguration bioshroomConfiguration) {
+    public void placeCapBlock(WorldGenLevel level, BlockPos pos, RandomSource randomSource, GiantBioshroomConfiguration bioshroomConfiguration) {
         if(level.isOutsideBuildHeight(pos)){
             return;
         }
         else if(isReplaceable(level, pos)) {
-            level.setBlock(pos, bioshroomConfiguration.capProvider.getState(randomSource, pos), 2);
+            level.setBlock(pos, bioshroomConfiguration.capProvider.getState(level, randomSource, pos), 2);
         }
     }
-    public void placeGlowingBlock(LevelAccessor level, BlockPos pos, RandomSource randomSource, GiantBioshroomConfiguration bioshroomConfiguration) {
+    public void placeGlowingBlock(WorldGenLevel level, BlockPos pos, RandomSource randomSource, GiantBioshroomConfiguration bioshroomConfiguration) {
         if(level.isOutsideBuildHeight(pos)){
             return;
         }
         else if(isReplaceable(level, pos)) {
-            level.setBlock(pos, bioshroomConfiguration.glowBlockProvider.getState(randomSource, pos), 2);
+            level.setBlock(pos, bioshroomConfiguration.glowBlockProvider.getState(level, randomSource, pos), 2);
         }
     }
 

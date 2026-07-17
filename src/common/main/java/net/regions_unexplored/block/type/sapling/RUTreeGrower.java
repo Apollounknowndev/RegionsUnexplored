@@ -95,7 +95,7 @@ public class RUTreeGrower {
 	}
 	
 	public boolean growTree(ServerLevel level, ChunkGenerator generator, BlockPos pos, BlockState state, RandomSource random) {
-		Registry<ConfiguredFeature<?, ?>> registry = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE);
+		Registry<ConfiguredFeature<?, ?>> registry = level.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE);
 		Result placementResult;
 		
 		placementResult = tryGrow(OFFSETS_3X3_SQUARE, this.tree3x3Square, level, registry, generator, pos, state, random);

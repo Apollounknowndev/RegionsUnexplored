@@ -62,7 +62,7 @@ public class MediumJoshuaTreeFeature extends Feature<NoneFeatureConfiguration> {
         return true;
     }
 
-    public boolean placeLeaves(LevelAccessor level, BlockPos pos) {
+    public boolean placeLeaves(WorldGenLevel level, BlockPos pos) {
         if(level.getBlockState(pos.north()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.north())){
             level.setBlock(pos.north(), RUBlocks.JOSHUA_NATURAL_SET.getBranch().defaultBlockState().trySetValue(BlockStateProperties.AXIS, Direction.Axis.Z).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), 2);
         }
@@ -85,7 +85,7 @@ public class MediumJoshuaTreeFeature extends Feature<NoneFeatureConfiguration> {
         return true;
     }
 
-    public boolean placeBranch(LevelAccessor level, BlockPos pos) {
+    public boolean placeBranch(WorldGenLevel level, BlockPos pos) {
         Random random = new Random();
         BlockPos north = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
         BlockPos south = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
@@ -139,7 +139,7 @@ public class MediumJoshuaTreeFeature extends Feature<NoneFeatureConfiguration> {
         return true;
     }
 
-    public boolean placeBranch2(LevelAccessor level, BlockPos pos) {
+    public boolean placeBranch2(WorldGenLevel level, BlockPos pos) {
         Random random = new Random();
         int n = random.nextInt(3);
         BlockPos north = new BlockPos(pos.getX(), pos.getY()+n, pos.getZ());

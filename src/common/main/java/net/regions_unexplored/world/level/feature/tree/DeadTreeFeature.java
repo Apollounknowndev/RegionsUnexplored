@@ -67,7 +67,7 @@ public class DeadTreeFeature extends Feature<RUTreeConfiguration> {
         return true;
     }
 
-    public void placeTop(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public void placeTop(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         BlockPos.MutableBlockPos placePos = new BlockPos.MutableBlockPos(pos.getX(),pos.getY()-(randomSource.nextInt(2)+3),pos.getZ());
         int i = randomSource.nextInt(5);
 
@@ -90,7 +90,7 @@ public class DeadTreeFeature extends Feature<RUTreeConfiguration> {
         }
     }
 
-    public boolean placeLog(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration, Direction.Axis axis) {
+    public boolean placeLog(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration, Direction.Axis axis) {
         Random random = new Random();
         if(level.isOutsideBuildHeight(pos)){
             return true;
@@ -108,7 +108,7 @@ public class DeadTreeFeature extends Feature<RUTreeConfiguration> {
             level.setBlock(pos, Blocks.DIRT.defaultBlockState(), 2);
         }
         else if(isReplaceable(level, pos)) {
-            level.setBlock(pos, treeConfiguration.trunkProvider().getState(randomSource, pos).setValue(RotatedPillarBlock.AXIS, axis), 2);
+            level.setBlock(pos, treeConfiguration.trunkProvider().getState(level, randomSource, pos).setValue(RotatedPillarBlock.AXIS, axis), 2);
         }
         else{
             return true;
@@ -129,7 +129,7 @@ public class DeadTreeFeature extends Feature<RUTreeConfiguration> {
         return true;
     }
 
-    public void placeBranchDecorator(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public void placeBranchDecorator(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         if (RUConfigHandler.COMMON.getBranchMode().cannotPlace()) return;
         Random random = new Random();
         if(randomSource.nextInt(3)==0){
@@ -149,7 +149,7 @@ public class DeadTreeFeature extends Feature<RUTreeConfiguration> {
         }
     }
 
-    public void placeLeafDecorator(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public void placeLeafDecorator(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         Random random = new Random();
         int n = random.nextInt(2);
         int s = random.nextInt(2);
@@ -169,28 +169,28 @@ public class DeadTreeFeature extends Feature<RUTreeConfiguration> {
         }
     }
 
-    public void placeNorthBranch(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public void placeNorthBranch(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         if(level.getBlockState(pos.north()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.north())){
-            level.setBlock(pos.north(), treeConfiguration.branchProvider().getState(randomSource, pos).trySetValue(BlockStateProperties.AXIS, Direction.Axis.Z).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), 2);
+            level.setBlock(pos.north(), treeConfiguration.branchProvider().getState(level, randomSource, pos).trySetValue(BlockStateProperties.AXIS, Direction.Axis.Z).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), 2);
         }
     }
-    public void placeSouthBranch(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public void placeSouthBranch(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         if(level.getBlockState(pos.south()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.south())){
-            level.setBlock(pos.south(), treeConfiguration.branchProvider().getState(randomSource, pos).trySetValue(BlockStateProperties.AXIS, Direction.Axis.Z).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), 2);
+            level.setBlock(pos.south(), treeConfiguration.branchProvider().getState(level, randomSource, pos).trySetValue(BlockStateProperties.AXIS, Direction.Axis.Z).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), 2);
         }
     }
-    public void placeEastBranch(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public void placeEastBranch(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         if(level.getBlockState(pos.east()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.east())){
-            level.setBlock(pos.east(), treeConfiguration.branchProvider().getState(randomSource, pos).trySetValue(BlockStateProperties.AXIS, Direction.Axis.X).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), 2);
+            level.setBlock(pos.east(), treeConfiguration.branchProvider().getState(level, randomSource, pos).trySetValue(BlockStateProperties.AXIS, Direction.Axis.X).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), 2);
         }
     }
-    public void placeWestBranch(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public void placeWestBranch(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         if(level.getBlockState(pos.west()).canBeReplaced()&&!level.isOutsideBuildHeight(pos.west())){
-            level.setBlock(pos.west(), treeConfiguration.branchProvider().getState(randomSource, pos).trySetValue(BlockStateProperties.AXIS, Direction.Axis.X).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), 2);
+            level.setBlock(pos.west(), treeConfiguration.branchProvider().getState(level, randomSource, pos).trySetValue(BlockStateProperties.AXIS, Direction.Axis.X).trySetValue(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), 2);
         }
     }
 
-    public void placeRoot(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public void placeRoot(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         Random random = new Random();
         int rd = random.nextInt(2)+2;
         int i = 0;
@@ -211,18 +211,18 @@ public class DeadTreeFeature extends Feature<RUTreeConfiguration> {
         }
     }
 
-    public boolean placeLeavesBlock(LevelAccessor level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
+    public boolean placeLeavesBlock(WorldGenLevel level, BlockPos pos, RandomSource randomSource, RUTreeConfiguration treeConfiguration) {
         Random random = new Random();
         if(level.isOutsideBuildHeight(pos)){
             return true;
         }
         if(level.getBlockState(pos).canBeReplaced()) {
-            level.setBlock(pos, treeConfiguration.foliageProvider().getState(randomSource, pos).setValue(LeavesBlock.DISTANCE, 1), 2);
+            level.setBlock(pos, treeConfiguration.foliageProvider().getState(level, randomSource, pos).setValue(LeavesBlock.DISTANCE, 1), 2);
         }
         return true;
     }
 
-    public boolean checkReplaceable(LevelAccessor level, BlockPos pos) {
+    public boolean checkReplaceable(WorldGenLevel level, BlockPos pos) {
         if(level.isOutsideBuildHeight(pos)){
             return false;
         }

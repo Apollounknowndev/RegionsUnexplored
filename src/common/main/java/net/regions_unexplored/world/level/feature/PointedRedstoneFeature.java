@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.regions_unexplored.world.level.feature.configuration.PointedRedstoneConfiguration;
@@ -18,7 +19,7 @@ public class PointedRedstoneFeature extends Feature<PointedRedstoneConfiguration
     }
 
     public boolean place(FeaturePlaceContext<PointedRedstoneConfiguration> context) {
-        LevelAccessor level = context.level();
+        WorldGenLevel level = context.level();
         BlockPos pos = context.origin();
         RandomSource random = context.random();
         PointedRedstoneConfiguration redstoneConfiguration = context.config();
@@ -34,7 +35,7 @@ public class PointedRedstoneFeature extends Feature<PointedRedstoneConfiguration
         }
     }
 
-    private static Optional<Direction> getTipDirection(LevelAccessor level, BlockPos pos, RandomSource random) {
+    private static Optional<Direction> getTipDirection(WorldGenLevel level, BlockPos pos, RandomSource random) {
         boolean flag = PointedRedstoneUtils.isRedstoneBase(level.getBlockState(pos.above()));
         boolean flag1 = PointedRedstoneUtils.isRedstoneBase(level.getBlockState(pos.below()));
         if (flag && flag1) {
@@ -46,7 +47,7 @@ public class PointedRedstoneFeature extends Feature<PointedRedstoneConfiguration
         }
     }
 
-    private static void createPatchOfRedstoneBlocks(LevelAccessor level, RandomSource random, BlockPos pos, PointedRedstoneConfiguration redstoneConfiguration) {
+    private static void createPatchOfRedstoneBlocks(WorldGenLevel level, RandomSource random, BlockPos pos, PointedRedstoneConfiguration redstoneConfiguration) {
         PointedRedstoneUtils.placeRedstoneBlockIfPossible(level, pos);
 
         for(Direction direction : Direction.Plane.HORIZONTAL) {

@@ -9,17 +9,17 @@ public class RuBlockEntitiesFabric {
     public static void addBlockEntities() {
         for (WoodSet set : RUBlocks.WOOD_SETS) {
             if (set.getSign() != null) {
-                cast(BlockEntityType.SIGN).addSupportedBlock(set.getSign());
+                cast(BlockEntityType.SIGN).addValidBlock(set.getSign());
             }
             if (set.getWallSign() != null) {
-                cast(BlockEntityType.SIGN).addSupportedBlock(set.getWallSign());
+                cast(BlockEntityType.SIGN).addValidBlock(set.getWallSign());
             }
 
             if (set.getHangingSign() != null) {
-                cast(BlockEntityType.HANGING_SIGN).addSupportedBlock(set.getHangingSign());
+                cast(BlockEntityType.HANGING_SIGN).addValidBlock(set.getHangingSign());
             }
             if (set.getWallHangingSign() != null) {
-                cast(BlockEntityType.HANGING_SIGN).addSupportedBlock(set.getWallHangingSign());
+                cast(BlockEntityType.HANGING_SIGN).addValidBlock(set.getWallHangingSign());
             }
         }
     }

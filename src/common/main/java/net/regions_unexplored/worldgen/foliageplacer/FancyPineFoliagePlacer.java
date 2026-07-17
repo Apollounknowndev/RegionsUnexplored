@@ -4,7 +4,9 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
@@ -12,7 +14,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import static net.regions_unexplored.worldgen.foliageplacer.RUFoliagePlacerUtils.*;
 
 public class FancyPineFoliagePlacer extends BlobFoliagePlacer {
-    public static final MapCodec<FancyPineFoliagePlacer> CODEC = IntProvider.CODEC.fieldOf("offset").xmap(FancyPineFoliagePlacer::new, p -> p.offset);
+    public static final MapCodec<FancyPineFoliagePlacer> CODEC = IntProviders.CODEC.fieldOf("offset").xmap(FancyPineFoliagePlacer::new, p -> p.offset);
     public static final FoliagePlacerType<FancyPineFoliagePlacer> TYPE = new FoliagePlacerType<>(CODEC);
 
     public FancyPineFoliagePlacer(IntProvider offset) {
@@ -29,7 +31,17 @@ public class FancyPineFoliagePlacer extends BlobFoliagePlacer {
     }
 
     @Override
-    protected void createFoliage(LevelSimulatedReader level, FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, int treeHeight, FoliageAttachment foliageAttachment, int foliageHeight, int leafRadius, int offset) {
+    protected void createFoliage(
+        final WorldGenLevel level,
+        final FoliageSetter foliageSetter,
+        final RandomSource random,
+        final TreeConfiguration config,
+        final int treeHeight,
+        final FoliageAttachment foliageAttachment,
+        final int foliageHeight,
+        final int leafRadius,
+        final int offset
+    ) {
         Context context = new Context(level, foliageSetter, random, config.foliageProvider, foliageAttachment.pos(), offset);
         placeSquare(context, 0, 2, false);
         placeSquare(context, 0, 1, false);

@@ -30,6 +30,7 @@ public class CarvedLimitedPoolFeature extends Feature<CarvedLimitedPoolFeatureCo
         WorldGenLevel level = context.level();
         BlockPos origin = context.origin();
         BlockPos.MutableBlockPos mut = origin.mutable();
+        RandomSource random = context.random();
         // We don't want to continue scanning for the entire feature depth if we don't need to
         int maxDepth = 1;
         // Iterate over the area from the origin, we iterate N times, where N is max depth
@@ -98,7 +99,7 @@ public class CarvedLimitedPoolFeature extends Feature<CarvedLimitedPoolFeatureCo
                             mut = mut.set(level.getHeightmapPos(Heightmap.Types.WORLD_SURFACE, origin.offset(i, 0, j)).below(m));
                             // We have to make sure it's the right state where we're placing it
                             if (configuration.wall().test(level, mut))
-                                level.setBlock(mut, m == 1 ? configuration.slopeTop().getState(RandomSource.create(), mut) : configuration.slope().getState(RandomSource.create(), mut), 3);
+                                level.setBlock(mut, m == 1 ? configuration.slopeTop().getState(level, random, mut) : configuration.slope().getState(level, random, mut), 3);
                             else
                                 break;
                         }

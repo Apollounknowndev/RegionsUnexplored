@@ -7,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.block.RUBlockUtils;
@@ -33,8 +32,7 @@ public class NetherPlantBlock extends VegetationBlock {
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        Vec3 offset = state.getOffset(level, pos);
-        return this.shape.move(offset.x, offset.y, offset.z);
+        return this.shape.move(state.getOffset(pos));
     }
 
     protected boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {

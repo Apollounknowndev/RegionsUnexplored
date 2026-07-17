@@ -6,10 +6,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos.MutableBlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.MultifaceBlock;
@@ -43,7 +40,7 @@ public class HangingVinesBlock extends Block implements BonemealableBlock {
 	}
 	
 	@Override
-	protected boolean propagatesSkylightDown(final BlockState state, final BlockGetter level, final BlockPos pos) {
+	protected boolean propagatesSkylightDown(final BlockState state) {
 		return true;
 	}
 	
@@ -61,14 +58,16 @@ public class HangingVinesBlock extends Block implements BonemealableBlock {
 	@Override
 	protected BlockState updateShape(
 		final BlockState state,
-		final Direction directionToNeighbour,
-		final BlockState neighbourState,
-		final LevelAccessor level,
+		final LevelReader level,
+		final ScheduledTickAccess ticks,
 		final BlockPos pos,
-		final BlockPos neighbourPos
+		final Direction directionToNeighbour,
+		final BlockPos neighbourPos,
+		final BlockState neighbourState,
+		final RandomSource random
 	) {
 		if (!this.canStayAtPosition(level, pos)) {
-			level.scheduleTick(pos, this, 1);
+			ticks.scheduleTick(pos, this, 1);
 		}
 		
 		return state.setValue(TIP, !level.getBlockState(pos.below()).is(this));

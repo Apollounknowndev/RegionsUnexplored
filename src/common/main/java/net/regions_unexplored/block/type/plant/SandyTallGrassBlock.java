@@ -43,7 +43,7 @@ public class SandyTallGrassBlock extends DoublePlantBlock {
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
-        if (pos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(pos.above()).canBeReplaced()) {
+        if (pos.getY() < level.getMaxY() - 1 && level.getBlockState(pos.above()).canBeReplaced()) {
             return this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER);
         }
         return super.getStateForPlacement(context);

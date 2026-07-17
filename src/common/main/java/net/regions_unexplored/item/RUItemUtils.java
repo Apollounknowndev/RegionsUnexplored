@@ -5,6 +5,8 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PlaceOnWaterBlockItem;
+import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.level.block.Block;
 import net.regions_unexplored.module.platform.Registrar;
 
@@ -24,7 +26,11 @@ public class RUItemUtils {
         return register(name, p -> new PlaceOnWaterBlockItem(block.get(), p));
     }
 
-    public static FoodProperties food(int nutrition, float saturation, UnaryOperator<FoodProperties.Builder> operator) {
-        return operator.apply(new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturation)).build();
+    public static FoodProperties food(int nutrition, float saturation) {
+        return new FoodProperties(nutrition, saturation, false);
+    }
+    
+    public static Consumable consumable(UnaryOperator<Consumable.Builder> operator) {
+        return operator.apply(Consumables.defaultFood()).build();
     }
 }

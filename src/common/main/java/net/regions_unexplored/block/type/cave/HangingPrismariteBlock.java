@@ -4,10 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -41,8 +38,7 @@ public class HangingPrismariteBlock extends Block {
     
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-        Vec3 vec3 = state.getOffset(getter, pos);
-        return SHAPE.move(vec3.x, vec3.y, vec3.z);
+        return SHAPE.move(state.getOffset(pos));
     }
 
     @Override
@@ -52,7 +48,16 @@ public class HangingPrismariteBlock extends Block {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction facing, BlockState state1, LevelAccessor level, BlockPos pos, BlockPos pos1) {
+    protected BlockState updateShape(
+        final BlockState state,
+        final LevelReader level,
+        final ScheduledTickAccess ticks,
+        final BlockPos pos,
+        final Direction directionToNeighbour,
+        final BlockPos neighbourPos,
+        final BlockState neighbourState,
+        final RandomSource random
+    ) {
         HangingPrismariteShape shape = state.getValue(HANGING_PRISMARITE_SHAPE);
         BlockState belowState = level.getBlockState(pos.below());
         Optional<HangingPrismariteShape> belowShape = belowState.getOptionalValue(HANGING_PRISMARITE_SHAPE);

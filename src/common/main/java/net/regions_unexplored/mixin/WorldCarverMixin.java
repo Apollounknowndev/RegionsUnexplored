@@ -19,7 +19,7 @@ public abstract class WorldCarverMixin {
 			ordinal = 0
 		)
 	)
-	private static boolean fixGrassQuery(BlockState state, Block block, Operation<Boolean> operation) {
+	private boolean fixGrassQuery(BlockState state, Block block, Operation<Boolean> operation) {
 		return operation.call(state, block) || operation.call(state, RUBlocks.PEAT_GRASS_BLOCK.get()) || operation.call(state, RUBlocks.SILT_GRASS_BLOCK.get());
 	}
 	
@@ -31,7 +31,7 @@ public abstract class WorldCarverMixin {
 			ordinal = 2
 		)
 	)
-	private static boolean fixDirtQuery(BlockState state, Block block, Operation<Boolean> operation) {
+	private boolean fixDirtQuery(BlockState state, Block block, Operation<Boolean> operation) {
 		return operation.call(state, block) || operation.call(state, RUBlocks.PEAT_DIRT.get()) || operation.call(state, RUBlocks.SILT_DIRT.get());
 	}
 }

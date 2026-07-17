@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 
 import javax.annotation.Nullable;
@@ -65,11 +66,11 @@ public class RUFarmlandBlock extends FarmlandBlock {
     }
         
     @Override
-    public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
         if (level instanceof ServerLevel serverLevel
             && level.getRandom().nextFloat() < fallDistance - 0.5
             && entity instanceof LivingEntity
-            && (entity instanceof Player || serverLevel.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING))
+            && (entity instanceof Player || serverLevel.getGameRules().get(GameRules.MOB_GRIEFING))
             && entity.getBbWidth() * entity.getBbWidth() * entity.getBbHeight() > 0.512F) {
             turnToDirt(entity, state, level, pos);
         }

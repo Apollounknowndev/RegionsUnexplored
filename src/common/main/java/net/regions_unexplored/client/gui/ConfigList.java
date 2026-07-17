@@ -2,7 +2,7 @@ package net.regions_unexplored.client.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
@@ -42,17 +42,16 @@ public class ConfigList extends ContainerObjectSelectionList<ConfigList.BaseEntr
     }
 
     public StringWidget addCategory(String name, Font font) {
-	    StringWidget widget = new StringWidget(Component.translatable(category(name)), font).alignCenter();
+	    StringWidget widget = new StringWidget(Component.translatable(category(name)), font);
         this.addEntry(widget);
         return widget;
     }
     
     @Override
     public <T extends StringRepresentable> void addEnum(String name, Consumer<T> setter, T getter, T[] values, T defaultValue) {
-        CycleButton.Builder<T> button = CycleButton.<T>builder(t -> Component.literal(t.getSerializedName()))
+        CycleButton.Builder<T> button = CycleButton.builder(t -> Component.literal(t.getSerializedName()), getter)
             .withTooltip(v -> tooltip(name + "." + v.getSerializedName(), defaultValue.getSerializedName()))
-            .withValues(values)
-            .withInitialValue(getter);
+            .withValues(values);
         this.addEntry(button.create(Component.translatable(option(name)), (__, value) -> setter.accept(value)));
     }
     
@@ -121,10 +120,11 @@ public class ConfigList extends ContainerObjectSelectionList<ConfigList.BaseEntr
             widget.setWidth(310);
             this.widget = widget;
         }
-
-        public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height, int mouseX, int mouseY, boolean hovering, float partialTick) {
-            this.widget.setY(top);
-            this.widget.render(guiGraphics, mouseX, mouseY, partialTick);
+        
+        @Override
+        public void extractContent(final GuiGraphicsExtractor graphics, int mouseX, int mouseY, boolean hovered, float a) {
+            this.widget.setY(this.getY());
+            this.widget.extractRenderState(graphics, mouseX, mouseY, a);
         }
 
         public List<? extends GuiEventListener> children() {
@@ -165,13 +165,13 @@ public class ConfigList extends ContainerObjectSelectionList<ConfigList.BaseEntr
             this.widgets.add(this.rightWidget);
         }
         
-        public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height, int mouseX, int mouseY, boolean hovering, float partialTick) {
-            this.leftWidget.setY(top);
-            this.leftWidget.render(guiGraphics, mouseX, mouseY, partialTick);
-            if (this.rightWidget != null) {
-                this.rightWidget.setY(top);
-                this.rightWidget.render(guiGraphics, mouseX, mouseY, partialTick);
-            }
+        @Override
+        public void extractContent(final GuiGraphicsExtractor graphics, int mouseX, int mouseY, boolean hovered, float a) {
+            this.leftWidget.setY(this.getY());
+            this.leftWidget.extractRenderState(graphics, mouseX, mouseY, a);
+            if (this.rightWidget == null) return;
+            this.rightWidget.setY(this.getY());
+            this.rightWidget.extractRenderState(graphics, mouseX, mouseY, a);
         }
         
         public List<? extends GuiEventListener> children() {

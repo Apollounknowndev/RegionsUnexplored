@@ -49,11 +49,11 @@ public class PointedRedstoneUtils {
         }
     }
 
-    public static boolean isEmptyOrWater(LevelAccessor level, BlockPos pos) {
+    public static boolean isEmptyOrWater(WorldGenLevel level, BlockPos pos) {
         return level.isStateAtPosition(pos, PointedRedstoneUtils::isEmptyOrWater);
     }
 
-    public static boolean isEmptyOrWaterOrLava(LevelAccessor level, BlockPos pos) {
+    public static boolean isEmptyOrWaterOrLava(WorldGenLevel level, BlockPos pos) {
         return level.isStateAtPosition(pos, PointedRedstoneUtils::isEmptyOrWaterOrLava);
     }
 
@@ -76,7 +76,7 @@ public class PointedRedstoneUtils {
 
     }
 
-    public static void growPointedRedstone(LevelAccessor level, BlockPos pos, Direction direction, int i, boolean bool) {
+    public static void growPointedRedstone(WorldGenLevel level, BlockPos pos, Direction direction, int i, boolean bool) {
         if (isRedstoneBase(level.getBlockState(pos.relative(direction.getOpposite())))) {
             BlockPos.MutableBlockPos pos1 = pos.mutable();
             buildBaseToTipColumn(direction, i, bool, (p_190846_) -> {
@@ -90,7 +90,7 @@ public class PointedRedstoneUtils {
         }
     }
 
-    public static boolean placeRedstoneBlockIfPossible(LevelAccessor level, BlockPos pos) {
+    public static boolean placeRedstoneBlockIfPossible(WorldGenLevel level, BlockPos pos) {
         BlockState blockstate = level.getBlockState(pos);
         if (blockstate.is(BlockTags.DRIPSTONE_REPLACEABLE)) {
             level.setBlock(pos, RUBlocks.RAW_REDSTONE_BLOCK.get().defaultBlockState(), 2);

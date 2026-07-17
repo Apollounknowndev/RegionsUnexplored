@@ -19,7 +19,6 @@ public class LargeFlowerBlock extends FlowerBlock {
 	}
 	
 	public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-		Vec3 vec3 = state.getOffset(getter, pos);
-		return SHAPE_BUSH.move(vec3.x, vec3.y, vec3.z);
+		return SHAPE_BUSH.move(state.getOffset(pos));
 	}
 }

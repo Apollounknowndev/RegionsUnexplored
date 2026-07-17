@@ -2,8 +2,11 @@ package net.regions_unexplored.block.type.wood;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
@@ -35,8 +38,18 @@ public class PineLogBlock extends Block {
 		};
 	}
 	
+	
 	@Override
-	public BlockState updateShape(BlockState state, Direction direction, BlockState state1, LevelAccessor level, BlockPos pos, BlockPos pos1) {
+	protected BlockState updateShape(
+		final BlockState state,
+		final LevelReader level,
+		final ScheduledTickAccess ticks,
+		final BlockPos pos,
+		final Direction directionToNeighbour,
+		final BlockPos neighbourPos,
+		final BlockState neighbourState,
+		final RandomSource random
+	) {
 		BlockState belowState = level.getBlockState(pos.below());
 		boolean isTransition = (
 			!state.getValue(IS_STRIPPED) &&

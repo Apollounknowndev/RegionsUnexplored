@@ -40,7 +40,7 @@ public class HangingEarlightFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeRoofCobaltObsidian(LevelAccessor level, RandomSource random, BlockPos pos) {
+    private void placeRoofCobaltObsidian(WorldGenLevel level, RandomSource random, BlockPos pos) {
         level.setBlock(pos, RUBlocks.COBALT_OBSIDIAN.get().defaultBlockState(), 2);
         BlockPos.MutableBlockPos pos1 = new BlockPos.MutableBlockPos();
         BlockPos.MutableBlockPos pos2 = new BlockPos.MutableBlockPos();
@@ -69,7 +69,7 @@ public class HangingEarlightFeature extends Feature<NoneFeatureConfiguration> {
 
     }
 
-    private void placeRoofHangingEarlight(LevelAccessor level, RandomSource random, BlockPos pos) {
+    private void placeRoofHangingEarlight(WorldGenLevel level, RandomSource random, BlockPos pos) {
         BlockPos.MutableBlockPos pos1 = new BlockPos.MutableBlockPos();
 
         for(int i = 0; i < 100; ++i) {
@@ -93,7 +93,7 @@ public class HangingEarlightFeature extends Feature<NoneFeatureConfiguration> {
 
     }
 
-    public static void placeHangingEarlightColumn(LevelAccessor level, RandomSource random, BlockPos.MutableBlockPos pos, int length, int low, int high) {
+    public static void placeHangingEarlightColumn(WorldGenLevel level, RandomSource random, BlockPos.MutableBlockPos pos, int length, int low, int high) {
         for(int i = 0; i <= length; ++i) {
             if (level.isEmptyBlock(pos)) {
                 if (i == length || !level.isEmptyBlock(pos.below())) {

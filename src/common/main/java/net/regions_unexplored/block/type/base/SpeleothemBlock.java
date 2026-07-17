@@ -18,12 +18,9 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.ThrownTrident;
+import net.minecraft.world.entity.projectile.arrow.ThrownTrident;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
@@ -81,27 +78,29 @@ public class SpeleothemBlock extends Block implements SimpleWaterloggedBlock, Fa
 	@Override
 	protected BlockState updateShape(
 		final BlockState state,
-		final Direction directionToNeighbour,
-		final BlockState neighbourState,
-		final LevelAccessor level,
+		final LevelReader level,
+		final ScheduledTickAccess ticks,
 		final BlockPos pos,
-		final BlockPos neighbourPos
+		final Direction directionToNeighbour,
+		final BlockPos neighbourPos,
+		final BlockState neighbourState,
+		final RandomSource random
 	) {
 		if (state.getValue(WATERLOGGED)) {
-			level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+			ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 		}
 		
 		if (directionToNeighbour != Direction.UP && directionToNeighbour != Direction.DOWN) {
 			return state;
 		} else {
 			Direction tipDirection = state.getValue(TIP_DIRECTION);
-			if (tipDirection == Direction.DOWN && level.getBlockTicks().hasScheduledTick(pos, this)) {
+			if (tipDirection == Direction.DOWN && ticks.getBlockTicks().hasScheduledTick(pos, this)) {
 				return state;
 			} else if (directionToNeighbour == tipDirection.getOpposite() && !this.canSurvive(state, level, pos)) {
 				if (tipDirection == Direction.DOWN) {
-					level.scheduleTick(pos, this, 2);
+					ticks.scheduleTick(pos, this, 2);
 				} else {
-					level.scheduleTick(pos, this, 1);
+					ticks.scheduleTick(pos, this, 1);
 				}
 				
 				return state;
@@ -269,8 +268,7 @@ public class SpeleothemBlock extends Block implements SimpleWaterloggedBlock, Fa
 			case BASE -> SHAPE_BASE;
 		};
 		
-		Vec3 offset = state.getOffset(level, pos);
-		return shape.move(offset.x, 0, offset.z);
+		return shape.move(state.getOffset(pos));
 	}
 	
 	@Override

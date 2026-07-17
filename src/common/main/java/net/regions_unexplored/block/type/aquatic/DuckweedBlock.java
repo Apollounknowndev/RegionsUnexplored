@@ -24,8 +24,4 @@ public class DuckweedBlock extends LilyPadBlock {
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
-
-    @Override
-    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-    }
 }

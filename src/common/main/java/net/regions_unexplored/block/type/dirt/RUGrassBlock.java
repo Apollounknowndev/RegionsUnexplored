@@ -16,7 +16,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.HoeItem;
@@ -56,20 +56,28 @@ public class RUGrassBlock extends SnowyBlock implements BonemealableBlock {
 	}
 	
 	@Override
-	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+	protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 		if (!this.hasItemInteraction || playerHasShieldUseIntent(player, hand) || !level.getBlockState(pos.above()).isAir()) {
-			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+			return InteractionResult.PASS;
 		}
 		
-		if (stack.getItem() instanceof ShovelItem && updateBlock(this.pathBlock, SoundEvents.SHOVEL_FLATTEN, stack, level, pos, player, hand)) {
-			return ItemInteractionResult.sidedSuccess(level.isClientSide());
+		if (stack.getItem() instanceof ShovelItem && this.pathBlock.isPresent()) {
+			if (!level.isClientSide()) {
+				updateBlock(this.pathBlock, SoundEvents.SHOVEL_FLATTEN, stack, level, pos, player, hand);
+				return InteractionResult.SUCCESS_SERVER;
+			}
+			return InteractionResult.SUCCESS;
 		}
 		
-		if (stack.getItem() instanceof HoeItem && updateBlock(this.farmlandBlock, SoundEvents.HOE_TILL, stack, level, pos, player, hand)) {
-			return ItemInteractionResult.sidedSuccess(level.isClientSide());
+		if (stack.getItem() instanceof HoeItem && this.farmlandBlock.isPresent()) {
+			if (!level.isClientSide()) {
+				updateBlock(this.farmlandBlock, SoundEvents.HOE_TILL, stack, level, pos, player, hand);
+				return InteractionResult.SUCCESS_SERVER;
+			}
+			return InteractionResult.SUCCESS;
 		}
 		
-		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		return InteractionResult.PASS;
 	}
 	
 	protected static boolean updateBlock(Optional<Supplier<Block>> block, SoundEvent sound, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand) {
@@ -81,7 +89,7 @@ public class RUGrassBlock extends SnowyBlock implements BonemealableBlock {
 		level.playSound(player, pos, sound, SoundSource.BLOCKS, 1.0F, 1.0F);
 		level.setBlock(pos, state, 11);
 		level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, state));
-		stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+		stack.hurtAndBreak(1, player, hand);
 		return true;
 	}
 	
@@ -135,7 +143,7 @@ public class RUGrassBlock extends SnowyBlock implements BonemealableBlock {
 		} else if (aboveState.getFluidState().getAmount() == 8) {
 			return false;
 		} else {
-			int lightBlockInto = LightEngine.getLightBlockInto(level, state, pos, aboveState, above, Direction.UP, aboveState.getLightBlock(level, above));
+			int lightBlockInto = LightEngine.getLightBlockInto(state, aboveState, Direction.UP, aboveState.getLightEmission());
 			return lightBlockInto < 15;
 		}
 	}

@@ -24,10 +24,10 @@ public class RUNyliumBlock extends NyliumBlock implements BonemealableBlock {
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
         BlockPos abovePos = pos.above();
         ChunkGenerator generator = level.getChunkSource().getGenerator();
-        Registry<ConfiguredFeature<?, ?>> registry = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE);
+        Registry<ConfiguredFeature<?, ?>> registry = level.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE);
         this.place(registry, this.feature, level, generator, random, abovePos);
-
     }
+    
     private void place(
         final Registry<ConfiguredFeature<?, ?>> registry,
         final ResourceKey<ConfiguredFeature<?, ?>> id,
@@ -37,7 +37,7 @@ public class RUNyliumBlock extends NyliumBlock implements BonemealableBlock {
         final BlockPos pos
     ) {
         if (level.isInWorldBounds(pos)) {
-            registry.getHolder(id).ifPresent(h -> h.value().place(level, generator, random, pos));
+            registry.get(id).ifPresent(h -> h.value().place(level, generator, random, pos));
         }
     }
 }

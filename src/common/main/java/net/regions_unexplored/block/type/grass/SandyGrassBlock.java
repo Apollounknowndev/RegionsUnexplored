@@ -43,11 +43,6 @@ public class SandyGrassBlock extends VegetationBlock implements BonemealableBloc
     }
     
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState state1, LevelAccessor level, BlockPos pos, BlockPos pos2) {
-        return !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, state1, level, pos, pos2);
-    }
-    
-    @Override
     public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
         return true;
     }
@@ -64,7 +59,7 @@ public class SandyGrassBlock extends VegetationBlock implements BonemealableBloc
     
     @Override
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        BlockState tallGrass = level.registryAccess().registryOrThrow(Registries.BLOCK).get(this.tallGrassKey).defaultBlockState();
+        BlockState tallGrass = level.registryAccess().lookupOrThrow(Registries.BLOCK).getValue(this.tallGrassKey).defaultBlockState();
         if (tallGrass.canSurvive(level, pos) && level.isEmptyBlock(pos.above())) {
             level.setBlock(pos, tallGrass, 2);
             level.setBlock(pos.above(), tallGrass.setValue(SandyTallGrassBlock.HALF, DoubleBlockHalf.UPPER), 2);

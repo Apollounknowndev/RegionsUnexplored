@@ -2,10 +2,11 @@ package net.regions_unexplored.mixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.EatBlockGoal;
-import net.minecraft.world.level.GameRules;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.regions_unexplored.registry.RUBlocks;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,19 +18,19 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(value = EatBlockGoal.class)
-public class EatBlockGoalMixin {
-    @Shadow
-    @Final
-    public Mob mob;
+public abstract class EatBlockGoalMixin extends Goal {
+    @Shadow @Final public Mob mob;
 
-    @Shadow
-    @Final
-    public Level level;
+    @Shadow @Final public Level level;
 
-    @Inject(method = "canUse",
-            at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/Blocks;GRASS_BLOCK:Lnet/minecraft/world/level/block/Block;"),
-            cancellable = true,
-            locals = LocalCapture.NO_CAPTURE
+    @Inject(
+        method = "canUse",
+        at = @At(
+            value = "FIELD",
+            target = "Lnet/minecraft/world/level/block/Blocks;GRASS_BLOCK:Lnet/minecraft/world/level/block/Block;"
+        ),
+        cancellable = true,
+        locals = LocalCapture.NO_CAPTURE
     )
     private void regions_unexplored$canUse(CallbackInfoReturnable<Boolean> cir) {
         BlockPos pos = this.mob.blockPosition();
@@ -39,9 +40,13 @@ public class EatBlockGoalMixin {
         }
     }
 
-    @Inject(method = "tick",
-            at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/Blocks;GRASS_BLOCK:Lnet/minecraft/world/level/block/Block;"),
-            locals = LocalCapture.NO_CAPTURE
+    @Inject(
+        method = "tick",
+        at = @At(
+            value = "FIELD",
+            target = "Lnet/minecraft/world/level/block/Blocks;GRASS_BLOCK:Lnet/minecraft/world/level/block/Block;"
+        ),
+        locals = LocalCapture.NO_CAPTURE
     )
     private void regions_unexplored$tick(CallbackInfo ci) {
         BlockPos downPos = this.mob.blockPosition().below();
@@ -49,7 +54,7 @@ public class EatBlockGoalMixin {
 
         // Modded Dirt likes
         if (down.is(RUBlocks.PEAT_GRASS_BLOCK.get())) {
-            if (this.level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING)) {
+            if (getServerLevel(this.level).getGameRules().get(GameRules.MOB_GRIEFING)) {
                 this.level.levelEvent(2001, downPos, Block.getId(RUBlocks.PEAT_GRASS_BLOCK.get().defaultBlockState()));
 
                 Block replacement = RUBlocks.PEAT_DIRT.get();
@@ -61,7 +66,7 @@ public class EatBlockGoalMixin {
         }
 
         if (down.is(RUBlocks.SILT_GRASS_BLOCK.get())) {
-            if (this.level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING)) {
+            if (getServerLevel(this.level).getGameRules().get(GameRules.MOB_GRIEFING)) {
                 this.level.levelEvent(2001, downPos, Block.getId(RUBlocks.SILT_GRASS_BLOCK.get().defaultBlockState()));
 
                 Block replacement = RUBlocks.SILT_DIRT.get();

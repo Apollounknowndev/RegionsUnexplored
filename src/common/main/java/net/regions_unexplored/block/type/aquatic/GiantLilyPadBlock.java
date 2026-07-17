@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -25,7 +25,7 @@ import net.regions_unexplored.registry.RUBlocks;
 
 public class GiantLilyPadBlock extends HorizontalDirectionalBlock {
     public static final MapCodec<? extends GiantLilyPadBlock> CODEC = simpleCodec(GiantLilyPadBlock::new);
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     
     protected static final VoxelShape NORTH = Block.box(0, 0, 2, 14, 2, 16);
     protected static final VoxelShape EAST = Block.box(0, 0, 0, 14, 2, 14);
@@ -42,28 +42,28 @@ public class GiantLilyPadBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
+    public ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
         return new ItemStack(RUBlocks.FLOWERING_LILY_PAD.get());
     }
 
     @Override
-    public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float f) {
+    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
         if(entity.getType() != EntityType.FROG) {
             if (entity.isSuppressingBounce()) {
-                super.fallOn(level, state, pos, entity, f);
+                super.fallOn(level, state, pos, entity, fallDistance);
             } else {
-                entity.causeFallDamage(f, 0.0F, level.damageSources().fall());
+                entity.causeFallDamage(fallDistance, 0.0F, level.damageSources().fall());
             }
         }
     }
 
     @Override
-    public void updateEntityAfterFallOn(BlockGetter blockGetter, Entity entity) {
+    public void updateEntityMovementAfterFallOn(final BlockGetter level, final Entity entity) {
         Vec3 vec3 = entity.getDeltaMovement();
         if (vec3.y < -0.7D) {
             if(entity.getType() != EntityType.FROG) {
                 if (entity.isSuppressingBounce()) {
-                    super.updateEntityAfterFallOn(blockGetter, entity);
+                    super.updateEntityMovementAfterFallOn(level, entity);
                 } else {
                     this.bounceUp(entity);
                 }
@@ -99,39 +99,52 @@ public class GiantLilyPadBlock extends HorizontalDirectionalBlock {
             return WEST;
         }
     }
-
+    
     @Override
-    public BlockState updateShape(BlockState p_51032_, Direction p_51033_, BlockState p_51034_, LevelAccessor p_51035_, BlockPos p_51036_, BlockPos p_51037_) {
-        return !p_51032_.canSurvive(p_51035_, p_51036_) ? Blocks.AIR.defaultBlockState() : super.updateShape(p_51032_, p_51033_, p_51034_, p_51035_, p_51036_, p_51037_);
+    protected BlockState updateShape(
+        final BlockState state,
+        final LevelReader level,
+        final ScheduledTickAccess ticks,
+        final BlockPos pos,
+        final Direction directionToNeighbour,
+        final BlockPos neighbourPos,
+        final BlockState neighbourState,
+        final RandomSource random
+    ) {
+        return !state.canSurvive(level, pos)
+            ? Blocks.AIR.defaultBlockState()
+            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
     }
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        if(level.getFluidState(pos.below()).is(Fluids.WATER)){
-            if(state== this.defaultBlockState().setValue(FACING, Direction.NORTH)){
-            return level.getBlockState(pos.west())== RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.WEST)&
-                    level.getBlockState(pos.south().west())== RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.SOUTH)&
-                    level.getBlockState(pos.south())== RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.EAST);
-            }
-            else if(state== this.defaultBlockState().setValue(FACING, Direction.EAST)){
-            return level.getBlockState(pos.north())== RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH)&
-                    level.getBlockState(pos.west())== RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.SOUTH)&
-                    level.getBlockState(pos.west().north())== RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.WEST);
-            }
-            else if(state== this.defaultBlockState().setValue(FACING, Direction.SOUTH)){
-            return level.getBlockState(pos.north().east())== RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH)&
-                    level.getBlockState(pos.east())== RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.EAST)&
-                    level.getBlockState(pos.north())== RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.WEST);
-            }
-            else{
-            return level.getBlockState(pos.east())== RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH)&
-                    level.getBlockState(pos.south().east())== RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.EAST)&
-                    level.getBlockState(pos.south())== RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.SOUTH);
+        if (level.getFluidState(pos.below()).is(Fluids.WATER)) {
+            if (state == this.defaultBlockState().setValue(FACING, Direction.NORTH)) {
+                return
+                    level.getBlockState(pos.west()) == RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.WEST) &
+                    level.getBlockState(pos.south().west()) == RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.SOUTH) &
+                    level.getBlockState(pos.south()) == RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.EAST);
+            } else if (state == this.defaultBlockState().setValue(FACING, Direction.EAST)) {
+                return
+                    level.getBlockState(pos.north()) == RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH) &
+                    level.getBlockState(pos.west()) == RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.SOUTH) &
+                    level.getBlockState(pos.west().north()) == RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.WEST);
+            } else if (state == this.defaultBlockState().setValue(FACING, Direction.SOUTH)) {
+                return
+                    level.getBlockState(pos.north().east()) == RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH) &
+                    level.getBlockState(pos.east()) == RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.EAST) &
+                    level.getBlockState(pos.north()) == RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.WEST);
+            } else {
+                return
+                    level.getBlockState(pos.east()) == RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH) &
+                    level.getBlockState(pos.south().east()) == RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.EAST) &
+                    level.getBlockState(pos.south()) == RUBlocks.GIANT_LILY_PAD.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.SOUTH);
             }
         }
         return false;
     }
 
+    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
@@ -142,9 +155,9 @@ public class GiantLilyPadBlock extends HorizontalDirectionalBlock {
                 level.setBlock(pos.west(), this.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.WEST), 20);
                 level.setBlock(pos.south().west(), this.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.SOUTH), 20);
                 level.setBlock(pos.south(), this.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.EAST), 20);
-                level.blockUpdated(pos.west(), Blocks.AIR);
-                level.blockUpdated(pos.south().west(), Blocks.AIR);
-                level.blockUpdated(pos.south(), Blocks.AIR);
+                level.updateNeighborsAt(pos.west(), Blocks.AIR);
+                level.updateNeighborsAt(pos.south().west(), Blocks.AIR);
+                level.updateNeighborsAt(pos.south(), Blocks.AIR);
             }
             return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
         }
@@ -179,7 +192,7 @@ public class GiantLilyPadBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public boolean propagatesSkylightDown(BlockState p_51039_, BlockGetter p_51040_, BlockPos p_51041_) {
+    public boolean propagatesSkylightDown(BlockState state) {
         return false;
     }
     

@@ -100,7 +100,7 @@ public class TallBrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeBrimwoodLog(LevelAccessor level, BlockPos pos, Direction.Axis axis){
+    private void placeBrimwoodLog(WorldGenLevel level, BlockPos pos, Direction.Axis axis){
         if(level.isOutsideBuildHeight(pos)){
             return;
         }
@@ -109,7 +109,7 @@ public class TallBrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeBrimwoodLeaves(LevelAccessor level, BlockPos pos){
+    private void placeBrimwoodLeaves(WorldGenLevel level, BlockPos pos){
         if(level.isOutsideBuildHeight(pos)){
             return;
         }
@@ -118,7 +118,7 @@ public class TallBrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeBranches(LevelAccessor level, BlockPos pos) {
+    private void placeBranches(WorldGenLevel level, BlockPos pos) {
         //NORTH
         if(isReplaceable(level, pos.north())){
             if(isReplaceable(level, pos.north())){
@@ -186,7 +186,7 @@ public class TallBrimWillowFeature extends Feature<NoneFeatureConfiguration> {
     }
 
 
-    private void placeBranchesGiant(LevelAccessor level, BlockPos pos) {
+    private void placeBranchesGiant(WorldGenLevel level, BlockPos pos) {
         //NORTH
         if(isReplaceable(level, pos.north())){
             if(isReplaceable(level, pos.north())){
@@ -345,7 +345,7 @@ public class TallBrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeSpine(LevelAccessor level, BlockPos pos) {
+    private void placeSpine(WorldGenLevel level, BlockPos pos) {
         //NORTH
         if(isReplaceable(level, pos.north())){
             placeBrimwoodLog( level, pos.north(), Direction.Axis.Z);
@@ -364,7 +364,7 @@ public class TallBrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeRoots(LevelAccessor level, BlockPos pos) {
+    private void placeRoots(WorldGenLevel level, BlockPos pos) {
         //NORTH
         if(level.isEmptyBlock(pos.north().below().north().below().below().below())){}
         else{
@@ -459,7 +459,7 @@ public class TallBrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeLeavesUpsideDown(LevelAccessor level, BlockPos pos) {
+    private void placeLeavesUpsideDown(WorldGenLevel level, BlockPos pos) {
         if (isReplaceable(level, pos)) {
             placeBrimwoodLeaves(level, pos);
         }
@@ -573,7 +573,7 @@ public class TallBrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeLeavesUpsideDownGiant(LevelAccessor level, BlockPos pos) {
+    private void placeLeavesUpsideDownGiant(WorldGenLevel level, BlockPos pos) {
         BlockPos pos2 = pos.above();
         if (isReplaceable(level, pos)) {
             placeBrimwoodLeaves(level, pos);
@@ -826,7 +826,7 @@ public class TallBrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void addVine(LevelAccessor level, BlockPos pos) {
+    private void addVine(WorldGenLevel level, BlockPos pos) {
         Random random = new Random();
         int size = random.nextInt(3);
         BlockPos place = pos.above();
@@ -849,7 +849,7 @@ public class TallBrimWillowFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void addVineGiant(LevelAccessor level, BlockPos pos) {
+    private void addVineGiant(WorldGenLevel level, BlockPos pos) {
         Random random = new Random();
         int size = random.nextInt(4);
         BlockPos place = pos.above();

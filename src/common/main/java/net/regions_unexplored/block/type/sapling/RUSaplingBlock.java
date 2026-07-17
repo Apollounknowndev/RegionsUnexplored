@@ -67,7 +67,7 @@ public class RUSaplingBlock extends VegetationBlock implements BonemealableBlock
 
     @Override
     public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
-        return level.random.nextFloat() < 0.45;
+        return level.getRandom().nextFloat() < 0.45;
     }
 
     @Override

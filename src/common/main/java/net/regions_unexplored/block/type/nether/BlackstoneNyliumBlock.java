@@ -15,12 +15,12 @@ public class BlackstoneNyliumBlock extends RUNyliumBlock {
     public BlackstoneNyliumBlock(Properties properties, ResourceKey<ConfiguredFeature<?, ?>> bonemeal) {
         super(properties, bonemeal);
     }
-
-    private static boolean canBeNylium(BlockState state, LevelReader level, BlockPos pos) {
-        BlockPos blockpos = pos.above();
-        BlockState blockstate = level.getBlockState(blockpos);
-        int i = LightEngine.getLightBlockInto(level, state, pos, blockstate, blockpos, Direction.UP, blockstate.getLightBlock(level, blockpos));
-        return i < level.getMaxLightLevel();
+    
+    private static boolean canBeNylium(final BlockState state, final LevelReader level, final BlockPos pos) {
+        BlockPos above = pos.above();
+        BlockState aboveState = level.getBlockState(above);
+        int lightBlockInto = LightEngine.getLightBlockInto(state, aboveState, Direction.UP, aboveState.getLightDampening());
+        return lightBlockInto < 15;
     }
 
     @Override

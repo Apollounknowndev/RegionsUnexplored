@@ -110,7 +110,7 @@ public class RockPillarFeature extends Feature<NoneFeatureConfiguration> {
             return true;
     }
 
-    public void placeCoral(LevelAccessor level, BlockPos pos) {
+    public void placeCoral(WorldGenLevel level, BlockPos pos) {
         Random random = new Random();
         
         int type = random.nextInt(5);
@@ -400,10 +400,10 @@ public class RockPillarFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
     
-    public boolean placeBlob(LevelAccessor level, BlockPos pos, boolean b, int i, int j, int k) {
+    public boolean placeBlob(WorldGenLevel level, BlockPos pos, boolean b, int i, int j, int k) {
         Random random = new Random();
 
-        if (pos.getY() <= level.getMinBuildHeight() + 3) {
+        if (pos.getY() <= level.getMinY() + 3) {
             return false;
         } else {
             for(int l = 0; l < 3; ++l) {
@@ -457,7 +457,7 @@ public class RockPillarFeature extends Feature<NoneFeatureConfiguration> {
     }
 
 
-    private void smooth(LevelAccessor level, BlockPos pos) {
+    private void smooth(WorldGenLevel level, BlockPos pos) {
                     BlockState blockstate = level.getBlockState(pos);
                     if (isRockState(blockstate)) {
                         if (this.belowIsAir(level, pos)) {

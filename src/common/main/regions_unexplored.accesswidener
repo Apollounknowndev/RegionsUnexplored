@@ -1,8 +1,6 @@
 accessWidener v2 named
 
-accessible field net/minecraft/world/entity/vehicle/Boat DATA_ID_TYPE Lnet/minecraft/network/syncher/EntityDataAccessor;
-accessible field net/minecraft/world/entity/vehicle/Boat status Lnet/minecraft/world/entity/vehicle/Boat$Status;
-accessible field net/minecraft/world/entity/vehicle/Boat lastYd D
+accessible method net/minecraft/world/level/block/FireBlock setFlammable (Lnet/minecraft/world/level/block/Block;II)V
 
 accessible method net/minecraft/core/particles/SimpleParticleType <init> (Z)V
 

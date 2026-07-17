@@ -95,7 +95,7 @@ public class BasaltBlobFeature extends Feature<ColumnFeatureConfiguration> {
         }
     }
 
-    private boolean placeColumn(LevelAccessor level, int ylevel, BlockPos pos, int k, int offset) {
+    private boolean placeColumn(WorldGenLevel level, int ylevel, BlockPos pos, int k, int offset) {
         boolean flag = false;
 
         for(BlockPos blockpos : BlockPos.betweenClosed(pos.getX() - offset, pos.getY(), pos.getZ() - offset, pos.getX() + offset, pos.getY(), pos.getZ() + offset)) {
@@ -123,8 +123,8 @@ public class BasaltBlobFeature extends Feature<ColumnFeatureConfiguration> {
         return flag;
     }
 
-    private static BlockPos findSurface(LevelAccessor level, int ylevel, BlockPos.MutableBlockPos pos, int i) {
-        while(pos.getY() > level.getMinBuildHeight() + 1 && i > 0) {
+    private static BlockPos findSurface(WorldGenLevel level, int ylevel, BlockPos.MutableBlockPos pos, int i) {
+        while(pos.getY() > level.getMinY() + 1 && i > 0) {
             --i;
             if (canPlaceAt(level, ylevel, pos)) {
                 return pos;
@@ -136,7 +136,7 @@ public class BasaltBlobFeature extends Feature<ColumnFeatureConfiguration> {
         return null;
     }
 
-    private static boolean canPlaceAt(LevelAccessor level, int ylevel, BlockPos.MutableBlockPos pos) {
+    private static boolean canPlaceAt(WorldGenLevel level, int ylevel, BlockPos.MutableBlockPos pos) {
         if (!isAirOrLavaOcean(level, ylevel, pos)) {
             return false;
         } else {
@@ -146,8 +146,8 @@ public class BasaltBlobFeature extends Feature<ColumnFeatureConfiguration> {
         }
     }
 
-    private static BlockPos findAir(LevelAccessor level, BlockPos.MutableBlockPos pos, int i) {
-        while(pos.getY() < level.getMaxBuildHeight() && i > 0) {
+    private static BlockPos findAir(WorldGenLevel level, BlockPos.MutableBlockPos pos, int i) {
+        while(pos.getY() < level.getMaxY() && i > 0) {
             --i;
             BlockState blockstate = level.getBlockState(pos);
             if (CANNOT_PLACE_ON.get().contains(blockstate.getBlock())) {

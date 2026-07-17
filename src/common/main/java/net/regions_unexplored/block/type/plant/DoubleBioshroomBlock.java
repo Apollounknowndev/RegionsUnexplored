@@ -22,7 +22,7 @@ public class DoubleBioshroomBlock extends DoublePlantBlock {
 
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.isSolidRender(level, pos);
+        return state.isSolidRender();
     }
 
     @Override

@@ -7,7 +7,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -27,6 +27,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.block.RUBlockUtils;
 import net.regions_unexplored.registry.RUItems;
+import net.regions_unexplored.registry.data.RULootTables;
 
 public class DuskmelonBlock extends VegetationBlock implements BonemealableBlock {
    public static final MapCodec<? extends DuskmelonBlock> CODEC = simpleCodec(DuskmelonBlock::new);
@@ -45,7 +46,7 @@ public class DuskmelonBlock extends VegetationBlock implements BonemealableBlock
    }
 
    @Override
-   public ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
+   public ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
       return new ItemStack(RUItems.DUSKMELON_SLICE.get());
    }
 
@@ -72,22 +73,33 @@ public class DuskmelonBlock extends VegetationBlock implements BonemealableBlock
          serverLevel.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(blockstate));
       }
    }
-
+   
    @Override
-   protected ItemInteractionResult useItemOn(ItemStack stack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-      int i = blockState.getValue(AGE);
-      boolean flag = i == 2;
-      if (!flag && player.getItemInHand(interactionHand).is(Items.BONE_MEAL)) {
-         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-      } else if (i > 1) {
-         popResource(level, blockPos, new ItemStack(RUItems.DUSKMELON_SLICE.get(), 1));
-         level.playSound(null, blockPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
-         BlockState blockstate = blockState.setValue(AGE, 0);
-         level.setBlock(blockPos, blockstate, 2);
-         level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, blockstate));
-         return ItemInteractionResult.sidedSuccess(level.isClientSide());
+   protected InteractionResult useWithoutItem(
+       final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
+   ) {
+      if (state.getValue(AGE) > 1) {
+         if (level instanceof ServerLevel serverLevel) {
+            Block.dropFromBlockInteractLootTable(
+                serverLevel,
+                RULootTables.HARVEST_DUSKMELON,
+                state,
+                level.getBlockEntity(pos),
+                null,
+                player,
+                (serverlvl, itemStack) -> Block.popResource(serverlvl, pos, itemStack)
+            );
+            serverLevel.playSound(
+                null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + serverLevel.getRandom().nextFloat() * 0.4F
+            );
+            BlockState newState = state.setValue(AGE, 0);
+            serverLevel.setBlock(pos, newState, 2);
+            serverLevel.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
+         }
+         
+         return InteractionResult.SUCCESS;
       } else {
-         return super.useItemOn(stack, blockState, level, blockPos, player, interactionHand, blockHitResult);
+         return super.useWithoutItem(state, level, pos, player, hitResult);
       }
    }
    

@@ -2,13 +2,14 @@ package net.regions_unexplored.client.particle.spore;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.Nullable;
 
-public class GroundSporeParticle extends TextureSheetParticle {
-    protected GroundSporeParticle(ClientLevel level, double x, double y, double z, double xa, double ya, double za, SpriteSet sprites) {
-        super(level, x, y, z, xa, ya, za);
-        this.pickSprite(sprites);
+public class GroundSporeParticle extends SingleQuadParticle {
+    protected GroundSporeParticle(ClientLevel level, double x, double y, double z, double xa, double ya, double za, TextureAtlasSprite sprite) {
+        super(level, x, y, z, xa, ya, za, sprite);
         float brightness = this.random.nextFloat() * 0.2f;
         this.rCol = brightness;
         this.gCol = brightness * 1.25f + 0.7f;
@@ -41,10 +42,10 @@ public class GroundSporeParticle extends TextureSheetParticle {
         this.yd *= 0.99;
         this.zd *= 0.99;
     }
-
+    
     @Override
-    public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
+    protected SingleQuadParticle.Layer getLayer() {
+        return SingleQuadParticle.Layer.OPAQUE;
     }
 
     public static class Provider implements ParticleProvider<SimpleParticleType> {
@@ -54,10 +55,9 @@ public class GroundSporeParticle extends TextureSheetParticle {
             this.sprites = sprites;
         }
 
-        @Nullable
         @Override
-        public Particle createParticle(SimpleParticleType option, ClientLevel level, double x, double y, double z, double xAux, double yAux, double zAux) {
-            return new GroundSporeParticle(level, x, y, z, xAux, yAux, zAux, this.sprites);
+        public Particle createParticle(SimpleParticleType option, ClientLevel level, double x, double y, double z, double xa, double ya, double za, RandomSource random) {
+            return new GroundSporeParticle(level, x, y, z, xa, ya, za, this.sprites.get(random));
         }
     }
 }

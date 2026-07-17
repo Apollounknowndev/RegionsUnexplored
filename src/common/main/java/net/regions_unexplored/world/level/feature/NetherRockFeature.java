@@ -84,7 +84,7 @@ public class NetherRockFeature extends Feature<NoneFeatureConfiguration> {
         return true;
     }
 
-    public boolean placeBottom(LevelAccessor level, BlockPos pos, RandomSource randomSource) {
+    public boolean placeBottom(WorldGenLevel level, BlockPos pos, RandomSource randomSource) {
         Random random = new Random();
         int rd = 2;
         int i = 0;
@@ -106,7 +106,7 @@ public class NetherRockFeature extends Feature<NoneFeatureConfiguration> {
         return true;
     }
 
-    public boolean placeRandomBlock(LevelAccessor level, BlockPos pos, RandomSource randomSource) {
+    public boolean placeRandomBlock(WorldGenLevel level, BlockPos pos, RandomSource randomSource) {
         boolean isBase = false;
         if(level.getBlockState(pos.below()).is(BlockTags.DIRT)){
             isBase = true;
@@ -149,7 +149,7 @@ public class NetherRockFeature extends Feature<NoneFeatureConfiguration> {
         return true;
     }
 
-    public boolean placeNetherrack(LevelAccessor level, BlockPos pos, RandomSource randomSource) {
+    public boolean placeNetherrack(WorldGenLevel level, BlockPos pos, RandomSource randomSource) {
         boolean isBase = false;
         if(level.getBlockState(pos.below()).is(BlockTags.DIRT)){
             isBase = true;
@@ -164,13 +164,13 @@ public class NetherRockFeature extends Feature<NoneFeatureConfiguration> {
             return true;
     }
 
-    public void placeTopBlock(LevelAccessor level, BlockPos pos, RandomSource randomSource) {
+    public void placeTopBlock(WorldGenLevel level, BlockPos pos, RandomSource randomSource) {
         if(randomSource.nextInt(3)!=0) {
             level.setBlock(pos, RUBlocks.OVERGROWN_BONE_BLOCK.get().defaultBlockState(), 2);
         }
     }
 
-    public boolean checkReplaceable(LevelAccessor level, BlockPos pos) {
+    public boolean checkReplaceable(WorldGenLevel level, BlockPos pos) {
         if(level.isOutsideBuildHeight(pos)){
             return false;
         }

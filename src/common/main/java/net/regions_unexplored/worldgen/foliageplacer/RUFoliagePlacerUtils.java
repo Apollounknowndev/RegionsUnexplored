@@ -3,6 +3,7 @@ package net.regions_unexplored.worldgen.foliageplacer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.TreeFeature;
@@ -12,7 +13,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.material.Fluids;
 
 public class RUFoliagePlacerUtils {
-    public record Context(LevelSimulatedReader level, FoliagePlacer.FoliageSetter foliageSetter, RandomSource random, BlockStateProvider foliageProvider, BlockPos origin, int offset) {}
+    public record Context(WorldGenLevel level, FoliagePlacer.FoliageSetter foliageSetter, RandomSource random, BlockStateProvider foliageProvider, BlockPos origin, int offset) {}
 
     public static void placeDiamond(Context context, int radius, int y, boolean doubleTrunk) {
         placeDiamond(context, radius, radius, y, doubleTrunk);
@@ -63,7 +64,7 @@ public class RUFoliagePlacerUtils {
         if (isPersistent || !TreeFeature.validTreePos(context.level, pos)) {
             return;
         }
-        BlockState foliageState = foliageProvider.getState(context.random, pos);
+        BlockState foliageState = foliageProvider.getState(context.level, context.random, pos);
         if (foliageState.hasProperty(BlockStateProperties.WATERLOGGED)) {
             foliageState = foliageState.setValue(BlockStateProperties.WATERLOGGED, context.level.isFluidAtPosition(pos, fluidState -> fluidState.isSourceOfType(Fluids.WATER)));
         }

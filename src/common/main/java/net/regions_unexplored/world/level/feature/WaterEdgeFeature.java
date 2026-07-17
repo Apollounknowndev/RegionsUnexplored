@@ -32,10 +32,10 @@ public class WaterEdgeFeature extends Feature<NoneFeatureConfiguration> {
 
         return false;
     }
-    public boolean placeBlob(LevelAccessor level, BlockPos pos) {
+    public boolean placeBlob(WorldGenLevel level, BlockPos pos) {
         Random random = new Random();
 
-        if (pos.getY() <= level.getMinBuildHeight() + 3) {
+        if (pos.getY() <= level.getMinY() + 3) {
             return false;
         } else {
             for(int l = 0; l < 3; ++l) {
@@ -63,7 +63,7 @@ public class WaterEdgeFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    public boolean placeBlock(LevelAccessor level, BlockPos pos) {
+    public boolean placeBlock(WorldGenLevel level, BlockPos pos) {
         if (level.getBlockState(pos.below()).is(Blocks.DIRT)&&level.isWaterAt(pos)) {
             level.setBlock(pos, Blocks.GRASS_BLOCK.defaultBlockState(), 2);
             if (level.getBlockState(pos.above())== RUBlocks.CATTAIL.get().defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER)||level.getBlockState(pos.above()).is(RUBlocks.DUCKWEED.get())) {

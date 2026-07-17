@@ -5,13 +5,15 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 
 public class SkinnyPineFoliagePlacer extends BlobFoliagePlacer {
-    public static final MapCodec<SkinnyPineFoliagePlacer> CODEC = IntProvider.CODEC.fieldOf("offset").xmap(SkinnyPineFoliagePlacer::new, p -> p.offset);
+    public static final MapCodec<SkinnyPineFoliagePlacer> CODEC = IntProviders.CODEC.fieldOf("offset").xmap(SkinnyPineFoliagePlacer::new, p -> p.offset);
     public static final FoliagePlacerType<SkinnyPineFoliagePlacer> TYPE = new FoliagePlacerType<>(CODEC);
 
     public SkinnyPineFoliagePlacer(IntProvider offset) {
@@ -26,9 +28,19 @@ public class SkinnyPineFoliagePlacer extends BlobFoliagePlacer {
     protected FoliagePlacerType<?> type() {
         return TYPE;
     }
-
+    
     @Override
-    protected void createFoliage(LevelSimulatedReader level, FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, int treeHeight, FoliageAttachment foliageAttachment, int foliageHeight, int leafRadius, int offset) {
+    protected void createFoliage(
+        final WorldGenLevel level,
+        final FoliageSetter foliageSetter,
+        final RandomSource random,
+        final TreeConfiguration config,
+        final int treeHeight,
+        final FoliageAttachment foliageAttachment,
+        final int foliageHeight,
+        final int leafRadius,
+        final int offset
+    ) {
         for (int yo = 2 + offset; yo >= -(5 + random.nextInt(1)); yo--) {
             boolean top = yo >= offset;
             this.placeLeavesRow(level, foliageSetter, random, config, foliageAttachment.pos(), top ? 0 : 1, yo, foliageAttachment.doubleTrunk());

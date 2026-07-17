@@ -2,17 +2,19 @@ package net.regions_unexplored.client.gui.widget;
 
 import net.minecraft.client.InputType;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.navigation.CommonInputs;
+import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.sounds.SoundManager;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.Identifier;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
 
 import java.util.function.Consumer;
@@ -53,11 +55,13 @@ public class SliderWidget extends AbstractWidget {
     private Identifier getHandleSprite() {
         return !this.isHovered && !this.canChangeValue ? SLIDER_HANDLE_SPRITE : SLIDER_HANDLE_HIGHLIGHTED_SPRITE;
     }
-
+    
+    @Override
     protected MutableComponent createNarrationMessage() {
         return Component.translatable("gui.narrate.slider", this.getMessage());
     }
-
+    
+    @Override
     public void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
         narrationElementOutput.add(NarratedElementType.TITLE, this.createNarrationMessage());
         if (this.active) {
@@ -69,17 +73,26 @@ public class SliderWidget extends AbstractWidget {
         }
 
     }
-
-    public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        Minecraft minecraft = Minecraft.getInstance();
-        guiGraphics.blitSprite(this.getSprite(), this.getX(), this.getY(), this.getWidth(), this.getHeight());
-        guiGraphics.blitSprite(this.getHandleSprite(), this.getX() + (int)(this.delta * (double)(this.width - 8)), this.getY(), 8, this.getHeight());
-        int k = this.active ? 16777215 : 10526880;
-        this.renderScrollingString(guiGraphics, minecraft.font, 2, k | Mth.ceil(this.alpha * 255.0F) << 24);
+    
+    @Override
+    protected void extractWidgetRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
+        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.getSprite(), this.getX(), this.getY(), this.getWidth(), this.getHeight(), ARGB.white(this.alpha));
+        graphics.blitSprite(
+            RenderPipelines.GUI_TEXTURED,
+            this.getHandleSprite(),
+            this.getX() + (int)(this.value * (this.width - 8)),
+            this.getY(),
+            8,
+            this.getHeight(),
+            ARGB.white(this.alpha)
+        );
+        this.extractScrollingStringOverContents(graphics.textRendererForWidget(this, GuiGraphicsExtractor.HoveredTextEffects.NONE), this.getMessage(), 2);
+        this.handleCursor(graphics);
     }
 
-    public void onClick(double mouseX, double mouseY) {
-        this.setValueFromMouse(mouseX);
+    @Override
+    public void onClick(MouseButtonEvent event, final boolean doubleClick) {
+        this.setValueFromMouse(event);
     }
 
     public void setFocused(boolean focused) {
@@ -95,14 +108,14 @@ public class SliderWidget extends AbstractWidget {
 
     }
 
-    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        if (CommonInputs.selected(keyCode)) {
+    public boolean keyPressed(KeyEvent event) {
+        if (event.isSelection()) {
             this.canChangeValue = !this.canChangeValue;
             return true;
         } else {
             if (this.canChangeValue) {
-                boolean left = keyCode == 263;
-                boolean right = keyCode == 262;
+                boolean left = event.isLeft();
+                boolean right = event.isRight();
                 if (left || right) {
                     float direction = left ? -1.0F : 1.0F;
                     this.setValue(this.delta + direction / (this.width - 8));
@@ -114,8 +127,8 @@ public class SliderWidget extends AbstractWidget {
         }
     }
 
-    private void setValueFromMouse(double mouseX) {
-        this.setValue((mouseX - (this.getX() + 4)) / (this.width - 8));
+    private void setValueFromMouse(MouseButtonEvent event) {
+        this.setValue((event.x() - (this.getX() + 4)) / (this.width - 8));
     }
 
     private void setValue(double value) {
@@ -138,16 +151,19 @@ public class SliderWidget extends AbstractWidget {
     private double valueToDelta() {
         return (this.value - this.min) / (this.max - this.min);
     }
-
-    protected void onDrag(double mouseX, double mouseY, double dragX, double dragY) {
-        this.setValueFromMouse(mouseX);
-        super.onDrag(mouseX, mouseY, dragX, dragY);
+    
+    @Override
+    protected void onDrag(final MouseButtonEvent event, final double dx, final double dy) {
+        this.setValueFromMouse(event);
+        super.onDrag(event, dx, dy);
     }
-
-    public void playDownSound(SoundManager handler) {
+    
+    @Override
+    public void playDownSound(final SoundManager soundManager) {
     }
-
-    public void onRelease(double mouseX, double mouseY) {
+    
+    @Override
+    public void onRelease(final MouseButtonEvent event) {
         super.playDownSound(Minecraft.getInstance().getSoundManager());
     }
 

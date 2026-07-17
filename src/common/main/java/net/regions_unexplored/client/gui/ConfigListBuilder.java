@@ -31,7 +31,6 @@ public interface ConfigListBuilder {
         RUCommonConfig common = RUConfigHandler.COMMON;
 
         this.addCategory("particle_rates", font);
-        this.addDouble("leaves", 0, 5, 0.1, value -> client.particleRates.leaves = value, client.particleRates.leaves, 1);
         this.addDouble("prismarite", 0, 5, 0.1, value -> client.particleRates.prismarite = value, client.particleRates.prismarite, 1);
         
         this.addCategory("eucalyptus_colors", font);

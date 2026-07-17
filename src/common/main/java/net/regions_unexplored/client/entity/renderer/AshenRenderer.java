@@ -6,23 +6,23 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ZombieRenderer;
+import net.minecraft.client.renderer.entity.state.ZombieRenderState;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.client.entity.model.RUEntityModelLayers;
 import net.regions_unexplored.client.entity.renderer.layer.AshenEyesLayer;
 
 public class AshenRenderer extends ZombieRenderer {
-	private static final Identifier BASE_LOCATION = RegionsUnexplored.id("textures/entity/ashen/ashen.png");
+	private static final Identifier ASHEN_LOCATION = RegionsUnexplored.id("textures/entity/ashen/ashen.png");
 	
 	public AshenRenderer(EntityRendererProvider.Context context) {
-		super(context, RUEntityModelLayers.ASHEN_MAIN, RUEntityModelLayers.ASHEN_INNER_ARMOR, RUEntityModelLayers.ASHEN_OUTER_ARMOR);
+		super(context, RUEntityModelLayers.ASHEN_MAIN, RUEntityModelLayers.ASHEN_MAIN, RUEntityModelLayers.ASHEN_ARMOR, RUEntityModelLayers.ASHEN_ARMOR);
 		this.addLayer(new AshenEyesLayer<>(this));
 	}
 	
 	@Override
-	public Identifier getTextureLocation(Zombie zombie) {
-		return BASE_LOCATION;
+	public Identifier getTextureLocation(ZombieRenderState state) {
+		return ASHEN_LOCATION;
 	}
 	
 	public static LayerDefinition createMainLayer() {

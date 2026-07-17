@@ -1,11 +1,9 @@
 package net.regions_unexplored;
 
-import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.event.registry.FabricRegistry;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.regions_unexplored.block.RuBlockEntitiesFabric;
@@ -30,20 +28,20 @@ public class RegionsUnexploredFabric implements ModInitializer {
         RegionsUnexplored.afterRegistriesFreeze();
         FurnaceBurnTimesFabric.setup();
         
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(entries -> {
-            RUCreativeModeTabs.addToBuildingBlocks(entries::addAfter);
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.BUILDING_BLOCKS).register(entries -> {
+            RUCreativeModeTabs.addToBuildingBlocks(entries::insertAfter);
         });
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(entries -> {
-            RUCreativeModeTabs.addToColoredBlocks(entries::addAfter);
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COLORED_BLOCKS).register(entries -> {
+            RUCreativeModeTabs.addToColoredBlocks(entries::insertAfter);
         });
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> {
-            RUCreativeModeTabs.addToFunctionalBlocks(entries::addAfter);
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> {
+            RUCreativeModeTabs.addToFunctionalBlocks(entries::insertAfter);
         });
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(entries -> {
-            RUCreativeModeTabs.addToToolsAndUtilities(entries::addAfter);
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(entries -> {
+            RUCreativeModeTabs.addToToolsAndUtilities(entries::insertAfter);
         });
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(entries -> {
-            RUCreativeModeTabs.addToFoodAndDrinks(entries::addAfter);
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(entries -> {
+            RUCreativeModeTabs.addToFoodAndDrinks(entries::insertAfter);
         });
     }
 }
