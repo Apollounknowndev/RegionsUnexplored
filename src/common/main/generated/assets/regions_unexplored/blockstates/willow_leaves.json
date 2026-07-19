@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:willow_leaves"
+      "model": "regions_unexplored:block/willow_leaves"
     }
   }
 }

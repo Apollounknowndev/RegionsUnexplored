@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:overgrown_bone_block"
+    "model": "regions_unexplored:block/overgrown_bone_block"
   }
 }

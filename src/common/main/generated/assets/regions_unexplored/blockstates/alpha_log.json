@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:alpha_log"
+      "model": "regions_unexplored:block/alpha_log"
     }
   }
 }

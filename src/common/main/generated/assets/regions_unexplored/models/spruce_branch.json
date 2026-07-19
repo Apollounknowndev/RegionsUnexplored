@@ -1,7 +1,0 @@
-{
-  "parent": "regions_unexplored:block/template/branch",
-  "textures": {
-    "branch": "regions_unexplored:block/spruce_branch",
-    "log": "minecraft:block/spruce_log"
-  }
-}

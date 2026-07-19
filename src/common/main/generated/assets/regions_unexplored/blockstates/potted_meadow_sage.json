@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:potted_meadow_sage"
+      "model": "regions_unexplored:block/potted_meadow_sage"
     }
   }
 }

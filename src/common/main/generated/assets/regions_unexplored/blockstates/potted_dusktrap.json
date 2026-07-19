@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:potted_dusktrap"
+      "model": "regions_unexplored:block/potted_dusktrap"
     }
   }
 }

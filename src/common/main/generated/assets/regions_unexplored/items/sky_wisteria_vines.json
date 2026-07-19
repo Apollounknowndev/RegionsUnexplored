@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/sky_wisteria_vines"
+    "model": "regions_unexplored:item/sky_wisteria_vines"
   }
 }

@@ -1,10 +1,10 @@
 {
   "variants": {
     "half=lower": {
-      "model": "regions_unexplored:tall_sandy_grass_lower"
+      "model": "regions_unexplored:block/tall_sandy_grass_lower"
     },
     "half=upper": {
-      "model": "regions_unexplored:tall_sandy_grass_upper"
+      "model": "regions_unexplored:block/tall_sandy_grass_upper"
     }
   }
 }

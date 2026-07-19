@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:ashen_wood"
+    "model": "regions_unexplored:block/ashen_wood"
   }
 }

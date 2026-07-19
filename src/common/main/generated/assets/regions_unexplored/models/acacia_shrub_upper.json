@@ -1,6 +1,0 @@
-{
-  "parent": "cross",
-  "textures": {
-    "cross": "regions_unexplored:block/acacia_shrub_top"
-  }
-}

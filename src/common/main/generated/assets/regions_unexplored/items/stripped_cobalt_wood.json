@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:stripped_cobalt_wood"
+    "model": "regions_unexplored:block/stripped_cobalt_wood"
   }
 }

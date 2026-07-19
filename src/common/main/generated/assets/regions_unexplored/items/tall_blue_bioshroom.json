@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/tall_blue_bioshroom"
+    "model": "regions_unexplored:item/tall_blue_bioshroom"
   }
 }

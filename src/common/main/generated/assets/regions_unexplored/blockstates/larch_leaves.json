@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:larch_leaves"
+      "model": "regions_unexplored:block/larch_leaves"
     }
   }
 }

@@ -10,7 +10,7 @@ import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.Variant;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Direction.Axis;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.random.Weighted;
 import net.minecraft.util.random.WeightedList;
@@ -117,13 +117,13 @@ public class RUBlockModelProvider {
 		
 		String ashenDirtName = name(RUBlocks.ASHEN_DIRT.get());
 		var ashenDirt = cuboidModel(ashenDirtName, "cube_all", "all", ashenDirtName);
-		Identifier ashenDirtId = ashenDirt.createTemplate(nameId(RUBlocks.ASHEN_DIRT.get()), this.modelOutput);
+		Identifier ashenDirtId = ashenDirt.createTemplate(nameId(RUBlocks.ASHEN_DIRT.get()), "block/", this.modelOutput);
 		var ashenDirtSmouldering = cuboidModel(ashenDirtName + "_smouldering", "cube_mirrored_all", "all", ashenDirtName + "_smouldering");
 		
 		this.blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(RUBlocks.ASHEN_DIRT.get()).with(
 			PropertyDispatch.initial(RUBlockProperties.SMOULDERING)
 				.select(false, BlockModelGenerators.createRotatedVariants(plainModel(ashenDirtId)))
-				.select(true, BlockModelGenerators.createRotatedVariants(plainModel(ashenDirtSmouldering.createTemplate(ashenDirtId.withSuffix("_smouldering"), this.modelOutput))))
+				.select(true, BlockModelGenerators.createRotatedVariants(plainModel(ashenDirtSmouldering.createTemplate(ashenDirtId.withSuffix("_smouldering"), "", this.modelOutput))))
 		));
 		itemBlock(RUBlocks.ASHEN_DIRT.get(), ashenDirtId);
 		
@@ -142,7 +142,7 @@ public class RUBlockModelProvider {
 		
 		String prismaglass = name(RUBlocks.PRISMAGLASS.get());
 		blockSingle(RUBlocks.PRISMAGLASS.get(), cuboidModel(prismaglass, template("cube_all_tinted"), b -> b.texture("all", texturize(nameId(Blocks.WHITE_STAINED_GLASS), false))));
-		itemBlock(RUBlocks.PRISMAGLASS.get(), cuboidModel(prismaglass + "_item", "cube_all", b -> b.texture("all", texturize(nameId(RUBlocks.PRISMAGLASS.get()), true))).createTemplate(nameId(RUBlocks.PRISMAGLASS.get()).withSuffix("_item"), this.modelOutput));
+		itemBlock(RUBlocks.PRISMAGLASS.get(), cuboidModel(prismaglass + "_item", "cube_all", b -> b.texture("all", texturize(nameId(RUBlocks.PRISMAGLASS.get()), true))).createTemplate(nameId(RUBlocks.PRISMAGLASS.get()).withSuffix("_item"), "item/", this.modelOutput));
 		
 		fullCubeAll(RUBlocks.CHALK.get());
 		fullSlab(RUBlocks.CHALK_SLAB.get(), RUBlocks.CHALK.get());
@@ -193,7 +193,7 @@ public class RUBlockModelProvider {
 		Identifier palmLeavesModel = cuboidModel(name(palmLeaves), template("leaves_top_bottom"), b -> b
 			.texture("side", texturize(name(palmLeaves) + "_side"))
 			.texture("top", texturize(name(palmLeaves) + "_top"))
-		).createTemplate(nameId(palmLeaves), this.modelOutput);
+		).createTemplate(nameId(palmLeaves), "block/", this.modelOutput);
 		this.blockModels.blockStateOutput.accept(createSimpleBlock(palmLeaves, plainVariant(palmLeavesModel)));
 		itemBlock(palmLeaves, palmLeavesModel);
 		
@@ -265,7 +265,7 @@ public class RUBlockModelProvider {
 			List<String> specialLeaves = List.of("wisteria", "apple_oak", "flowering", "joshua", "palm");
 			
 			if (set.getLeaves() != null && specialLeaves.stream().noneMatch(name::contains)) {
-				fullSimple(set.getLeaves(), "leaves", "all", name(set.getLeaves()));
+				fullLeaves(set.getLeaves(), name(set.getLeaves()));
 			}
 			
 			if (set.getShrub() != null) {
@@ -277,7 +277,7 @@ public class RUBlockModelProvider {
 			}
 		}
 		for (NaturalSet set : RUBlocks.WISTERIA_NATURAL_SETS) {
-			fullSimple(set.getLeaves(), "leaves", "all", "wisteria_leaves");
+			fullLeaves(set.getLeaves(), "wisteria_leaves");
 			fullHangingVines(set.getVines(), "wisteria_vines");
 		}
 	}
@@ -298,6 +298,8 @@ public class RUBlockModelProvider {
 		}
 		
 		this.blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(generator));
+		
+		this.itemGenerated(block, nameId(block).withSuffix("_up_tip"), false);
 	}
 	
 	private MultiVariant createSpeleothemVariant(final Direction direction, final DripstoneThickness speleothemThickness, final Block block) {
@@ -336,6 +338,7 @@ public class RUBlockModelProvider {
 	}
 	
 	private void fullDoubleCross(Supplier<Block> supplier, String parent, boolean itemTexture) {
+		parent = "minecraft:block/" + parent;
 		Block block = supplier.get();
 		
 		String name = name(block);
@@ -375,7 +378,11 @@ public class RUBlockModelProvider {
 	}
 	
 	private void fullCube(Block block, TexturedModel.Provider provider) {
-		this.blockModels.createTrivialBlock(block, provider);
+		if (provider.equals(TexturedModel.CUBE_MIRRORED)) {
+		
+		} else {
+			this.blockModels.createTrivialBlock(block, provider);
+		}
 	}
 	
 	private void fullCubeTopBottom(Block block, Identifier top, Identifier bottom) {
@@ -388,8 +395,8 @@ public class RUBlockModelProvider {
 		itemBlock(block, nameId(block));
 	}
     
-    private void fullSimple(Block block, String parent, String textureKey, String texture) {
-        ModelBuilder model = cuboidModel(name(block), parent, textureKey, texture);
+    private void fullLeaves(Block block, String texture) {
+        ModelBuilder model = cuboidModel(name(block), "minecraft:block/leaves", "all", texture);
         blockSingle(block, model);
         itemBlock(block, nameId(block));
     }
@@ -399,7 +406,7 @@ public class RUBlockModelProvider {
 		
 		Identifier bottom = ModelTemplates.SLAB_BOTTOM.create(slab, mapping, this.modelOutput);
 		MultiVariant top = plainVariant(ModelTemplates.SLAB_TOP.create(slab, mapping, this.modelOutput));
-		MultiVariant doubleSlab = plainVariant(ModelTemplates.CUBE_ALL.create(nameId(slab).withSuffix("_double"), mapping, this.modelOutput));
+		MultiVariant doubleSlab = plainVariant(ModelTemplates.CUBE_ALL.create(nameId(slab).withPrefix("block/").withSuffix("_double"), mapping, this.modelOutput));
 		this.blockModels.blockStateOutput.accept(BlockModelGenerators.createSlab(slab, plainVariant(bottom), top, doubleSlab));
 		this.blockModels.registerSimpleItemModel(slab, bottom);
 	}
@@ -411,7 +418,7 @@ public class RUBlockModelProvider {
 		Identifier straight = ModelTemplates.STAIRS_STRAIGHT.create(stairs, mapping, this.modelOutput);
 		MultiVariant outer = plainVariant(ModelTemplates.STAIRS_OUTER.create(stairs, mapping, this.modelOutput));
 		
-		this.blockModels.createStairs(stairs, inner, plainVariant(straight), outer);
+		this.blockModels.blockStateOutput.accept(BlockModelGenerators.createStairs(stairs, inner, plainVariant(straight), outer));
 		this.blockModels.registerSimpleItemModel(stairs, straight);
 	}
 	
@@ -503,8 +510,8 @@ public class RUBlockModelProvider {
 		Block hangingSign = set.getHangingSign();
 		Block wallHangingSign = set.getWallHangingSign();
 		MultiVariant hangingModel = this.blockModels.createParticleOnlyBlockModel(hangingSign, set.getPlanks());
-		this.blockModels.blockStateOutput.accept(this.blockModels.createSimpleBlock(hangingSign, hangingModel));
-		this.blockModels.blockStateOutput.accept(this.blockModels.createSimpleBlock(wallHangingSign, hangingModel));
+		this.blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(hangingSign, hangingModel));
+		this.blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(wallHangingSign, hangingModel));
 		this.blockModels.registerSimpleFlatItemModel(hangingSign.asItem());
 	}
 	
@@ -531,7 +538,7 @@ public class RUBlockModelProvider {
 		this.blockModels.createCrossBlock(standAlone.get(), PlantType.NOT_TINTED);
 		TextureMapping textures = new TextureMapping().put(TextureSlot.PLANT, new Material(nameId(standAlone.get()).withPrefix(pottedTexture ? "potted_" : "")));
 		MultiVariant model = plainVariant(PlantType.NOT_TINTED.getCrossPot().create(potted.get(), textures, this.modelOutput));
-		this.blockModels.blockStateOutput.accept(this.blockModels.createSimpleBlock(potted.get(), model));
+		this.blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(potted.get(), model));
 	}
 	
 	private void fullBioshroom(Supplier<Block> base, Supplier<Block> glowing) {
@@ -548,7 +555,7 @@ public class RUBlockModelProvider {
     // BLOCK
     
     private void blockSingle(Block block, ModelBuilder builder) {
-		Identifier model = builder.createTemplate(nameId(block), this.modelOutput);
+		Identifier model = builder.createTemplate(nameId(block), "block/", this.modelOutput);
 		this.blockModels.blockStateOutput.accept(createSimpleBlock(block, plainVariant(model)));
     }
 	
@@ -557,8 +564,8 @@ public class RUBlockModelProvider {
 	    
 	    this.blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(
 		    PropertyDispatch.initial(property)
-			    .select(true, plainVariant(on.createTemplate(id.withSuffix(onSuffix), this.modelOutput)))
-			    .select(false, plainVariant(off.createTemplate(id, this.modelOutput)))
+			    .select(true, plainVariant(on.createTemplate(id.withSuffix(onSuffix), "block/", this.modelOutput)))
+			    .select(false, plainVariant(off.createTemplate(id, "block/", this.modelOutput)))
 	    ));
     }
 	
@@ -567,18 +574,18 @@ public class RUBlockModelProvider {
 		
 		this.blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(
 			PropertyDispatch.initial(BlockStateProperties.DOUBLE_BLOCK_HALF)
-				.select(DoubleBlockHalf.LOWER, plainVariant(lower.createTemplate(id.withSuffix("_lower"), this.modelOutput)))
-				.select(DoubleBlockHalf.UPPER, plainVariant(upper.createTemplate(id.withSuffix("_upper"), this.modelOutput)))
+				.select(DoubleBlockHalf.LOWER, plainVariant(lower.createTemplate(id.withSuffix("_lower"), "block/", this.modelOutput)))
+				.select(DoubleBlockHalf.UPPER, plainVariant(upper.createTemplate(id.withSuffix("_upper"), "block/", this.modelOutput)))
 		));
 	}
 	
 	private void blockHorizontalFacing(Block block, ModelBuilder builder) {
-		Identifier model = builder.createTemplate(nameId(block), this.modelOutput);
+		Identifier model = builder.createTemplate(nameId(block), "block/", this.modelOutput);
 		this.blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block, BlockModelGenerators.createRotatedVariants(new Variant(model))));
 	}
 	
 	private void blockAxisAligned(Block block, ModelBuilder builder) {
-		Identifier model = builder.createTemplate(nameId(block), this.modelOutput);
+		Identifier model = builder.createTemplate(nameId(block), "block/", this.modelOutput);
 		this.blockModels.blockStateOutput.accept(createAxisAlignedPillarBlock(block, plainVariant(model)));
 	}
 	
@@ -589,7 +596,7 @@ public class RUBlockModelProvider {
 	}
 	
 	private void itemBlock(Block block, Identifier model) {
-		this.blockModels.registerSimpleItemModel(block, model);
+		this.blockModels.registerSimpleItemModel(block, model.withPrefix("block/"));
 	}
 	
 	private void itemGenerated(Block block, boolean itemPrefix) {
@@ -598,7 +605,7 @@ public class RUBlockModelProvider {
     
     private void itemGenerated(Block block, Identifier textureId, boolean itemPrefix) {
 		this.itemModels.itemModelOutput.accept(block.asItem(), ItemModelUtils.plainModel(
-			ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(block), new TextureMapping().put(TextureSlot.LAYER0, new Material(texturize(textureId, itemPrefix))), this.itemModels.modelOutput)
+			ModelTemplates.FLAT_ITEM.create(BuiltInRegistries.BLOCK.getKey(block).withPrefix("item/"), new TextureMapping().put(TextureSlot.LAYER0, new Material(texturize(textureId, itemPrefix))), this.itemModels.modelOutput)
 		));
     }
     

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:golden_larch_leaves"
+    "model": "regions_unexplored:block/golden_larch_leaves"
   }
 }

@@ -4,7 +4,7 @@
       "model": "regions_unexplored:block/blackwood_slab"
     },
     "type=double": {
-      "model": "regions_unexplored:blackwood_slab_double"
+      "model": "regions_unexplored:block/blackwood_slab_double"
     },
     "type=top": {
       "model": "regions_unexplored:block/blackwood_slab_top"

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:baobab_log"
+    "model": "regions_unexplored:block/baobab_log"
   }
 }

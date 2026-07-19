@@ -89,14 +89,13 @@ cloche {
             modImplementation("com.terraformersmc:modmenu:18.0.0")
         }
 
-        data()
+        datagenDirectory = file("src/common/main/generated")
         datagenClientDirectory = file("src/common/main/generated")
 
         includedClient()
         runs {
             client()
             server()
-            clientData()
         }
 
         metadata {
@@ -132,6 +131,7 @@ cloche {
             }
         }
 
+        datagenDirectory = file("src/common/main/generated")
         datagenClientDirectory = file("src/common/main/generated")
 
         runs {
@@ -140,8 +140,4 @@ cloche {
             clientData()
         }
     }
-}
-
-tasks.named("runFabricClientData") {
-    enabled = false
 }

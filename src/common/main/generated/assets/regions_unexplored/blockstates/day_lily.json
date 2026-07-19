@@ -1,10 +1,10 @@
 {
   "variants": {
     "half=lower": {
-      "model": "regions_unexplored:day_lily_lower"
+      "model": "regions_unexplored:block/day_lily_lower"
     },
     "half=upper": {
-      "model": "regions_unexplored:day_lily_upper"
+      "model": "regions_unexplored:block/day_lily_upper"
     }
   }
 }

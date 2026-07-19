@@ -1,10 +1,10 @@
 {
   "variants": {
     "half=lower": {
-      "model": "regions_unexplored:windswept_grass_lower"
+      "model": "regions_unexplored:block/windswept_grass_lower"
     },
     "half=upper": {
-      "model": "regions_unexplored:windswept_grass_upper"
+      "model": "regions_unexplored:block/windswept_grass_upper"
     }
   }
 }

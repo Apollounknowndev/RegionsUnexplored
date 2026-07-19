@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:pine_log"
+    "model": "regions_unexplored:block/pine_log"
   }
 }

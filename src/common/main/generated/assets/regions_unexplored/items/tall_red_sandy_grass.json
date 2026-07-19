@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/tall_red_sandy_grass"
+    "model": "regions_unexplored:item/tall_red_sandy_grass"
   }
 }

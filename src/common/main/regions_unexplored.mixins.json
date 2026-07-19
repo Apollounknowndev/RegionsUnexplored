@@ -9,7 +9,6 @@
     "removals.HolderLookupMixin",
 
     "BiomeMixin",
-    "CropPlacerMixin",
     "EatBlockGoalMixin",
     "NetherrackBlockMixin",
     "TreeConfigurationMixin",

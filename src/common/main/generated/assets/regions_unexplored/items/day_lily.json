@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/day_lily"
+    "model": "regions_unexplored:item/day_lily"
   }
 }

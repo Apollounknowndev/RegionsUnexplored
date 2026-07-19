@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "regions_unexplored:block/birch_shrub_bottom"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/spruce_shrub"
+    "model": "regions_unexplored:item/spruce_shrub"
   }
 }

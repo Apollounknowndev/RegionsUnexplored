@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/acacia_shrub"
+    "model": "regions_unexplored:item/acacia_shrub"
   }
 }

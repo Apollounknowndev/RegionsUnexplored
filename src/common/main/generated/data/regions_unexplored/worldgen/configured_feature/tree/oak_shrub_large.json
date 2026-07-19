@@ -10,7 +10,7 @@
             "tag": "regions_unexplored:peat/substrate"
           },
           "then": {
-            "type": "regions_unexplored:supplier_hack"
+            "type": "regions_unexplored:key_hack"
           }
         },
         {
@@ -19,7 +19,7 @@
             "tag": "regions_unexplored:silt/substrate"
           },
           "then": {
-            "type": "regions_unexplored:supplier_hack"
+            "type": "regions_unexplored:key_hack"
           }
         },
         {

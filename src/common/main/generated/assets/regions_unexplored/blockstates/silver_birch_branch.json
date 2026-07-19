@@ -2,18 +2,18 @@
   "variants": {
     "": [
       {
-        "model": "regions_unexplored:silver_birch_branch"
+        "model": "regions_unexplored:block/silver_birch_branch"
       },
       {
-        "model": "regions_unexplored:silver_birch_branch",
+        "model": "regions_unexplored:block/silver_birch_branch",
         "y": 90
       },
       {
-        "model": "regions_unexplored:silver_birch_branch",
+        "model": "regions_unexplored:block/silver_birch_branch",
         "y": 180
       },
       {
-        "model": "regions_unexplored:silver_birch_branch",
+        "model": "regions_unexplored:block/silver_birch_branch",
         "y": 270
       }
     ]

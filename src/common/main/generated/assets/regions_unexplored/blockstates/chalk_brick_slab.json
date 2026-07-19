@@ -4,7 +4,7 @@
       "model": "regions_unexplored:block/chalk_brick_slab"
     },
     "type=double": {
-      "model": "regions_unexplored:chalk_brick_slab_double"
+      "model": "regions_unexplored:block/chalk_brick_slab_double"
     },
     "type=top": {
       "model": "regions_unexplored:block/chalk_brick_slab_top"

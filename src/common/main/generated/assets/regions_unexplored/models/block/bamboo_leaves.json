@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "regions_unexplored:block/bamboo_leaves"
+  }
+}

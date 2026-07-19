@@ -1,7 +1,0 @@
-{
-  "parent": "regions_unexplored:block/template/branch",
-  "textures": {
-    "branch": "regions_unexplored:block/cypress_branch",
-    "log": "regions_unexplored:block/cypress_log"
-  }
-}

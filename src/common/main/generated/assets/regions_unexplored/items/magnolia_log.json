@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:magnolia_log"
+    "model": "regions_unexplored:block/magnolia_log"
   }
 }

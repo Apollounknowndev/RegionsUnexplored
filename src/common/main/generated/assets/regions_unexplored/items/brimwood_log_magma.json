@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:brimwood_log_magma"
+    "model": "regions_unexplored:block/brimwood_log_magma"
   }
 }

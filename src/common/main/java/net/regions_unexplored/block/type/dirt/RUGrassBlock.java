@@ -140,10 +140,10 @@ public class RUGrassBlock extends SnowyBlock implements BonemealableBlock {
 		BlockState aboveState = level.getBlockState(above);
 		if (aboveState.is(Blocks.SNOW) && aboveState.getValue(SnowLayerBlock.LAYERS) == 1) {
 			return true;
-		} else if (aboveState.getFluidState().getAmount() == 8) {
+		} else if (aboveState.getFluidState().isFull()) {
 			return false;
 		} else {
-			int lightBlockInto = LightEngine.getLightBlockInto(state, aboveState, Direction.UP, aboveState.getLightEmission());
+			int lightBlockInto = LightEngine.getLightBlockInto(state, aboveState, Direction.UP, aboveState.getLightDampening());
 			return lightBlockInto < 15;
 		}
 	}

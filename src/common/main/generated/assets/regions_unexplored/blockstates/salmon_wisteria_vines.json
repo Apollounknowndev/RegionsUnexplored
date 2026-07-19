@@ -1,10 +1,10 @@
 {
   "variants": {
     "tip=false": {
-      "model": "regions_unexplored:salmon_wisteria_vines"
+      "model": "regions_unexplored:block/salmon_wisteria_vines"
     },
     "tip=true": {
-      "model": "regions_unexplored:salmon_wisteria_vines_tip"
+      "model": "regions_unexplored:block/salmon_wisteria_vines_tip"
     }
   }
 }

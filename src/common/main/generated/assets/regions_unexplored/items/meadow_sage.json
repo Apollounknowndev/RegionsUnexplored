@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/meadow_sage"
+    "model": "regions_unexplored:item/meadow_sage"
   }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "regions_unexplored:block/magnolia_shrub_top"
+  }
+}

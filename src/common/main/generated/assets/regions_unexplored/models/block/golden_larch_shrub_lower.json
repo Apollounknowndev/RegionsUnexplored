@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "regions_unexplored:block/golden_larch_shrub_bottom"
+  }
+}

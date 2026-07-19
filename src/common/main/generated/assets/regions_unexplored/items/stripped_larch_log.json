@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:stripped_larch_log"
+    "model": "regions_unexplored:block/stripped_larch_log"
   }
 }

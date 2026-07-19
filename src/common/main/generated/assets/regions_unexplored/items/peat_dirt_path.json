@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:peat_dirt_path"
+    "model": "regions_unexplored:block/peat_dirt_path"
   }
 }

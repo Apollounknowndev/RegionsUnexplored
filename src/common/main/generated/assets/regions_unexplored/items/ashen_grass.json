@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/ashen_grass"
+    "model": "regions_unexplored:item/ashen_grass"
   }
 }

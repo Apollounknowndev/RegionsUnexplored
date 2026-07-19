@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/large_prismarite_cluster"
+    "model": "regions_unexplored:item/large_prismarite_cluster"
   }
 }

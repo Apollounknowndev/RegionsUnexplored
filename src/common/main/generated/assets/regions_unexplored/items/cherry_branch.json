@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/cherry_branch"
+    "model": "regions_unexplored:item/cherry_branch"
   }
 }

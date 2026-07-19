@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:larch_wood"
+    "model": "regions_unexplored:block/larch_wood"
   }
 }

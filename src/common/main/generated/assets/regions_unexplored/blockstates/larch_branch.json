@@ -2,18 +2,18 @@
   "variants": {
     "": [
       {
-        "model": "regions_unexplored:larch_branch"
+        "model": "regions_unexplored:block/larch_branch"
       },
       {
-        "model": "regions_unexplored:larch_branch",
+        "model": "regions_unexplored:block/larch_branch",
         "y": 90
       },
       {
-        "model": "regions_unexplored:larch_branch",
+        "model": "regions_unexplored:block/larch_branch",
         "y": 180
       },
       {
-        "model": "regions_unexplored:larch_branch",
+        "model": "regions_unexplored:block/larch_branch",
         "y": 270
       }
     ]

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/windswept_grass"
+    "model": "regions_unexplored:item/windswept_grass"
   }
 }

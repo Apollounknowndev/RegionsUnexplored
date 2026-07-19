@@ -26,7 +26,9 @@ public final class ModelBuilder {
 		return this;
 	}
 	
-	public Identifier createTemplate(Identifier id, BiConsumer<Identifier, ModelInstance> output) {
+	public Identifier createTemplate(Identifier id, String prefix, BiConsumer<Identifier, ModelInstance> output) {
+		id = id.withPrefix(prefix);
+		
 		output.accept(id, () -> {
 			JsonObject result = new JsonObject();
 			if (this.parent != null) {
@@ -39,6 +41,7 @@ public final class ModelBuilder {
 			result.add("textures", textureSet);
 			return result;
 		});
+		
 		return id;
 	}
 }

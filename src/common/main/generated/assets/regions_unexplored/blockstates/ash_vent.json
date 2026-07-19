@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:ash_vent"
+      "model": "regions_unexplored:block/ash_vent"
     }
   }
 }

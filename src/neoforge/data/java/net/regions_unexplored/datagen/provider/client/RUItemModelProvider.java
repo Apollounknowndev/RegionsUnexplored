@@ -101,7 +101,7 @@ public class RUItemModelProvider {
     }
     
     private void itemBlock(Supplier<Block> block) {
-        this.blockModels.registerSimpleItemModel(block.get(), nameId(block.get()));
+        this.blockModels.registerSimpleItemModel(block.get(), nameId(block.get()).withPrefix("block/"));
     }
     
     private <T extends Block> void itemGenerated(Supplier<T> block) {

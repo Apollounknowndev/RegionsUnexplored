@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:green_bioshroom_block"
+      "model": "regions_unexplored:block/green_bioshroom_block"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/cypress_branch"
+    "model": "regions_unexplored:item/cypress_branch"
   }
 }

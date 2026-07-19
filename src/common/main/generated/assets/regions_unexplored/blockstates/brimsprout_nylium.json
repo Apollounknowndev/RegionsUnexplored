@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:brimsprout_nylium"
+      "model": "regions_unexplored:block/brimsprout_nylium"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:silt_grass_block"
+    "model": "regions_unexplored:block/silt_grass_block"
   }
 }

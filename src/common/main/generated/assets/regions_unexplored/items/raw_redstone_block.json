@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:raw_redstone_block"
+    "model": "regions_unexplored:block/raw_redstone_block"
   }
 }

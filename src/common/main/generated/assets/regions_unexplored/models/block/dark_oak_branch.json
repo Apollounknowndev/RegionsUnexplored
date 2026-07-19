@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "regions_unexplored:block/template/branch",
   "textures": {
-    "layer0": "regions_unexplored:item/dark_oak_branch"
+    "branch": "regions_unexplored:block/dark_oak_branch",
+    "log": "minecraft:block/dark_oak_log"
   }
 }

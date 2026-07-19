@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:sky_wisteria_leaves"
+      "model": "regions_unexplored:block/sky_wisteria_leaves"
     }
   }
 }

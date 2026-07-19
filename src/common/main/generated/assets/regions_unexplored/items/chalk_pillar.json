@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:chalk_pillar"
+    "model": "regions_unexplored:block/chalk_pillar"
   }
 }

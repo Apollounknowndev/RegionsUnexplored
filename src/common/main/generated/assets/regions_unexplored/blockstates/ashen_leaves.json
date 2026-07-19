@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:ashen_leaves"
+      "model": "regions_unexplored:block/ashen_leaves"
     }
   }
 }

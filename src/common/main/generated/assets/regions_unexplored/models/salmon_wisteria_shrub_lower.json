@@ -1,6 +1,0 @@
-{
-  "parent": "cross",
-  "textures": {
-    "cross": "regions_unexplored:block/salmon_wisteria_shrub_bottom"
-  }
-}

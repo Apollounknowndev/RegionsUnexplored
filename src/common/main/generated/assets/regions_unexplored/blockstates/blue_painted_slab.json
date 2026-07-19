@@ -4,7 +4,7 @@
       "model": "regions_unexplored:block/blue_painted_slab"
     },
     "type=double": {
-      "model": "regions_unexplored:blue_painted_slab_double"
+      "model": "regions_unexplored:block/blue_painted_slab_double"
     },
     "type=top": {
       "model": "regions_unexplored:block/blue_painted_slab_top"

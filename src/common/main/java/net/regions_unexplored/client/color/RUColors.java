@@ -80,7 +80,7 @@ public class RUColors {
         );
         
         consumer.accept(
-            RUBlockTintSources.posBasedOrFoliage(RUColors::getRainbowGlassColor),
+            RUBlockTintSources.posBasedOrFoliage(RUColors::getRainbowEucalyptusColor),
             List.of(
                 RUBlocks.EUCALYPTUS_WOOD_SET.getLog(),
                 RUBlocks.EUCALYPTUS_WOOD_SET.getWood()
@@ -88,7 +88,7 @@ public class RUColors {
         );
         
         consumer.accept(
-            RUBlockTintSources.posBasedOrFoliage(RUColors::getRainbowGlassColor),
+            RUBlockTintSources.posBasedOrFoliage(RUColors::getAspenColor),
             List.of(
                 RUBlocks.SILVER_BIRCH_NATURAL_SET.getLeaves(),
                 RUBlocks.SILVER_BIRCH_LEAF_LITTER.get()

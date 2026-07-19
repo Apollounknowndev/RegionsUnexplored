@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:palm_wood"
+    "model": "regions_unexplored:block/palm_wood"
   }
 }

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:dead_pine_leaves"
+      "model": "regions_unexplored:block/dead_pine_leaves"
     }
   }
 }

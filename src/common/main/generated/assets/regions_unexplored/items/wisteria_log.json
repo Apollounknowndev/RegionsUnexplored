@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:wisteria_log"
+    "model": "regions_unexplored:block/wisteria_log"
   }
 }

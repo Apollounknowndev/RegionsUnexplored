@@ -6,9 +6,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedStateProvider;
-import net.regions_unexplored.registry.RUBlocks;
+import net.regions_unexplored.registry.data.RUBlockIds;
 import net.regions_unexplored.registry.tag.RUBlockTags;
-import net.regions_unexplored.worldgen.stateprovider.SupplierHackStateProvider;
+import net.regions_unexplored.worldgen.stateprovider.KeyHackStateProvider;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -23,8 +23,8 @@ public abstract class TreeConfigurationMixin {
     )
     private static RuleBasedStateProvider addRUDirt(BlockPredicate predicate, Block block, Operation<RuleBasedStateProvider> operation) {
         return RuleBasedStateProvider.builder()
-            .ifTrueThenProvide(BlockPredicate.matchesTag(RUBlockTags.PEAT_SUBSTRATE), new SupplierHackStateProvider(RUBlocks.PEAT_DIRT))
-            .ifTrueThenProvide(BlockPredicate.matchesTag(RUBlockTags.SILT_SUBSTRATE), new SupplierHackStateProvider(RUBlocks.SILT_DIRT))
+            .ifTrueThenProvide(BlockPredicate.matchesTag(RUBlockTags.PEAT_SUBSTRATE), new KeyHackStateProvider(RUBlockIds.PEAT_DIRT))
+            .ifTrueThenProvide(BlockPredicate.matchesTag(RUBlockTags.SILT_SUBSTRATE), new KeyHackStateProvider(RUBlockIds.SILT_DIRT))
             .ifTrueThenProvide(predicate, block)
             .build();
     }

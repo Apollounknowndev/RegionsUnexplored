@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:small_oak_log"
+    "model": "regions_unexplored:block/small_oak_log"
   }
 }

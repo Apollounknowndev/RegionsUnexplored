@@ -1,10 +1,10 @@
 {
   "variants": {
     "half=lower": {
-      "model": "regions_unexplored:pink_magnolia_shrub_lower"
+      "model": "regions_unexplored:block/pink_magnolia_shrub_lower"
     },
     "half=upper": {
-      "model": "regions_unexplored:pink_magnolia_shrub_upper"
+      "model": "regions_unexplored:block/pink_magnolia_shrub_upper"
     }
   }
 }

@@ -2,18 +2,18 @@
   "variants": {
     "": [
       {
-        "model": "regions_unexplored:cherry_branch"
+        "model": "regions_unexplored:block/cherry_branch"
       },
       {
-        "model": "regions_unexplored:cherry_branch",
+        "model": "regions_unexplored:block/cherry_branch",
         "y": 90
       },
       {
-        "model": "regions_unexplored:cherry_branch",
+        "model": "regions_unexplored:block/cherry_branch",
         "y": 180
       },
       {
-        "model": "regions_unexplored:cherry_branch",
+        "model": "regions_unexplored:block/cherry_branch",
         "y": 270
       }
     ]

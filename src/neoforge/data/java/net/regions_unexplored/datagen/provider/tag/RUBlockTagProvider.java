@@ -726,7 +726,7 @@ public class RUBlockTagProvider extends BlockTagsProvider {
         ;
         
         
-        this.tag(RUBlockTags.CROP_PLANTABLE_BLOCKS)
+        this.tag(BlockTags.SUPPORTS_CROPS)
             .add(RUBlocks.PEAT_FARMLAND.get())
             .add(RUBlocks.SILT_FARMLAND.get())
         ;

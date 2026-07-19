@@ -2,7 +2,6 @@ package net.regions_unexplored.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.regions_unexplored.registry.RUBlocks;

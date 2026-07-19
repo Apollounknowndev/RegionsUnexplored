@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "cross",
   "textures": {
-    "layer0": "regions_unexplored:block/spanish_moss"
+    "cross": "regions_unexplored:block/spanish_moss"
   }
 }

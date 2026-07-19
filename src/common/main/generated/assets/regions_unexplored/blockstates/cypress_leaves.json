@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:cypress_leaves"
+      "model": "regions_unexplored:block/cypress_leaves"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:prismaglass"
+      "model": "regions_unexplored:block/prismaglass"
     }
   }
 }

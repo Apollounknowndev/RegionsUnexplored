@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:chalk_grass_block"
+    "model": "regions_unexplored:block/chalk_grass_block"
   }
 }

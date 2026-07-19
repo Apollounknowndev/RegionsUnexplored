@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "regions_unexplored:block/template/branch",
   "textures": {
-    "layer0": "regions_unexplored:item/baobab_branch"
+    "branch": "regions_unexplored:block/baobab_branch",
+    "log": "regions_unexplored:block/baobab_log"
   }
 }

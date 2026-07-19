@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "cross",
   "textures": {
-    "layer0": "regions_unexplored:block/ashen_grass"
+    "cross": "regions_unexplored:block/ashen_grass"
   }
 }

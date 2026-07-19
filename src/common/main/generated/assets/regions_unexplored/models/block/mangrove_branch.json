@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "regions_unexplored:block/template/branch",
   "textures": {
-    "layer0": "regions_unexplored:item/mangrove_branch"
+    "branch": "regions_unexplored:block/mangrove_branch",
+    "log": "minecraft:block/mangrove_log"
   }
 }

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:brimwood_leaves"
+      "model": "regions_unexplored:block/brimwood_leaves"
     }
   }
 }

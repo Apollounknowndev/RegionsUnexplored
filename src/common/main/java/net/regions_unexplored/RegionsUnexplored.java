@@ -1,8 +1,13 @@
 package net.regions_unexplored;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.lithostitched.RULithostitched;
 import net.regions_unexplored.registry.*;
@@ -41,7 +46,13 @@ public class RegionsUnexplored {
 		RULithostitched.init();
 	}
 
-	public static void afterRegistriesFreeze(){
+	public static void afterRegistriesFreeze() {
+		/*for (Holder.Reference<Item> item : BuiltInRegistries.ITEM.listElements().toList()) {
+			if (item.key().identifier().getNamespace().equals(MOD_ID) && item.value() instanceof BlockItem blockItem) {
+				Item.BY_BLOCK.put(blockItem.getBlock(), blockItem);
+			}
+		}*/
+		
 		BlockToolCompat.setup();
 		//CompostableBlocks.setup();
 		FlammableBlocks.setup();

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "regions_unexplored:magnolia_leaves"
+      "model": "regions_unexplored:block/magnolia_leaves"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/tall_cobalt_earlight"
+    "model": "regions_unexplored:item/tall_cobalt_earlight"
   }
 }

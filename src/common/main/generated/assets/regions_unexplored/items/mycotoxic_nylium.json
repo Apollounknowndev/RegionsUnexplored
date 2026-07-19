@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:mycotoxic_nylium"
+    "model": "regions_unexplored:block/mycotoxic_nylium"
   }
 }

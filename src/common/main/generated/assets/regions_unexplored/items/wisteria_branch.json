@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/wisteria_branch"
+    "model": "regions_unexplored:item/wisteria_branch"
   }
 }

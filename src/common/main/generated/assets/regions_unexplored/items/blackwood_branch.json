@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/blackwood_branch"
+    "model": "regions_unexplored:item/blackwood_branch"
   }
 }
