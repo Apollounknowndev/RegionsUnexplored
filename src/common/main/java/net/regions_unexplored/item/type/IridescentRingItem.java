@@ -20,7 +20,7 @@ public class IridescentRingItem extends Item {
 	@Override
 	public void inventoryTick(ItemStack itemStack, ServerLevel level, Entity owner, EquipmentSlot slot) {
 		RandomSource random = level.getRandom();
-		if (slot == EquipmentSlot.MAINHAND && random.nextBoolean()) {
+		if ((slot == EquipmentSlot.MAINHAND || slot == EquipmentSlot.OFFHAND) && random.nextBoolean()) {
 			level.sendParticles(
 				RUParticleTypes.PRISMARITE_SPARKLE.get(),
 				owner.getX() + random.nextGaussian(),

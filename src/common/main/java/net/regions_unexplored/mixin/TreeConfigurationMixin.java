@@ -1,31 +1,38 @@
 package net.regions_unexplored.mixin;
 
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.featuresize.FeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.rootplacers.RootPlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedStateProvider;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 import net.regions_unexplored.registry.data.RUBlockIds;
 import net.regions_unexplored.registry.tag.RUBlockTags;
 import net.regions_unexplored.worldgen.stateprovider.KeyHackStateProvider;
-import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.List;
+import java.util.Optional;
 
 @Mixin(TreeConfiguration.class)
 public abstract class TreeConfigurationMixin {
-    @WrapOperation(
-        method = "<clinit>",
-        at = @At(
-            value = "INVOKE",
-            target = "Lnet/minecraft/world/level/levelgen/feature/stateproviders/RuleBasedStateProvider;ifTrueThenProvide(Lnet/minecraft/world/level/levelgen/blockpredicates/BlockPredicate;Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/level/levelgen/feature/stateproviders/RuleBasedStateProvider;"
-        )
+    @Shadow @Mutable @Final
+    public BlockStateProvider belowTrunkProvider;
+    
+    @Inject(
+        method = "<init>",
+        at = @At("RETURN")
     )
-    private static RuleBasedStateProvider addRUDirt(BlockPredicate predicate, Block block, Operation<RuleBasedStateProvider> operation) {
-        return RuleBasedStateProvider.builder()
+    private void addRUDirt(BlockStateProvider trunkProvider, TrunkPlacer trunkPlacer, BlockStateProvider foliageProvider, FoliagePlacer foliagePlacer, Optional<RootPlacer> rootPlacer, FeatureSize minimumSize, List<TreeDecorator> decorators, boolean ignoreVines, BlockStateProvider belowTrunkProvider, CallbackInfo ci) {
+        this.belowTrunkProvider = RuleBasedStateProvider.builder(belowTrunkProvider)
             .ifTrueThenProvide(BlockPredicate.matchesTag(RUBlockTags.PEAT_SUBSTRATE), new KeyHackStateProvider(RUBlockIds.PEAT_DIRT))
             .ifTrueThenProvide(BlockPredicate.matchesTag(RUBlockTags.SILT_SUBSTRATE), new KeyHackStateProvider(RUBlockIds.SILT_DIRT))
-            .ifTrueThenProvide(predicate, block)
             .build();
     }
 }

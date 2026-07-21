@@ -1,4 +1,4 @@
-// 26.1.2	2026-07-18T12:56:11.6076628	Tags for minecraft:block mod id regions_unexplored
+// 26.1.2	2026-07-19T10:45:51.3691169	Tags for minecraft:block mod id regions_unexplored
 ea8b8f6b2f430d03e607eca76aae3d7cc7490153 data/c/tags/block/fences/wooden.json
 98584abed8bda97702f8e7eb6abe15be7ed61c1b data/c/tags/block/fence_gates/wooden.json
 fbd3b5574bd57030107ab08e4b239ea1520ad7e1 data/c/tags/block/glass_blocks.json
@@ -69,9 +69,8 @@ af2dfa084f3d25041f6b875fce7a4f4fd1d0316a data/minecraft/tags/block/stairs.json
 61bb5bf01df693c0fd75b985ca46c738cc93cb20 data/minecraft/tags/block/standing_signs.json
 3e82d14a284bcc9df393591d7610398a9905505e data/minecraft/tags/block/stone_ore_replaceables.json
 76dc5aa0bf39731321e076068f5cfddb6cab366c data/minecraft/tags/block/strider_warm_blocks.json
-b3281f9d8eb2984bb090fecd357cd0fbeecd3abf data/minecraft/tags/block/supports_crops.json
+290567e9f2cc2c3c765244cc99cb009af2d0fac5 data/minecraft/tags/block/supports_crops.json
 7a4dec34e932546179edd4bac8a97db6f52f9b07 data/minecraft/tags/block/supports_small_dripleaf.json
-3432c166d1f6c722101d3f66a0d49a4322c4d95f data/minecraft/tags/block/supports_vegetation.json
 4c1b39d965ae9ecb8ab1302c12fe3f9069d7ac09 data/minecraft/tags/block/support_override_snow_layer.json
 b8c8af302d208b5ef09a69b21a061039572dc4c6 data/minecraft/tags/block/valid_spawn.json
 792899d08b0e42684af3a79b2a939d052416acb8 data/minecraft/tags/block/wall_hanging_signs.json
@@ -91,12 +90,12 @@ ab2eeeda57b8067f0e40b774e11a1e38e2b14cf5 data/minecraft/tags/block/wooden_pressu
 7a4dec34e932546179edd4bac8a97db6f52f9b07 data/regions_unexplored/tags/block/ash.json
 90f09119f93ff3ce271235f78d540f91522828a5 data/regions_unexplored/tags/block/bamboo_logs.json
 c693fa708394f8561ff1109d81f834e9cdde37ca data/regions_unexplored/tags/block/baobab_logs.json
-6e1a8ea1d8a2c20b42102b1ce3fbc1b7e3858088 data/regions_unexplored/tags/block/bioshroom_grow_block.json
+6c42f63214151115ee8a0d524b94f8929fb88172 data/regions_unexplored/tags/block/bioshroom_grow_block.json
 04ebcafb94cebd240191144d5d9dc44f0aee04f5 data/regions_unexplored/tags/block/blackwood_logs.json
 fd1bddddb4832270f41b8cd2eded40abbef982d4 data/regions_unexplored/tags/block/blue_bioshroom_logs.json
 b4cc5620a8f43a8ab0f6643a4cdca52ef4858658 data/regions_unexplored/tags/block/branches.json
 5a75e1875ada5e1d8c5f2dc11f93ba338797e7f9 data/regions_unexplored/tags/block/brimwood_logs.json
-adfa45d9d26dbf014552adba23eeede475f07fd0 data/regions_unexplored/tags/block/cattail_can_survive_on.json
+afd4cea0a157367c9e062be7bccb12b42b692c09 data/regions_unexplored/tags/block/cattail_can_survive_on.json
 3ef13a80b10875c208d82232b0d103cb571c2354 data/regions_unexplored/tags/block/cobalt_logs.json
 a80909545cb6695cf2660332dfda8d54445f8172 data/regions_unexplored/tags/block/cypress_logs.json
 f5252ff413c0acb9c0670b12e04c37e02f241c0b data/regions_unexplored/tags/block/dead_logs.json
@@ -126,13 +125,13 @@ e19b880744eef3885511d6773d84bcdb7fc961f6 data/regions_unexplored/tags/block/repl
 79ea432d1fc4280e19dd780dde88f36fd705e846 data/regions_unexplored/tags/block/socotra_logs.json
 9a140dbcf4cd94a208d4a8999ba7b55602b674bb data/regions_unexplored/tags/block/supports/ashen_grass.json
 b147fcff5c0b4d72df1cb7809b063b2562180832 data/regions_unexplored/tags/block/supports/branches.json
-82b41e6597cfdee11aab89aa502190326d426377 data/regions_unexplored/tags/block/supports/frozen_grass.json
+e187cd1bb89e3438885496f8330cd39810122448 data/regions_unexplored/tags/block/supports/frozen_grass.json
 b4d6cc1ac24f3fc08875cceaee957c7e11173c12 data/regions_unexplored/tags/block/supports/grass_sprouts.json
-6e1a8ea1d8a2c20b42102b1ce3fbc1b7e3858088 data/regions_unexplored/tags/block/supports/infernal_plant.json
+6c42f63214151115ee8a0d524b94f8929fb88172 data/regions_unexplored/tags/block/supports/infernal_plant.json
 4c1b247889cde9f5497dc95761f88a2dbe1f3de4 data/regions_unexplored/tags/block/supports/nether_plants.json
 90193945e0f25c4de556472968c1a0180461ce0e data/regions_unexplored/tags/block/supports/red_sandy_plants.json
 fae265555d643e9506ce4e013d9065e2ee26da1d data/regions_unexplored/tags/block/supports/sandy_plants.json
-69c396cb051bbe9a130e6979b67065e5041b179d data/regions_unexplored/tags/block/supports/shrubs.json
+33f213d4a5d356141bd58401bcd7461bdbfd2a8b data/regions_unexplored/tags/block/supports/shrubs.json
 ed1edeb3c82000dbb812130de9ffa1e3acbc3167 data/regions_unexplored/tags/block/willow_logs.json
 59535e3c216b6039f410cd031690445aa5be56ab data/regions_unexplored/tags/block/wisteria_logs.json
 a30f857e667b61591cb10407147dab747f179cd1 data/regions_unexplored/tags/block/yellow_bioshroom_logs.json

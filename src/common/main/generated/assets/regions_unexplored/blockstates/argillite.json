@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "regions_unexplored:block/argillite"
+      },
+      {
+        "model": "regions_unexplored:block/argillite_mirrored"
+      },
+      {
+        "model": "regions_unexplored:block/argillite",
+        "y": 180
+      },
+      {
+        "model": "regions_unexplored:block/argillite_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

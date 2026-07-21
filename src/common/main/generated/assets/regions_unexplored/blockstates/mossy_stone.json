@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "regions_unexplored:block/mossy_stone"
+      },
+      {
+        "model": "regions_unexplored:block/mossy_stone_mirrored"
+      },
+      {
+        "model": "regions_unexplored:block/mossy_stone",
+        "y": 180
+      },
+      {
+        "model": "regions_unexplored:block/mossy_stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

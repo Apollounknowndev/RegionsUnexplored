@@ -125,7 +125,7 @@ public class RUBlockModelProvider {
 				.select(false, BlockModelGenerators.createRotatedVariants(plainModel(ashenDirtId)))
 				.select(true, BlockModelGenerators.createRotatedVariants(plainModel(ashenDirtSmouldering.createTemplate(ashenDirtId.withSuffix("_smouldering"), "", this.modelOutput))))
 		));
-		itemBlock(RUBlocks.ASHEN_DIRT.get(), ashenDirtId);
+		itemBlock(RUBlocks.ASHEN_DIRT.get());
 		
 		var ashenGrass = cuboidCross(RUBlocks.ASHEN_GRASS.get(), "cross");
 		var ashenGrassSmouldering = cuboidModel(name(RUBlocks.ASHEN_GRASS.get()) + "_smouldering", "cross", "cross", name(RUBlocks.ASHEN_GRASS.get()) + "_smouldering");
@@ -142,7 +142,8 @@ public class RUBlockModelProvider {
 		
 		String prismaglass = name(RUBlocks.PRISMAGLASS.get());
 		blockSingle(RUBlocks.PRISMAGLASS.get(), cuboidModel(prismaglass, template("cube_all_tinted"), b -> b.texture("all", texturize(nameId(Blocks.WHITE_STAINED_GLASS), false))));
-		itemBlock(RUBlocks.PRISMAGLASS.get(), cuboidModel(prismaglass + "_item", "cube_all", b -> b.texture("all", texturize(nameId(RUBlocks.PRISMAGLASS.get()), true))).createTemplate(nameId(RUBlocks.PRISMAGLASS.get()).withSuffix("_item"), "item/", this.modelOutput));
+		cuboidModel(prismaglass + "_item", "cube_all", b -> b.texture("all", texturize(nameId(RUBlocks.PRISMAGLASS.get()), true))).createTemplate(nameId(RUBlocks.PRISMAGLASS.get()).withSuffix("_item"), "block/", this.modelOutput);
+		itemBlock(RUBlocks.PRISMAGLASS.get(), nameId(RUBlocks.PRISMAGLASS.get()).withSuffix("_item"));
 		
 		fullCubeAll(RUBlocks.CHALK.get());
 		fullSlab(RUBlocks.CHALK_SLAB.get(), RUBlocks.CHALK.get());
@@ -195,7 +196,7 @@ public class RUBlockModelProvider {
 			.texture("top", texturize(name(palmLeaves) + "_top"))
 		).createTemplate(nameId(palmLeaves), "block/", this.modelOutput);
 		this.blockModels.blockStateOutput.accept(createSimpleBlock(palmLeaves, plainVariant(palmLeavesModel)));
-		itemBlock(palmLeaves, palmLeavesModel);
+		itemBlock(palmLeaves, nameId(palmLeaves));
 		
 		
 		fullBranch(RUBlocks.ACACIA_NATURAL_SET, Blocks.ACACIA_LOG);
@@ -309,7 +310,7 @@ public class RUBlockModelProvider {
 	}
 	
 	private void fullColumn(Block block, Identifier id, boolean useTopTexture) {
-		ModelBuilder builder = cuboidModel(name(block), "block/cube_column", b -> b
+		ModelBuilder builder = cuboidModel(name(block), "cube_column", b -> b
 			.texture("side", texturize(id, false))
 			.texture("end", texturize(id.withSuffix(useTopTexture ? "_top" : ""), false))
 		);
@@ -338,7 +339,6 @@ public class RUBlockModelProvider {
 	}
 	
 	private void fullDoubleCross(Supplier<Block> supplier, String parent, boolean itemTexture) {
-		parent = "minecraft:block/" + parent;
 		Block block = supplier.get();
 		
 		String name = name(block);
@@ -379,7 +379,11 @@ public class RUBlockModelProvider {
 	
 	private void fullCube(Block block, TexturedModel.Provider provider) {
 		if (provider.equals(TexturedModel.CUBE_MIRRORED)) {
-		
+			TextureMapping mapping = TEXTURED_MODELS.getOrDefault(block, TexturedModel.CUBE.get(block)).getMapping();
+			Variant base = BlockModelGenerators.plainModel(ModelTemplates.CUBE_ALL.create(block, mapping, this.modelOutput));
+			this.blockModels.blockStateOutput.accept(BlockModelGenerators.createMirroredCubeGenerator(
+				block, base, mapping, this.modelOutput
+			));
 		} else {
 			this.blockModels.createTrivialBlock(block, provider);
 		}
@@ -396,7 +400,7 @@ public class RUBlockModelProvider {
 	}
     
     private void fullLeaves(Block block, String texture) {
-        ModelBuilder model = cuboidModel(name(block), "minecraft:block/leaves", "all", texture);
+        ModelBuilder model = cuboidModel(name(block), "leaves", "all", texture);
         blockSingle(block, model);
         itemBlock(block, nameId(block));
     }
@@ -581,7 +585,7 @@ public class RUBlockModelProvider {
 	
 	private void blockHorizontalFacing(Block block, ModelBuilder builder) {
 		Identifier model = builder.createTemplate(nameId(block), "block/", this.modelOutput);
-		this.blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block, BlockModelGenerators.createRotatedVariants(new Variant(model))));
+		this.blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block, variant(new Variant(model))).with(ROTATION_HORIZONTAL_FACING));
 	}
 	
 	private void blockAxisAligned(Block block, ModelBuilder builder) {
@@ -610,11 +614,6 @@ public class RUBlockModelProvider {
     }
     
     // CUBOID
-	
-	private ModelBuilder cuboidSpeleothem(Block block, Direction direction, DripstoneThickness thickness) {
-		String name = "%s_%s_%s".formatted(name(block), direction.getSerializedName(), thickness.getSerializedName());
-		return cuboidModel(name, template("speleothem"), "cross", name);
-	}
     
     private ModelBuilder cuboidCross(Block block, String parent) {
         return cuboidModel(block, parent, "cross");
@@ -629,6 +628,9 @@ public class RUBlockModelProvider {
 	}
     
     private ModelBuilder cuboidModel(String name, String parent, UnaryOperator<ModelBuilder> operator) {
+		if (!parent.contains(":")) {
+			parent = "minecraft:block/" + parent;
+		}
 		return operator.apply(ModelBuilder.builder().parent(parent));
     }
 	

@@ -1,6 +1,7 @@
 {
   "textures": {
-    "particle": "#ring"
+    "ring": "regions_unexplored:item/iridescent_ring",
+    "particle": "regions_unexplored:item/iridescent_ring"
   },
   "elements": [
     {

@@ -1,5 +1,5 @@
 {
-  "parent": "cube_bottom_top",
+  "parent": "minecraft:block/cube_bottom_top",
   "textures": {
     "bottom": "minecraft:block/netherrack",
     "side": "regions_unexplored:block/brimsprout_nylium_side",

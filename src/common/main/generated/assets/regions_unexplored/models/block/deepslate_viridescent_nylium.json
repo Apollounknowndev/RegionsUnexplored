@@ -1,5 +1,5 @@
 {
-  "parent": "cube_bottom_top",
+  "parent": "minecraft:block/cube_bottom_top",
   "textures": {
     "bottom": "minecraft:block/deepslate_top",
     "side": "regions_unexplored:block/deepslate_viridescent_nylium_side",

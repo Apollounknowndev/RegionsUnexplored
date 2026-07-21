@@ -1,5 +1,5 @@
 {
-  "parent": "cube_bottom_top",
+  "parent": "minecraft:block/cube_bottom_top",
   "textures": {
     "bottom": "minecraft:block/basalt_top",
     "side": "regions_unexplored:block/ash_vent_side",

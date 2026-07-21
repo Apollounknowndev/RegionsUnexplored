@@ -1,5 +1,5 @@
 {
-  "parent": "cube_mirrored_all",
+  "parent": "minecraft:block/cube_mirrored_all",
   "textures": {
     "all": "regions_unexplored:block/ashen_dirt_smouldering"
   }

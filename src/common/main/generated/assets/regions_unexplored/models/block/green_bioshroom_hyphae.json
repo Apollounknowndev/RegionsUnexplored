@@ -1,5 +1,5 @@
 {
-  "parent": "block/cube_column",
+  "parent": "minecraft:block/cube_column",
   "textures": {
     "end": "regions_unexplored:block/green_bioshroom_stem",
     "side": "regions_unexplored:block/green_bioshroom_stem"

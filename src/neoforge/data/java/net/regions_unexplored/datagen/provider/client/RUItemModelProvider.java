@@ -1,9 +1,14 @@
 package net.regions_unexplored.datagen.provider.client;
 
+import net.minecraft.client.color.item.GrassColorSource;
+import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.model.ItemModelUtils;
+import net.minecraft.client.data.models.model.ModelLocationUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.block.set.WoodSet;
@@ -15,6 +20,8 @@ import java.util.function.Supplier;
 public class RUItemModelProvider {
     private final BlockModelGenerators blockModels;
     private final ItemModelGenerators itemModels;
+    private static final ItemTintSource LEAVES_TINT = ItemModelUtils.constantTint(0x48b518);
+    private static final ItemTintSource GRASS_TINT = new GrassColorSource(0.5f, 1);
     
     public RUItemModelProvider(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
         this.blockModels = blockModels;
@@ -23,6 +30,11 @@ public class RUItemModelProvider {
     
     protected void run() {
         this.itemModels.declareCustomModelItem(RUItems.IRIDESCENT_RING.get());
+        
+        var appleOakLeaves = RUBlocks.APPLE_OAK_NATURAL_SET.getLeaves().asItem();
+        this.itemModels.itemModelOutput.accept(appleOakLeaves,
+            ItemModelUtils.tintedModel(ModelLocationUtils.getModelLocation(appleOakLeaves), LEAVES_TINT)
+        );
         
         for (WoodSet set : RUBlocks.WOOD_SETS) {
             if (set.getBoat() != null) {
@@ -33,27 +45,28 @@ public class RUItemModelProvider {
         
         // TODO: Finish block model datagen equivalents
         itemBlock(RUBlocks.ALPHA_GRASS_BLOCK);
-        itemBlock(RUBlocks.ARGILLITE_GRASS_BLOCK);
+        itemBlock(RUBlocks.ARGILLITE_GRASS_BLOCK, GRASS_TINT);
         itemBlock(RUBlocks.BAMBOO_LOG);
         itemBlock(RUBlocks.BRIMWOOD_WOOD_SET::getLogMagma);
-        itemBlock(RUBlocks.CHALK_GRASS_BLOCK);
+        itemBlock(RUBlocks.CHALK_GRASS_BLOCK, GRASS_TINT);
         itemBlock(RUBlocks.CHALK_PILLAR);
         itemBlock(RUBlocks.COBALT_OBSIDIAN);
-        itemBlock(RUBlocks.DEEPSLATE_GRASS_BLOCK);
+        itemBlock(RUBlocks.DEEPSLATE_GRASS_BLOCK, GRASS_TINT);
         itemBlock(RUBlocks.EUCALYPTUS_WOOD_SET::getLog);
         itemBlock(RUBlocks.EUCALYPTUS_WOOD_SET::getWood);
+        itemBlock(RUBlocks.FLOWERING_NATURAL_SET::getLeaves, LEAVES_TINT);
         itemBlock(RUBlocks.PEAT_DIRT_PATH);
         itemBlock(RUBlocks.PEAT_FARMLAND);
-        itemBlock(RUBlocks.PEAT_GRASS_BLOCK);
+        itemBlock(RUBlocks.PEAT_GRASS_BLOCK, GRASS_TINT);
         itemBlock(RUBlocks.PEAT_PODZOL);
         itemBlock(RUBlocks.RAW_REDSTONE_BLOCK);
         itemBlock(RUBlocks.SAGUARO_CACTUS);
         itemBlock(RUBlocks.SILT_DIRT_PATH);
         itemBlock(RUBlocks.SILT_FARMLAND);
-        itemBlock(RUBlocks.SILT_GRASS_BLOCK);
+        itemBlock(RUBlocks.SILT_GRASS_BLOCK, GRASS_TINT);
         itemBlock(RUBlocks.SILT_PODZOL);
         itemBlock(RUBlocks.SMALL_OAK_LOG);
-        itemBlock(RUBlocks.STONE_GRASS_BLOCK);
+        itemBlock(RUBlocks.STONE_GRASS_BLOCK, GRASS_TINT);
         itemBlock(RUBlocks.STRIPPED_BAMBOO_LOG);
         itemBlock(RUBlocks.STRIPPED_SMALL_OAK_LOG);
         itemBlock(RUBlocks.YELLOW_BIOSHROOM_BLOCK);
@@ -104,12 +117,19 @@ public class RUItemModelProvider {
         this.blockModels.registerSimpleItemModel(block.get(), nameId(block.get()).withPrefix("block/"));
     }
     
+    private void itemBlock(Supplier<Block> block, ItemTintSource tint) {
+        this.blockModels.registerSimpleTintedItemModel(block.get(), nameId(block.get()).withPrefix("block/"), tint);
+    }
+    
     private <T extends Block> void itemGenerated(Supplier<T> block) {
         this.blockModels.registerSimpleFlatItemModel(block.get());
     }
     
     private <T extends Block> void itemGenerated(Supplier<T> block, String suffix) {
-        this.blockModels.registerSimpleFlatItemModel(block.get(), suffix);
+        this.blockModels.registerSimpleItemModel(
+            block.get(),
+            this.blockModels.createFlatItemModelWithBlockTexture(block.get().asItem(), block.get(), suffix)
+        );
     }
     
     private void itemGenerated(Item item) {
@@ -120,32 +140,5 @@ public class RUItemModelProvider {
     
     private Identifier nameId(Block block) {
         return block.builtInRegistryHolder().key().identifier();
-    }
-    
-    private Identifier nameId(Item item) {
-        return item.builtInRegistryHolder().key().identifier();
-    }
-    
-    private String name(Item item) {
-        return nameId(item).getPath();
-    }
-    
-    private Identifier texturize(String texture) {
-        return texturize(RegionsUnexplored.id(texture), false);
-    }
-    
-    private Identifier texturize(Identifier id, boolean blockPrefix) {
-        id = id.withPrefix(blockPrefix ? "block/" : "item/");
-        //this.existingFileHelper.trackGenerated(id, ModelProvider.TEXTURE);
-        return id;
-    }
-    
-    // MISC
-    
-    private Identifier template(String name) {
-        Identifier id = RegionsUnexplored.id("item/template/" + name);
-        //getBuilder(id.toString());
-        //generatedModels.remove(id);
-        return id;
     }
 }
