@@ -16,4 +16,4 @@ In the near-ish future, Fabric/Neoforge 26.1 will also become supported versions
 
 ## License
 
-The mod is currently under the All Rights Reserved (ARR) license. 
+The mod is currently under the MIT license. 
