@@ -190,7 +190,7 @@ public class SmallEucalyptusTreeFeature extends Feature<RUTreeConfiguration> {
     }
 
     private static void addHangingVine(LevelAccessor level, BlockPos pos, RandomSource randomSource, BooleanProperty bp) {
-        if(randomSource.nextInt(3)!=0) {
+        if(randomSource.nextInt(3)!=0 && level.getBlockState(pos).isAir()) {
             level.setBlock(pos, Blocks.VINE.defaultBlockState().setValue(bp, true), 2);
             int i = randomSource.nextInt(3)+3;
 
