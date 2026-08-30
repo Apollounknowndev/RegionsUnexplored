@@ -5,6 +5,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.JsonOps;
+import net.minecraft.client.color.item.GrassColorSource;
+import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
@@ -38,6 +40,9 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class RUModelProvider extends ModelProvider {
+	public static final ItemTintSource LEAVES_TINT = ItemModelUtils.constantTint(0x48b518);
+	public static final ItemTintSource GRASS_TINT = new GrassColorSource(0.5f, 1);
+	
 	private final PathProvider blockStatePathProvider;
 	private final PathProvider itemInfoPathProvider;
 	private final PathProvider modelPathProvider;

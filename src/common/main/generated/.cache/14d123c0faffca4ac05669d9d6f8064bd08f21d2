@@ -1,4 +1,4 @@
-// 26.1.2	2026-07-19T10:45:51.3691169	Tags for minecraft:block mod id regions_unexplored
+// 26.1.2	2026-07-22T18:04:02.4183019	Tags for minecraft:block mod id regions_unexplored
 ea8b8f6b2f430d03e607eca76aae3d7cc7490153 data/c/tags/block/fences/wooden.json
 98584abed8bda97702f8e7eb6abe15be7ed61c1b data/c/tags/block/fence_gates/wooden.json
 fbd3b5574bd57030107ab08e4b239ea1520ad7e1 data/c/tags/block/glass_blocks.json
@@ -28,7 +28,7 @@ f0388bac6b8ea4bcf966d2e4d5f7906b1efaebbf data/minecraft/tags/block/enderman_hold
 c4fbcda450fc6b25cdcf57b1ced175e4589d611e data/minecraft/tags/block/fall_damage_resetting.json
 98584abed8bda97702f8e7eb6abe15be7ed61c1b data/minecraft/tags/block/fence_gates.json
 ba2ed8f9c587f6b188097391ad42b971d1671107 data/minecraft/tags/block/flowers.json
-a6a38947c253dfafea353d219af82542ef09c23f data/minecraft/tags/block/flower_pots.json
+dc873753351701d374469d4709f60752bd759a36 data/minecraft/tags/block/flower_pots.json
 ec413e42ec6e9cfed970fa54c6085193cd9fc868 data/minecraft/tags/block/foxes_spawnable_on.json
 65763310da399df51fc0fedf075cd2259532f0ae data/minecraft/tags/block/frogs_spawnable_on.json
 3f32cd200f8ba7f80aa2d2bbd0741477ed4ec0e4 data/minecraft/tags/block/frog_prefer_jump_to.json

@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.msrandom.multiplatform.annotations.Actual;
 import net.neoforged.neoforge.client.ClientHooks;
 
@@ -25,6 +26,9 @@ public class RenderHelperActual {
     
     @Actual
     public static void registerArmorModelLayer(ArmorModelSet<ModelLayerLocation> armorModelSet, Supplier<ArmorModelSet<LayerDefinition>> provider) {
-        //ClientHooks.registerLayerDefinition(armorModelSet, provider::get);
+        ClientHooks.registerLayerDefinition(armorModelSet.head(), () -> provider.get().get(EquipmentSlot.HEAD));
+        ClientHooks.registerLayerDefinition(armorModelSet.chest(), () -> provider.get().get(EquipmentSlot.CHEST));
+        ClientHooks.registerLayerDefinition(armorModelSet.legs(), () -> provider.get().get(EquipmentSlot.LEGS));
+        ClientHooks.registerLayerDefinition(armorModelSet.feet(), () -> provider.get().get(EquipmentSlot.FEET));
     }
 }

@@ -5,17 +5,13 @@ import json
 # Per-mod: Update this for each mod!!!
 
 MOD_ID = "regions-unexplored"
-MOD_VERSION = "0.6.1"
+MOD_VERSION = "0.7.0+beta2"
 CHANGELOG = """
-- Added a `weight_multiplier` config option to easily increase the frequency of RU biomes in the biome layout.
-- Fixed Wisteria sign and boat textures.
-- Fixed Wisteria trees generating with Cherry branches.
-- Fixed Meadow Sage not being bonemealable.
-- Fixed a crash that could occur from generating Willow trees.
+- Placing down an RU boat no longer crashes the game.
 """
 UPLOAD_VERSIONS = [
-    ("fabric", "21.1"),
-    ("neoforge", "21.1"),
+    ("fabric", "26.1"),
+    ("neoforge", "26.1"),
 ]
 
 DEPENDENCIES = [
@@ -31,9 +27,9 @@ DEPENDENCIES = [
 MODRINTH_ID = "Tkikq67H"
 CURSEFORGE_ID = "659110"
 
-RELEASE_TYPE = "release"
+RELEASE_TYPE = "beta"
 
-# Global: Should never need to be touched!
+# Global: Should usually not be touched!
 
 BASE_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
@@ -43,7 +39,8 @@ if not MODRINTH_TOKEN:
     raise EnvironmentError("MODRINTH_TOKEN is unset!")
 MODRINTH_GAME_VERSIONS = {
     "21.1": ["1.21.1"],
-    "26.1": ["26.1"],
+    "26.1": ["26.1", "26.1.1", "26.1.2"],
+    "26.2": ["26.2"],
 }
 
 CURSEFORGE_TOKEN = os.getenv('TOKEN_CF')
@@ -52,7 +49,8 @@ if not CURSEFORGE_TOKEN:
 CURSEFORGE_URL = f"https://minecraft.curseforge.com/api/v1/projects/{CURSEFORGE_ID}/upload-file"
 CURSEFORGE_GAME_VERSIONS = {
     "21.1": [11779],
-    "26.1": [15933],
+    "26.1": [15933, 16021, 16082],
+    "26.2": [16498],
 }
 CURSEFORGE_LOADERS = {
     "fabric": 7499,
@@ -120,6 +118,7 @@ def upload_curseforge(loader: str, version: str, file_path: str, dependencies):
     # Metadata
     metadata = {
         "displayName": f"v{MOD_VERSION} ~ {loader.title()} {version}",
+        "gameVersionNames": ["Server", "Client"],
         "gameVersions": game_version_ids + [modloader_id],
         "releaseType": RELEASE_TYPE,
         "changelog": CHANGELOG,
@@ -156,7 +155,7 @@ for modloader, game_version in UPLOAD_VERSIONS:
         BASE_FOLDER,
         'build',
         'libs',
-        f'{MOD_ID}-{MOD_VERSION}-{modloader}-{game_version}.jar'
+        f'{MOD_ID}-{MOD_VERSION}-{modloader}.jar'
     )
 
     dependencies = DEPENDENCIES.copy()

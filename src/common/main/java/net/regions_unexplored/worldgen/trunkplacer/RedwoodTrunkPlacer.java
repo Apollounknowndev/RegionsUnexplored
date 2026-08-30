@@ -113,9 +113,9 @@ public class RedwoodTrunkPlacer extends RUTrunkPlacer {
     }
 
     private void placeLogColumn(WorldGenLevel level, BiConsumer<BlockPos, BlockState> trunkSetter, RandomSource random, BlockPos pos, int columnHeight, TreeConfiguration config) {
+        placeBelowTrunkBlock(level, trunkSetter, random, pos.below(), config);
+        
         if (columnHeight == 0) return;
-        RUTrunkPlacer.placeDirtBelow(level, trunkSetter, pos);
-
         BlockPos.MutableBlockPos currentPos = pos.mutable();
         for (int y = 0; y < columnHeight; y++) {
             if (this.placeLog(level, trunkSetter, random, currentPos.immutable(), config)) {

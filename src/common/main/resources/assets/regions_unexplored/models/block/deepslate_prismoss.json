@@ -1,7 +1,7 @@
 {   "parent": "block/block",
     "textures": {
         "particle": "minecraft:block/deepslate",
-        "bottom": "minecraft:block/deepslate",
+        "bottom": "minecraft:block/deepslate_top",
         "top": "regions_unexplored:block/prismoss_overlay_top",
         "side": "regions_unexplored:block/deepslate_prismoss_side",
         "overlay": "regions_unexplored:block/prismoss_overlay_side"

@@ -335,7 +335,6 @@ public class RUBlockTagProvider extends BlockTagsProvider {
             .add(RUBlocks.POTTED_CORPSE_FLOWER.get())
             .add(RUBlocks.POTTED_COBALT_EARLIGHT.get())
             .add(RUBlocks.POTTED_MYCOTOXIC_DAISY.get())
-            .add(RUBlocks.POTTED_GLISTER_SPIRE.get())
             .add(RUBlocks.POTTED_BLUE_BIOSHROOM.get())
             .add(RUBlocks.POTTED_GREEN_BIOSHROOM.get())
             .add(RUBlocks.POTTED_PINK_BIOSHROOM.get())

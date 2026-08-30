@@ -27,7 +27,7 @@ public interface RUItems {
         p.food(food(6, 0.4f), consumable(t -> t.onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.GLOWING, 200), 0.1F))))
     ));
     Supplier<Item> MEADOW_SAGE = RUItemUtils.register("meadow_sage", p -> new BlockItem(RUBlocks.MEADOW_SAGE.get(),
-        p.food(food(2, 0.15f), consumable(t -> t.onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.INSTANT_HEALTH, 20), 0.5f))))
+        p.useBlockDescriptionPrefix().food(food(2, 0.15f), consumable(t -> t.onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.INSTANT_HEALTH, 20), 0.5f))))
     ));
     Supplier<Item> IRIDESCENT_RING = RUItemUtils.register("iridescent_ring", IridescentRingItem::new);
 

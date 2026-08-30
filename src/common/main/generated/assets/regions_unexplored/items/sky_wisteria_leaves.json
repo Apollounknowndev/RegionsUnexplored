@@ -1,6 +1,12 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:block/sky_wisteria_leaves"
+    "model": "regions_unexplored:block/sky_wisteria_leaves",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -8269831
+      }
+    ]
   }
 }

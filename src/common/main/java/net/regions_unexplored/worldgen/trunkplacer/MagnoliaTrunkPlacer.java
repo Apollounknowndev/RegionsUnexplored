@@ -52,6 +52,8 @@ public class MagnoliaTrunkPlacer extends RUTrunkPlacer {
         final BlockPos origin,
         final TreeConfiguration config
     ) {
+        placeBelowTrunkBlock(level, trunkSetter, random, origin.below(), config);
+        
         List<FoliageAttachment> attachments = new ArrayList<>();
         // Middle
         for (int y = 0; y < treeHeight; ++y) {

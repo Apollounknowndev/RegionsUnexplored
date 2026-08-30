@@ -25,9 +25,9 @@ import net.minecraft.world.phys.HitResult.Type;
 import org.jspecify.annotations.Nullable;
 
 public class RUBoatItem<T extends AbstractBoat> extends Item {
-	private final Supplier<EntityType<T>> entityType;
+	private final Supplier<Supplier<EntityType<T>>> entityType;
 	
-	public RUBoatItem(Supplier<EntityType<T>> entityType, final Properties properties) {
+	public RUBoatItem(Supplier<Supplier<EntityType<T>>> entityType, final Properties properties) {
 		super(properties);
 		this.entityType = entityType;
 	}
@@ -81,7 +81,7 @@ public class RUBoatItem<T extends AbstractBoat> extends Item {
 	}
 	
 	private @Nullable AbstractBoat getBoat(final Level level, final HitResult hitResult, final ItemStack itemStack, final Player player) {
-		AbstractBoat boat = this.entityType.get().create(level, EntitySpawnReason.SPAWN_ITEM_USE);
+		AbstractBoat boat = this.entityType.get().get().create(level, EntitySpawnReason.SPAWN_ITEM_USE);
 		if (boat != null) {
 			Vec3 location = hitResult.getLocation();
 			boat.setInitialPos(location.x, location.y, location.z);

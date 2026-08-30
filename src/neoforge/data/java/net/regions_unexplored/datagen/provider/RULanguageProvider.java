@@ -89,18 +89,15 @@ public class RULanguageProvider extends LanguageProvider {
         BuiltInRegistries.BLOCK.stream().forEach(blockRegistryObject -> {
             if(blockRegistryObject.toString().contains("regions_unexplored")&&
                     !blockRegistryObject.toString().contains("potted_")&&
-                    !blockRegistryObject.toString().contains("hanging_earlight")&&
-                    !blockRegistryObject.toString().contains("duskmelon")&&
-                    !blockRegistryObject.toString().contains("salmonberry")&&
                     !blockRegistryObject.toString().contains("_wall_sign")&&
                     !blockRegistryObject.toString().contains("_wall_hanging_sign")){
                 this.add(blockRegistryObject, capitalizeString(filterBlockLang(blockRegistryObject)));
             }
         });
         //Misc block translations
-        this.add(RUBlocks.DUSKMELON.get(), "Duskmelon Slice");
-        this.add(RUBlocks.SALMONBERRY_BUSH.get(), "Salmonberry");
-        this.add(RUBlocks.HANGING_EARLIGHT.get(), "Hanging Earlight Fruit");
+        this.add(RUItems.DUSKMELON_SLICE.get(), "Duskmelon Slice");
+        this.add(RUItems.SALMONBERRY.get(), "Salmonberry");
+        this.add(RUItems.HANGING_EARLIGHT_FRUIT.get(), "Hanging Earlight Fruit");
 
         //Entity translations
         this.add(RUEntityTypes.ASHEN.get(), "Ashen");

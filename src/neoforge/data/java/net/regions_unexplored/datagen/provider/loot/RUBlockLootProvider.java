@@ -84,8 +84,7 @@ public class RUBlockLootProvider extends BlockLootSubProvider {
         add(RUBlocks.CORPSE_FLOWER.get(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         add(RUBlocks.BLADED_GRASS.get(), this::createGrassDrops);
         add(RUBlocks.BLADED_TALL_GRASS.get(), (block) -> createDoublePlantWithSeedDrops(block, RUBlocks.BLADED_GRASS.get()));
-        add(RUBlocks.DROPLEAF.get(), (block) -> createSilkTouchOrShearsDispatchTable(block, LootItem.lootTableItem(block).when(BonusLevelTableCondition.bonusLevelFlatChance(registries.holderOrThrow(Enchantments.FORTUNE), 0.33F, 0.55F, 0.77F, 1.0F))));
-        add(RUBlocks.DROPLEAF_PLANT.get(), (block) -> createSilkTouchOrShearsDispatchTable(block, LootItem.lootTableItem(block).when(BonusLevelTableCondition.bonusLevelFlatChance(registries.holderOrThrow(Enchantments.FORTUNE), 0.33F, 0.55F, 0.77F, 1.0F))));
+        addNetherVinesDropTable(RUBlocks.DROPLEAF.get(), RUBlocks.DROPLEAF_PLANT.get());
         add(RUBlocks.DUSKMELON.get(), (block) -> applyExplosionDecay(block, LootTable.lootTable().withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(RUBlocks.DUSKMELON.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SalmonBerryBushBlock.AGE, 3))).add(LootItem.lootTableItem(RUItems.DUSKMELON_SLICE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))).apply(ApplyBonusCount.addUniformBonusCount(registries.holderOrThrow(Enchantments.FORTUNE)))).withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(RUBlocks.DUSKMELON.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2))).add(LootItem.lootTableItem(RUItems.DUSKMELON_SLICE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyBonusCount.addUniformBonusCount(registries.holderOrThrow(Enchantments.FORTUNE))))));
         add(RUBlocks.DUSKTRAP.get(), (block) -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         /*-----------------PLANTS-----------------*/
@@ -163,10 +162,8 @@ public class RUBlockLootProvider extends BlockLootSubProvider {
         dropSelf(RUBlocks.BARREL_CACTUS.get());
         dropSelf(RUBlocks.CAVE_HYSSOP.get());
         dropSelf(RUBlocks.DUCKWEED.get());
-        add(RUBlocks.SPANISH_MOSS.get(), this::createShearsOnlyDrop);
-        add(RUBlocks.SPANISH_MOSS_PLANT.get(), this::createShearsOnlyDrop);
-        add(RUBlocks.KAPOK_VINES.get(), this::createShearsOnlyDrop);
-        add(RUBlocks.KAPOK_VINES_PLANT.get(), this::createShearsOnlyDrop);
+        addNetherVinesDropTable(RUBlocks.SPANISH_MOSS.get(), RUBlocks.SPANISH_MOSS_PLANT.get());
+        addNetherVinesDropTable(RUBlocks.KAPOK_VINES.get(), RUBlocks.KAPOK_VINES_PLANT.get());
         dropSelf(RUBlocks.FLOWERING_LILY_PAD.get());
         add(RUBlocks.GIANT_LILY_PAD.get(), (block) -> createSingleItemTable(RUBlocks.FLOWERING_LILY_PAD.get()));
         //FOOD_PLANT_BLOCKS
@@ -208,7 +205,6 @@ public class RUBlockLootProvider extends BlockLootSubProvider {
         add(RUBlocks.POTTED_CORPSE_FLOWER.get(), createPotFlowerItemTable(RUBlocks.CORPSE_FLOWER.get()));
         add(RUBlocks.POTTED_COBALT_EARLIGHT.get(), createPotFlowerItemTable(RUBlocks.COBALT_EARLIGHT.get()));
         add(RUBlocks.POTTED_MYCOTOXIC_DAISY.get(), createPotFlowerItemTable(RUBlocks.MYCOTOXIC_DAISY.get()));
-        add(RUBlocks.POTTED_GLISTER_SPIRE.get(), createPotFlowerItemTable(RUBlocks.GLISTER_SPIRE.get()));
         add(RUBlocks.POTTED_BLUE_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.BLUE_BIOSHROOM.get()));
         add(RUBlocks.POTTED_GREEN_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.GREEN_BIOSHROOM.get()));
         add(RUBlocks.POTTED_PINK_BIOSHROOM.get(), createPotFlowerItemTable(RUBlocks.PINK_BIOSHROOM.get()));
@@ -377,11 +373,9 @@ public class RUBlockLootProvider extends BlockLootSubProvider {
         add(RUBlocks.COBALT_NYLIUM.get(), (block) -> createSingleItemTableWithSilkTouch(block, Blocks.BLACKSTONE));
         dropSelf(RUBlocks.COBALT_OBSIDIAN.get());
         dropSelf(RUBlocks.COBALT_ROOTS.get());
-        add(RUBlocks.HANGING_EARLIGHT.get(), (block) -> createSilkTouchOrShearsDispatchTable(block, LootItem.lootTableItem(block).when(BonusLevelTableCondition.bonusLevelFlatChance(registries.holderOrThrow(Enchantments.FORTUNE), 0.66F, 0.78F, 0.9F, 1.0F))));
-        add(RUBlocks.HANGING_EARLIGHT_PLANT.get(), (block) -> createSilkTouchOrShearsDispatchTable(block, LootItem.lootTableItem(block).when(BonusLevelTableCondition.bonusLevelFlatChance(registries.holderOrThrow(Enchantments.FORTUNE), 0.66F, 0.78F, 0.9F, 1.0F))));
+        addNetherVinesDropTable(RUBlocks.HANGING_EARLIGHT.get(), RUBlocks.HANGING_EARLIGHT_PLANT.get());
         //GLISTERING_BLOCKS
-        add(RUBlocks.GLISTERING_IVY.get(), (block) -> createSilkTouchOrShearsDispatchTable(block, LootItem.lootTableItem(block).when(BonusLevelTableCondition.bonusLevelFlatChance(registries.holderOrThrow(Enchantments.FORTUNE), 0.33F, 0.55F, 0.77F, 1.0F))));
-        add(RUBlocks.GLISTERING_IVY_PLANT.get(), (block) -> createSilkTouchOrShearsDispatchTable(block, LootItem.lootTableItem(block).when(BonusLevelTableCondition.bonusLevelFlatChance(registries.holderOrThrow(Enchantments.FORTUNE), 0.33F, 0.55F, 0.77F, 1.0F))));
+        addNetherVinesDropTable(RUBlocks.GLISTERING_IVY.get(), RUBlocks.GLISTERING_IVY_PLANT.get());
         add(RUBlocks.GLISTERING_NYLIUM.get(), (block) -> createSingleItemTableWithSilkTouch(block, Blocks.NETHERRACK));
         dropSelf(RUBlocks.GLISTERING_SPROUT.get());
         dropSelf(RUBlocks.GLISTERING_BLOOM.get());
@@ -432,14 +426,14 @@ public class RUBlockLootProvider extends BlockLootSubProvider {
     }
 
     @Override
-    protected LootTable.Builder createLeavesDrops(Block block, Block block1, float... chances) {
+    protected LootTable.Builder createLeavesDrops(Block leaves, Block sapling, float... chances) {
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        return this.createSilkTouchOrShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(block1)).when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), chances))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(hasShears().or(hasSilkTouch()).invert()).add(((LootPoolSingletonContainer.Builder)this.applyExplosionDecay(block, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))).when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), NORMAL_LEAVES_STICK_CHANCES))));
+        return this.createSilkTouchOrShearsDispatchTable(leaves, this.applyExplosionCondition(leaves, LootItem.lootTableItem(sapling)).when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), chances))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(hasShears().or(hasSilkTouch()).invert()).add(((LootPoolSingletonContainer.Builder)this.applyExplosionDecay(leaves, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))).when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), NORMAL_LEAVES_STICK_CHANCES))));
     }
 
     @Override
-    protected LootTable.Builder createOakLeavesDrops(Block block, Block block1, float... chances) {
+    protected LootTable.Builder createOakLeavesDrops(Block leaves, Block sapling, float... chances) {
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        return this.createLeavesDrops(block, block1, chances).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(hasShears().or(hasSilkTouch()).invert()).add(this.applyExplosionCondition(block, LootItem.lootTableItem(Items.APPLE)).when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), new float[]{0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F}))));
+        return this.createLeavesDrops(leaves, sapling, chances).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(hasShears().or(hasSilkTouch()).invert()).add(this.applyExplosionCondition(leaves, LootItem.lootTableItem(Items.APPLE)).when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), new float[]{0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F}))));
     }
 }

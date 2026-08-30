@@ -9,6 +9,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
+import net.regions_unexplored.RegionsUnexplored;
 import net.regions_unexplored.registry.data.RUBlockIds;
 import net.regions_unexplored.registry.tag.RUBlockTags;
 import net.regions_unexplored.worldgen.stateprovider.KeyHackStateProvider;

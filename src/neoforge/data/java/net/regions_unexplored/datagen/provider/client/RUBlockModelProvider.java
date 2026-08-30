@@ -1,5 +1,7 @@
 package net.regions_unexplored.datagen.provider.client;
 
+import net.minecraft.client.color.item.ItemTintSource;
+import net.minecraft.client.color.item.ItemTintSources;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.BlockModelGenerators.PlantType;
 import net.minecraft.client.data.models.ItemModelGenerators;
@@ -22,6 +24,7 @@ import net.regions_unexplored.block.properties.RUBlockProperties;
 import net.regions_unexplored.block.set.NaturalSet;
 import net.regions_unexplored.block.set.WoodSet;
 import net.regions_unexplored.block.type.leaves.HangingVinesBlock;
+import net.regions_unexplored.client.color.RUColors;
 import net.regions_unexplored.registry.RUBlocks;
 
 import java.util.Arrays;
@@ -97,7 +100,6 @@ public class RUBlockModelProvider {
 		fullDoubleCross(RUBlocks.MEADOW_SAGE, true);
 		fullPotted(RUBlocks.POTTED_MEADOW_SAGE, RUBlocks.MEADOW_SAGE, false);
 		fullDoubleCross(RUBlocks.GLISTER_SPIRE);
-		fullPotted(RUBlocks.POTTED_GLISTER_SPIRE, RUBlocks.GLISTER_SPIRE, true);
 		fullTintedCross(RUBlocks.BLADED_GRASS);
 		fullDoubleCross(RUBlocks.BLADED_TALL_GRASS, "tinted_cross", false);
 		fullDoubleCross(RUBlocks.WINDSWEPT_GRASS, "tinted_cross", false);
@@ -196,7 +198,7 @@ public class RUBlockModelProvider {
 			.texture("top", texturize(name(palmLeaves) + "_top"))
 		).createTemplate(nameId(palmLeaves), "block/", this.modelOutput);
 		this.blockModels.blockStateOutput.accept(createSimpleBlock(palmLeaves, plainVariant(palmLeavesModel)));
-		itemBlock(palmLeaves, nameId(palmLeaves));
+		itemBlock(palmLeaves, nameId(palmLeaves), RUModelProvider.LEAVES_TINT);
 		
 		
 		fullBranch(RUBlocks.ACACIA_NATURAL_SET, Blocks.ACACIA_LOG);
@@ -278,8 +280,20 @@ public class RUBlockModelProvider {
 			}
 		}
 		for (NaturalSet set : RUBlocks.WISTERIA_NATURAL_SETS) {
-			fullLeaves(set.getLeaves(), "wisteria_leaves");
-			fullHangingVines(set.getVines(), "wisteria_vines");
+			ItemTintSource tint = ItemModelUtils.constantTint(RUColors.WISTERIA_COLORS.get(set.name.substring(0, set.name.indexOf("_"))));
+			
+			Block leaves = set.getLeaves();
+			ModelBuilder model = cuboidModel(name(leaves), "leaves", "all", "wisteria_leaves");
+			blockSingle(leaves, model);
+			itemBlock(leaves, nameId(leaves), tint);
+			
+			Block vines = set.getVines();
+			ModelBuilder base = cuboidModel(name(vines), template("hanging_vines"), "cross", "wisteria_vines");
+			ModelBuilder tip = cuboidModel(name(vines) + "_tip", template("hanging_vines"), "cross", "wisteria_vines_tip");
+			blockBoolean(vines, HangingVinesBlock.TIP, tip, base, "_tip");
+			this.itemModels.itemModelOutput.accept(vines.asItem(), ItemModelUtils.tintedModel(
+				ModelTemplates.FLAT_ITEM.create(BuiltInRegistries.BLOCK.getKey(vines).withPrefix("item/"), new TextureMapping().put(TextureSlot.LAYER0, new Material(texturize(RegionsUnexplored.id("wisteria_vines"), false))), this.itemModels.modelOutput)
+			, tint));
 		}
 	}
     
@@ -334,11 +348,11 @@ public class RUBlockModelProvider {
 		fullDoubleCross(supplier, false);
 	}
 	
-	private void fullDoubleCross(Supplier<Block> supplier, boolean itemTexture) {
-		fullDoubleCross(supplier, "cross", itemTexture);
+	private void fullDoubleCross(Supplier<Block> supplier, boolean itemPrefix) {
+		fullDoubleCross(supplier, "cross", itemPrefix);
 	}
 	
-	private void fullDoubleCross(Supplier<Block> supplier, String parent, boolean itemTexture) {
+	private void fullDoubleCross(Supplier<Block> supplier, String parent, boolean itemPrefix) {
 		Block block = supplier.get();
 		
 		String name = name(block);
@@ -346,7 +360,14 @@ public class RUBlockModelProvider {
 		ModelBuilder upper = cuboidModel(name + "_upper", parent, "cross", name + "_top");
 		
 		blockDoubleTall(block, lower, upper);
-		itemGenerated(block, RegionsUnexplored.id(name(block) + (itemTexture ? "" : "_top")), itemTexture);
+		
+		if (parent.contains("tinted")) {
+			this.itemModels.itemModelOutput.accept(block.asItem(), ItemModelUtils.tintedModel(
+				ModelTemplates.FLAT_ITEM.create(BuiltInRegistries.BLOCK.getKey(block).withPrefix("item/"), new TextureMapping().put(TextureSlot.LAYER0, new Material(texturize(RegionsUnexplored.id(name(block) + (itemPrefix ? "" : "_top")), itemPrefix))), this.itemModels.modelOutput)
+			, RUModelProvider.GRASS_TINT));
+		} else {
+			itemGenerated(block, RegionsUnexplored.id(name(block) + (itemPrefix ? "" : "_top")), itemPrefix);
+		}
 	}
 	
 	private void fullGrowingPlant(Block bodyBlock, Block headBlock) {
@@ -356,14 +377,6 @@ public class RUBlockModelProvider {
 		blockSingle(bodyBlock, body);
 		blockSingle(headBlock, head);
 		itemGenerated(bodyBlock, false);
-	}
-	
-	private void fullHangingVines(Block block, String baseName) {
-		ModelBuilder base = cuboidModel(name(block), template("hanging_vines"), "cross", baseName);
-		ModelBuilder tip = cuboidModel(name(block) + "_tip", template("hanging_vines"), "cross", baseName + "_tip");
-        
-        blockBoolean(block, HangingVinesBlock.TIP, tip, base, "_tip");
-		itemGenerated(block, RegionsUnexplored.id("wisteria_vines"), false);
 	}
 	
 	private void fullCubeAllRotated(Block block) {
@@ -402,7 +415,13 @@ public class RUBlockModelProvider {
     private void fullLeaves(Block block, String texture) {
         ModelBuilder model = cuboidModel(name(block), "leaves", "all", texture);
         blockSingle(block, model);
-        itemBlock(block, nameId(block));
+		
+		var nonTintedTextures = List.of("_maple", "_magnolia", "larch", "brimwood", "blackwood", "cobalt", "alpha", "bamboo", "dead");
+		if (nonTintedTextures.stream().anyMatch(texture::contains)) {
+            itemBlock(block, nameId(block));
+		} else {
+		    itemBlock(block, nameId(block), RUModelProvider.LEAVES_TINT);
+	    }
     }
 	
 	private void fullSlab(SlabBlock slab, Block full) {
@@ -524,7 +543,9 @@ public class RUBlockModelProvider {
 	}
 	
 	private void fullTintedCross(Supplier<Block> supplier) {
-		this.blockModels.createCrossBlockWithDefaultItem(supplier.get(), PlantType.TINTED);
+		Block block = supplier.get();
+		this.blockModels.registerSimpleTintedItemModel(block, PlantType.TINTED.createItemModel(this.blockModels, block), RUModelProvider.GRASS_TINT);
+		this.blockModels.createCrossBlock(block, PlantType.TINTED);
 	}
 	
 	private void fullPotted(Supplier<Block> potted, Supplier<Block> plant, boolean pottedTexture) {
@@ -532,15 +553,15 @@ public class RUBlockModelProvider {
 		blockSingle(potted.get(), model);
 	}
 	
-	private void fullCrossAndPotted(Supplier<Block> potted, Supplier<Block> plant) {
-		this.blockModels.createPlantWithDefaultItem(plant.get(), potted.get(), PlantType.NOT_TINTED);
+	private void fullCrossAndPotted(Supplier<Block> potted, Supplier<Block> standAlone) {
+		this.fullCrossAndPotted(potted, standAlone, false);
 	}
 	
 	private void fullCrossAndPotted(Supplier<Block> potted, Supplier<Block> standAlone, boolean pottedTexture) {
 		this.blockModels.registerSimpleItemModel(standAlone.get().asItem(), PlantType.NOT_TINTED.createItemModel(this.blockModels, standAlone.get()));
 		
 		this.blockModels.createCrossBlock(standAlone.get(), PlantType.NOT_TINTED);
-		TextureMapping textures = new TextureMapping().put(TextureSlot.PLANT, new Material(nameId(standAlone.get()).withPrefix(pottedTexture ? "potted_" : "")));
+		TextureMapping textures = new TextureMapping().put(TextureSlot.PLANT, new Material(nameId(standAlone.get()).withPrefix("block/" + (pottedTexture ? "potted_" : ""))));
 		MultiVariant model = plainVariant(PlantType.NOT_TINTED.getCrossPot().create(potted.get(), textures, this.modelOutput));
 		this.blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(potted.get(), model));
 	}
@@ -601,6 +622,10 @@ public class RUBlockModelProvider {
 	
 	private void itemBlock(Block block, Identifier model) {
 		this.blockModels.registerSimpleItemModel(block, model.withPrefix("block/"));
+	}
+	
+	private void itemBlock(Block block, Identifier model, ItemTintSource tint) {
+		this.blockModels.registerSimpleTintedItemModel(block, model.withPrefix("block/"), tint);
 	}
 	
 	private void itemGenerated(Block block, boolean itemPrefix) {

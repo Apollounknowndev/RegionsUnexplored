@@ -2,10 +2,15 @@ package net.regions_unexplored.entity.ashen;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 
 public class Ashen extends Zombie {
 	public Ashen(EntityType<? extends Zombie> type, Level level) {
@@ -45,5 +50,20 @@ public class Ashen extends Zombie {
 	@Override
 	public boolean fireImmune() {
 		return true;
+	}
+	
+	@Override
+	protected void populateDefaultEquipmentSlots(final RandomSource random, final DifficultyInstance difficulty) {
+		super.populateDefaultEquipmentSlots(random, difficulty);
+		this.setBaby(false);
+	}
+	
+	@Override
+	public SpawnGroupData finalizeSpawn(
+		ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason spawnReason, SpawnGroupData groupData
+	) {
+		groupData = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
+		this.setBaby(false);
+		return groupData;
 	}
 }

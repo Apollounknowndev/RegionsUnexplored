@@ -108,7 +108,7 @@
         "volume": 0.9
       }
     ],
-    "subtitle": "subtitles.block.trapdoor.toggle"
+    "subtitle": "subtitles.block.trapdoor.close"
   },
   "block.baobab.trapdoor_open": {
     "sounds": [
@@ -133,7 +133,7 @@
         "volume": 0.9
       }
     ],
-    "subtitle": "subtitles.block.trapdoor.toggle"
+    "subtitle": "subtitles.block.trapdoor.open"
   },
   "block.baobab.place": {
     "sounds": [
@@ -289,7 +289,7 @@
         "volume": 0.9
       }
     ],
-    "subtitle": "subtitles.block.trapdoor.toggle"
+    "subtitle": "subtitles.block.trapdoor.close"
   },
   "block.redwood.trapdoor_open": {
     "sounds": [
@@ -314,7 +314,7 @@
         "volume": 0.9
       }
     ],
-    "subtitle": "subtitles.block.trapdoor.toggle"
+    "subtitle": "subtitles.block.trapdoor.open"
   },
   "block.redwood.place": {
     "sounds": [

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/flower_pot_cross",
   "textures": {
-    "plant": "regions_unexplored:potted_daisy"
+    "plant": "regions_unexplored:block/potted_daisy"
   }
 }

@@ -1,6 +1,12 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:item/maple_leaf_litter"
+    "model": "regions_unexplored:item/maple_leaf_litter",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -12012264
+      }
+    ]
   }
 }

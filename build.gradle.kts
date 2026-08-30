@@ -18,7 +18,7 @@ repositories {
 }
 
 group = "net.regions_unexplored"
-version = "0.6.1"
+version = "0.7.0+beta2"
 
 // Required dependencies
 val lithostitchedVersion = "1.7.13"

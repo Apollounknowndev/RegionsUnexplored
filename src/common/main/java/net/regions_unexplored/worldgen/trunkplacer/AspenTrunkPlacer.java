@@ -12,6 +12,7 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer.FoliageAttachment;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 
 import java.util.ArrayList;
@@ -45,6 +46,8 @@ public class AspenTrunkPlacer extends RUTrunkPlacer {
         final BlockPos origin,
         final TreeConfiguration config
     ) {
+        placeBelowTrunkBlock(level, trunkSetter, random, origin.below(), config);
+        
         List<FoliageAttachment> attachments = new ArrayList<>();
         BlockPos.MutableBlockPos pos = origin.mutable();
         for (int y = 0; y < treeHeight; ++y) {

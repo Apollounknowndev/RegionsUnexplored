@@ -49,7 +49,7 @@ public class RUDatagen {
 
 
         generator.addProvider(true, new RURecipeProvider.Runner(output, registries));
-        //generator.addProvider(true, RULootTableProvider.create(output, registries));
+        generator.addProvider(true, new RULootTableProvider(output, registries));
         generator.addProvider(true, new RULanguageProvider(output));
         
         generator.addProvider(true, new RUBlockTagProvider(output, datapackRegistries.getRegistryProvider()));

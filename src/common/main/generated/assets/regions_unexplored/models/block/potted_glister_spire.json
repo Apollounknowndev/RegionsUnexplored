@@ -1,6 +1,0 @@
-{
-  "parent": "regions_unexplored:block/template/flower_pot",
-  "textures": {
-    "plant": "regions_unexplored:block/potted_glister_spire"
-  }
-}

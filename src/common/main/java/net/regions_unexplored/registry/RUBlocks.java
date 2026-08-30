@@ -484,7 +484,6 @@ public interface RUBlocks {
     Supplier<Block> POTTED_CORPSE_FLOWER = RUBlockUtils.registerNoItem("potted_corpse_flower", p -> new FlowerPotBlock(CORPSE_FLOWER.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_COBALT_EARLIGHT = RUBlockUtils.registerNoItem("potted_cobalt_earlight", p -> new FlowerPotBlock(COBALT_EARLIGHT.get(), p.lightLevel(s -> 8)), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_MYCOTOXIC_DAISY = RUBlockUtils.registerNoItem("potted_mycotoxic_daisy", p -> new FlowerPotBlock(MYCOTOXIC_DAISY.get(), p.lightLevel(s -> 8)), Blocks.POTTED_ALLIUM);
-    Supplier<Block> POTTED_GLISTER_SPIRE = RUBlockUtils.registerNoItem("potted_glister_spire", p -> new FlowerPotBlock(GLISTER_SPIRE.get(), p), Blocks.POTTED_ALLIUM);
     Supplier<Block> POTTED_BLUE_BIOSHROOM = RUBlockUtils.registerNoItem("potted_blue_bioshroom", p -> new FlowerPotBlock(BLUE_BIOSHROOM.get(), p.lightLevel(s -> 10)), Blocks.POTTED_BROWN_MUSHROOM);
     Supplier<Block> POTTED_GREEN_BIOSHROOM = RUBlockUtils.registerNoItem("potted_green_bioshroom", p -> new FlowerPotBlock(GREEN_BIOSHROOM.get(), p.lightLevel(s -> 10)), Blocks.POTTED_BROWN_MUSHROOM);
     Supplier<Block> POTTED_PINK_BIOSHROOM = RUBlockUtils.registerNoItem("potted_pink_bioshroom", p -> new FlowerPotBlock(PINK_BIOSHROOM.get(), p.lightLevel(s -> 10)), Blocks.POTTED_BROWN_MUSHROOM);
@@ -516,6 +515,7 @@ public interface RUBlocks {
         consumer.accept(id("cactus_flower"), id("saguaro_cactus_flower"));
         consumer.accept(id("potted_cactus_flower"), id("potted_saguaro_cactus_flower"));
         
+        consumer.accept(id("potted_glister_spire"), id("potted_glistering_bloom"));
         consumer.accept(id("potted_tall_cobalt_earlight"), id("potted_cobalt_earlight"));
         consumer.accept(id("potted_tall_blue_bioshroom"), id("potted_blue_bioshroom"));
         consumer.accept(id("potted_tall_green_bioshroom"), id("potted_green_bioshroom"));

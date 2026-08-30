@@ -265,7 +265,14 @@ public class RuVegetationPlacements {
         register(context, RuVegetationPlacements.PATCH_CAVE_BIOSHROOMS, placementCave(30, Direction.DOWN).notInStructure());
         register(context, RuVegetationPlacements.PATCH_PINK_BIOSHROOM, placement(2, Types.MOTION_BLOCKING));
         //OTHER
-        register(context, RuVegetationPlacements.PATCH_CACTUS_DENSE, patchCactus, placement(0.33f, Types.MOTION_BLOCKING).add(CountPlacement.of(10)).add(RandomOffsetPlacement.ofTriangle(7, 3)));
+        register(context, RuVegetationPlacements.PATCH_CACTUS_DENSE, patchCactus, placement(0.33f, Types.MOTION_BLOCKING)
+            .add(CountPlacement.of(10))
+            .add(RandomOffsetPlacement.ofTriangle(7, 3))
+            .add(BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                BlockPredicate.matchesTag(BlockTags.AIR),
+                BlockPredicate.wouldSurvive(Blocks.CACTUS.defaultBlockState(), Vec3i.ZERO)
+            )))
+        );
         register(context, RuVegetationPlacements.SINGLE_BARREL_CACTUS, placement().heightmap(Types.WORLD_SURFACE_WG).filter(BlockPredicate.ONLY_IN_AIR_PREDICATE));
         register(context, RuVegetationPlacements.PATCH_FLOWERING_LILY_PAD, placement(4, Types.WORLD_SURFACE_WG));
         register(context, RuVegetationPlacements.SPECIAL_GIANT_LILY, placement(3, Types.WORLD_SURFACE_WG));

@@ -20,12 +20,12 @@
 			"to": [4.25, 2.99, 0.4],
 			"rotation": {"angle": -45, "axis": "y", "origin": [0, 0, 2]},
 			"faces": {
-				"north": {"uv": [0, 0, 0, 3], "texture": "#stem", "tintindex": 1},
-				"east": {"uv": [0, 4, 1, 7], "texture": "#stem", "tintindex": 1},
-				"south": {"uv": [0, 0, 0, 3], "texture": "#stem", "tintindex": 1},
-				"west": {"uv": [0, 4, 1, 7], "texture": "#stem", "tintindex": 1},
-				"up": {"uv": [0, 0, 0, 1], "texture": "#stem", "tintindex": 1},
-				"down": {"uv": [0, 0, 0, 1], "texture": "#stem", "tintindex": 1}
+				"north": {"uv": [0, 0, 0, 3], "texture": "#stem", "tintindex": 0},
+				"east": {"uv": [0, 4, 1, 7], "texture": "#stem", "tintindex": 0},
+				"south": {"uv": [0, 0, 0, 3], "texture": "#stem", "tintindex": 0},
+				"west": {"uv": [0, 4, 1, 7], "texture": "#stem", "tintindex": 0},
+				"up": {"uv": [0, 0, 0, 1], "texture": "#stem", "tintindex": 0},
+				"down": {"uv": [0, 0, 0, 1], "texture": "#stem", "tintindex": 0}
 			}
 		},
 		{
@@ -33,12 +33,12 @@
 			"to": [4.75, 2.99, -0.1],
 			"rotation": {"angle": -45, "axis": "y", "origin": [0, 0, 2]},
 			"faces": {
-				"north": {"uv": [0, 4, 1, 7], "texture": "#stem", "tintindex": 1},
-				"east": {"uv": [0, 0, 0, 3], "texture": "#stem", "tintindex": 1},
-				"south": {"uv": [0, 4, 1, 7], "texture": "#stem", "tintindex": 1},
-				"west": {"uv": [0, 0, 0, 3], "texture": "#stem", "tintindex": 1},
-				"up": {"uv": [0, 0, 0, 1], "rotation": 270, "texture": "#stem", "tintindex": 1},
-				"down": {"uv": [0, 0, 0, 1], "rotation": 90, "texture": "#stem", "tintindex": 1}
+				"north": {"uv": [0, 4, 1, 7], "texture": "#stem", "tintindex": 0},
+				"east": {"uv": [0, 0, 0, 3], "texture": "#stem", "tintindex": 0},
+				"south": {"uv": [0, 4, 1, 7], "texture": "#stem", "tintindex": 0},
+				"west": {"uv": [0, 0, 0, 3], "texture": "#stem", "tintindex": 0},
+				"up": {"uv": [0, 0, 0, 1], "rotation": 270, "texture": "#stem", "tintindex": 0},
+				"down": {"uv": [0, 0, 0, 1], "rotation": 90, "texture": "#stem", "tintindex": 0}
 			}
 		}
 	]

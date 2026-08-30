@@ -112,13 +112,13 @@ public class WoodSet {
         this.wallSign = RUBlockUtils.registerNoItem(name + "_wall_sign", p -> RUBlockUtils.wallSign(p, sound, this.sign.get(), woodType, fireproof));
         this.hangingSign = RUBlockUtils.registerNoItem(name + "_hanging_sign", p -> RUBlockUtils.hangingSign(p, colour, sound, woodType, fireproof));
         this.wallHangingSign = RUBlockUtils.registerNoItem(name + "_wall_hanging_sign", p -> RUBlockUtils.wallHangingSign(p, colour, sound, this.hangingSign.get(), woodType, fireproof));
-        this.itemSign = RUItemUtils.register(name + "_sign", p -> new SignItem(this.sign.get(), this.wallSign.get(), p.stacksTo(16)));
-        this.itemHangingSign = RUItemUtils.register(name + "_hanging_sign", p -> new HangingSignItem(this.hangingSign.get(), this.wallHangingSign.get(), p.stacksTo(16)));
+        this.itemSign = RUItemUtils.register(name + "_sign", p -> new SignItem(this.sign.get(), this.wallSign.get(), p.useBlockDescriptionPrefix().stacksTo(16)));
+        this.itemHangingSign = RUItemUtils.register(name + "_hanging_sign", p -> new HangingSignItem(this.hangingSign.get(), this.wallHangingSign.get(), p.useBlockDescriptionPrefix().stacksTo(16)));
     }
 
     protected void addBoats(String name) {
-        this.itemBoat = RUItemUtils.register(name + "_boat", p -> new RUBoatItem<>(RUEntityTypes.BOATS.get(this), p.stacksTo(1)));
-        this.itemChestBoat = RUItemUtils.register(name + "_chest_boat", p -> new RUBoatItem<>(RUEntityTypes.BOATS.get(this), p.stacksTo(1)));
+        this.itemBoat = RUItemUtils.register(name + "_boat", p -> new RUBoatItem<>(() -> RUEntityTypes.BOATS.get(this), p.stacksTo(1)));
+        this.itemChestBoat = RUItemUtils.register(name + "_chest_boat", p -> new RUBoatItem<>(() -> RUEntityTypes.BOATS.get(this), p.stacksTo(1)));
     }
 
     public Block getLog() {

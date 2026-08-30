@@ -1,7 +1,7 @@
 {
   "parent": "block/cube",
   "textures": {
-    "down": "minecraft:block/deepslate",
+    "down": "minecraft:block/deepslate_top",
     "up": "regions_unexplored:item/deepslate_prismoss_top",
     "north": "regions_unexplored:item/deepslate_prismoss_side",
     "east": "regions_unexplored:item/deepslate_prismoss_side",

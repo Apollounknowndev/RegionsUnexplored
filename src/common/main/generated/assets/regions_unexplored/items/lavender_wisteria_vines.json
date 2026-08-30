@@ -1,6 +1,12 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "regions_unexplored:item/lavender_wisteria_vines"
+    "model": "regions_unexplored:item/lavender_wisteria_vines",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -3959569
+      }
+    ]
   }
 }

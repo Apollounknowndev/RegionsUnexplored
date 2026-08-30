@@ -37,17 +37,6 @@ public abstract class RUTrunkPlacer extends TrunkPlacer {
         return this.height.sample(random);
     }
 
-    public static void placeDirtBelow(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> trunkSetter, BlockPos pos) {
-        BlockPos below = pos.below();
-        if (level.isStateAtPosition(below, state -> state.is(RUBlockTags.REPLACEABLE_BY_PEAT_DIRT))) {
-            trunkSetter.accept(below, RUBlocks.PEAT_DIRT.get().defaultBlockState());
-        } else if (level.isStateAtPosition(below, state -> state.is(RUBlockTags.REPLACEABLE_BY_SILT_DIRT))) {
-            trunkSetter.accept(below, RUBlocks.SILT_DIRT.get().defaultBlockState());
-        } else {
-            trunkSetter.accept(below, Blocks.DIRT.defaultBlockState());
-        }
-    }
-
     public static FoliageAttachment attachment(BlockPos pos) {
         return new FoliageAttachment(pos, 0, false);
     }
