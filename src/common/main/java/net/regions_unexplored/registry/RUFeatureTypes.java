@@ -27,7 +27,6 @@ public interface RUFeatureTypes {
     Supplier<Feature<NoneFeatureConfiguration>> SMALL_YELLOW_BIOSHROOM = register("small_yellow_bioshroom", new YellowBioshroomShrubFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> ASHEN_TREE = register("ashen_tree", new AshenTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> ASPEN_TREE = register("aspen_tree", new AspenTreeFeature(RUTreeConfiguration.CODEC));
-    Supplier<Feature<RUTreeConfiguration>> BAMBOO_TREE = register("bamboo_tree", new BambooTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> MEGA_BAOBAB_TREE = register("mega_baobab_tree", new MegaBaobabTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> ULTRA_BAOBAB_TREE = register("ultra_baobab_tree", new UltraBaobabTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> BLACKWOOD_TREE = register("blackwood_tree", new BlackwoodTreeFeature(RUTreeConfiguration.CODEC));
@@ -41,18 +40,14 @@ public interface RUFeatureTypes {
     Supplier<Feature<NoneFeatureConfiguration>> LARGE_JOSHUA_TREE = register("large_joshua_tree", new LargeJoshuaTreeFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> KAPOK_TREE = register("kapok_tree", new KapokTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> MEDIUM_JOSHUA_TREE = register("medium_joshua_tree", new MediumJoshuaTreeFeature(NoneFeatureConfiguration.CODEC));
-    Supplier<Feature<RUTreeConfiguration>> PALM_TREE = register("palm_tree", new PalmTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> LUSH_PINE_TREE = register("lush_pine_tree", new LushPineTreeFeature(RUTreeConfiguration.CODEC));
-    Supplier<Feature<RUTreeConfiguration>> SMALL_JOSHUA_TREE = register("small_joshua_tree", new SmallJoshuaTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> SMALL_OAK_TREE = register("small_oak_tree", new SmallOakTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> STRIPPED_PINE_TREE = register("stripped_pine_tree", new StrippedPineTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> SAGUARO_CACTUS = register("saguaro_cactus", new SaguaroCactusFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> SAKURA_TREE = register("sakura_tree", new SakuraTreeFeature(RUTreeConfiguration.CODEC));
     Supplier<Feature<RUTreeConfiguration>> LARGE_SOCOTRA_TREE = register("large_socotra_tree", new LargeSocotraTreeFeature(RUTreeConfiguration.CODEC));
-    Supplier<Feature<NoneFeatureConfiguration>> SMALL_SOCOTRA_TREE = register("small_socotra_tree", new SmallSocotraTreeFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> BRIM_WILLOW = register("brim_willow", new BrimWillowFeature(NoneFeatureConfiguration.CODEC));
     Supplier<Feature<NoneFeatureConfiguration>> TALL_BRIM_WILLOW = register("tall_brim_willow", new TallBrimWillowFeature(NoneFeatureConfiguration.CODEC));
-    Supplier<Feature<RUTreeConfiguration>> TREE_SHRUB = register("tree_shrub", new TreeShrubFeature(RUTreeConfiguration.CODEC));
     // Not trees
     Supplier<Feature<PointedRedstoneConfiguration>> POINTED_REDSTONE = register("pointed_redstone", new PointedRedstoneFeature(PointedRedstoneConfiguration.CODEC));
     Supplier<Feature<PointedRedstoneClusterConfiguration>> POINTED_REDSTONE_CLUSTER = register("pointed_redstone_cluster", new PointedRedstoneClusterFeature(PointedRedstoneClusterConfiguration.CODEC));

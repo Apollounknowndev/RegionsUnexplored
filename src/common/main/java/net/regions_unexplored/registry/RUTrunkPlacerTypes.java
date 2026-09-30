@@ -10,9 +10,13 @@ import java.util.function.Supplier;
 
 public interface RUTrunkPlacerTypes {
     Supplier<TrunkPlacerType<AspenTrunkPlacer>> ASPEN = register("aspen", AspenTrunkPlacer.TYPE);
+    Supplier<TrunkPlacerType<BambooTrunkPlacer>> BAMBOO = register("bamboo", BambooTrunkPlacer.TYPE);
     Supplier<TrunkPlacerType<MagnoliaTrunkPlacer>> MAGNOLIA = register("magnolia", MagnoliaTrunkPlacer.TYPE);
+    Supplier<TrunkPlacerType<PalmTrunkPlacer>> PALM = register("palm", PalmTrunkPlacer.TYPE);
     Supplier<TrunkPlacerType<RedwoodTrunkPlacer>> REDWOOD = register("redwood", RedwoodTrunkPlacer.TYPE);
-    
+    Supplier<TrunkPlacerType<ShrubTrunkPlacer>> SHRUB = register("shrub", ShrubTrunkPlacer.TYPE);
+    Supplier<TrunkPlacerType<SmallSocotraTrunkPlacer>> SMALL_SOCOTRA = register("small_socotra", SmallSocotraTrunkPlacer.TYPE);
+
     static <T extends TrunkPlacer> Supplier<TrunkPlacerType<T>> register(String name, TrunkPlacerType<T> type) {
         Registrar.register(BuiltInRegistries.TRUNK_PLACER_TYPE, name, () -> type);
         return () -> type;

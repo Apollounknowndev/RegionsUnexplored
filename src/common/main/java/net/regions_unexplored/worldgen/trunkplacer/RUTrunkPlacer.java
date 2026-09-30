@@ -47,6 +47,15 @@ public abstract class RUTrunkPlacer extends TrunkPlacer {
         }
     }
 
+    protected static void convertGrassBelow(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> trunkSetter, BlockPos pos) {
+        if (level.isStateAtPosition(pos.below(), state -> state.is(Blocks.GRASS_BLOCK)
+            || state.is(RUBlocks.ALPHA_GRASS_BLOCK.get())
+            || state.is(RUBlocks.PEAT_GRASS_BLOCK.get())
+            || state.is(RUBlocks.SILT_GRASS_BLOCK.get()))) {
+            placeDirtBelow(level, trunkSetter, pos);
+        }
+    }
+
     public static FoliageAttachment attachment(BlockPos pos) {
         return new FoliageAttachment(pos, 0, false);
     }

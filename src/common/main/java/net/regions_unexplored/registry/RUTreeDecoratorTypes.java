@@ -14,6 +14,7 @@ public interface RUTreeDecoratorTypes {
     Supplier<TreeDecoratorType<HangingVinesDecorator>> HANGING_VINES = register("hanging_vines", HangingVinesDecorator.TYPE);
     Supplier<TreeDecoratorType<PlaceOnGroundDecorator>> PLACE_ON_GROUND = register("place_on_ground", PlaceOnGroundDecorator.TYPE);
     Supplier<TreeDecoratorType<RandomBranchDecorator>> RANDOM_BRANCH = register("random_branch", RandomBranchDecorator.TYPE);
+    Supplier<TreeDecoratorType<TopBranchDecorator>> TOP_BRANCH = register("top_branch", TopBranchDecorator.TYPE);
     Supplier<TreeDecoratorType<WillowTrunkDecorator>> WILLOW = register("willow", WillowTrunkDecorator.TYPE);
 
     static <T extends TreeDecorator> Supplier<TreeDecoratorType<T>> register(String name, TreeDecoratorType<T> type) {
