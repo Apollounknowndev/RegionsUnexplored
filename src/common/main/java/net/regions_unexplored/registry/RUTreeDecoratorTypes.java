@@ -12,6 +12,7 @@ public interface RUTreeDecoratorTypes {
     Supplier<TreeDecoratorType<AttachedToLogsDecorator>> ATTACHED_TO_LOGS = register("attached_to_logs", AttachedToLogsDecorator.TYPE);
     Supplier<TreeDecoratorType<GroupBranchDecorator>> GROUP_BRANCH = register("group_branch", GroupBranchDecorator.TYPE);
     Supplier<TreeDecoratorType<HangingVinesDecorator>> HANGING_VINES = register("hanging_vines", HangingVinesDecorator.TYPE);
+    Supplier<TreeDecoratorType<JoshuaBeardDecorator>> JOSHUA_BEARD = register("joshua_beard", JoshuaBeardDecorator.TYPE);
     Supplier<TreeDecoratorType<PlaceOnGroundDecorator>> PLACE_ON_GROUND = register("place_on_ground", PlaceOnGroundDecorator.TYPE);
     Supplier<TreeDecoratorType<RandomBranchDecorator>> RANDOM_BRANCH = register("random_branch", RandomBranchDecorator.TYPE);
     Supplier<TreeDecoratorType<TopBranchDecorator>> TOP_BRANCH = register("top_branch", TopBranchDecorator.TYPE);

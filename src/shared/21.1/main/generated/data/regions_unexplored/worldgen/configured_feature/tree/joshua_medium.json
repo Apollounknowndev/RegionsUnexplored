@@ -1,4 +1,64 @@
 {
-  "type": "regions_unexplored:medium_joshua_tree",
-  "config": {}
+  "type": "minecraft:tree",
+  "config": {
+    "decorators": [
+      {
+        "type": "regions_unexplored:joshua_beard",
+        "branch_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "regions_unexplored:joshua_beard",
+            "Properties": {
+              "facing": "north"
+            }
+          }
+        }
+      }
+    ],
+    "dirt_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
+    },
+    "foliage_placer": {
+      "type": "regions_unexplored:joshua"
+    },
+    "foliage_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "regions_unexplored:joshua_leaves",
+        "Properties": {
+          "half": "lower",
+          "natural": "false",
+          "waterlogged": "false"
+        }
+      }
+    },
+    "force_dirt": false,
+    "ignore_vines": true,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 0,
+      "upper_size": 0
+    },
+    "trunk_placer": {
+      "type": "regions_unexplored:medium_joshua",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 7,
+        "max_inclusive": 9
+      }
+    },
+    "trunk_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "regions_unexplored:joshua_log",
+        "Properties": {
+          "axis": "y"
+        }
+      }
+    }
+  }
 }

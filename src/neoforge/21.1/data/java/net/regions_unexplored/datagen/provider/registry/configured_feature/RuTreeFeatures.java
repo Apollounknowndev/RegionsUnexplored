@@ -240,7 +240,13 @@ public class RuTreeFeatures {
            new JoshuaFoliagePlacer(),
            new TwoLayersFeatureSize(1, 0, 0)
        ).ignoreVines().decorators(List.of(new TopBranchDecorator(simple(RUBlocks.JOSHUA_NATURAL_SET.getBranch().defaultBlockState()), false))).build());
-       var joshuaMedium = register(context, TREE_JOSHUA_MEDIUM, RUFeatureTypes.MEDIUM_JOSHUA_TREE.get(), FeatureConfiguration.NONE);
+       var joshuaMedium = register(context, TREE_JOSHUA_MEDIUM, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+           log(RUBlocks.JOSHUA_WOOD_SET),
+           new MediumJoshuaTrunkPlacer(UniformInt.of(7, 9)),
+           leaves(RUBlocks.JOSHUA_NATURAL_SET),
+           new JoshuaFoliagePlacer(),
+           new TwoLayersFeatureSize(1, 0, 0)
+       ).ignoreVines().decorators(List.of(new JoshuaBeardDecorator(simple(RUBlocks.JOSHUA_NATURAL_SET.getBranch())))).build());
        var joshuaLarge = register(context, TREE_JOSHUA_LARGE, RUFeatureTypes.LARGE_JOSHUA_TREE.get(), FeatureConfiguration.NONE);
 
        registerPlaced(context, TREE_GROUP_JOSHUA_DESERT, LithostitchedFeatures.WEIGHTED_SELECTOR, LithostitchedFeatures.weightedSelector(WeightedList.<Holder<PlacedFeature>>builder()
