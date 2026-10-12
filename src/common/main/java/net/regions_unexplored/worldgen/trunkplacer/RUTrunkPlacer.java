@@ -56,6 +56,17 @@ public abstract class RUTrunkPlacer extends TrunkPlacer {
         }
     }
 
+    protected static void convertNyliumBelow(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> trunkSetter, BlockPos pos) {
+        BlockPos below = pos.below();
+        if (level.isStateAtPosition(below, state -> state.is(RUBlocks.COBALT_NYLIUM.get()))) {
+            trunkSetter.accept(below, Blocks.BLACKSTONE.defaultBlockState());
+        } else if (level.isStateAtPosition(below, state -> state.is(RUBlocks.GLISTERING_NYLIUM.get())
+            || state.is(RUBlocks.MYCOTOXIC_NYLIUM.get())
+            || state.is(RUBlocks.BRIMSPROUT_NYLIUM.get()))) {
+            trunkSetter.accept(below, Blocks.NETHERRACK.defaultBlockState());
+        }
+    }
+
     public static FoliageAttachment attachment(BlockPos pos) {
         return new FoliageAttachment(pos, 0, false);
     }

@@ -34,6 +34,7 @@ public class ShrubTrunkPlacer extends RUTrunkPlacer {
             return List.of();
         }
         convertGrassBelow(level, trunkSetter, origin);
+        convertNyliumBelow(level, trunkSetter, origin);
         for (int y = 0; y < treeHeight; y++) {
             this.placeLog(level, trunkSetter, random, origin.above(y), config);
         }

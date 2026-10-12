@@ -1,14 +1,15 @@
 {
-  "type": "regions_unexplored:small_oak_tree",
+  "type": "minecraft:tree",
   "config": {
-    "branch_provider": {
+    "decorators": [],
+    "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "regions_unexplored:oak_branch",
-        "Properties": {
-          "facing": "north"
-        }
+        "Name": "minecraft:dirt"
       }
+    },
+    "foliage_placer": {
+      "type": "regions_unexplored:small_oak"
     },
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
@@ -21,8 +22,31 @@
         }
       }
     },
-    "minimum_size": 5,
-    "size_variation": 4,
+    "force_dirt": false,
+    "ignore_vines": true,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 0,
+      "upper_size": 0
+    },
+    "trunk_placer": {
+      "type": "regions_unexplored:small_oak",
+      "branch_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "regions_unexplored:oak_branch",
+          "Properties": {
+            "facing": "north"
+          }
+        }
+      },
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 9,
+        "min_inclusive": 6
+      }
+    },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
