@@ -47,6 +47,26 @@ public abstract class RUTrunkPlacer extends TrunkPlacer {
         }
     }
 
+    protected static void convertGrassBelow(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> trunkSetter, BlockPos pos) {
+        if (level.isStateAtPosition(pos.below(), state -> state.is(Blocks.GRASS_BLOCK)
+            || state.is(RUBlocks.ALPHA_GRASS_BLOCK.get())
+            || state.is(RUBlocks.PEAT_GRASS_BLOCK.get())
+            || state.is(RUBlocks.SILT_GRASS_BLOCK.get()))) {
+            placeDirtBelow(level, trunkSetter, pos);
+        }
+    }
+
+    protected static void convertNyliumBelow(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> trunkSetter, BlockPos pos) {
+        BlockPos below = pos.below();
+        if (level.isStateAtPosition(below, state -> state.is(RUBlocks.COBALT_NYLIUM.get()))) {
+            trunkSetter.accept(below, Blocks.BLACKSTONE.defaultBlockState());
+        } else if (level.isStateAtPosition(below, state -> state.is(RUBlocks.GLISTERING_NYLIUM.get())
+            || state.is(RUBlocks.MYCOTOXIC_NYLIUM.get())
+            || state.is(RUBlocks.BRIMSPROUT_NYLIUM.get()))) {
+            trunkSetter.accept(below, Blocks.NETHERRACK.defaultBlockState());
+        }
+    }
+
     public static FoliageAttachment attachment(BlockPos pos) {
         return new FoliageAttachment(pos, 0, false);
     }

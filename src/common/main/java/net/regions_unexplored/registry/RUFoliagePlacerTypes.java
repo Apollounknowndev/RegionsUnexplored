@@ -10,13 +10,23 @@ import java.util.function.Supplier;
 
 public interface RUFoliagePlacerTypes {
     Supplier<FoliagePlacerType<AspenFoliagePlacer>> ASPEN = register("aspen", AspenFoliagePlacer.TYPE);
+    Supplier<FoliagePlacerType<BambooFoliagePlacer>> BAMBOO = register("bamboo", BambooFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<BioshroomFoliagePlacer>> BIOSHROOM = register("bioshroom", BioshroomFoliagePlacer.TYPE);
+    Supplier<FoliagePlacerType<BioshroomShrubFoliagePlacer>> BIOSHROOM_SHRUB = register("bioshroom_shrub", BioshroomShrubFoliagePlacer.TYPE);
+    Supplier<FoliagePlacerType<CobaltShrubFoliagePlacer>> COBALT_SHRUB = register("cobalt_shrub", CobaltShrubFoliagePlacer.TYPE);
+    Supplier<FoliagePlacerType<DeadFoliagePlacer>> DEAD = register("dead", DeadFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<FancyPineFoliagePlacer>> FANCY_PINE = register("fancy_pine", FancyPineFoliagePlacer.TYPE);
+    Supplier<FoliagePlacerType<JoshuaFoliagePlacer>> JOSHUA = register("joshua", JoshuaFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<MagnoliaFoliagePlacer>> MAGNOLIA = register("magnolia", MagnoliaFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<MapleFoliagePlacer>> MAPLE = register("maple", MapleFoliagePlacer.TYPE);
+    Supplier<FoliagePlacerType<PalmFoliagePlacer>> PALM = register("palm", PalmFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<RedwoodFoliagePlacer>> REDWOOD = register("redwood", RedwoodFoliagePlacer.TYPE);
+    Supplier<FoliagePlacerType<SaguaroFoliagePlacer>> SAGUARO = register("saguaro", SaguaroFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<SakuraFoliagePlacer>> SAKURA = register("sakura", SakuraFoliagePlacer.TYPE);
+    Supplier<FoliagePlacerType<ShrubFoliagePlacer>> SHRUB = register("shrub", ShrubFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<SkinnyPineFoliagePlacer>> SKINNY_PINE = register("skinny_pine", SkinnyPineFoliagePlacer.TYPE);
+    Supplier<FoliagePlacerType<SmallOakFoliagePlacer>> SMALL_OAK = register("small_oak", SmallOakFoliagePlacer.TYPE);
+    Supplier<FoliagePlacerType<SmallSocotraFoliagePlacer>> SMALL_SOCOTRA = register("small_socotra", SmallSocotraFoliagePlacer.TYPE);
     Supplier<FoliagePlacerType<WillowFoliagePlacer>> WILLOW = register("willow", WillowFoliagePlacer.TYPE);
 
     static <T extends FoliagePlacer> Supplier<FoliagePlacerType<T>> register(String name, FoliagePlacerType<T> type) {

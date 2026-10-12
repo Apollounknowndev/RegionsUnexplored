@@ -1,14 +1,29 @@
 {
-  "type": "regions_unexplored:small_joshua_tree",
+  "type": "minecraft:tree",
   "config": {
-    "branch_provider": {
+    "decorators": [
+      {
+        "type": "regions_unexplored:top_branch",
+        "branch_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "regions_unexplored:joshua_beard",
+            "Properties": {
+              "facing": "north"
+            }
+          }
+        },
+        "use_branch_mode": false
+      }
+    ],
+    "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "regions_unexplored:joshua_beard",
-        "Properties": {
-          "facing": "north"
-        }
+        "Name": "minecraft:dirt"
       }
+    },
+    "foliage_placer": {
+      "type": "regions_unexplored:joshua"
     },
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
@@ -21,8 +36,18 @@
         }
       }
     },
-    "minimum_size": 1,
-    "size_variation": 1,
+    "force_dirt": false,
+    "ignore_vines": true,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 0,
+      "upper_size": 0
+    },
+    "trunk_placer": {
+      "type": "regions_unexplored:shrub",
+      "height": 2
+    },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {

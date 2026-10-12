@@ -1,14 +1,23 @@
 {
-  "type": "regions_unexplored:dead_tree",
+  "type": "minecraft:tree",
   "config": {
-    "branch_provider": {
+    "decorators": [
+      {
+        "type": "regions_unexplored:random_branch",
+        "branch_block": "regions_unexplored:dead_branch",
+        "log_block": "regions_unexplored:dead_log",
+        "probability": 0.33,
+        "required_empty_blocks": 2
+      }
+    ],
+    "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "regions_unexplored:dead_branch",
-        "Properties": {
-          "facing": "north"
-        }
+        "Name": "minecraft:dirt"
       }
+    },
+    "foliage_placer": {
+      "type": "regions_unexplored:dead"
     },
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
@@ -21,8 +30,22 @@
         }
       }
     },
-    "minimum_size": 6,
-    "size_variation": 2,
+    "force_dirt": false,
+    "ignore_vines": true,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 0,
+      "upper_size": 0
+    },
+    "trunk_placer": {
+      "type": "regions_unexplored:dead",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 8,
+        "min_inclusive": 7
+      }
+    },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {

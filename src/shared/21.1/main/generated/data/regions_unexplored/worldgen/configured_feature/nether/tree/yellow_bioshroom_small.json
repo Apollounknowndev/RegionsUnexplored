@@ -1,4 +1,54 @@
 {
-  "type": "regions_unexplored:small_yellow_bioshroom",
-  "config": {}
+  "type": "minecraft:tree",
+  "config": {
+    "decorators": [],
+    "dirt_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
+    },
+    "foliage_placer": {
+      "type": "regions_unexplored:bioshroom_shrub"
+    },
+    "foliage_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "regions_unexplored:yellow_bioshroom_block"
+      }
+    },
+    "force_dirt": false,
+    "ignore_vines": true,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 0,
+      "upper_size": 0
+    },
+    "trunk_placer": {
+      "type": "regions_unexplored:shrub",
+      "height": {
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "data": 2,
+            "weight": 2
+          },
+          {
+            "data": 3,
+            "weight": 1
+          }
+        ]
+      }
+    },
+    "trunk_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "regions_unexplored:yellow_bioshroom_stem",
+        "Properties": {
+          "axis": "y"
+        }
+      }
+    }
+  }
 }

@@ -15,6 +15,7 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.placement.EnvironmentScanPlacement;
 import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
@@ -24,7 +25,11 @@ import net.regions_unexplored.registry.data.RUConfiguredFeatures;
 import net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration;
 import net.regions_unexplored.world.level.feature.configuration.PointedRedstoneClusterConfiguration;
 import net.regions_unexplored.world.level.feature.configuration.PointedRedstoneConfiguration;
+import net.regions_unexplored.worldgen.foliageplacer.BioshroomShrubFoliagePlacer;
+import net.regions_unexplored.worldgen.foliageplacer.CobaltShrubFoliagePlacer;
 import net.regions_unexplored.worldgen.stateprovider.RandomizedGroundCoverStateProvider;
+import net.regions_unexplored.worldgen.trunkplacer.CobaltShrubTrunkPlacer;
+import net.regions_unexplored.worldgen.trunkplacer.ShrubTrunkPlacer;
 
 import static net.regions_unexplored.datagen.provider.registry.util.RUFeatureUtils.*;
 import static net.regions_unexplored.datagen.provider.registry.placed_feature.RuNetherPlacements.*;
@@ -33,7 +38,13 @@ import static net.regions_unexplored.registry.data.RUConfiguredFeatures.*;
 public class RuNetherFeatures {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         var bioshroomYellowLarge = register(context, TREE_YELLOW_BIOSHROOM_LARGE, RUFeatureTypes.GIANT_YELLOW_BIOSHROOM.get(), new GiantBioshroomConfiguration(BlockStateProvider.simple(RUBlocks.YELLOW_BIOSHROOM_WOOD_SET.getLog().defaultBlockState()), BlockStateProvider.simple(RUBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RUBlocks.GLOWING_YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState()), 5, 4));
-        var bioshroomYellowSmall = register(context, TREE_YELLOW_BIOSHROOM_SMALL, RUFeatureTypes.SMALL_YELLOW_BIOSHROOM.get(), FeatureConfiguration.NONE);
+        var bioshroomYellowSmall = register(context, TREE_YELLOW_BIOSHROOM_SMALL, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+            BlockStateProvider.simple(RUBlocks.YELLOW_BIOSHROOM_WOOD_SET.getLog()),
+            new ShrubTrunkPlacer(weightedInts(pair(2, 2), pair(3, 1))),
+            BlockStateProvider.simple(RUBlocks.YELLOW_BIOSHROOM_BLOCK.get()),
+            new BioshroomShrubFoliagePlacer(),
+            new TwoLayersFeatureSize(1, 0, 0)
+        ).ignoreVines().build());
         registerSelector(context, TREE_GROUP_MYCOTOXIC_UNDERGROWTH, builder -> builder
             .add(direct(bioshroomYellowLarge), 3)
             .add(direct(bioshroomYellowSmall), 1)
@@ -68,7 +79,13 @@ public class RuNetherFeatures {
         registerPlaced(context, TALL_COBALT_EARLIGHT, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(RUBlocks.TALL_COBALT_EARLIGHT.get().defaultBlockState())));
         registerPlaced(context, PATCH_COBALT_ROOTS, Feature.RANDOM_PATCH, randomPatch(BlockStateProvider.simple(RUBlocks.COBALT_ROOTS.get().defaultBlockState()), 32));
         registerPlaced(context, OBSIDIAN_SPIRE, RUFeatureTypes.OBSIDIAN_SPIRE.get(), FeatureConfiguration.NONE);
-        var cobalt = register(context, TREE_COBALT, RUFeatureTypes.COBALT_TREE.get(), FeatureConfiguration.NONE);
+        var cobalt = register(context, TREE_COBALT, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+            BlockStateProvider.simple(RUBlocks.COBALT_WOOD_SET.getLog()),
+            new CobaltShrubTrunkPlacer(UniformInt.of(1, 4)),
+            BlockStateProvider.simple(RUBlocks.COBALT_NATURAL_SET.getLeaves()),
+            new CobaltShrubFoliagePlacer(),
+            new TwoLayersFeatureSize(1, 0, 0)
+        ).ignoreVines().build());
         registerRedirector(context, TREE_GROUP_BLACKSTONE_BASIN, cobalt);
         
         registerPlaced(context, POINTED_REDSTONE, Feature.SIMPLE_RANDOM_SELECTOR, new SimpleRandomFeatureConfiguration(HolderSet.direct(PlacementUtils.inlinePlaced(RUFeatureTypes.POINTED_REDSTONE.get(), new PointedRedstoneConfiguration(0.5F, 0.7F, 0.5F, 0.5F), EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1))), PlacementUtils.inlinePlaced(RUFeatureTypes.POINTED_REDSTONE.get(), new PointedRedstoneConfiguration(0.5F, 0.7F, 0.5F, 0.5F), EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(-1))))));
