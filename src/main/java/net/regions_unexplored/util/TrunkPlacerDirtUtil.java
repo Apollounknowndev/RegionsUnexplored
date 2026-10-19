@@ -1,0 +1,17 @@
+package net.regions_unexplored.util;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.regions_unexplored.registry.RUBlocks;
+
+public class TrunkPlacerDirtUtil {
+    public static boolean isPeatDirt(LevelSimulatedReader levelSimulatedReader, BlockPos pos) {
+        return levelSimulatedReader.isStateAtPosition(pos, state -> state.is(RUBlocks.PEAT_GRASS_BLOCK.get()) || state.is(RUBlocks.PEAT_DIRT.get()));
+    }
+    public static boolean isSiltDirt(LevelSimulatedReader levelSimulatedReader, BlockPos pos) {
+        return levelSimulatedReader.isStateAtPosition(pos, state -> state.is(RUBlocks.SILT_GRASS_BLOCK.get()) || state.is(RUBlocks.SILT_DIRT.get()));
+    }
+    public static boolean isAlphaGrass(LevelSimulatedReader levelSimulatedReader, BlockPos pos) {
+        return levelSimulatedReader.isStateAtPosition(pos, state -> state.is(RUBlocks.ALPHA_GRASS_BLOCK.get()));
+    }
+}

@@ -5,9 +5,12 @@ import json
 # Per-mod: Update this for each mod!!!
 
 MOD_ID = "regions-unexplored"
-MOD_VERSION = "0.7.0+beta2"
+MOD_VERSION = "0.7.0+beta3"
 CHANGELOG = """
-- Placing down an RU boat no longer crashes the game.
+- Fixed the Marsh biome not having the correct colors.
+- Fixed the Prismachasm and Redstone Caves biomes not generating if certain other biome mods were installed.
+- Fixed spruce saplings sometimes growing Pine trees.
+- Fixed pack format warnings.
 """
 UPLOAD_VERSIONS = [
     ("fabric", "26.1"),
@@ -153,9 +156,11 @@ def upload_curseforge(loader: str, version: str, file_path: str, dependencies):
 for modloader, game_version in UPLOAD_VERSIONS:
     mod_path = os.path.join(
         BASE_FOLDER,
+        'versions',
+        f'{modloader}',
         'build',
         'libs',
-        f'{MOD_ID}-{MOD_VERSION}-{modloader}.jar'
+        f'{MOD_ID}-{MOD_VERSION}-{modloader}-{game_version}.jar'
     )
 
     dependencies = DEPENDENCIES.copy()

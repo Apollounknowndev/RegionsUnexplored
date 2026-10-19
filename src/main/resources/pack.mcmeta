@@ -1,0 +1,123 @@
+{
+    "pack": {
+        "description": "",
+        "min_format": 101,
+        "max_format": 101
+    },
+    "fabric:overlays": {
+        "entries": [
+            {
+                "directory": "overlay.painted_planks",
+                "condition": {
+                    "condition": "regions_unexplored:config",
+                    "key": "painted_planks"
+                }
+            },
+            {
+                "directory": "overlay.birch_aspen_trees",
+                "condition": {
+                    "condition": "regions_unexplored:config",
+                    "key": "vanilla_changes/birch_aspen_trees"
+                }
+            },
+            {
+                "directory": "overlay.common_grass_sprouts",
+                "condition": {
+                    "condition": "regions_unexplored:config",
+                    "key": "vanilla_changes/common_grass_sprouts"
+                }
+            },
+            {
+                "directory": "overlay.taiga_pine_trees",
+                "condition": {
+                    "condition": "regions_unexplored:config",
+                    "key": "vanilla_changes/taiga_pine_trees"
+                }
+            },
+            {
+                "directory": "overlay.oak_taller_trees",
+                "condition": {
+                    "condition": "regions_unexplored:config",
+                    "key": "vanilla_changes/oak_taller_trees"
+                }
+            },
+            {
+                "directory": "overlay.forest_fancy_oaks",
+                "condition": {
+                    "condition": "regions_unexplored:config",
+                    "key": "vanilla_changes/forest_fancy_oaks"
+                }
+            }
+        ]
+    },
+    "neoforge:overlays": {
+        "entries": [
+            {
+                "directory": "overlay.painted_planks",
+                "min_format": 101,
+                "max_format": 101,
+                "neoforge:conditions": [
+                    {
+                        "type": "regions_unexplored:config",
+                        "key": "painted_planks"
+                    }
+                ]
+            },
+            {
+                "directory": "overlay.birch_aspen_trees",
+                "min_format": 101,
+                "max_format": 101,
+                "neoforge:conditions": [
+                    {
+                        "type": "regions_unexplored:config",
+                        "key": "vanilla_changes/birch_aspen_trees"
+                    }
+                ]
+            },
+            {
+                "directory": "overlay.common_grass_sprouts",
+                "min_format": 101,
+                "max_format": 101,
+                "neoforge:conditions": [
+                    {
+                        "type": "regions_unexplored:config",
+                        "key": "vanilla_changes/common_grass_sprouts"
+                    }
+                ]
+            },
+            {
+                "directory": "overlay.taiga_pine_trees",
+                "min_format": 101,
+                "max_format": 101,
+                "neoforge:conditions": [
+                    {
+                        "type": "regions_unexplored:config",
+                        "key": "vanilla_changes/taiga_pine_trees"
+                    }
+                ]
+            },
+            {
+                "directory": "overlay.oak_taller_trees",
+                "min_format": 101,
+                "max_format": 101,
+                "neoforge:conditions": [
+                    {
+                        "type": "regions_unexplored:config",
+                        "key": "vanilla_changes/oak_taller_trees"
+                    }
+                ]
+            },
+            {
+                "directory": "overlay.forest_fancy_oaks",
+                "min_format": 101,
+                "max_format": 101,
+                "neoforge:conditions": [
+                    {
+                        "type": "regions_unexplored:config",
+                        "key": "vanilla_changes/forest_fancy_oaks"
+                    }
+                ]
+            }
+        ]
+    }
+}

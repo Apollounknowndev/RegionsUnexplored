@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.regions_unexplored.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "removals.BiomeListMixin",
+    "removals.HolderLookupMixin",
+    "BiomeMixin",
+    "EatBlockGoalMixin",
+    "NetherrackBlockMixin",
+    "TreeConfigurationMixin",
+    "VillagerProfessionAccessor",
+    "WorldCarverMixin"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
+

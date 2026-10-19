@@ -1,0 +1,41 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license = "MIT"
+
+[[mods]]
+modId = "${id}"
+displayName = "${name}"
+version = "${version}"
+authors = "Apollo"
+description = "Terrain shaping brought to new heights, grander and more varied than ever before!"
+
+logoFile = "pack.png"
+#displayURL = "..."
+#issueTrackerUrl = "..."
+
+[[mixins]]
+config = "regions_unexplored.mixins.json"
+
+[[mixins]]
+config = "regions_unexplored.neoforge.mixins.json"
+
+[[dependencies.${id}]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${id}]]
+modId = "lithostitched"
+type = "required"
+versionRange = "[1.8.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${id}]]
+modId = "apollib"
+type = "required"
+versionRange = "[1.2.0,)"
+ordering = "NONE"
+side = "BOTH"

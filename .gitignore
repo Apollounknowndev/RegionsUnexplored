@@ -1,25 +1,41 @@
+# gradle
+
+.gradle/
+build/
+out/
+classes/
+
 # eclipse
-bin
+
 *.launch
-.settings
-.metadata
+
+# idea
+
+.idea/
+*.iml
+*.ipr
+*.iws
+.idea/workspace.xml
+
+# vscode
+
+.settings/
+.vscode/
+bin/
 .classpath
 .project
 
-# idea
-out
-*.ipr
-*.iws
-*.iml
-.idea/*
-!.idea/scopes
+# macos
 
-# gradle
-build
-.gradle
+*.DS_Store
 
-# other
-eclipse
-run
-runs
-/common/src/generated/resources/.cache/
+# fabric
+
+run/
+
+# java
+
+hs_err_*.log
+replay_*.log
+*.hprof
+*.jfr

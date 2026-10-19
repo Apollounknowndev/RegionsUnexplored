@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "version": "${version}",
+  "name": "${name}",
+  "description": "${description}",
+  "authors": [
+    "Apollo",
+    "UHQ_Games"
+  ],
+  "contributors": [
+    "KelloVerra (Texture Artist)",
+    "KirboSoftware",
+    "voidsongdragonfly"
+  ],
+  "contact": {
+    "homepage": "${url}",
+    "sources": "${sources}"
+  },
+  "license": "MIT",
+  "icon": "pack.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.regions_unexplored.platform.fabric.RegionsUnexploredFabric"
+    ],
+    "client": [
+      "net.regions_unexplored.platform.fabric.RegionsUnexploredFabricClient"
+    ],
+    "modmenu": [
+      "net.regions_unexplored.platform.fabric.compat.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "regions_unexplored.mixins.json",
+    "regions_unexplored.fabric.mixins.json"
+  ],
+  "accessWidener": "regions_unexplored.ct",
+  "depends": {
+    "fabricloader": ">=0.17",
+    "minecraft": "${minecraft}",
+    "apollib": ">=1.2.0",
+    "lithostitched": ">=1.8.0"
+  }
+}
