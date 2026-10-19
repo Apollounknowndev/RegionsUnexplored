@@ -1,0 +1,16 @@
+package net.regions_unexplored.registry.tag;
+
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
+
+public interface BackportedBlockTags {
+    TagKey<Block> SUPPORTS_VEGETATION = key("supports_vegetation");
+    TagKey<Block> SUPPORTS_CROPS = key("supports_crops");
+    TagKey<Block> SPELEOTHEMS = key("speleothems");
+
+    private static TagKey<Block> key(String name) {
+        return TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace(name));
+    }
+}

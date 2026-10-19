@@ -1,0 +1,14 @@
+{
+  "type": "lithostitched:remove_features",
+  "biomes": {
+    "type": "lithostitched:holder_set",
+    "set": "minecraft:swamp"
+  },
+  "features": "minecraft:trees_swamp",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/swamp_willow_trees"
+  },
+  "priority": 1000,
+  "step": "vegetal_decoration"
+}

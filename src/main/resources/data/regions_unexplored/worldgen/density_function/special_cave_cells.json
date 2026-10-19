@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:flat_cache",
+  "argument": {
+    "type": "minecraft:cache_2d",
+    "argument": {
+      "type": "lithostitched:shift",
+      "input": {
+        "type": "lithostitched:cellular",
+        "grid_dimensions": {
+          "horizontal": 500
+        },
+        "jitter": 0.75,
+        "return_type": "cell_value",
+        "salt": 1370549
+      },
+      "shift_x": "lithostitched:region/shift_x",
+      "shift_y": 0,
+      "shift_z": "lithostitched:region/shift_z"
+    }
+  }
+}

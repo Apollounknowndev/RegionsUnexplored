@@ -1,0 +1,27 @@
+# See https://stonecutter.kikugie.dev/wiki/config/properties#centralized-properties
+mod.id = "regions_unexplored"
+mod.name = "Regions Unexplored"
+mod.group = "dev.worldgen.regions.unexplored"
+mod.url = "https://modrinth.com/project/regions-unexplored"
+mod.sources = "https://github.com/Apollounknowndev/RegionsUnexplored"
+mod.description = "A stack of new biomes spread across the Overworld and Nether!"
+mod.version = "0.6.3"
+
+deps.fabric_loader = "0.19.3"
+loomx.loom_version = "1.17-SNAPSHOT"
+
+["21.1"]
+mod.mc_releases = ["1.21", "1.21.1"]
+
+[fabric."21.1"]
+mod.mc_compat = ">=1.21 <=1.21.1"
+deps.fabric_api = "0.116.12+1.21.1"
+deps.mod_menu = "11.0.3"
+deps.apollib = "1.2.0-fabric-21.1"
+deps.lithostitched = "1.8.1-fabric-21.1"
+
+[neoforge."21.1"]
+mod.mc_compat = "[1.21, 1.21.1]"
+deps.neo_loader = "21.1.234"
+deps.apollib = "1.2.0-neoforge-21.1"
+deps.lithostitched = "1.8.1-neoforge-21.1"

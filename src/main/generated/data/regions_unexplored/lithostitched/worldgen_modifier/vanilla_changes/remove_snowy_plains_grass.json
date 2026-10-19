@@ -1,0 +1,14 @@
+{
+  "type": "lithostitched:remove_features",
+  "biomes": {
+    "type": "lithostitched:holder_set",
+    "set": "minecraft:snowy_plains"
+  },
+  "features": "minecraft:patch_grass_badlands",
+  "predicate": {
+    "type": "regions_unexplored:config",
+    "key": "vanilla_changes/snowy_frozen_grass"
+  },
+  "priority": 1000,
+  "step": "vegetal_decoration"
+}
