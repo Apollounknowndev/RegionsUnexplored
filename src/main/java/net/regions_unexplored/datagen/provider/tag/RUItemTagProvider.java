@@ -388,6 +388,9 @@ public class RUItemTagProvider extends IntrinsicHolderTagsProvider<Item> {
             .add(RUBlocks.VOLCANIC_ASH.get().asItem());
         this.tag(Tags.Items.OBSIDIANS_CRYING)
             .add(RUBlocks.COBALT_OBSIDIAN.get().asItem());
+        this.tag(Tags.Items.CROPS_CACTUS)
+            .add(RUBlocks.BARREL_CACTUS.get().asItem())
+            .add(RUBlocks.SAGUARO_CACTUS.get().asItem());
     }
 }
 *///? }
