@@ -6,9 +6,10 @@
     "#": {
       "item": "minecraft:stick"
     },
-    "W": {
-      "item": "regions_unexplored:alpha_planks"
-    }
+    "W": [
+      {"item": "regions_unexplored:alpha_planks"},
+      {"item": "minecraft:oak_planks"}
+    ]
   },
   "pattern": [
     "#W#",
