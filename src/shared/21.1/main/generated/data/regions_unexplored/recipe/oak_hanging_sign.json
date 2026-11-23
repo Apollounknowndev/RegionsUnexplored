@@ -3,9 +3,10 @@
   "category": "misc",
   "group": "hanging_sign",
   "key": {
-    "#": {
-      "item": "regions_unexplored:alpha_planks"
-    },
+    "#": [
+      {"item": "regions_unexplored:alpha_planks"},
+      {"item": "regions_unexplored:stripped_small_oak_log"},
+      {"item": "minecraft:stripped_oak_log"}],
     "X": {
       "item": "minecraft:chain"
     }
