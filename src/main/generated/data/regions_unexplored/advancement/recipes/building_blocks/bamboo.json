@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#regions_unexplored:bamboo_logs"
+            "items": "regions_unexplored:bamboo_log"
           }
         ]
       },
