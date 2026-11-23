@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "boat",
+  "group": "hanging_sign",
   "key": {
     "#": [
         {"item": "regions_unexplored:stripped_bamboo_log"},
