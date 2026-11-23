@@ -5,7 +5,10 @@
       "conditions": {
         "items": [
           {
-            "items": "regions_unexplored:brimwood_log"
+            "items": [
+              "regions_unexplored:brimwood_log",
+              "regions_unexplored:brimwood_log_magma"
+            ]
           }
         ]
       },

@@ -1,11 +1,14 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_log": {
+    "has_stripped_bamboo": {
       "conditions": {
         "items": [
           {
-            "items": "regions_unexplored:brimwood_log_magma"
+            "items": [
+              "regions_unexplored:stripped_bamboo_log",
+              "minecraft:stripped_bamboo_block"
+          ]
           }
         ]
       },
@@ -13,7 +16,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "regions_unexplored:brimwood_wood_from_brimwood_log_magma"
+        "recipe": "regions_unexplored:bamboo_hanging_sign"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +24,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_log"
+      "has_stripped_bamboo"
     ]
   ],
   "rewards": {
     "recipes": [
-      "regions_unexplored:brimwood_wood_from_brimwood_log_magma"
+      "regions_unexplored:bamboo_hanging_sign"
     ]
   }
 }
