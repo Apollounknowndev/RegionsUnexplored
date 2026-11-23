@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "hanging_sign",
+  "key": {
+    "#": [
+        "regions_unexplored:stripped_bamboo_log",
+        "minecraft:stripped_bamboo_block"
+    ]
+  },
+  "pattern": [
+    "###",
+    "   ",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "minecraft:bamboo_shelf"
+  }
+}

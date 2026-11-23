@@ -5,7 +5,10 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:oak_log"
+            "items": [
+              "regions_unexplored:alpha_log",
+              "minecraft:oak_log"
+          ]
           }
         ]
       },

@@ -3,7 +3,10 @@
   "category": "redstone",
   "group": "wooden_pressure_plate",
   "key": {
-    "#": "regions_unexplored:alpha_planks"
+    "#": [
+      "regions_unexplored:alpha_planks",
+      "minecraft:oak_planks"
+  ]
   },
   "pattern": [
     "##"
