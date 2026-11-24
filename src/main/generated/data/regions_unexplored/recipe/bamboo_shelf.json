@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "wooden_shelf",
+  "group": "shelf",
   "key": {
     "#": [
         "regions_unexplored:stripped_bamboo_log",
