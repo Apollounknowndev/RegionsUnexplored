@@ -1,11 +1,14 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_logs": {
+    "has_stripped_bamboo": {
       "conditions": {
         "items": [
           {
-            "items": "#regions_unexplored:bamboo_logs"
+            "items": [
+              "regions_unexplored:stripped_bamboo_log",
+              "minecraft:stripped_bamboo_block"
+          ]
           }
         ]
       },
@@ -13,7 +16,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "regions_unexplored:bamboo_planks"
+        "recipe": "regions_unexplored:bamboo_shelf"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +24,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_logs"
+      "has_stripped_bamboo"
     ]
   ],
   "rewards": {
     "recipes": [
-      "regions_unexplored:bamboo_planks"
+      "regions_unexplored:bamboo_shelf"
     ]
   }
 }

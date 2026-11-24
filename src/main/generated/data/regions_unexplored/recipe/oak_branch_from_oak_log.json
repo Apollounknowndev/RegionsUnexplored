@@ -3,7 +3,10 @@
   "category": "misc",
   "group": "branches",
   "key": {
-    "#": "minecraft:oak_log",
+    "#": [
+        "regions_unexplored:alpha_log",
+        "minecraft:oak_log"
+    ],
     "X": "minecraft:stick"
   },
   "pattern": [

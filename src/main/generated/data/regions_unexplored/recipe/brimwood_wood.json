@@ -3,7 +3,10 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": "regions_unexplored:brimwood_log"
+    "#": [
+        "regions_unexplored:brimwood_log",
+        "regions_unexplored:brimwood_log_magma"
+  ]
   },
   "pattern": [
     "##",

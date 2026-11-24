@@ -4,7 +4,10 @@
   "group": "wooden_fence",
   "key": {
     "#": "minecraft:stick",
-    "W": "regions_unexplored:alpha_planks"
+    "W": [
+      "regions_unexplored:alpha_planks",
+      "minecraft:oak_planks"
+  ]
   },
   "pattern": [
     "W#W",

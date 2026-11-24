@@ -1,11 +1,15 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_log": {
+    "has_alpha_planks_or_stripped_oak": {
       "conditions": {
         "items": [
           {
-            "items": "regions_unexplored:brimwood_log_magma"
+            "items": [
+              "regions_unexplored:alpha_planks",
+              "regions_unexplored:stripped_small_oak_log",
+              "minecraft:stripped_oak_log"
+          ]
           }
         ]
       },
@@ -13,7 +17,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "regions_unexplored:brimwood_wood_from_brimwood_log_magma"
+        "recipe": "regions_unexplored:oak_shelf"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +25,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_log"
+      "has_alpha_planks_or_stripped_oak"
     ]
   ],
   "rewards": {
     "recipes": [
-      "regions_unexplored:brimwood_wood_from_brimwood_log_magma"
+      "regions_unexplored:oak_shelf"
     ]
   }
 }

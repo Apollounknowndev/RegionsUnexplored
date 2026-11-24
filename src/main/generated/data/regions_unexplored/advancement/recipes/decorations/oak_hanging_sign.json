@@ -1,11 +1,15 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_alpha_planks": {
+    "has_alpha_planks_or_stripped_oak": {
       "conditions": {
         "items": [
           {
-            "items": "regions_unexplored:alpha_planks"
+            "items": [
+              "regions_unexplored:alpha_planks",
+              "regions_unexplored:stripped_small_oak_log",
+              "minecraft:stripped_oak_log"
+          ]
           }
         ]
       },
@@ -21,7 +25,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_alpha_planks"
+      "has_alpha_planks_or_stripped_oak"
     ]
   ],
   "rewards": {

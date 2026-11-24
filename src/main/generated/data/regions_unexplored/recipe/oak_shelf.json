@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "shelf",
+  "key": {
+    "#": [
+      "regions_unexplored:alpha_planks",
+      "regions_unexplored:stripped_small_oak_log",
+      "minecraft:stripped_oak_log"
+  ]
+  },
+  "pattern": [
+    "###",
+    "   ",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "minecraft:oak_shelf"
+  }
+}
